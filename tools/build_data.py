@@ -8,10 +8,10 @@ Mapping Anki -> stage (production = carte forward, reconnaissance = carte invers
   fwd review ivl<7      -> 3 ; 7<=ivl<21 -> 4 ; ivl>=21 -> 5 (itv conservé, due conservée)
   ennemi (lapses fwd+rev >= 4) -> plafonné stage 2, due aujourd'hui
 """
-import sqlite3, json, datetime, re, collections, unicodedata
+import sqlite3, json, datetime, re, collections, hashlib
 
 DB = r"C:\Users\33785\dev\sori\tools\snapshot.anki2"
-OUT = r"C:\Users\33785\dev\sori\app\data.js"
+OUT = r"C:\Users\33785\dev\sori\docs\data.js"
 SEP = "\x1f"
 TODAY = datetime.date(2026, 7, 3)
 
@@ -160,8 +160,11 @@ for fr, kr, sub in KIT:
         kit_count_existing += 1
         continue
     knum += 1
+    # id STABLE dérivé du texte coréen (insensible à l'ordre de la liste KIT
+    # -> la progression survit aux régénérations futures)
+    kid = "kit-" + hashlib.sha1(kr.encode("utf-8")).hexdigest()[:8]
     items.append({
-        "id": "kit-%03d" % knum, "fr": fr, "kr": kr, "type": "phrase",
+        "id": kid, "fr": fr, "kr": kr, "type": "phrase",
         "theme": "voyage::" + sub, "stage": 0, "itv": 0, "due": None,
         "enemy": False, "kit": True,
     })

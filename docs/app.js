@@ -567,7 +567,12 @@ function importState(e){
       const data=JSON.parse(r.result);
       if(data.app!=="sori"||!data.state) throw 0;
       if(confirm("Remplacer la progression locale par cet export ?")){
-        ST=data.state; save(); Q=null; render();
+        /* même migration douce qu'au chargement : un vieil export reste valide */
+        const s = data.state;
+        s.items = s.items||{}; s.log = s.log||{}; s.intro = s.intro||{};
+        s.set = Object.assign({}, DEF_SET, s.set||{});
+        s.v = s.v || 1;
+        ST = s; save(); Q=null; render();
       }
     }catch(_){ alert("Fichier invalide."); }
   };
