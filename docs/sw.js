@@ -1,6 +1,6 @@
 /* Sori service worker — network-first (mises à jour auto), repli cache (hors-ligne) */
-const CACHE = "sori-v6";
-const ASSETS = ["./", "./index.html", "./style.css", "./app.js", "./data.js", "./extra.js",
+const CACHE = "sori-v7";
+const ASSETS = ["./", "./index.html", "./style.css", "./engine.js", "./app.js", "./data.js", "./extra.js",
                 "./audio/index.js", "./manifest.json", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", e => {

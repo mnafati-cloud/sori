@@ -7,10 +7,10 @@ const SEED_BY_ID = {};
 SEED.items.forEach(it => SEED_BY_ID[it.id] = it);
 
 function todayStr(){ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
-function addDays(dstr, n){ const d=new Date(dstr+"T12:00:00"); d.setDate(d.getDate()+n);
-  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+/* moteur pur (planification, sélection, distracteurs) : docs/engine.js, chargé avant ce fichier */
+const addDays = ENGINE.addDays;
 
-const DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true };
+const DEF_SET = ENGINE.DEF_SET;
 let ST = loadState();
 function loadState(){
   /* Migration douce : champs inconnus préservés, nouveaux réglages -> défauts.
@@ -71,13 +71,7 @@ function wireMute(){
   b.onclick = ()=>{ ST.set.mute = !ST.set.mute; if(ST.set.mute) try{speechSynthesis.cancel();}catch(e){} save(); paint(); };
   paint();
 }
-function streak(){
-  let n=0, d=todayStr();
-  const l0 = ST.log[d];
-  if(!l0 || l0.n===0){ d = addDays(d,-1); }        // aujourd'hui pas encore fait -> compter depuis hier
-  while(ST.log[d] && ST.log[d].n>0){ n++; d = addDays(d,-1); }
-  return n;
-}
+function streak(){ return ENGINE.computeStreak(ST.log, todayStr(), addDays); }
 
 /* ================= audio : MP3 natifs prioritaires, TTS en secours ================= */
 const AUDIO_IDS = new Set((typeof window!=="undefined" && window.AUDIO) || []);
@@ -127,37 +121,24 @@ function ttsSpeak(text){
   }catch(e){}
 }
 
-/* ================= planification ================= */
-const STEP = {2:1, 3:2, 4:4, 5:8};   // intervalle (jours) en arrivant à ce stage
+/* ================= planification (logique dans engine.js) ================= */
 function applyAnswer(it, ok){
-  let s = it.stage, itv = it.itv, due;
-  if(ok){
-    if(s<5){ s = s+1; itv = STEP[s] || 1; }
-    else { itv = Math.min(120, Math.max(14, Math.round(itv*2.2))); }
-    due = addDays(todayStr(), itv);
-  } else {
-    s = Math.max(1, s-2); itv = 0; due = todayStr();
-  }
-  setItem(it.id, { s, i:itv, d:due, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) });
+  const r = ENGINE.computeAnswer(it, ok, todayStr());
+  setItem(it.id, { s:r.s, i:r.i, d:r.d, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) });
 }
 
 /* file du jour : échues + nouvelles (kit prioritaire) */
 function buildQueue(){
   const t = todayStr();
-  const due = [];
-  ALL_IDS.forEach(id => {
-    const it = eff(id);
-    if(it.stage>=1 && it.due && it.due<=t) due.push(id);
-  });
+  const effAll = ALL_IDS.map(eff);
+  const due = ENGINE.selectDue(effAll, t);
   // introduction de nouvelles
   const introToday = ST.intro[t]||0;
   let slots = Math.max(0, (ST.set.newPerDay||0) - introToday);
   if(slots>0){
-    const news = ALL_IDS.map(eff).filter(it=>it.stage===0);
-    news.sort((a,b)=> (ST.set.kitFirst ? (b.kit?1:0)-(a.kit?1:0) : 0) || (a.id<b.id?-1:1));
-    for(const it of news.slice(0, slots)){
-      setItem(it.id, { s:1, i:0, d:t });
-      due.push(it.id);
+    for(const id of ENGINE.pickNew(effAll, slots, ST.set.kitFirst)){
+      setItem(id, { s:1, i:0, d:t });
+      due.push(id);
       ST.intro[t] = (ST.intro[t]||0)+1;
     }
     save();
@@ -168,26 +149,11 @@ function buildQueue(){
   return due.slice(0, cap);
 }
 let PENDING = 0;
-function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
-function sample(arr, n, excl){
-  const pool = arr.filter(x=>!excl.has(x));
-  shuffle(pool); return pool.slice(0,n);
-}
+const shuffle = ENGINE.shuffle;
 
-/* ================= distracteurs ================= */
+/* ================= distracteurs (logique dans engine.js) ================= */
 function distractors(it, n, field){
-  const out=[], seen=new Set([it.id]);
-  const push = id => { const o=SEED_BY_ID[id]; if(o && !seen.has(id) && o[field]!==it[field==="fr"?"fr":"kr"]){ out.push(id); seen.add(id);} };
-  if(it.stage>=2) (it.conf||[]).forEach(id=>{ if(out.length<n) push(id); });
-  if(out.length<n){
-    const theme = ALL_IDS.filter(id=>{ const o=SEED_BY_ID[id]; return o.theme===it.theme && o.type===it.type; });
-    sample(theme, n-out.length+2, seen).forEach(id=>{ if(out.length<n) push(id); });
-  }
-  if(out.length<n){
-    const any = ALL_IDS.filter(id=>SEED_BY_ID[id].type===it.type);
-    sample(any, n-out.length+3, seen).forEach(id=>{ if(out.length<n) push(id); });
-  }
-  return out.slice(0,n);
+  return ENGINE.pickDistractors(it, n, field, SEED_BY_ID, ALL_IDS);
 }
 
 /* ================= UI ================= */
