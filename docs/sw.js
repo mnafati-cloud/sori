@@ -1,5 +1,5 @@
 /* Sori service worker — network-first (mises à jour auto), repli cache (hors-ligne) */
-const CACHE = "sori-v3";
+const CACHE = "sori-v4";
 const ASSETS = ["./", "./index.html", "./style.css", "./app.js", "./data.js", "./extra.js",
                 "./manifest.json", "./icon-192.png", "./icon-512.png"];
 

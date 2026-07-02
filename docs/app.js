@@ -10,7 +10,7 @@ function todayStr(){ const d=new Date(); return d.getFullYear()+"-"+String(d.get
 function addDays(dstr, n){ const d=new Date(dstr+"T12:00:00"); d.setDate(d.getDate()+n);
   return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
 
-const DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false };
+const DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true };
 let ST = loadState();
 function loadState(){
   /* Migration douce : champs inconnus préservés, nouveaux réglages -> défauts.
@@ -185,11 +185,27 @@ function render(){
 
 /* ---------- mode Réviser ---------- */
 let Q = null, QPOS = 0, BONUS = false;
+/* la session en cours survit à un kill de l'app (Android) */
+function saveSess(){
+  ST.sess = (BONUS || !Q) ? null : { d:todayStr(), q:Q, p:QPOS, pen:PENDING };
+  save();
+}
 function renderReview(){
-  if(!Q){ Q = buildQueue(); QPOS = 0; BONUS = false; }
+  if(!Q){
+    const s = ST.sess;
+    if(s && s.d===todayStr() && Array.isArray(s.q) && s.p < s.q.length){
+      Q = s.q; QPOS = s.p; PENDING = s.pen||0; BONUS = false;   // reprise
+    } else {
+      Q = buildQueue(); QPOS = 0; BONUS = false;
+      saveSess();
+    }
+  }
   if(QPOS >= Q.length){
+    ST.sess = null; save();
     const t=todayStr(), l=ST.log[t]||{ok:0,ko:0};
     const more = PENDING>0 ? `<button class="btn" id="more">Continuer (${PENDING} en attente)</button>` : "";
+    const boss = bossCandidates();
+    const bossBtn = boss.length ? `<button class="btn ghost" id="boss">⚔️ Boss fight (${Math.min(boss.length,20)} ennemies)</button>` : "";
     $screen.appendChild(el(`<div class="card center">
       <div class="done-banner">${PENDING>0?"💪":"🎉"}</div>
       <h2>${PENDING>0?"Session terminée !":"Tout est à jour !"}</h2>
@@ -197,10 +213,13 @@ function renderReview(){
       <div class="row" style="margin-top:12px">
         ${more}
         <button class="btn ghost" id="bonus">Entraînement libre (10)</button>
-      </div></div>`));
+      </div>
+      ${bossBtn ? `<div class="row" style="margin-top:10px">${bossBtn}</div>` : ""}</div>`));
     const m=document.getElementById("more");
     if(m) m.onclick = ()=>{ Q=null; render(); };
     document.getElementById("bonus").onclick = ()=>{ Q = bonusQueue(); QPOS=0; BONUS=true; render(); };
+    const bb=document.getElementById("boss");
+    if(bb) bb.onclick = startBoss;
     return;
   }
   const it = eff(Q[QPOS]);
@@ -225,6 +244,19 @@ function bonusQueue(){
   const pool = ALL_IDS.map(eff).filter(it=>it.stage>=2);
   shuffle(pool); return pool.slice(0,10).map(it=>it.id);
 }
+/* boss fight : affronter ses ennemies (les mots les plus ratés), les plus faibles d'abord */
+function bossCandidates(){
+  return ALL_IDS.map(eff).filter(it=>it.enemy && it.stage>=1 && it.stage<=4)
+    .sort((a,b)=>a.stage-b.stage || (a.ko-b.ko));
+}
+function startBoss(){
+  const c = bossCandidates().slice(0,20).map(it=>it.id);
+  if(!c.length) return;
+  Q = shuffle(c); QPOS = 0; BONUS = false;   // vraies révisions : ça compte pour la planif
+  TAB = "review";
+  document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x.dataset.tab==="review"));
+  saveSess(); render();
+}
 /* encart d'aide (phrase d'exemple, faux ami, note hanja) — contenu dans extra.js */
 function showTrivia(card, it){
   const x = EXTRA[it.id];
@@ -244,6 +276,7 @@ function afterAnswer(it, ok, sawTrivia){
     Q.splice(pos, 0, it.id);
   }
   QPOS++;
+  saveSess();
   const base = ok ? 750 : 1500;
   setTimeout(render, sawTrivia ? base + 1600 : base);
 }
@@ -272,7 +305,7 @@ function exoQcmKr2Fr(it){
     box.appendChild(b);
   });
   $screen.appendChild(card);
-  speak(it.kr);
+  if(ST.set.autoplay) speak(it.kr);
 }
 /* stage 3 : QCM français -> coréen */
 function exoQcmFr2Kr(it){
@@ -343,7 +376,7 @@ function exoRecallRev(it){
     row.append(again, good);
   };
   $screen.appendChild(card);
-  speak(it.kr);
+  if(ST.set.autoplay) speak(it.kr);
 }
 /* stage 3 (phrases) : construction de phrase façon Duolingo */
 function exoBuild(it){
@@ -519,6 +552,24 @@ function renderStats(){
     <div class="stat"><div class="n">${beaten}/${enemies.length}</div><div class="l">ennemies vaincues</div></div>
   </div>`));
 
+  const bossN = Math.min(bossCandidates().length, 20);
+  if(bossN){
+    const bcard = el(`<div class="card center"><h2>⚔️ Boss fight</h2>
+      <p class="dim">Affronte tes mots les plus ratés en QCM ciblés (${bossN} au menu).</p>
+      <button class="btn" id="boss2">Lancer le combat</button></div>`);
+    bcard.querySelector("#boss2").onclick = startBoss;
+    $screen.appendChild(bcard);
+  }
+
+  /* rappel d'export : la sauvegarde ne vit que sur cet appareil */
+  const lastX = ST.lastExport;
+  const days = lastX ? Math.round((new Date(t+"T12:00:00") - new Date(lastX+"T12:00:00"))/86400000) : null;
+  if(days===null || days>=7){
+    $screen.appendChild(el(`<div class="card" style="border-color:var(--warn)">
+      <h2>⚠️ Sauvegarde</h2><p class="dim">${days===null?"Aucun export encore fait":"Dernier export il y a "+days+" j"} —
+      ta progression ne vit que sur cet appareil. Exporte-la (bouton ci-dessous) et partage vers OneDrive.</p></div>`));
+  }
+
   const mx = Math.max(...stages,1);
   const labels=["nouv.","QCM","QCM+","FR→KR","indice","rappel"];
   const bars = el(`<div class="card"><h2>Échelle de maîtrise</h2><div class="bars">${
@@ -530,6 +581,7 @@ function renderStats(){
     <label>Nouvelles cartes / jour <input type="number" id="npd" min="0" max="50" value="${ST.set.newPerDay}"></label>
     <label>Taille max de session <input type="number" id="smax" min="20" max="500" step="10" value="${ST.set.sessionMax||120}"></label>
     <label>Prioriser le kit voyage <input type="checkbox" id="kf" ${ST.set.kitFirst?"checked":""}></label>
+    <label>Prononcer automatiquement <input type="checkbox" id="ap" ${ST.set.autoplay?"checked":""}></label>
     <label>Vitesse de la voix <input type="number" id="rate" min="0.5" max="1.2" step="0.1" value="${ST.set.rate}"></label>
     <div class="row" style="margin-top:12px">
       <button class="btn ghost" id="exp">📤 Exporter</button>
@@ -542,12 +594,14 @@ function renderStats(){
   set.querySelector("#npd").onchange = e=>{ ST.set.newPerDay=Math.max(0,+e.target.value||0); save(); };
   set.querySelector("#smax").onchange= e=>{ ST.set.sessionMax=Math.max(20,+e.target.value||120); save(); };
   set.querySelector("#kf").onchange  = e=>{ ST.set.kitFirst=e.target.checked; save(); };
+  set.querySelector("#ap").onchange  = e=>{ ST.set.autoplay=e.target.checked; save(); };
   set.querySelector("#rate").onchange= e=>{ ST.set.rate=Math.min(1.2,Math.max(0.5,+e.target.value||0.9)); save(); };
   set.querySelector("#exp").onclick  = exportState;
   set.querySelector("#imp").onclick  = ()=>set.querySelector("#impfile").click();
   set.querySelector("#impfile").onchange = importState;
 }
 async function exportState(){
+  ST.lastExport = todayStr(); save();
   const payload = JSON.stringify({app:"sori", v:1, exportedAt:new Date().toISOString(),
     seedVersion:SEED.meta.version, state:ST}, null, 1);
   const name = "sori-export-"+todayStr()+".json";
