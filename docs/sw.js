@@ -1,5 +1,5 @@
 /* Sori service worker — network-first (mises à jour auto), repli cache (hors-ligne) */
-const CACHE = "sori-v4";
+const CACHE = "sori-v5";
 const ASSETS = ["./", "./index.html", "./style.css", "./app.js", "./data.js", "./extra.js",
                 "./manifest.json", "./icon-192.png", "./icon-512.png"];
 
@@ -15,7 +15,9 @@ self.addEventListener("activate", e => {
 self.addEventListener("fetch", e => {
   if (e.request.method !== "GET") return;
   e.respondWith(
-    fetch(e.request).then(res => {
+    /* no-cache: toujours revalider aupres du serveur (304 pas cher via ETag)
+       -> les mises a jour arrivent vraiment, le repli cache gere le hors-ligne */
+    fetch(e.request, { cache: "no-cache" }).then(res => {
       const copy = res.clone();
       caches.open(CACHE).then(c => c.put(e.request, copy));
       return res;

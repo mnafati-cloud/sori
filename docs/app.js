@@ -445,24 +445,30 @@ function renderListen(){
     return;
   }
   const it = eff(LQ[LPOS]);
-  const ds = distractors(it, 3, "fr");
+  /* une fois sur deux : dictée — on choisit le HANGUL entendu (distracteurs sosies) */
+  const dictee = LPOS % 2 === 1;
+  const field = dictee ? "kr" : "fr";
+  const ds = distractors(it, 3, field);
   const opts = shuffle([it.id, ...ds]);
   const card = el(`<div class="card center">
-    <div class="dim">Écoute ${LPOS+1}/${LQ.length} — qu'as-tu entendu ?</div>
+    <div class="dim">Écoute ${LPOS+1}/${LQ.length} — ${dictee?"quel mot as-tu entendu ?":"qu'est-ce que ça veut dire ?"}</div>
     <button class="speak" style="font-size:3rem; margin:14px 0">🔊</button>
     <div class="opts"></div></div>`);
   card.querySelector(".speak").onclick=()=>speak(it.kr);
   const box = card.querySelector(".opts");
   opts.forEach(id=>{
     const o=SEED_BY_ID[id];
-    const b = el(`<button>${esc(o.fr)}</button>`);
+    const b = el(`<button ${dictee?'class="kr"':""}>${esc(dictee?o.kr:o.fr)}</button>`);
     b.onclick=()=>{
       const ok=id===it.id;
       box.querySelectorAll("button").forEach(x=>x.disabled=true);
       b.classList.add(ok?"good":"bad");
       if(ok) LSCORE++;
-      else [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].fr)?.classList.add("good");
-      card.appendChild(el(`<div class="feedback"><span class="kr">${esc(it.kr)}</span></div>`));
+      else {
+        const target = dictee ? SEED_BY_ID[it.id].kr : SEED_BY_ID[it.id].fr;
+        [...box.children].find(x=>x.textContent===target)?.classList.add("good");
+      }
+      card.appendChild(el(`<div class="feedback"><span class="kr">${esc(it.kr)}</span> — ${esc(it.fr)}</div>`));
       logAnswer(ok, "listen");
       LPOS++;
       setTimeout(render, ok?800:1700);
