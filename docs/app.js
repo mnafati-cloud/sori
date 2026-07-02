@@ -10,14 +10,25 @@ function todayStr(){ const d=new Date(); return d.getFullYear()+"-"+String(d.get
 function addDays(dstr, n){ const d=new Date(dstr+"T12:00:00"); d.setDate(d.getDate()+n);
   return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
 
+const DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false };
 let ST = loadState();
 function loadState(){
+  /* Migration douce : champs inconnus préservés, nouveaux réglages -> défauts.
+     Une mise à jour de l'app ne perd JAMAIS la progression. */
   try{
     const raw = localStorage.getItem(LS_KEY);
-    if(raw){ const s = JSON.parse(raw); if(s && s.v===1) return s; }
+    if(raw){
+      const s = JSON.parse(raw);
+      if(s && s.v>=1){
+        s.items = s.items||{}; s.log = s.log||{}; s.intro = s.intro||{};
+        s.set = Object.assign({}, DEF_SET, s.set||{});
+        return s;
+      }
+    }
   }catch(e){}
-  return { v:1, items:{}, log:{}, intro:{}, set:{ newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120 } };
+  return { v:1, items:{}, log:{}, intro:{}, set: Object.assign({}, DEF_SET) };
 }
+const EXTRA = (typeof window!=="undefined" && window.EXTRA) || {};
 function save(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(ST)); }catch(e){} }
 
 /* état effectif d'un item = seed + delta local */
@@ -52,6 +63,14 @@ function updateDayCount(){
   const l = ST.log[todayStr()];
   document.getElementById("daycount").textContent = l ? l.n : 0;
 }
+/* bouton muet global (l'app reste 100% utilisable sans audio) */
+function wireMute(){
+  const b = document.getElementById("mute");
+  if(!b) return;
+  const paint = ()=>{ b.textContent = ST.set.mute ? "🔇" : "🔊"; b.title = ST.set.mute ? "Réactiver le son" : "Couper le son"; };
+  b.onclick = ()=>{ ST.set.mute = !ST.set.mute; if(ST.set.mute) try{speechSynthesis.cancel();}catch(e){} save(); paint(); };
+  paint();
+}
 function streak(){
   let n=0, d=todayStr();
   const l0 = ST.log[d];
@@ -71,6 +90,7 @@ if("speechSynthesis" in window){
   speechSynthesis.onvoiceschanged = pickVoice;
 }
 function speak(text){
+  if(ST.set.mute) return;
   if(!("speechSynthesis" in window)) return;
   try{
     speechSynthesis.cancel();
@@ -191,14 +211,32 @@ function renderReview(){
       <span class="pill stage">niv ${it.stage}</span></div></div>`);
   $screen.appendChild(head);
   if(it.stage<=2) exoQcmKr2Fr(it);
-  else if(it.stage===3) exoQcmFr2Kr(it);
-  else exoRecall(it, it.stage===4);
+  else if(it.stage===3){
+    if(it.type==="phrase" && it.kr.split(" ").length>=3) exoBuild(it);
+    else exoQcmFr2Kr(it);
+  }
+  else {
+    /* les deux sens aux hauts niveaux : 40% de rappel inversé (KR->FR) */
+    if(Math.random()<0.4) exoRecallRev(it);
+    else exoRecall(it, it.stage===4);
+  }
 }
 function bonusQueue(){
   const pool = ALL_IDS.map(eff).filter(it=>it.stage>=2);
   shuffle(pool); return pool.slice(0,10).map(it=>it.id);
 }
-function afterAnswer(it, ok){
+/* encart d'aide (phrase d'exemple, faux ami, note hanja) — contenu dans extra.js */
+function showTrivia(card, it){
+  const x = EXTRA[it.id];
+  if(!x) return false;
+  const bits = [];
+  if(x.ex) bits.push(`<div class="tkr">${esc(x.ex)}</div>${x.exFr?`<div class="tfr">${esc(x.exFr)}</div>`:""}`);
+  if(x.note) bits.push(`<div class="tnote">💡 ${esc(x.note)}</div>`);
+  if(!bits.length) return false;
+  card.appendChild(el(`<div class="trivia">${bits.join("")}</div>`));
+  return true;
+}
+function afterAnswer(it, ok, sawTrivia){
   logAnswer(ok, "review");
   if(!BONUS) applyAnswer(it, ok);
   if(!ok && !BONUS){ // re-poser dans la session, 3-5 cartes plus loin
@@ -206,7 +244,8 @@ function afterAnswer(it, ok){
     Q.splice(pos, 0, it.id);
   }
   QPOS++;
-  setTimeout(render, ok ? 750 : 1500);
+  const base = ok ? 750 : 1500;
+  setTimeout(render, sawTrivia ? base + 1600 : base);
 }
 /* stage 1-2 : QCM coréen -> français */
 function exoQcmKr2Fr(it){
@@ -228,7 +267,7 @@ function exoQcmKr2Fr(it){
       b.classList.add(ok?"good":"bad");
       if(!ok) [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].fr)?.classList.add("good");
       speak(it.kr);
-      afterAnswer(it, ok);
+      afterAnswer(it, ok, showTrivia(card, it));
     };
     box.appendChild(b);
   });
@@ -253,7 +292,7 @@ function exoQcmFr2Kr(it){
       b.classList.add(ok?"good":"bad");
       if(!ok) [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].kr)?.classList.add("good");
       speak(it.kr);
-      afterAnswer(it, ok);
+      afterAnswer(it, ok, showTrivia(card, it));
     };
     box.appendChild(b);
   });
@@ -272,6 +311,7 @@ function exoRecall(it, hinted){
   card.querySelector("#show").onclick = ()=>{
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span>`;
     speak(it.kr);
+    showTrivia(card, it);        // lisible pendant l'auto-évaluation
     const row = card.querySelector(".row");
     row.innerHTML = "";
     const again = el(`<button class="btn ko">Encore</button>`);
@@ -280,6 +320,70 @@ function exoRecall(it, hinted){
     good.onclick  = ()=>afterAnswer(it, true);
     row.append(again, good);
   };
+  $screen.appendChild(card);
+}
+/* stage 4-5 (variante) : rappel inversé — je vois le coréen, je donne le sens */
+function exoRecallRev(it){
+  const card = el(`<div class="card center">
+    <div class="dim">Rappel inversé — que veut dire…</div>
+    <div class="big-kr ${it.type==="phrase"?"phrase":""}">${esc(it.kr)}</div>
+    <button class="speak" title="écouter">🔊</button>
+    <div class="feedback"></div>
+    <div class="row" style="margin-top:12px"><button class="btn" id="show">Montrer</button></div></div>`);
+  card.querySelector(".speak").onclick = ()=>speak(it.kr);
+  card.querySelector("#show").onclick = ()=>{
+    card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.fr)}</span>`;
+    showTrivia(card, it);
+    const row = card.querySelector(".row");
+    row.innerHTML = "";
+    const again = el(`<button class="btn ko">Encore</button>`);
+    const good  = el(`<button class="btn ok">Bien</button>`);
+    again.onclick = ()=>afterAnswer(it, false);
+    good.onclick  = ()=>afterAnswer(it, true);
+    row.append(again, good);
+  };
+  $screen.appendChild(card);
+  speak(it.kr);
+}
+/* stage 3 (phrases) : construction de phrase façon Duolingo */
+function exoBuild(it){
+  const answer = it.kr.trim();
+  const tokens = answer.split(" ");
+  const pool = shuffle(tokens.map((w,i)=>({w, k:i})));
+  const built = [];
+  const card = el(`<div class="card center">
+    <div class="dim">Construis la phrase</div>
+    <div class="big-fr">${esc(it.fr)}</div>
+    <div class="built"></div>
+    <div class="pool"></div>
+    <div class="feedback"></div></div>`);
+  const $built = card.querySelector(".built");
+  const $pool  = card.querySelector(".pool");
+  function paint(){
+    $built.innerHTML = built.length ? "" : `<span class="dim">touche les mots dans l'ordre…</span>`;
+    built.forEach((t,idx)=>{
+      const b = el(`<button class="chip">${esc(t.w)}</button>`);
+      b.onclick = ()=>{ built.splice(idx,1); pool.push(t); paint(); };
+      $built.appendChild(b);
+    });
+    $pool.innerHTML = "";
+    pool.forEach((t,idx)=>{
+      const b = el(`<button class="chip src">${esc(t.w)}</button>`);
+      b.onclick = ()=>{ pool.splice(idx,1); built.push(t); paint(); if(!pool.length) check(); };
+      $pool.appendChild(b);
+    });
+  }
+  function check(){
+    const got = built.map(t=>t.w).join(" ");
+    const ok = got === answer;
+    card.querySelector(".feedback").innerHTML =
+      ok ? `<span style="color:var(--ok)">✔ ${esc(answer)}</span>`
+         : `<span style="color:var(--ko)">✘</span> <span class="kr">${esc(answer)}</span>`;
+    [...card.querySelectorAll(".chip")].forEach(b=>b.disabled=true);
+    speak(answer);
+    afterAnswer(it, ok, showTrivia(card, it));
+  }
+  paint();
   $screen.appendChild(card);
 }
 
@@ -474,4 +578,5 @@ function importState(e){
 function esc(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
 /* go */
+wireMute();
 render();

@@ -13,7 +13,10 @@
 <body>
 <header id="topbar">
   <div class="brand">소리 <span>Sori</span></div>
-  <div id="daycount" title="révisions aujourd'hui">0</div>
+  <div class="topright">
+    <button id="mute" class="iconbtn" title="Couper le son">🔊</button>
+    <div id="daycount" title="révisions aujourd'hui">0</div>
+  </div>
 </header>
 
 <main id="screen"><!-- rendu par app.js --></main>
@@ -26,6 +29,7 @@
 </nav>
 
 <script src="./data.js"></script>
+<script src="./extra.js"></script>
 <script src="./app.js"></script>
 <script>
 if ("serviceWorker" in navigator) {
