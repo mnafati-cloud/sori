@@ -1,0 +1,7 @@
+# Données personnelles — ne JAMAIS pousser la collection Anki ni les exports de progression
+tools/snapshot.anki2*
+*.anki2
+*.anki2-wal
+*.anki2-shm
+sori-export-*.json
+__pycache__/
