@@ -79,20 +79,46 @@ function streak(){
   return n;
 }
 
-/* ================= TTS coréen ================= */
+/* ================= audio : MP3 natifs prioritaires, TTS en secours ================= */
+const AUDIO_IDS = new Set((typeof window!=="undefined" && window.AUDIO) || []);
+let CURAUDIO = null;
 let KOVOICE = null;
+function koVoices(){
+  if(!("speechSynthesis" in window)) return [];
+  return speechSynthesis.getVoices().filter(v=>/^ko/i.test(v.lang||""));
+}
 function pickVoice(){
-  const vs = speechSynthesis.getVoices();
-  KOVOICE = vs.find(v=>/^ko/i.test(v.lang)) || null;
+  const vs = koVoices();
+  KOVOICE = (ST.set.voice && vs.find(v=>v.name===ST.set.voice)) || vs[0] || null;
 }
 if("speechSynthesis" in window){
   pickVoice();
   speechSynthesis.onvoiceschanged = pickVoice;
 }
-function speak(text){
+function koVoiceMissing(){
+  if(!("speechSynthesis" in window)) return true;
+  const all = speechSynthesis.getVoices();
+  return all.length>0 && !all.some(v=>/^ko/i.test(v.lang||""));
+}
+function speak(text, id){
   if(ST.set.mute) return;
+  /* 1) audio natif pré-généré si disponible (indépendant du TTS du téléphone) */
+  if(id && AUDIO_IDS.has(String(id))){
+    try{
+      if(CURAUDIO) CURAUDIO.pause();
+      try{ speechSynthesis.cancel(); }catch(e){}
+      CURAUDIO = new Audio("./audio/"+id+".mp3");
+      CURAUDIO.playbackRate = ST.set.rate || 0.9;
+      CURAUDIO.play().catch(()=>ttsSpeak(text));
+      return;
+    }catch(e){}
+  }
+  ttsSpeak(text);
+}
+function ttsSpeak(text){
   if(!("speechSynthesis" in window)) return;
   try{
+    if(!KOVOICE) pickVoice();            // les voix chargent en asynchrone sur Android
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text.replace(/\(.*?\)/g,""));
     u.lang = "ko-KR"; if(KOVOICE) u.voice = KOVOICE;
@@ -289,7 +315,7 @@ function exoQcmKr2Fr(it){
     <div class="big-kr ${it.type==="phrase"?"phrase":""}">${esc(it.kr)}</div>
     <button class="speak" title="écouter">🔊</button>
     <div class="opts"></div></div>`);
-  card.querySelector(".speak").onclick = ()=>speak(it.kr);
+  card.querySelector(".speak").onclick = ()=>speak(it.kr, it.id);
   const box = card.querySelector(".opts");
   opts.forEach(id=>{
     const o = SEED_BY_ID[id];
@@ -299,13 +325,13 @@ function exoQcmKr2Fr(it){
       box.querySelectorAll("button").forEach(x=>x.disabled=true);
       b.classList.add(ok?"good":"bad");
       if(!ok) [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].fr)?.classList.add("good");
-      speak(it.kr);
+      speak(it.kr, it.id);
       afterAnswer(it, ok, showTrivia(card, it));
     };
     box.appendChild(b);
   });
   $screen.appendChild(card);
-  if(ST.set.autoplay) speak(it.kr);
+  if(ST.set.autoplay) speak(it.kr, it.id);
 }
 /* stage 3 : QCM français -> coréen */
 function exoQcmFr2Kr(it){
@@ -324,7 +350,7 @@ function exoQcmFr2Kr(it){
       box.querySelectorAll("button").forEach(x=>x.disabled=true);
       b.classList.add(ok?"good":"bad");
       if(!ok) [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].kr)?.classList.add("good");
-      speak(it.kr);
+      speak(it.kr, it.id);
       afterAnswer(it, ok, showTrivia(card, it));
     };
     box.appendChild(b);
@@ -343,7 +369,7 @@ function exoRecall(it, hinted){
     </div></div>`);
   card.querySelector("#show").onclick = ()=>{
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span>`;
-    speak(it.kr);
+    speak(it.kr, it.id);
     showTrivia(card, it);        // lisible pendant l'auto-évaluation
     const row = card.querySelector(".row");
     row.innerHTML = "";
@@ -363,7 +389,7 @@ function exoRecallRev(it){
     <button class="speak" title="écouter">🔊</button>
     <div class="feedback"></div>
     <div class="row" style="margin-top:12px"><button class="btn" id="show">Montrer</button></div></div>`);
-  card.querySelector(".speak").onclick = ()=>speak(it.kr);
+  card.querySelector(".speak").onclick = ()=>speak(it.kr, it.id);
   card.querySelector("#show").onclick = ()=>{
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.fr)}</span>`;
     showTrivia(card, it);
@@ -376,7 +402,7 @@ function exoRecallRev(it){
     row.append(again, good);
   };
   $screen.appendChild(card);
-  if(ST.set.autoplay) speak(it.kr);
+  if(ST.set.autoplay) speak(it.kr, it.id);
 }
 /* stage 3 (phrases) : construction de phrase façon Duolingo */
 function exoBuild(it){
@@ -413,7 +439,7 @@ function exoBuild(it){
       ok ? `<span style="color:var(--ok)">✔ ${esc(answer)}</span>`
          : `<span style="color:var(--ko)">✘</span> <span class="kr">${esc(answer)}</span>`;
     [...card.querySelectorAll(".chip")].forEach(b=>b.disabled=true);
-    speak(answer);
+    speak(answer, it.id);
     afterAnswer(it, ok, showTrivia(card, it));
   }
   paint();
@@ -454,7 +480,7 @@ function renderListen(){
     <div class="dim">Écoute ${LPOS+1}/${LQ.length} — ${dictee?"quel mot as-tu entendu ?":"qu'est-ce que ça veut dire ?"}</div>
     <button class="speak" style="font-size:3rem; margin:14px 0">🔊</button>
     <div class="opts"></div></div>`);
-  card.querySelector(".speak").onclick=()=>speak(it.kr);
+  card.querySelector(".speak").onclick=()=>speak(it.kr, it.id);
   const box = card.querySelector(".opts");
   opts.forEach(id=>{
     const o=SEED_BY_ID[id];
@@ -476,7 +502,7 @@ function renderListen(){
     box.appendChild(b);
   });
   $screen.appendChild(card);
-  setTimeout(()=>speak(it.kr), 250);
+  setTimeout(()=>speak(it.kr, it.id), 250);
 }
 
 /* ---------- mode Voyage ---------- */
@@ -503,8 +529,8 @@ function renderTrip(){
       const row = el(`<div class="item"><div class="txt">
         <div class="kr">${esc(it.kr)}</div><div class="fr">${esc(it.fr)}</div></div>
         <span class="pill stage">niv ${it.stage}</span><button class="speak">🔊</button></div>`);
-      row.querySelector(".speak").onclick=(e)=>{ e.stopPropagation(); speak(it.kr); };
-      row.onclick=()=>speak(it.kr);
+      row.querySelector(".speak").onclick=(e)=>{ e.stopPropagation(); speak(it.kr, it.id); };
+      row.onclick=()=>speak(it.kr, it.id);
       list.appendChild(row);
     });
     $screen.appendChild(list);
@@ -527,15 +553,15 @@ function renderDrill(){
       <button class="btn" id="rev">Voir + suivant</button>
     </div></div>`);
   let revealed=false;
-  card.querySelector("#hear").onclick=()=>speak(it.kr);
+  card.querySelector("#hear").onclick=()=>speak(it.kr, it.id);
   card.querySelector("#rev").onclick=()=>{
     if(!revealed){
       card.querySelector(".feedback").innerHTML=`<span class="kr">${esc(it.kr)}</span>`;
-      card.querySelector("#rev").textContent="Suivant →"; revealed=true; speak(it.kr);
+      card.querySelector("#rev").textContent="Suivant →"; revealed=true; speak(it.kr, it.id);
     } else { DPOS++; render(); }
   };
   $screen.appendChild(card);
-  speak(it.kr);
+  speak(it.kr, it.id);
 }
 
 /* ---------- Stats & réglages ---------- */
@@ -567,6 +593,15 @@ function renderStats(){
     $screen.appendChild(bcard);
   }
 
+  /* avertissement voix coréenne absente (sinon accent français sur le hangul !) */
+  if(koVoiceMissing()){
+    $screen.appendChild(el(`<div class="card" style="border-color:var(--ko)">
+      <h2>🗣️ Voix coréenne absente</h2>
+      <p class="dim">Ton appareil lit le coréen avec une voix française. Pour corriger sur Android :
+      <b>Paramètres → Gestion générale (ou Système) → Synthèse vocale → moteur "Synthèse vocale Google"
+      → ⚙️ → Installer les données de voix → 한국어 (coréen)</b>, puis redémarre l'app.
+      Les phrases du kit voyage ont aussi leur audio natif intégré (indépendant du téléphone).</p></div>`));
+  }
   /* rappel d'export : la sauvegarde ne vit que sur cet appareil */
   const lastX = ST.lastExport;
   const days = lastX ? Math.round((new Date(t+"T12:00:00") - new Date(lastX+"T12:00:00"))/86400000) : null;
@@ -589,6 +624,9 @@ function renderStats(){
     <label>Prioriser le kit voyage <input type="checkbox" id="kf" ${ST.set.kitFirst?"checked":""}></label>
     <label>Prononcer automatiquement <input type="checkbox" id="ap" ${ST.set.autoplay?"checked":""}></label>
     <label>Vitesse de la voix <input type="number" id="rate" min="0.5" max="1.2" step="0.1" value="${ST.set.rate}"></label>
+    ${koVoices().length>1 ? `<label>Voix coréenne <select id="voice">${
+      koVoices().map(v=>`<option value="${esc(v.name)}" ${ST.set.voice===v.name?"selected":""}>${esc(v.name)}</option>`).join("")
+    }</select></label>` : ""}
     <div class="row" style="margin-top:12px">
       <button class="btn ghost" id="exp">📤 Exporter</button>
       <button class="btn ghost" id="imp">📥 Importer</button>
@@ -602,6 +640,8 @@ function renderStats(){
   set.querySelector("#kf").onchange  = e=>{ ST.set.kitFirst=e.target.checked; save(); };
   set.querySelector("#ap").onchange  = e=>{ ST.set.autoplay=e.target.checked; save(); };
   set.querySelector("#rate").onchange= e=>{ ST.set.rate=Math.min(1.2,Math.max(0.5,+e.target.value||0.9)); save(); };
+  const vsel = set.querySelector("#voice");
+  if(vsel) vsel.onchange = e=>{ ST.set.voice = e.target.value; save(); pickVoice(); ttsSpeak("안녕하세요"); };
   set.querySelector("#exp").onclick  = exportState;
   set.querySelector("#imp").onclick  = ()=>set.querySelector("#impfile").click();
   set.querySelector("#impfile").onchange = importState;

@@ -114,3 +114,5 @@ input[type=file]{display:none}
 .settings input[type=number]{width:70px; background:var(--panel2); border:1px solid var(--line);
   color:var(--txt); border-radius:8px; padding:6px; font-size:1rem; text-align:center}
 .settings input[type=checkbox]{transform:scale(1.35)}
+.settings select{background:var(--panel2); border:1px solid var(--line); color:var(--txt);
+  border-radius:8px; padding:6px; font-size:.9rem; max-width:55%}
