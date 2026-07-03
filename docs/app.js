@@ -124,6 +124,56 @@ function updateDayCount(){
   const l = ST.log[todayStr()];
   document.getElementById("daycount").textContent = l ? l.n : 0;
 }
+/* ===== rapport de problème (bouton 🐞 optionnel) =====
+   Les rapports vivent dans ST.reports -> embarqués dans chaque sauvegarde cloud,
+   Claude les lit à la prochaine analyse. Contexte capturé automatiquement. */
+let LASTANS = null;   // dernière réponse notée {id, kr, ok} (posée par afterAnswer)
+function reportCtx(){
+  const c = { tab: TAB };
+  try{
+    if(TAB==="review" && Q && QPOS < Q.length){
+      const it = eff(Q[QPOS]);
+      c.carte = { id: it.id, kr: it.kr, stage: it.stage };
+      c.pos = (QPOS+1) + "/" + Q.length;
+    }
+    if(LASTANS) c.derniereReponse = LASTANS;
+  }catch(e){}
+  return c;
+}
+function openReportModal(){
+  const ctx = reportCtx();                     // figé à l'OUVERTURE (la carte d'où l'on vient)
+  const back = el(`<div class="modal-back">
+    <div class="card modal">
+      <h2>🐞 Signaler un problème</h2>
+      <p class="dim">${ctx.carte ? "Carte : "+esc(ctx.carte.kr)+" ("+esc(ctx.pos||"")+")" : "Onglet : "+esc(ctx.tab)}
+        — le contexte et l'heure sont joints automatiquement.</p>
+      <textarea id="rpttxt" rows="5" placeholder="Décris le souci ou la remarque…"></textarea>
+      <div class="row" style="margin-top:10px">
+        <button class="btn ghost" id="rptcancel">Annuler</button>
+        <button class="btn" id="rptsend">Enregistrer</button>
+      </div></div></div>`);
+  back.querySelector("#rptcancel").onclick = ()=>back.remove();
+  back.addEventListener("click", e=>{ if(e.target===back) back.remove(); });
+  back.querySelector("#rptsend").onclick = ()=>{
+    const txt = back.querySelector("#rpttxt").value.trim();
+    if(!txt){ back.remove(); return; }
+    ST.reports = (ST.reports||[]).slice(-99);          // cap: garder les 100 derniers
+    ST.reports.push({ d: new Date().toISOString(), ctx, txt });
+    save();
+    back.querySelector(".modal").innerHTML = `<h2>✅ Noté</h2>
+      <p class="dim">Partira avec la prochaine sauvegarde cloud — Claude le lira.</p>`;
+    setTimeout(()=>back.remove(), 1200);
+  };
+  document.body.appendChild(back);
+  back.querySelector("#rpttxt").focus();
+}
+function wireReport(){
+  const b = document.getElementById("report");
+  if(!b) return;
+  b.hidden = ST.set.report !== true;
+  b.onclick = openReportModal;
+}
+
 /* bouton muet global (l'app reste 100% utilisable sans audio) */
 function wireMute(){
   const b = document.getElementById("mute");
@@ -376,6 +426,7 @@ function showTrivia(card, it){
   return true;
 }
 function afterAnswer(it, ok, sawTrivia, kind){
+  LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞
   armUndo();                                // photo AVANT toute mutation (annulation possible)
   const r = BONUS ? null : applyAnswer(it, ok);
   logAnswer(ok, kind || "review", r, EXO_T0 ? Date.now()-EXO_T0 : 0);
@@ -834,6 +885,7 @@ function renderStats(){
     <label title="Intervalles personnalisés par mot (ALGORITHM.md). Laisser décoché ~2 semaines : l'app observe d'abord.">
       Planification adaptative <input type="checkbox" id="adap" ${ST.set.adaptive?"checked":""}></label>
     <label>Saisie au clavier coréen (niv 5) <input type="checkbox" id="typ" ${ST.set.typing?"checked":""}></label>
+    <label>🐞 Bouton rapport de problème <input type="checkbox" id="rpt" ${ST.set.report?"checked":""}></label>
     <label>Vitesse de la voix <input type="number" id="rate" min="0.5" max="1.2" step="0.1" value="${ST.set.rate}"></label>
     ${koVoices().length>1 ? `<label>Voix coréenne <select id="voice">${
       koVoices().map(v=>`<option value="${esc(v.name)}" ${ST.set.voice===v.name?"selected":""}>${esc(v.name)}</option>`).join("")
@@ -856,7 +908,8 @@ function renderStats(){
     </div>
     <p class="dim" id="cloudstatus" style="margin-top:8px">${
       ghToken() ? (ST.lastCloud ? "Dernière sauvegarde cloud : "+ST.lastCloud+" · auto 1×/jour en fin de session." : "Jeton configuré — aucune sauvegarde encore.")
-                : "Colle un jeton GitHub fine-grained (dépôt sori-data, permission Contents) pour activer la sauvegarde automatique."}</p></div>`);
+                : "Colle un jeton GitHub fine-grained (dépôt sori-data, permission Contents) pour activer la sauvegarde automatique."}${
+      (ST.reports||[]).length ? " · 🐞 "+ST.reports.length+" rapport(s) joint(s) à la prochaine sauvegarde." : ""}</p></div>`);
   $screen.appendChild(set);
   set.querySelector("#npd").onchange = e=>{ ST.set.newPerDay=Math.max(0,+e.target.value||0); save(); };
   set.querySelector("#smax").onchange= e=>{ ST.set.sessionMax=Math.max(20,+e.target.value||120); save(); };
@@ -864,6 +917,7 @@ function renderStats(){
   set.querySelector("#ap").onchange  = e=>{ ST.set.autoplay=e.target.checked; save(); };
   set.querySelector("#adap").onchange= e=>{ ST.set.adaptive=e.target.checked; save(); };
   set.querySelector("#typ").onchange = e=>{ ST.set.typing=e.target.checked; save(); };
+  set.querySelector("#rpt").onchange = e=>{ ST.set.report=e.target.checked; save(); wireReport(); };
   set.querySelector("#rate").onchange= e=>{ ST.set.rate=Math.min(1.2,Math.max(0.5,+e.target.value||0.9)); save(); };
   const vsel = set.querySelector("#voice");
   if(vsel) vsel.onchange = e=>{ ST.set.voice = e.target.value; save(); pickVoice(); ttsSpeak("안녕하세요"); };
@@ -976,4 +1030,5 @@ function esc(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;
 
 /* go */
 wireMute();
+wireReport();
 render();
