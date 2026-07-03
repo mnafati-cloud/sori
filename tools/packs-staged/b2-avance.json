@@ -1,0 +1,1110 @@
+{
+ "result": {
+  "lots": [
+   {
+    "key": "b2_abstrait_societe",
+    "level": "b2",
+    "items": [
+     {
+      "fr": "situation, circonstances",
+      "kr": "상황",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "지금 상황이 조금 어려워요.",
+      "exFr": "La situation est un peu difficile en ce moment.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "condition (exigence, termes)",
+      "kr": "조건",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "이 일은 조건이 아주 좋아요.",
+      "exFr": "Ce travail a de très bonnes conditions.",
+      "conj": "",
+      "note": "Prononcé [조껀]."
+     },
+     {
+      "fr": "critère, norme de référence",
+      "kr": "기준",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "고를 때 기준이 뭐예요?",
+      "exFr": "Quel est ton critère quand tu choisis ?",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "objet, public visé (cible)",
+      "kr": "대상",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "이 수업의 대상은 아이들이에요.",
+      "exFr": "Le public de ce cours, ce sont les enfants.",
+      "conj": "",
+      "note": "Souvent en composé : 초보자 대상 = destiné aux débutants."
+     },
+     {
+      "fr": "processus, déroulement",
+      "kr": "과정",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "결과보다 과정이 더 중요해요.",
+      "exFr": "Le processus est plus important que le résultat.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "cause (d'un problème)",
+      "kr": "원인",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "사고의 원인을 아직 몰라요.",
+      "exFr": "On ne connaît pas encore la cause de l'accident.",
+      "conj": "",
+      "note": "Cause objective d'un fait ; ≠ 이유 (raison, motif)."
+     },
+     {
+      "fr": "effet, efficacité",
+      "kr": "효과",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "이 약은 효과가 빨라요.",
+      "exFr": "Ce médicament fait vite effet.",
+      "conj": "",
+      "note": "효과가 있다/없다 = être efficace / ne pas l'être. Prononcé [효과] ou [효꽈]."
+     },
+     {
+      "fr": "valeur (importance, mérite)",
+      "kr": "가치",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "이 책은 읽을 가치가 있어요.",
+      "exFr": "Ce livre vaut la peine d'être lu.",
+      "conj": "",
+      "note": "-(으)ㄹ 가치가 있다 = valoir la peine de."
+     },
+     {
+      "fr": "objectif, but à atteindre",
+      "kr": "목표",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "올해 목표는 한국어 공부예요.",
+      "exFr": "Mon objectif cette année, c'est étudier le coréen.",
+      "conj": "",
+      "note": "Cible concrète à atteindre ; ≠ 목적 (intention)."
+     },
+     {
+      "fr": "niveau (qualité, degré)",
+      "kr": "수준",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "제 한국어 수준은 아직 낮아요.",
+      "exFr": "Mon niveau de coréen est encore bas.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "documents, données",
+      "kr": "자료",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "회의 전에 자료를 준비했어요.",
+      "exFr": "J'ai préparé les documents avant la réunion.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "information, renseignement",
+      "kr": "정보",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "인터넷에서 여행 정보를 찾았어요.",
+      "exFr": "J'ai cherché des infos de voyage sur Internet.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "système, institution (règles)",
+      "kr": "제도",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "그 나라는 교육 제도가 달라요.",
+      "exFr": "Le système éducatif de ce pays est différent.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "politique (mesures, programme)",
+      "kr": "정책",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "환경을 위한 새 정책이 필요해요.",
+      "exFr": "Il faut une nouvelle politique pour l'environnement.",
+      "conj": "",
+      "note": "Mesures concrètes ; ≠ 정치 (la politique en général)."
+     },
+     {
+      "fr": "génération",
+      "kr": "세대",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "부모님 세대는 생각이 달라요.",
+      "exFr": "La génération de mes parents pense différemment.",
+      "conj": "",
+      "note": "세대 차이 = fossé des générations."
+     },
+     {
+      "fr": "région, zone",
+      "kr": "지역",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "이 지역은 겨울에 눈이 많이 와요.",
+      "exFr": "Dans cette région, il neige beaucoup en hiver.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "installations, équipements",
+      "kr": "시설",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "이 호텔은 시설이 아주 좋아요.",
+      "exFr": "Cet hôtel a de très bons équipements.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "produit (fabriqué)",
+      "kr": "제품",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "새 제품이 다음 달에 나와요.",
+      "exFr": "Le nouveau produit sort le mois prochain.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "technique, technologie",
+      "kr": "기술",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "기술이 정말 빨리 발전해요.",
+      "exFr": "La technologie progresse vraiment vite.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "droit (ce qu'on peut exiger)",
+      "kr": "권리",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "모든 사람은 쉴 권리가 있어요.",
+      "exFr": "Tout le monde a le droit de se reposer.",
+      "conj": "",
+      "note": "-(으)ㄹ 권리가 있다 = avoir le droit de. Prononcé [궐리]."
+     },
+     {
+      "fr": "devoir, obligation",
+      "kr": "의무",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "세금을 내는 것은 국민의 의무예요.",
+      "exFr": "Payer les impôts est un devoir du citoyen.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "rôle",
+      "kr": "역할",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "부모님의 역할이 정말 중요해요.",
+      "exFr": "Le rôle des parents est vraiment important.",
+      "conj": "",
+      "note": "Prononcé [여칼]. 역할을 하다 = jouer un rôle."
+     },
+     {
+      "fr": "changement",
+      "kr": "변화",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "우리 회사에 큰 변화가 있었어요.",
+      "exFr": "Il y a eu un grand changement dans notre entreprise.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "caractéristique, trait distinctif",
+      "kr": "특징",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "이 도시의 특징은 오래된 건물이 많다는 거예요.",
+      "exFr": "La particularité de cette ville, c'est qu'il y a beaucoup de vieux bâtiments.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "connaissance, savoir",
+      "kr": "지식",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "책을 읽으면 지식이 늘어요.",
+      "exFr": "Lire des livres fait grandir les connaissances.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "règle, règlement",
+      "kr": "규칙",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "게임을 시작하기 전에 규칙을 먼저 알아야 해요.",
+      "exFr": "Avant de commencer le jeu, il faut d'abord connaître les règles.",
+      "conj": "",
+      "note": "규칙적으로 = régulièrement."
+     },
+     {
+      "fr": "état (d'une chose, de santé)",
+      "kr": "상태",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "차 상태가 아직 좋아요.",
+      "exFr": "La voiture est encore en bon état.",
+      "conj": "",
+      "note": "État d'une chose/personne ; ≠ 상황 (circonstances)."
+     },
+     {
+      "fr": "tradition",
+      "kr": "전통",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "한국의 전통 문화를 배우고 싶어요.",
+      "exFr": "Je veux apprendre la culture traditionnelle coréenne.",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "individu, personnel (privé)",
+      "kr": "개인",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "개인 정보를 잘 지켜야 해요.",
+      "exFr": "Il faut bien protéger ses données personnelles.",
+      "conj": "",
+      "note": "개인 정보 = données personnelles ; 개인적으로 = personnellement."
+     },
+     {
+      "fr": "domaine, secteur",
+      "kr": "분야",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "어떤 분야에서 일하고 싶어요?",
+      "exFr": "Dans quel domaine veux-tu travailler ?",
+      "conj": "",
+      "note": ""
+     },
+     {
+      "fr": "peuple, citoyens d'un pays",
+      "kr": "국민",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "대통령은 국민의 말을 들어야 해요.",
+      "exFr": "Le président doit écouter le peuple.",
+      "conj": "",
+      "note": "Citoyens d'un pays ; 시민 = citoyen d'une ville, civil. Prononcé [궁민]."
+     },
+     {
+      "fr": "conflit, tension (relationnelle)",
+      "kr": "갈등",
+      "type": "word",
+      "theme": "b2::abstrait",
+      "ex": "친구와 작은 갈등이 있었어요.",
+      "exFr": "J'ai eu un petit conflit avec un ami.",
+      "conj": "",
+      "note": "Prononcé [갈뜽]."
+     }
+    ]
+   },
+   {
+    "key": "b2_verbes_composes",
+    "level": "b2",
+    "items": [
+     {
+      "fr": "se renseigner (sur), vérifier",
+      "kr": "알아보다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "인터넷으로 기차 시간을 알아봤어요.",
+      "exFr": "J'ai vérifié les horaires de train sur Internet.",
+      "conj": "알아봐요 · 알아봤어요",
+      "note": "Aussi 'reconnaître qqn' : 저 알아보시겠어요?"
+     },
+     {
+      "fr": "comprendre (à l'oreille)",
+      "kr": "알아듣다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "선생님 말씀을 다 알아들었어요.",
+      "exFr": "J'ai tout compris ce que le professeur a dit.",
+      "conj": "알아들어요 · 알아들었어요",
+      "note": "Irrégulier ㄷ (듣다 → 들어요). Très courant en négatif : 못 알아듣다."
+     },
+     {
+      "fr": "remarquer, se rendre compte de",
+      "kr": "알아차리다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "제 실수를 뒤늦게 알아차렸어요.",
+      "exFr": "Je me suis rendu compte de mon erreur trop tard.",
+      "conj": "알아차려요 · 알아차렸어요",
+      "note": "Synonyme courant : 눈치채다 (deviner à des indices)."
+     },
+     {
+      "fr": "ne pas reconnaître (qqn)",
+      "kr": "몰라보다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "10년 만에 만난 친구를 몰라봤어요.",
+      "exFr": "Je n'ai pas reconnu mon ami que je revoyais après dix ans.",
+      "conj": "몰라봐요 · 몰라봤어요",
+      "note": "몰라보게 변했네요 = tu es méconnaissable (souvent un compliment)."
+     },
+     {
+      "fr": "chercher (dans un dico, sur Internet)",
+      "kr": "찾아보다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "모르는 단어를 사전에서 찾아봤어요.",
+      "exFr": "J'ai cherché le mot inconnu dans le dictionnaire.",
+      "conj": "찾아봐요 · 찾아봤어요",
+      "note": ""
+     },
+     {
+      "fr": "aller voir (qqn), se rendre auprès de",
+      "kr": "찾아가다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "내일 제가 사무실로 찾아갈게요.",
+      "exFr": "Demain, je passerai vous voir au bureau.",
+      "conj": "찾아가요 · 찾아갔어요",
+      "note": "Honorifique très courant : 찾아뵙겠습니다 (je viendrai vous voir)."
+     },
+     {
+      "fr": "venir voir (qqn), rendre visite",
+      "kr": "찾아오다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "친구가 갑자기 집에 찾아왔어요.",
+      "exFr": "Un ami est venu me voir à l'improviste.",
+      "conj": "찾아와요 · 찾아왔어요",
+      "note": ""
+     },
+     {
+      "fr": "faire l'aller-retour, aller (et revenir)",
+      "kr": "다녀오다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "휴가 때 부산에 다녀왔어요.",
+      "exFr": "Pendant les vacances, j'ai fait un tour à Busan.",
+      "conj": "다녀와요 · 다녀왔어요",
+      "note": "다녀오겠습니다! = formule en quittant la maison."
+     },
+     {
+      "fr": "emmener (une personne, un animal)",
+      "kr": "데려가다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "아픈 아이를 병원에 데려갔어요.",
+      "exFr": "J'ai emmené l'enfant malade à l'hôpital.",
+      "conj": "데려가요 · 데려갔어요",
+      "note": "Personnes/animaux ; pour un objet : 가져가다."
+     },
+     {
+      "fr": "amener (une personne, un animal)",
+      "kr": "데려오다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "어제 친구를 집에 데려왔어요.",
+      "exFr": "Hier, j'ai amené un ami à la maison.",
+      "conj": "데려와요 · 데려왔어요",
+      "note": ""
+     },
+     {
+      "fr": "raccompagner, déposer (qqn quelque part)",
+      "kr": "데려다주다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "밤에 친구를 역까지 데려다줬어요.",
+      "exFr": "Le soir, j'ai raccompagné mon ami jusqu'à la gare.",
+      "conj": "데려다줘요 · 데려다줬어요",
+      "note": "집에 데려다줄게요 = je te raccompagne (très courant)."
+     },
+     {
+      "fr": "apporter (qqch à qqn)",
+      "kr": "가져다주다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "물 한 잔 가져다주시겠어요?",
+      "exFr": "Pourriez-vous m'apporter un verre d'eau ?",
+      "conj": "가져다줘요 · 가져다줬어요",
+      "note": "À l'oral souvent contracté en 갖다주다."
+     },
+     {
+      "fr": "retourner, rentrer (là-bas)",
+      "kr": "돌아가다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "내년에 고향에 돌아갈 거예요.",
+      "exFr": "Je retournerai dans ma région natale l'an prochain.",
+      "conj": "돌아가요 · 돌아갔어요",
+      "note": "돌아가시다 = décéder (honorifique)."
+     },
+     {
+      "fr": "revenir, rentrer (ici)",
+      "kr": "돌아오다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "아빠가 밤늦게 집에 돌아왔어요.",
+      "exFr": "Papa est rentré tard le soir à la maison.",
+      "conj": "돌아와요 · 돌아왔어요",
+      "note": ""
+     },
+     {
+      "fr": "écouter (une fois), essayer d'écouter",
+      "kr": "들어보다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "이 노래 한번 들어보세요.",
+      "exFr": "Écoutez donc cette chanson.",
+      "conj": "들어봐요 · 들어봤어요",
+      "note": "V + -아/어 보다 = essayer de faire. Base 듣다 (ㄷ irrégulier) : 들어-."
+     },
+     {
+      "fr": "demander, poser une question",
+      "kr": "물어보다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "모르는 게 있으면 물어보세요.",
+      "exFr": "Si vous avez une question, demandez-moi.",
+      "conj": "물어봐요 · 물어봤어요",
+      "note": "Plus doux que 묻다 ; standard à l'oral."
+     },
+     {
+      "fr": "examiner, regarder attentivement",
+      "kr": "살펴보다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "출발 전에 지도를 잘 살펴봤어요.",
+      "exFr": "J'ai bien étudié la carte avant de partir.",
+      "conj": "살펴봐요 · 살펴봤어요",
+      "note": ""
+     },
+     {
+      "fr": "regarder autour, faire le tour de",
+      "kr": "둘러보다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "가게에 들어가서 천천히 둘러봤어요.",
+      "exFr": "Je suis entré dans la boutique et j'ai fait le tour.",
+      "conj": "둘러봐요 · 둘러봤어요",
+      "note": "그냥 둘러볼게요 = je regarde seulement (en boutique)."
+     },
+     {
+      "fr": "passer (devant, par) ; s'écouler",
+      "kr": "지나가다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "버스가 방금 집 앞을 지나갔어요.",
+      "exFr": "Le bus vient de passer devant la maison.",
+      "conj": "지나가요 · 지나갔어요",
+      "note": "시간이 빨리 지나가요 = le temps passe vite. Le lieu traversé prend 을/를."
+     },
+     {
+      "fr": "dépasser sans s'arrêter, rater (un arrêt)",
+      "kr": "지나치다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "핸드폰을 보다가 내릴 역을 지나쳤어요.",
+      "exFr": "Je regardais mon téléphone et j'ai raté ma station.",
+      "conj": "지나쳐요 · 지나쳤어요",
+      "note": "지나치게 = trop, excessivement (de l'adjectif 지나치다)."
+     },
+     {
+      "fr": "passer (au suivant), sauter",
+      "kr": "넘어가다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "어려운 문제는 그냥 넘어갔어요.",
+      "exFr": "J'ai sauté les questions difficiles.",
+      "conj": "넘어가요 · 넘어갔어요",
+      "note": "그냥 넘어가요 = passons, laissons tomber."
+     },
+     {
+      "fr": "sortir (vers ici) ; apparaître, être servi",
+      "kr": "나오다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "음식이 아직 안 나왔어요.",
+      "exFr": "Les plats ne sont pas encore arrivés.",
+      "conj": "나와요 · 나왔어요",
+      "note": "영화에 나오다 = apparaître dans un film."
+     },
+     {
+      "fr": "descendre (en s'éloignant)",
+      "kr": "내려가다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "엘리베이터 대신 계단으로 내려갔어요.",
+      "exFr": "Je suis descendu par l'escalier au lieu de l'ascenseur.",
+      "conj": "내려가요 · 내려갔어요",
+      "note": "Paire : 내려오다 (descendre vers soi)."
+     },
+     {
+      "fr": "monter (en s'éloignant) ; augmenter",
+      "kr": "올라가다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "지난 주말에 산에 올라갔어요.",
+      "exFr": "Le week-end dernier, je suis monté à la montagne.",
+      "conj": "올라가요 · 올라갔어요",
+      "note": "값이 올라가요 = les prix montent. Paire : 올라오다."
+     },
+     {
+      "fr": "faire un saut, passer par",
+      "kr": "들르다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "집에 가는 길에 마트에 들렀어요.",
+      "exFr": "Je suis passé au supermarché en rentrant.",
+      "conj": "들러요 · 들렀어요",
+      "note": "Chute du ㅡ : 들러요/들렀어요. Ne pas confondre avec 들리다 (être entendu : 들려요) ni 듣다 (들어요)."
+     },
+     {
+      "fr": "suivre, accompagner (qqn qui part)",
+      "kr": "따라가다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "제가 길을 모르니까 따라갈게요.",
+      "exFr": "Je ne connais pas le chemin, donc je vous suis.",
+      "conj": "따라가요 · 따라갔어요",
+      "note": "Paire : 따라오다 (suivre vers soi)."
+     },
+     {
+      "fr": "suivre (vers soi), venir derrière",
+      "kr": "따라오다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "강아지가 집까지 계속 따라왔어요.",
+      "exFr": "Le chiot m'a suivi jusqu'à la maison.",
+      "conj": "따라와요 · 따라왔어요",
+      "note": "저를 따라오세요 = suivez-moi."
+     },
+     {
+      "fr": "s'approcher ; (date, événement) approcher",
+      "kr": "다가오다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "시험이 점점 다가오고 있어요.",
+      "exFr": "L'examen approche petit à petit.",
+      "conj": "다가와요 · 다가왔어요",
+      "note": ""
+     },
+     {
+      "fr": "se changer (de vêtements)",
+      "kr": "갈아입다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "집에 와서 옷을 갈아입었어요.",
+      "exFr": "En rentrant, je me suis changé.",
+      "conj": "갈아입어요 · 갈아입었어요",
+      "note": "갈아- = changer de : 갈아타다 (transport), 갈아입다 (habits)."
+     },
+     {
+      "fr": "aller accueillir (qqn qui arrive)",
+      "kr": "마중 나가다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "제가 공항에 마중 나갈게요.",
+      "exFr": "J'irai t'accueillir à l'aéroport.",
+      "conj": "마중 나가요 · 마중 나갔어요",
+      "note": "마중 s'écrit séparé du verbe. Contraire : 배웅하다 (accompagner au départ)."
+     },
+     {
+      "fr": "accompagner (qqn) à son départ, dire au revoir",
+      "kr": "배웅하다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "기차역까지 친구를 배웅해 줬어요.",
+      "exFr": "J'ai accompagné mon ami jusqu'à la gare pour son départ.",
+      "conj": "배웅해요 · 배웅했어요",
+      "note": "Contraire : 마중 나가다 (aller accueillir). ≠ 데려다주다 (déposer qqn à destination)."
+     },
+     {
+      "fr": "sortir (un objet de), retirer",
+      "kr": "꺼내다",
+      "type": "word",
+      "theme": "b2::verbes",
+      "ex": "냉장고에서 물을 꺼내 주세요.",
+      "exFr": "Sors l'eau du frigo, s'il te plaît.",
+      "conj": "꺼내요 · 꺼냈어요",
+      "note": "이야기를 꺼내다 = aborder un sujet."
+     }
+    ]
+   },
+   {
+    "key": "b2_idiomes",
+    "level": "b2",
+    "items": [
+     {
+      "fr": "Être difficile, exigeant (goûts, amour)",
+      "kr": "눈이 높다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "제 친구는 눈이 정말 높아요.",
+      "exFr": "Mon ami est vraiment exigeant.",
+      "conj": "눈이 높아요 · 눈이 높았어요",
+      "note": "Litt. « yeux hauts » — critères trop élevés, en amour ou dans ses goûts."
+     },
+     {
+      "fr": "Être généreux en quantité, voir grand (litt. grandes mains)",
+      "kr": "손이 크다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "할머니는 손이 커서 음식을 항상 많이 하세요.",
+      "exFr": "Grand-mère voit grand, elle prépare toujours beaucoup à manger.",
+      "conj": "손이 커요 · 손이 컸어요",
+      "note": "Litt. « grandes mains » — cuisine/donne toujours en grande quantité."
+     },
+     {
+      "fr": "Savoir garder un secret (litt. bouche lourde)",
+      "kr": "입이 무겁다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "걱정 마세요, 저는 입이 무거워요.",
+      "exFr": "Ne vous inquiétez pas, je sais garder un secret.",
+      "conj": "입이 무거워요 · 입이 무거웠어요",
+      "note": "Litt. « bouche lourde » — discret. Contraire : 입이 가볍다."
+     },
+     {
+      "fr": "Ne pas savoir tenir sa langue (litt. bouche légère)",
+      "kr": "입이 가볍다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "그 사람은 입이 가벼워서 비밀을 말하면 안 돼요.",
+      "exFr": "Il ne tient pas sa langue, ne lui dites pas de secret.",
+      "conj": "입이 가벼워요 · 입이 가벼웠어요",
+      "note": "Litt. « bouche légère » — indiscret, répète tout."
+     },
+     {
+      "fr": "Avoir du réseau, connaître tout le monde (litt. pied large)",
+      "kr": "발이 넓다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "그 선배는 회사에서 발이 넓어요.",
+      "exFr": "Ce sunbae connaît tout le monde dans l'entreprise.",
+      "conj": "발이 넓어요 · 발이 넓었어요",
+      "note": "Litt. « pied large » — beaucoup de relations, bien introduit."
+     },
+     {
+      "fr": "Se faire poser un lapin",
+      "kr": "바람을 맞다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "어제 두 시간이나 기다렸는데 바람을 맞았어요.",
+      "exFr": "Hier j'ai attendu deux heures : on m'a posé un lapin.",
+      "conj": "바람을 맞아요 · 바람을 맞았어요",
+      "note": "Litt. « recevoir le vent » — attendre pour rien. Poser un lapin à qqn = 바람을 맞히다."
+     },
+     {
+      "fr": "Être débordé, ne plus avoir les idées claires (litt. esprit absent)",
+      "kr": "정신이 없다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "요즘 일이 많아서 정신이 없어요.",
+      "exFr": "En ce moment j'ai trop de travail, je suis débordé.",
+      "conj": "정신이 없어요 · 정신이 없었어요",
+      "note": "Tête à l'envers, chaos ambiant — plus large que 눈코 뜰 새 없다 (pur manque de temps). Très courant : 정신없이 바빠요."
+     },
+     {
+      "fr": "Capter vite les non-dits, avoir du flair (nunchi rapide)",
+      "kr": "눈치가 빠르다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "제 동생은 눈치가 정말 빨라요.",
+      "exFr": "Mon petit frère capte tout très vite.",
+      "conj": "눈치가 빨라요 · 눈치가 빨랐어요",
+      "note": "눈치 = lire l'ambiance, concept clé coréen. Contraire : 눈치가 없다."
+     },
+     {
+      "fr": "Guetter la réaction des autres, ne pas oser (nunchi)",
+      "kr": "눈치를 보다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "저는 회사에서 상사 눈치를 봐요.",
+      "exFr": "Au bureau, je guette l'humeur de mon chef.",
+      "conj": "눈치를 봐요 · 눈치를 봤어요",
+      "note": "Agir prudemment en surveillant la réaction/l'humeur des autres."
+     },
+     {
+      "fr": "Ne pas voir le temps passer",
+      "kr": "시간 가는 줄 모르다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "책을 읽느라 시간 가는 줄 몰랐어요.",
+      "exFr": "En lisant, je n'ai pas vu le temps passer.",
+      "conj": "시간 가는 줄 몰라요 · 시간 가는 줄 몰랐어요",
+      "note": "S'emploie presque toujours au passé, souvent avec -느라 : -느라 시간 가는 줄 몰랐어요."
+     },
+     {
+      "fr": "Être influençable (litt. oreilles fines)",
+      "kr": "귀가 얇다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "동생은 귀가 얇아서 광고를 다 믿어요.",
+      "exFr": "Mon petit frère est influençable, il croit toutes les pubs.",
+      "conj": "귀가 얇아요 · 귀가 얇았어요",
+      "note": "Litt. « oreilles fines » — se laisse convaincre facilement."
+     },
+     {
+      "fr": "Régaler, payer sa tournée (pour fêter qqch)",
+      "kr": "한턱내다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "생일이니까 오늘은 제가 한턱낼게요.",
+      "exFr": "C'est mon anniversaire, aujourd'hui je régale.",
+      "conj": "한턱내요 · 한턱냈어요",
+      "note": "S'écrit en un mot (dictionnaire). Régaler pour fêter une bonne nouvelle. Fam. proche : 제가 쏠게요."
+     },
+     {
+      "fr": "Se faire arnaquer, payer trop cher",
+      "kr": "바가지를 쓰다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "어제 시장에서 바가지를 쓴 것 같아요.",
+      "exFr": "Je crois que je me suis fait arnaquer hier au marché.",
+      "conj": "바가지를 써요 · 바가지를 썼어요",
+      "note": "Litt. « se coiffer d'une calebasse » — payer bien trop cher. Arnaquer qqn = 바가지를 씌우다."
+     },
+     {
+      "fr": "Ne pas avoir une minute à soi (litt. yeux et nez)",
+      "kr": "눈코 뜰 새 없다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "이번 주는 눈코 뜰 새 없이 바빠요.",
+      "exFr": "Cette semaine je suis débordé du matin au soir.",
+      "conj": "눈코 뜰 새 없어요 · 눈코 뜰 새 없었어요",
+      "note": "Litt. « pas le temps d'ouvrir yeux et nez » — pur manque de temps. Souvent : 눈코 뜰 새 없이 바빠요."
+     },
+     {
+      "fr": "Demander beaucoup de travail, d'attention (plat, tâche)",
+      "kr": "손이 많이 가다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "이 요리는 손이 많이 가요.",
+      "exFr": "Ce plat demande beaucoup de travail.",
+      "conj": "손이 많이 가요 · 손이 많이 갔어요",
+      "note": "Litt. « la main y va beaucoup » — exige temps et soin."
+     },
+     {
+      "fr": "Porter une lourde responsabilité (litt. épaules lourdes)",
+      "kr": "어깨가 무겁다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "새 일을 맡아서 어깨가 무거워요.",
+      "exFr": "On m'a confié un nouveau travail, la responsabilité est lourde.",
+      "conj": "어깨가 무거워요 · 어깨가 무거웠어요",
+      "note": "Litt. « épaules lourdes » — le poids des responsabilités. Souvent avec 맡다 (se voir confier)."
+     },
+     {
+      "fr": "Avoir du culot, être sans gêne (litt. visage épais)",
+      "kr": "얼굴이 두껍다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "그 사람은 정말 얼굴이 두꺼워요.",
+      "exFr": "Cette personne a vraiment du culot.",
+      "conj": "얼굴이 두꺼워요 · 얼굴이 두꺼웠어요",
+      "note": "Litt. « visage épais » — effronté, insensible à la honte. Variante : 낯이 두껍다."
+     },
+     {
+      "fr": "Être lessivé, complètement épuisé (litt. kimchi de ciboules)",
+      "kr": "파김치가 되다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "하루 종일 일해서 파김치가 됐어요.",
+      "exFr": "J'ai travaillé toute la journée, je suis lessivé.",
+      "conj": "파김치가 돼요 · 파김치가 됐어요",
+      "note": "Litt. « devenir kimchi de ciboules » (tout ramolli par la saumure) — épuisé, vidé."
+     },
+     {
+      "fr": "Rater un examen (litt. manger la soupe d'algues)",
+      "kr": "미역국을 먹다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "이번 시험에서 미역국을 먹었어요.",
+      "exFr": "J'ai raté l'examen cette fois-ci.",
+      "conj": "미역국을 먹어요 · 미역국을 먹었어요",
+      "note": "La soupe d'algues est glissante — on « glisse » (미끄러지다 = échouer) à l'examen, au concours."
+     },
+     {
+      "fr": "Être refroidi, ambiance cassée (litt. vapeur échappée)",
+      "kr": "김이 새다",
+      "type": "word",
+      "theme": "b2::idiomes",
+      "ex": "소풍을 가려고 했는데 비가 와서 김이 샜어요.",
+      "exFr": "On voulait pique-niquer mais il a plu, ça a cassé l'ambiance.",
+      "conj": "김이 새요 · 김이 샜어요",
+      "note": "Litt. « la vapeur s'échappe » — enthousiasme retombé, effet gâché. Fam. : 김샜어."
+     },
+     {
+      "fr": "Belle chose inaccessible (litt. tteok en peinture)",
+      "kr": "그림의 떡",
+      "type": "phrase",
+      "theme": "b2::idiomes",
+      "ex": "저 가방은 저한테 그림의 떡이에요.",
+      "exFr": "Ce sac, pour moi, c'est inaccessible.",
+      "conj": "",
+      "note": "Litt. « le tteok du tableau » — beau mais hors de portée. S'emploie avec -이다 : 그림의 떡이에요."
+     },
+     {
+      "fr": "C'est du gâteau, très facile (litt. bouillie refroidie)",
+      "kr": "식은 죽 먹기",
+      "type": "phrase",
+      "theme": "b2::idiomes",
+      "ex": "이 문제는 식은 죽 먹기예요.",
+      "exFr": "Ce problème, c'est du gâteau.",
+      "conj": "",
+      "note": "Litt. « manger du juk refroidi » — aucun effort. S'emploie avec -이다. Syn. 누워서 떡 먹기."
+     }
+    ]
+   },
+   {
+    "key": "b2_grammaire",
+    "level": "b2",
+    "items": [
+     {
+      "fr": "Mon petit frère a mangé tout le gâteau (il n'en reste rien).",
+      "kr": "동생이 케이크를 다 먹어 버렸어요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-아/어 버리다 : action complète, nuance de regret ou de soulagement"
+     },
+     {
+      "fr": "Le train est déjà parti (trop tard, tant pis).",
+      "kr": "기차가 벌써 떠나 버렸어요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-아/어 버리다 : action complète, nuance de regret ou de soulagement"
+     },
+     {
+      "fr": "Cette chanson me fait toujours rire.",
+      "kr": "그 노래는 항상 저를 웃게 해요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-게 하다 : causatif « faire faire / laisser faire »"
+     },
+     {
+      "fr": "La maman a fait coucher l'enfant tôt.",
+      "kr": "엄마가 아이를 일찍 자게 했어요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-게 하다 : causatif « faire faire / laisser faire »"
+     },
+     {
+      "fr": "Je me suis levé trop tard et j'ai failli arriver en retard au travail.",
+      "kr": "늦잠을 자서 회사에 지각할 뻔했어요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-(으)ㄹ 뻔했다 : « avoir failli » (l'action ne s'est pas produite)"
+     },
+     {
+      "fr": "J'étais si occupé que j'ai failli oublier le rendez-vous.",
+      "kr": "너무 바빠서 약속을 잊어버릴 뻔했어요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-(으)ㄹ 뻔했다 : « avoir failli » — avec 잊다, les natifs disent presque toujours 잊어버리다"
+     },
+     {
+      "fr": "C'est ici l'école que je fréquentais (autrefois).",
+      "kr": "여기가 제가 다니던 학교예요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-던 : souvenir du passé, action habituelle ou restée inachevée"
+     },
+     {
+      "fr": "Où est le café que j'étais en train de boire tout à l'heure ?",
+      "kr": "아까 마시던 커피가 어디에 있어요?",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "마시던 : action commencée puis interrompue (le café n'est pas fini)"
+     },
+     {
+      "fr": "En allant à l'école, j'ai rencontré un ami en chemin.",
+      "kr": "학교에 가다가 친구를 만났어요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-다가 : action interrompue par une autre en cours de route"
+     },
+     {
+      "fr": "Je me suis endormi en regardant la télévision.",
+      "kr": "텔레비전을 보다가 잠이 들었어요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-다가 : action interrompue par une autre en cours de route"
+     },
+     {
+      "fr": "Il ne faut pas entrer dans la chambre avec ses chaussures aux pieds.",
+      "kr": "신발을 신은 채로 방에 들어가면 안 돼요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-(으)ㄴ 채로 : « en l'état », l'état précédent se maintient"
+     },
+     {
+      "fr": "J'ai dormi avec la fenêtre laissée ouverte.",
+      "kr": "창문을 연 채로 잤어요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-(으)ㄴ 채로 : « en l'état » — 열다 → 연 (chute du ㄹ devant ㄴ)"
+     },
+     {
+      "fr": "Ce livre se vend très bien en librairie en ce moment.",
+      "kr": "이 책은 요즘 서점에서 잘 팔려요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "팔리다 : passif de 팔다 — « se vendre, être vendu »"
+     },
+     {
+      "fr": "La porte était verrouillée, donc je n'ai pas pu entrer chez moi.",
+      "kr": "문이 잠겨서 집에 못 들어갔어요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "잠기다 : passif de 잠그다 — « être verrouillé »"
+     },
+     {
+      "fr": "Tout en étant occupé, il m'aide pourtant toujours.",
+      "kr": "그 친구는 바쁘면서도 항상 저를 도와줘요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-(으)면서도 : « tout en..., pourtant » — contraste fort"
+     },
+     {
+      "fr": "Tout en sachant tout, il n'a pourtant rien dit.",
+      "kr": "그 사람은 다 알면서도 아무 말도 안 했어요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-(으)면서도 : « tout en..., pourtant » — contraste fort"
+     },
+     {
+      "fr": "Ce vêtement est joli, certes, mais trop cher.",
+      "kr": "이 옷은 예쁘기는 하지만 너무 비싸요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-기는 하지만 : concession « certes..., mais » — avec 은/는 de contraste sur le sujet"
+     },
+     {
+      "fr": "Le coréen est difficile, certes, mais vraiment intéressant.",
+      "kr": "한국어가 어렵기는 하지만 정말 재미있어요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-기는 하지만 : concession « certes..., mais » (oral : souvent contracté en -긴 하지만)"
+     },
+     {
+      "fr": "Le bus ne venait pas, je n'ai pas eu d'autre choix que d'y aller à pied.",
+      "kr": "버스가 안 와서 걸어갈 수밖에 없었어요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-(으)ㄹ 수밖에 없다 : « ne pas avoir d'autre choix que de » — 수밖에 s'écrit attaché (밖에 = particule)"
+     },
+     {
+      "fr": "J'ai tellement de travail que je suis obligé de travailler même le week-end.",
+      "kr": "일이 너무 많아서 주말에도 일할 수밖에 없어요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-(으)ㄹ 수밖에 없다 : « ne pas avoir d'autre choix que de »"
+     },
+     {
+      "fr": "Les gens ouvrent leurs parapluies. Il semble qu'il pleuve dehors.",
+      "kr": "사람들이 우산을 쓰네요. 밖에 비가 오나 봐요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-나 보다 : supposition d'après un indice observé (« il semble que ») — verbes en -나, adjectifs en -(으)ㄴ가"
+     },
+     {
+      "fr": "Il y a beaucoup de monde devant cette boulangerie. Le pain doit être bon, apparemment.",
+      "kr": "저 빵집 앞에 사람이 많네요. 빵이 정말 맛있나 봐요.",
+      "type": "phrase",
+      "theme": "b2::grammaire",
+      "ex": "",
+      "exFr": "",
+      "conj": "",
+      "note": "-나 보다 : supposition d'après un indice — 맛있다 contient 있다, donc prend -나 (맛있나 봐요), pas -(으)ㄴ가"
+     }
+    ]
+   }
+  ]
+ }
+}

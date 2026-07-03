@@ -1,0 +1,368 @@
+[
+ {
+  "fr": "Pays / nation",
+  "kr": "나라",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Parole (honorifique)",
+  "kr": "말씀",
+  "type": "word",
+  "theme": "a2::politesse"
+ },
+ {
+  "fr": "Goût / saveur",
+  "kr": "맛",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Son / bruit",
+  "kr": "소리",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Odeur",
+  "kr": "냄새",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Forme / apparence (d'un objet)",
+  "kr": "모양",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Endroit / lieu",
+  "kr": "곳",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Chemin / route, rue",
+  "kr": "길",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Montre / horloge",
+  "kr": "시계",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "Calendrier",
+  "kr": "달력",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "Lettre (courrier)",
+  "kr": "편지",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Cadeau",
+  "kr": "선물",
+  "type": "word",
+  "theme": "a2::achats"
+ },
+ {
+  "fr": "Appareil photo",
+  "kr": "카메라",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Journal (presse)",
+  "kr": "신문",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Rêve",
+  "kr": "꿈",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Force / énergie",
+  "kr": "힘",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Corps",
+  "kr": "몸",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Cœur / esprit (sentiments)",
+  "kr": "마음",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Voix",
+  "kr": "목소리",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Anniversaire",
+  "kr": "생일",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Homme (sexe masculin)",
+  "kr": "남자",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Femme (sexe féminin)",
+  "kr": "여자",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Adulte",
+  "kr": "어른",
+  "type": "word",
+  "theme": "a2::famille"
+ },
+ {
+  "fr": "Monsieur (homme d'âge mûr)",
+  "kr": "아저씨",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Madame (femme d'âge mûr)",
+  "kr": "아주머니",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Client / invité",
+  "kr": "손님",
+  "type": "word",
+  "theme": "a2::achats"
+ },
+ {
+  "fr": "Propriétaire / patron",
+  "kr": "주인",
+  "type": "word",
+  "theme": "a2::achats"
+ },
+ {
+  "fr": "Étranger (personne)",
+  "kr": "외국인",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Passe-temps / hobby",
+  "kr": "취미",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Film (cinéma)",
+  "kr": "영화",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Dessin / tableau (peinture)",
+  "kr": "그림",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Football",
+  "kr": "축구",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Randonnée en montagne",
+  "kr": "등산",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Plan / projet",
+  "kr": "계획",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Première fois / début",
+  "kr": "처음",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Adresse (postale)",
+  "kr": "주소",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Objet / article (marchandise)",
+  "kr": "물건",
+  "type": "word",
+  "theme": "a2::achats"
+ },
+ {
+  "fr": "Sac",
+  "kr": "가방",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Mot (vocabulaire)",
+  "kr": "단어",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Sens / signification",
+  "kr": "뜻",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Répondre",
+  "kr": "대답하다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Baguettes (pour manger)",
+  "kr": "젓가락",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Cuillère",
+  "kr": "숟가락",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Avant-midi (les heures AM)",
+  "kr": "오전",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Après-midi (les heures PM)",
+  "kr": "오후",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Comment tu t'appelles ? / Quel est votre nom ?",
+  "kr": "이름이 뭐예요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Enchanté(e), ravi(e) de vous rencontrer.",
+  "kr": "만나서 반가워요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Enchanté. (toute première rencontre, formel)",
+  "kr": "처음 뵙겠습니다.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Je compte sur vous. (formule de présentation)",
+  "kr": "잘 부탁드립니다.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Ça fait longtemps !",
+  "kr": "오랜만이에요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Comment vas-tu ? (depuis la dernière fois)",
+  "kr": "잘 지냈어요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "J'ai bien été, merci. (grâce à vous)",
+  "kr": "덕분에 잘 지냈어요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "De rien, ce n'est rien. (réponse courante à un merci)",
+  "kr": "아니에요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Je vous en prie, c'est peu de chose. (humble)",
+  "kr": "별말씀을요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Excusez-moi, je peux vous demander quelque chose ?",
+  "kr": "실례지만, 뭐 좀 물어봐도 돼요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Rentrez bien, soyez prudent en route.",
+  "kr": "조심히 가세요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Bon courage ! (au personnel, en sortant d'un magasin)",
+  "kr": "수고하세요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Excusez-moi ! (pour interpeller quelqu'un)",
+  "kr": "저기요!",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Qu'est-ce que ça veut dire ?",
+  "kr": "무슨 뜻이에요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Comment dit-on ça en coréen ?",
+  "kr": "한국어로 뭐라고 해요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "À la prochaine ! On se revoit !",
+  "kr": "또 만나요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ }
+]
