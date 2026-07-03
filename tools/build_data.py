@@ -8,7 +8,7 @@ Mapping Anki -> stage (production = carte forward, reconnaissance = carte invers
   fwd review ivl<7      -> 3 ; 7<=ivl<21 -> 4 ; ivl>=21 -> 5 (itv conservé, due conservée)
   ennemi (lapses fwd+rev >= 4) -> plafonné stage 2, due aujourd'hui
 """
-import sqlite3, json, datetime, re, collections, hashlib
+import sqlite3, json, datetime, re, collections, hashlib, io
 
 DB = r"C:\Users\33785\dev\sori\tools\snapshot.anki2"
 OUT = r"C:\Users\33785\dev\sori\docs\data.js"
@@ -169,6 +169,27 @@ for fr, kr, sub in KIT:
         "enemy": False, "kit": True,
     })
 
+# ---------- packs de contenu additionnels (tools/packs/*.json) ----------
+# Chaque pack: [{fr, kr, type, theme, kit?}] — ids STABLES par hash du coréen,
+# dédupliqués par kr contre tout l'existant. Les packs survivent aux régénérations.
+import glob, os
+PACKS_DIR = r"C:\Users\33785\dev\sori\tools\packs"
+pack_count = 0
+by_kr_all = {it["kr"]: it for it in items}
+for pf in sorted(glob.glob(os.path.join(PACKS_DIR, "*.json"))):
+    for p in json.load(io.open(pf, encoding="utf-8")):
+        kr = p["kr"].strip()
+        if kr in by_kr_all:
+            continue                          # déjà dans le deck -> on ne duplique jamais
+        pid = "pack-" + hashlib.sha1(kr.encode("utf-8")).hexdigest()[:8]
+        it = {
+            "id": pid, "fr": p["fr"].strip(), "kr": kr,
+            "type": p.get("type", "word"), "theme": p.get("theme", "divers"),
+            "stage": 0, "itv": 0, "due": None, "enemy": False,
+        }
+        if p.get("kit"): it["kit"] = True
+        items.append(it); by_kr_all[kr] = it; pack_count += 1
+
 # ---------- groupes de confusion (mots seulement) ----------
 def root(kr):
     r = kr
@@ -206,6 +227,16 @@ meta = {
                "phrases": len(items) - len(words), "enemies": enemies,
                "kit": kit_total, "stages": {str(k): v for k, v in sorted(st.items())}},
 }
+# ---------- GARDE-FOU: aucun id existant ne doit disparaître (règle d'or n°2) ----------
+new_ids = {it["id"] for it in items}
+if os.path.exists(OUT):
+    raw_prev = io.open(OUT, encoding="utf-8").read()
+    prev = json.loads(raw_prev[raw_prev.index("{"):raw_prev.rindex(";")])
+    lost = [it["id"] for it in prev["items"] if it["id"] not in new_ids]
+    if lost:
+        raise SystemExit("ABANDON: %d ids disparaîtraient (progression du téléphone orpheline) ! Exemples: %s"
+                         % (len(lost), lost[:5]))
+
 payload = {"meta": meta, "items": items}
 with open(OUT, "w", encoding="utf-8") as f:
     f.write("// Généré par tools/build_data.py — ne pas éditer à la main\n")
@@ -214,6 +245,7 @@ with open(OUT, "w", encoding="utf-8") as f:
     f.write(";\n")
 
 print(json.dumps(meta, ensure_ascii=False, indent=1))
+print("packs: %d items ajoutés depuis tools/packs/" % pack_count)
 print("kit: %d nouvelles + %d existantes rattachées" % (knum, kit_count_existing))
 conf_cov = sum(1 for it in words if it.get("conf"))
 print("confusion sets: %d/%d mots couverts" % (conf_cov, len(words)))
