@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sori — test événements</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* page de test uniquement — jamais servie par l'app */
+  body{padding:16px; min-height:auto; display:block}
+  h1{font-size:1.2rem; margin:0 0 4px}
+  .panels{display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start; margin-top:14px}
+  .panel{flex:1 1 300px; max-width:380px; background:var(--panel2); border:1px solid var(--line);
+    border-radius:var(--r); padding:12px; display:flex; flex-direction:column; gap:12px}
+  .panel h2{font-size:.85rem; color:var(--acc); margin:0; font-family:monospace}
+  .panel .expect{font-size:.75rem; color:var(--dim); margin:-8px 0 0}
+  .empty{font-size:.8rem; color:var(--dim); font-style:italic}
+  #checks{margin-top:14px; font-family:monospace; font-size:.8rem; line-height:1.7}
+  #checks .pass{color:var(--ok)} #checks .fail{color:var(--ko); font-weight:700}
+</style>
+</head>
+<body>
+<h1>🧪 Test du système d'événements</h1>
+<p class="dim">Charge les vraies données (events-data.js) + le vrai moteur (events.js) + le vrai style.css,
+et rend les cartes à des dates simulées. Aucune écriture localStorage.</p>
+
+<div id="checks"></div>
+<div class="panels" id="panels"></div>
+
+<script src="../events-data.js"></script>
+<script src="../events.js"></script>
+<script>
+"use strict";
+/* ---------- mock du journal (format ST.log) : sessions de septembre ---------- */
+var MOCK_LOG = {};
+for (var day = 1; day <= 20; day++) {
+  MOCK_LOG["2026-09-" + String(day).padStart(2, "0")] = { ok: 20, ko: 4, n: 24, listen: 6 };
+}
+
+/* événement challenge injecté SEULEMENT ici, pour tester le 3e type sans
+   toucher aux vraies données (dans l'app il viendrait d'events-data.js) */
+var CHALLENGE_DEMO = window.EVENTS_DATA.concat([
+  { id: "demo-defi", type: "challenge", from: "2026-09-01", to: "2026-10-01",
+    title: "Défi de septembre", emoji: "🏁",
+    text: "500 réponses avant le départ.", goal: { reviews: 500 } }
+]);
+
+/* ---------- panneaux : un rendu par date simulée ---------- */
+var PANELS = [
+  { today: "2026-06-15", note: "AVANT tout — attendu : aucune carte" },
+  { today: "2026-08-15", note: "PENDANT le countdown — attendu : carte J-47 (jalon J-90)" },
+  { today: "2026-09-20", note: "PENDANT + challenge (données de démo) — attendu : countdown J-11 + défi 480/500",
+    data: CHALLENGE_DEMO },
+  { today: "2026-10-05", note: "APRÈS le départ — attendu : bannière « En Corée ! », PLUS de countdown" },
+  { today: "2026-10-25", note: "APRÈS le 22 octobre — attendu : AUCUNE carte" }
+];
+var $panels = document.getElementById("panels");
+PANELS.forEach(function(p){
+  var panel = document.createElement("div"); panel.className = "panel";
+  panel.innerHTML = "<h2>today = " + p.today + "</h2><p class='expect'>" + p.note + "</p>";
+  var n = SORI_EVENTS.renderCards(panel, {
+    today: p.today, log: MOCK_LOG, dismissed: {}, data: p.data,
+    onDismiss: function(id){ console.log("dismiss demandé :", id); }
+  });
+  if (n === 0) {
+    var e = document.createElement("p"); e.className = "empty";
+    e.textContent = "— aucune carte rendue (renderCards a retourné 0) —";
+    panel.appendChild(e);
+  }
+  $panels.appendChild(panel);
+});
+
+/* ---------- assertions automatiques (fonctions pures) ---------- */
+var P = SORI_EVENTS.pure, out = [];
+function check(name, cond){ out.push({ name: name, ok: !!cond }); }
+function ids(today, data){ return P.activeEvents(data || window.EVENTS_DATA, today).map(function(e){ return e.id; }).join(","); }
+
+check("2026-06-15 : rien d'actif",                    ids("2026-06-15") === "");
+check("2026-07-01 : countdown démarre (from inclus)", ids("2026-07-01") === "seoul-2026");
+check("2026-08-15 : countdown seul",                  ids("2026-08-15") === "seoul-2026");
+check("2026-09-30 : countdown encore là (J-1)",       ids("2026-09-30") === "seoul-2026");
+check("2026-10-01 : bascule -> message seul (to exclu)", ids("2026-10-01") === "post-voyage");
+check("2026-10-05 : message seul",                    ids("2026-10-05") === "post-voyage");
+check("2026-10-21 : dernier jour du message",         ids("2026-10-21") === "post-voyage");
+check("2026-10-22 : plus rien",                       ids("2026-10-22") === "");
+check("2026-10-25 : plus rien",                       ids("2026-10-25") === "");
+
+var cd = P.eventProgress(window.EVENTS_DATA[0], "2026-08-15", {});
+check("countdown 15/08 : daysLeft = 47",   cd && cd.daysLeft === 47);
+check("countdown 15/08 : total = 92 j",    cd && cd.totalDays === 92);
+check("countdown 15/08 : ratio ~ 0.49",    cd && Math.abs(cd.ratio - 45/92) < 1e-9);
+check("countdown 15/08 : jalon J-90",      cd && cd.milestone && cd.milestone.at === 90);
+var cd7 = P.eventProgress(window.EVENTS_DATA[0], "2026-09-27", {});
+check("countdown 27/09 : jalon J-7 (le plus récent gagne)", cd7 && cd7.milestone && cd7.milestone.at === 7);
+
+var ch = P.eventProgress(CHALLENGE_DEMO[2], "2026-09-20", MOCK_LOG);
+check("challenge : 20 j × 24 = 480 comptés", ch && ch.count === 480 && ch.target === 500 && !ch.done);
+var msg = P.eventProgress(window.EVENTS_DATA[1], "2026-10-05", MOCK_LOG);
+check("message : progress = null", msg === null);
+
+var tmp = document.createElement("div");
+var n0 = SORI_EVENTS.renderCards(tmp, { today: "2026-10-25", log: {}, dismissed: {} });
+check("renderCards à vide : 0 carte, 0 nœud", n0 === 0 && tmp.childNodes.length === 0);
+var n1 = SORI_EVENTS.renderCards(tmp, { today: "2026-08-15", log: {}, dismissed: { "seoul-2026": true } });
+check("dismissed masque bien la carte", n1 === 0 && tmp.childNodes.length === 0);
+
+var $checks = document.getElementById("checks");
+var fails = out.filter(function(c){ return !c.ok; }).length;
+$checks.innerHTML = out.map(function(c){
+  return "<div class='" + (c.ok ? "pass'>✔ " : "fail'>✘ ") + c.name + "</div>";
+}).join("") + "<div style='margin-top:6px'>" +
+  (fails ? "<span class='fail'>" + fails + " ÉCHEC(S)</span>" : "<span class='pass'>TOUT VERT (" + out.length + " checks)</span>") + "</div>";
+document.title = (fails ? "✘ " : "✔ ") + document.title;
+</script>
+</body>
+</html>

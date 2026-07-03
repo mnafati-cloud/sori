@@ -42,6 +42,7 @@ function eff(id){
     itv:   d.i!==undefined ? d.i : seed.itv,
     due:   d.d!==undefined ? d.d : seed.due,
     ok: d.ok||0, ko: d.ko||0,
+    e: d.e,                       // ease adaptative (undefined -> seed paresseux via easeOf)
   };
 }
 function setItem(id, patch){
@@ -51,14 +52,27 @@ function setItem(id, patch){
 }
 const ALL_IDS = SEED.items.map(it=>it.id);
 
-/* ================= journal & stats ================= */
-function logAnswer(ok, kind){
+/* ================= journal & stats (télémétrie additive) =================
+   Par jour : compteurs globaux ok/ko/n + par TYPE d'exercice (k), temps de
+   réponse agrégés, et compteurs "propres" ok1/ko1 + shadow so/sn (ALGORITHM.md). */
+function logAnswer(ok, kind, r, rt){
   const t = todayStr();
   const l = ST.log[t] || (ST.log[t]={ok:0,ko:0,n:0,listen:0});
-  l.n++; if(kind==="listen"){ l.listen++; }
+  l.n++; if(kind==="listen"||kind==="dictee"){ l.listen++; }
   if(ok) l.ok++; else l.ko++;
+  if(kind){
+    l.k = l.k || {};
+    const kk = l.k[kind] = l.k[kind] || {o:0,x:0,t:0,c:0};
+    if(ok) kk.o++; else kk.x++;
+    if(rt && rt>0 && rt<60000){ kk.t += Math.round(rt/100); kk.c++; }  // dixièmes de seconde
+  }
+  if(r && r.counted){                       // 1re présentation espacée non anticipée
+    if(ok) l.ok1=(l.ok1||0)+1; else l.ko1=(l.ko1||0)+1;
+    if(ok){ l.so=(l.so||0)+r.iLegacy; l.sn=(l.sn||0)+r.iAdaptive; }   // shadow legacy vs adaptatif
+  }
   save(); updateDayCount();
 }
+let EXO_T0 = 0;   // début d'affichage de l'exercice courant (temps de réponse)
 function updateDayCount(){
   const l = ST.log[todayStr()];
   document.getElementById("daycount").textContent = l ? l.n : 0;
@@ -123,8 +137,9 @@ function ttsSpeak(text){
 
 /* ================= planification (logique dans engine.js) ================= */
 function applyAnswer(it, ok){
-  const r = ENGINE.computeAnswer(it, ok, todayStr());
-  setItem(it.id, { s:r.s, i:r.i, d:r.d, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) });
+  const r = ENGINE.computeAnswer(it, ok, todayStr(), ST.set.adaptive === true);
+  setItem(it.id, { s:r.s, i:r.i, d:r.d, e:r.e, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) });
+  return r;
 }
 
 /* file du jour : échues + nouvelles (kit prioritaire) */
@@ -221,6 +236,7 @@ function renderReview(){
       ${it.enemy?'<span class="pill enemy">ennemie</span>':""}
       <span class="pill stage">niv ${it.stage}</span></div></div>`);
   $screen.appendChild(head);
+  EXO_T0 = Date.now();
   if(it.stage<=2) exoQcmKr2Fr(it);
   else if(it.stage===3){
     if(it.type==="phrase" && it.kr.split(" ").length>=3) exoBuild(it);
@@ -261,9 +277,9 @@ function showTrivia(card, it){
   card.appendChild(el(`<div class="trivia">${bits.join("")}</div>`));
   return true;
 }
-function afterAnswer(it, ok, sawTrivia){
-  logAnswer(ok, "review");
-  if(!BONUS) applyAnswer(it, ok);
+function afterAnswer(it, ok, sawTrivia, kind){
+  const r = BONUS ? null : applyAnswer(it, ok);
+  logAnswer(ok, kind || "review", r, EXO_T0 ? Date.now()-EXO_T0 : 0);
   if(!ok && !BONUS){ // re-poser dans la session, 3-5 cartes plus loin
     const pos = Math.min(Q.length, QPOS + 3 + Math.floor(Math.random()*3));
     Q.splice(pos, 0, it.id);
@@ -293,7 +309,7 @@ function exoQcmKr2Fr(it){
       b.classList.add(ok?"good":"bad");
       if(!ok) [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].fr)?.classList.add("good");
       speak(it.kr, it.id);
-      afterAnswer(it, ok, showTrivia(card, it));
+      afterAnswer(it, ok, showTrivia(card, it), it.stage<=1?"qcm1":"qcm2");
     };
     box.appendChild(b);
   });
@@ -318,7 +334,7 @@ function exoQcmFr2Kr(it){
       b.classList.add(ok?"good":"bad");
       if(!ok) [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].kr)?.classList.add("good");
       speak(it.kr, it.id);
-      afterAnswer(it, ok, showTrivia(card, it));
+      afterAnswer(it, ok, showTrivia(card, it), "qcm3");
     };
     box.appendChild(b);
   });
@@ -342,8 +358,9 @@ function exoRecall(it, hinted){
     row.innerHTML = "";
     const again = el(`<button class="btn ko">Encore</button>`);
     const good  = el(`<button class="btn ok">Bien</button>`);
-    again.onclick = ()=>afterAnswer(it, false);
-    good.onclick  = ()=>afterAnswer(it, true);
+    const kind = hinted ? "rec4" : "rec5";
+    again.onclick = ()=>afterAnswer(it, false, false, kind);
+    good.onclick  = ()=>afterAnswer(it, true, false, kind);
     row.append(again, good);
   };
   $screen.appendChild(card);
@@ -364,8 +381,8 @@ function exoRecallRev(it){
     row.innerHTML = "";
     const again = el(`<button class="btn ko">Encore</button>`);
     const good  = el(`<button class="btn ok">Bien</button>`);
-    again.onclick = ()=>afterAnswer(it, false);
-    good.onclick  = ()=>afterAnswer(it, true);
+    again.onclick = ()=>afterAnswer(it, false, false, "recrev");
+    good.onclick  = ()=>afterAnswer(it, true, false, "recrev");
     row.append(again, good);
   };
   $screen.appendChild(card);
@@ -407,7 +424,7 @@ function exoBuild(it){
          : `<span style="color:var(--ko)">✘</span> <span class="kr">${esc(answer)}</span>`;
     [...card.querySelectorAll(".chip")].forEach(b=>b.disabled=true);
     speak(answer, it.id);
-    afterAnswer(it, ok, showTrivia(card, it));
+    afterAnswer(it, ok, showTrivia(card, it), "build");
   }
   paint();
   $screen.appendChild(card);
@@ -438,6 +455,7 @@ function renderListen(){
     return;
   }
   const it = eff(LQ[LPOS]);
+  EXO_T0 = Date.now();
   /* une fois sur deux : dictée — on choisit le HANGUL entendu (distracteurs sosies) */
   const dictee = LPOS % 2 === 1;
   const field = dictee ? "kr" : "fr";
@@ -462,7 +480,7 @@ function renderListen(){
         [...box.children].find(x=>x.textContent===target)?.classList.add("good");
       }
       card.appendChild(el(`<div class="feedback"><span class="kr">${esc(it.kr)}</span> — ${esc(it.fr)}</div>`));
-      logAnswer(ok, "listen");
+      logAnswer(ok, dictee?"dictee":"listen", null, EXO_T0 ? Date.now()-EXO_T0 : 0);
       LPOS++;
       setTimeout(render, ok?800:1700);
     };
@@ -534,15 +552,24 @@ function renderDrill(){
 /* ---------- Stats & réglages ---------- */
 function renderStats(){
   const t=todayStr(), l=ST.log[t]||{ok:0,ko:0,n:0};
+  /* événements actifs (countdown départ, défis…) — données : events-data.js, recette : MAINTENANCE-EVENTS.md */
+  if(window.SORI_EVENTS){
+    ST.evDismiss = ST.evDismiss || {};        // champ additif, migration douce implicite
+    SORI_EVENTS.renderCards($screen, {
+      today: t, log: ST.log, dismissed: ST.evDismiss,
+      onDismiss: id => { ST.evDismiss[id] = true; save(); }
+    });
+  }
   const items = ALL_IDS.map(eff);
   const stages=[0,0,0,0,0,0];
   items.forEach(it=>stages[it.stage]++);
   const enemies = items.filter(it=>it.enemy);
   const beaten = enemies.filter(it=>it.stage>=4).length;
-  // rétention 7 jours
-  let ok7=0,ko7=0;
-  for(let i=0;i<7;i++){ const d=ST.log[addDays(t,-i)]; if(d){ ok7+=d.ok; ko7+=d.ko; } }
-  const ret = (ok7+ko7)? Math.round(100*ok7/(ok7+ko7)) : null;
+  // rétention 7 jours (mesure propre : 1res présentations comptées, fenêtre hier -> J-7)
+  const r7 = ENGINE.retention7(ST.log, t);
+  const ret = r7.r===null ? null : Math.round(100*r7.r);
+  // sangsues : ease au plancher + échecs répétés -> à retravailler autrement
+  const leeches = items.filter(it=>ENGINE.isLeech(it));
 
   $screen.appendChild(el(`<div class="statgrid">
     <div class="stat"><div class="n">🔥 ${streak()}</div><div class="l">jours d'affilée</div></div>
@@ -550,6 +577,13 @@ function renderStats(){
     <div class="stat"><div class="n">${ret===null?"—":ret+" %"}</div><div class="l">réussite (7 j)</div></div>
     <div class="stat"><div class="n">${beaten}/${enemies.length}</div><div class="l">ennemies vaincues</div></div>
   </div>`));
+
+  if(leeches.length){
+    $screen.appendChild(el(`<div class="card">
+      <h2>🩸 Sangsues (${leeches.length})</h2>
+      <p class="dim">Ces mots résistent à la répétition — change d'angle : mnémotechnique, phrase à toi, post-it.
+      ${leeches.slice(0,8).map(x=>`<span class="pill">${esc(x.kr)}</span>`).join("")}${leeches.length>8?"…":""}</p></div>`));
+  }
 
   const bossN = Math.min(bossCandidates().length, 20);
   if(bossN){
@@ -590,9 +624,14 @@ function renderStats(){
     <label>Taille max de session <input type="number" id="smax" min="20" max="500" step="10" value="${ST.set.sessionMax||120}"></label>
     <label>Prioriser le kit voyage <input type="checkbox" id="kf" ${ST.set.kitFirst?"checked":""}></label>
     <label>Prononcer automatiquement <input type="checkbox" id="ap" ${ST.set.autoplay?"checked":""}></label>
+    <label title="Intervalles personnalisés par mot (ALGORITHM.md). Laisser décoché ~2 semaines : l'app observe d'abord.">
+      Planification adaptative <input type="checkbox" id="adap" ${ST.set.adaptive?"checked":""}></label>
     <label>Vitesse de la voix <input type="number" id="rate" min="0.5" max="1.2" step="0.1" value="${ST.set.rate}"></label>
     ${koVoices().length>1 ? `<label>Voix coréenne <select id="voice">${
       koVoices().map(v=>`<option value="${esc(v.name)}" ${ST.set.voice===v.name?"selected":""}>${esc(v.name)}</option>`).join("")
+    }</select></label>` : ""}
+    ${window.SORI_THEMES ? `<label>Style graphique <select id="theme">${
+      SORI_THEMES.list.map(th=>`<option value="${th.id}" ${SORI_THEMES.get()===th.id?"selected":""}>${esc(th.label)}</option>`).join("")
     }</select></label>` : ""}
     <div class="row" style="margin-top:12px">
       <button class="btn ghost" id="exp">📤 Exporter</button>
@@ -606,9 +645,12 @@ function renderStats(){
   set.querySelector("#smax").onchange= e=>{ ST.set.sessionMax=Math.max(20,+e.target.value||120); save(); };
   set.querySelector("#kf").onchange  = e=>{ ST.set.kitFirst=e.target.checked; save(); };
   set.querySelector("#ap").onchange  = e=>{ ST.set.autoplay=e.target.checked; save(); };
+  set.querySelector("#adap").onchange= e=>{ ST.set.adaptive=e.target.checked; save(); };
   set.querySelector("#rate").onchange= e=>{ ST.set.rate=Math.min(1.2,Math.max(0.5,+e.target.value||0.9)); save(); };
   const vsel = set.querySelector("#voice");
   if(vsel) vsel.onchange = e=>{ ST.set.voice = e.target.value; save(); pickVoice(); ttsSpeak("안녕하세요"); };
+  const tsel = set.querySelector("#theme");
+  if(tsel) tsel.onchange = e=>SORI_THEMES.set(e.target.value);
   set.querySelector("#exp").onclick  = exportState;
   set.querySelector("#imp").onclick  = ()=>set.querySelector("#impfile").click();
   set.querySelector("#impfile").onchange = importState;

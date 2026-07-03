@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0a12">
+<title>Sori — test des 4 thèmes</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../themes.css">
+<script src="../themes.js"></script>
+</head>
+<body>
+
+<header id="topbar">
+  <div class="brand">소리 <span>Sori</span></div>
+  <div class="topright">
+    <button id="mute" class="iconbtn" title="Couper le son">🔊</button>
+    <div id="daycount" title="révisions aujourd'hui">38</div>
+  </div>
+</header>
+
+<main id="screen">
+
+  <!-- sélecteur de thème (page de test uniquement) -->
+  <div class="card">
+    <h2>Thème</h2>
+    <div class="row" id="themebtns" style="flex-wrap:wrap"></div>
+    <p class="dim" id="themecur" style="margin:10px 0 0"></p>
+  </div>
+
+  <!-- QCM : carte, grand hangul, options bonnes/mauvaises, trivia -->
+  <div class="card center">
+    <div class="dim">Que veut dire…</div>
+    <div class="big-kr">성적</div>
+    <div class="hint">ㅅㅈ</div>
+    <div class="opts">
+      <button>le caractère, la personnalité</button>
+      <button class="good">les notes, les résultats</button>
+      <button class="bad">la réussite, le succès</button>
+      <button disabled>l'expérience</button>
+    </div>
+    <div class="trivia">
+      <div class="tkr">시험 성적이 잘 나왔어요.</div>
+      <div class="tfr">« Mes résultats d'examen sont bons. »</div>
+      <div class="tnote">≠ 성격 — le caractère. Une syllabe change tout : 적 / 격.</div>
+      <div class="tconj">성적이 · 성적을 · 성적은</div>
+    </div>
+    <div class="feedback"><span class="kr">정답 !</span> bien joué</div>
+  </div>
+
+  <!-- construction de phrase : built + chips + boutons -->
+  <div class="card center">
+    <div class="dim">Construis la phrase…</div>
+    <div class="big-fr">« Où sont les toilettes ? »</div>
+    <div class="built">
+      <button class="chip">화장실이</button>
+      <button class="chip">어디에</button>
+    </div>
+    <div class="pool">
+      <button class="chip src">있어요?</button>
+      <button class="chip src">감사합니다</button>
+      <button class="chip src" disabled>주세요</button>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn ghost">Effacer</button>
+      <button class="btn">Vérifier</button>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button class="btn ok">✓ Je savais</button>
+      <button class="btn ko">✗ Encore</button>
+    </div>
+  </div>
+
+  <!-- stats : tuiles, pills, progressbar, barres -->
+  <div class="statgrid">
+    <div class="stat"><div class="n">🔥 12</div><div class="l">jours d'affilée</div></div>
+    <div class="stat"><div class="n">38</div><div class="l">réponses aujourd'hui</div></div>
+    <div class="stat"><div class="n">86 %</div><div class="l">réussite (7 j)</div></div>
+    <div class="stat"><div class="n">9/14</div><div class="l">ennemies vaincues</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Progression</h2>
+    <p><span class="pill">niv 2</span> <span class="pill enemy">ennemie</span> <span class="pill stage">stade 3</span></p>
+    <div class="progressbar"><div style="width:62%"></div></div>
+    <div class="bars">
+      <div class="b"><div style="height:20px"></div><span>nouv.<br>4</span></div>
+      <div class="b"><div style="height:52px"></div><span>QCM<br>11</span></div>
+      <div class="b"><div style="height:80px"></div><span>QCM+<br>17</span></div>
+      <div class="b"><div style="height:34px"></div><span>FR→KR<br>7</span></div>
+      <div class="b"><div style="height:14px"></div><span>rappel<br>3</span></div>
+    </div>
+  </div>
+
+  <div class="list">
+    <div class="item"><div class="txt"><div class="kr">지갑</div><div class="fr">le portefeuille</div></div></div>
+    <div class="item"><div class="txt"><div class="kr">화장실</div><div class="fr">les toilettes</div></div></div>
+  </div>
+
+  <!-- réglages : le bloc tel qu'il sera dans renderStats -->
+  <div class="card settings">
+    <h2>Réglages</h2>
+    <label>Style graphique <select id="theme"></select></label>
+    <label>Nouvelles cartes / jour <input type="number" value="8"></label>
+    <label>Prononcer automatiquement <input type="checkbox" checked></label>
+  </div>
+
+</main>
+
+<nav id="tabs">
+  <button class="active">📚<span>Réviser</span></button>
+  <button>👂<span>Écoute</span></button>
+  <button>🧳<span>Voyage</span></button>
+  <button>📈<span>Stats</span></button>
+</nav>
+
+<script>
+/* boutons de bascule — même branchement que le futur bloc de renderStats */
+(function(){
+  var wrap = document.getElementById("themebtns");
+  var cur  = document.getElementById("themecur");
+  var sel  = document.getElementById("theme");
+  function refresh(){
+    cur.textContent = "Thème actif : " + SORI_THEMES.get() +
+      " · <meta theme-color> = " +
+      document.querySelector('meta[name="theme-color"]').getAttribute("content");
+    sel.value = SORI_THEMES.get();
+  }
+  SORI_THEMES.list.forEach(function(t){
+    var b = document.createElement("button");
+    b.className = "btn ghost small";
+    b.textContent = t.label;
+    b.onclick = function(){ SORI_THEMES.set(t.id); refresh(); };
+    wrap.appendChild(b);
+    var o = document.createElement("option");
+    o.value = t.id; o.textContent = t.label;
+    sel.appendChild(o);
+  });
+  sel.onchange = function(e){ SORI_THEMES.set(e.target.value); refresh(); };
+  refresh();
+})();
+</script>
+</body>
+</html>

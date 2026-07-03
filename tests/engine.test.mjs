@@ -6,7 +6,10 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import ENGINE from "../docs/engine.js";
 
-const { addDays, computeAnswer, selectDue, pickNew, computeStreak, pickDistractors, DEF_SET, STEP } = ENGINE;
+const { addDays, selectDue, pickNew, computeStreak, pickDistractors, DEF_SET, STEP } = ENGINE;
+/* contrat GELÉ : les tests historiques s'appliquent à la planification legacy,
+   inchangée à jamais (cf. ALGORITHM.md §2.3). L'extension est testée dans adaptive.test.mjs. */
+const computeAnswer = ENGINE.computeAnswerLegacy;
 
 /* RNG déterministe (mulberry32) pour les chemins qui mélangent */
 function rng(seed){
@@ -223,6 +226,6 @@ test("distracteurs : le global (même type) complète quand le thème ne suffit 
 
 test("DEF_SET et STEP : valeurs contractuelles", () => {
   assert.deepEqual(DEF_SET, { newPerDay: 12, kitFirst: true, rate: 0.9, listenN: 10,
-    sessionMax: 120, mute: false, autoplay: true });
+    sessionMax: 120, mute: false, autoplay: true, adaptive: false });   // adaptive ajouté (ALGORITHM.md, additif)
   assert.deepEqual(STEP, { 2: 1, 3: 2, 4: 4, 5: 8 });
 });

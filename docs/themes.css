@@ -1,0 +1,192 @@
+/* ============================================================
+   Sori — themes.css · système multi-thèmes
+   ============================================================
+   Se charge APRÈS style.css (qui définit le :root par défaut,
+   identique au thème "nuit"). themes.js pose une classe sur
+   <html> : theme-seoul (DÉFAUT) · theme-nuit · theme-hanji ·
+   theme-dansaekhwa. Sans JS / sans classe, l'app garde le :root
+   de style.css — aucun risque de page cassée.
+
+   Tout passe par les variables existantes :
+     --bg --panel --panel2 --line --txt --dim --acc --acc2
+     --ok --ko --warn --r
+   + 2 nouvelles variables, avec fallback sûr défini ici :
+     --glow  halo des éléments actifs   (défaut : none)
+     --grad  dégradé d'accent           (défaut : accent uni)
+
+   Les couleurs codées en dur dans style.css (.opts button.good /
+   .bad / :active, .btn.ok / .btn.ko, .chip texte blanc) sont
+   surchargées thème par thème ci-dessous, à spécificité minimale.
+   ============================================================ */
+
+:root{
+  --glow:none;
+  --grad:linear-gradient(90deg, var(--acc2), var(--acc));
+}
+
+/* ============================================================
+   THÈME « SÉOUL NUIT » — défaut (maquette design/variant-b.html)
+   Noir profond, duo néon rose/cyan strictement dosé :
+   rose = action / attention · cyan = réussite / information.
+   Cartes en verre léger sur halos urbains flous.
+   theme-color recommandé : #0a0a12
+   ============================================================ */
+.theme-seoul{
+  color-scheme:dark;
+  --bg:#0a0a12;
+  --panel:rgba(255,255,255,.05);      /* verre — sur le noir ≈ #17171e */
+  --panel2:rgba(255,255,255,.09);     /* verre relevé — ≈ #21212a */
+  --line:rgba(255,255,255,.13);
+  --txt:#f1f0f5;
+  --dim:#a7a6ba;
+  --acc:#4be1e8;                      /* cyan : réussite, information */
+  --acc2:#cc3a76;                     /* rose profond : ≥4.5:1 avec texte blanc */
+  --ok:#4be1e8;
+  --ko:#ff7ab8;                       /* rose clair : attention, erreur */
+  --warn:#ff7ab8;
+  --r:18px;
+  --glow:0 0 18px rgba(255,122,184,.22);
+  --grad:linear-gradient(90deg,#cc3a76,#4be1e8);
+}
+/* halos urbains flous derrière l'app */
+.theme-seoul body{
+  background-image:
+    radial-gradient(620px 420px at 12% 4%,  rgba(255,122,184,.075), transparent 62%),
+    radial-gradient(720px 520px at 88% 38%, rgba(75,225,232,.065),  transparent 62%),
+    radial-gradient(560px 640px at 25% 92%, rgba(255,122,184,.05),  transparent 62%);
+  background-attachment:fixed;
+}
+/* verre : flou seulement si supporté — sinon les fonds rgba restent
+   lisibles tels quels sur le noir (fallback sûr, rien à faire) */
+@supports ((backdrop-filter:blur(14px)) or (-webkit-backdrop-filter:blur(14px))){
+  .theme-seoul .card, .theme-seoul .stat, .theme-seoul .list .item,
+  .theme-seoul #topbar, .theme-seoul #tabs{
+    -webkit-backdrop-filter:blur(14px) saturate(1.15);
+    backdrop-filter:blur(14px) saturate(1.15);
+  }
+}
+.theme-seoul .card, .theme-seoul .stat, .theme-seoul .list .item{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 8px 24px rgba(0,0,0,.35);
+}
+/* surcharges des couleurs en dur de style.css */
+.theme-seoul .opts button:active{background:rgba(255,255,255,.14)}
+.theme-seoul .opts button.good{
+  background:rgba(75,225,232,.12); border-color:rgba(75,225,232,.65);
+  box-shadow:0 0 16px rgba(75,225,232,.18);
+}
+.theme-seoul .opts button.bad{
+  background:rgba(255,122,184,.10); border-color:rgba(255,122,184,.55);
+}
+.theme-seoul .built{border-color:rgba(255,255,255,.24); background:rgba(255,255,255,.03)}
+/* lueurs discrètes sur les éléments actifs — le hangul reste le héros */
+.theme-seoul .btn{box-shadow:var(--glow)}
+.theme-seoul .btn.ghost{box-shadow:none}
+.theme-seoul .btn.ok{background:rgba(75,225,232,.16); border:1px solid rgba(75,225,232,.5); color:#4be1e8; box-shadow:none}
+.theme-seoul .btn.ko{background:rgba(255,122,184,.13); border:1px solid rgba(255,122,184,.5); color:#ff7ab8; box-shadow:none}
+.theme-seoul #tabs button.active{text-shadow:0 0 10px rgba(75,225,232,.55)}
+.theme-seoul #daycount{
+  background:rgba(75,225,232,.08); border:1px solid rgba(75,225,232,.35);
+  box-shadow:0 0 12px rgba(75,225,232,.15);
+}
+.theme-seoul .progressbar>div{background:var(--grad); box-shadow:0 0 12px rgba(75,225,232,.35)}
+.theme-seoul .trivia{background:rgba(75,225,232,.06); border-left-color:var(--acc)}
+
+/* ============================================================
+   THÈME « NUIT » — l'actuel, à l'identique (valeurs de style.css)
+   Bleu-nuit / sarcelle. Sert de refuge : rien ne change.
+   theme-color recommandé : #0f172a (valeur actuelle d'index.html)
+   ============================================================ */
+.theme-nuit{
+  color-scheme:dark;
+  --bg:#0f172a;
+  --panel:#1e293b;
+  --panel2:#273449;
+  --line:#334155;
+  --txt:#e2e8f0;
+  --dim:#94a3b8;
+  --acc:#2dd4bf;
+  --acc2:#0d9488;
+  --ok:#4ade80;
+  --ko:#f87171;
+  --warn:#fbbf24;
+  --r:14px;
+  --glow:none;
+  --grad:linear-gradient(90deg, var(--acc2), var(--acc));
+}
+/* aucune surcharge : les couleurs en dur de style.css SONT ce thème */
+
+/* ============================================================
+   THÈME « HANJI » — clair (maquette design/variant-a.html)
+   Papier crème, encre, un seul rouge : celui du sceau (낙관).
+   theme-color recommandé : #FFFDF6 (couleur du bandeau/panel)
+   ============================================================ */
+.theme-hanji{
+  color-scheme:light;
+  --bg:#EFE8D8;                       /* fond de page hanji */
+  --panel:#FFFDF6;                    /* cartes presque blanc chaud */
+  --panel2:#F3EBD9;                   /* encarts */
+  --line:#E3D9C6;
+  --txt:#221C15;                      /* encre */
+  --dim:#6B6055;                      /* AA sur panel et panel2 */
+  --acc:#A93226;                      /* rouge sceau — l'unique accent */
+  --acc2:#221C15;                     /* boutons/chips posés : encre (comme la maquette) */
+  --ok:#166534;
+  --ko:#991B1B;
+  --warn:#92400E;
+  --r:14px;
+  --glow:none;
+  --grad:linear-gradient(90deg,#A93226,#C0563F);
+}
+.theme-hanji .card, .theme-hanji .stat, .theme-hanji .list .item{
+  box-shadow:0 1px 2px rgba(84,62,26,.05), 0 6px 18px rgba(84,62,26,.05);
+}
+/* surcharges des couleurs sombres en dur de style.css */
+.theme-hanji .opts button:active{background:#EAE0CB}
+.theme-hanji .opts button.good{background:#F4E5DE; border-color:var(--acc)}       /* teinte sceau diluée */
+.theme-hanji .opts button.bad{background:#EFE7D6; border-color:#CFC2A8; border-style:dashed; color:var(--dim)}
+.theme-hanji .btn.ok{background:#166534}       /* inchangé mais explicite : blanc sur vert = AA */
+.theme-hanji .btn.ko{background:#7f1d1d}
+.theme-hanji .progressbar{background:#EAE0CB}
+.theme-hanji .progressbar>div{background:var(--acc)}
+.theme-hanji .trivia{border-left-color:var(--acc)}
+.theme-hanji #daycount{border:1px solid var(--line); background:var(--panel)}
+
+/* ============================================================
+   THÈME « DANSAEKHWA » — (maquette design/variant-c.html)
+   Monochrome coréen contemporain : encre chaude quasi noire,
+   papier hanji en texte, UN accent ambre qui marque le FAIT,
+   jamais le décor.
+   theme-color recommandé : #0f0d0a
+   ============================================================ */
+.theme-dansaekhwa{
+  color-scheme:dark;
+  --bg:#0f0d0a;
+  --panel:#1e1a15;
+  --panel2:#292319;
+  --line:#332c22;
+  --txt:#ede7dc;                      /* papier hanji */
+  --dim:#a69c8b;                      /* papier estompé */
+  --acc:#e3a64f;                      /* ambre — l'unique couleur */
+  --acc2:#e3a64f;
+  --ok:#e3a64f;                       /* le fait accompli est ambre */
+  --ko:#e8836f;
+  --warn:#e3a64f;
+  --r:12px;
+  --glow:none;
+  --grad:linear-gradient(90deg,#e3a64f,#e3a64f);
+}
+/* l'ambre est clair : les boutons/chips pleins passent à l'encre-sur-ambre
+   (le blanc en dur de style.css serait illisible : 2.1:1) */
+.theme-dansaekhwa .btn{color:#201a10}
+.theme-dansaekhwa .btn.ghost{background:none; border:1px solid var(--line); color:var(--dim)}
+.theme-dansaekhwa .btn.ok{background:var(--acc); color:#201a10}
+.theme-dansaekhwa .btn.ko{background:#3a2018; color:#f2ddd6}
+.theme-dansaekhwa .chip{color:#201a10; font-weight:700}
+.theme-dansaekhwa .chip.src{color:var(--txt); font-weight:400}
+/* surcharges des verts/rouges en dur de style.css */
+.theme-dansaekhwa .opts button:active{background:#332a1d}
+.theme-dansaekhwa .opts button.good{background:rgba(227,166,79,.10); border-color:var(--acc); font-weight:700}
+.theme-dansaekhwa .opts button.bad{background:#2a1713; border-color:#7a4437}
+.theme-dansaekhwa .progressbar{background:var(--line)}
+.theme-dansaekhwa #daycount{background:none; border:1px solid var(--line)}
+.theme-dansaekhwa .trivia{border-left-width:2px}
