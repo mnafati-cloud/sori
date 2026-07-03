@@ -209,6 +209,7 @@ function renderReview(){
   }
   if(QPOS >= Q.length){
     ST.sess = null; save();
+    autoCloudBackup();                       // sauvegarde cloud silencieuse (1x/jour max)
     const t=todayStr(), l=ST.log[t]||{ok:0,ko:0};
     const more = PENDING>0 ? `<button class="btn" id="more">Continuer (${PENDING} en attente)</button>` : "";
     const boss = bossCandidates();
@@ -644,8 +645,14 @@ function renderStats(){
       <button class="btn ghost" id="imp">📥 Importer</button>
     </div>
     <input type="file" id="impfile" accept=".json,application/json">
-    <p class="dim" style="margin-top:10px">Exporte ta progression régulièrement (partage vers OneDrive) —
-    c'est ta sauvegarde, et c'est ce que Claude lit pour adapter le contenu.</p></div>`);
+    <div class="section-title" style="margin-top:14px">☁️ Sauvegarde cloud (GitHub privé)</div>
+    <label>Jeton d'accès <input type="password" id="ghtok" placeholder="${ghToken()?"•••• configuré ••••":"github_pat_…"}" autocomplete="off"></label>
+    <div class="row" style="margin-top:8px">
+      <button class="btn" id="cloud">☁️ Sauvegarder maintenant</button>
+    </div>
+    <p class="dim" id="cloudstatus" style="margin-top:8px">${
+      ghToken() ? (ST.lastCloud ? "Dernière sauvegarde cloud : "+ST.lastCloud+" · auto 1×/jour en fin de session." : "Jeton configuré — aucune sauvegarde encore.")
+                : "Colle un jeton GitHub fine-grained (dépôt sori-data, permission Contents) pour activer la sauvegarde automatique."}</p></div>`);
   $screen.appendChild(set);
   set.querySelector("#npd").onchange = e=>{ ST.set.newPerDay=Math.max(0,+e.target.value||0); save(); };
   set.querySelector("#smax").onchange= e=>{ ST.set.sessionMax=Math.max(20,+e.target.value||120); save(); };
@@ -660,7 +667,49 @@ function renderStats(){
   set.querySelector("#exp").onclick  = exportState;
   set.querySelector("#imp").onclick  = ()=>set.querySelector("#impfile").click();
   set.querySelector("#impfile").onchange = importState;
+  set.querySelector("#ghtok").onchange = e=>{ setGhToken(e.target.value); e.target.value=""; render(); };
+  set.querySelector("#cloud").onclick = async ()=>{
+    const st = set.querySelector("#cloudstatus");
+    st.textContent = "Envoi en cours…";
+    const r = await cloudBackup();
+    st.textContent = r.ok ? "✅ Sauvegardé dans le cloud ("+todayStr()+")." : "❌ Échec : "+r.msg;
+  };
 }
+/* ================= sauvegarde cloud (GitHub, dépôt privé sori-data) =================
+   Jeton fine-grained stocké UNIQUEMENT sur l'appareil (clé séparée, jamais dans un export). */
+const GH_KEY = "sori-gh-token";
+const GH_REPO = "mnafati-cloud/sori-data";
+function ghToken(){ try{ return localStorage.getItem(GH_KEY)||""; }catch(e){ return ""; } }
+function setGhToken(t){ try{ t ? localStorage.setItem(GH_KEY, t.trim()) : localStorage.removeItem(GH_KEY); }catch(e){} }
+function exportPayload(){
+  return JSON.stringify({app:"sori", v:1, exportedAt:new Date().toISOString(),
+    seedVersion:SEED.meta.version, state:ST});
+}
+async function ghPut(path, content, H){
+  const url = "https://api.github.com/repos/"+GH_REPO+"/contents/"+path;
+  let sha;
+  try{ const g = await fetch(url, {headers:H}); if(g.ok) sha = (await g.json()).sha; }catch(e){}
+  const body = { message: "backup "+todayStr(), content };
+  if(sha) body.sha = sha;
+  const r = await fetch(url, {method:"PUT", headers:H, body: JSON.stringify(body)});
+  return r.ok;
+}
+async function cloudBackup(){
+  const tok = ghToken();
+  if(!tok) return {ok:false, msg:"aucun jeton configuré"};
+  const b64 = btoa(unescape(encodeURIComponent(exportPayload())));
+  const H = { "Authorization": "Bearer "+tok, "Accept": "application/vnd.github+json" };
+  try{
+    const ok1 = await ghPut("exports/latest.json", b64, H);
+    const ok2 = ok1 && await ghPut("exports/sori-export-"+todayStr()+".json", b64, H);
+    if(ok1 && ok2){ ST.lastCloud = todayStr(); ST.lastExport = todayStr(); save(); return {ok:true}; }
+    return {ok:false, msg:"refus API (jeton invalide/expiré ?)"};
+  }catch(e){ return {ok:false, msg:"hors ligne ?"}; }
+}
+function autoCloudBackup(){   // silencieux, au plus 1x/jour, fin de session
+  if(ghToken() && ST.lastCloud !== todayStr()) cloudBackup();
+}
+
 async function exportState(){
   ST.lastExport = todayStr(); save();
   const payload = JSON.stringify({app:"sori", v:1, exportedAt:new Date().toISOString(),

@@ -1,5 +1,5 @@
 /* Sori service worker — network-first (mises à jour auto), repli cache (hors-ligne) */
-const CACHE = "sori-v10";
+const CACHE = "sori-v11";
 const ASSETS = ["./", "./index.html", "./style.css", "./themes.css", "./themes.js",
                 "./engine.js", "./app.js", "./data.js", "./extra.js",
                 "./events-data.js", "./events.js",
@@ -16,6 +16,7 @@ self.addEventListener("activate", e => {
 });
 self.addEventListener("fetch", e => {
   if (e.request.method !== "GET") return;
+  if (new URL(e.request.url).origin !== self.location.origin) return;  // api.github.com etc. : ne pas intercepter/cacher
   e.respondWith(
     /* no-cache: toujours revalider aupres du serveur (304 pas cher via ETag)
        -> les mises a jour arrivent vraiment, le repli cache gere le hors-ligne */
