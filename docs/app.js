@@ -255,6 +255,7 @@ function showTrivia(card, it){
   if(!x) return false;
   const bits = [];
   if(x.ex) bits.push(`<div class="tkr">${esc(x.ex)}</div>${x.exFr?`<div class="tfr">${esc(x.exFr)}</div>`:""}`);
+  if(x.conj) bits.push(`<div class="tconj">활용 ${esc(x.conj)}</div>`);
   if(x.note) bits.push(`<div class="tnote">💡 ${esc(x.note)}</div>`);
   if(!bits.length) return false;
   card.appendChild(el(`<div class="trivia">${bits.join("")}</div>`));

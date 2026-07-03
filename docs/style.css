@@ -67,6 +67,7 @@ h2{margin:0 0 6px; font-size:1.05rem}
 .trivia .tkr{font-size:1.05rem; font-weight:600}
 .trivia .tfr{color:var(--dim); margin-top:2px}
 .trivia .tnote{color:var(--warn); margin-top:6px}
+.trivia .tconj{color:var(--acc); margin-top:4px; font-size:.95rem}
 
 /* construction de phrase */
 .built{min-height:52px; background:var(--panel2); border:1px dashed var(--line);
