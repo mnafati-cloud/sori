@@ -1,0 +1,1208 @@
+[
+ {
+  "fr": "C'est vrai ? / Sérieux ?",
+  "kr": "진짜요?",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Génial ! / C'est dingue !",
+  "kr": "대박!",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Aïe / Oh là là (fatigue, douleur)",
+  "kr": "아이고",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Mouais... / Je sais pas trop",
+  "kr": "글쎄요",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Bien sûr ! / Évidemment !",
+  "kr": "그럼요",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Exact / C'est ça",
+  "kr": "맞아요",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Pas encore (réponse courte)",
+  "kr": "아직이요",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Déjà ?",
+  "kr": "벌써요?",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Non, sérieux ?! / Pas possible...",
+  "kr": "설마",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Oh non... / Comment faire ?!",
+  "kr": "어떡해",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Un instant ! / Attendez !",
+  "kr": "잠깐만요",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Comme tu dis / C'est clair",
+  "kr": "그러게요",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Tant pis / On n'y peut rien",
+  "kr": "어쩔 수 없죠",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Ouf ! / Quel soulagement",
+  "kr": "다행이다",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Ça doit être dur (empathie)",
+  "kr": "힘들겠다",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "La chance ! / J'aimerais bien",
+  "kr": "좋겠다",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Hein ?! / Nooon (choc, argot)",
+  "kr": "헐",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Oh ! / Oh là là (surprise)",
+  "kr": "어머",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Mon Dieu ! / Ça alors !",
+  "kr": "세상에",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "C'est pas possible ! / N'importe quoi !",
+  "kr": "말도 안 돼",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Compris / D'accord",
+  "kr": "알겠어요",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "N'est-ce pas ? / Voilà, hein",
+  "kr": "그렇죠",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Ah oui, c'est vrai ! (souvenir soudain)",
+  "kr": "아 맞다",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Tu m'as fait peur !",
+  "kr": "깜짝이야",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Courage ! / Allez !",
+  "kr": "화이팅!",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Exactement ! / C'est ce que je dis",
+  "kr": "그러니까요",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Je me disais bien... / Pas étonnant",
+  "kr": "어쩐지",
+  "type": "phrase",
+  "theme": "a2::reactions"
+ },
+ {
+  "fr": "Kimbap (rouleau de riz aux algues)",
+  "kr": "김밥",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Tteokbokki (gâteaux de riz sauce piquante)",
+  "kr": "떡볶이",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Samgyeopsal (poitrine de porc grillée)",
+  "kr": "삼겹살",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Poulet frit (coréen)",
+  "kr": "치킨",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Ragoût de kimchi",
+  "kr": "김치찌개",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Ragoût de pâte de soja",
+  "kr": "된장찌개",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Naengmyeon (nouilles froides)",
+  "kr": "냉면",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Samgyetang (soupe de poulet au ginseng)",
+  "kr": "삼계탕",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Pajeon (galette aux oignons verts)",
+  "kr": "파전",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Japchae (vermicelles sautés)",
+  "kr": "잡채",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Ragoût de tofu soyeux",
+  "kr": "순두부찌개",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Galbi (côtes marinées grillées)",
+  "kr": "갈비",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Bulgogi (bœuf mariné sauté)",
+  "kr": "불고기",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Bibimbap (riz mélangé)",
+  "kr": "비빔밥",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Banchan (petits accompagnements)",
+  "kr": "반찬",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Bol de riz (commandé à part)",
+  "kr": "공깃밥",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Soju",
+  "kr": "소주",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Bière",
+  "kr": "맥주",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Makgeolli (alcool de riz)",
+  "kr": "막걸리",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Poisson cru (hoe)",
+  "kr": "회",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Beignets frits (twigim)",
+  "kr": "튀김",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Mandu (raviolis coréens)",
+  "kr": "만두",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Ramyeon (nouilles instantanées)",
+  "kr": "라면",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Nouilles (guksu)",
+  "kr": "국수",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Kimchi",
+  "kr": "김치",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Jjajangmyeon (nouilles sauce soja noire)",
+  "kr": "짜장면",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Jjamppong (soupe de nouilles épicée aux fruits de mer)",
+  "kr": "짬뽕",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Porc pané (donkatsu)",
+  "kr": "돈가스",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Gukbap (soupe avec riz)",
+  "kr": "국밥",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Hotteok (crêpe fourrée sucrée)",
+  "kr": "호떡",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Bungeoppang (gaufre-poisson)",
+  "kr": "붕어빵",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Eomuk (gâteau de poisson)",
+  "kr": "어묵",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "T'es libre quand ?",
+  "kr": "언제 시간 돼요?",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "On se retrouve à quelle heure ?",
+  "kr": "몇 시에 만날까요?",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "On se voit où ?",
+  "kr": "어디서 볼까요?",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Ça marche, à ce moment-là !",
+  "kr": "좋아요, 그때 봐요!",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Je risque d'être en retard.",
+  "kr": "늦을 것 같아요.",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "J'arrive presque !",
+  "kr": "거의 다 왔어요.",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Commencez sans moi.",
+  "kr": "먼저 시작하세요.",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "On se voit une prochaine fois.",
+  "kr": "다음에 봐요.",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Il m'est arrivé un imprévu.",
+  "kr": "갑자기 일이 생겼어요.",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "On peut reporter notre rendez-vous ?",
+  "kr": "약속 좀 미뤄도 될까요?",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Je te contacte en arrivant.",
+  "kr": "도착하면 연락할게요.",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "T'en es où, là ? (sur le trajet)",
+  "kr": "지금 어디쯤이에요?",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Je suis en route, là.",
+  "kr": "지금 가고 있어요.",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Ça y est, je suis arrivé(e).",
+  "kr": "저 도착했어요.",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "On se voit à la sortie 2 (du métro).",
+  "kr": "2번 출구에서 봐요.",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Quand est-ce que ça t'arrange ?",
+  "kr": "언제가 편해요?",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Moi, n'importe quand, ça me va.",
+  "kr": "저는 아무 때나 괜찮아요.",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Ce jour-là, ça risque d'être compliqué.",
+  "kr": "그날은 좀 어려울 것 같아요.",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Un autre jour, ça irait ?",
+  "kr": "다른 날은 어때요?",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Je crois que je pourrai pas venir aujourd'hui.",
+  "kr": "오늘 못 갈 것 같아요.",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "À tout à l'heure !",
+  "kr": "이따가 봐요!",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Prends ton temps (pour venir).",
+  "kr": "천천히 오세요.",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "T'es parti(e) de chez toi ?",
+  "kr": "출발했어요?",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Samedi soir, ça te va ?",
+  "kr": "토요일 저녁 괜찮아요?",
+  "type": "phrase",
+  "theme": "b1::plans"
+ },
+ {
+  "fr": "Par hasard / excusez-moi... (pour aborder)",
+  "kr": "혹시",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "De toute façon",
+  "kr": "어차피",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "D'abord / pour commencer",
+  "kr": "일단",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Évidemment / bien sûr",
+  "kr": "당연히",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Clairement / c'est sûr",
+  "kr": "확실히",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Pas la peine de... (avec négation)",
+  "kr": "굳이",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Vachement (oral)",
+  "kr": "되게",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Super / énormément (oral)",
+  "kr": "엄청",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Un peu / légèrement",
+  "kr": "약간",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Assez ! / arrêter de (그만 + verbe)",
+  "kr": "그만",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Sans arrêt / continuellement",
+  "kr": "계속",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "À l'instant / il y a une seconde",
+  "kr": "방금",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Tout de suite / dans un instant",
+  "kr": "금방",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "À l'avance",
+  "kr": "미리",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Finalement / au bout du compte",
+  "kr": "결국",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Déjà ?! (surprise)",
+  "kr": "벌써",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Tout à l'heure (passé)",
+  "kr": "아까",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Tout à l'heure (futur)",
+  "kr": "이따가",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Vraiment (oral)",
+  "kr": "진짜",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Juste là / immédiatement",
+  "kr": "바로",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "À la base / d'origine",
+  "kr": "원래",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Exprès / délibérément",
+  "kr": "일부러",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Juste / comme ça (sans raison)",
+  "kr": "그냥",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "alarme (réveil)",
+  "kr": "알람",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "se laver le visage",
+  "kr": "세수하다",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "se brosser les dents",
+  "kr": "양치질하다",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "se maquiller",
+  "kr": "화장하다",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "se raser",
+  "kr": "면도하다",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "aspirateur",
+  "kr": "청소기",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "machine à laver",
+  "kr": "세탁기",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "sèche-linge",
+  "kr": "건조기",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "climatisation",
+  "kr": "에어컨",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "radiateur (chauffage d'appoint)",
+  "kr": "히터",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "ventilateur",
+  "kr": "선풍기",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "chaudière (chauffage au sol)",
+  "kr": "보일러",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "tri des déchets",
+  "kr": "분리수거",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "livraison",
+  "kr": "배달",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "se faire livrer (commander)",
+  "kr": "배달시키다",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "entrée (d'un logement)",
+  "kr": "현관",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "ascenseur",
+  "kr": "엘리베이터",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "escalier",
+  "kr": "계단",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "toit-terrasse",
+  "kr": "옥상",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "micro-ondes",
+  "kr": "전자레인지",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "cuiseur à riz",
+  "kr": "밥솥",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "fontaine à eau (filtrée)",
+  "kr": "정수기",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "wifi",
+  "kr": "와이파이",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "télécommande",
+  "kr": "리모컨",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "couette",
+  "kr": "이불",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "sèche-cheveux",
+  "kr": "드라이기",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "lingette humide",
+  "kr": "물티슈",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "serrure à code",
+  "kr": "도어락",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "Verre (matière)",
+  "kr": "유리",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Plastique",
+  "kr": "플라스틱",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Papier",
+  "kr": "종이",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Cuir",
+  "kr": "가죽",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Caoutchouc",
+  "kr": "고무",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Métal",
+  "kr": "금속",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Or (métal)",
+  "kr": "금",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Argent (métal)",
+  "kr": "은",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Coton (matière)",
+  "kr": "면",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Rond",
+  "kr": "동그랗다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Carré (forme)",
+  "kr": "네모나다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Pointu",
+  "kr": "뾰족하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Lisse",
+  "kr": "매끄럽다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Rugueux, rêche",
+  "kr": "거칠다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Moelleux",
+  "kr": "푹신하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Ferme, dur (consistance)",
+  "kr": "단단하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Motif (tissu, surface)",
+  "kr": "무늬",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Rayures, rayé",
+  "kr": "줄무늬",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "À pois",
+  "kr": "물방울무늬",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "À carreaux",
+  "kr": "체크무늬",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Neuf (objet)",
+  "kr": "새것",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "D'occasion",
+  "kr": "중고",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Se casser (verre, écran)",
+  "kr": "깨지다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "C'est fait en quoi ?",
+  "kr": "이거 뭘로 만든 거예요?",
+  "type": "phrase",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Donnez-m'en un neuf, s'il vous plaît.",
+  "kr": "새 걸로 주세요.",
+  "type": "phrase",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Vous pourriez me prendre en photo ? (très poli)",
+  "kr": "사진 좀 찍어 주시겠어요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Il y a quelqu'un ici ? (place prise ?)",
+  "kr": "여기 자리 있어요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Vous faites la queue ?",
+  "kr": "줄 서신 거예요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Pardon, je passe",
+  "kr": "지나갈게요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Après vous / allez-y d'abord",
+  "kr": "먼저 가세요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Encore une fois, svp (pour faire répéter, court)",
+  "kr": "다시 한 번만요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Vous allez jusqu'où ?",
+  "kr": "어디까지 가세요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Il faut attendre combien de temps ?",
+  "kr": "얼마나 기다려야 해요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "C'est possible à emporter ?",
+  "kr": "포장 돼요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Je supporte mal le piquant",
+  "kr": "매운 거 잘 못 먹어요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Faites les additions séparées, svp",
+  "kr": "따로 계산해 주세요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Pas besoin du ticket de caisse",
+  "kr": "영수증은 괜찮아요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Version glacée, svp (café)",
+  "kr": "아이스로 주세요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "C'est pour manger sur place",
+  "kr": "먹고 갈게요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Réchauffez-le, svp (supérette)",
+  "kr": "데워 주세요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Rechargez de 10 000 wons, svp (T-money)",
+  "kr": "만 원 충전해 주세요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Je descends ! (bus)",
+  "kr": "저 내릴게요!",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Je me suis trompé (de bus/métro)",
+  "kr": "잘못 탔어요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "On sort par quelle sortie ?",
+  "kr": "몇 번 출구로 나가요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Le dernier métro est à quelle heure ?",
+  "kr": "막차가 몇 시예요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Le code des toilettes, svp",
+  "kr": "화장실 비밀번호 좀 알려 주세요.",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "C'est remboursable ?",
+  "kr": "환불 돼요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Un refill, c'est possible ?",
+  "kr": "리필 돼요?",
+  "type": "phrase",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Salle de sport (musculation)",
+  "kr": "헬스장",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Course à pied",
+  "kr": "달리기",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Yoga",
+  "kr": "요가",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Étirements / stretching",
+  "kr": "스트레칭",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Faire du vélo",
+  "kr": "자전거를 타다",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Sueur",
+  "kr": "땀",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Transpirer",
+  "kr": "땀이 나다",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Muscle",
+  "kr": "근육",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Courbatures",
+  "kr": "근육통",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Régime (pour maigrir)",
+  "kr": "다이어트",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Maigrir / perdre du poids",
+  "kr": "살이 빠지다",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Match (de sport)",
+  "kr": "경기",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Équipe",
+  "kr": "팀",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Encourager / supporter (une équipe, un artiste)",
+  "kr": "응원하다",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Condition physique / endurance",
+  "kr": "체력",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Être essoufflé",
+  "kr": "숨이 차다",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Séances avec un coach perso (PT)",
+  "kr": "피티",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Sport à la maison",
+  "kr": "홈트",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Je me suis abonné à la salle de sport.",
+  "kr": "헬스장 끊었어요.",
+  "type": "phrase",
+  "theme": "a2::loisirs"
+ }
+]
