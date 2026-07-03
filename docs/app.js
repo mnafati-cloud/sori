@@ -771,6 +771,9 @@ function renderStats(){
       <button class="btn ghost" id="imp">📥 Importer</button>
     </div>
     <input type="file" id="impfile" accept=".json,application/json">
+    <div class="section-title" style="margin-top:14px">✈️ Mode avion</div>
+    <div class="row" style="margin-top:6px"><button class="btn ghost" id="dlaudio">Télécharger tout l'audio (~17 Mo)</button></div>
+    <p class="dim" id="dlstatus" style="margin-top:6px">Rend chaque prononciation disponible hors connexion (avion, métro coréen).</p>
     <div class="section-title" style="margin-top:14px">☁️ Sauvegarde cloud (GitHub privé)</div>
     <label>Jeton d'accès <input type="password" id="ghtok" placeholder="${ghToken()?"•••• configuré ••••":"github_pat_…"}" autocomplete="off"></label>
     <div class="row" style="margin-top:8px">
@@ -793,6 +796,29 @@ function renderStats(){
   set.querySelector("#exp").onclick  = exportState;
   set.querySelector("#imp").onclick  = ()=>set.querySelector("#impfile").click();
   set.querySelector("#impfile").onchange = importState;
+  set.querySelector("#dlaudio").onclick = async ()=>{
+    const st = set.querySelector("#dlstatus");
+    const btn = set.querySelector("#dlaudio"); btn.disabled = true;
+    try{
+      const cache = await caches.open("sori-audio-store");
+      const ids = [...AUDIO_IDS];
+      let done = 0, added = 0, fail = 0;
+      const CONC = 6;
+      async function one(id){
+        const url = "./audio/"+id+".mp3";
+        if(!(await cache.match(url))){
+          try{ await cache.add(url); added++; }catch(e){ fail++; }
+        }
+        done++;
+        if(done % 40 === 0 || done === ids.length)
+          st.textContent = `Téléchargement… ${done}/${ids.length}` + (fail?` (${fail} échecs)`:"");
+      }
+      for(let i=0; i<ids.length; i+=CONC) await Promise.all(ids.slice(i, i+CONC).map(one));
+      st.textContent = fail ? `⚠️ ${done-fail}/${ids.length} audios hors-ligne (${fail} échecs — relance pour compléter).`
+                            : `✅ Tout l'audio est disponible hors connexion (${ids.length} fichiers).`;
+    }catch(e){ st.textContent = "❌ Échec (connexion ?) — relance pour reprendre où c'était."; }
+    btn.disabled = false;
+  };
   set.querySelector("#ghtok").onchange = e=>{ setGhToken(e.target.value); e.target.value=""; render(); };
   set.querySelector("#cloud").onclick = async ()=>{
     const st = set.querySelector("#cloudstatus");

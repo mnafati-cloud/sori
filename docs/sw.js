@@ -1,5 +1,5 @@
 /* Sori service worker — network-first (mises à jour auto), repli cache (hors-ligne) */
-const CACHE = "sori-v16";
+const CACHE = "sori-v17";
 const ASSETS = ["./", "./index.html", "./style.css", "./themes.css", "./themes.js",
                 "./engine.js", "./app.js", "./data.js", "./extra.js",
                 "./events-data.js", "./events.js", "./search.js", "./exam.js", "./quests.js",
@@ -11,7 +11,9 @@ self.addEventListener("install", e => {
 });
 self.addEventListener("activate", e => {
   e.waitUntil(
-    caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+    /* "sori-audio-store" = telechargement mode avion (app.js) : ne JAMAIS le purger ici */
+    caches.keys().then(keys => Promise.all(
+      keys.filter(k => k !== CACHE && k !== "sori-audio-store").map(k => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
