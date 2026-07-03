@@ -61,6 +61,7 @@ const ALL_IDS = SEED.items.map(it=>it.id);
    Par jour : compteurs globaux ok/ko/n + par TYPE d'exercice (k), temps de
    réponse agrégés, et compteurs "propres" ok1/ko1 + shadow so/sn (ALGORITHM.md). */
 function logAnswer(ok, kind, r, rt){
+  sfx(ok);                                  // feedback sonore immédiat (tous les modes journalisés)
   const t = todayStr();
   const l = ST.log[t] || (ST.log[t]={ok:0,ko:0,n:0,listen:0});
   l.n++; if(kind==="listen"||kind==="dictee"){ l.listen++; }
@@ -78,6 +79,47 @@ function logAnswer(ok, kind, r, rt){
   save(); updateDayCount();
 }
 let EXO_T0 = 0;   // début d'affichage de l'exercice courant (temps de réponse)
+
+/* ===== sons de feedback (WebAudio généré, discret, immédiat) — respecte le mute ===== */
+let ACTX = null;
+function sfx(ok){
+  if(ST.set.mute) return;
+  try{
+    ACTX = ACTX || new (window.AudioContext||window.webkitAudioContext)();
+    if(ACTX.state === "suspended") ACTX.resume();
+    const t = ACTX.currentTime;
+    const g = ACTX.createGain(); g.connect(ACTX.destination);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(ok ? 0.10 : 0.13, t + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + (ok ? 0.22 : 0.28));
+    const o = ACTX.createOscillator(); o.connect(g);
+    if(ok){ o.type = "sine"; o.frequency.setValueAtTime(880, t); o.frequency.setValueAtTime(1318.5, t + 0.08); }
+    else  { o.type = "triangle"; o.frequency.setValueAtTime(220, t); o.frequency.exponentialRampToValueAtTime(150, t + 0.24); }
+    o.start(t); o.stop(t + (ok ? 0.24 : 0.3));
+  }catch(e){}
+}
+
+/* ===== annulation de la dernière réponse (clic accidentel) — 1 niveau ===== */
+let UNDO = null;
+function armUndo(){
+  const t = todayStr();
+  UNDO = {
+    items: JSON.parse(JSON.stringify(ST.items)),
+    log: ST.log[t] ? JSON.parse(JSON.stringify(ST.log[t])) : null,
+    xp: ST.xp||0, combo: COMBO, sessfail: [...SESSFAIL],
+    q: [...Q], qpos: QPOS,
+  };
+}
+function undoLast(){
+  if(!UNDO) return;
+  const t = todayStr();
+  ST.items = UNDO.items;
+  if(UNDO.log === null) delete ST.log[t]; else ST.log[t] = UNDO.log;
+  ST.xp = UNDO.xp; COMBO = UNDO.combo; SESSFAIL = UNDO.sessfail;
+  Q = UNDO.q; QPOS = UNDO.qpos;
+  UNDO = null;
+  save(); saveSess(); updateDayCount(); render();
+}
 function updateDayCount(){
   const l = ST.log[todayStr()];
   document.getElementById("daycount").textContent = l ? l.n : 0;
@@ -186,10 +228,18 @@ document.getElementById("tabs").addEventListener("click", e=>{
   render();
 });
 function el(html){ const t=document.createElement("template"); t.innerHTML=html.trim(); return t.content.firstChild; }
+let COOLDOWN_T = null;
+function armCooldown(){
+  /* anti-misclick : 450 ms de blocage des boutons quand une nouvelle carte apparaît
+     (le doigt arrive parfois sur l'écran au moment du changement) */
+  $screen.classList.add("cooldown");
+  clearTimeout(COOLDOWN_T);
+  COOLDOWN_T = setTimeout(()=>$screen.classList.remove("cooldown"), 450);
+}
 function render(){
   $screen.innerHTML="";
-  if(TAB==="review") renderReview();
-  else if(TAB==="listen") renderListen();
+  if(TAB==="review"){ renderReview(); armCooldown(); }
+  else if(TAB==="listen"){ renderListen(); armCooldown(); }
   else if(TAB==="trip") renderTrip();
   else renderStats();
   updateDayCount();
@@ -326,6 +376,7 @@ function showTrivia(card, it){
   return true;
 }
 function afterAnswer(it, ok, sawTrivia, kind){
+  armUndo();                                // photo AVANT toute mutation (annulation possible)
   const r = BONUS ? null : applyAnswer(it, ok);
   logAnswer(ok, kind || "review", r, EXO_T0 ? Date.now()-EXO_T0 : 0);
   /* combo & XP (plancher motivant, jamais bloquant) */
@@ -341,15 +392,14 @@ function afterAnswer(it, ok, sawTrivia, kind){
   }
   QPOS++;
   saveSess();
-  if(sawTrivia){
-    /* trivia affiché : lecture à ton rythme, on passe AU CLIC (pas de minuterie) */
-    const row = el(`<div class="row" style="margin-top:12px"><button class="btn" id="cont">Continuer →</button></div>`);
-    row.querySelector("#cont").onclick = ()=>render();
-    ($screen.querySelector(".card:last-of-type") || $screen).appendChild(row);
-    row.scrollIntoView({block:"nearest", behavior:"smooth"});   // filet : bouton toujours en vue
-  } else {
-    setTimeout(render, ok ? 750 : 1500);
-  }
+  /* TOUJOURS au clic (cohérent, fini les avances-surprises) + annulation à portée de pouce */
+  const row = el(`<div class="row" style="margin-top:12px">
+    <button class="btn ghost" id="undo" title="annuler cette réponse" style="flex:0 0 25%">↶</button>
+    <button class="btn" id="cont">Continuer →</button></div>`);
+  row.querySelector("#cont").onclick = ()=>{ UNDO = null; render(); };
+  row.querySelector("#undo").onclick = undoLast;
+  ($screen.querySelector(".card:last-of-type") || $screen).appendChild(row);
+  row.scrollIntoView({block:"nearest", behavior:"smooth"});
 }
 /* stage 1-2 : QCM coréen -> français */
 function exoQcmKr2Fr(it){
@@ -409,7 +459,15 @@ function exoQcmFr2Kr(it){
 }
 /* stage 4-5 : rappel (indicé ou pur), auto-évalué */
 function exoRecall(it, hinted){
-  const hint = hinted ? `<div class="hint">${esc(it.kr[0])}${"▮".repeat(Math.max(1,[...it.kr.replace(/\s/g,"")].length-1))}</div>` : "";
+  /* indice : 1re syllabe révélée, les autres en tuiles douces (espaces = respiration) */
+  let hint = "";
+  if(hinted){
+    const chars = [...it.kr];
+    hint = `<div class="hint2">` + chars.map((c,i)=>
+      c===" " ? `<span class="hgap"></span>`
+      : (i===0 ? `<span class="hs show">${esc(c)}</span>` : `<span class="hs"></span>`)
+    ).join("") + `</div>`;
+  }
   const card = el(`<div class="card center">
     <div class="dim">${hinted?"Rappel avec indice":"Rappel"} — dis-le à voix haute</div>
     <div class="big-fr">${esc(it.fr)}</div>${hint}
@@ -426,8 +484,8 @@ function exoRecall(it, hinted){
     const again = el(`<button class="btn ko">Encore</button>`);
     const good  = el(`<button class="btn ok">Bien</button>`);
     const kind = hinted ? "rec4" : "rec5";
-    again.onclick = ()=>afterAnswer(it, false, false, kind);
-    good.onclick  = ()=>afterAnswer(it, true, false, kind);
+    again.onclick = ()=>{ again.disabled=good.disabled=true; afterAnswer(it, false, false, kind); };
+    good.onclick  = ()=>{ again.disabled=good.disabled=true; afterAnswer(it, true, false, kind); };
     row.append(again, good);
   };
   $screen.appendChild(card);
@@ -448,8 +506,8 @@ function exoRecallRev(it){
     row.innerHTML = "";
     const again = el(`<button class="btn ko">Encore</button>`);
     const good  = el(`<button class="btn ok">Bien</button>`);
-    again.onclick = ()=>afterAnswer(it, false, false, "recrev");
-    good.onclick  = ()=>afterAnswer(it, true, false, "recrev");
+    again.onclick = ()=>{ again.disabled=good.disabled=true; afterAnswer(it, false, false, "recrev"); };
+    good.onclick  = ()=>{ again.disabled=good.disabled=true; afterAnswer(it, true, false, "recrev"); };
     row.append(again, good);
   };
   $screen.appendChild(card);

@@ -1,0 +1,650 @@
+[
+ {
+  "fr": "situation, circonstances",
+  "kr": "상황",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "condition (exigence, termes)",
+  "kr": "조건",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "critère, norme de référence",
+  "kr": "기준",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "objet, public visé (cible)",
+  "kr": "대상",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "processus, déroulement",
+  "kr": "과정",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "cause (d'un problème)",
+  "kr": "원인",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "effet, efficacité",
+  "kr": "효과",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "valeur (importance, mérite)",
+  "kr": "가치",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "objectif, but à atteindre",
+  "kr": "목표",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "niveau (qualité, degré)",
+  "kr": "수준",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "documents, données",
+  "kr": "자료",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "information, renseignement",
+  "kr": "정보",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "système, institution (règles)",
+  "kr": "제도",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "politique (mesures, programme)",
+  "kr": "정책",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "génération",
+  "kr": "세대",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "région, zone",
+  "kr": "지역",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "installations, équipements",
+  "kr": "시설",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "produit (fabriqué)",
+  "kr": "제품",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "technique, technologie",
+  "kr": "기술",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "droit (ce qu'on peut exiger)",
+  "kr": "권리",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "devoir, obligation",
+  "kr": "의무",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "rôle",
+  "kr": "역할",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "changement",
+  "kr": "변화",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "caractéristique, trait distinctif",
+  "kr": "특징",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "connaissance, savoir",
+  "kr": "지식",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "règle, règlement",
+  "kr": "규칙",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "état (d'une chose, de santé)",
+  "kr": "상태",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "tradition",
+  "kr": "전통",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "individu, personnel (privé)",
+  "kr": "개인",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "domaine, secteur",
+  "kr": "분야",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "peuple, citoyens d'un pays",
+  "kr": "국민",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "conflit, tension (relationnelle)",
+  "kr": "갈등",
+  "type": "word",
+  "theme": "b2::abstrait"
+ },
+ {
+  "fr": "se renseigner (sur), vérifier",
+  "kr": "알아보다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "comprendre (à l'oreille)",
+  "kr": "알아듣다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "remarquer, se rendre compte de",
+  "kr": "알아차리다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "ne pas reconnaître (qqn)",
+  "kr": "몰라보다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "chercher (dans un dico, sur Internet)",
+  "kr": "찾아보다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "aller voir (qqn), se rendre auprès de",
+  "kr": "찾아가다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "venir voir (qqn), rendre visite",
+  "kr": "찾아오다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "faire l'aller-retour, aller (et revenir)",
+  "kr": "다녀오다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "emmener (une personne, un animal)",
+  "kr": "데려가다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "amener (une personne, un animal)",
+  "kr": "데려오다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "raccompagner, déposer (qqn quelque part)",
+  "kr": "데려다주다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "apporter (qqch à qqn)",
+  "kr": "가져다주다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "retourner, rentrer (là-bas)",
+  "kr": "돌아가다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "revenir, rentrer (ici)",
+  "kr": "돌아오다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "écouter (une fois), essayer d'écouter",
+  "kr": "들어보다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "demander, poser une question",
+  "kr": "물어보다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "examiner, regarder attentivement",
+  "kr": "살펴보다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "regarder autour, faire le tour de",
+  "kr": "둘러보다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "passer (devant, par) ; s'écouler",
+  "kr": "지나가다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "dépasser sans s'arrêter, rater (un arrêt)",
+  "kr": "지나치다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "passer (au suivant), sauter",
+  "kr": "넘어가다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "sortir (vers ici) ; apparaître, être servi",
+  "kr": "나오다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "descendre (en s'éloignant)",
+  "kr": "내려가다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "monter (en s'éloignant) ; augmenter",
+  "kr": "올라가다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "faire un saut, passer par",
+  "kr": "들르다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "suivre, accompagner (qqn qui part)",
+  "kr": "따라가다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "suivre (vers soi), venir derrière",
+  "kr": "따라오다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "s'approcher ; (date, événement) approcher",
+  "kr": "다가오다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "se changer (de vêtements)",
+  "kr": "갈아입다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "aller accueillir (qqn qui arrive)",
+  "kr": "마중 나가다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "accompagner (qqn) à son départ, dire au revoir",
+  "kr": "배웅하다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "sortir (un objet de), retirer",
+  "kr": "꺼내다",
+  "type": "word",
+  "theme": "b2::verbes"
+ },
+ {
+  "fr": "Être difficile, exigeant (goûts, amour)",
+  "kr": "눈이 높다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Être généreux en quantité, voir grand (litt. grandes mains)",
+  "kr": "손이 크다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Savoir garder un secret (litt. bouche lourde)",
+  "kr": "입이 무겁다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Ne pas savoir tenir sa langue (litt. bouche légère)",
+  "kr": "입이 가볍다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Avoir du réseau, connaître tout le monde (litt. pied large)",
+  "kr": "발이 넓다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Se faire poser un lapin",
+  "kr": "바람을 맞다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Être débordé, ne plus avoir les idées claires (litt. esprit absent)",
+  "kr": "정신이 없다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Capter vite les non-dits, avoir du flair (nunchi rapide)",
+  "kr": "눈치가 빠르다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Guetter la réaction des autres, ne pas oser (nunchi)",
+  "kr": "눈치를 보다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Ne pas voir le temps passer",
+  "kr": "시간 가는 줄 모르다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Être influençable (litt. oreilles fines)",
+  "kr": "귀가 얇다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Régaler, payer sa tournée (pour fêter qqch)",
+  "kr": "한턱내다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Se faire arnaquer, payer trop cher",
+  "kr": "바가지를 쓰다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Ne pas avoir une minute à soi (litt. yeux et nez)",
+  "kr": "눈코 뜰 새 없다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Demander beaucoup de travail, d'attention (plat, tâche)",
+  "kr": "손이 많이 가다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Porter une lourde responsabilité (litt. épaules lourdes)",
+  "kr": "어깨가 무겁다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Avoir du culot, être sans gêne (litt. visage épais)",
+  "kr": "얼굴이 두껍다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Être lessivé, complètement épuisé (litt. kimchi de ciboules)",
+  "kr": "파김치가 되다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Rater un examen (litt. manger la soupe d'algues)",
+  "kr": "미역국을 먹다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Être refroidi, ambiance cassée (litt. vapeur échappée)",
+  "kr": "김이 새다",
+  "type": "word",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Belle chose inaccessible (litt. tteok en peinture)",
+  "kr": "그림의 떡",
+  "type": "phrase",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "C'est du gâteau, très facile (litt. bouillie refroidie)",
+  "kr": "식은 죽 먹기",
+  "type": "phrase",
+  "theme": "b2::idiomes"
+ },
+ {
+  "fr": "Mon petit frère a mangé tout le gâteau (il n'en reste rien).",
+  "kr": "동생이 케이크를 다 먹어 버렸어요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Le train est déjà parti (trop tard, tant pis).",
+  "kr": "기차가 벌써 떠나 버렸어요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Cette chanson me fait toujours rire.",
+  "kr": "그 노래는 항상 저를 웃게 해요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "La maman a fait coucher l'enfant tôt.",
+  "kr": "엄마가 아이를 일찍 자게 했어요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Je me suis levé trop tard et j'ai failli arriver en retard au travail.",
+  "kr": "늦잠을 자서 회사에 지각할 뻔했어요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "J'étais si occupé que j'ai failli oublier le rendez-vous.",
+  "kr": "너무 바빠서 약속을 잊어버릴 뻔했어요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "C'est ici l'école que je fréquentais (autrefois).",
+  "kr": "여기가 제가 다니던 학교예요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Où est le café que j'étais en train de boire tout à l'heure ?",
+  "kr": "아까 마시던 커피가 어디에 있어요?",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "En allant à l'école, j'ai rencontré un ami en chemin.",
+  "kr": "학교에 가다가 친구를 만났어요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Je me suis endormi en regardant la télévision.",
+  "kr": "텔레비전을 보다가 잠이 들었어요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Il ne faut pas entrer dans la chambre avec ses chaussures aux pieds.",
+  "kr": "신발을 신은 채로 방에 들어가면 안 돼요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "J'ai dormi avec la fenêtre laissée ouverte.",
+  "kr": "창문을 연 채로 잤어요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Ce livre se vend très bien en librairie en ce moment.",
+  "kr": "이 책은 요즘 서점에서 잘 팔려요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "La porte était verrouillée, donc je n'ai pas pu entrer chez moi.",
+  "kr": "문이 잠겨서 집에 못 들어갔어요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Tout en étant occupé, il m'aide pourtant toujours.",
+  "kr": "그 친구는 바쁘면서도 항상 저를 도와줘요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Tout en sachant tout, il n'a pourtant rien dit.",
+  "kr": "그 사람은 다 알면서도 아무 말도 안 했어요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Ce vêtement est joli, certes, mais trop cher.",
+  "kr": "이 옷은 예쁘기는 하지만 너무 비싸요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Le coréen est difficile, certes, mais vraiment intéressant.",
+  "kr": "한국어가 어렵기는 하지만 정말 재미있어요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Le bus ne venait pas, je n'ai pas eu d'autre choix que d'y aller à pied.",
+  "kr": "버스가 안 와서 걸어갈 수밖에 없었어요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "J'ai tellement de travail que je suis obligé de travailler même le week-end.",
+  "kr": "일이 너무 많아서 주말에도 일할 수밖에 없어요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Les gens ouvrent leurs parapluies. Il semble qu'il pleuve dehors.",
+  "kr": "사람들이 우산을 쓰네요. 밖에 비가 오나 봐요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ },
+ {
+  "fr": "Il y a beaucoup de monde devant cette boulangerie. Le pain doit être bon, apparemment.",
+  "kr": "저 빵집 앞에 사람이 많네요. 빵이 정말 맛있나 봐요.",
+  "type": "phrase",
+  "theme": "b2::grammaire"
+ }
+]
