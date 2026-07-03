@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>exam.js — banc d'essai</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+  #harness{max-width:560px; width:100%; margin:0 auto; padding:12px 16px 32px;
+    display:flex; flex-direction:column; gap:10px}
+  #harness h3{margin:8px 0 0; font-size:.8rem; text-transform:uppercase;
+    letter-spacing:1px; color:var(--dim)}
+  .hrow{display:flex; gap:8px; align-items:center; flex-wrap:wrap;
+    font-size:.85rem; color:var(--dim)}
+  .hrow input{width:90px; background:var(--panel2); border:1px solid var(--line);
+    color:var(--txt); border-radius:8px; padding:6px; font-size:.95rem}
+  #sanity, #out{white-space:pre-wrap; font-size:.75rem; background:var(--panel2);
+    border-radius:8px; padding:10px; overflow-x:auto; color:var(--txt);
+    font-family:ui-monospace,Consolas,monospace}
+</style>
+</head>
+<body>
+<header id="topbar">
+  <div class="brand">소리 <span>exam-test — vraies données (data.js)</span></div>
+</header>
+
+<main id="screen"><!-- rendu par SORI_EXAM --></main>
+
+<div id="harness">
+  <h3>Harnais de test</h3>
+  <div class="hrow">
+    seed <input id="seed" type="number" value="42">
+    <button class="btn small ghost" id="reseed">Re-rendre (RNG seedé)</button>
+    <button class="btn small ghost" id="rernd">Re-rendre (Math.random)</button>
+    <button class="btn small ghost" id="nohist">Sans historique</button>
+    <button class="btn small ghost" id="tiny">Petit deck (12 items)</button>
+  </div>
+  <h3>Sanity buildExam (pur, seed courant)</h3>
+  <div id="sanity">…</div>
+  <h3>Dernier onFinish(result)</h3>
+  <div id="out">— onFinish pas encore appelé —</div>
+</div>
+
+<script src="../data.js"></script>
+<script src="../extra.js"></script>
+<script src="../exam.js"></script>
+<script>
+"use strict";
+/* eff() minimal du banc d'essai : pas de localStorage ici, on prend le seed tel quel */
+const ITEMS = SEED.items.map(it => ({
+  id: it.id, fr: it.fr, kr: it.kr, type: it.type, theme: it.theme,
+  stage: it.stage, conf: it.conf || []
+}));
+/* petit deck synthétique : 9 mots + 3 phrases -> vérifie la réduction proportionnelle */
+const TINY = ITEMS.filter(it => it.type !== "phrase").slice(0, 9)
+      .concat(ITEMS.filter(it => it.type === "phrase").slice(0, 3));
+
+/* RNG seedé (mulberry32) — même seed => même examen */
+function mulberry32(a){
+  return function(){
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/* audio : MP3 natif si présent, sinon TTS coréen (comme app.js, en simplifié) */
+function speak(kr, id){
+  const a = new Audio("../audio/" + id + ".mp3");
+  a.play().catch(() => {
+    try{
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(String(kr).replace(/\(.*?\)/g, ""));
+      u.lang = "ko-KR"; u.rate = 0.9;
+      speechSynthesis.speak(u);
+    }catch(e){}
+  });
+}
+
+/* historique factice : progression 21/40 -> 27/40 (la carte doit montrer ↗) */
+const FAKE_HISTORY = [
+  { date:"2026-05-02", score:21, total:40, grade:"A2 solide",
+    sections:{A:{ok:7,n:12,pct:58},B:{ok:6,n:12,pct:50},C:{ok:4,n:8,pct:50},D:{ok:4,n:8,pct:50}},
+    weak:["a2::metiers","a2::lieux"] },
+  { date:"2026-06-06", score:27, total:40, grade:"A2+ / B1 en approche",
+    sections:{A:{ok:9,n:12,pct:75},B:{ok:8,n:12,pct:67},C:{ok:5,n:8,pct:63},D:{ok:5,n:8,pct:63}},
+    weak:["a2::verbes","voyage::resto"] }
+];
+
+const $screen = document.getElementById("screen");
+const $out = document.getElementById("out");
+const $sanity = document.getElementById("sanity");
+
+let HIST = FAKE_HISTORY.slice();   // onFinish pousse dedans, comme app.js le fera dans ST.exams
+
+function currentRnd(){
+  const s = parseInt(document.getElementById("seed").value, 10);
+  return isNaN(s) ? Math.random : mulberry32(s);
+}
+
+function sanity(items){
+  const s = parseInt(document.getElementById("seed").value, 10) || 42;
+  const e1 = SORI_EXAM.pure.buildExam(items, mulberry32(s));
+  const e2 = SORI_EXAM.pure.buildExam(items, mulberry32(s));
+  const ids = e1.questions.map(q => q.id);
+  const bySec = {};
+  e1.questions.forEach(q => bySec[q.section] = (bySec[q.section] || 0) + 1);
+  const strates = {"1-2":0, "3-4":0, "5":0};
+  e1.questions.filter(q => q.section === "A")
+    .forEach(q => strates[q.stage <= 2 ? "1-2" : q.stage <= 4 ? "3-4" : "5"]++);
+  $sanity.textContent =
+    "total: " + e1.total + "  sections: " + JSON.stringify(bySec) + "\n" +
+    "strates section A (attendu 3/5/4 si deck plein): " + JSON.stringify(strates) + "\n" +
+    "doublons d'items testés: " + (new Set(ids).size === ids.length ? "AUCUN ✅" : "OUI ❌") + "\n" +
+    "reproductible (2 builds, même seed): " +
+      (JSON.stringify(e1) === JSON.stringify(e2) ? "OUI ✅" : "NON ❌");
+}
+
+function paint(items, useSeed, hist){
+  $screen.innerHTML = "";
+  const opts = {
+    items: items,
+    extra: window.EXTRA || {},
+    speak: speak,
+    history: hist,
+    onFinish: (r) => {
+      /* app.js fera : ST.exams.push(Object.assign({}, r, {date: todayStr()})); save(); */
+      const stored = Object.assign({}, r, { date: new Date().toISOString().slice(0, 10) });
+      hist.push(stored);
+      $out.textContent = JSON.stringify(stored, null, 1);
+    },
+    onExit: () => paint(items, useSeed, hist)
+  };
+  if(useSeed) opts.random = currentRnd();
+  SORI_EXAM.renderCard($screen, opts);
+  sanity(items);
+}
+
+document.getElementById("reseed").onclick = () => paint(ITEMS, true, HIST);
+document.getElementById("rernd").onclick  = () => paint(ITEMS, false, HIST);
+document.getElementById("nohist").onclick = () => paint(ITEMS, true, []);
+document.getElementById("tiny").onclick   = () => paint(TINY, true, []);
+
+paint(ITEMS, true, HIST);
+</script>
+</body>
+</html>

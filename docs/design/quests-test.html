@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sori — test quêtes &amp; badges</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* page de test uniquement — jamais servie par l'app */
+  body{padding:16px; min-height:auto; display:block}
+  h1{font-size:1.2rem; margin:0 0 4px}
+  .panels{display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start; margin-top:14px}
+  .panel{flex:1 1 300px; max-width:380px; background:var(--panel2); border:1px solid var(--line);
+    border-radius:var(--r); padding:12px; display:flex; flex-direction:column; gap:12px}
+  .panel h2{font-size:.85rem; color:var(--acc); margin:0; font-family:monospace}
+  .panel .expect{font-size:.75rem; color:var(--dim); margin:-8px 0 0}
+  #checks{margin-top:14px; font-family:monospace; font-size:.8rem; line-height:1.7}
+  #checks .pass{color:var(--ok)} #checks .fail{color:var(--ko); font-weight:700}
+</style>
+</head>
+<body>
+<h1>🧪 Test quêtes du jour + badges</h1>
+<p class="dim">Charge le vrai moteur (quests.js) + le vrai style.css et rend la carte pour 3 états
+factices (rien fait / mi-parcours / tout fini) + une variante compacte. Aucune écriture localStorage.</p>
+
+<div id="checks"></div>
+<div class="panels" id="panels"></div>
+
+<script src="../quests.js"></script>
+<script>
+"use strict";
+var TODAY = "2026-07-03";
+
+/* ---------- états factices (format ST.log / ST) ---------- */
+/* nb de répliques par scénario (dans l'app : dérivé de window.SCENARIOS) */
+var SCEN_TOTALS = { resto:7, taxi:7, hotel:8, pharmacie:8, konbini:7, marche:7 };
+
+/* 1) rien fait aujourd'hui, carrière débutante */
+var S_VIDE = {
+  log: {},
+  state: { xp:0, streak:0,
+    itemsSummary:{ matures:0, beatenEnemies:0, totalEnemies:34, stage3plus:0, totalItems:700 },
+    scen:{}, scenTotals:SCEN_TOTALS, qdone:{} }
+};
+
+/* 2) mi-parcours : session en cours, carrière moyenne, 1 quête déjà réclamée */
+var LOG_MI = {};
+LOG_MI[TODAY] = { ok:28, ko:6, n:34, listen:6, xp:210, ok1:20, ko1:4,
+  k:{ qcm1:{o:6,x:2,t:40,c:8}, qcm2:{o:8,x:2,t:50,c:10}, qcm3:{o:4,x:1,t:20,c:5},
+      build:{o:2,x:1,t:30,c:3}, rec4:{o:3,x:0,t:15,c:3}, rec5:{o:3,x:1,t:20,c:4},
+      dictee:{o:2,x:1,t:12,c:3}, listen:{o:3,x:0,t:10,c:3}, scenario:{o:5,x:2,t:0,c:0} } };
+/* + 5 jours passés avec écoute (badge « oreille » : 6/7 -> pas encore) */
+for (var i = 1; i <= 5; i++) LOG_MI["2026-06-2" + i] = { ok:20, ko:4, n:24, listen:8, xp:180 };
+var S_MI = {
+  log: LOG_MI,
+  state: { xp:4200, streak:5,
+    itemsSummary:{ matures:140, beatenEnemies:12, totalEnemies:34, stage3plus:360, totalItems:700 },
+    scen:{ resto:7, taxi:4 }, scenTotals:SCEN_TOTALS, qdone:{} }
+};
+
+/* 3) tout fini : grosse journée, carrière accomplie, rien encore réclamé
+   -> 3 boutons « Réclamer », dépassements « ✨ », tous les badges allumés */
+var LOG_FIN = {};
+LOG_FIN[TODAY] = { ok:104, ko:16, n:120, listen:25, xp:640, ok1:70, ko1:8,
+  k:{ qcm1:{o:20,x:3,t:90,c:23}, qcm2:{o:22,x:3,t:100,c:25}, qcm3:{o:12,x:2,t:60,c:14},
+      build:{o:8,x:1,t:70,c:9}, rec4:{o:9,x:1,t:40,c:10}, rec5:{o:9,x:1,t:45,c:10},
+      dictee:{o:8,x:2,t:35,c:10}, listen:{o:12,x:3,t:50,c:15}, scenario:{o:14,x:2,t:0,c:0} } };
+for (var j = 1; j <= 9; j++) LOG_FIN["2026-06-0" + j] = { ok:30, ko:5, n:35, listen:12, xp:250 };
+var S_FIN = {
+  log: LOG_FIN,
+  state: { xp:15200, streak:45,
+    itemsSummary:{ matures:650, beatenEnemies:34, totalEnemies:34, stage3plus:640, totalItems:700 },
+    scen:{ resto:7, taxi:7, hotel:8, pharmacie:8, konbini:7, marche:7 },
+    scenTotals:SCEN_TOTALS, examCount:1, qdone:{} }
+};
+
+/* la quête facile du jour est marquée « déjà réclamée » dans le panneau 2 */
+var QUESTS_TODAY = SORI_QUESTS.pure.dailyQuests(TODAY);
+S_MI.state.qdone[QUESTS_TODAY[0].id] = true;
+
+/* ---------- panneaux ---------- */
+var PANELS = [
+  { name:"rien fait",            s:S_VIDE, note:"attendu : 3 quêtes à 0, aucun bouton, tous les badges gris" },
+  { name:"mi-parcours",          s:S_MI,   note:"attendu : progrès partiels, quête facile ✅ (réclamée), badges 🔥/🌱 allumés" },
+  { name:"tout fini",            s:S_FIN,  note:"attendu : 3 boutons « Réclamer », dépassements ✨, 13/13 badges" },
+  { name:"compact (fin session)",s:S_MI,   note:"attendu : 3 quêtes seules, PAS de grille badges", compact:true }
+];
+var $panels = document.getElementById("panels");
+PANELS.forEach(function(p){
+  var panel = document.createElement("div"); panel.className = "panel";
+  panel.innerHTML = "<h2>" + p.name + " — today = " + TODAY + "</h2><p class='expect'>" + p.note + "</p>";
+  SORI_QUESTS.renderCard(panel, {
+    today: TODAY, log: p.s.log, state: p.s.state, compact: !!p.compact,
+    onClaim: function(id, bonus){ console.log("claim :", id, "+"+bonus+" XP"); }
+  });
+  $panels.appendChild(panel);
+});
+
+/* ---------- assertions automatiques ---------- */
+var P = SORI_QUESTS.pure, out = [];
+function check(name, cond){ out.push({ name: name, ok: !!cond }); }
+
+/* sélection déterministe */
+var qa = P.dailyQuests(TODAY), qb = P.dailyQuests(TODAY);
+check("même date -> mêmes 3 quêtes", qa.map(function(q){return q.id;}).join() === qb.map(function(q){return q.id;}).join());
+check("3 quêtes, ids distincts", qa.length===3 && new Set(qa.map(function(q){return q.id;})).size===3);
+check("paliers facile/moyen/ambitieux", qa[0].tier==="facile" && qa[1].tier==="moyen" && qa[2].tier==="ambitieux");
+check("bonus 30/50/80", qa[0].bonus===30 && qa[1].bonus===50 && qa[2].bonus===80);
+var combos = new Set();
+for (var d = 1; d <= 28; d++) combos.add(P.dailyQuests("2026-08-"+String(d).padStart(2,"0")).map(function(q){return q.id;}).join());
+check("28 dates -> sélections variées (≥ 6 combos)", combos.size >= 6);
+
+/* progression depuis un journal factice */
+function pr(measure, target, log){ return P.questProgress({measure:measure, target:target}, log, TODAY); }
+var p1 = pr("n", 30, LOG_MI);
+check("n : 34/30 fini (et value > target)", p1.value===34 && p1.done && p1.ratio===1);
+check("listen : 6/10 pas fini",  (function(p){ return p.value===6 && !p.done; })(pr("listen",10,LOG_MI)));
+check("build_ok : 2/3",          pr("build_ok",3,LOG_MI).value===2);
+check("xp : 210/150 fini",       pr("xp",150,LOG_MI).done);
+check("scenario : présent (7)",  pr("scenario",1,LOG_MI).value===7);
+check("jour absent -> 0",        pr("n",30,{}).value===0 && !pr("n",30,{}).done);
+
+/* claim idempotent via qdone */
+var q0 = qa[0], pd = P.questProgress(q0, LOG_FIN, TODAY);
+check("finie + non réclamée -> réclamable",  P.claimable(q0, pd, {}));
+var qd = {}; qd[q0.id] = true;
+check("déjà réclamée -> plus réclamable",    !P.claimable(q0, pd, qd));
+check("pas finie -> pas réclamable",         !P.claimable(q0, P.questProgress(q0, {}, TODAY), {}));
+
+/* badges */
+function bmap(s){ var m={}; P.badges(Object.assign({log:s.log}, s.state)).forEach(function(b){ m[b.id]=b.got; }); return m; }
+var b0 = bmap(S_VIDE), b1 = bmap(S_MI), b2 = bmap(S_FIN);
+check("vide : aucun badge",   Object.keys(b0).every(function(k){ return !b0[k]; }));
+check("13 badges au pool",    P.badges({}).length === 13);
+check("mi : streak3 oui, streak7 non",       b1.streak3 && !b1.streak7);
+check("mi : 140 mûrs -> 100 oui, 300 non",   b1.matures100 && !b1.matures300);
+check("mi : coll50 oui (360/700), coll80 non", b1.coll50 && !b1.coll80);
+check("mi : écoute 6 j -> pas encore",       !b1.ecoute7);
+check("mi : scénarios 1/6 -> non",           !b1.scenarios);
+check("fin : tout allumé (13/13)",           Object.keys(b2).every(function(k){ return b2[k]; }));
+
+/* rendu : onClaim tiré UNE fois malgré double clic ; compact sans badges */
+var tmp = document.createElement("div"), fired = 0;
+SORI_QUESTS.renderCard(tmp, { today:TODAY, log:LOG_FIN, state:S_FIN.state,
+  onClaim:function(){ fired++; } });
+var btn = tmp.querySelector(".quest-claim");
+check("état « tout fini » : 3 boutons Réclamer", tmp.querySelectorAll(".quest-claim").length===3);
+btn.click(); btn.click();
+check("double clic -> onClaim une seule fois", fired===1);
+var tmp2 = document.createElement("div");
+SORI_QUESTS.renderCard(tmp2, { today:TODAY, log:{}, state:S_VIDE.state, compact:true });
+check("compact : pas de grille badges", tmp2.querySelectorAll(".quest-badges").length===0 && tmp2.querySelectorAll(".quest-row").length===3);
+check("vide : aucun bouton Réclamer",   tmp2.querySelectorAll(".quest-claim").length===0);
+var over = tmp.querySelector(".quest-val");
+check("dépassement affiché avec ✨",     /✨/.test(tmp.textContent));
+
+var $checks = document.getElementById("checks");
+var fails = out.filter(function(c){ return !c.ok; }).length;
+$checks.innerHTML = out.map(function(c){
+  return "<div class='" + (c.ok ? "pass'>✔ " : "fail'>✘ ") + c.name + "</div>";
+}).join("") + "<div style='margin-top:6px'>" +
+  (fails ? "<span class='fail'>" + fails + " ÉCHEC(S)</span>" : "<span class='pass'>TOUT VERT (" + out.length + " checks)</span>") + "</div>";
+document.title = (fails ? "✘ " : "✔ ") + document.title;
+</script>
+</body>
+</html>

@@ -1,0 +1,1286 @@
+[
+ {
+  "fr": "Être fier (de quelqu'un/quelque chose)",
+  "kr": "자랑스럽다",
+  "type": "word",
+  "theme": "b1::sentiments"
+ },
+ {
+  "fr": "Être jaloux",
+  "kr": "질투하다",
+  "type": "word",
+  "theme": "b1::sentiments"
+ },
+ {
+  "fr": "Être reconnaissant (merci, moins formel)",
+  "kr": "고맙다",
+  "type": "word",
+  "theme": "b1::sentiments"
+ },
+ {
+  "fr": "Détester (une personne)",
+  "kr": "미워하다",
+  "type": "word",
+  "theme": "b1::sentiments"
+ },
+ {
+  "fr": "Être déçu / vexé (par un proche)",
+  "kr": "서운하다",
+  "type": "word",
+  "theme": "b1::sentiments"
+ },
+ {
+  "fr": "Être peiné / contrarié",
+  "kr": "속상하다",
+  "type": "word",
+  "theme": "b1::sentiments"
+ },
+ {
+  "fr": "Avoir honte (gêne devant les autres)",
+  "kr": "창피하다",
+  "type": "word",
+  "theme": "b1::sentiments"
+ },
+ {
+  "fr": "Trouver ça injuste (être accusé à tort)",
+  "kr": "억울하다",
+  "type": "word",
+  "theme": "b1::sentiments"
+ },
+ {
+  "fr": "Avoir le cœur qui bat (impatience joyeuse)",
+  "kr": "설레다",
+  "type": "word",
+  "theme": "b1::sentiments"
+ },
+ {
+  "fr": "Tomber sous le charme (coup de foudre)",
+  "kr": "반하다",
+  "type": "word",
+  "theme": "b1::sentiments"
+ },
+ {
+  "fr": "Attendre avec impatience / espérer",
+  "kr": "기대하다",
+  "type": "word",
+  "theme": "b1::sentiments"
+ },
+ {
+  "fr": "Être déprimé / avoir le cafard",
+  "kr": "우울하다",
+  "type": "word",
+  "theme": "b1::sentiments"
+ },
+ {
+  "fr": "Sortir avec quelqu'un",
+  "kr": "사귀다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Rompre / se séparer",
+  "kr": "헤어지다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Se marier",
+  "kr": "결혼하다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Divorcer",
+  "kr": "이혼하다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Inviter",
+  "kr": "초대하다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Se réconcilier",
+  "kr": "화해하다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Féliciter",
+  "kr": "축하하다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "S'excuser",
+  "kr": "사과하다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Pardonner",
+  "kr": "용서하다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Consoler / réconforter",
+  "kr": "위로하다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Déclarer son amour / avouer ses sentiments",
+  "kr": "고백하다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Présenter (quelqu'un à quelqu'un)",
+  "kr": "소개하다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Contacter / donner des nouvelles",
+  "kr": "연락하다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Aîné (école, travail)",
+  "kr": "선배",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Cadet (école, travail)",
+  "kr": "후배",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Petit(e) ami(e) / amoureux",
+  "kr": "애인",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Couple marié / époux",
+  "kr": "부부",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Bien s'entendre (avec) / se mêler à",
+  "kr": "어울리다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Se disputer (dispute légère)",
+  "kr": "다투다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Prendre soin de (quelqu'un), veiller sur",
+  "kr": "챙기다",
+  "type": "word",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Joyeux anniversaire !",
+  "kr": "생일 축하해요!",
+  "type": "phrase",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Tu m'as manqué. / Vous m'avez manqué.",
+  "kr": "보고 싶었어요.",
+  "type": "phrase",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Ravi de vous avoir rencontré. (en se quittant)",
+  "kr": "만나서 반가웠어요.",
+  "type": "phrase",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Devenons amis ! / Entendons-nous bien !",
+  "kr": "우리 친하게 지내요.",
+  "type": "phrase",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "Je vous offre un verre.",
+  "kr": "제가 한잔 살게요.",
+  "type": "phrase",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "On peut se tutoyer ?",
+  "kr": "말 놓아도 돼요?",
+  "type": "phrase",
+  "theme": "b1::relations"
+ },
+ {
+  "fr": "échanger de l'argent (devises)",
+  "kr": "환전하다",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "taux de change",
+  "kr": "환율",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "distributeur de billets",
+  "kr": "현금인출기",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "billet (de banque)",
+  "kr": "지폐",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "pièce (de monnaie)",
+  "kr": "동전",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "petite monnaie",
+  "kr": "잔돈",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "frais, commission",
+  "kr": "수수료",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "compte bancaire",
+  "kr": "계좌",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "guichet",
+  "kr": "창구",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "ticket d'attente (numéroté)",
+  "kr": "번호표",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "faire la queue",
+  "kr": "줄을 서다",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "tour, rang (c'est mon tour)",
+  "kr": "차례",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "carte d'identité",
+  "kr": "신분증",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "signer",
+  "kr": "서명하다",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "remplir, rédiger (un document)",
+  "kr": "작성하다",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "se faire délivrer (un document, une carte)",
+  "kr": "발급받다",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "déclarer, signaler (aux autorités)",
+  "kr": "신고하다",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "consigne (casiers)",
+  "kr": "물품 보관함",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "objet perdu",
+  "kr": "분실물",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "timbre",
+  "kr": "우표",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "colis (postal)",
+  "kr": "소포",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "colis, livraison à domicile",
+  "kr": "택배",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "poster, expédier (courrier, colis)",
+  "kr": "부치다",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "plan, carte (géographique)",
+  "kr": "지도",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "mairie, hôtel de ville",
+  "kr": "시청",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "commissariat de police",
+  "kr": "경찰서",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "ambassade",
+  "kr": "대사관",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "bureau d'information (touristique)",
+  "kr": "안내소",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "passage piéton",
+  "kr": "횡단보도",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "feu tricolore",
+  "kr": "신호등",
+  "type": "word",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "Où est-ce qu'on peut changer de l'argent ?",
+  "kr": "환전은 어디에서 해요?",
+  "type": "phrase",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "Prenez un ticket et attendez, s'il vous plaît.",
+  "kr": "번호표를 뽑고 기다리세요.",
+  "type": "phrase",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "Changez-moi ce billet de 10 000 wons en billets de 1 000, s'il vous plaît.",
+  "kr": "만 원짜리를 천 원짜리로 바꿔 주세요.",
+  "type": "phrase",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "Où est le bureau des objets trouvés ?",
+  "kr": "분실물 센터가 어디예요?",
+  "type": "phrase",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "J'ai perdu mon portefeuille, donc j'ai fait une déclaration au commissariat.",
+  "kr": "지갑을 잃어버려서 경찰서에 신고했어요.",
+  "type": "phrase",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "Signez ici, s'il vous plaît.",
+  "kr": "여기에 서명해 주세요.",
+  "type": "phrase",
+  "theme": "b1::ville"
+ },
+ {
+  "fr": "Chargeur (de téléphone)",
+  "kr": "충전기",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Recharger (batterie, carte)",
+  "kr": "충전하다",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Prise (électrique)",
+  "kr": "콘센트",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Câble",
+  "kr": "케이블",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Écran",
+  "kr": "화면",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Application (mobile)",
+  "kr": "앱",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Compte (en ligne)",
+  "kr": "계정",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Mot de passe",
+  "kr": "비밀번호",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Se connecter (à un compte)",
+  "kr": "로그인하다",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Télécharger",
+  "kr": "다운받다",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Données mobiles (forfait)",
+  "kr": "데이터",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Carte SIM",
+  "kr": "유심",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Code QR",
+  "kr": "큐알 코드",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Rechercher (sur internet)",
+  "kr": "검색하다",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Connecter / relier",
+  "kr": "연결하다",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Installer (une application)",
+  "kr": "설치하다",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Supprimer (fichier, photo, app)",
+  "kr": "삭제하다",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Enregistrer / sauvegarder",
+  "kr": "저장하다",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Tomber en panne / être cassé",
+  "kr": "고장 나다",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Réparer",
+  "kr": "고치다",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Appuyer (sur un bouton)",
+  "kr": "누르다",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Appel vidéo",
+  "kr": "영상 통화",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Traducteur (appli, machine)",
+  "kr": "번역기",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Notification",
+  "kr": "알림",
+  "type": "word",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Est-ce que je peux charger mon téléphone ici ?",
+  "kr": "여기서 휴대폰을 충전해도 돼요?",
+  "type": "phrase",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Il y a le wifi ici ? (est-ce que ça marche ?)",
+  "kr": "여기 와이파이 돼요?",
+  "type": "phrase",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Internet ne marche pas.",
+  "kr": "인터넷이 안 돼요.",
+  "type": "phrase",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Où est-ce que je peux acheter une carte SIM ?",
+  "kr": "유심은 어디서 살 수 있어요?",
+  "type": "phrase",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Envoyez-moi la photo, s'il vous plaît.",
+  "kr": "사진 좀 보내 주세요.",
+  "type": "phrase",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "Est-ce que je peux utiliser votre téléphone ?",
+  "kr": "전화 좀 써도 돼요?",
+  "type": "phrase",
+  "theme": "b1::technologie"
+ },
+ {
+  "fr": "le sang",
+  "kr": "피",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "la peau",
+  "kr": "피부",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "une blessure, une plaie",
+  "kr": "상처",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "se brûler (avec qqch de chaud)",
+  "kr": "데다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "gonfler, enfler (cheville, visage)",
+  "kr": "붓다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "un comprimé, une pilule",
+  "kr": "알약",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "une pommade",
+  "kr": "연고",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "un pansement",
+  "kr": "반창고",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "un masque (sanitaire)",
+  "kr": "마스크",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "la température corporelle",
+  "kr": "체온",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "une assurance",
+  "kr": "보험",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "éternuer",
+  "kr": "재채기하다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "un mal de tête",
+  "kr": "두통",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "un état grippal (courbatures, grosse fatigue)",
+  "kr": "몸살",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "le nez qui coule (écoulement nasal)",
+  "kr": "콧물",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "une piqûre, une injection",
+  "kr": "주사",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "le ventre dérangé (indigestion)",
+  "kr": "배탈",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "le mal des transports",
+  "kr": "멀미",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "démanger (ça gratte)",
+  "kr": "가렵다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "se fouler, se tordre (la cheville)",
+  "kr": "삐다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "se casser (un os, un objet)",
+  "kr": "부러지다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "les urgences (à l'hôpital)",
+  "kr": "응급실",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "un patient, un malade",
+  "kr": "환자",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "un pharmacien",
+  "kr": "약사",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "J'ai mal ici. (en montrant l'endroit)",
+  "kr": "여기가 아파요.",
+  "type": "phrase",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "J'ai mal à la gorge depuis hier.",
+  "kr": "어제부터 목이 아파요.",
+  "type": "phrase",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Combien de fois par jour je dois le prendre ? (médicament)",
+  "kr": "하루에 몇 번 먹어야 해요?",
+  "type": "phrase",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "J'ai mal au cœur. (estomac barbouillé, nausée)",
+  "kr": "속이 안 좋아요.",
+  "type": "phrase",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Appelez une ambulance, s'il vous plaît !",
+  "kr": "구급차를 불러 주세요.",
+  "type": "phrase",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Humide (temps, air)",
+  "kr": "습하다",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Sec (air, peau)",
+  "kr": "건조하다",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Brouillard",
+  "kr": "안개",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Tonnerre",
+  "kr": "천둥",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Éclair (foudre)",
+  "kr": "번개",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Arc-en-ciel",
+  "kr": "무지개",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Ombre (endroit ombragé)",
+  "kr": "그늘",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Lumière du soleil",
+  "kr": "햇빛",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Canicule",
+  "kr": "폭염",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Averse",
+  "kr": "소나기",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Feuilles d'automne (feuillage coloré)",
+  "kr": "단풍",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Saison des pluies (mousson)",
+  "kr": "장마",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Nuage",
+  "kr": "구름",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Parapluie",
+  "kr": "우산",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Particules fines (pollution de l'air)",
+  "kr": "미세먼지",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Frisquet / frais (temps)",
+  "kr": "쌀쌀하다",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Glace / glaçon",
+  "kr": "얼음",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Geler",
+  "kr": "얼다",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Fondre",
+  "kr": "녹다",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Glissant",
+  "kr": "미끄럽다",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "S'arrêter (pluie, neige)",
+  "kr": "그치다",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Souffler (le vent)",
+  "kr": "불다",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Se dépêcher",
+  "kr": "서두르다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Être en retard",
+  "kr": "늦다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Vérifier",
+  "kr": "확인하다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Changer (échanger qqch)",
+  "kr": "바꾸다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Perdre (un objet)",
+  "kr": "잃어버리다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Oublier (qqch)",
+  "kr": "잊어버리다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Rendre (restituer)",
+  "kr": "돌려주다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Tenir (une promesse)",
+  "kr": "지키다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Pousser (porte, objet)",
+  "kr": "밀다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Tirer (vers soi)",
+  "kr": "당기다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Gagner (un match)",
+  "kr": "이기다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Perdre (un match)",
+  "kr": "지다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Arrêter (un véhicule)",
+  "kr": "세우다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Être plein (rempli)",
+  "kr": "가득 차다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Être vide",
+  "kr": "비다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "Lourd",
+  "kr": "무겁다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Léger",
+  "kr": "가볍다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Épais",
+  "kr": "두껍다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Fin (peu épais)",
+  "kr": "얇다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Clair (lumineux)",
+  "kr": "밝다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Large (spacieux)",
+  "kr": "넓다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Étroit",
+  "kr": "좁다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Propre",
+  "kr": "깨끗하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Sale",
+  "kr": "더럽다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Bruyant",
+  "kr": "시끄럽다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Sûr (sans danger)",
+  "kr": "안전하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Dangereux",
+  "kr": "위험하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Inconfortable",
+  "kr": "불편하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Doux (au toucher)",
+  "kr": "부드럽다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Dur (au toucher)",
+  "kr": "딱딱하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Travailleur (assidu)",
+  "kr": "부지런하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Qu'est-ce que tu en penses ?",
+  "kr": "어떻게 생각해요?",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "À mon avis, c'est bien.",
+  "kr": "제 생각에는 그게 좋은 것 같아요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Je pense pareil (je suis du même avis).",
+  "kr": "저도 그렇게 생각해요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Je suis d'accord (avec cet avis).",
+  "kr": "그 의견에 동의해요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Je ne suis pas tout à fait d'accord.",
+  "kr": "저는 생각이 좀 달라요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Je ne pense pas, non (désaccord poli).",
+  "kr": "그건 좀 아닌 것 같아요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Je suis contre.",
+  "kr": "저는 반대예요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Celui-ci est mieux que celui-là.",
+  "kr": "이게 저거보다 나아요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Je préfère la montagne à la mer.",
+  "kr": "저는 바다보다 산이 더 좋아요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Et si on dînait ensemble ?",
+  "kr": "같이 저녁 먹는 게 어때요?",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Et celui-ci, qu'en dites-vous ? (en magasin)",
+  "kr": "이건 어때요?",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Il vaudrait mieux faire comme ça.",
+  "kr": "그렇게 하는 게 좋겠어요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Il y a un endroit qui vaut le coup près d'ici ?",
+  "kr": "이 근처에 가 볼 만한 곳이 있어요?",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Ça dépend (de la situation).",
+  "kr": "상황에 따라 달라요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "J'hésite entre les deux (lequel acheter).",
+  "kr": "둘 중에 뭘 살지 고민이에요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Le plus important, c'est la santé.",
+  "kr": "제일 중요한 건 건강이에요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Qu'est-ce qu'il y a de meilleur ici ? (au restaurant)",
+  "kr": "여기 뭐가 제일 맛있어요?",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Qu'est-ce qui serait bien comme cadeau ?",
+  "kr": "선물로 뭐가 좋을까요?",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Eh bien… je vais y réfléchir.",
+  "kr": "글쎄요, 생각해 볼게요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "C'est sans doute ça (probablement).",
+  "kr": "아마 그럴 거예요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Bien sûr ! (évidemment)",
+  "kr": "당연하죠.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "C'est vrai aussi (tu n'as pas tort).",
+  "kr": "그 말도 맞아요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "C'était mieux que prévu.",
+  "kr": "생각보다 괜찮았어요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Bof, c'est pas terrible.",
+  "kr": "별로예요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "C'est pas mal (pas mauvais).",
+  "kr": "나쁘지 않아요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Celui-ci me plaît.",
+  "kr": "이거 마음에 들어요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "N'importe lequel, ça me va.",
+  "kr": "아무거나 괜찮아요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Franchement, je trouve ça un peu cher.",
+  "kr": "솔직히 말하면 좀 비싼 것 같아요.",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ }
+]

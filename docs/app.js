@@ -250,6 +250,21 @@ function renderReview(){
     document.getElementById("bonus").onclick = ()=>{ Q = bonusQueue(); QPOS=0; BONUS=true; render(); };
     const bb=document.getElementById("boss");
     if(bb) bb.onclick = startBoss;
+    /* 🎯 quêtes du jour en mode compact (fin de session) */
+    if(window.SORI_QUESTS){
+      const qd = (ST.qdone && ST.qdone.d===t) ? ST.qdone : (ST.qdone = {d:t, ids:{}});
+      SORI_QUESTS.renderCard($screen, {
+        today: t, log: ST.log, compact: true,
+        state: { xp: ST.xp||0, streak: streak(), qdone: qd.ids },
+        onClaim: (id, bonus)=>{
+          qd.ids[id] = true;
+          ST.xp = (ST.xp||0) + bonus;
+          const ld = ST.log[t] || (ST.log[t]={ok:0,ko:0,n:0,listen:0});
+          ld.xp = (ld.xp||0) + bonus;
+          save(); render();
+        }
+      });
+    }
     return;
   }
   const it = eff(Q[QPOS]);
@@ -660,6 +675,38 @@ function renderStats(){
       <h2>🩸 Sangsues (${leeches.length})</h2>
       <p class="dim">Ces mots résistent à la répétition — change d'angle : mnémotechnique, phrase à toi, post-it.
       ${leeches.slice(0,8).map(x=>`<span class="pill">${esc(x.kr)}</span>`).join("")}${leeches.length>8?"…":""}</p></div>`));
+  }
+
+  /* 🎯 quêtes du jour + badges (quests.js) — état additif ST.qdone */
+  if(window.SORI_QUESTS){
+    const qd = (ST.qdone && ST.qdone.d===t) ? ST.qdone : (ST.qdone = {d:t, ids:{}});
+    SORI_QUESTS.renderCard($screen, {
+      today: t, log: ST.log,
+      state: { xp: ST.xp||0, streak: streak(),
+        itemsSummary: { matures: items.filter(it=>it.stage>=4).length,
+          beatenEnemies: beaten, totalEnemies: enemies.length,
+          stage3plus: items.filter(it=>it.stage>=3).length, totalItems: items.length },
+        scen: ST.scen||{}, examCount: (ST.exams||[]).length, qdone: qd.ids },
+      onClaim: (id, bonus)=>{
+        qd.ids[id] = true;
+        ST.xp = (ST.xp||0) + bonus;
+        const ld = ST.log[t] || (ST.log[t]={ok:0,ko:0,n:0,listen:0});
+        ld.xp = (ld.xp||0) + bonus;
+        save(); render();
+      }
+    });
+  }
+
+  /* 🎓 bilan de niveau périodique (exam.js) — historique additif ST.exams, zéro effet sur la planif */
+  if(window.SORI_EXAM){
+    ST.exams = ST.exams || [];
+    SORI_EXAM.renderCard($screen, {
+      items: items, extra: EXTRA,
+      speak: (kr,id)=>speak(kr,id),
+      history: ST.exams,
+      onFinish: r => { ST.exams.push(Object.assign({}, r, {date: todayStr()})); save(); },
+      onExit: () => render()
+    });
   }
 
   const bossN = Math.min(bossCandidates().length, 20);

@@ -1,8 +1,8 @@
 /* Sori service worker — network-first (mises à jour auto), repli cache (hors-ligne) */
-const CACHE = "sori-v15";
+const CACHE = "sori-v16";
 const ASSETS = ["./", "./index.html", "./style.css", "./themes.css", "./themes.js",
                 "./engine.js", "./app.js", "./data.js", "./extra.js",
-                "./events-data.js", "./events.js", "./search.js",
+                "./events-data.js", "./events.js", "./search.js", "./exam.js", "./quests.js",
                 "./scenarios-data.js", "./scenarios.js", "./player.js",
                 "./audio/index.js", "./manifest.json", "./icon-192.png", "./icon-512.png"];
 
