@@ -893,23 +893,28 @@ function renderStats(){
     ${window.SORI_THEMES ? `<label>Style graphique <select id="theme">${
       SORI_THEMES.list.map(th=>`<option value="${th.id}" ${SORI_THEMES.get()===th.id?"selected":""}>${esc(th.label)}</option>`).join("")
     }</select></label>` : ""}
-    <div class="row" style="margin-top:12px">
-      <button class="btn ghost" id="exp">📤 Exporter</button>
-      <button class="btn ghost" id="imp">📥 Importer</button>
-    </div>
-    <input type="file" id="impfile" accept=".json,application/json">
     <div class="section-title" style="margin-top:14px">✈️ Mode avion</div>
     <div class="row" style="margin-top:6px"><button class="btn ghost" id="dlaudio">Télécharger tout l'audio (~17 Mo)</button></div>
     <p class="dim" id="dlstatus" style="margin-top:6px">Rend chaque prononciation disponible hors connexion (avion, métro coréen).</p>
-    <div class="section-title" style="margin-top:14px">☁️ Sauvegarde cloud (GitHub privé)</div>
+    <div class="section-title" style="margin-top:14px">☁️ Sauvegarde cloud (le canal principal)</div>
+    <p class="dim" style="margin-top:4px">Ta progression part toute seule dans le cloud (1×/jour) — c'est ta sauvegarde ET ce que Claude lit. Rien d'autre à faire.</p>
     <label>Jeton d'accès <input type="password" id="ghtok" placeholder="${ghToken()?"•••• configuré ••••":"github_pat_…"}" autocomplete="off"></label>
     <div class="row" style="margin-top:8px">
       <button class="btn" id="cloud">☁️ Sauvegarder maintenant</button>
+      <button class="btn ghost" id="cloudrestore">↓ Restaurer</button>
     </div>
     <p class="dim" id="cloudstatus" style="margin-top:8px">${
       ghToken() ? (ST.lastCloud ? "Dernière sauvegarde cloud : "+ST.lastCloud+" · auto 1×/jour en fin de session." : "Jeton configuré — aucune sauvegarde encore.")
                 : "Colle un jeton GitHub fine-grained (dépôt sori-data, permission Contents) pour activer la sauvegarde automatique."}${
-      (ST.reports||[]).length ? " · 🐞 "+ST.reports.length+" rapport(s) joint(s) à la prochaine sauvegarde." : ""}</p></div>`);
+      (ST.reports||[]).length ? " · 🐞 "+ST.reports.length+" rapport(s) joint(s) à la prochaine sauvegarde." : ""}</p>
+    <details style="margin-top:14px"><summary class="dim">Sauvegarde fichier (secours hors-ligne)</summary>
+      <p class="dim" style="margin-top:6px">Optionnel. Un fichier JSON à garder toi-même (ex. sans jeton cloud). Le cloud ci-dessus fait déjà tout.</p>
+      <div class="row" style="margin-top:6px">
+        <button class="btn ghost" id="exp">📤 Exporter</button>
+        <button class="btn ghost" id="imp">📥 Importer</button>
+      </div>
+      <input type="file" id="impfile" accept=".json,application/json">
+    </details></div>`);
   $screen.appendChild(set);
   set.querySelector("#npd").onchange = e=>{ ST.set.newPerDay=Math.max(0,+e.target.value||0); save(); };
   set.querySelector("#smax").onchange= e=>{ ST.set.sessionMax=Math.max(20,+e.target.value||120); save(); };
@@ -956,6 +961,13 @@ function renderStats(){
     const r = await cloudBackup();
     st.textContent = r.ok ? "✅ Sauvegardé dans le cloud ("+todayStr()+")." : "❌ Échec : "+r.msg;
   };
+  set.querySelector("#cloudrestore").onclick = async ()=>{
+    const st = set.querySelector("#cloudstatus");
+    st.textContent = "Lecture du cloud…";
+    const r = await cloudRestore();
+    if(r.ok){ return; }            // render() a déjà été relancé par applyImportedState
+    st.textContent = "❌ Restauration : "+r.msg;
+  };
 }
 /* ================= sauvegarde cloud (GitHub, dépôt privé sori-data) =================
    Jeton fine-grained stocké UNIQUEMENT sur l'appareil (clé séparée, jamais dans un export). */
@@ -991,6 +1003,32 @@ async function cloudBackup(){
 function autoCloudBackup(){   // silencieux, au plus 1x/jour, fin de session
   if(ghToken() && ST.lastCloud !== todayStr()) cloudBackup();
 }
+/* migration douce commune (import fichier OU restauration cloud) */
+function applyImportedState(state){
+  const s = state;
+  s.items = s.items||{}; s.log = s.log||{}; s.intro = s.intro||{};
+  s.set = Object.assign({}, DEF_SET, s.set||{});
+  s.v = s.v || 1;
+  ST = s; save(); Q = null; render();
+}
+async function cloudRestore(){
+  const tok = ghToken();
+  if(!tok) return {ok:false, msg:"aucun jeton configuré"};
+  try{
+    const r = await fetch("https://api.github.com/repos/"+GH_REPO+"/contents/exports/latest.json",
+      { headers:{ "Authorization":"Bearer "+tok, "Accept":"application/vnd.github+json" }, cache:"no-store" });
+    if(!r.ok) return {ok:false, msg:"introuvable dans le cloud"};
+    const j = await r.json();
+    const data = JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,"")))));
+    if(data.app!=="sori" || !data.state) return {ok:false, msg:"contenu invalide"};
+    const when = (data.exportedAt||"").slice(0,16).replace("T"," ");
+    if(confirm("Remplacer la progression de cet appareil par la sauvegarde cloud du "+when+" ?")){
+      applyImportedState(data.state);
+      return {ok:true, when};
+    }
+    return {ok:false, msg:"annulé"};
+  }catch(e){ return {ok:false, msg:"hors ligne ?"}; }
+}
 
 async function exportState(){
   ST.lastExport = todayStr(); save();
@@ -1012,13 +1050,8 @@ function importState(e){
     try{
       const data=JSON.parse(r.result);
       if(data.app!=="sori"||!data.state) throw 0;
-      if(confirm("Remplacer la progression locale par cet export ?")){
-        /* même migration douce qu'au chargement : un vieil export reste valide */
-        const s = data.state;
-        s.items = s.items||{}; s.log = s.log||{}; s.intro = s.intro||{};
-        s.set = Object.assign({}, DEF_SET, s.set||{});
-        s.v = s.v || 1;
-        ST = s; save(); Q=null; render();
+      if(confirm("Remplacer la progression locale par ce fichier ?")){
+        applyImportedState(data.state);   // même migration douce qu'au chargement
       }
     }catch(_){ alert("Fichier invalide."); }
   };
