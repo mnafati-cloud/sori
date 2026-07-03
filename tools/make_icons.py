@@ -18,5 +18,5 @@ def make(size, path):
     img.save(path)
     print("ok", path)
 
-make(192, r"C:\Users\33785\dev\sori\app\icon-192.png")
-make(512, r"C:\Users\33785\dev\sori\app\icon-512.png")
+make(192, r"C:\Users\33785\dev\sori\docs\icon-192.png")
+make(512, r"C:\Users\33785\dev\sori\docs\icon-512.png")
