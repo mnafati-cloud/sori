@@ -511,6 +511,13 @@ function renderListen(){
       rate: ST.set.rate || 0.9
     });
   }
+  /* 🔢 entraîneur de nombres (numbers.js) — nombres générés à la volée, TTS texte brut (pas de MP3) */
+  if(window.SORI_NUMBERS){
+    SORI_NUMBERS.renderCard($screen, {
+      speak: (txt)=>ttsSpeak(txt),
+      onAnswer: (ok)=>logAnswer(ok, "nombres")
+    });
+  }
   if(!("speechSynthesis" in window)){
     $screen.appendChild(el(`<div class="card center"><h2>👂 Écoute</h2>
       <p class="dim">La synthèse vocale n'est pas disponible sur cet appareil.</p></div>`));
