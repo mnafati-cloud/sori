@@ -286,8 +286,14 @@ function afterAnswer(it, ok, sawTrivia, kind){
   }
   QPOS++;
   saveSess();
-  const base = ok ? 750 : 1500;
-  setTimeout(render, sawTrivia ? base + 1600 : base);
+  if(sawTrivia){
+    /* trivia affiché : lecture à ton rythme, on passe AU CLIC (pas de minuterie) */
+    const row = el(`<div class="row" style="margin-top:12px"><button class="btn" id="cont">Continuer →</button></div>`);
+    row.querySelector("#cont").onclick = ()=>render();
+    ($screen.querySelector(".card:last-of-type") || $screen).appendChild(row);
+  } else {
+    setTimeout(render, ok ? 750 : 1500);
+  }
 }
 /* stage 1-2 : QCM coréen -> français */
 function exoQcmKr2Fr(it){
