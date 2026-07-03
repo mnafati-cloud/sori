@@ -1,0 +1,2948 @@
+[
+ {
+  "fr": "palais",
+  "kr": "궁전",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Gyeongbokgung (palais de Séoul)",
+  "kr": "경복궁",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "musée",
+  "kr": "박물관",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "musée d'art",
+  "kr": "미술관",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "temple (bouddhiste)",
+  "kr": "절",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "église catholique, cathédrale",
+  "kr": "성당",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "église (protestante)",
+  "kr": "교회",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Han (fleuve de Séoul)",
+  "kr": "한강",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Namsan (montagne de Séoul)",
+  "kr": "남산",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "marché traditionnel",
+  "kr": "전통 시장",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "marché de nuit",
+  "kr": "야시장",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "parc d'attractions",
+  "kr": "놀이공원",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "zoo",
+  "kr": "동물원",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "jardin botanique",
+  "kr": "식물원",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "plateforme d'observation, belvédère",
+  "kr": "전망대",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "place (publique)",
+  "kr": "광장",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "ruelle",
+  "kr": "골목",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "vallée (avec ruisseau)",
+  "kr": "계곡",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "cascade",
+  "kr": "폭포",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "source chaude, station thermale",
+  "kr": "온천",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "plage (de baignade)",
+  "kr": "해수욕장",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "plage, bord de mer",
+  "kr": "해변",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "port",
+  "kr": "항구",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "île",
+  "kr": "섬",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "billetterie, guichet",
+  "kr": "매표소",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "entrée (d'un lieu)",
+  "kr": "입구",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "souvenir (objet)",
+  "kr": "기념품",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "agence de voyage",
+  "kr": "여행사",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "touriste",
+  "kr": "관광객",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "site touristique",
+  "kr": "관광지",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "lieu célèbre, attraction",
+  "kr": "명소",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "site historique, vestiges",
+  "kr": "유적지",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "maison traditionnelle coréenne",
+  "kr": "한옥",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "château, forteresse",
+  "kr": "성",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "lac",
+  "kr": "호수",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "vue nocturne",
+  "kr": "야경",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "paysage, vue",
+  "kr": "경치",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "île de Jeju",
+  "kr": "제주도",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "prix d'entrée",
+  "kr": "입장료",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "téléphérique",
+  "kr": "케이블카",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "feux d'artifice",
+  "kr": "불꽃놀이",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "festival, fête",
+  "kr": "축제",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "exposition",
+  "kr": "전시회",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "visiter, regarder (flâner)",
+  "kr": "구경하다",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "visiter, rendre visite (formel)",
+  "kr": "방문하다",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Deux billets adulte, s'il vous plaît.",
+  "kr": "어른 두 장 주세요.",
+  "type": "phrase",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "le hanbok (costume traditionnel)",
+  "kr": "한복",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le taekwondo",
+  "kr": "태권도",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le kimjang (préparation du kimchi pour l'hiver)",
+  "kr": "김장",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le jjimjilbang (sauna coréen)",
+  "kr": "찜질방",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le PC bang (cybercafé de jeu)",
+  "kr": "PC방",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le manhwabang (café BD)",
+  "kr": "만화방",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le hoesik (dîner d'équipe au travail)",
+  "kr": "회식",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le langage poli (vouvoiement)",
+  "kr": "존댓말",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le langage familier (tutoiement)",
+  "kr": "반말",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "l'âge international (années révolues)",
+  "kr": "만 나이",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "Seollal (le Nouvel An lunaire)",
+  "kr": "설날",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "Chuseok (la fête des récoltes)",
+  "kr": "추석",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "une fête traditionnelle",
+  "kr": "명절",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "la révérence du Nouvel An",
+  "kr": "세배",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "les étrennes du Nouvel An",
+  "kr": "세뱃돈",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le rite aux ancêtres",
+  "kr": "제사",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "la fête du premier anniversaire",
+  "kr": "돌잔치",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "l'aegyo (charme enfantin joué)",
+  "kr": "애교",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le jeong (attachement affectif coréen)",
+  "kr": "정",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le nunchi (flair social, tact)",
+  "kr": "눈치",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le han (tristesse et rancœur enfouies)",
+  "kr": "한",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le jour du Hangeul",
+  "kr": "한글날",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le taegeukgi (drapeau coréen)",
+  "kr": "태극기",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "la rose de Sharon (fleur nationale)",
+  "kr": "무궁화",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le samulnori (percussions traditionnelles)",
+  "kr": "사물놀이",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le pansori (chant épique traditionnel)",
+  "kr": "판소리",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "Arirang (chant folklorique)",
+  "kr": "아리랑",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "un webtoon (BD en ligne)",
+  "kr": "웹툰",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "une idole de K-pop",
+  "kr": "아이돌",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "une rencontre avec les fans",
+  "kr": "팬미팅",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "la hallyu (vague coréenne)",
+  "kr": "한류",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le mukbang (vidéo où l'on mange)",
+  "kr": "먹방",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le tteokguk (soupe de gâteaux de riz)",
+  "kr": "떡국",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "l'ondol (chauffage par le sol)",
+  "kr": "온돌",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le yunnori (jeu de bâtonnets)",
+  "kr": "윷놀이",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "la visite des tombes familiales",
+  "kr": "성묘",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le saju (thème astral coréen)",
+  "kr": "사주",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "une superstition",
+  "kr": "미신",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le suneung (bac coréen)",
+  "kr": "수능",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "l'armée (le service militaire)",
+  "kr": "군대",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "le gommage au bain public",
+  "kr": "때밀이",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "la deuxième tournée (de soirée)",
+  "kr": "2차",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "un toast (santé !)",
+  "kr": "건배",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "un templestay (séjour au temple)",
+  "kr": "템플스테이",
+  "type": "word",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "Bonne année !",
+  "kr": "새해 복 많이 받으세요!",
+  "type": "phrase",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "On mange ensemble un de ces jours !",
+  "kr": "언제 밥 한번 먹어요.",
+  "type": "phrase",
+  "theme": "b1::culture"
+ },
+ {
+  "fr": "verrouiller, fermer à clé",
+  "kr": "잠그다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "accrocher ; appeler (au téléphone)",
+  "kr": "걸다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "poser, mettre (sur)",
+  "kr": "놓다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "laisser, mettre (quelque part)",
+  "kr": "두다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "déplacer, transporter",
+  "kr": "옮기다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "lancer, jeter",
+  "kr": "던지다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "rater, laisser échapper",
+  "kr": "놓치다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "se charger de ; sentir (une odeur)",
+  "kr": "맡다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "confier, laisser (en dépôt)",
+  "kr": "맡기다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "commander (un plat) ; faire faire",
+  "kr": "시키다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "réchauffer (un plat)",
+  "kr": "데우다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "refroidir (plat, café)",
+  "kr": "식다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "bouillir",
+  "kr": "끓다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "coller",
+  "kr": "붙이다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "décoller, détacher",
+  "kr": "떼다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "plier",
+  "kr": "접다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "déplier, ouvrir (livre, parapluie)",
+  "kr": "펴다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "fermer (les yeux) ; laver (les cheveux)",
+  "kr": "감다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "ouvrir (les yeux) ; se lever (soleil)",
+  "kr": "뜨다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "se cacher",
+  "kr": "숨다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "éviter",
+  "kr": "피하다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "toucher",
+  "kr": "만지다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "frapper (à la porte), tapoter",
+  "kr": "두드리다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "secouer, agiter",
+  "kr": "흔들다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "verser (une boisson) ; suivre",
+  "kr": "따르다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "marcher sur",
+  "kr": "밟다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "s'allonger",
+  "kr": "눕다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "s'appuyer (contre)",
+  "kr": "기대다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "dépasser, franchir",
+  "kr": "넘다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "tourner (qqch), faire tourner",
+  "kr": "돌리다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "s'arrêter, arrêter",
+  "kr": "멈추다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "prendre (qqn) en voiture ; brûler (qqch)",
+  "kr": "태우다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "charger (des bagages)",
+  "kr": "싣다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "attacher (ceinture, cravate)",
+  "kr": "매다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "renverser (un liquide)",
+  "kr": "쏟다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "essuyer, nettoyer, brosser",
+  "kr": "닦다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "ranger, débarrasser",
+  "kr": "치우다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "vider",
+  "kr": "비우다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "réduire, baisser",
+  "kr": "줄이다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "élever (enfant, animal)",
+  "kr": "키우다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "faire sécher",
+  "kr": "말리다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "porter, tenir (à la main)",
+  "kr": "들다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "ramasser",
+  "kr": "줍다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "appliquer, étaler (crème)",
+  "kr": "바르다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "couper",
+  "kr": "자르다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "éplucher ; couper (cheveux, prix)",
+  "kr": "깎다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "choisir",
+  "kr": "고르다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "régler, ajuster",
+  "kr": "맞추다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "casser ; se réveiller",
+  "kr": "깨다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "attraper (un rhume) ; prendre (du temps)",
+  "kr": "걸리다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "allumer (clim, musique, eau)",
+  "kr": "틀다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "bouger",
+  "kr": "움직이다",
+  "type": "word",
+  "theme": "a2::verbes"
+ },
+ {
+  "fr": "fascinant, étonnant (nouveauté)",
+  "kr": "신기하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "surprenant, étonnant",
+  "kr": "놀랍다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "brûlant (au toucher)",
+  "kr": "뜨겁다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "tiède",
+  "kr": "미지근하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "courant, fréquent",
+  "kr": "흔하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "rare",
+  "kr": "드물다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "être mouillé",
+  "kr": "젖다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "humide (au toucher)",
+  "kr": "축축하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "collant, poisseux",
+  "kr": "끈적하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "tranchant, aiguisé",
+  "kr": "날카롭다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "ample, trop grand (vêtement)",
+  "kr": "헐렁하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "être serré (vêtement)",
+  "kr": "꽉 끼다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "sérieux (caractère)",
+  "kr": "진지하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "franc, honnête",
+  "kr": "솔직하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "modeste, humble",
+  "kr": "겸손하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "pressé, urgent",
+  "kr": "급하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "dommage, du gâchis",
+  "kr": "아깝다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "être curieux de, se demander",
+  "kr": "궁금하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "grave, excessif",
+  "kr": "심하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "impressionnant, remarquable",
+  "kr": "대단하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "en désordre, raté",
+  "kr": "엉망이다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "peu familier, inconnu",
+  "kr": "낯설다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "gênant, pas naturel (situation)",
+  "kr": "어색하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "ambigu, flou",
+  "kr": "애매하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "naturel (geste, expression)",
+  "kr": "자연스럽다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "vieux, usé (objet)",
+  "kr": "낡다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "rassurant, qui cale (repas)",
+  "kr": "든든하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "exigeant, difficile (personne)",
+  "kr": "까다롭다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "sensible, susceptible",
+  "kr": "예민하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "fade, pas assez salé",
+  "kr": "싱겁다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "au goût de noisette, grillé",
+  "kr": "고소하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "gras, écœurant (nourriture)",
+  "kr": "느끼하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "être avarié, abîmé",
+  "kr": "상하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "populaire",
+  "kr": "인기가 많다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "semblable, similaire",
+  "kr": "비슷하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "identique, exactement pareil",
+  "kr": "똑같다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "jeune (enfant, plus jeune que soi)",
+  "kr": "어리다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "jeune (adulte)",
+  "kr": "젊다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "vieux, âgé (personne)",
+  "kr": "늙다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "peu profond",
+  "kr": "얕다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "simple, pas compliqué",
+  "kr": "간단하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "tranquille, pas occupé",
+  "kr": "한가하다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "avoir sommeil",
+  "kr": "졸리다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "rassasié, avoir le ventre plein",
+  "kr": "배부르다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "haut, élevé",
+  "kr": "높다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "bas (hauteur, niveau)",
+  "kr": "낮다",
+  "type": "word",
+  "theme": "a2::adjectifs"
+ },
+ {
+  "fr": "Fourchette",
+  "kr": "포크",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Couteau (de table)",
+  "kr": "나이프",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Bol / récipient",
+  "kr": "그릇",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Assiette",
+  "kr": "접시",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Tasse / gobelet",
+  "kr": "컵",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Verre (à boire)",
+  "kr": "유리잔",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Casserole / marmite",
+  "kr": "냄비",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Poêle (à frire)",
+  "kr": "프라이팬",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Bouilloire / théière",
+  "kr": "주전자",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Planche à découper",
+  "kr": "도마",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Couteau (de cuisine)",
+  "kr": "칼",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Ciseaux",
+  "kr": "가위",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Louche",
+  "kr": "국자",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Couvercle",
+  "kr": "뚜껑",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Paille (pour boire)",
+  "kr": "빨대",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Serviette de table",
+  "kr": "냅킨",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Cure-dent",
+  "kr": "이쑤시개",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Tablier",
+  "kr": "앞치마",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Gobelet en papier",
+  "kr": "종이컵",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Sauce soja",
+  "kr": "간장",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Pâte de piment (gochujang)",
+  "kr": "고추장",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Pâte de soja fermenté (doenjang)",
+  "kr": "된장",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Huile de sésame",
+  "kr": "참기름",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Sucre",
+  "kr": "설탕",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Sel",
+  "kr": "소금",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Poivre",
+  "kr": "후추",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Vinaigre",
+  "kr": "식초",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Mayonnaise",
+  "kr": "마요네즈",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Ketchup",
+  "kr": "케첩",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Huile de cuisson",
+  "kr": "식용유",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Farine",
+  "kr": "밀가루",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Beurre",
+  "kr": "버터",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Miel",
+  "kr": "꿀",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Confiture",
+  "kr": "잼",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Être cuit / mûr",
+  "kr": "익다",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Cuire à la vapeur",
+  "kr": "찌다",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Faire bouillir (aliment) / pocher",
+  "kr": "삶다",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Assaisonner (namul, crudités)",
+  "kr": "무치다",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Retourner (crêpe, viande)",
+  "kr": "뒤집다",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Remuer / touiller",
+  "kr": "젓다",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "fleurs de cerisier",
+  "kr": "벚꽃",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "rose (fleur)",
+  "kr": "장미",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "tournesol",
+  "kr": "해바라기",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "tulipe",
+  "kr": "튤립",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "pelouse, gazon",
+  "kr": "잔디",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "feuille (d'arbre)",
+  "kr": "나뭇잎",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "branche (d'arbre)",
+  "kr": "가지",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "racine",
+  "kr": "뿌리",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "graine",
+  "kr": "씨앗",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "forêt",
+  "kr": "숲",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "champ, plaine (étendue ouverte)",
+  "kr": "들판",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "colline",
+  "kr": "언덕",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "falaise",
+  "kr": "절벽",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "grotte",
+  "kr": "동굴",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "sable",
+  "kr": "모래",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "vague (mer)",
+  "kr": "파도",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "rocher",
+  "kr": "바위",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "terre (sol, matière)",
+  "kr": "흙",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "poussière",
+  "kr": "먼지",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "ombre (silhouette portée)",
+  "kr": "그림자",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "coucher de soleil (ciel rougeoyant)",
+  "kr": "노을",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "aube, très tôt le matin",
+  "kr": "새벽",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "pleine lune",
+  "kr": "보름달",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "pétale",
+  "kr": "꽃잎",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "bouquet de fleurs",
+  "kr": "꽃다발",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "pot de fleurs, plante en pot",
+  "kr": "화분",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "plante (végétal)",
+  "kr": "식물",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "feuilles mortes",
+  "kr": "낙엽",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "jardin",
+  "kr": "정원",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "fleurir, éclore",
+  "kr": "피다",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "planter",
+  "kr": "심다",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "pousser, grandir",
+  "kr": "자라다",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Sous-vêtements",
+  "kr": "속옷",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Pyjama",
+  "kr": "잠옷",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Maillot de bain",
+  "kr": "수영복",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Tenue de sport / survêtement",
+  "kr": "운동복",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Costume / tenue formelle",
+  "kr": "정장",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Cravate",
+  "kr": "넥타이",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Ceinture",
+  "kr": "벨트",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Fermeture éclair",
+  "kr": "지퍼",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Bouton (de vêtement)",
+  "kr": "단추",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Poche",
+  "kr": "주머니",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Manche (de vêtement)",
+  "kr": "소매",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Collier",
+  "kr": "목걸이",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Bague",
+  "kr": "반지",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Boucles d'oreilles",
+  "kr": "귀걸이",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Bracelet",
+  "kr": "팔찌",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Lunettes de soleil",
+  "kr": "선글라스",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Lentilles de contact",
+  "kr": "렌즈",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Imperméable",
+  "kr": "우비",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Bottes de pluie",
+  "kr": "장화",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Chaussons / claquettes",
+  "kr": "슬리퍼",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Chaussures habillées",
+  "kr": "구두",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Bottes (mode)",
+  "kr": "부츠",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Essayer (des chaussures)",
+  "kr": "신어 보다",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Mode / tendance",
+  "kr": "유행",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Style",
+  "kr": "스타일",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Gilet (sans manches)",
+  "kr": "조끼",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Foulard",
+  "kr": "스카프",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Uniforme scolaire",
+  "kr": "교복",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Manches courtes (t-shirt)",
+  "kr": "반팔",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Manches longues",
+  "kr": "긴팔",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Doudoune",
+  "kr": "패딩",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Pull",
+  "kr": "스웨터",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Sandales",
+  "kr": "샌들",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Talons hauts",
+  "kr": "하이힐",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Porter (montre, bracelet, ceinture)",
+  "kr": "차다",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Mathématiques",
+  "kr": "수학",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Sciences (matière)",
+  "kr": "과학",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Géographie",
+  "kr": "지리",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Éducation physique (matière)",
+  "kr": "체육",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Arts plastiques / dessin (matière)",
+  "kr": "미술",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Langue étrangère",
+  "kr": "외국어",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Grammaire",
+  "kr": "문법",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Prononciation",
+  "kr": "발음",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Intonation / accent",
+  "kr": "억양",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Dictée",
+  "kr": "받아쓰기",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Réviser (une leçon)",
+  "kr": "복습하다",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Préparer le cours (à l'avance)",
+  "kr": "예습하다",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Apprendre par cœur / mémoriser",
+  "kr": "외우다",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Se tromper / être faux (réponse)",
+  "kr": "틀리다",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "S'entraîner / pratiquer",
+  "kr": "연습하다",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Effacer / gommer",
+  "kr": "지우다",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Trousse",
+  "kr": "필통",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Cahier",
+  "kr": "공책",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Gomme",
+  "kr": "지우개",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Crayon (à papier)",
+  "kr": "연필",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Stylo (à bille)",
+  "kr": "볼펜",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Surligneur",
+  "kr": "형광펜",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Règle (pour tracer, mesurer)",
+  "kr": "자",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Colle (papeterie)",
+  "kr": "풀",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Ruban adhésif / scotch",
+  "kr": "테이프",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Trombone (papeterie)",
+  "kr": "클립",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Tiroir",
+  "kr": "서랍",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Étagère à livres / bibliothèque (meuble)",
+  "kr": "책장",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Mémo / petite note",
+  "kr": "메모",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Salle de réunion",
+  "kr": "회의실",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Photocopieuse",
+  "kr": "복사기",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Imprimante",
+  "kr": "프린터",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Fichier / classeur",
+  "kr": "파일",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Salle de classe",
+  "kr": "교실",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Tableau (de classe)",
+  "kr": "칠판",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Vacances scolaires",
+  "kr": "방학",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "coiffeur, coiffeuse",
+  "kr": "미용사",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "salon de coiffure",
+  "kr": "미용실",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "dentiste",
+  "kr": "치과의사",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "vétérinaire",
+  "kr": "수의사",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "pompier",
+  "kr": "소방관",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "agriculteur",
+  "kr": "농부",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "pêcheur",
+  "kr": "어부",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "menuisier, charpentier",
+  "kr": "목수",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "mécanicien",
+  "kr": "정비사",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "livreur",
+  "kr": "배달원",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "vendeur, vendeuse (en magasin)",
+  "kr": "판매원",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "interprète",
+  "kr": "통역사",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "traducteur, traductrice",
+  "kr": "번역가",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "journaliste",
+  "kr": "기자",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "présentateur télé",
+  "kr": "아나운서",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "réalisateur / entraîneur",
+  "kr": "감독",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "célébrité (star du showbiz)",
+  "kr": "연예인",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "humoriste, comique",
+  "kr": "개그맨",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "homme/femme d'affaires, entrepreneur",
+  "kr": "사업가",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "freelance",
+  "kr": "프리랜서",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "petit boulot, job à temps partiel",
+  "kr": "알바",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "employé à temps partiel (souvent étudiant)",
+  "kr": "알바생",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "nouveau, recrue (au travail)",
+  "kr": "신입",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "gardien, agent de sécurité",
+  "kr": "경비원",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "agence immobilière",
+  "kr": "부동산",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "métier, profession",
+  "kr": "직업",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "steward, hôtesse de l'air",
+  "kr": "승무원",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "scientifique",
+  "kr": "과학자",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "youtubeur, youtubeuse",
+  "kr": "유튜버",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "photographe",
+  "kr": "사진작가",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "employé de banque",
+  "kr": "은행원",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "femme / homme au foyer",
+  "kr": "주부",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "chômeur (familier)",
+  "kr": "백수",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "supérieur hiérarchique, chef",
+  "kr": "상사",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "trouver un emploi, se faire embaucher",
+  "kr": "취직하다",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "démissionner, arrêter (un travail)",
+  "kr": "그만두다",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "boum-boum (cœur qui bat)",
+  "kr": "두근두근",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "scintillant, qui brille",
+  "kr": "반짝반짝",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "prudemment, avec mille précautions",
+  "kr": "조심조심",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "à pas de loup, furtivement",
+  "kr": "살금살금",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "en tournant, qui tournoie",
+  "kr": "빙글빙글",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "branlant, qui bouge (mal fixé)",
+  "kr": "흔들흔들하다",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "glissant (surface)",
+  "kr": "미끌미끌하다",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "tout doux (au toucher)",
+  "kr": "보들보들하다",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "en tremblant (froid, peur)",
+  "kr": "부들부들",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "(soleil) de plomb, qui tape",
+  "kr": "쨍쨍",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "(pluie) à verse, dru",
+  "kr": "주룩주룩",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "à gros flocons; à chaudes larmes",
+  "kr": "펑펑",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "(dormir) profondément, en ronflant",
+  "kr": "쿨쿨",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "miam miam",
+  "kr": "냠냠",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "gargouillis (ventre affamé)",
+  "kr": "꼬르륵",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "(pleurer) à gros sanglots",
+  "kr": "엉엉",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "ha ha (rire franc)",
+  "kr": "하하",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "complètement (oublier), trou de mémoire",
+  "kr": "깜빡",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "profondément, à fond (repos)",
+  "kr": "푹",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "pile, exactement",
+  "kr": "딱",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "fermement, bien serré",
+  "kr": "꽉",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "légèrement, discrètement",
+  "kr": "살짝",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "en cachette, en douce",
+  "kr": "몰래",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "vite, sans tarder (allez !)",
+  "kr": "얼른",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "soudain (pensée qui surgit)",
+  "kr": "문득",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "en dodelinant (de sommeil)",
+  "kr": "꾸벅꾸벅",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "traînasser, buller (farniente)",
+  "kr": "뒹굴뒹굴하다",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "croustillant",
+  "kr": "바삭바삭하다",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "moelleux-élastique (chewy)",
+  "kr": "쫄깃쫄깃하다",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "grand ouvert; épanoui",
+  "kr": "활짝",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "doucement, délicatement (geste)",
+  "kr": "살살",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "tranquillement; il est temps de",
+  "kr": "슬슬",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "ouaf ouaf",
+  "kr": "멍멍",
+  "type": "word",
+  "theme": "b1::expressif"
+ },
+ {
+  "fr": "pendant (durée)",
+  "kr": "동안",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "au bout de (durée)",
+  "kr": "만에",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "en moins de, dans un délai de",
+  "kr": "이내",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "jour de semaine",
+  "kr": "평일",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "jour férié, jour de repos",
+  "kr": "휴일",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "jours fériés consécutifs, long week-end",
+  "kr": "연휴",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "seconde (temps)",
+  "kr": "초",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "siècle",
+  "kr": "세기",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "semestre (scolaire)",
+  "kr": "학기",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "déplacement professionnel",
+  "kr": "출장",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "toute la nuit",
+  "kr": "밤새",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "toute la journée",
+  "kr": "하루 종일",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "autrefois, dans le temps",
+  "kr": "옛날",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "futur, avenir",
+  "kr": "미래",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "passé (le)",
+  "kr": "과거",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "présent (le), actuellement",
+  "kr": "현재",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "récemment",
+  "kr": "최근",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "ces temps-ci, en ce moment",
+  "kr": "요즘",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "pour un temps, pour l'instant",
+  "kr": "당분간",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "bientôt",
+  "kr": "곧",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "pendant ce temps, depuis (la dernière fois)",
+  "kr": "그동안",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "un jour (futur indéfini)",
+  "kr": "언젠가",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "quelques jours",
+  "kr": "며칠",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "d'habitude, en temps normal",
+  "kr": "평소",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "période, durée",
+  "kr": "기간",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "en même temps",
+  "kr": "동시에",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "tout de suite, immédiatement",
+  "kr": "당장",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "décalage horaire",
+  "kr": "시차",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "un long moment",
+  "kr": "한참",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "toute la vie",
+  "kr": "평생",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Le temps passe vite",
+  "kr": "시간이 빨리 가요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Ça fait déjà une semaine",
+  "kr": "벌써 일주일이 지났어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Mon coréen a progressé par rapport à avant",
+  "kr": "전보다 한국어가 늘었어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "C'est bien mieux qu'au début",
+  "kr": "처음보다 훨씬 나아요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "C'est deux fois plus cher que celui-là",
+  "kr": "이게 저거보다 두 배 더 비싸요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "C'est plus difficile que prévu",
+  "kr": "생각보다 어려워요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "C'était aussi bien que je l'espérais",
+  "kr": "기대만큼 좋았어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Ce n'est plus comme avant",
+  "kr": "예전 같지 않아요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Ça s'améliore petit à petit",
+  "kr": "점점 좋아지고 있어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Je n'ai pas pu le faire par manque de temps",
+  "kr": "시간이 없어서 못 했어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Faites-le quand vous aurez le temps",
+  "kr": "시간 있을 때 하세요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Rien ne presse",
+  "kr": "급할 것 없어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "J'en suis encore loin !",
+  "kr": "아직 멀었어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "C'est presque prêt",
+  "kr": "거의 다 됐어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Maintenant je m'y suis habitué",
+  "kr": "이제 익숙해졌어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Que les années passent vite...",
+  "kr": "세월 참 빠르네요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "L'été est arrivé sans qu'on s'en aperçoive",
+  "kr": "어느새 여름이 됐어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Ça a pris plus de temps que prévu",
+  "kr": "예상보다 오래 걸렸어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Il n'y a pas de grande différence",
+  "kr": "별 차이 없어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "C'est semblable à celui-là",
+  "kr": "이건 그거랑 비슷해요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Les deux me plaisent, je n'arrive pas à choisir",
+  "kr": "둘 다 좋아서 못 고르겠어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Aujourd'hui il fait plus chaud qu'hier",
+  "kr": "오늘이 어제보다 더 더워요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Ça devient de plus en plus dur",
+  "kr": "갈수록 어려워져요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Il ne reste presque plus de temps",
+  "kr": "시간이 얼마 안 남았어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Tu n'as pas changé du tout !",
+  "kr": "하나도 안 변했네요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Ça me rappelle le bon vieux temps",
+  "kr": "옛날 생각이 나요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Avant, ce n'était pas comme ça",
+  "kr": "옛날에는 안 그랬어요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Ça ira mieux avec le temps",
+  "kr": "시간이 지나면 괜찮아질 거예요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Le temps guérit tout",
+  "kr": "시간이 약이에요",
+  "type": "phrase",
+  "theme": "b1::opinion"
+ },
+ {
+  "fr": "Souffle, respiration",
+  "kr": "숨",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Respirer",
+  "kr": "숨을 쉬다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Soupirer",
+  "kr": "한숨을 쉬다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Bâiller",
+  "kr": "하품하다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Hoquet",
+  "kr": "딸꾹질",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Pet",
+  "kr": "방귀",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Rot",
+  "kr": "트림",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Larme",
+  "kr": "눈물",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Avoir les larmes qui montent, pleurer",
+  "kr": "눈물이 나다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Salive",
+  "kr": "침",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Avaler",
+  "kr": "삼키다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Mâcher",
+  "kr": "씹다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Se moucher",
+  "kr": "코를 풀다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Avoir la voix enrouée",
+  "kr": "목이 쉬다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Avoir une crampe",
+  "kr": "쥐가 나다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Bleu (hématome)",
+  "kr": "멍",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Se faire un bleu",
+  "kr": "멍이 들다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Se faire piquer / mordre",
+  "kr": "물리다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Gratter",
+  "kr": "긁다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Piquer, brûler (peau)",
+  "kr": "따갑다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Avoir une indigestion",
+  "kr": "체하다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Digestion",
+  "kr": "소화",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Mal digérer",
+  "kr": "소화가 안 되다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Se rétablir, récupérer",
+  "kr": "회복하다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Se faire examiner (médecin)",
+  "kr": "진찰을 받다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Recevoir une piqûre",
+  "kr": "주사를 맞다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Saigner",
+  "kr": "피가 나다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Saignement de nez",
+  "kr": "코피",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Trembler (nervosité, trac)",
+  "kr": "떨리다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ },
+ {
+  "fr": "Être engourdi (fourmis)",
+  "kr": "저리다",
+  "type": "word",
+  "theme": "a2::corps_sante"
+ }
+]
