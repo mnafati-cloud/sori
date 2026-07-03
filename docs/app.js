@@ -664,6 +664,15 @@ function renderStats(){
   }</div></div>`);
   $screen.appendChild(bars);
 
+  /* activité des 7 derniers jours (aujourd'hui en accent) */
+  const week = [];
+  for(let i=6;i>=0;i--){ const d=addDays(t,-i); week.push({d, n:(ST.log[d]||{}).n||0}); }
+  const mx7 = Math.max(...week.map(x=>x.n),1);
+  const WD = ["D","L","M","M","J","V","S"];
+  $screen.appendChild(el(`<div class="card"><h2>Activité — 7 jours</h2><div class="bars">${
+    week.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.n/mx7))}px${x.d===t?";background:var(--acc)":""}"></div><span>${WD[new Date(x.d+"T12:00:00").getDay()]}<br>${x.n}</span></div>`).join("")
+  }</div></div>`));
+
   const set = el(`<div class="card settings"><h2>Réglages</h2>
     <label>Nouvelles cartes / jour <input type="number" id="npd" min="0" max="50" value="${ST.set.newPerDay}"></label>
     <label>Taille max de session <input type="number" id="smax" min="20" max="500" step="10" value="${ST.set.sessionMax||120}"></label>

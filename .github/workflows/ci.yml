@@ -14,3 +14,8 @@ jobs:
           node-version: 20
       - name: Tests du moteur (docs/engine.js)
         run: node --test tests/
+      - name: Syntaxe de tous les JS de l'app (node --check)
+        run: |
+          for f in docs/*.js docs/audio/index.js; do
+            node --check "$f" || exit 1
+          done
