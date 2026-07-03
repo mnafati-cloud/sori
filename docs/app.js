@@ -22,12 +22,17 @@ function loadState(){
       if(s && s.v>=1){
         s.items = s.items||{}; s.log = s.log||{}; s.intro = s.intro||{};
         s.set = Object.assign({}, DEF_SET, s.set||{});
+        s.xp = s.xp||0;
         return s;
       }
     }
   }catch(e){}
-  return { v:1, items:{}, log:{}, intro:{}, set: Object.assign({}, DEF_SET) };
+  return { v:1, items:{}, log:{}, intro:{}, xp:0, set: Object.assign({}, DEF_SET) };
 }
+/* niveaux façon échelle coréenne (급) — plancher, jamais un plafond */
+const XP_LEVELS = [[0,"9급"],[1000,"8급"],[2500,"7급"],[5000,"6급"],[8000,"5급"],
+                   [12000,"4급"],[17000,"3급"],[23000,"2급"],[30000,"1급"],[40000,"초단"]];
+function levelName(xp){ let n=XP_LEVELS[0][1]; for(const [t,l] of XP_LEVELS){ if(xp>=t) n=l; } return n; }
 const EXTRA = (typeof window!=="undefined" && window.EXTRA) || {};
 function save(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(ST)); }catch(e){} }
 
@@ -191,7 +196,7 @@ function render(){
 }
 
 /* ---------- mode Réviser ---------- */
-let Q = null, QPOS = 0, BONUS = false;
+let Q = null, QPOS = 0, BONUS = false, COMBO = 0, SESSFAIL = [];
 /* la session en cours survit à un kill de l'app (Android) */
 function saveSess(){
   ST.sess = (BONUS || !Q) ? null : { d:todayStr(), q:Q, p:QPOS, pen:PENDING };
@@ -203,7 +208,7 @@ function renderReview(){
     if(s && s.d===todayStr() && Array.isArray(s.q) && s.p < s.q.length){
       Q = s.q; QPOS = s.p; PENDING = s.pen||0; BONUS = false;   // reprise
     } else {
-      Q = buildQueue(); QPOS = 0; BONUS = false;
+      Q = buildQueue(); QPOS = 0; BONUS = false; COMBO = 0; SESSFAIL = [];
       saveSess();
     }
   }
@@ -218,11 +223,28 @@ function renderReview(){
       <div class="done-banner">${PENDING>0?"💪":"🎉"}</div>
       <h2>${PENDING>0?"Session terminée !":"Tout est à jour !"}</h2>
       <p class="dim">${l.ok||0} bonnes réponses aujourd'hui${l.ko?`, ${l.ko} à retravailler`:""}.</p>
+      <p class="dim">✨ +${l.xp||0} XP aujourd'hui · ${esc(levelName(ST.xp||0))} (${ST.xp||0} XP)</p>
       <div class="row" style="margin-top:12px">
         ${more}
         <button class="btn ghost" id="bonus">Entraînement libre (10)</button>
       </div>
       ${bossBtn ? `<div class="row" style="margin-top:10px">${bossBtn}</div>` : ""}</div>`));
+    /* récap : les mots ratés de la session, à réécouter d'un tap */
+    if(SESSFAIL.length){
+      const rec = el(`<div class="card"><h2>📌 À retravailler (${SESSFAIL.length})</h2>
+        <p class="dim">Les ratés de cette session — tape un mot pour l'écouter.</p>
+        <div class="list"></div></div>`);
+      const list = rec.querySelector(".list");
+      SESSFAIL.slice(0,10).forEach(id=>{
+        const o = SEED_BY_ID[id]; if(!o) return;
+        const row = el(`<div class="item"><div class="txt"><div class="kr">${esc(o.kr)}</div>
+          <div class="fr">${esc(o.fr)}${EXTRA[id]&&EXTRA[id].note?` — 💡 ${esc(EXTRA[id].note)}`:""}</div></div>
+          <button class="speak">🔊</button></div>`);
+        row.onclick = ()=>speak(o.kr, id);
+        list.appendChild(row);
+      });
+      $screen.appendChild(rec);
+    }
     const m=document.getElementById("more");
     if(m) m.onclick = ()=>{ Q=null; render(); };
     document.getElementById("bonus").onclick = ()=>{ Q = bonusQueue(); QPOS=0; BONUS=true; render(); };
@@ -235,7 +257,8 @@ function renderReview(){
     <div class="progressbar"><div style="width:${Math.round(100*QPOS/Q.length)}%"></div></div>
     <div class="dim" style="margin-top:6px">${QPOS+1} / ${Q.length}
       ${it.enemy?'<span class="pill enemy">ennemie</span>':""}
-      <span class="pill stage">niv ${it.stage}</span></div></div>`);
+      <span class="pill stage">niv ${it.stage}</span>
+      ${COMBO>=3?`<span class="pill" style="color:var(--acc)">🔥 combo ×${COMBO}</span>`:""}</div></div>`);
   $screen.appendChild(head);
   EXO_T0 = Date.now();
   if(it.stage<=2) exoQcmKr2Fr(it);
@@ -281,6 +304,13 @@ function showTrivia(card, it){
 function afterAnswer(it, ok, sawTrivia, kind){
   const r = BONUS ? null : applyAnswer(it, ok);
   logAnswer(ok, kind || "review", r, EXO_T0 ? Date.now()-EXO_T0 : 0);
+  /* combo & XP (plancher motivant, jamais bloquant) */
+  if(ok) COMBO++; else { COMBO = 0; if(!SESSFAIL.includes(it.id)) SESSFAIL.push(it.id); }
+  if(!BONUS){
+    const gain = ok ? 10 + 2*Math.min(Math.max(COMBO-1,0), 10) : 2;
+    ST.xp = (ST.xp||0) + gain;
+    const l = ST.log[todayStr()]; if(l) l.xp = (l.xp||0) + gain;
+  }
   if(!ok && !BONUS){ // re-poser dans la session, 3-5 cartes plus loin
     const pos = Math.min(Q.length, QPOS + 3 + Math.floor(Math.random()*3));
     Q.splice(pos, 0, it.id);
@@ -292,6 +322,7 @@ function afterAnswer(it, ok, sawTrivia, kind){
     const row = el(`<div class="row" style="margin-top:12px"><button class="btn" id="cont">Continuer →</button></div>`);
     row.querySelector("#cont").onclick = ()=>render();
     ($screen.querySelector(".card:last-of-type") || $screen).appendChild(row);
+    row.scrollIntoView({block:"nearest", behavior:"smooth"});   // filet : bouton toujours en vue
   } else {
     setTimeout(render, ok ? 750 : 1500);
   }
@@ -314,7 +345,10 @@ function exoQcmKr2Fr(it){
       const ok = id===it.id;
       box.querySelectorAll("button").forEach(x=>x.disabled=true);
       b.classList.add(ok?"good":"bad");
-      if(!ok) [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].fr)?.classList.add("good");
+      const goodBtn = [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].fr);
+      goodBtn?.classList.add("good");
+      /* compacter : ne garder que la bonne réponse (+ la tienne si fausse) -> Continuer visible sans défiler */
+      [...box.children].forEach(x=>{ if(x!==b && x!==goodBtn) x.remove(); });
       speak(it.kr, it.id);
       afterAnswer(it, ok, showTrivia(card, it), it.stage<=1?"qcm1":"qcm2");
     };
@@ -339,7 +373,9 @@ function exoQcmFr2Kr(it){
       const ok = id===it.id;
       box.querySelectorAll("button").forEach(x=>x.disabled=true);
       b.classList.add(ok?"good":"bad");
-      if(!ok) [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].kr)?.classList.add("good");
+      const goodBtn = [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].kr);
+      goodBtn?.classList.add("good");
+      [...box.children].forEach(x=>{ if(x!==b && x!==goodBtn) x.remove(); });
       speak(it.kr, it.id);
       afterAnswer(it, ok, showTrivia(card, it), "qcm3");
     };
@@ -583,6 +619,8 @@ function renderStats(){
     <div class="stat"><div class="n">${l.n}</div><div class="l">réponses aujourd'hui</div></div>
     <div class="stat"><div class="n">${ret===null?"—":ret+" %"}</div><div class="l">réussite (7 j)</div></div>
     <div class="stat"><div class="n">${beaten}/${enemies.length}</div><div class="l">ennemies vaincues</div></div>
+    <div class="stat"><div class="n">${esc(levelName(ST.xp||0))}</div><div class="l">niveau</div></div>
+    <div class="stat"><div class="n">${ST.xp||0}</div><div class="l">XP total</div></div>
   </div>`));
 
   if(leeches.length){
