@@ -6,9 +6,10 @@
 > manuel ne dit pas quoi faire : **arrête-toi et n'envoie rien**. Un repo non poussé ne casse rien.
 >
 > **Le fait central qui gouverne tout** : la progression de l'utilisateur (des mois de révisions)
-> vit dans le localStorage de SON téléphone Android, et nulle part ailleurs. Le repo est sans état.
-> Une release ratée se répare en 5 minutes par un revert. Une progression détruite est
-> irrécupérable (au mieux : le dernier export OneDrive). Toutes les règles découlent de ça.
+> vit dans le localStorage de SON téléphone Android. Les seuls filets sont l'export manuel
+> OneDrive et la sauvegarde cloud quotidienne (dépôt privé `sori-data`, recette R15). Le repo
+> est sans état. Une release ratée se répare en 5 minutes par un revert. Une progression
+> détruite est irrécupérable. Toutes les règles découlent de ça.
 
 ---
 
@@ -18,8 +19,8 @@
 2. [Architecture détaillée](#2-architecture-détaillée)
 3. [Contrats de données](#3-contrats-de-données)
 4. [L'échelle de maîtrise et la planification](#4-léchelle-de-maîtrise-et-la-planification)
-5. [Recettes pas-à-pas](#5-recettes-pas-à-pas)
-6. [Pièges connus (vécus)](#6-pièges-connus-vécus)
+5. [Recettes pas-à-pas (R1-R16)](#5-recettes-pas-à-pas)
+6. [Pièges connus (vécus) (P1-P11)](#6-pièges-connus-vécus)
 7. [Checklist de non-régression avant tout push](#7-checklist-de-non-régression-avant-tout-push)
 8. [Glossaire](#8-glossaire)
 
@@ -27,13 +28,20 @@
 
 ## 1. Vue d'ensemble
 
-- **Quoi** : Sori, PWA de révision de coréen FR⇄KR (QCM progressifs, rappel, écoute, kit voyage).
+- **Quoi** : Sori, PWA de révision de coréen FR⇄KR — QCM progressifs, rappel, saisie hangul,
+  écoute (active et passive), kit voyage, dictionnaire personnel, simulations dialoguées,
+  bilan de niveau, quêtes/badges/XP, événements, 4 thèmes graphiques, mode avion,
+  sauvegarde cloud.
 - **Pour qui** : un seul utilisateur (mehdi.nafati@hotmail.fr), niveau A2→B1, sur Android,
-  30-60 min/jour. Départ en Corée : le contenu et le rythme sont calés sur ce voyage.
+  30-60 min/jour. Départ en Corée le 2026-10-01 : le contenu et le rythme sont calés sur ce voyage.
 - **Où** : prod = https://mnafati-cloud.github.io/sori/ — GitHub Pages sert `docs/` de la
-  branche `main` du repo public `mnafati-cloud/sori`.
+  branche `main` du repo public `mnafati-cloud/sori`. Sauvegardes : repo **privé**
+  `mnafati-cloud/sori-data`.
 - **Avec quoi** : vanilla JS, zéro dépendance runtime, zéro bundler, zéro backend. Outillage :
-  Python 3.12 (scripts `tools/`), Node 20 (`node --test`), Git Bash et PowerShell 5.1 sous Windows 11.
+  Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
+  PowerShell 5.1 sous Windows 11.
+- **Volumes actuels (v18)** : 1293 items dans le seed (972 mots, 321 phrases, 79 ennemies,
+  54 kit), 921 entrées de trivia, 1293 MP3 natifs (~17 Mo), 37 tests Node.
 - **Environnement local** : le repo vit dans `C:\Users\33785\dev\sori` — **hors OneDrive**,
   c'est voulu (voir piège P5). Ne le déplace jamais dans un dossier synchronisé.
 
@@ -41,90 +49,165 @@
 
 ## 2. Architecture détaillée
 
-### 2.1 Les quatre couches
+### 2.1 Les couches
 
 ```
 ┌───────────────────────────────────────────────────────────────────────┐
-│ COUCHE 4 — ÉTAT (téléphone uniquement)                                │
-│   localStorage "sori-state-v1" : progression {s,i,d,ok,ko} par id,    │
-│   journal, réglages, session en cours. JAMAIS dans le repo.           │
+│ COUCHE 4 — ÉTAT (téléphone uniquement, JAMAIS dans le repo)           │
+│   localStorage "sori-state-v1"  : progression complète (§3.4)         │
+│   localStorage "sori-theme"     : thème choisi (themes.js, §3.6)      │
+│   localStorage "sori-gh-token"  : jeton cloud (app.js, §3.6)          │
+│   Cache Storage "sori-vNN"      : cache du service worker             │
+│   Cache Storage "sori-audio-store" : audio hors-ligne « mode avion »  │
 ├───────────────────────────────────────────────────────────────────────┤
-│ COUCHE 3 — CONTENU GÉNÉRÉ (dans docs/, poussé avec l'app)             │
-│   data.js   → window.SEED   (1079 items) — généré par build_data.py   │
-│   extra.js  → window.EXTRA  (trivia)     — géré par merge_extra.py    │
-│   audio/*.mp3 + audio/index.js → window.AUDIO — par make_audio.py     │
-│   Aucune logique dedans. Ne s'éditent PAS à la main (sauf R2).        │
+│ COUCHE 3 — CONTENU (dans docs/, poussé avec l'app)                    │
+│   GÉNÉRÉ (jamais à la main) :                                         │
+│     data.js  → window.SEED  (1293 items)  — tools/build_data.py       │
+│     extra.js → window.EXTRA (921 trivia)  — merge_extra.py/merge_pack │
+│     audio/*.mp3 + audio/index.js → window.AUDIO — make_audio.py       │
+│   ÉDITÉ À LA MAIN (données pures, recettes dédiées) :                 │
+│     events-data.js    → window.EVENTS_DATA  (R10)                     │
+│     scenarios-data.js → window.SCENARIOS    (R13)                     │
 ├───────────────────────────────────────────────────────────────────────┤
-│ COUCHE 2 — APPLICATION  docs/app.js (653 lignes)                      │
-│   UI, exercices, TTS/MP3, import/export, service worker registration. │
-│   SEUL fichier autorisé à lire/écrire le localStorage.                │
+│ COUCHE 2 — APPLICATION  docs/app.js (~900 lignes)                     │
+│   UI, exercices, XP/combo, TTS/MP3, import/export, cloud backup,      │
+│   mode avion, intégration des modules.                                │
+│   SEUL fichier autorisé à lire/écrire "sori-state-v1".                │
 ├───────────────────────────────────────────────────────────────────────┤
-│ COUCHE 1 — MOTEUR PUR  docs/engine.js (95 lignes)                     │
-│   computeAnswer, selectDue, pickNew, pickDistractors, computeStreak,  │
-│   DEF_SET, STEP. Zéro DOM, zéro window, zéro localStorage.            │
-│   Double environnement : navigateur (root.ENGINE) ET Node             │
-│   (module.exports). Comportement CONTRACTUEL, verrouillé par          │
-│   tests/engine.test.mjs (20 tests).                                   │
+│ COUCHE 1b — MODULES AUTONOMES (le pattern contractuel, §2.3)          │
+│   themes.js · events.js · search.js · exam.js · quests.js ·           │
+│   player.js · scenarios.js · typing.js — table complète en §2.4       │
+├───────────────────────────────────────────────────────────────────────┤
+│ COUCHE 1 — MOTEUR PUR  docs/engine.js (~200 lignes)                   │
+│   computeAnswerLegacy (GELÉ), computeAnswer étendu (ease adaptatif),  │
+│   easeOf, isLeech, retention7, selectDue, pickNew, pickDistractors,   │
+│   computeStreak, DEF_SET, STEP, EASE. Zéro DOM, zéro window, zéro     │
+│   localStorage. Double environnement (root.ENGINE / module.exports).  │
+│   Comportement CONTRACTUEL : tests/engine.test.mjs (20 tests, legacy) │
+│   + tests/adaptive.test.mjs (17 tests, extension).                    │
 └───────────────────────────────────────────────────────────────────────┘
-
-Ordre de chargement (docs/index.html, NE PAS le changer) :
-  data.js → extra.js → audio/index.js → engine.js → app.js
 ```
 
-### 2.2 Le flux de données complet
+### 2.2 Ordre de chargement (docs/index.html — NE PAS le changer)
 
 ```
-        MACHINE DE DEV (Windows)                          TÉLÉPHONE (Android)
-┌─────────────────────────────────────────────┐
-│ tools/snapshot.anki2                        │
-│  (collection Anki figée, GITIGNORÉE,        │
-│   n'existe QUE sur cette machine)           │
-│        │                                    │
-│        │ python tools/build_data.py         │
-│        │  (+ table KIT dans le script)      │
-│        ▼                                    │
-│ docs/data.js  = window.SEED ────────────────┼───┐
-│                                             │   │
-│ lot JSON produit par un workflow IA         │   │
-│        │ python tools/merge_extra.py lot    │   │  git push origin main
-│        ▼                                    │   │       │
-│ docs/extra.js = window.EXTRA ───────────────┼───┼──▶ GitHub Pages
-│                                             │   │  https://mnafati-cloud.github.io/sori/
-│ docs/data.js (items kit/enemy)              │   │       │
-│        │ python tools/make_audio.py         │   │       │ service worker network-first
-│        │  (edge-tts, ko-KR-SunHiNeural)     │   │       ▼
-│        ▼                                    │   │ ┌──────────────────────────────┐
-│ docs/audio/*.mp3 + audio/index.js ──────────┼───┘ │ app installée (PWA)          │
-└─────────────────────────────────────────────┘     │ localStorage sori-state-v1   │
-                                                    │        │ Stats → 📤 Exporter │
-                                                    │        ▼                     │
-                                                    │ sori-export-AAAA-MM-JJ.json  │
-                                                    └────────┼─────────────────────┘
-                                                             │ partage vers OneDrive
-                                                             ▼
-                                              analyse par Claude (items à fort `ko`)
-                                                             │
-                                                             ▼
-                                              prochain lot de trivia → extra.js (boucle)
+<head>  : style.css → themes.css → themes.js     (thème posé AVANT le premier rendu)
+<body>  : data.js → extra.js → audio/index.js → player.js → engine.js
+          → events-data.js → events.js → search.js → exam.js
+          → scenarios-data.js → scenarios.js → quests.js → typing.js → app.js
+          → (script inline) enregistrement du service worker
 ```
 
-### 2.3 Qui a le droit de toucher quoi
+Règles de cet ordre :
+- `themes.js` DOIT être dans `<head>`, après le `<meta name="theme-color">` et les `<link>` CSS
+  (sinon flash de thème au chargement) ;
+- chaque `*-data.js` se charge AVANT son moteur (`events-data.js` avant `events.js`, etc.) ;
+- tous les modules et `engine.js` se chargent AVANT `app.js` (qui les consomme) ;
+- `app.js` teste `if(window.SORI_X)` avant chaque intégration : un module manquant ne casse
+  pas l'app — mais ne compte pas là-dessus pour désordonner les scripts.
+
+### 2.3 LE PATTERN MODULE CONTRACTUEL — la convention du projet
+
+Tout module de `docs/` (existant ou futur) respecte CE contrat. C'est ce qui permet à un
+mainteneur de toucher un module sans risquer la progression :
+
+1. **IIFE double environnement** :
+   ```js
+   (function(root){ "use strict";
+     /* partie PURE : zéro DOM, zéro localStorage, RNG injectable */
+     /* partie RENDU : renderXxx(container, opts) */
+     var SORI_X = { renderXxx: renderXxx, pure: { ... } };
+     if (typeof module !== "undefined" && module.exports) module.exports = SORI_X;
+     else root.SORI_X = SORI_X;
+   })(typeof self !== "undefined" ? self : this);
+   ```
+   (Exceptions historiques, navigateur seulement : `themes.js`, `player.js`, `scenarios.js` —
+   même esprit, sans `module.exports`.)
+2. **ZÉRO localStorage dans le module.** L'état ENTRE par `opts` (ex. `log`, `dismissed`,
+   `history`, `state.qdone`) et SORT par des callbacks (`onClaim`, `onDismiss`, `onFinish`,
+   `setBest`…) — c'est `app.js` qui persiste dans `ST` et appelle `save()`.
+   Seule exception : `themes.js` et SA clé séparée `sori-theme` (jamais `sori-state-v1`).
+3. **Intégration UNIQUEMENT dans app.js**, dans le render de l'onglet concerné, gardée par
+   `if(window.SORI_X){...}`. Un module ne parle jamais à un autre module.
+4. **CSS auto-injecté** une seule fois (`<style id="x-styles">`), classes préfixées
+   (`.event-*`, `.quest-*`, `.exam-*`, `.search-*`), en n'utilisant QUE les variables `:root`
+   de style.css (donc compatible avec les 4 thèmes sans rien faire).
+5. **Tout texte passe par `esc(...)`** (copie locale dans chaque module — volontaire, zéro
+   couplage).
+6. **Données absentes = comportement neutre.** Tableau vide, champ manquant, type inconnu :
+   le module ne rend rien ou ignore, sans crash.
+
+### 2.4 La table des MODULES — qui expose quoi, qui l'appelle, ce qu'il a le droit de faire
+
+| Fichier | API exposée | Appelé où dans app.js | Droits / interdits |
+|---|---|---|---|
+| `themes.js` (+`themes.css`) | `window.SORI_THEMES = { list, get(), set(id) }` | Chargé dans `<head>` (autonome). Le `<select id="theme">` de `renderStats()` appelle `SORI_THEMES.set(id)` | SEUL module autorisé à toucher localStorage, et UNIQUEMENT la clé `sori-theme`. Pose la classe `theme-*` sur `<html>`, met à jour `<meta name="theme-color">`. Valeur inconnue → défaut `seoul`. |
+| `events-data.js` | `window.EVENTS_DATA = [...]` (données pures) | — | LE fichier à éditer pour gérer un événement (R10 / MAINTENANCE-EVENTS.md). Zéro logique dedans. |
+| `events.js` | `SORI_EVENTS.renderCards(container, {today, log, dismissed, onDismiss})` + `pure.activeEvents / pure.eventProgress` | Haut de `renderStats()`. Masquage persisté par app.js dans `ST.evDismiss` via `onDismiss(id)` | Zéro localStorage. 0 événement actif ⇒ ne rend RIEN. Type inconnu ignoré sans crash. |
+| `search.js` | `SORI_SEARCH.renderPanel(container, {items, extra, onSpeak})` + `pure.normFr / choseong / isChoseongQuery / buildIndex / search` | `renderTrip()` (« Mon dictionnaire ») | N'écrit AUCUN état (ni ST, ni localStorage). Audio délégué via `onSpeak(kr, id)`. Index construit une fois (contenu statique), `stage`/`theme` rafraîchis aux rendus suivants. |
+| `exam.js` | `SORI_EXAM.renderCard(container, {items, extra, speak, history, onFinish, onExit, random})` + `pure.buildExam / summarize / gradeOf / availability` | `renderStats()`. Historique = `ST.exams` (lecture seule), résultat ajouté par app.js via `onFinish(r)` (qui pose la date et `save()`) | **ZÉRO effet sur la planification** — rien ne va vers engine.js, aucun stage/itv/due ne bouge. Zéro localStorage. RNG injectable (tests). Deck étudié < 20 questions possibles ⇒ bouton remplacé par un message. |
+| `quests.js` | `SORI_QUESTS.renderCard(container, {today, log, state, onClaim, compact})` + `pure.dailyQuests / questProgress / claimable / badges` | 2 endroits : fin de session dans `renderReview()` (`compact:true`) ET `renderStats()` (complet, avec badges) | Zéro localStorage. Réclamation → `onClaim(questId, bonusXp)` : app.js pose `ST.qdone.ids[id]=true` et crédite l'XP. **Ids de quêtes et de badges ÉTERNELS** (P11). Principe : des PLANCHERS, jamais des plafonds. |
+| `player.js` | `SORI_PLAYER.renderCard(container, {tracks, rate, audioBase})`, `.stop()`, `pure.MODES / filterTracks` | `renderListen()` (carte « Écoute passive ») | Zéro localStorage, zéro écriture ST. UN SEUL élément `Audio` réutilisé (exigence Android/MediaSession). Utilitaires recopiés volontairement (zéro couplage). |
+| `scenarios-data.js` | `window.SCENARIOS = [...]` (données pures, vérifiées par relecture native) | — | LE fichier à éditer pour un scénario (R13). Ids éternels (clés de `ST.scen`). |
+| `scenarios.js` | `SORI_SCENARIOS.renderList(container, {speak, onAnswer, getBest, setBest})` | `renderTrip()`. Records persistés par app.js dans `ST.scen[id]` via `setBest` ; journalisation via `onAnswer(ok)` → `logAnswer(ok, "scenario")` | Zéro localStorage. Ne touche pas la planification (journal seulement). |
+| `typing.js` | `SORI_TYPING.render(container, {item, speak, onResult})` + `pure.normalize / judge` | Dispatch de `renderReview()` : stage 5, `type==="word"`, **opt-in** `ST.set.typing===true`, 50 % du temps. Verdict → `onResult(ok)` → `afterAnswer(it, ok, false, "type")` | Zéro localStorage. Saisie à l'IME coréen : normalize NFC + juge Levenshtein syllabique (exact/presque/espacement) ; en cas d'écart, l'UTILISATEUR tranche (faute de frappe IME vs vraie erreur). Jamais bloquant sans clavier coréen (lien « je ne peux pas taper » → auto-évaluation). Kind journalisé : `type`. |
+
+### 2.5 Le flux de données complet
+
+```
+        MACHINE DE DEV (Windows)                            TÉLÉPHONE (Android)
+┌──────────────────────────────────────────────┐
+│ tools/snapshot.anki2 (figé, gitignoré)       │
+│   +  table KIT (dans build_data.py)          │
+│   +  tools/packs/*.json (packs durables) ◀── │ ── vague de contenu : workflow IA
+│        │                                     │    → python tools/merge_pack.py (R11)
+│        │ python tools/build_data.py          │      (écrit le pack, régénère, fusionne
+│        │  (garde-fou d'ids INTÉGRÉ)          │       le trivia des nouveaux items)
+│        ▼                                     │
+│ docs/data.js  = window.SEED ─────────────────┼───┐
+│                                              │   │
+│ lot JSON de trivia (workflow IA)             │   │  git push origin main
+│        │ python tools/merge_extra.py lot     │   │       │
+│        ▼                                     │   │       ▼
+│ docs/extra.js = window.EXTRA ────────────────┼───┼──▶ GitHub Pages (public)
+│                                              │   │  https://mnafati-cloud.github.io/sori/
+│ docs/data.js (TOUS les items)                │   │       │ SW network-first
+│        │ python tools/make_audio.py          │   │       ▼
+│        ▼                                     │   │ ┌────────────────────────────────┐
+│ docs/audio/*.mp3 + audio/index.js ───────────┼───┘ │ app installée (PWA)            │
+└──────────────────────────────────────────────┘     │ localStorage sori-state-v1     │
+                                                     │   │ Stats → 📤 Exporter        │
+                 analyse par Claude (R15/R16)        │   │ (partage vers OneDrive)    │
+                        ▲                            │   │                            │
+                        │                            │   │ auto-backup quotidien      │
+              GitHub repo PRIVÉ sori-data ◀──────────┼───┘ (jeton sori-gh-token)      │
+              exports/latest.json                    └────────────────────────────────┘
+              exports/sori-export-AAAA-MM-JJ.json
+```
+
+### 2.6 Qui a le droit de toucher quoi
 
 | Fichier | Modifiable ? | Comment |
 |---|---|---|
-| `docs/engine.js` | Oui, mais DANGER | Uniquement via la recette **R6** (tests d'abord) |
-| `docs/app.js` | Oui | Librement, sous les règles d'or (recettes R4, R5) |
-| `docs/data.js` | **Jamais à la main** | Uniquement régénéré par `tools/build_data.py` (R1) |
-| `docs/extra.js` | Oui, avec précaution | Via `tools/merge_extra.py` ou la recette **R2** |
-| `docs/audio/*` | **Jamais à la main** | Uniquement via `tools/make_audio.py` (R3) |
-| `docs/sw.js` | Bump seulement | `CACHE` +1 à chaque release ; `ASSETS` si fichier ajouté. Ne jamais changer la stratégie network-first |
-| `docs/index.html` | Rarement | Ne pas toucher l'ordre des `<script>` |
-| `docs/style.css` | Oui | Librement (tout passe par les variables `:root`) |
-| `docs/manifest.json` | Rarement | Additions seulement (ex. `shortcuts`) |
-| `tools/*.py` | Oui | Ce sont des outils de build, pas du code de prod |
-| `tests/engine.test.mjs` | Oui | Toujours dans le MÊME commit que le changement d'engine.js qu'il verrouille |
-| `.gitignore` | **Ne jamais affaiblir** | Il protège les données personnelles |
-| `tools/snapshot.anki2` | **Ne jamais supprimer, ne jamais pousser** | Sans lui, `build_data.py` ne peut plus tourner |
+| `docs/engine.js` | Oui, mais DANGER | `computeAnswerLegacy` : **JAMAIS** (gelé à vie). Le reste : recette **R6** (tests d'abord). |
+| `docs/app.js` | Oui | Librement, sous les règles d'or (recettes R4, R5). Seul fichier à toucher `sori-state-v1`. |
+| `docs/data.js` | **Jamais à la main** | Régénéré par `tools/build_data.py` (R1, R11). |
+| `docs/extra.js` | Oui, avec précaution | Via `merge_extra.py`, `merge_pack.py` ou la recette **R2** (édition Python). |
+| `docs/audio/*` | **Jamais à la main** | Uniquement via `tools/make_audio.py` (R3). |
+| `docs/events-data.js` | Oui | Recette **R10** = `MAINTENANCE-EVENTS.md`. Ids éternels. |
+| `docs/scenarios-data.js` | Oui, avec précaution | Recette **R13**. Ids éternels, contenu à faire vérifier. |
+| `docs/events.js`, `search.js`, `exam.js`, `quests.js`, `player.js`, `scenarios.js`, `typing.js` | Oui, avec précaution | Respecter le pattern §2.3. Mettre à jour la page de test `docs/design/*-test.html` correspondante dans le même commit. Pour quests.js : recette **R12**. |
+| `docs/themes.js` + `docs/themes.css` | Oui | Recette **R14**. Ne jamais retirer/renommer un thème existant. |
+| `docs/sw.js` | Bump seulement | `CACHE` +1 à chaque release ; `ASSETS` si fichier JS/CSS ajouté. Ne jamais revenir à du cache-first. Ne JAMAIS purger `"sori-audio-store"`. |
+| `docs/index.html` | Rarement | Ne pas toucher l'ordre des `<script>` (§2.2). |
+| `docs/style.css` | Oui | Librement (tout passe par les variables `:root`). Vérifier le rendu dans les 4 thèmes. |
+| `docs/manifest.json` | Rarement | Additions seulement. |
+| `docs/design/*` | Oui | Pages de test autonomes, non référencées par l'app (pas dans ASSETS). Les enrichir est encouragé. |
+| `tools/*.py` | Oui | Outils de build, pas du code de prod. |
+| `tools/packs/*.json` | **Additif seulement** | Ne JAMAIS retirer un item d'un pack déjà poussé (son id disparaîtrait du seed — le garde-fou du build refusera de toute façon). |
+| `tests/*.mjs` | Oui | Toujours dans le MÊME commit que le changement d'engine.js qu'ils verrouillent. |
+| `.gitignore` | **Ne jamais affaiblir** | Il protège les données personnelles. |
+| `tools/snapshot.anki2` | **Ne jamais supprimer, ne jamais pousser** | Sans lui, `build_data.py` ne peut plus tourner. |
 
 ---
 
@@ -134,9 +217,9 @@ Ordre de chargement (docs/index.html, NE PAS le changer) :
 
 | Interdit à jamais | Toujours permis |
 |---|---|
-| Renommer la clé `sori-state-v1` | Ajouter des champs à `ST.items[id]`, `ST.set`, aux items du seed, aux entrées EXTRA |
-| Changer la sémantique de `s`, `i`, `d`, `ok`, `ko` | Ajouter des types d'exercices, des modes, des écrans |
-| Réutiliser ou renuméroter un `id` | Ajouter des items (ids NOUVEAUX) |
+| Renommer la clé `sori-state-v1` | Ajouter des champs à `ST.items[id]`, `ST.log[date]`, `ST.set`, aux items du seed, aux entrées EXTRA |
+| Changer la sémantique de `s`, `i`, `d`, `e`, `ok`, `ko` | Ajouter des types d'exercices, des modes, des écrans, des modules |
+| Réutiliser ou renuméroter un `id` (item, événement, quête, badge, scénario) | Ajouter du contenu avec des ids NOUVEAUX |
 | Supprimer un champ qu'un vieil export contient | Déprécier un champ (le laisser mort, ne plus le lire) |
 | Supprimer un item du seed déjà poussé | Marquer un item comme retiré (nouveau champ), sans le supprimer |
 
@@ -145,116 +228,134 @@ Ordre de chargement (docs/index.html, NE PAS le changer) :
 ```json
 {
   "id": "1763106836914",
-  "fr": "Bonjour",
-  "kr": "안녕하세요",
-  "type": "word",
-  "theme": "a2::expressions",
-  "stage": 5,
-  "itv": 90,
-  "due": "2027-02-09",
-  "enemy": false,
-  "kit": true,
+  "fr": "Bonjour", "kr": "안녕하세요",
+  "type": "word", "theme": "a2::expressions",
+  "stage": 5, "itv": 90, "due": "2027-02-09",
+  "enemy": false, "kit": true,
   "conf": ["1779706066159", "1779706066160"]
 }
 ```
 
 | Champ | Type | Obligatoire | Signification |
 |---|---|---|---|
-| `id` | string | oui | Identifiant ÉTERNEL. Deux formats : timestamp Anki (`"1763106836914"`) pour les items issus du snapshot ; `"kit-"` + 8 hex du SHA-1 du texte coréen (`"kit-3f2a9b1c"`) pour les phrases ajoutées par le script. Jamais réutilisé, jamais changé. |
-| `fr` | string | oui | Face française. |
-| `kr` | string | oui | Face coréenne (hangul). Peut contenir des parenthèses explicatives — retirées avant TTS/MP3. |
-| `type` | `"word"` \| `"phrase"` | oui | Détermine les exercices (word bank réservé aux phrases, Écoute réservée aux mots). |
-| `theme` | string | oui | `"a2::famille"`, `"b1::travail"`, `"voyage::resto"`, `"divers"`… Sert aux distracteurs et au regroupement du kit. |
-| `stage` | int 0-5 | oui | Position de DÉPART sur l'échelle (héritée d'Anki). Écrasée par le delta local dès la première réponse. |
+| `id` | string | oui | Identifiant ÉTERNEL. **Trois formats** : timestamp Anki (`"1763106836914"`) pour les items du snapshot ; `"kit-"` + 8 hex du SHA-1 du texte coréen pour les phrases de la table KIT ; `"pack-"` + 8 hex du SHA-1 du coréen pour les items des packs `tools/packs/`. Jamais réutilisé, jamais changé. |
+| `fr` / `kr` | string | oui | Faces. `kr` peut contenir des parenthèses explicatives — retirées avant TTS/MP3. |
+| `type` | `"word"` \| `"phrase"` | oui | Détermine les exercices (word bank réservé aux phrases, Écoute active réservée aux mots). |
+| `theme` | string | oui | `"a2::famille"`, `"b1::travail"`, `"voyage::resto"`, `"divers"`… Distracteurs, regroupement kit, thèmes faibles du bilan. |
+| `stage` | int 0-5 | oui | Position de DÉPART sur l'échelle. Écrasée par le delta local dès la première réponse. |
 | `itv` | int (jours) | oui | Intervalle de départ. |
 | `due` | `"AAAA-MM-JJ"` ou `null` | oui | Échéance de départ. `null` = jamais introduit (stage 0). |
-| `enemy` | bool | oui | Item à ≥4 échecs Anki (leech). Alimente le boss fight et la priorisation du trivia. |
-| `kit` | bool | non (absent = false) | Fait partie du kit de survie voyage (54 phrases). |
-| `conf` | array d'ids | non | Jusqu'à 6 ids de « sosies » (confusion réelle), calculés par build_data.py. Distracteurs prioritaires dès le stage 2. |
+| `enemy` | bool | oui | Item à ≥4 échecs Anki (leech historique). Boss fight + priorisation trivia. |
+| `kit` | bool | non | Kit de survie voyage (54 phrases). |
+| `conf` | array d'ids | non | Jusqu'à 6 « sosies » (calculés par build_data.py). Distracteurs prioritaires dès le stage 2. |
 
-`window.SEED.meta` contient `generated`, `version`, `counts` (items/words/phrases/enemies/kit/stages)
-— purement informatif, affiché nulle part, mais utile pour valider un rebuild.
+`window.SEED.meta` contient `generated`, `version`, `counts` — informatif, sert à valider un
+rebuild (compte actuel : 1293 items).
 
 ### 3.2 Une entrée EXTRA (`docs/extra.js`, `window.EXTRA`)
 
-Objet indexé par id d'item du seed :
+Objet indexé par id d'item du seed (921 entrées) :
 
 ```json
-"1763265164777": {
-  "ex":   "오늘은 바람이 아주 시원해요.",
-  "exFr": "Aujourd'hui, le vent est très frais.",
-  "note": "≠ 시내 (centre-ville), 시다 (acide).",
-  "conj": "시원해요 / 시원했어요"
-}
+"1763265164777": { "ex": "오늘은 바람이 아주 시원해요.", "exFr": "Aujourd'hui, le vent est très frais.",
+                   "note": "≠ 시내 (centre-ville), 시다 (acide).", "conj": "시원해요 / 시원했어요" }
 ```
 
-| Champ | Type | Règle |
-|---|---|---|
-| clé | string | DOIT être un id existant du seed. `merge_extra.py` rejette les autres, et son assert final plante si un id inconnu s'est glissé. |
-| `ex` | string | Phrase d'exemple en coréen. **≤ 70 caractères** (contrainte d'affichage, appliquée par merge_extra.py). |
-| `exFr` | string | Traduction de `ex`. Optionnelle mais fortement recommandée. |
-| `note` | string | UNE ligne : piège, hanja, irrégularité. Affichée avec 💡. |
-| `conj` | string | Conjugaisons (stocké par merge_extra.py, pas encore affiché par app.js — champ en attente, ne pas le supprimer). |
+| Champ | Règle |
+|---|---|
+| clé | DOIT être un id existant du seed. `merge_extra.py`/`merge_pack.py` rejettent les autres et s'auto-valident par assert. |
+| `ex` | Phrase d'exemple KR, **≤ 70 caractères** (contrainte d'affichage, appliquée par les scripts). |
+| `exFr` | Traduction de `ex`. |
+| `note` | UNE ligne (piège, hanja, anti-confusion), ≤ 110 caractères. Affichée avec 💡. |
+| `conj` | Conjugaisons — **affichée** dans l'encart trivia (préfixe 활용) depuis la v8. |
 
-Règle éditoriale de `merge_extra.py` : une entrée existante qui a déjà un `ex` n'est **jamais
-écrasée** (contenu déjà vérifié) ; seul `conj` peut y être ajouté.
+Règle éditoriale : une entrée existante qui a déjà un `ex` n'est **jamais écrasée** (contenu
+déjà vérifié) ; seul `conj` peut y être ajouté.
 
 ### 3.3 L'index audio (`docs/audio/index.js`)
 
 ```js
-window.AUDIO = ["1763107175562", "1763107259609", "kit-3f2a9b1c", ...];
+window.AUDIO = ["1763106836914", "kit-3f2a9b1c", "pack-a1b2c3d4", ...];
 ```
 
-Simple liste d'ids : la présence d'un id signifie que `docs/audio/<id>.mp3` existe et fait
-plus de 1 Ko. `app.js` en fait un `Set` ; `speak(texte, id)` joue le MP3 si l'id y est, sinon
-retombe sur le TTS du téléphone. Ce fichier est ENTIÈREMENT régénéré par `make_audio.py` —
-ne jamais l'éditer à la main.
+La présence d'un id ⇒ `docs/audio/<id>.mp3` existe et fait > 1 Ko. Depuis la v14-v16,
+**TOUT le deck** a son MP3 (1293/1293, ~17 Mo, voix `ko-KR-SunHiNeural`). `app.js` en fait un
+`Set` ; `speak(texte, id)` joue le MP3 si présent, sinon TTS du téléphone. Fichier ENTIÈREMENT
+régénéré par `make_audio.py` — jamais à la main.
 
-### 3.4 L'état localStorage (clé `sori-state-v1`)
+### 3.4 L'état localStorage (clé `sori-state-v1`) — CONTRAT COMPLET
 
 ```json
 {
   "v": 1,
-  "items": {
-    "1763106836914": { "s": 4, "i": 8, "d": "2026-07-10", "ok": 12, "ko": 3 }
-  },
+  "items": { "1763106836914": { "s": 4, "i": 8, "d": "2026-07-10", "e": 2.25, "ok": 12, "ko": 3 } },
   "log": {
-    "2026-07-03": { "ok": 25, "ko": 4, "n": 29, "listen": 10 }
+    "2026-07-03": {
+      "ok": 25, "ko": 4, "n": 29, "listen": 10, "xp": 310,
+      "ok1": 18, "ko1": 3, "so": 96, "sn": 104,
+      "k": { "qcm2": { "o": 6, "x": 1, "t": 210, "c": 7 }, "rec5": { "o": 4, "x": 2, "t": 350, "c": 6 } }
+    }
   },
   "intro": { "2026-07-03": 12 },
-  "set": { "newPerDay": 12, "kitFirst": true, "rate": 0.9, "listenN": 10,
-           "sessionMax": 120, "mute": false, "autoplay": true, "voice": "Google 한국의" },
+  "xp": 12480,
+  "set": { "newPerDay": 12, "kitFirst": true, "rate": 0.9, "listenN": 10, "sessionMax": 120,
+           "mute": false, "autoplay": true, "adaptive": false, "typing": false, "voice": "Google 한국의" },
   "sess": { "d": "2026-07-03", "q": ["id1", "id2"], "p": 3, "pen": 15 },
-  "lastExport": "2026-06-28"
+  "scen": { "resto": 7 },
+  "qdone": { "d": "2026-07-03", "ids": { "reponses30": true } },
+  "exams": [ { "date": "2026-06-28", "score": 31, "total": 40, "pct": 78,
+               "grade": "A2+ / B1 en approche",
+               "sections": { "A": { "ok": 10, "n": 12, "pct": 83 } }, "weak": ["b1::travail"] } ],
+  "evDismiss": { "seoul-2026": true },
+  "lastExport": "2026-06-28",
+  "lastCloud": "2026-07-03"
 }
 ```
 
 | Champ | Signification | Précisions |
 |---|---|---|
-| `v` | version du schéma d'état | Actuellement 1. `loadState()` accepte `v>=1`. Passer à 2 exigerait une vraie migration — hors périmètre de ce manuel, ne le fais pas. |
-| `items[id]` | **delta** par item : `s` stage, `i` intervalle (jours), `d` due (`AAAA-MM-JJ`), `ok`/`ko` compteurs | N'existe que pour les items déjà touchés. Chaque champ est optionnel : `eff(id)` prend le champ du delta s'il existe, sinon celui du seed. C'est le pattern **seed + delta** — le seed peut évoluer, le delta local prime toujours. |
-| `log[date]` | journal quotidien : `ok`, `ko`, `n` (total), `listen` | Alimente le streak et la rétention 7 jours. |
-| `intro[date]` | nombre de nouvelles cartes introduites ce jour | Plafonne l'introduction à `set.newPerDay`. |
-| `set` | réglages, fusionnés avec `DEF_SET` au chargement | **Migration douce** : `Object.assign({}, DEF_SET, s.set)` — une nouvelle clé de DEF_SET arrive automatiquement chez l'utilisateur avec sa valeur par défaut, ses valeurs existantes sont préservées. |
-| `sess` | session Réviser en cours : date, file d'ids, position, en-attente | Survit au kill de l'app par Android. Restaurée si même jour. `null` hors session. |
-| `lastExport` | date du dernier export | Déclenche le bandeau de rappel après 7 jours. |
+| `v` | version du schéma | Actuellement 1. `loadState()` accepte `v>=1`. Passer à 2 exigerait une vraie migration — hors périmètre, ne le fais pas. |
+| `items[id]` | **delta** par item : `s` stage, `i` intervalle (jours), `d` due, `e` ease adaptative (float 2 déc., clampée [1.3, 3.0]), `ok`/`ko` compteurs | N'existe que pour les items déjà touchés. Chaque champ optionnel : `eff(id)` prend le delta s'il existe, sinon le seed. `e` absent ⇒ seed paresseux via `easeOf()` (ALGORITHM.md §3). Pattern **seed + delta** : le seed peut évoluer, le delta prime. |
+| `log[date]` | journal quotidien | `ok`/`ko`/`n` : compteurs globaux · `listen` : réponses des exercices d'écoute (kinds `listen`+`dictee`) · `xp` : XP gagnée ce jour (réponses + bonus de quêtes) · `ok1`/`ko1` : réponses **comptées** (1re présentation espacée non anticipée — la mesure « propre » de rétention) · `so`/`sn` : sommes des intervalles legacy (`so`) vs adaptatif (`sn`) sur les succès comptés (le « shadow » de la phase 1, cf. R16) · `k` : télémétrie par type d'exercice. |
+| `log[date].k[kind]` | `{o, x, t, c}` par exercice | `o`=réussites, `x`=échecs, `t`=somme des temps de réponse en **dixièmes de seconde**, `c`=réponses chronométrées. Kinds existants : `qcm1` (stage 0-1), `qcm2` (stage 2), `qcm3` (FR→KR), `build`, `rec4`, `rec5`, `recrev`, `type` (saisie hangul), `listen`, `dictee`, `scenario`. Champ absent ⇒ 0, jamais d'erreur. |
+| `intro[date]` | nouvelles cartes introduites ce jour | Plafonne l'introduction à `set.newPerDay`. |
+| `xp` | XP cumulée (entier) | Réponse juste : 10 + bonus combo (jusqu'à +20) ; réponse fausse : 2 ; quête réclamée : +30/50/80. Niveaux 급 par paliers (`XP_LEVELS` dans app.js) — plancher, jamais un plafond. |
+| `set` | réglages, fusionnés avec `DEF_SET` au chargement | **Migration douce** : `Object.assign({}, DEF_SET, s.set)`. `DEF_SET` (engine.js) = `{newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true, adaptive:false, typing:false}` — verrouillé par le test contractuel (P10). `voice` s'ajoute quand l'utilisateur choisit une voix TTS. `adaptive` = bascule phase 2 (R16) ; `typing` = saisie hangul au stage 5 (opt-in). |
+| `sess` | session Réviser en cours : `d` date, `q` file d'ids, `p` position, `pen` en-attente | Survit au kill de l'app par Android. Restaurée si même jour. `null` hors session. |
+| `scen` | meilleurs scores des scénarios : `{scenarioId: répliquesDuPremierCoup}` | Clés = ids de `SCENARIOS` — éternels (P11). Sert au badge « Scénarios parfaits ». |
+| `qdone` | quêtes réclamées AUJOURD'HUI : `{d: date, ids: {questId: true}}` | Réinitialisé quand `d` ≠ aujourd'hui. Clés = ids de quêtes (éternels, P11). |
+| `exams` | historique des bilans de niveau (append-only) | Un objet `summarize()` + `date` par bilan. Ne jamais réécrire les entrées passées. |
+| `evDismiss` | événements masqués : `{eventId: true}` | PERMANENT — c'est pour ça qu'un id d'événement ne se recycle jamais (P11). |
+| `lastExport` | date du dernier export (manuel OU cloud) | Bandeau de rappel après 7 jours. |
+| `lastCloud` | date de la dernière sauvegarde cloud réussie | L'auto-backup de fin de session ne tourne qu'une fois par jour (`lastCloud !== aujourd'hui`). |
 
-### 3.5 L'export JSON (bouton 📤 Exporter, onglet Stats)
+### 3.5 L'export JSON et les sauvegardes cloud
 
 ```json
-{
-  "app": "sori",
-  "v": 1,
-  "exportedAt": "2026-07-03T18:12:00.000Z",
-  "seedVersion": 1,
-  "state": { ...copie intégrale de l'état localStorage... }
-}
+{ "app": "sori", "v": 1, "exportedAt": "2026-07-03T18:12:00.000Z",
+  "seedVersion": 1, "state": { ...copie intégrale de l'état localStorage... } }
 ```
 
-- Nom de fichier : `sori-export-AAAA-MM-JJ.json`. Destination : OneDrive (via le partage Android).
+- **Export manuel** (Stats → 📤) : fichier `sori-export-AAAA-MM-JJ.json`, partagé vers OneDrive.
+- **Sauvegarde cloud** (Stats → ☁️, + auto 1×/jour en fin de session) : le MÊME payload, poussé
+  via l'API GitHub dans le repo **privé** `mnafati-cloud/sori-data` : `exports/latest.json`
+  (écrasé) + `exports/sori-export-AAAA-MM-JJ.json` (un par jour). Jeton fine-grained (dépôt
+  sori-data, permission Contents) stocké UNIQUEMENT sur le téléphone (`sori-gh-token`),
+  jamais inclus dans un export. Lecture côté PC : recette **R15**.
 - L'import (📥) vérifie `app === "sori"`, demande confirmation, **remplace** l'état local en le
   passant par la même migration douce que le chargement : un vieil export reste valide à vie.
-- Ces fichiers sont des **données personnelles** : gitignorés (`sori-export-*.json`), jamais dans le repo.
+- Ces fichiers sont des **données personnelles** : gitignorés (`sori-export-*.json`), jamais
+  dans un repo public.
+
+### 3.6 Les AUTRES clés de stockage du téléphone (à connaître pour ne pas les casser)
+
+| Stockage | Clé | Écrite par | Contenu |
+|---|---|---|---|
+| localStorage | `sori-state-v1` | app.js UNIQUEMENT | La progression (§3.4). |
+| localStorage | `sori-theme` | themes.js UNIQUEMENT | L'id du thème (`seoul`/`nuit`/`hanji`/`dansaekhwa`). Valeur inconnue ⇒ défaut. |
+| localStorage | `sori-gh-token` | app.js (`setGhToken`) | Jeton GitHub fine-grained du cloud backup. JAMAIS exporté, JAMAIS loggé. |
+| Cache Storage | `sori-vNN` | service worker | Cache réseau de l'app (purgé à chaque bump de CACHE). |
+| Cache Storage | `sori-audio-store` | app.js (bouton « Mode avion ») | Les 1293 MP3 téléchargés pour le hors-ligne total. **Le SW ne doit JAMAIS le purger** (exclusion explicite dans `activate` — ne la retire pas). |
 
 ---
 
@@ -262,66 +363,72 @@ ne jamais l'éditer à la main.
 
 ### 4.1 Les 6 stages et leurs exercices
 
-| Stage | Nom | Exercice servi par `renderReview()` |
+| Stage | Nom | Exercice servi par `renderReview()` (kind journalisé) |
 |---|---|---|
 | 0 | nouveau | Aucun — pas encore introduit. L'introduction (via `pickNew`) pose `{s:1, i:0, d:aujourd'hui}`. |
-| 1 | QCM facile | `exoQcmKr2Fr` : KR affiché (+🔊) → choisir le FR parmi 4. Distracteurs SANS les confusions. |
-| 2 | QCM piégeux | `exoQcmKr2Fr` : idem, mais les distracteurs `conf` (sosies) passent en premier. |
-| 3 | production débutante | Phrase de ≥3 mots → `exoBuild` (word bank : reconstituer la phrase avec des chips). Sinon → `exoQcmFr2Kr` (FR affiché → choisir le KR). |
-| 4 | rappel indicé | `exoRecall(hinted=true)` : FR affiché + première syllabe du KR → dire à voix haute → « Montrer » → auto-évaluation Encore/Bien. **40 % du temps** (tirage aléatoire) : `exoRecallRev` (rappel inversé KR→FR) pour entretenir la lecture. |
-| 5 | rappel pur | `exoRecall(hinted=false)` : FR seul, sans indice. Même rotation 40 % de rappel inversé. |
+| 1 | QCM facile | `exoQcmKr2Fr` (`qcm1`) : KR affiché (+🔊) → choisir le FR parmi 4. Distracteurs SANS les confusions. |
+| 2 | QCM piégeux | `exoQcmKr2Fr` (`qcm2`) : idem, distracteurs `conf` (sosies) en premier. |
+| 3 | production débutante | Phrase de ≥3 mots → `exoBuild` (`build`, word bank). Sinon → `exoQcmFr2Kr` (`qcm3`). |
+| 4 | rappel indicé | `exoRecall(hinted=true)` (`rec4`) : FR + première syllabe → auto-évaluation. **40 %** du temps : `exoRecallRev` (`recrev`, KR→FR). |
+| 5 | rappel pur | `exoRecall(hinted=false)` (`rec5`) : FR seul. Même rotation 40 % de `recrev`. Si `ST.set.typing` (opt-in Réglages) : 50 % des MOTS passent en **saisie hangul** (`type`, module typing.js). |
 
-### 4.2 Les règles de planification EXACTES (`ENGINE.computeAnswer`)
+### 4.2 Les règles de planification — legacy GELÉE + extension adaptative
 
-Constantes contractuelles (verrouillées par le test « valeurs contractuelles ») :
+**Constantes contractuelles** (verrouillées par les tests) :
 
 ```
 STEP = {2:1, 3:2, 4:4, 5:8}      // intervalle (jours) EN ARRIVANT à ce stage
-DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10,
-            sessionMax:120, mute:false, autoplay:true }
+DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120,
+            mute:false, autoplay:true, adaptive:false, typing:false }
 ```
 
-**Bonne réponse :**
-- Si `stage < 5` : `stage+1`, `itv = STEP[nouveau stage]` (repli `1` pour le stage 1, absent de STEP), `due = aujourd'hui + itv`.
-- Si `stage == 5` : le stage reste 5, `itv = min(120, max(14, round(itv × 2.2)))`, `due = aujourd'hui + itv`.
+**La planification LEGACY (`computeAnswerLegacy`, GELÉE À VIE — ne se modifie JAMAIS)** :
+- Bonne réponse, `stage < 5` : `stage+1`, `itv = STEP[nouveau stage]` (repli 1 pour le stage 1),
+  `due = aujourd'hui + itv`.
+- Bonne réponse, `stage == 5` : stage reste 5, `itv = min(120, max(14, round(itv × 2.2)))`.
+- Mauvaise réponse : `stage = max(1, stage − 2)`, `itv = 0`, `due = aujourd'hui`, et `app.js`
+  re-pioche l'item 3 à 5 cartes plus loin dans la session.
 
-**Mauvaise réponse :**
-- `stage = max(1, stage − 2)`, `itv = 0`, `due = aujourd'hui`. En plus, `app.js` re-pioche
-  l'item 3 à 5 cartes plus loin dans la session en cours.
+**POURQUOI ces nombres (à défendre, pas à retoucher)** : STEP doublant = espacement expansif
+d'acquisition ; ×2.2 = maintenance légèrement plus prudente que SM-2 (l'auto-évaluation est
+indulgente) ; plancher 14 j = les 193 items du stage 5 ne noient pas la file ; plafond 120 j =
+≥ ~3 passages/an, aligné sur l'horizon voyage ; échec = −2 stages (plancher 1) = redescendre
+vers un exercice plus facile sans redevenir « nouveau » ; `itv=0` = re-testé le jour même.
 
-**POURQUOI ces nombres (à défendre, pas à retoucher sans la recette R6) :**
-- **STEP doublant (1→2→4→8 j)** : espacement expansif classique pendant la phase d'acquisition.
-  Chaque promotion double l'attente — assez serré pour consolider, assez lâche pour ne pas
-  engorger la file quotidienne.
-- **×2.2 au stage 5** : croissance exponentielle de maintenance, légèrement plus prudente que
-  le facteur 2.5 de SM-2 (Anki), car le rappel pur auto-évalué est plus indulgent qu'un vrai test.
-- **Plancher 14 j** : un item qui vient d'atteindre le rappel pur ne revient pas avant deux
-  semaines — sinon les 193 items du stage 5 noieraient la file.
-- **Plafond 120 j** : garantit au moins ~3 passages par an et évite qu'un `due` s'enfuie au-delà
-  de l'horizon d'usage (le voyage en Corée). Sans plafond, ×2.2 enverrait des items à 2 ans.
-- **Échec = −2 stages (plancher 1)** : la sanction fait REDESCENDRE l'item vers une forme
-  d'exercice plus facile (un rappel raté redevient un QCM) — c'est le cœur du concept d'échelle.
-  Plancher 1 et pas 0 : l'item reste « en cours », il ne redevient jamais « nouveau ».
-- **`itv=0, due=aujourd'hui`** : un item raté est re-testé le jour même, jamais reporté.
+**L'EXTENSION ADAPTATIVE (`computeAnswer(it, ok, today, adaptive)`)** — spec complète :
+`ALGORITHM.md`. Résumé opérationnel :
+- retourne `{s, i, d, e, counted, early, iLegacy, iAdaptive}` ;
+- **`adaptive=false` (phase 1, l'état ACTUEL) : `s/i/d` = sortie legacy BIT-À-BIT** (verrouillé
+  par le test « phase 1 » d'adaptive.test.mjs) ; `e` (ease par mot) et `counted` sont calculés
+  et stockés quand même — c'est la phase « ombre » ;
+- `adaptive=true` (phase 2, bascule utilisateur — R16) : paliers et croissance mis à l'échelle
+  par l'ease `e` (gain +0.05 par succès compté, perte 0.244 atténuée si échec tardif, gel en
+  re-vu de session et en révision anticipée type boss fight), crédit de retard, plancher
+  stage 5 scalé. Le chemin d'ÉCHEC est inchangé (filet de sécurité) ;
+- constantes dans `ENGINE.EASE`. **`EASE_LOSS` est DÉRIVÉ de `TARGET_RETENTION` (0.83) — ne
+  jamais l'éditer à la main.** Réglage : `TARGET_RETENTION` seul, bornes [0.78, 0.88] (R16).
 
 ### 4.3 La file du jour (`buildQueue`)
 
 1. Échues = items avec `stage ≥ 1` et `due ≤ aujourd'hui` (`selectDue`).
 2. Nouvelles = jusqu'à `newPerDay − intro[aujourd'hui]` items de stage 0, kit d'abord si
-   `kitFirst`, puis par id croissant (`pickNew`). Chacune est immédiatement posée à
-   `{s:1, i:0, d:aujourd'hui}` et comptée dans `intro`.
-3. Mélange, puis coupe à `sessionMax` (120). Le reste devient `PENDING`, proposé en fin de
-   session par le bouton « Continuer (N en attente) ».
+   `kitFirst`, puis par id croissant (`pickNew`). Chacune posée à `{s:1, i:0, d:aujourd'hui}`.
+3. Mélange, coupe à `sessionMax` (120). Le reste = PENDING (« Continuer (N en attente) »).
 
 ### 4.4 Ce qui compte pour la planification — et ce qui ne compte pas
 
-| Mode | Touche la planification ? | Détail |
-|---|---|---|
-| Réviser (file du jour) | **OUI** | Chaque réponse passe par `applyAnswer`. |
-| Boss fight (⚔️, 20 ennemies les plus faibles) | **OUI** | Vraies révisions (`BONUS=false`). Candidats : `enemy && 1 ≤ stage ≤ 4`, triés stage puis `ko`. |
-| Entraînement libre (10 items stage ≥ 2) | non | `BONUS=true` : le journal est incrémenté, pas la planification. |
-| Écoute (10 mots stage ≥ 2, 1 sur 2 en dictée) | non | Journal seulement (`kind: "listen"`). |
-| Voyage (liste kit + drill) | non | Aucun enregistrement. |
+| Mode | Planification ? | Journal ? | Détail |
+|---|---|---|---|
+| Réviser (file du jour) | **OUI** | oui (+XP) | Chaque réponse passe par `applyAnswer`. |
+| Boss fight (⚔️, 20 ennemies les plus faibles) | **OUI**¹ | oui (+XP) | `BONUS=false`. ¹ En phase 2 adaptative, un succès trop anticipé (< 75 % de l'intervalle) devient un no-op de planification — c'est voulu (ALGORITHM.md). |
+| Entraînement libre (10 items stage ≥ 2) | non | oui (sans XP) | `BONUS=true`. |
+| Écoute active (10 mots stage ≥ 2, 1 sur 2 en dictée) | non | oui (`listen`/`dictee`) | |
+| Écoute passive (player.js) | non | **non** | Aucun enregistrement. |
+| Voyage (liste kit + drill) | non | non | |
+| Dictionnaire (search.js) | non | non | |
+| Scénarios (scenarios.js) | non | oui (`scenario`) + record `ST.scen` | |
+| Bilan de niveau (exam.js) | **non, par contrat** | non (historique `ST.exams` seulement) | C'est un thermomètre, pas un exercice. |
+| Quêtes (quests.js) | non | XP seulement (`log.xp`, `ST.xp`) | Réclamation via `onClaim`. |
 
 ---
 
@@ -334,47 +441,35 @@ DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10,
 ### R1 — Ajouter du vocabulaire (nouveaux items dans le seed)
 
 **Principe.** `docs/data.js` est entièrement régénéré par `tools/build_data.py` à partir de
-`tools/snapshot.anki2` (figé) + des tables codées dans le script. Les ids sont stables
-(timestamp Anki ou hash du texte coréen), donc un rebuild ne touche pas la progression.
-On n'ajoute JAMAIS un item en éditant data.js à la main.
+`tools/snapshot.anki2` (figé) + la table `KIT` du script + les packs `tools/packs/*.json`.
+Les ids sont stables (timestamp Anki, ou hash du texte coréen pour kit/packs), donc un rebuild
+ne touche pas la progression. **Le garde-fou anti-perte d'ids est INTÉGRÉ au build** : il
+abandonne (SystemExit) si un id existant disparaît. On n'ajoute JAMAIS un item en éditant
+data.js à la main.
 
 - [ ] 1. Vérifie que `tools/snapshot.anki2` existe (`ls tools/snapshot.anki2`). S'il manque : STOP,
-      le rebuild est impossible (le fichier n'existe que sur cette machine, il est gitignoré).
+      le rebuild est impossible (fichier gitignoré, présent uniquement sur cette machine).
 - [ ] 2. Ouvre `tools/build_data.py` et mets à jour la constante `TODAY` (ligne ~16) à la date du
-      jour : `TODAY = datetime.date(2026, 7, 15)` par exemple. (Elle sert d'ancre aux échéances.)
+      jour. (Elle sert d'ancre aux échéances.)
 - [ ] 3. **Cas A — nouvelle phrase du kit voyage** : ajoute un tuple à la table `KIT` :
       `("Encore un peu, s'il vous plaît.", "조금 더 주세요.", "resto"),`
       Sous-thèmes valides : `resto`, `transport`, `hotel`, `achats`, `urgence`, `communication`
-      (ce sont les clés de `TRIP_LABELS` dans app.js — un autre sous-thème s'afficherait sous
-      « Essentiels du deck », pas de crash mais évite). **Ne retire JAMAIS une ligne déjà
-      poussée** : son id (hash du coréen) doit continuer d'exister.
-- [ ] 4. **Cas B — vocabulaire général (hors kit)** : le mécanisme n'existe pas encore dans le
-      script. Ajoute EXACTEMENT ce bloc dans `build_data.py`, juste APRÈS la boucle du kit et
-      juste AVANT le commentaire `# ---------- groupes de confusion` (pour que les nouveaux
-      mots reçoivent leurs distracteurs) :
-
-      ```python
-      # ---------- ajouts hors Anki (id haché stable, comme le kit) ----------
-      NEW_ITEMS = [
-          # (fr, kr, theme, type) — NE JAMAIS retirer une ligne déjà poussée
-          ("le pourboire", "팁", "b1::resto", "word"),
-      ]
-      for fr, kr, theme, typ in NEW_ITEMS:
-          if kr in by_kr:
-              continue            # déjà dans le deck -> ne rien faire
-          it = {
-              "id": "new-" + hashlib.sha1(kr.encode("utf-8")).hexdigest()[:8],
-              "fr": fr, "kr": kr, "type": typ, "theme": theme,
-              "stage": 0, "itv": 0, "due": None, "enemy": False,
-          }
-          items.append(it)
-          by_kr[kr] = it
-      ```
-      Ensuite, ajouter un mot = ajouter un tuple à `NEW_ITEMS`.
-- [ ] 5. Lance le build : `python tools/build_data.py`. Il imprime les compteurs (`meta`).
-      Vérifie que le nombre d'items a augmenté du nombre attendu, ni plus ni moins.
-- [ ] 6. **Garde-fou anti-perte — vérifie qu'AUCUN id existant n'a disparu** :
-
+      (clés de `TRIP_LABELS` dans app.js). **Ne retire JAMAIS une ligne déjà poussée.**
+- [ ] 4. **Cas B — vocabulaire général (hors kit)** : passe par un PACK. Deux options :
+      - une **vague de contenu** produite par un workflow IA → recette **R11** (merge_pack.py) ;
+      - un **petit ajout manuel** → crée ou complète un fichier `tools/packs/pack-AAAA-MM-nom.json` :
+        ```json
+        [ {"fr": "le pourboire", "kr": "팁", "type": "word", "theme": "b1::resto"},
+          {"fr": "…", "kr": "…", "type": "phrase", "theme": "voyage::resto", "kit": true} ]
+        ```
+        Règles : `type` ∈ {word, phrase} ; items dédupliqués par `kr` contre tout l'existant
+        (un doublon est ignoré sans erreur) ; id généré = `pack-` + sha1(kr)[:8] ;
+        **ne retire JAMAIS un item d'un pack déjà poussé**.
+- [ ] 5. Lance le build : `python tools/build_data.py`. Il imprime `meta` (compteurs), le nombre
+      d'items venus des packs, la couverture des confusions. Vérifie que le total a augmenté du
+      nombre attendu, ni plus ni moins. **S'il ABANDONNE avec « ids disparaîtraient »** : tu as
+      retiré du contenu quelque part (pack, ligne KIT) — remets-le, ne contourne JAMAIS le garde-fou.
+- [ ] 6. (Double-vérification optionnelle mais recommandée avant commit) :
       ```bash
       python - <<'EOF'
       import io, json, subprocess
@@ -385,35 +480,33 @@ On n'ajoute JAMAIS un item en éditant data.js à la main.
           return {it["id"] for it in d["items"]}
       o, n = ids(old), ids(new)
       print("ids disparus :", sorted(o - n) or "AUCUN (OK)")
-      print("ids nouveaux :", sorted(n - o))
+      print("ids nouveaux :", len(n - o))
       EOF
       ```
-      Le résultat DOIT être `ids disparus : AUCUN (OK)`. Sinon :
-      `git checkout -- docs/data.js` et cherche l'erreur — ne pousse rien.
-- [ ] 7. Si les nouveaux items sont `kit` (ou `enemy`) : génère leur audio → recette **R3**.
+      Le résultat DOIT être `ids disparus : AUCUN (OK)`.
+- [ ] 7. Génère l'audio des nouveaux items → recette **R3** (le script cible TOUT le deck et
+      saute l'existant).
 - [ ] 8. `node --test tests/` → tout vert.
-- [ ] 9. Test local (serveur + vérifier que les nouveaux items apparaissent : une phrase kit se
-      voit immédiatement dans l'onglet Voyage ; un mot stage 0 apparaîtra dans les nouvelles
-      cartes du jour).
-- [ ] 10. Release → recette **R7**.
+- [ ] 9. Test local : une phrase kit apparaît dans l'onglet Voyage ; un mot stage 0 apparaîtra
+      dans les nouvelles cartes du jour ; le dictionnaire (onglet Voyage, recherche) trouve les
+      nouveaux items.
+- [ ] 10. Release → recette **R7** (committer AUSSI le pack `tools/packs/*.json`).
 
 ### R2 — Ajouter ou modifier du trivia (`docs/extra.js`)
 
-**Cas A — lot produit par un workflow IA** (fichier JSON au format
-`{"result":{"batches":[{"entries":[{"id":"...","ex":"...","exFr":"...","note":"...","conj":"..."}]}]}}`) :
+**Cas A — lot produit par un workflow IA** (format
+`{"result":{"batches":[{"entries":[{"id","ex","exFr","note","conj"}]}]}}`) :
 
 - [ ] 1. `python tools/merge_extra.py chemin/vers/lot.json`
-- [ ] 2. Lis les STATS imprimées : `bad_id` doit être 0 (sinon le lot référence des ids inexistants
-      — corrige le lot, pas le seed) ; `long_ex` = exemples > 70 caractères rejetés.
-- [ ] 3. Le script s'auto-valide (assert « id inconnu après merge ! »). S'il plante :
-      `git checkout -- docs/extra.js` et recommence.
+- [ ] 2. Lis les STATS imprimées : `bad_id` doit être 0 (sinon le lot référence des ids
+      inexistants — corrige le lot, pas le seed) ; `long_ex` = exemples > 70 caractères rejetés.
+- [ ] 3. Le script s'auto-valide (assert). S'il plante : `git checkout -- docs/extra.js`, recommence.
 - [ ] 4. Passe au point commun ci-dessous.
 
 **Cas B — correction ponctuelle à la main.** `extra.js` est une seule longue ligne JSON :
 ne l'édite pas dans un éditeur, passe par Python :
 
 - [ ] 1. Adapte et exécute (l'id DOIT exister dans le seed ; `ex` ≤ 70 caractères) :
-
       ```bash
       python - <<'EOF'
       import io, json
@@ -425,7 +518,7 @@ ne l'édite pas dans un éditeur, passe par Python :
           "exFr": "Bonjour, enchanté (première rencontre).",
           "note": "Registre poli standard. Entre amis proches : 안녕.",
       }
-      out = "// Contenu d'aide généré + enrichi — ne pas éditer à la main\nwindow.EXTRA = "
+      out = "// Contenu d'aide généré + enrichi (merge_extra/merge_pack) — ne pas éditer à la main\nwindow.EXTRA = "
       out += json.dumps(extra, ensure_ascii=False, separators=(",", ":")) + ";\n"
       io.open(P, "w", encoding="utf-8", newline="\n").write(out)
       print("OK,", len(extra), "entrées")
@@ -435,7 +528,6 @@ ne l'édite pas dans un éditeur, passe par Python :
 **Point commun aux deux cas — validation obligatoire :**
 
 - [ ] 2. Vérifie JSON + ids contre le seed :
-
       ```bash
       python - <<'EOF'
       import io, json
@@ -449,185 +541,388 @@ ne l'édite pas dans un éditeur, passe par Python :
       EOF
       ```
       `ids inconnus : aucun` est obligatoire. Sinon : `git checkout -- docs/extra.js`.
-- [ ] 3. Test local : réponds à une carte qui a du trivia — l'encart (exemple + 💡) doit
-      s'afficher après la réponse, correctement encodé (pas de `?` ni de caractères cassés).
+- [ ] 3. Test local : réponds à une carte qui a du trivia — l'encart (exemple + 활용 + 💡) doit
+      s'afficher après la réponse, correctement encodé, avec le bouton « Continuer → ».
 - [ ] 4. Release → **R7**.
 
 ### R3 — Étendre l'audio natif
 
-**Principe.** `tools/make_audio.py` génère un MP3 par item `kit` ou `enemy` (voix
-`ko-KR-SunHiNeural` via edge-tts, réseau requis), puis régénère `docs/audio/index.js`.
-Il est **relançable** : il saute les MP3 déjà présents et valides (> 1 Ko).
+**Principe.** `tools/make_audio.py` génère un MP3 pour **CHAQUE item du deck** (voix
+`ko-KR-SunHiNeural`, rate −15 %, via edge-tts — réseau requis), puis régénère
+`docs/audio/index.js`. Il est **relançable** : il saute les MP3 déjà présents et valides
+(> 1 Ko). Après un ajout de contenu (R1/R11), il ne génère donc QUE les nouveaux.
 
 - [ ] 1. Une seule fois par machine : `pip install edge-tts`.
 - [ ] 2. `export PYTHONIOENCODING=utf-8` puis `python tools/make_audio.py`.
 - [ ] 3. Lis la sortie : `MP3 valides: X / X attendus` et `OK — tous les audios sont presents.`
       En cas d'échecs réseau, le script fait 3 tentatives ; s'il sort en erreur avec des
       MANQUANTS, relance-le simplement (il reprend où il en était).
-- [ ] 4. Contrôle la taille totale imprimée : le budget raisonnable est < 10 Mo au total
-      (~14 Ko par item). Au-delà, demande avant de pousser.
-- [ ] 5. Pour cibler PLUS d'items que kit/enemy : dans `select_targets()` de make_audio.py,
-      la condition est `if it.get("kit") or it.get("enemy"):`. Élargis-la explicitement, par
-      exemple `if it.get("kit") or it.get("enemy") or it["stage"] >= 4:` — jamais « tous les
-      items » d'un coup sans valider le budget taille à l'étape 4.
-- [ ] 6. Test local : ouvre l'onglet Voyage, tape 🔊 sur une phrase — le son doit être la voix
-      neurale (féminine, naturelle), pas le TTS du téléphone/PC.
-- [ ] 7. `git status` : les nouveaux `.mp3` et `docs/audio/index.js` sont bien là, rien d'autre.
-- [ ] 8. Release → **R7** (les MP3 ne sont pas dans `ASSETS` du service worker — c'est normal,
-      ils se mettent en cache à la première lecture ; `audio/index.js` y est déjà).
+- [ ] 4. Contrôle la taille totale imprimée : ~14 Ko par item, ~17 Mo pour 1293 items. Si la
+      taille totale saute anormalement (> +20 % pour quelques items), demande avant de pousser.
+- [ ] 5. Test local : onglet Voyage, tape 🔊 sur une NOUVELLE phrase — voix neurale féminine,
+      pas le TTS du PC/téléphone.
+- [ ] 6. `git status` : les nouveaux `.mp3` et `docs/audio/index.js` sont là, rien d'autre.
+- [ ] 7. Release → **R7**. Les MP3 ne sont pas dans `ASSETS` du service worker — c'est normal :
+      ils se mettent en cache à la première lecture, et l'utilisateur peut TOUT télécharger via
+      le bouton « Mode avion » (cache `sori-audio-store`, jamais purgé par le SW).
 
 ### R4 — Changer un réglage par défaut
 
-**Principe.** Les défauts vivent dans `DEF_SET` (docs/engine.js, ligne ~12) et sont verrouillés
-par le test « DEF_SET et STEP : valeurs contractuelles » (tests/engine.test.mjs, fin de fichier).
+**Principe.** Les défauts vivent dans `DEF_SET` (docs/engine.js) et sont verrouillés par le
+test « DEF_SET et STEP : valeurs contractuelles » (fin de tests/engine.test.mjs). Voir P10.
 
 - [ ] 1. **Ajouter une NOUVELLE clé** (ex. `krScale: 1.0`) : ajoute-la dans `DEF_SET`
-      (engine.js) ET dans le `assert.deepEqual` du test contractuel. Même commit.
-      La migration douce (`Object.assign({}, DEF_SET, s.set)`) la fera apparaître chez
-      l'utilisateur avec sa valeur par défaut, sans toucher ses réglages existants.
+      (engine.js) **ET** dans le `assert.deepEqual` du test contractuel. MÊME commit.
+      La migration douce la fera apparaître chez l'utilisateur avec sa valeur par défaut.
 - [ ] 2. **Changer la valeur d'une clé existante** : même manœuvre (les deux fichiers), MAIS
-      sache que ça ne changera RIEN pour l'utilisateur actuel — ses réglages sont déjà
-      persistés dans `ST.set` et priment sur les défauts. Si le changement doit s'appliquer
-      chez lui, il devra le faire dans l'écran Réglages ; dis-le dans le message de commit.
+      ça ne changera RIEN pour l'utilisateur actuel — ses réglages persistés priment.
       N'écris JAMAIS de code qui force une valeur par-dessus `ST.set`.
 - [ ] 3. **Interdits** : renommer une clé, en supprimer une, changer son unité ou son sens.
 - [ ] 4. Si le réglage a une UI : ajoute le contrôle dans `renderStats()` (app.js) sur le modèle
-      des existants — un `<label>` + un handler `onchange` qui fait `ST.set.maClé = …; save();`.
-- [ ] 5. `node --test tests/` → vert. Test local (l'écran Réglages fonctionne, la valeur se
-      persiste après rechargement). Release → **R7**.
+      des existants — `<label>` + handler `onchange` qui fait `ST.set.maClé = …; save();`.
+- [ ] 5. `node --test tests/` → vert. Test local (Réglages fonctionne, la valeur persiste après
+      rechargement). Release → **R7**.
 
 ### R5 — Ajouter un exercice
 
 - [ ] 1. Écris la fonction `exoMonExo(it)` dans app.js, à côté des autres. Modèle obligatoire :
       construire une `card` avec `el(...)`, échapper TOUT texte avec `esc(...)`, jouer l'audio
-      avec `speak(it.kr, it.id)` (jamais l'API TTS en direct), et **terminer chaque chemin par
-      exactement un appel** `afterAnswer(it, ok, showTrivia(card, it))` — c'est lui qui
-      journalise, planifie, re-pioche les ratés et avance la file. Aucun `setTimeout(render)`
-      à toi.
-- [ ] 2. Branche-le dans le dispatch de `renderReview()` (app.js, bloc
-      `if(it.stage<=2) … else if(it.stage===3) … else …`) avec une condition claire sur
-      `it.stage` / `it.type`.
-- [ ] 3. **Règle de design gravée** : chaque exercice doit avoir une variante muette — il ne doit
-      JAMAIS être impossible de répondre avec `ST.set.mute` actif. (`speak()` est déjà no-op
-      en mode muet ; assure-toi que la réponse ne dépend pas d'avoir entendu le son, ou
-      prévois un repli comme le fait le mode Écoute.)
-- [ ] 4. Le CSS va dans style.css en réutilisant les variables `:root` (`--panel2`, `--acc`, `--ok`,
-      `--ko`…) et les classes existantes (`.card`, `.opts`, `.chip`, `.btn`).
-- [ ] 5. Si l'exercice a besoin d'une logique pure non triviale (tokenisation, comparaison
-      normalisée…) : mets-la dans engine.js + un test dans tests/engine.test.mjs, pas dans app.js.
-- [ ] 6. `node --test tests/` → vert. Test local : provoque l'exercice (au besoin en modifiant
-      TEMPORAIREMENT la condition de dispatch pour le forcer, puis en la remettant), réponse
-      bonne ET mauvaise, vérifie la progression de la file. Release → **R7**.
+      avec `speak(it.kr, it.id)` (jamais l'API TTS en direct), poser `EXO_T0` si tu veux le
+      temps de réponse, et **terminer chaque chemin par exactement un appel**
+      `afterAnswer(it, ok, showTrivia(card, it), "monkind")` — c'est lui qui journalise
+      (planification, XP, télémétrie `k.monkind`), re-pioche les ratés et avance la file.
+      Aucun `setTimeout(render)` à toi.
+- [ ] 2. Choisis un `kind` NOUVEAU et stable (il devient une clé du journal `k` — additif,
+      jamais renommé ensuite ; les quêtes peuvent s'y référer via `MEASURES` de quests.js).
+- [ ] 3. Branche-le dans le dispatch de `renderReview()` (bloc `if(it.stage<=2) … else …`)
+      avec une condition claire sur `it.stage` / `it.type`.
+- [ ] 4. **Règle de design gravée** : chaque exercice doit avoir une variante muette — jamais
+      impossible de répondre avec `ST.set.mute` actif.
+- [ ] 5. Le CSS va dans style.css en réutilisant les variables `:root` — puis vérifie le rendu
+      dans les 4 thèmes (Réglages → Style graphique).
+- [ ] 6. Logique pure non triviale (tokenisation, comparaison…) → engine.js + un test, pas app.js.
+- [ ] 7. `node --test tests/` → vert. Test local : provoque l'exercice (au besoin en forçant
+      TEMPORAIREMENT la condition de dispatch), réponse bonne ET mauvaise. Release → **R7**.
 
 ### R6 — Modifier la planification (DANGER : procédure tests d'abord)
 
-**C'est la modification la plus risquée du projet** : `computeAnswer` pilote la progression
-stockée sur le téléphone. Procédure stricte, dans CET ordre :
+**La modification la plus risquée du projet.** Deux niveaux :
 
-- [ ] 1. Écris D'ABORD le comportement cible dans `tests/engine.test.mjs` : modifie les
-      assertions existantes (promotion, ×2.2, plancher 14, plafond 120, rétrogradation, STEP…)
-      pour qu'elles décrivent le NOUVEAU comportement voulu.
-- [ ] 2. `node --test tests/` → les tests touchés échouent, TOUS les autres restent verts.
-      Si un test que tu n'as pas modifié tombe, tu as mal évalué l'impact : STOP, reviens en
-      arrière (`git checkout -- tests/`).
-- [ ] 3. Modifie `computeAnswer` (et/ou `STEP`) dans `docs/engine.js`. RIEN d'autre. Pas de
-      changement dans app.js, pas de changement de la forme du retour `{s, i, d}`.
-- [ ] 4. `node --test tests/` → 100 % vert.
+**NIVEAU 0 — `computeAnswerLegacy` : INTERDIT.** Cette fonction est gelée à vie (référence
+phase 1, shadow, tests d'équivalence — ALGORITHM.md §2.3). La « modifier » = migration d'état
+déguisée. Si on te le demande, la réponse est : on ajuste le chemin ADAPTATIF ou
+`TARGET_RETENTION` (R16), jamais le legacy.
+
+**NIVEAU 1 — le chemin adaptatif de `computeAnswer` / les constantes EASE** :
+
+- [ ] 1. Écris D'ABORD le comportement cible dans `tests/adaptive.test.mjs` (et
+      `tests/engine.test.mjs` si une constante contractuelle bouge).
+- [ ] 2. `node --test tests/` → SEULS les tests que tu as modifiés échouent. Si un autre test
+      tombe — en particulier « phase 1 (adaptive=false) : planification bit-à-bit legacy » —
+      tu as mal évalué l'impact : STOP, `git checkout -- tests/`.
+- [ ] 3. Modifie `docs/engine.js`. RIEN d'autre. Pas de changement de la forme du retour
+      `{s,i,d,e,counted,early,iLegacy,iAdaptive}`.
+      Rappel : `EASE_LOSS` est DÉRIVÉ de `TARGET_RETENTION` — ne l'édite jamais directement.
+- [ ] 4. `node --test tests/` → 100 % vert (37 tests).
 - [ ] 5. Contrôle de bon sens — simule la vie d'un item sans jamais échouer :
-
       ```bash
       node -e "
       const E = require('./docs/engine.js');
-      let it = {stage:0, itv:0}, t = '2026-07-03';
+      let it = {stage:0, itv:0, due:null, ok:0, ko:0}, t = '2026-07-03';
       for (let k = 0; k < 12; k++) {
-        const r = E.computeAnswer(it, true, t);
-        console.log('stage', r.s, ' itv', r.i, ' due', r.d);
-        it = {stage: r.s, itv: r.i}; t = r.d;
+        const r = E.computeAnswer(it, true, t, true);
+        console.log('stage', r.s, ' itv', r.i, ' due', r.d, ' e', r.e);
+        it = {stage: r.s, itv: r.i, due: r.d, ok: k+1, ko: 0, e: r.e}; t = r.d;
       }"
       ```
-      La suite d'intervalles doit être croissante, plafonnée à 120, sans valeur négative ni NaN.
-- [ ] 6. Vérifie que la SÉMANTIQUE n'a pas bougé : `s` reste un entier 0-5, `i` des jours,
-      `d` une date `AAAA-MM-JJ`. Si ta modification change l'un de ces sens (nouvelle échelle,
-      autres unités…), c'est une migration d'état — **hors périmètre de ce manuel, ne le fais
-      pas seul, abandonne la modification**.
-- [ ] 7. Mesure l'effet sur la charge : un plafond abaissé ou un STEP réduit peut faire échoir
-      des centaines d'items d'un coup chez l'utilisateur (leurs `due` existants ne changent
-      pas, mais les prochains intervalles oui). Écris une ligne dans le message de commit qui
-      décrit l'effet attendu (« intervalles stage 5 raccourcis d'un tiers » etc.).
+      Intervalles croissants, plafonnés à 120, `e` dans [1.3, 3.0], aucun NaN.
+- [ ] 6. Vérifie que la SÉMANTIQUE n'a pas bougé : `s` entier 0-5, `i` jours, `d` date ISO,
+      `e` float 2 décimales. Sinon c'est une migration d'état — **abandonne**.
+- [ ] 7. Mesure l'effet sur la charge (les `due` existants ne changent pas, les prochains
+      intervalles oui) et décris l'effet attendu dans le message de commit.
 - [ ] 8. Release → **R7**.
 
 ### R7 — Déployer (release)
 
-- [ ] 1. `node --test tests/` → tout vert (20 tests minimum). Rouge = STOP.
-- [ ] 2. Bump le cache : dans `docs/sw.js`, incrémente `const CACHE = "sori-v7";` → `"sori-v8"`.
-      Si tu as AJOUTÉ un fichier dans `docs/` (hors `.mp3`) : ajoute-le aussi à `ASSETS`.
-- [ ] 3. Test local complet :
+- [ ] 1. `node --test tests/` → tout vert (37 tests minimum : 20 + 17). Rouge = STOP.
+- [ ] 2. Syntaxe (ce que la CI fera) : `for f in docs/*.js docs/audio/index.js; do node --check "$f" || break; done` — aucune erreur.
+- [ ] 3. Bump le cache : dans `docs/sw.js`, incrémente `const CACHE` de 1 (ex. `"sori-v18"` → `"sori-v19"`).
+      Fichier JS/CSS AJOUTÉ dans `docs/` (hors `.mp3` et `design/`) : ajoute-le aussi à `ASSETS`.
+      Ne touche NI à la stratégie network-first NI à l'exclusion `"sori-audio-store"`.
+- [ ] 4. Test local complet :
       ```bash
       python -m http.server 8123 --directory docs
       ```
-      Ouvre http://localhost:8123 : réponds à une carte dans Réviser, lance une Écoute, ouvre
-      Voyage (tape un 🔊), ouvre Stats, fais un Export. Aucune erreur dans la console (F12).
-- [ ] 4. Contrôle du staging :
-      ```bash
-      git status
-      ```
-      Vérifie ligne par ligne. INTERDITS dans le commit : `*.anki2`, `sori-export-*.json`,
-      fichiers hors sujet. Puis `git add <fichiers précis>` (jamais `git add -A` sans avoir lu
-      le status), et `git commit -m "..."` (message : quoi + pourquoi + effet utilisateur).
-- [ ] 5. Push :
-      ```bash
-      git push origin main
-      ```
-      Si ça bloque ou demande un mot de passe (session non interactive), méthode token :
+      Ouvre http://localhost:8123 (si le contenu semble périmé : piège P9) et déroule :
+      - **Réviser** : une carte (bonne + mauvaise réponse), l'encart trivia + « Continuer → » ;
+      - **Écoute** : la carte « Écoute passive » s'affiche, une série d'écoute active tourne ;
+      - **Voyage** : recherche dans « Mon dictionnaire », un scénario se lance, 🔊 sur une
+        phrase du kit (voix neurale) ;
+      - **Stats** : quêtes + badges affichés, carte « Bilan de niveau » présente, événement
+        actif visible (s'il y en a un aujourd'hui), Réglages OK, un Export part.
+      Aucune erreur dans la console (F12).
+- [ ] 5. Contrôle du staging : `git status`, relu ligne par ligne. INTERDITS : `*.anki2`,
+      `sori-export-*.json`, fichiers hors sujet. Puis `git add <fichiers précis>` (jamais
+      `git add -A` sans avoir lu le status), `git commit -m "..."` (quoi + pourquoi + effet
+      utilisateur).
+- [ ] 6. Push : `git push origin main`. Si ça bloque (session non interactive), méthode token :
       ```bash
       TOKEN=$(printf 'protocol=https\nhost=github.com\n' | git credential fill | sed -n 's/^password=//p')
       B64=$(printf 'x-access-token:%s' "$TOKEN" | base64 -w0)
       git -c http.extraHeader="Authorization: Basic $B64" push origin main
       ```
       Ne jamais afficher le token, ne jamais l'écrire dans un fichier.
-- [ ] 6. Vérification post-déploiement → recette **R8**.
+- [ ] 7. Vérification post-déploiement → recette **R8**.
 
 ### R8 — Vérifier après déploiement
 
-- [ ] 1. CI : la GitHub Action « CI » du push doit être verte
-      (https://github.com/mnafati-cloud/sori/actions). Rouge = recette **R9** immédiatement.
+- [ ] 1. CI : la GitHub Action « CI » du push doit être verte — elle fait `node --test` PUIS
+      `node --check` sur tous les JS (https://github.com/mnafati-cloud/sori/actions).
+      Rouge = recette **R9** immédiatement.
 - [ ] 2. Attends 1 à 2 minutes (build GitHub Pages), puis :
       ```bash
       curl -s https://mnafati-cloud.github.io/sori/sw.js | grep CACHE
       ```
-      Tu dois voir la NOUVELLE version (`sori-v8`). Si l'ancienne s'affiche encore : attends
-      une minute et réessaie — ne relance pas de push.
-- [ ] 3. Si tu as touché data.js ou extra.js, vérifie qu'ils sont bien servis :
-      ```bash
-      curl -s https://mnafati-cloud.github.io/sori/data.js | head -c 300
-      ```
-- [ ] 4. Sur le téléphone : ouvrir simplement l'app. Le service worker est network-first — il
-      récupère la mise à jour tout seul au chargement. Fermer/rouvrir l'app une fois si besoin.
-      **Ne JAMAIS « Effacer les données du site »** pour forcer une mise à jour (piège P1).
-- [ ] 5. Contrôle fonctionnel sur téléphone : une carte de Réviser + le compteur du jour qui
-      s'incrémente. C'est suffisant.
+      Tu dois voir la NOUVELLE version. Si l'ancienne s'affiche : attends une minute et
+      réessaie — ne relance pas de push.
+- [ ] 3. Si data.js / extra.js touchés :
+      `curl -s https://mnafati-cloud.github.io/sori/data.js | head -c 300`
+- [ ] 4. Sur le téléphone : ouvrir simplement l'app (SW network-first = mise à jour auto).
+      Fermer/rouvrir une fois si besoin. **Ne JAMAIS « Effacer les données du site »** (P1).
+- [ ] 5. Contrôle fonctionnel : une carte de Réviser + le compteur du jour. C'est suffisant.
 
 ### R9 — Restaurer si tout casse
 
-**Rappel : le repo est SANS ÉTAT.** La progression est dans le téléphone de l'utilisateur et
-n'est pas affectée par un déploiement cassé (au pire l'app ne charge plus — la progression
-attend, intacte, dans le localStorage). Un revert git suffit TOUJOURS à réparer la prod.
+**Rappel : le repo est SANS ÉTAT.** La progression est dans le téléphone (+ copies : OneDrive,
+cloud sori-data) et n'est pas affectée par un déploiement cassé. Un revert git suffit TOUJOURS.
 
 - [ ] 1. Identifie le commit fautif : `git log --oneline -10`.
-- [ ] 2. Annule-le proprement (PAS de `git reset --hard` sur du poussé, PAS de force push) :
-      ```bash
-      git revert <sha_fautif> --no-edit
-      ```
-      Plusieurs commits fautifs : un `git revert` par commit, du plus récent au plus ancien.
-- [ ] 3. Le revert a probablement remis l'ANCIEN `CACHE` dans sw.js : rouvre `docs/sw.js` et
-      donne-lui une version ENCORE JAMAIS UTILISÉE (ex. si v8 était cassée et le revert remet
-      v7 : mets v9). Amende : `git add docs/sw.js && git commit --amend --no-edit`.
-- [ ] 4. `node --test tests/` → vert, puis push (méthode de R7 étape 5).
+- [ ] 2. `git revert <sha_fautif> --no-edit` (PAS de reset --hard sur du poussé, PAS de force
+      push). Plusieurs commits fautifs : un revert par commit, du plus récent au plus ancien.
+- [ ] 3. Le revert a probablement remis l'ANCIEN `CACHE` dans sw.js : donne-lui une version
+      ENCORE JAMAIS UTILISÉE (si v18 était cassée et le revert remet v17 : mets v19).
+      `git add docs/sw.js && git commit --amend --no-edit`.
+- [ ] 4. `node --test tests/` → vert, puis push (méthode de R7 étape 6).
 - [ ] 5. Vérifie la prod (R8, étapes 2 et 4).
-- [ ] 6. Cas extrême — la progression du téléphone est perdue ou corrompue (téléphone cassé,
-      mauvaise manipulation) : elle se restaure depuis le dernier export OneDrive de
-      l'utilisateur, via Stats → 📥 Importer. C'est SON fichier, sur SON OneDrive — il n'existe
-      aucune copie dans le repo, et c'est voulu.
+- [ ] 6. Progression du téléphone perdue/corrompue (cas extrême) : restauration par
+      Stats → 📥 Importer, depuis (au choix) le dernier export OneDrive de l'utilisateur, ou
+      `exports/latest.json` du repo privé sori-data (récupération : R15 — télécharger, puis
+      transférer le fichier au téléphone).
+
+### R10 — Gérer les événements (countdown, bannière, défi)
+
+**→ Recette complète dans `MAINTENANCE-EVENTS.md`** (le fichier dédié, à la racine). Résumé :
+- UN SEUL fichier à éditer : `docs/events-data.js` (données pures). Le moteur `events.js` et
+  app.js ne bougent pas.
+- 3 types : `countdown` (cible = `to`, jalons), `message`, `challenge` (goal : exactement une
+  clé parmi reviews/ok/listen/days, lue dans `ST.log` sur `[from, to)`).
+- Visibilité : `from <= aujourd'hui < to` (`to` EXCLU).
+- **id unique et jamais réutilisé** (clé de `ST.evDismiss` — P11).
+- Validation : page de test `docs/design/events-test.html` (« TOUT VERT »), puis release R7.
+
+### R11 — Ajouter une VAGUE DE CONTENU (workflow → pack → audio → release)
+
+**Principe.** Une vague = un lot d'items vérifiés (produits par un workflow IA + relecture
+native) intégrés en une passe : pack durable + seed régénéré + trivia fusionné + MP3. Le tout
+orchestré par `tools/merge_pack.py`. Les packs sont DURABLES : fusionnés à chaque régénération
+future du seed, ids stables `pack-<sha1(kr)[:8]>`.
+
+- [ ] 1. Entrée attendue : un fichier JSON de workflow au format
+      `{"result":{"lots":[{"items":[{"fr","kr","type","theme","ex"?,"exFr"?,"conj"?,"note"?}]}]}}`.
+      Contraintes qualité : `type` ∈ {word, phrase} ; `theme` au format `niveau::sujet` ;
+      `ex` ≤ 70 caractères (sinon ignoré) ; `note` ≤ 110 (sinon ignorée).
+- [ ] 2. `export PYTHONIOENCODING=utf-8`, et mets à jour `TODAY` dans `tools/build_data.py`.
+- [ ] 3. Lance l'intégration (choisis un nom de pack daté, ex. `pack-2026-08-vague3`) :
+      ```bash
+      python tools/merge_pack.py chemin/vers/workflow_output.json pack-2026-08-vague3
+      ```
+      Le script : (1) écrit `tools/packs/pack-2026-08-vague3.json` (dédupliqué par `kr` contre
+      tout l'existant — les doublons sont listés « ignores », c'est NORMAL) ; (2) relance
+      `build_data.py` (garde-fou d'ids inclus — abandon si un id disparaîtrait) ; (3) vérifie
+      que chaque item du pack est présent après regen ; (4) fusionne le trivia des NOUVEAUX
+      items dans `docs/extra.js` (jamais d'écrasement d'entrées existantes).
+- [ ] 4. Lis la sortie : `pack: N items ecrits`, les compteurs `meta`, `trivia: +N entrees`,
+      `items total: N`. Le total doit augmenter exactement du nombre d'items écrits au pack.
+      Si « ABANDON » : rien n'a été poussé, lis le message, corrige le lot — jamais le garde-fou.
+- [ ] 5. Audio des nouveaux items : `python tools/make_audio.py` → recette **R3** étapes 3-6
+      (il ne génère que les manquants ; vérifie `OK — tous les audios sont presents.`).
+- [ ] 6. Validation extra.js : le check de **R2.2** (`ids inconnus : aucun`).
+- [ ] 7. `node --test tests/` → vert ; `node --check` sur data.js/extra.js/audio/index.js.
+- [ ] 8. Test local : recherche un des nouveaux mots dans « Mon dictionnaire » (onglet Voyage),
+      écoute son MP3, vérifie son trivia.
+- [ ] 9. Release → **R7**. À committer : `tools/packs/<pack>.json`, `docs/data.js`,
+      `docs/extra.js`, les nouveaux `docs/audio/*.mp3`, `docs/audio/index.js`, `docs/sw.js`
+      (bump). RIEN d'autre.
+
+### R12 — Ajouter une quête du jour ou un badge (`docs/quests.js`)
+
+**Principe.** Les 3 quêtes du jour sont choisies DÉTERMINISTIQUEMENT (hash de la date) dans
+`POOL` : 1 par palier {facile, moyen, ambitieux} — rien n'est stocké côté sélection. Les badges
+sont CALCULÉS à chaque rendu, jamais stockés. La seule persistance : `ST.qdone`
+(réclamées aujourd'hui) et l'XP créditée — via `onClaim`, côté app.js.
+
+- [ ] 1. **IDS ÉTERNELS (P11)** : choisis un id NEUF, jamais vu dans l'historique git de
+      quests.js. Vérifie : `git log -p --all -- docs/quests.js | grep '"mon-id"'` → rien.
+      Un id de quête réclamée aujourd'hui vit dans `ST.qdone.ids` ; un id recyclé hériterait
+      d'un état étranger.
+- [ ] 2. **Nouvelle quête** : ajoute un objet `{id, emoji, label, measure, target}` dans UN des
+      trois tableaux de `POOL`. `measure` doit exister dans `MEASURES` (mesures actuelles :
+      `n`, `listen`, `xp`, `build_ok`, `qcm2_ok`, `rec5_ok`, `dictee_ok`, `scenario`).
+      Mesure inexistante ⇒ progression toujours 0 (pas de crash, mais quête morte).
+      Nouvelle mesure = une fonction PURE qui lit UNIQUEMENT `ST.log[today]` (champ absent ⇒ 0).
+      Le bonus XP est fixé par PALIER (`TIER_BONUS` : 30/50/80) — pas par quête.
+      Note : modifier la composition d'un tableau de POOL change quelles quêtes tombent quel
+      jour (hash % longueur) — sans conséquence (aucune sélection n'est stockée).
+- [ ] 3. **Nouveau badge** : ajoute une ligne `B("mon-id", "🏵️", "Label court", "Condition
+      lisible", <condition bool>, "détail")` dans `badges()`. La condition se calcule depuis
+      `state` (fourni par app.js). S'il te faut une donnée nouvelle : ajoute-la ADDITIVEMENT à
+      `itemsSummary` (ou `state`) dans le bloc `SORI_QUESTS.renderCard` de `renderStats()`
+      d'app.js. Un badge ne se retire jamais ; il peut redevenir « non acquis » si la condition
+      n'est plus remplie (c'est accepté : rien n'est stocké).
+- [ ] 4. La quête/le badge doit être un **PLANCHER, jamais un plafond** : rien ne se bloque,
+      la progression continue de s'afficher au-delà de 100 % (« 37/20 ✨ »).
+- [ ] 5. Mets à jour la page de test `docs/design/quests-test.html` (un check pour le nouvel
+      élément) dans le même commit.
+- [ ] 6. `node --check docs/quests.js` ; `node --test tests/` (la partie pure de quests.js est
+      chargeable sous Node si tu veux ajouter des tests).
+- [ ] 7. Test local : Stats → la quête/le badge s'affiche ; fin de session → le mode compact
+      montre les 3 quêtes ; réclame une quête finie → +XP, bouton disparaît, pas de double
+      réclamation après re-rendu.
+- [ ] 8. Release → **R7**.
+
+### R13 — Ajouter un scénario de simulation (`docs/scenarios-data.js`)
+
+**Principe.** Un scénario = un dialogue à choix, données pures dans `window.SCENARIOS`,
+joué par `scenarios.js`. Structure :
+
+```js
+{ id: "pharmacie",            // ÉTERNEL (clé du record ST.scen) — jamais réutilisé
+  emoji: "💊", title: "À la pharmacie",
+  intro: "Contexte en français…",
+  steps: [
+    { npc: "어디가 아프세요?", npcFr: "Où avez-vous mal ?",
+      tip: "Optionnel : note culturelle affichée après la bonne réponse.",
+      choices: [
+        { kr: "머리가 아파요.", fr: "J'ai mal à la tête.", ok: true,  why: "Pourquoi c'est juste." },
+        { kr: "머리를 사요.",   fr: "J'achète une tête.",   ok: false, why: "Pourquoi c'est un piège." }
+      ] }
+  ] }
+```
+
+- [ ] 1. **Contenu vérifié d'abord** : le coréen des répliques doit être validé (relecture
+      native ou source fiable) AVANT intégration — c'est la règle historique de ce fichier.
+- [ ] 2. **Chaque step a EXACTEMENT UN choix `ok:true`** et chaque choix (bon ou piège) a un
+      `why` instructif. 2 à 4 choix par step.
+- [ ] 3. `id` neuf et éternel (P11 ; `git log -p --all -- docs/scenarios-data.js | grep '"mon-id"'`
+      → rien). **N'agrandis pas les `steps` d'un scénario existant déjà poussé** : le record
+      `ST.scen[id]` et le badge « Scénarios parfaits » comparent au nombre de répliques —
+      préfère un NOUVEAU scénario.
+- [ ] 4. Le fichier est une seule longue ligne JSON après `window.SCENARIOS = ` : édite-le par
+      Python (même technique que R2 Cas B, en gardant le commentaire d'en-tête), ou très
+      soigneusement — puis :
+      `node --check docs/scenarios-data.js` ET
+      `node -e "const w={};new Function('window',require('fs').readFileSync('docs/scenarios-data.js','utf8'))(w);const s=w.SCENARIOS;console.log(s.length,'scénarios');s.forEach(sc=>sc.steps.forEach((st,i)=>{const n=st.choices.filter(c=>c.ok).length;if(n!==1)throw sc.id+' step '+i+' : '+n+' bonnes réponses';}));console.log('1 seul ok par step : OK')"`
+- [ ] 5. Test local : onglet Voyage → la simulation apparaît avec son compteur de répliques →
+      joue-la EN ENTIER (bonne et mauvaise réponse au moins une fois) → l'écran de fin affiche
+      le score, « Rejouer » et « Retour » fonctionnent, le record s'enregistre (revisite la liste).
+- [ ] 6. L'audio des répliques passe par le TTS (`ttsSpeak`), pas par des MP3 : rien à générer.
+- [ ] 7. Release → **R7**.
+
+### R14 — Ajouter un thème graphique (`docs/themes.css` + `docs/themes.js`)
+
+**Principe.** Un thème = une classe `.theme-<id>` posée sur `<html>` qui surcharge les
+variables `:root` de style.css (`--bg --panel --panel2 --line --txt --dim --acc --acc2 --ok
+--ko --warn --r` + `--glow --grad`), plus une entrée dans le tableau `THEMES` de themes.js.
+Stockage : clé localStorage `sori-theme` (SÉPARÉE de la progression). Sans JS/classe, l'app
+garde le `:root` de style.css — jamais de page cassée.
+
+- [ ] 1. Dans `themes.css` : copie un bloc thème existant (le plus proche visuellement) et
+      renomme en `.theme-monid`. Surcharge les variables, puis les couleurs codées en dur
+      listées en tête de fichier (`.opts button.good/.bad/:active`, `.btn.ok/.ko`, texte des
+      `.chip`) — à spécificité minimale, comme les blocs existants.
+- [ ] 2. Dans `themes.js` : ajoute `{id:"monid", label:"Mon thème", cls:"theme-monid",
+      color:"#rrggbb"}` au tableau `THEMES` (`color` = couleur de la barre système,
+      `<meta name="theme-color">`). MÊME commit que le CSS.
+- [ ] 3. **Ne retire et ne renomme JAMAIS un thème existant** : la valeur stockée retomberait
+      silencieusement sur le défaut (pas de crash, mais préférence utilisateur perdue).
+      Le défaut reste `seoul` sauf décision explicite de l'utilisateur.
+- [ ] 4. Contraste : texte normal ≥ 4.5:1 sur `--bg` et `--panel` (vérifie au moins --txt/--dim
+      et les boutons good/bad). `color-scheme` correct (dark/light).
+- [ ] 5. Test : `docs/design/theme-test.html` (page de comparaison), puis l'app → Réglages →
+      Style graphique → sélectionne le nouveau thème → parcours les 4 onglets + une carte
+      répondue (options good/bad lisibles) + les cartes des modules (quêtes, bilan, recherche).
+      Recharge la page : le thème persiste, zéro flash au chargement.
+- [ ] 6. `node --check docs/themes.js`. themes.css/themes.js sont déjà dans `ASSETS` du SW —
+      rien à y ajouter, mais bump `CACHE` comme toujours. Release → **R7**.
+
+### R15 — Lire et analyser les sauvegardes cloud (repo privé sori-data)
+
+**Principe.** L'app pousse chaque jour un export JSON complet (§3.5) dans le repo GitHub
+**privé** `mnafati-cloud/sori-data` : `exports/latest.json` (toujours le plus récent) et
+`exports/sori-export-AAAA-MM-JJ.json` (un par jour de session). C'est LA source pour analyser
+la progression sans rien demander au téléphone (items à fort `ko`, distribution des ease,
+rétention, critères de la phase 2 — R16).
+
+- [ ] 1. Récupère un token GitHub côté PC (Git Credential Manager, comme pour le push) et
+      télécharge **HORS du repo** (jamais dans `dev/sori` — même gitignoré, on ne joue pas) :
+      ```bash
+      cd /c/Users/33785/dev/sori
+      TOKEN=$(printf 'protocol=https\nhost=github.com\n' | git credential fill | sed -n 's/^password=//p')
+      B64=$(printf 'x-access-token:%s' "$TOKEN" | base64 -w0)
+      curl -s -H "Authorization: Basic $B64" -H "Accept: application/vnd.github.raw" \
+        "https://api.github.com/repos/mnafati-cloud/sori-data/contents/exports/latest.json" \
+        -o "$TEMP/sori-latest.json"
+      python -c "import json,io,os; d=json.load(io.open(os.environ['TEMP']+'/sori-latest.json',encoding='utf-8')); print(d['exportedAt'], len(d['state']['items']), 'items touches')"
+      ```
+      Ne JAMAIS afficher `$TOKEN`. Si la réponse est du JSON avec un champ `content` (pas le
+      brut) : c'est l'API sans l'en-tête raw — décode `content` en base64.
+- [ ] 2. Un export daté précis : remplace `latest.json` par `sori-export-AAAA-MM-JJ.json`.
+      Lister ce qui existe :
+      `curl -s -H "Authorization: Basic $B64" "https://api.github.com/repos/mnafati-cloud/sori-data/contents/exports" | python -c "import json,sys;[print(x['name']) for x in json.load(sys.stdin)]"`
+- [ ] 3. Analyses types (sur `d['state']`) : items à retravailler = tri par `ko` décroissant de
+      `state.items` ; rétention propre = Σ`ok1`/(Σ`ok1`+Σ`ko1`) du `log` sur la fenêtre voulue ;
+      shadow phase 1 = Σ`sn`/Σ`so` ; distribution des `e` ; jours actifs, XP, etc. (§3.4 donne
+      tous les champs).
+- [ ] 4. **Hygiène données personnelles** : le fichier reste dans `$TEMP`, il est SUPPRIMÉ après
+      analyse (`rm "$TEMP/sori-latest.json"`), il ne se colle jamais en entier dans un commit,
+      un ticket ou un fichier du repo. Les conclusions (agrégats, listes de mots) oui ; l'état
+      brut, non.
+- [ ] 5. Si l'API répond 404/403 : le token PC n'a pas accès au repo privé — demande à
+      l'utilisateur (ne crée PAS de nouveau token toi-même, ne touche pas à celui du téléphone).
+
+### R16 — Phase 2 de l'algorithme adaptatif (bascule, vérification, rollback)
+
+**Contexte.** Depuis la v9, l'app est en **phase 1 « ombre »** (ALGORITHM.md §7) :
+`ST.set.adaptive=false` (défaut), la planification est BIT-À-BIT le legacy (verrouillé par
+test), mais chaque réponse accumule `e` (ease par mot), `ok1/ko1` (rétention propre) et
+`so/sn` (intervalles legacy vs adaptatif — le « shadow »). La phase 2 est une BASCULE
+UTILISATEUR, pas une release.
+
+- [ ] 1. **Critères de passage** (à vérifier sur un export réel — R15) :
+      - ≥ 300 révisions comptées (Σ `ok1`+`ko1` du journal) ;
+      - distribution des `e` cohérente : les 79 ennemies majoritairement < 1.9, écart-type
+        global > 0.2 (sinon l'adaptativité n'apporte rien), < 15 % au plancher hors leeches ;
+      - projection de charge Σ`sn`/Σ`so` ∈ [0.85, 1.15] (l'adaptatif ne fait pas exploser la pile) ;
+      - **consigner la baseline** (dans le message de commit ou une note) : rétention comptée
+        7 j/30 j, revues/jour, taille de pile due.
+- [ ] 2. **Bascule** : l'utilisateur coche « Planification adaptative » dans Réglages
+      (→ `ST.set.adaptive=true`). AUCUN changement de code, aucun push, aucune due réécrite —
+      le nouveau calcul s'applique au fil des réponses. `so/sn` continuent d'être journalisés
+      (le shadow devient l'audit inverse).
+- [ ] 3. **Vérification à ~30 jours** (export réel vs baseline) — cibles d'ALGORITHM.md §7 :
+      rétention comptée 30 j dans [0.81, 0.85] ; rétention de la strate intervalle ≥ 7 j
+      ≥ baseline ; charge ≤ 1.15× baseline ; taux d'échec des ennemies en baisse ≥ 5 points ;
+      leeches (`isLeech`) ≤ 20 items (liste remise à l'utilisateur pour retravail mnémonique).
+- [ ] 4. **Ajustement si hors cible** : UNIQUEMENT via `TARGET_RETENTION` (engine.js) —
+      bornes [0.78, 0.88], pas de ±0.02 max par ajustement, au plus 1×/mois, hors-ligne,
+      par commit git. Jamais `EASE_LOSS` à la main (dérivé). Règle : rétention < 0.80 et
+      charge acceptée → monter à 0.85 ; charge intenable → descendre à 0.80 ; sinon ne rien
+      toucher. ⚠️ Un changement de `TARGET_RETENTION` modifie des valeurs attendues dans
+      `tests/adaptive.test.mjs` : mets-les à jour dans le MÊME commit (procédure R6 niveau 1).
+- [ ] 5. **Rollback** : décocher le toggle (`adaptive=false`) restaure la planification legacy
+      immédiatement — les `e` restent stockés, inertes. Si deux ajustements de
+      `TARGET_RETENTION` ne suffisent pas : rollback + post-mortem sur l'export. Le système
+      legacy reste intact en dessous, par construction.
 
 ---
 
@@ -635,77 +930,93 @@ attend, intacte, dans le localStorage). Un revert git suffit TOUJOURS à répare
 
 ### P1 — Le service worker qui sert du périmé
 - **Symptôme** : tu pousses, mais le téléphone montre l'ancienne version pendant des jours.
-- **Cause** : c'est l'histoire d'avant la v4 — un service worker cache-first sert le cache pour
-  toujours. Depuis la v4, `sw.js` est **network-first avec `fetch(…, {cache:"no-cache"})`** :
-  chaque requête revalide auprès du serveur (un 304 via ETag ne coûte presque rien), le cache
-  ne sert QUE hors-ligne.
-- **Règles** : ne JAMAIS revenir à une stratégie cache-first. Toujours bump `CACHE` à chaque
-  release (ça purge les vieux caches à l'activation). Si une mise à jour ne paraît pas : c'est
-  presque toujours GitHub Pages qui n'a pas fini de déployer (2 min) — vérifie avec le `curl`
-  de R8 avant d'accuser le téléphone.
-- **Interdit absolu** : « Effacer les données du site » dans Chrome Android comme remède —
-  ça supprime AUSSI le localStorage, donc toute la progression.
+- **Cause** : histoire d'avant la v4 — un SW cache-first sert le cache pour toujours. Depuis,
+  `sw.js` est **network-first avec `fetch(…, {cache:"no-cache"})`** : chaque requête revalide
+  (304 via ETag quasi gratuit), le cache ne sert QUE hors-ligne. Le SW n'intercepte pas le
+  cross-origin (api.github.com — nécessaire au cloud backup).
+- **Règles** : ne JAMAIS revenir à du cache-first. Toujours bump `CACHE` (purge des vieux
+  caches à l'activation — SAUF `sori-audio-store`, exclusion à préserver). Si une mise à jour
+  ne paraît pas : c'est presque toujours GitHub Pages qui n'a pas fini (2 min) — vérifie avec
+  le `curl` de R8 avant d'accuser le téléphone.
+- **Interdit absolu** : « Effacer les données du site » comme remède — ça supprime AUSSI le
+  localStorage, donc toute la progression.
 
 ### P2 — Les voix TTS asynchrones sur Android
-- **Symptôme** : le coréen est lu avec un accent français, ou aucune voix au premier chargement.
-- **Cause** : `speechSynthesis.getVoices()` renvoie une liste VIDE au chargement de la page sur
-  Android ; les voix arrivent plus tard, de façon asynchrone.
-- **Ce que fait le code (à préserver)** : `pickVoice()` est appelé au boot, ré-appelé sur
-  l'événement `onvoiceschanged`, ET rappelé en dernier recours dans `ttsSpeak()` si `KOVOICE`
-  est null. Ne « simplifie » jamais ça en un choix de voix unique au boot.
-- **Si l'appareil n'a pas de voix coréenne** : l'écran Stats affiche déjà la marche à suivre
-  (installer la voix coréenne du moteur « Synthèse vocale Google »). Les items kit/enemy ont
-  leur MP3 natif embarqué, indépendant du téléphone.
+- **Symptôme** : coréen lu avec un accent français, ou aucune voix au premier chargement.
+- **Cause** : `speechSynthesis.getVoices()` renvoie une liste VIDE au chargement sur Android ;
+  les voix arrivent en asynchrone.
+- **À préserver** : `pickVoice()` est appelé au boot, ré-appelé sur `onvoiceschanged`, ET en
+  dernier recours dans `ttsSpeak()`. Ne « simplifie » jamais ça. Depuis la v14, TOUT le deck a
+  son MP3 natif — le TTS ne reste critique que pour les scénarios et les textes hors deck.
 
 ### P3 — `curl -d` avec de l'UTF-8 → 400 sur l'API GitHub
-- **Symptôme** : un appel à l'API GitHub avec un corps JSON contenant du coréen/des accents,
-  passé en `-d "..."` inline, répond 400 Bad Request.
-- **Cause** : l'encodage de la ligne de commande Windows mutile l'UTF-8 avant que curl ne l'envoie.
-- **Remède** : écrire le JSON dans un fichier en UTF-8 **sans BOM**, puis :
-  ```bash
-  curl -s -X POST -H "Authorization: Basic $B64" -H "Content-Type: application/json" \
-       --data-binary "@corps.json" https://api.github.com/...
-  ```
+- **Cause** : l'encodage de la ligne de commande Windows mutile l'UTF-8 inline.
+- **Remède** : JSON dans un fichier UTF-8 **sans BOM**, puis `--data-binary "@corps.json"`.
   Jamais de JSON non-ASCII inline dans `-d`.
 
 ### P4 — PowerShell 5.1 écrit de l'UTF-16 par défaut
-- **Symptôme** : un fichier de `docs/` régénéré via `Out-File`/`>` PowerShell rend l'app blanche
-  (le navigateur ne lit pas l'UTF-16/BOM comme du JS).
-- **Remède** : ne génère JAMAIS un fichier de `docs/` avec PowerShell. Utilise les scripts
-  Python fournis (ils écrivent UTF-8 sans BOM, fins de ligne contrôlées). Si PowerShell est
-  inévitable : `Out-File -Encoding utf8` et vérifie le résultat.
+- **Symptôme** : un fichier de `docs/` régénéré via `Out-File`/`>` PowerShell rend l'app blanche.
+- **Remède** : ne génère JAMAIS un fichier de `docs/` avec PowerShell. Les scripts Python
+  écrivent UTF-8 sans BOM. Si PowerShell est inévitable : `-Encoding utf8` + vérifier.
 
 ### P5 — git et OneDrive ne cohabitent pas
-- **Fait** : le repo est dans `C:\Users\33785\dev\sori`, délibérément HORS OneDrive. OneDrive
-  verrouille des fichiers de `.git/` en pleine synchro et crée des conflits silencieux.
-- **Règles** : ne déplace jamais le repo dans un dossier synchronisé. Le partage des données va
-  dans l'autre sens uniquement : les EXPORTS de l'utilisateur (générés sur son téléphone)
-  atterrissent sur OneDrive ; le code, lui, vit dans `dev/` et sur GitHub.
+- Le repo est dans `C:\Users\33785\dev\sori`, délibérément HORS OneDrive (verrous sur `.git/`,
+  conflits silencieux). Ne le déplace jamais. Les exports de l'utilisateur vont sur OneDrive ;
+  le code vit dans `dev/` et sur GitHub.
 
 ### P6 — Encodage console : `UnicodeEncodeError` dans les scripts Python
-- **Symptôme** : `build_data.py`/`make_audio.py` plantent en imprimant du hangul
-  (`UnicodeEncodeError: 'charmap' codec…`) sur console Windows cp1252.
-- **Remède** : avant tout script Python : `export PYTHONIOENCODING=utf-8` (Git Bash) ou
+- **Remède** : avant tout script : `export PYTHONIOENCODING=utf-8` (Git Bash) ou
   `$env:PYTHONIOENCODING="utf-8"` (PowerShell). Les FICHIERS produits sont corrects dans tous
-  les cas (ouverts avec `encoding="utf-8"`) — seul l'affichage console casse.
+  les cas — seul l'affichage console casse.
 
-### P7 — Pourquoi les ids kit sont des hash (et doivent le rester)
-- **Histoire** : à l'origine, les phrases du kit étaient numérotées `kit-001`, `kit-002`… en
-  SAUTANT celles déjà présentes dans le deck Anki. Le jour où un snapshot absorbait une phrase
-  du kit, tous les numéros suivants se décalaient : la progression localStorage pointait sur
-  les mauvais items (corrigé au commit `8130664`).
-- **Depuis** : `id = "kit-" + sha1(texte_coréen)[:8]` — insensible à l'ordre de la liste et aux
-  régénérations. **Ne change jamais** la fonction de hash, la casse, ni la troncature à 8 : le
-  moindre changement orphelinerait la progression kit de l'utilisateur.
-- **Corollaire** : corriger le TEXTE coréen d'une phrase kit change son id → c'est un NOUVEL
-  item (l'ancien doit rester dans la liste). Pour une correction de texte, demande d'abord.
+### P7 — Pourquoi les ids kit/pack sont des hash (et doivent le rester)
+- **Histoire** : les phrases du kit étaient numérotées `kit-001`… en sautant les doublons ; un
+  changement de la liste décalait tous les numéros et orphelinait la progression (corrigé au
+  commit `8130664`).
+- **Depuis** : `id = "kit-"/"pack-" + sha1(texte_coréen)[:8]` — insensible à l'ordre et aux
+  régénérations. **Ne change jamais** la fonction de hash, la casse, ni la troncature à 8.
+- **Corollaire** : corriger le TEXTE coréen d'une phrase kit/pack change son id → c'est un
+  NOUVEL item (l'ancien doit rester dans la liste/le pack). Pour une correction de texte,
+  demande d'abord.
 
-### P8 — Chemins et dates codés en dur dans `tools/`
-- `build_data.py` : `TODAY` est une date FIXE (ligne ~16) — mets-la à jour avant chaque rebuild,
-  sinon les échéances du seed sont ancrées dans le passé. `OUT` pointe sur `docs\data.js`
-  (il a un jour pointé sur `app\`, dossier mort — c'est corrigé, ne le « restaure » pas).
-- `make_icons.py` : écrit encore vers `...\sori\app\icon-*.png` — **chemin périmé**. Si tu dois
-  régénérer les icônes, corrige d'abord les deux chemins vers `docs\` (lignes 21-22).
+### P8 — Dates codées en dur dans `tools/`
+- `build_data.py` : `TODAY` est une date FIXE (ligne ~16) — mets-la à jour avant chaque
+  rebuild, sinon les échéances du seed sont ancrées dans le passé.
+- `make_icons.py` : chemins corrigés vers `docs\` (l'ancien bug `app\` est réparé — ne le
+  « restaure » pas).
+
+### P9 — Cache navigateur en test local : l'index audio (ou data.js) qui SEMBLE périmé
+- **Symptôme** : tu viens de régénérer `data.js` / `audio/index.js` / un module, tu recharges
+  http://localhost:8123… et la page montre toujours l'ancien contenu (nouveau mot introuvable,
+  MP3 « manquant » alors que le fichier existe).
+- **Cause** : `python -m http.server` n'envoie aucun `Cache-Control` → le navigateur applique
+  son cache heuristique ; et si un service worker s'est enregistré sur localhost lors d'un test
+  précédent, il sert en plus SON cache.
+- **Remède, dans l'ordre** : (1) DevTools ouverts → onglet Network → coche « Disable cache » →
+  recharge ; (2) rechargement forcé Ctrl+Shift+R ; (3) fenêtre de navigation privée ;
+  (4) dernier recours : change de port (`--directory docs 8124`) — un autre origin = zéro cache.
+  Sur LOCALHOST uniquement, DevTools → Application → Service Workers → « Unregister » est
+  acceptable. **Sur le téléphone, jamais** (P1).
+- **Réflexe** : avant de « déboguer » un contenu régénéré qui n'apparaît pas, vérifie d'abord
+  le fichier sur disque (`grep` l'id dedans) — si le disque est bon, c'est CE piège.
+
+### P10 — `DEF_SET` est verrouillé par un test contractuel
+- **Fait** : le test « DEF_SET et STEP : valeurs contractuelles » (fin de
+  `tests/engine.test.mjs`) fait un `assert.deepEqual` sur l'objet ENTIER.
+- **Conséquence** : TOUTE modification de `DEF_SET` (même un simple ajout de clé) fait échouer
+  les tests — et donc la CI — tant que le test n'est pas mis à jour dans le **même commit**.
+  Ce n'est pas une corvée, c'est le garde-fou : il force la relecture de la règle « additif
+  seulement » (R4). Ne « répare » jamais en supprimant le test.
+
+### P11 — Un id de quête, d'événement ou de scénario ne se réutilise JAMAIS
+- **Fait** : le téléphone stocke des états indexés par ces ids : `ST.evDismiss[eventId]`
+  (masquage, PERMANENT), `ST.qdone.ids[questId]` (réclamée aujourd'hui), `ST.scen[scenarioId]`
+  (record, permanent). Les ids de badges sont aussi des identités affichées.
+- **Conséquence** : un id recyclé HÉRITE de l'état de l'ancien — un nouvel événement qui reprend
+  un id masqué n'apparaîtra JAMAIS chez l'utilisateur, sans erreur nulle part. C'est le bug le
+  plus silencieux du projet.
+- **Règle** : retirer un objet du fichier de données = OK ; réutiliser son id = JAMAIS.
+  Avant de créer un id : `git log -p --all -- <fichier> | grep '"mon-id"'` → aucune occurrence.
 
 ---
 
@@ -713,21 +1024,32 @@ attend, intacte, dans le localStorage). Un revert git suffit TOUJOURS à répare
 
 À dérouler INTÉGRALEMENT avant `git push`, quel que soit le changement :
 
-- [ ] 1. `node --test tests/` : 100 % vert (20 tests minimum, 0 fail, 0 cancelled).
-- [ ] 2. La clé `sori-state-v1` et la sémantique de `s`/`i`/`d`/`ok`/`ko` sont inchangées
-      (`git diff docs/app.js docs/engine.js` relu à cet œil).
-- [ ] 3. Si `data.js` a été régénéré : le garde-fou « ids disparus : AUCUN » de R1.6 est passé.
-- [ ] 4. Si `extra.js` a changé : la validation JSON + ids de R2.2 est passée.
-- [ ] 5. Si `DEF_SET` a changé : uniquement des AJOUTS de clés, et le test contractuel mis à
-      jour dans le même commit.
-- [ ] 6. `CACHE` bumpé dans `docs/sw.js` (jamais deux releases avec la même version) ;
-      tout nouveau fichier de `docs/` ajouté à `ASSETS`.
-- [ ] 7. Test local fait : une carte de chaque mode + un export, console navigateur sans erreur.
-- [ ] 8. `git status` relu ligne à ligne : AUCUN `*.anki2`, AUCUN `sori-export-*.json`,
-      aucun fichier hors sujet dans le staging.
-- [ ] 9. `docs/data.js` et `docs/audio/index.js` n'ont PAS été édités à la main (seulement
-      régénérés par leurs scripts).
-- [ ] 10. Le message de commit dit quoi, pourquoi, et l'effet visible pour l'utilisateur.
+- [ ] 1. `node --test tests/` : 100 % vert (37 tests minimum — 20 engine + 17 adaptive, 0 fail,
+      0 cancelled).
+- [ ] 2. `node --check` sur chaque JS de `docs/` modifié ou ajouté (la CI le fait sur TOUS —
+      un fichier de données mal formé casse l'app entière au chargement).
+- [ ] 3. La clé `sori-state-v1` et la sémantique de `s`/`i`/`d`/`e`/`ok`/`ko` sont inchangées
+      (`git diff docs/app.js docs/engine.js` relu à cet œil). `computeAnswerLegacy` : intouché.
+- [ ] 4. Si `data.js` a été régénéré : le build a fini SANS « ABANDON » (garde-fou d'ids
+      intégré) ; en cas de doute, la double-vérification R1.6 est passée.
+- [ ] 5. Si `extra.js` a changé : la validation JSON + ids de R2.2 est passée.
+- [ ] 6. Si `DEF_SET` a changé : uniquement des AJOUTS de clés, et le test contractuel mis à
+      jour dans le même commit (P10).
+- [ ] 7. Si un id a été créé (item, événement, quête, badge, scénario) : il est NEUF (jamais
+      dans l'historique git du fichier — P11). Aucun id existant modifié ou supprimé.
+- [ ] 8. `CACHE` bumpé dans `docs/sw.js` (jamais deux releases avec la même version) ; tout
+      nouveau fichier JS/CSS de `docs/` ajouté à `ASSETS` ; l'exclusion `sori-audio-store`
+      toujours en place.
+- [ ] 9. Test local fait (serveur 8123, piège P9 en tête) : une carte de Réviser (avec trivia +
+      « Continuer → »), une série d'Écoute + la carte Écoute passive, Voyage (recherche + un
+      scénario + 🔊 kit), Stats (quêtes/badges, carte Bilan, réglages, un export). Modules
+      touchés smoke-testés via leur page `docs/design/*-test.html` quand elle existe.
+      Console navigateur sans erreur.
+- [ ] 10. `git status` relu ligne à ligne : AUCUN `*.anki2`, AUCUN `sori-export-*.json`, aucun
+      fichier hors sujet. Les packs `tools/packs/*.json` nouveaux SONT à committer.
+- [ ] 11. `docs/data.js`, `docs/extra.js` et `docs/audio/*` n'ont PAS été édités à la main
+      (seulement via leurs scripts / recettes).
+- [ ] 12. Le message de commit dit quoi, pourquoi, et l'effet visible pour l'utilisateur.
 
 ---
 
@@ -736,24 +1058,40 @@ attend, intacte, dans le localStorage). Un revert git suffit TOUJOURS à répare
 | Terme | Définition |
 |---|---|
 | **SRS** | Spaced Repetition System — répétition espacée : plus on réussit un item, plus il revient tard. |
-| **Échelle de maîtrise / stage** | La position 0-5 d'un item : 0 nouveau · 1 QCM facile · 2 QCM piégeux · 3 production (QCM FR→KR ou word bank) · 4 rappel indicé · 5 rappel pur. Réussir monte d'un stage, échouer descend de deux (plancher 1). |
-| **Seed** | Le contenu de base : `window.SEED` dans `docs/data.js`, généré depuis le snapshot Anki. 1079 items. Ne s'édite jamais à la main. |
-| **Delta** | L'entrée `ST.items[id]` du localStorage : ce que l'utilisateur a fait de l'item (`s,i,d,ok,ko`). Prime toujours sur le seed (fonction `eff()`). |
-| **Snapshot Anki** | `tools/snapshot.anki2` — copie figée de l'ancienne collection Anki, source du seed. Fossile : les nouveaux contenus n'en viennent plus. Gitignoré, existe uniquement sur la machine de dev. |
-| **Ennemie (leech)** | Item avec ≥ 4 échecs dans l'historique Anki (`enemy: true`). 79 au total. Ciblées par le boss fight et prioritaires pour le trivia. |
-| **Kit (de survie voyage)** | Les 54 phrases indispensables du voyage en Corée (`kit: true`, thèmes `voyage::*`). Introduites en priorité si `kitFirst`, drillées dans l'onglet Voyage, toutes dotées d'un MP3 natif. |
-| **Conf / sosies** | Le champ `conf` d'un item : jusqu'à 6 ids de mots qui lui ressemblent (même syllabe initiale/finale, même thème). Servent de distracteurs « piégeux » dès le stage 2. |
-| **Distracteurs** | Les mauvaises réponses d'un QCM. Cascade : sosies (`conf`) → même thème/type → même type. Jamais l'item lui-même, jamais deux fois la même valeur. |
-| **Due / itv** | `due` = date à laquelle l'item doit être revu (`AAAA-MM-JJ`) ; `itv` = intervalle en jours qui a produit cette date. |
-| **File / PENDING** | La session du jour : items échus + nouvelles, plafonnée à `sessionMax` (120). Le surplus est « en attente » (PENDING), proposé en fin de session. |
-| **Bonus / Entraînement libre** | Mode de 10 cartes qui ne touche PAS la planification (contrairement au boss fight, qui compte). |
-| **Boss fight** | Session ciblée sur les 20 ennemies les plus faibles. Compte pour la planification. |
-| **Dictée** | Dans le mode Écoute (1 question sur 2) : on entend le mot, on choisit le HANGUL parmi des sosies. |
-| **Shadowing** | Technique du drill Voyage : écouter la phrase puis la répéter à voix haute immédiatement. |
-| **Trivia / EXTRA** | L'encart d'aide affiché après une réponse (exemple, note, piège) : `window.EXTRA` dans `docs/extra.js`, curé par lots via `merge_extra.py`. |
-| **Migration douce** | Au chargement ET à l'import : `Object.assign({}, DEF_SET, s.set)` + valeurs par défaut pour les conteneurs manquants. Un vieil état/export reste valide à vie ; les champs inconnus sont préservés. |
-| **Service worker (SW)** | `docs/sw.js` — rend l'app 100 % hors-ligne. Stratégie **network-first** : réseau d'abord (mises à jour immédiates), cache en secours (hors-ligne). `CACHE` = nom de version du cache, à bump à chaque release. |
+| **Échelle de maîtrise / stage** | Position 0-5 d'un item : 0 nouveau · 1 QCM facile · 2 QCM piégeux · 3 production (QCM FR→KR ou word bank) · 4 rappel indicé · 5 rappel pur. Réussir monte d'un stage, échouer descend de deux (plancher 1). |
+| **Seed** | Le contenu de base : `window.SEED` dans `docs/data.js` (1293 items), généré depuis le snapshot Anki + table KIT + packs. Ne s'édite jamais à la main. |
+| **Delta** | L'entrée `ST.items[id]` du localStorage : ce que l'utilisateur a fait de l'item (`s,i,d,e,ok,ko`). Prime toujours sur le seed (fonction `eff()`). |
+| **Pack** | Fichier `tools/packs/*.json` de contenu durable (vagues de vocabulaire vérifiées). Fusionné à CHAQUE régénération du seed, ids stables `pack-<hash>`, dédupliqué par texte coréen. |
+| **Snapshot Anki** | `tools/snapshot.anki2` — copie figée de l'ancienne collection Anki, source historique du seed. Fossile gitignoré, uniquement sur la machine de dev. |
+| **Ennemie (leech historique)** | Item avec ≥ 4 échecs dans l'historique Anki (`enemy: true`, 79 items). Boss fight + priorité trivia. |
+| **Leech (adaptatif)** | `isLeech()` : ease au plancher (1.3) ET `ko ≥ 8`. Dérivé, jamais stocké. Affiché dans Stats (« Sangsues »). |
+| **Ease (`e`)** | Multiplicateur personnel par mot (1.3-3.0, défaut neutre 2.2), cœur de l'algorithme adaptatif (ALGORITHM.md). Accumulé depuis la v9 (phase ombre), utilisé par la planification seulement si `set.adaptive=true`. |
+| **Phase 1 / phase 2** | Phase 1 « ombre » : planification legacy bit-à-bit, ease et métriques accumulées. Phase 2 : `adaptive=true`, planification à l'ease. Bascule et critères : R16. |
+| **Shadow (`so`/`sn`)** | Sommes journalières des intervalles qu'auraient donnés legacy (`so`) et adaptatif (`sn`) sur les succès comptés — pour comparer les deux systèmes sans risque. |
+| **Révision comptée (`ok1`/`ko1`)** | 1re présentation espacée du jour, non anticipée (`counted`). La mesure « propre » de rétention (`retention7`). |
+| **Kit (de survie voyage)** | Les 54 phrases indispensables du voyage (`kit: true`). Introduites en priorité si `kitFirst`, drillées dans Voyage, MP3 natifs. |
+| **Conf / sosies** | Champ `conf` : jusqu'à 6 ids de mots ressemblants. Distracteurs « piégeux » dès le stage 2. |
+| **File / PENDING** | Session du jour : échues + nouvelles, plafonnée à `sessionMax` (120). Le surplus est proposé en fin de session. |
+| **Bonus / Entraînement libre** | 10 cartes qui ne touchent PAS la planification (contrairement au boss fight, qui compte). |
+| **Boss fight** | Session sur les 20 ennemies les plus faibles. Compte pour la planification (en phase 2, les succès trop anticipés deviennent des no-ops — voulu). |
+| **Dictée** | Mode Écoute, 1 question sur 2 : on entend le mot, on choisit le HANGUL parmi des sosies. |
+| **Écoute passive** | Module `player.js` : playlist MP3 mains-libres, écran verrouillé, contrôles MediaSession (4 modes : kit, ennemies, en cours, tout le connu). Aucun enregistrement. |
+| **Mode avion** | Bouton des Réglages : télécharge les 1293 MP3 dans le cache `sori-audio-store` (jamais purgé par le SW) pour un hors-ligne total. |
+| **Trivia / EXTRA** | Encart d'aide après une réponse (exemple, 활용 conjugaison, 💡 note) : `window.EXTRA`, curé par lots via merge_extra/merge_pack. |
+| **Scénario** | Simulation dialoguée (`scenarios-data.js` + `scenarios.js`) : répliques NPC + choix commentés. Record « du premier coup » dans `ST.scen`. |
+| **Bilan de niveau** | Examen blanc TOPIK-lite (module `exam.js`) : 40 questions, 4 sections stratifiées, historique `ST.exams`. ZÉRO effet sur la planification. |
+| **Quêtes du jour** | 3 objectifs quotidiens déterministes (hash de la date, module `quests.js`), bonus XP à réclamer. Des planchers, jamais des plafonds. |
+| **Badges** | 13 jalons calculés à la volée (streak, mots mûrs, collection…). Jamais stockés. |
+| **XP / niveaux 급** | Points par réponse (+ bonus quêtes), paliers 9급→초단 (`XP_LEVELS`). Plancher motivant, jamais bloquant. |
+| **Événement** | Carte temporaire de l'écran Stats (countdown/message/challenge), pure donnée dans `events-data.js`. Recette R10 / MAINTENANCE-EVENTS.md. |
+| **Thème** | Habillage graphique (`themes.css`/`themes.js`) : seoul (défaut) · nuit · hanji · dansaekhwa. Clé localStorage `sori-theme`. |
+| **Cloud backup** | Export quotidien automatique vers le repo privé `sori-data` via l'API GitHub, jeton `sori-gh-token` local au téléphone. Lecture : R15. |
+| **Due / itv** | `due` = date de prochaine révision (`AAAA-MM-JJ`) ; `itv` = intervalle en jours qui a produit cette date. |
+| **Migration douce** | Au chargement ET à l'import : `Object.assign({}, DEF_SET, s.set)` + défauts pour les conteneurs manquants. Un vieil état/export reste valide à vie ; les champs inconnus sont préservés. |
+| **Service worker (SW)** | `docs/sw.js` — hors-ligne + mises à jour. **Network-first** ; `CACHE` à bump à chaque release ; n'intercepte pas le cross-origin ; ne purge jamais `sori-audio-store`. |
 | **PWA** | Progressive Web App : le site installé comme une app Android (manifest + service worker). |
-| **GitHub Pages** | L'hébergement statique : la branche `main`, dossier `docs/`, servie sur https://mnafati-cloud.github.io/sori/. Déploiement automatique ~1-2 min après chaque push. |
-| **edge-tts** | Bibliothèque Python qui appelle la synthèse vocale neurale de Microsoft Edge — produit les MP3 natifs (`ko-KR-SunHiNeural`). |
-| **Streak** | Nombre de jours consécutifs avec au moins une réponse (🔥). Aujourd'hui pas encore joué ne casse pas la série en cours. |
+| **GitHub Pages** | Hébergement statique : branche `main`, dossier `docs/`, ~1-2 min de déploiement après push. |
+| **edge-tts** | Bibliothèque Python appelant la synthèse neurale Microsoft Edge — produit les MP3 (`ko-KR-SunHiNeural`, rate −15 %). |
+| **Streak** | Jours consécutifs avec au moins une réponse (🔥). Aujourd'hui pas encore joué ne casse pas la série. |
+| **Saisie hangul (typing)** | Module `typing.js` : au stage 5 (mots), taper la réponse à l'IME coréen au lieu de l'auto-évaluation. Opt-in `ST.set.typing`, 50 % du temps. Juge syllabique tolérant (NFC, Levenshtein ≤ 1, espacement), l'utilisateur tranche les fautes de frappe IME. Kind `type`. |
+| **Pages de test (`docs/design/`)** | Pages HTML autonomes par module (events-test, quests-test, exam-test, search-test, player-test, theme-test, typing-test) : vraies données + vrai moteur + checks automatiques. À enrichir à chaque évolution du module concerné. |
