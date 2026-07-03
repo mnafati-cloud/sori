@@ -35,7 +35,7 @@
     <button class="btn small ghost" id="nohist">Sans historique</button>
     <button class="btn small ghost" id="tiny">Petit deck (12 items)</button>
   </div>
-  <h3>Sanity buildExam (pur, seed courant)</h3>
+  <h3>Sanity buildExam (pur, seed courant — un run par profil)</h3>
   <div id="sanity">…</div>
   <h3>Dernier onFinish(result)</h3>
   <div id="out">— onFinish pas encore appelé —</div>
@@ -78,14 +78,24 @@ function speak(kr, id){
   });
 }
 
-/* historique factice : progression 21/40 -> 27/40 (la carte doit montrer ↗) */
+/* historique factice : progression standard 21/40 -> 27/40 (la carte doit
+   montrer ↗ sur la ligne 🎯) + un bilan par autre profil (la carte doit
+   montrer le DERNIER résultat PAR profil). La 1re entrée n'a PAS de champ
+   profile : ancien enregistrement -> doit compter comme "standard". */
 const FAKE_HISTORY = [
-  { date:"2026-05-02", score:21, total:40, grade:"A2 solide",
+  { date:"2026-05-02", score:21, total:40, grade:"A2 solide",   /* legacy, sans profile */
     sections:{A:{ok:7,n:12,pct:58},B:{ok:6,n:12,pct:50},C:{ok:4,n:8,pct:50},D:{ok:4,n:8,pct:50}},
     weak:["a2::metiers","a2::lieux"] },
-  { date:"2026-06-06", score:27, total:40, grade:"A2+ / B1 en approche",
+  { date:"2026-05-20", profile:"beginner", score:34, total:40, grade:"A2 acquis", timeSec:512,
+    sections:{A:{ok:11,n:12,pct:92},B:{ok:10,n:12,pct:83},C:{ok:7,n:8,pct:88},D:{ok:6,n:8,pct:75}},
+    weak:["a2::compteurs"] },
+  { date:"2026-06-06", profile:"standard", score:27, total:40, grade:"A2+ / B1 en approche",
     sections:{A:{ok:9,n:12,pct:75},B:{ok:8,n:12,pct:67},C:{ok:5,n:8,pct:63},D:{ok:5,n:8,pct:63}},
-    weak:["a2::verbes","voyage::resto"] }
+    weak:["a2::verbes","voyage::resto"] },
+  { date:"2026-06-21", profile:"advanced", score:22, total:40, grade:"B1 en approche",
+    timeSec:655, overtime:true,
+    sections:{A:{ok:7,n:12,pct:58},B:{ok:6,n:12,pct:50},C:{ok:5,n:8,pct:63},D:{ok:4,n:8,pct:50}},
+    weak:["b1::grammaire","b1::opinion"] }
 ];
 
 const $screen = document.getElementById("screen");
@@ -101,20 +111,49 @@ function currentRnd(){
 
 function sanity(items){
   const s = parseInt(document.getElementById("seed").value, 10) || 42;
-  const e1 = SORI_EXAM.pure.buildExam(items, mulberry32(s));
-  const e2 = SORI_EXAM.pure.buildExam(items, mulberry32(s));
-  const ids = e1.questions.map(q => q.id);
-  const bySec = {};
-  e1.questions.forEach(q => bySec[q.section] = (bySec[q.section] || 0) + 1);
-  const strates = {"1-2":0, "3-4":0, "5":0};
-  e1.questions.filter(q => q.section === "A")
-    .forEach(q => strates[q.stage <= 2 ? "1-2" : q.stage <= 4 ? "3-4" : "5"]++);
-  $sanity.textContent =
-    "total: " + e1.total + "  sections: " + JSON.stringify(bySec) + "\n" +
-    "strates section A (attendu 3/5/4 si deck plein): " + JSON.stringify(strates) + "\n" +
-    "doublons d'items testés: " + (new Set(ids).size === ids.length ? "AUCUN ✅" : "OUI ❌") + "\n" +
-    "reproductible (2 builds, même seed): " +
-      (JSON.stringify(e1) === JSON.stringify(e2) ? "OUI ✅" : "NON ❌");
+  const byId = {}; items.forEach(it => byId[it.id] = it);
+  const P = SORI_EXAM.pure;
+  let txt = "";
+  /* un run seedé PAR PROFIL : sections, strates de A, filtres, doublons */
+  for(const pid of P.PROFILE_ORDER){
+    const e = P.buildExam(items, mulberry32(s), pid);
+    const bySec = {};
+    e.questions.forEach(q => bySec[q.section] = (bySec[q.section] || 0) + 1);
+    const strates = {"1-2":0, "3-4":0, "5":0};
+    e.questions.filter(q => q.section === "A")
+      .forEach(q => strates[q.stage <= 2 ? "1-2" : q.stage <= 4 ? "3-4" : "5"]++);
+    const ids = e.questions.map(q => q.id);
+    let filterOk = true, distOk = true;
+    e.questions.forEach(q => {
+      if(pid === "beginner" && !/^a2::/.test(q.theme)) filterOk = false;
+      if(pid === "advanced"){
+        if(q.stage < 3) filterOk = false;
+        const it = byId[q.id];
+        q.options.forEach(o => {
+          if(o.id === q.correctId) return;
+          const c = byId[o.id];
+          if(!(c && (c.theme === q.theme || (it.conf || []).includes(String(o.id))))) distOk = false;
+        });
+      }
+    });
+    const attendu = pid === "beginner" ? "5/5/2" : "3/5/4";
+    txt += P.PROFILES[pid].icon + " " + pid + " — total " + e.total +
+      "  sections " + JSON.stringify(bySec) + "\n" +
+      "   strates A (attendu " + attendu + " si stock plein) " + JSON.stringify(strates) +
+      "  filtre " + (filterOk ? "✅" : "❌") +
+      (pid === "advanced" ? "  distracteurs conf/thème " + (distOk ? "✅" : "❌") : "") +
+      "  doublons " + (new Set(ids).size === ids.length ? "aucun ✅" : "OUI ❌") + "\n";
+  }
+  /* rétrocompat + reproductibilité */
+  const r2 = P.buildExam(items, mulberry32(s));
+  const r3 = P.buildExam(items, mulberry32(s), "standard");
+  txt += "rétrocompat buildExam(items, rnd) === (…, 'standard') : " +
+    (JSON.stringify(r2) === JSON.stringify(r3) ? "OUI ✅" : "NON ❌") + "\n";
+  const a1 = P.buildExam(items, mulberry32(s), "advanced");
+  const a2 = P.buildExam(items, mulberry32(s), "advanced");
+  txt += "reproductible (2 builds avancé, même seed) : " +
+    (JSON.stringify(a1) === JSON.stringify(a2) ? "OUI ✅" : "NON ❌");
+  $sanity.textContent = txt;
 }
 
 function paint(items, useSeed, hist){
