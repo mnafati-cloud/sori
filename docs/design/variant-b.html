@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08080c">
+<title>Sori — Direction B «Séoul nuit»</title>
+<style>
+/* ============ SORI — DIRECTION B « SÉOUL NUIT » ============
+   Noirs profonds + duo néon rose/cyan, verre léger, hangul roi.
+   Maquette statique, zéro JS, polices système uniquement.     */
+
+:root{
+  --bg:#08080c;
+  --txt:#f1f0f5;
+  --dim:#a3a2b5;
+  --faint:#807f93;   /* >=4.5:1 sur fond noir et verre (AA petit texte) */
+  --rose:#ff7ab8;        /* action, énergie, attention */
+  --rose-deep:#cc3a76;   /* >=4.5:1 avec texte blanc (bouton primaire) */
+  --cyan:#4be1e8;        /* réussite, information */
+  --glass:rgba(255,255,255,.045);
+  --glass2:rgba(255,255,255,.07);
+  --edge:rgba(255,255,255,.10);
+  --edge-soft:rgba(255,255,255,.07);
+  --r:18px;
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+html,body{margin:0; padding:0}
+body{
+  background:var(--bg);
+  background-image:
+    radial-gradient(620px 420px at 12% 4%,  rgba(255,122,184,.075), transparent 62%),
+    radial-gradient(720px 520px at 88% 38%, rgba(75,225,232,.065),  transparent 62%),
+    radial-gradient(560px 640px at 25% 92%, rgba(255,122,184,.05),  transparent 62%);
+  background-attachment:fixed;
+  color:var(--txt);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+  line-height:1.45;
+}
+.wrap{max-width:420px; margin:0 auto; padding:20px 16px 60px}
+
+/* ---------- titres de section (séparateurs de maquette) ---------- */
+.sec{display:flex; align-items:center; gap:10px; margin:44px 0 14px;
+  font-size:.78rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--dim)}
+.sec::before{content:""; width:3px; height:16px; border-radius:2px;
+  background:linear-gradient(180deg,var(--rose),var(--cyan)); flex:none}
+.sec:first-child{margin-top:8px}
+
+/* ---------- cadre "écran" ---------- */
+.mock{border:1px solid var(--edge-soft); border-radius:26px; overflow:hidden;
+  background:rgba(255,255,255,.02);
+  box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.mockbody{padding:14px 14px 18px; display:flex; flex-direction:column; gap:12px}
+
+/* ---------- topbar ---------- */
+.topbar{display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px; border-bottom:1px solid var(--edge-soft);
+  background:rgba(255,255,255,.03); backdrop-filter:blur(14px)}
+.brand{font-weight:700; font-size:1.1rem; letter-spacing:.5px}
+.brand small{color:var(--dim); font-weight:500; font-size:.8rem; margin-left:4px}
+.topright{display:flex; align-items:center; gap:8px}
+.grade-badge{font-size:.78rem; font-weight:700; color:var(--cyan);
+  border:1px solid rgba(75,225,232,.35); border-radius:999px; padding:3px 10px;
+  background:rgba(75,225,232,.08);
+  box-shadow:0 0 12px rgba(75,225,232,.15)}
+.daycount{font-size:.82rem; color:var(--dim); font-variant-numeric:tabular-nums;
+  background:var(--glass2); border-radius:999px; padding:3px 10px; border:1px solid var(--edge-soft)}
+
+/* ---------- tabs ---------- */
+.tabs{display:flex; border-top:1px solid var(--edge-soft);
+  background:rgba(255,255,255,.03); backdrop-filter:blur(14px)}
+.tab{flex:1; text-align:center; padding:14px 0 12px; font-size:.8rem; color:var(--faint);
+  position:relative; min-height:48px; display:flex; align-items:center; justify-content:center}
+.tab.active{color:var(--cyan); font-weight:600}
+.tab.active::after{content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:22px; height:2px; border-radius:2px; background:var(--cyan);
+  box-shadow:0 0 8px rgba(75,225,232,.7)}
+
+/* ---------- cartes verre ---------- */
+.card{background:var(--glass); border:1px solid var(--edge); border-radius:var(--r);
+  padding:18px 16px; backdrop-filter:blur(14px) saturate(1.15);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 8px 24px rgba(0,0,0,.35)}
+.center{text-align:center}
+
+/* ---------- session : progression + combo ---------- */
+.session-line{display:flex; align-items:center; justify-content:space-between; gap:10px}
+.dots{display:flex; gap:5px}
+.dots i{width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.12)}
+.dots i.on{background:var(--cyan); box-shadow:0 0 6px rgba(75,225,232,.6)}
+.session-label{font-size:.76rem; color:var(--dim); font-variant-numeric:tabular-nums}
+.combo{display:inline-flex; align-items:center; gap:8px;
+  font-size:.8rem; font-weight:700; color:var(--rose); letter-spacing:1px;
+  border:1px solid rgba(255,122,184,.35); border-radius:999px; padding:5px 12px;
+  background:rgba(255,122,184,.07); box-shadow:0 0 14px rgba(255,122,184,.12)}
+.combo .ticks{display:flex; gap:3px}
+.combo .ticks i{width:4px; height:11px; border-radius:2px; background:rgba(255,122,184,.25)}
+.combo .ticks i.on{background:var(--rose); box-shadow:0 0 6px rgba(255,122,184,.7)}
+.xp-float{font-size:.78rem; color:var(--cyan); font-weight:600}
+
+/* ---------- hangul : le héros ---------- */
+.big-kr{font-size:3rem; line-height:1.3; font-weight:700; margin:14px 0 4px;
+  word-break:keep-all; letter-spacing:.01em}
+.kind{font-size:.75rem; text-transform:uppercase; letter-spacing:2px; color:var(--faint)}
+
+/* ---------- QCM ---------- */
+.opts{display:flex; flex-direction:column; gap:10px; margin-top:14px}
+.opt{background:var(--glass2); color:var(--txt); border:1px solid var(--edge);
+  border-radius:14px; padding:14px 16px; font-size:1.02rem; text-align:center;
+  min-height:52px; display:flex; align-items:center; justify-content:center; gap:8px;
+  word-break:keep-all}
+.opt.good{border-color:rgba(75,225,232,.65); background:rgba(75,225,232,.10);
+  box-shadow:0 0 16px rgba(75,225,232,.18), inset 0 1px 0 rgba(255,255,255,.08)}
+.opt.good::after{content:"✓"; color:var(--cyan); font-weight:700}
+
+/* ---------- trivia (après réponse) ---------- */
+.answer-fr{font-size:1.5rem; font-weight:600; color:var(--cyan); margin:2px 0 0}
+.trivia{margin-top:14px; padding:14px; border-radius:14px; text-align:left;
+  background:rgba(75,225,232,.05); border:1px solid rgba(75,225,232,.18)}
+.trivia .tkr{font-size:1.35rem; line-height:1.5; font-weight:600; word-break:keep-all}
+.trivia .tfr{color:var(--dim); margin-top:4px; font-size:.92rem}
+.tnote{margin-top:12px; padding:12px 14px; border-radius:14px; text-align:left;
+  background:rgba(255,122,184,.06); border:1px solid rgba(255,122,184,.22);
+  font-size:.92rem; color:var(--txt); word-break:keep-all}
+.tnote b{color:var(--rose); font-size:1.3rem}
+.row{display:flex; gap:10px; margin-top:14px}
+.row>*{flex:1}
+.btn{border:none; border-radius:14px; padding:14px; font-size:1rem; font-weight:700;
+  min-height:52px; font-family:inherit}
+.btn.primary{background:var(--rose-deep); color:#fff;
+  box-shadow:0 0 18px rgba(255,122,184,.22)}
+.btn.ghost{background:var(--glass2); border:1px solid var(--edge); color:var(--txt); font-weight:600}
+.btn.okc{background:rgba(75,225,232,.14); border:1px solid rgba(75,225,232,.5); color:var(--cyan)}
+
+/* ---------- construction de phrase ---------- */
+.prompt-fr{font-size:1.25rem; line-height:1.4; font-weight:600; margin:6px 0 2px}
+.built{min-height:64px; border:1px dashed rgba(255,255,255,.22); border-radius:14px;
+  background:rgba(255,255,255,.03); padding:10px; margin:14px 0 12px;
+  display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center}
+.built .cursor{width:2px; height:26px; background:var(--cyan); border-radius:2px;
+  box-shadow:0 0 8px rgba(75,225,232,.8)}
+.pool{display:flex; flex-wrap:wrap; gap:9px; justify-content:center}
+.chip{border-radius:12px; padding:12px 16px; font-size:1.3rem; word-break:keep-all;
+  min-height:48px; display:inline-flex; align-items:center;
+  background:var(--glass2); border:1px solid var(--edge); color:var(--txt)}
+.chip.placed{background:rgba(255,122,184,.10); border-color:rgba(255,122,184,.45); color:var(--txt);
+  box-shadow:0 0 10px rgba(255,122,184,.12)}
+.chip.used{opacity:.28}
+
+/* ---------- stats ---------- */
+.streak-hero{display:flex; align-items:center; gap:16px}
+.flame{flex:none; width:52px; height:52px; border-radius:16px; display:flex;
+  align-items:center; justify-content:center;
+  background:rgba(255,122,184,.08); border:1px solid rgba(255,122,184,.3);
+  box-shadow:0 0 18px rgba(255,122,184,.15)}
+.streak-n{font-size:2rem; font-weight:800; line-height:1; font-variant-numeric:tabular-nums}
+.streak-n small{font-size:.9rem; font-weight:600; color:var(--dim); margin-left:4px}
+.streak-sub{font-size:.8rem; color:var(--dim); margin-top:4px}
+.guard{color:var(--cyan); font-weight:600}
+
+.statgrid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+.stat{background:var(--glass); border:1px solid var(--edge); border-radius:var(--r);
+  padding:14px; text-align:center; backdrop-filter:blur(14px)}
+.stat .n{font-size:1.6rem; font-weight:800; font-variant-numeric:tabular-nums}
+.stat .n.c{color:var(--cyan)} .stat .n.p{color:var(--rose)}
+.stat .l{font-size:.74rem; color:var(--dim); margin-top:3px}
+
+.goal-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px}
+.goal-head b{font-size:.95rem}
+.goal-head span{font-size:.78rem; color:var(--dim); font-variant-numeric:tabular-nums}
+.gbar{height:10px; border-radius:5px; background:rgba(255,255,255,.08); overflow:hidden; position:relative}
+.gbar>div{height:100%; width:62%; border-radius:5px;
+  background:linear-gradient(90deg,var(--rose-deep),var(--cyan));
+  box-shadow:0 0 12px rgba(75,225,232,.35)}
+.gsub{display:flex; justify-content:space-between; font-size:.74rem; color:var(--faint); margin-top:7px}
+
+/* ---------- gamification : grades & XP ---------- */
+.lvl-head{display:flex; align-items:center; justify-content:space-between}
+.lvl-name{font-size:1.05rem; font-weight:700}
+.lvl-name b{color:var(--cyan); margin-right:8px; font-size:1.2rem}
+.lvl-xp{font-size:.78rem; color:var(--dim); font-variant-numeric:tabular-nums}
+.xpbar{height:8px; border-radius:4px; background:rgba(255,255,255,.08); overflow:hidden; margin:10px 0 14px}
+.xpbar>div{height:100%; width:76%; border-radius:4px;
+  background:linear-gradient(90deg,var(--rose),var(--cyan));
+  box-shadow:0 0 10px rgba(255,122,184,.4)}
+.ladder{display:flex; gap:8px; justify-content:space-between}
+.rung{flex:1; text-align:center; font-size:.8rem; padding:9px 0; border-radius:10px;
+  color:var(--faint); border:1px solid var(--edge-soft); background:rgba(255,255,255,.025);
+  font-variant-numeric:tabular-nums}
+.rung.done{color:var(--dim); border-color:rgba(75,225,232,.2)}
+.rung.now{color:var(--cyan); font-weight:800; border-color:rgba(75,225,232,.6);
+  background:rgba(75,225,232,.09); box-shadow:0 0 14px rgba(75,225,232,.18)}
+.sessrecap{display:flex; gap:10px; margin-top:14px}
+.sessrecap div{flex:1; text-align:center; background:rgba(255,255,255,.03);
+  border:1px solid var(--edge-soft); border-radius:12px; padding:10px 4px}
+.sessrecap .v{font-weight:800; font-size:1.05rem; color:var(--rose)}
+.sessrecap .k{font-size:.68rem; color:var(--faint); margin-top:2px}
+
+/* ---------- célébration discrète (toast) ---------- */
+.toast{display:flex; align-items:center; gap:12px; padding:13px 16px;
+  border-radius:14px; background:rgba(20,20,28,.85);
+  border:1px solid rgba(75,225,232,.45);
+  box-shadow:0 0 22px rgba(75,225,232,.18), inset 0 1px 0 rgba(255,255,255,.07)}
+.toast .spark{flex:none; width:8px; height:8px; border-radius:50%; background:var(--cyan);
+  box-shadow:0 0 10px rgba(75,225,232,.9)}
+.toast b{color:var(--cyan)}
+.toast .t{font-size:.9rem}
+.toast .s{font-size:.76rem; color:var(--dim)}
+.demo-label{font-size:.72rem; color:var(--faint); text-transform:uppercase; letter-spacing:1.5px; margin:2px 0 8px}
+
+/* ---------- manifeste ---------- */
+.manifesto{background:#141419; border:1px solid #26262e; border-radius:var(--r);
+  padding:22px 18px; margin-top:16px}
+.manifesto h2{margin:0; font-size:1.3rem}
+.manifesto h2 small{display:block; font-size:.75rem; font-weight:600; letter-spacing:2px;
+  text-transform:uppercase; color:var(--dim); margin-bottom:6px}
+.manifesto ol{margin:14px 0 0; padding-left:20px; display:flex; flex-direction:column; gap:8px;
+  font-size:.92rem; color:#d6d5df}
+.manifesto h3{font-size:.8rem; text-transform:uppercase; letter-spacing:2px; color:var(--dim);
+  margin:24px 0 10px; display:flex; align-items:center; gap:8px}
+.manifesto h3::before{content:""; width:3px; height:14px; border-radius:2px;
+  background:linear-gradient(180deg,var(--rose),var(--cyan))}
+.manifesto ul{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:9px;
+  font-size:.9rem; color:#d6d5df}
+.manifesto li b{color:var(--txt)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================================================== -->
+  <div class="sec">1 · Réviser — QCM</div>
+  <div class="mock">
+    <div class="topbar">
+      <div class="brand">소리<small>Sori</small></div>
+      <div class="topright">
+        <span class="grade-badge">5급</span>
+        <span class="daycount">46 auj.</span>
+      </div>
+    </div>
+    <div class="mockbody">
+      <div class="session-line">
+        <span class="session-label">Session&nbsp;·&nbsp;5/12</span>
+        <div class="dots">
+          <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+      <div class="session-line">
+        <span class="combo">COMBO ×4
+          <span class="ticks"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+        </span>
+        <span class="xp-float">+12 XP</span>
+      </div>
+      <div class="card center">
+        <div class="kind">Que veut dire…</div>
+        <div class="big-kr">성적</div>
+        <div class="opts">
+          <div class="opt">caractère, personnalité</div>
+          <div class="opt good">résultat, note (examen)</div>
+          <div class="opt">sincérité</div>
+          <div class="opt">adresse, domicile</div>
+        </div>
+      </div>
+    </div>
+    <div class="tabs">
+      <span class="tab active">Réviser</span>
+      <span class="tab">Écoute</span>
+      <span class="tab">Voyage</span>
+      <span class="tab">Stats</span>
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <div class="sec">2 · Réviser — trivia affiché</div>
+  <div class="mock">
+    <div class="mockbody">
+      <div class="card center">
+        <div class="kind">Réponse</div>
+        <div class="big-kr">성적</div>
+        <div class="answer-fr">résultat, note (examen)</div>
+        <div class="trivia">
+          <div class="tkr">시험 성적이 잘 나왔어요.</div>
+          <div class="tfr">« Mes résultats d’examen sont bons. »</div>
+        </div>
+        <div class="tnote">≠ <b>성격</b> — caractère, personnalité. Une syllabe change tout&nbsp;: <b>적</b> (résultat) / <b>격</b> (tempérament).</div>
+        <div class="row">
+          <button class="btn ghost">Encore</button>
+          <button class="btn okc">Bien&nbsp;·&nbsp;+10 XP</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <div class="sec">3 · Construction de phrase</div>
+  <div class="mock">
+    <div class="mockbody">
+      <div class="session-line">
+        <span class="session-label">Session&nbsp;·&nbsp;9/12</span>
+        <span class="combo">COMBO ×7
+          <span class="ticks"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+        </span>
+      </div>
+      <div class="card center">
+        <div class="kind">Construis la phrase</div>
+        <div class="prompt-fr">« Je voudrais aller à Hongdae. »</div>
+        <div class="built">
+          <span class="chip placed">홍대에</span>
+          <span class="chip placed">가고</span>
+          <span class="cursor"></span>
+        </div>
+        <div class="pool">
+          <span class="chip">싶어요</span>
+          <span class="chip">주세요</span>
+          <span class="chip used">홍대에</span>
+          <span class="chip">어디에</span>
+          <span class="chip used">가고</span>
+          <span class="chip">있어요</span>
+        </div>
+        <div class="row">
+          <button class="btn ghost">Effacer</button>
+          <button class="btn primary">Valider&nbsp;·&nbsp;15 XP</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <div class="sec">4 · Stats</div>
+  <div class="mock">
+    <div class="topbar">
+      <div class="brand">소리<small>Sori</small></div>
+      <div class="topright"><span class="grade-badge">5급</span></div>
+    </div>
+    <div class="mockbody">
+
+      <div class="card">
+        <div class="streak-hero">
+          <div class="flame">
+            <svg width="24" height="28" viewBox="0 0 24 28" fill="none" aria-hidden="true">
+              <path d="M12 2C13 7 18 9 18 15a6 6 0 1 1-12 0c0-3 1.5-4.5 2.5-6C10 11 12 11 12 2z"
+                    stroke="#ff7ab8" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="streak-n">23<small>jours de série</small></div>
+            <div class="streak-sub"><span class="guard">1 jour de garde</span> en réserve — la série survit à un jour raté.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="statgrid">
+        <div class="stat"><div class="n c">87%</div><div class="l">réussite (7 j)</div></div>
+        <div class="stat"><div class="n">312</div><div class="l">mots actifs</div></div>
+        <div class="stat"><div class="n p">14</div><div class="l">ennemies vaincues</div></div>
+        <div class="stat"><div class="n c">+140</div><div class="l">XP aujourd’hui</div></div>
+      </div>
+
+      <div class="card">
+        <div class="goal-head"><b>Départ Séoul — 1ᵉʳ octobre</b><span>J−90</span></div>
+        <div class="gbar"><div></div></div>
+        <div class="gsub"><span>Kit de survie&nbsp;: 62&nbsp;% couvert</span><span>558 / 900 mots</span></div>
+      </div>
+
+      <div class="card">
+        <div class="lvl-head">
+          <div class="lvl-name"><b>5급</b>Habitué du métro</div>
+          <div class="lvl-xp">1 840 / 2 400 XP</div>
+        </div>
+        <div class="xpbar"><div></div></div>
+        <div class="ladder">
+          <span class="rung done">7급</span>
+          <span class="rung done">6급</span>
+          <span class="rung now">5급</span>
+          <span class="rung">4급</span>
+          <span class="rung">3급</span>
+        </div>
+        <div class="sessrecap">
+          <div><div class="v">×8</div><div class="k">record combo</div></div>
+          <div><div class="v">1,9 s</div><div class="k">mot le plus vif</div></div>
+          <div><div class="v">2</div><div class="k">ennemies affaiblies</div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="demo-label">Aperçu — célébration discrète</div>
+        <div class="toast">
+          <span class="spark"></span>
+          <div>
+            <div class="t"><b>Grade atteint — 5급</b> « Habitué du métro »</div>
+            <div class="s">Prochain palier&nbsp;: 4급 « Négociateur de marché » à 2 400 XP</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="tabs">
+      <span class="tab">Réviser</span>
+      <span class="tab">Écoute</span>
+      <span class="tab">Voyage</span>
+      <span class="tab active">Stats</span>
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <div class="sec">Manifeste</div>
+  <div class="manifesto">
+    <h2><small>Direction B</small>«&nbsp;Séoul nuit&nbsp;»</h2>
+    <ol>
+      <li>Noir profond (#08080c) au lieu du bleu-nuit&nbsp;: l’écran s’efface, le hangul reste seul en scène.</li>
+      <li>Un duo néon strictement dosé — rose = action, énergie, attention&nbsp;; cyan = réussite, information. Jamais les deux au même endroit.</li>
+      <li>Verre léger&nbsp;: cartes translucides sur halos urbains flous — la ville la nuit vue d’une fenêtre, pas une enseigne de karaoké.</li>
+      <li>Le hangul est le héros&nbsp;: 3&nbsp;rem minimum pour le mot cible, keep-all partout, contraste AA garanti, rien ne rivalise typographiquement.</li>
+      <li>La lumière raconte l’état&nbsp;: un liseré qui s’allume, un point qui pulse — les célébrations sont des micro-détails lumineux, jamais des confettis.</li>
+    </ol>
+    <h3>Gamification — mécaniques</h3>
+    <ul>
+      <li><b>Combo de session</b>&nbsp;: +1 par bonne réponse consécutive&nbsp;; paliers ×5/×10/×15 = liseré rose qui s’allume + bonus +10/+25/+50 XP. Une erreur remet à ×1, sans autre pénalité.</li>
+      <li><b>XP par exercice</b>&nbsp;: QCM 10, écoute 12, construction 15, «&nbsp;ennemie&nbsp;» vaincue +20&nbsp;; réponse &lt;&nbsp;5&nbsp;s = +2 (récompense la lecture fluide, l’objectif réel).</li>
+      <li><b>Grades coréens</b>&nbsp;: progression 10급 → 1급 (puis 초단), coût 400 XP × 1,3 par grade. Chaque grade porte un nom lié au voyage&nbsp;: 10급 «&nbsp;Premiers pas&nbsp;», 5급 «&nbsp;Habitué du métro&nbsp;», 1급 «&nbsp;Prêt pour Séoul&nbsp;».</li>
+      <li><b>Badge de grade</b> permanent et sobre dans la topbar&nbsp;; montée de grade = plein écran 2&nbsp;s (grade en grand + trait néon), un seul son bref, pas de fanfare.</li>
+      <li><b>Jauge 1ᵉʳ octobre</b>&nbsp;: une barre unique croise le temps restant (J−n) et la couverture du kit de survie (n/900 mots) — l’avancement se lit d’un coup d’œil.</li>
+      <li><b>Streak protégé</b>&nbsp;: 1 «&nbsp;jour de garde&nbsp;» gagné tous les 7 jours consécutifs (max 2 en réserve)&nbsp;: absorbe un jour manqué sans casser la série — adulte, pas punitif.</li>
+      <li><b>Récap de fin de session</b> en 4 lignes&nbsp;: XP gagné, record de combo, mot le plus rapide, ennemies affaiblies. Un écran, pas une cascade.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

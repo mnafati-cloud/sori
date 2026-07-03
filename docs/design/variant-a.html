@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sori — Direction A « Hanji »</title>
+<style>
+/* ============ HANJI — papier coréen, encre, un seul rouge (sceau) ============ */
+:root{
+  --neutral:#EDE6D8;          /* fond de page (hors écrans) */
+  --paper:#F9F4E9;            /* fond hanji des écrans */
+  --card:#FFFDF6;             /* cartes, presque blanc chaud */
+  --ink:#221C15;              /* encre */
+  --dim:#6B6055;              /* texte secondaire — AA sur paper & card */
+  --line:#E3D9C6;             /* hairlines */
+  --line2:#CFC2A8;            /* hairlines appuyées (pointillés) */
+  --seal:#A93226;             /* rouge sceau 낙관 — l'unique accent */
+  --seal-soft:#F4E5DE;        /* teinte sceau très diluée (fonds marqués) */
+  --inset:#F3EBD9;            /* encarts */
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+  --kr:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+  --r:14px;
+  --shadow:0 1px 2px rgba(84,62,26,.06),0 8px 24px rgba(84,62,26,.06);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--neutral); color:var(--ink);
+  font-family:var(--sans); line-height:1.5;
+  padding:28px 14px 60px;
+}
+.kr{font-family:var(--kr); word-break:keep-all}
+.wrap{max-width:420px;margin:0 auto}
+
+/* ---------- entête de la page de démo ---------- */
+.demo-head{max-width:420px;margin:0 auto 34px;text-align:center}
+.demo-head .tag{font-family:var(--serif);font-style:italic;color:var(--dim);font-size:.9rem}
+.demo-head h1{font-family:var(--serif);font-weight:400;font-size:1.7rem;margin:.2em 0 .1em;letter-spacing:.5px}
+.demo-head p{color:var(--dim);font-size:.85rem;margin:0}
+
+/* ---------- titres de section entre les écrans ---------- */
+.sec{max-width:420px;margin:52px auto 18px;display:flex;align-items:center;gap:14px}
+.sec::before,.sec::after{content:"";flex:1;height:1px;background:var(--line2)}
+.sec span{font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--dim);white-space:nowrap}
+.sec b{color:var(--ink);font-weight:400}
+
+/* ---------- cadre d'écran (viewport mobile) ---------- */
+.frame{
+  max-width:420px;margin:0 auto;background:var(--paper);
+  border:1px solid var(--line);border-radius:26px;overflow:hidden;
+  box-shadow:var(--shadow);
+  display:flex;flex-direction:column;
+}
+/* barre du haut */
+.topbar{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px 12px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px}
+.seal-mark{
+  width:38px;height:38px;background:var(--seal);border-radius:6px;
+  color:#FFFDF6;font-family:var(--kr);font-weight:700;font-size:.82rem;
+  display:flex;align-items:center;justify-content:center;letter-spacing:1px;
+  box-shadow:inset 0 0 0 2px rgba(255,253,246,.25);
+}
+.brand .name{font-family:var(--serif);font-size:1.15rem;letter-spacing:.5px}
+.brand .name small{display:block;font-size:.68rem;color:var(--dim);font-style:italic;letter-spacing:.3px}
+.daycount{font-variant-numeric:tabular-nums;color:var(--dim);font-size:.8rem;
+  border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--card)}
+.daycount b{color:var(--ink);font-weight:600}
+
+.screen{padding:18px 16px 22px;display:flex;flex-direction:column;gap:14px}
+
+/* barre d'onglets */
+.tabs{display:flex;background:var(--card);border-top:1px solid var(--line)}
+.tabs .tab{flex:1;padding:10px 0 12px;text-align:center;color:var(--dim);min-height:56px}
+.tabs .tab .ico{font-family:var(--kr);font-size:1.02rem;font-weight:700;display:block;line-height:1.3}
+.tabs .tab .lbl{font-size:.64rem;letter-spacing:.4px;display:block;margin-top:1px}
+.tabs .tab.active{color:var(--seal)}
+.tabs .tab.active .ico::after{content:"";display:block;width:16px;height:2px;background:var(--seal);
+  margin:3px auto 0;border-radius:2px}
+
+/* ---------- éléments communs ---------- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px 16px;box-shadow:0 1px 2px rgba(84,62,26,.04)}
+.center{text-align:center}
+.dim{color:var(--dim);font-size:.85rem}
+h2.ttl{font-family:var(--serif);font-weight:400;font-size:1.02rem;margin:0 0 8px;letter-spacing:.3px}
+
+.progress{height:6px;background:#EAE0CB;border-radius:3px;overflow:hidden}
+.progress>i{display:block;height:100%;background:var(--seal);border-radius:3px}
+.meta{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:.78rem;color:var(--dim)}
+.pill{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:2px 10px;font-size:.72rem;color:var(--dim)}
+.pill.red{color:var(--seal);border-color:#DFC3BC}
+
+/* grand mot */
+.big-kr{font-family:var(--kr);font-size:2.9rem;line-height:1.3;font-weight:600;
+  margin:14px 0 4px;word-break:keep-all;letter-spacing:-.5px}
+.big-kr.phrase{font-size:1.55rem;line-height:1.55}
+.big-fr{font-family:var(--serif);font-size:1.35rem;line-height:1.4;margin:12px 0 4px}
+
+/* bouton écouter (SVG inline, pas d'emoji) */
+.listen{display:inline-flex;align-items:center;gap:8px;margin:6px auto 4px;
+  border:1px solid var(--line);background:var(--card);color:var(--dim);
+  border-radius:999px;padding:9px 16px;font-size:.82rem;font-family:var(--serif);font-style:italic;
+  min-height:40px;cursor:pointer}
+.listen svg{width:15px;height:15px;fill:none;stroke:var(--dim);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* choix QCM */
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.opt{position:relative;background:var(--card);border:1px solid var(--line2);border-radius:12px;
+  padding:13px 46px 13px 14px;font-size:1rem;min-height:50px;text-align:center;color:var(--ink);
+  display:flex;align-items:center;justify-content:center;line-height:1.4}
+.opt.kr{font-family:var(--kr);font-size:1.3rem;word-break:keep-all}
+.opt.faded{color:var(--dim);border-color:var(--line)}
+.opt.good{border:1.5px solid var(--seal);background:var(--seal-soft)}
+.opt.bad{background:#EFE7D6;color:var(--dim);border-style:dashed}
+.stamp-chip{position:absolute;right:9px;top:50%;transform:translateY(-50%) rotate(-4deg);
+  background:var(--seal);color:#FFFDF6;font-family:var(--kr);font-weight:700;font-size:.68rem;
+  padding:4px 6px;border-radius:4px;letter-spacing:1px;box-shadow:inset 0 0 0 1.5px rgba(255,253,246,.3)}
+.miss-chip{position:absolute;right:9px;top:50%;transform:translateY(-50%);
+  color:var(--dim);font-size:.66rem;border:1px dashed var(--line2);border-radius:4px;padding:3px 6px}
+
+/* encart trivia — note de marge du lettré */
+.trivia{margin-top:14px;padding:12px 14px;background:var(--inset);
+  border-left:3px solid var(--seal);border-radius:0 10px 10px 0;text-align:left}
+.trivia .tkr{font-family:var(--kr);font-size:1.3rem;font-weight:600;word-break:keep-all;line-height:1.55}
+.trivia .tfr{color:var(--dim);font-size:.85rem;margin-top:3px;font-family:var(--serif);font-style:italic}
+.trivia .tnote{color:var(--seal);font-size:.85rem;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line2)}
+.trivia .tnote .kr{font-weight:700;font-size:1.3rem}
+
+/* construction de phrase */
+.built{min-height:64px;background:var(--paper);border:1.5px dashed var(--line2);border-radius:var(--r);
+  padding:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:12px 0 6px}
+.pool{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:10px}
+.chip{font-family:var(--kr);font-size:1.3rem;word-break:keep-all;border-radius:10px;
+  padding:11px 15px;min-height:48px;display:inline-flex;align-items:center}
+.chip.placed{background:var(--ink);color:#FBF6EA;border:1px solid var(--ink)}
+.chip.src{background:var(--card);color:var(--ink);border:1px solid var(--line2)}
+.row{display:flex;gap:10px;margin-top:14px}
+.row>*{flex:1}
+.btn{border-radius:12px;padding:13px;font-size:.95rem;min-height:50px;font-family:var(--sans);
+  display:flex;align-items:center;justify-content:center}
+.btn.primary{background:var(--ink);color:#FBF6EA;border:1px solid var(--ink);font-weight:600}
+.btn.ghost{background:var(--card);color:var(--dim);border:1px solid var(--line2)}
+
+/* ---------- stats ---------- */
+.h-screen{font-family:var(--serif);font-weight:400;font-size:1.25rem;margin:2px 2px 0;letter-spacing:.3px}
+.h-screen .kr{color:var(--seal);font-size:1rem;margin-right:6px;font-weight:700}
+
+.streak-card{display:flex;flex-direction:column;gap:12px}
+.streak-top{display:flex;align-items:baseline;gap:10px}
+.streak-top .n{font-family:var(--serif);font-size:2.6rem;line-height:1;font-variant-numeric:tabular-nums}
+.streak-top .l{color:var(--dim);font-size:.85rem}
+.inkdots{display:flex;gap:5px}
+.inkdots i{flex:1;aspect-ratio:1;max-width:22px;border-radius:4px;background:var(--ink);opacity:.88}
+.inkdots i.miss{background:transparent;border:1px dashed var(--line2)}
+.inkdots i.today{background:var(--seal);opacity:1;box-shadow:inset 0 0 0 1.5px rgba(255,253,246,.35)}
+.streak-note{font-size:.75rem;color:var(--dim);display:flex;align-items:center;gap:6px}
+.streak-note .drop{width:9px;height:9px;border-radius:50% 50% 50% 0;background:var(--ink);transform:rotate(-45deg);display:inline-block}
+
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 12px;text-align:center}
+.tile .n{font-family:var(--serif);font-size:1.65rem;line-height:1.15;font-variant-numeric:tabular-nums}
+.tile .n em{font-style:normal;color:var(--seal)}
+.tile .l{font-size:.74rem;color:var(--dim);margin-top:3px;letter-spacing:.2px}
+
+/* compte à rebours Séoul */
+.count-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px}
+.count-head .j{font-family:var(--serif);font-size:2.2rem;line-height:1;font-variant-numeric:tabular-nums}
+.count-head .j sup{font-size:.9rem;color:var(--dim)}
+.count-head .dest{font-family:var(--kr);font-weight:700;color:var(--seal);font-size:1.05rem}
+.count-head .dest small{display:block;font-family:var(--serif);font-style:italic;color:var(--dim);font-weight:400;font-size:.72rem;text-align:right}
+.track{position:relative;height:10px;background:#EAE0CB;border-radius:5px;margin:14px 0 8px}
+.track>i{display:block;height:100%;width:51%;background:var(--seal);border-radius:5px}
+.track .mk{position:absolute;top:50%;transform:translate(-50%,-50%);width:13px;height:13px;border-radius:50%;
+  background:var(--seal);border:2.5px solid var(--paper)}
+.track .mk.next{background:var(--card);border:2px solid var(--line2)}
+.track-lbl{display:flex;justify-content:space-between;font-size:.72rem;color:var(--dim)}
+.track-leg{font-size:.72rem;color:var(--dim);margin-top:8px}
+.track-leg b{color:var(--ink);font-weight:600}
+
+/* carnet de tampons */
+.stamps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px 10px;margin-top:12px}
+.stamp{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.stamp .sq{width:100%;aspect-ratio:1;max-width:74px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--kr);font-weight:700;font-size:1.05rem;line-height:1.2;word-break:keep-all;padding:4px}
+.stamp.won .sq{background:var(--seal);color:#FFFDF6;box-shadow:inset 0 0 0 2px rgba(255,253,246,.28)}
+.stamp.won:nth-child(odd) .sq{transform:rotate(-2.5deg)}
+.stamp.won:nth-child(even) .sq{transform:rotate(1.8deg)}
+.stamp.lock .sq{background:transparent;border:1.5px dashed var(--line2);color:var(--dim)}
+.stamp .cap{font-size:.64rem;color:var(--dim);line-height:1.35}
+.stamp .cap b{display:block;color:var(--ink);font-weight:600;font-size:.68rem}
+.stamp.won .cap i{font-style:normal;color:var(--seal)}
+
+/* ---------- manifeste ---------- */
+.manifesto{max-width:420px;margin:64px auto 0;padding-top:34px;border-top:1px solid var(--line2)}
+.manifesto .mhead{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.manifesto .mseal{width:52px;height:52px;background:var(--seal);border-radius:8px;flex:none;
+  color:#FFFDF6;font-family:var(--kr);font-weight:700;font-size:1.05rem;display:flex;align-items:center;justify-content:center;
+  box-shadow:inset 0 0 0 2.5px rgba(255,253,246,.28);transform:rotate(-2deg)}
+.manifesto h2{font-family:var(--serif);font-weight:400;font-size:1.45rem;margin:0;letter-spacing:.5px}
+.manifesto h2 small{display:block;font-size:.8rem;font-style:italic;color:var(--dim)}
+.manifesto h3{font-family:var(--serif);font-weight:400;font-size:1.02rem;margin:26px 0 10px;letter-spacing:.4px}
+.intent{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.intent li{font-size:.9rem;line-height:1.55;padding-left:20px;position:relative;color:var(--ink)}
+.intent li::before{content:"—";position:absolute;left:0;color:var(--seal)}
+.gami{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.gami li{font-size:.88rem;line-height:1.55;padding-left:20px;position:relative}
+.gami li::before{content:"";position:absolute;left:2px;top:.52em;width:8px;height:8px;background:var(--seal);border-radius:2px}
+.gami b{font-weight:600}
+.gami .kr{font-weight:700}
+</style>
+</head>
+<body>
+
+<header class="demo-head">
+  <div class="tag">Sori · direction artistique A</div>
+  <h1>« Hanji » <span class="kr" style="font-size:1.1rem;color:#A93226">한지</span></h1>
+  <p>Papier coréen, encre, un seul rouge — celui du sceau.</p>
+</header>
+
+<!-- ================= 1. RÉVISER — QCM ================= -->
+<div class="sec"><span>Ⅰ · <b>Réviser — QCM</b></span></div>
+
+<div class="frame">
+  <div class="topbar">
+    <div class="brand">
+      <div class="seal-mark">소리</div>
+      <div class="name">Sori<small>coréen · vers Séoul</small></div>
+    </div>
+    <div class="daycount"><b>38</b> aujourd'hui</div>
+  </div>
+  <div class="screen">
+    <div>
+      <div class="progress"><i style="width:21%"></i></div>
+      <div class="meta">5 / 24 <span class="pill">niv 2</span> <span class="pill red">ennemie</span></div>
+    </div>
+    <div class="card center">
+      <div class="dim" style="font-family:var(--serif);font-style:italic">Que veut dire…</div>
+      <div class="big-kr">성적</div>
+      <button class="listen">
+        <svg viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18 6a8.5 8.5 0 0 1 0 12"/></svg>
+        écouter
+      </button>
+      <div class="opts">
+        <div class="opt faded">la personnalité</div>
+        <div class="opt good">les notes, les résultats <span class="stamp-chip">정답</span></div>
+        <div class="opt faded">la réussite, le succès</div>
+        <div class="opt faded">l'expérience</div>
+      </div>
+    </div>
+  </div>
+  <nav class="tabs">
+    <div class="tab active"><span class="ico">복습</span><span class="lbl">Réviser</span></div>
+    <div class="tab"><span class="ico">듣기</span><span class="lbl">Écoute</span></div>
+    <div class="tab"><span class="ico">여행</span><span class="lbl">Voyage</span></div>
+    <div class="tab"><span class="ico">기록</span><span class="lbl">Stats</span></div>
+  </nav>
+</div>
+
+<!-- ================= 2. RÉVISER — TRIVIA ================= -->
+<div class="sec"><span>Ⅱ · <b>Réviser — trivia affiché</b></span></div>
+
+<div class="frame">
+  <div class="topbar">
+    <div class="brand">
+      <div class="seal-mark">소리</div>
+      <div class="name">Sori<small>coréen · vers Séoul</small></div>
+    </div>
+    <div class="daycount"><b>39</b> aujourd'hui</div>
+  </div>
+  <div class="screen">
+    <div>
+      <div class="progress"><i style="width:25%"></i></div>
+      <div class="meta">6 / 24 <span class="pill">niv 3</span></div>
+    </div>
+    <div class="card center">
+      <div class="dim" style="font-family:var(--serif);font-style:italic">Que veut dire…</div>
+      <div class="big-kr">지갑</div>
+      <div class="opts">
+        <div class="opt good">le portefeuille <span class="stamp-chip">정답</span></div>
+        <div class="opt bad">le retard <span class="miss-chip">choisi</span></div>
+        <div class="opt faded">la valise</div>
+        <div class="opt faded">le billet</div>
+      </div>
+      <div class="trivia">
+        <div class="tkr">지갑을 잃어버렸어요.</div>
+        <div class="tfr">« J'ai perdu mon portefeuille. »</div>
+        <div class="tnote">≠ <span class="kr">지각</span> (jigak) — le retard. Une seule lettre change tout : <span class="kr">갑</span> / <span class="kr">각</span>.</div>
+      </div>
+    </div>
+  </div>
+  <nav class="tabs">
+    <div class="tab active"><span class="ico">복습</span><span class="lbl">Réviser</span></div>
+    <div class="tab"><span class="ico">듣기</span><span class="lbl">Écoute</span></div>
+    <div class="tab"><span class="ico">여행</span><span class="lbl">Voyage</span></div>
+    <div class="tab"><span class="ico">기록</span><span class="lbl">Stats</span></div>
+  </nav>
+</div>
+
+<!-- ================= 3. CONSTRUCTION DE PHRASE ================= -->
+<div class="sec"><span>Ⅲ · <b>Construction de phrase</b></span></div>
+
+<div class="frame">
+  <div class="topbar">
+    <div class="brand">
+      <div class="seal-mark">소리</div>
+      <div class="name">Sori<small>coréen · vers Séoul</small></div>
+    </div>
+    <div class="daycount"><b>40</b> aujourd'hui</div>
+  </div>
+  <div class="screen">
+    <div>
+      <div class="progress"><i style="width:29%"></i></div>
+      <div class="meta">7 / 24 <span class="pill">niv 3</span> <span class="pill">kit voyage</span></div>
+    </div>
+    <div class="card center">
+      <div class="dim" style="font-family:var(--serif);font-style:italic">Construis la phrase…</div>
+      <div class="big-fr">« Excusez-moi, où sont les toilettes ? »</div>
+      <div class="built">
+        <span class="chip placed">실례합니다</span>
+        <span class="chip placed">화장실이</span>
+      </div>
+      <div class="dim" style="font-size:.75rem">touche les mots dans l'ordre — touche un mot posé pour le retirer</div>
+      <div class="pool">
+        <span class="chip src">있어요?</span>
+        <span class="chip src">어디에</span>
+      </div>
+      <div class="row">
+        <div class="btn ghost">Effacer</div>
+        <div class="btn primary">Vérifier</div>
+      </div>
+    </div>
+  </div>
+  <nav class="tabs">
+    <div class="tab active"><span class="ico">복습</span><span class="lbl">Réviser</span></div>
+    <div class="tab"><span class="ico">듣기</span><span class="lbl">Écoute</span></div>
+    <div class="tab"><span class="ico">여행</span><span class="lbl">Voyage</span></div>
+    <div class="tab"><span class="ico">기록</span><span class="lbl">Stats</span></div>
+  </nav>
+</div>
+
+<!-- ================= 4. STATS ================= -->
+<div class="sec"><span>Ⅳ · <b>Stats — carnet de préparation</b></span></div>
+
+<div class="frame">
+  <div class="topbar">
+    <div class="brand">
+      <div class="seal-mark">소리</div>
+      <div class="name">Sori<small>coréen · vers Séoul</small></div>
+    </div>
+    <div class="daycount"><b>40</b> aujourd'hui</div>
+  </div>
+  <div class="screen">
+    <h2 class="h-screen"><span class="kr">기록</span>Carnet de préparation</h2>
+
+    <!-- streak = ligne d'encre -->
+    <div class="card streak-card">
+      <div class="streak-top">
+        <div class="n">12</div>
+        <div class="l">jours encrés d'affilée<br><span style="font-size:.72rem">14 derniers jours</span></div>
+      </div>
+      <div class="inkdots">
+        <i></i><i class="miss"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="today"></i>
+      </div>
+      <div class="streak-note"><span class="drop"></span> 1 jour de réserve d'encre — gagné après 10 jours parfaits, protège la ligne.</div>
+    </div>
+
+    <!-- 4 tuiles -->
+    <div class="tiles">
+      <div class="tile"><div class="n">214</div><div class="l">mots appris</div></div>
+      <div class="tile"><div class="n">40</div><div class="l">réponses aujourd'hui</div></div>
+      <div class="tile"><div class="n">84 %</div><div class="l">réussite (7 jours)</div></div>
+      <div class="tile"><div class="n"><em>9</em>/14</div><div class="l">ennemies vaincues</div></div>
+    </div>
+
+    <!-- compte à rebours Séoul -->
+    <div class="card">
+      <div class="count-head">
+        <div class="j">J−90<sup> jours</sup></div>
+        <div class="dest">서울<small>départ le 1ᵉʳ octobre</small></div>
+      </div>
+      <div class="track">
+        <i></i>
+        <span class="mk" style="left:30%" title="100 mots — atteint"></span>
+        <span class="mk next" style="left:76%" title="kit voyage 100 % — à venir"></span>
+      </div>
+      <div class="track-lbl"><span>avril · début</span><span>1ᵉʳ octobre</span></div>
+      <div class="track-leg"><b>●</b> 100 mots — frappé le 28 mai &nbsp;·&nbsp; ○ kit voyage 100 % — prochain jalon</div>
+    </div>
+
+    <!-- gamification : carnet de tampons -->
+    <div class="card">
+      <h2 class="ttl">Carnet de tampons <span class="kr" style="color:var(--seal);font-weight:700">도장</span></h2>
+      <p class="dim" style="margin:0;font-size:.78rem">Un jalon atteint = un sceau frappé, daté. Huit sceaux avant Séoul.</p>
+      <div class="stamps">
+        <div class="stamp won"><div class="sq">한글</div><div class="cap"><b>Hangul lu</b><i>12 avril</i></div></div>
+        <div class="stamp won"><div class="sq">백</div><div class="cap"><b>100 mots</b><i>28 mai</i></div></div>
+        <div class="stamp won"><div class="sq">7일</div><div class="cap"><b>7 jours de suite</b><i>3 juin</i></div></div>
+        <div class="stamp won"><div class="sq">존댓말</div><div class="cap"><b>Politesse acquise</b><i>21 juin</i></div></div>
+        <div class="stamp lock"><div class="sq">삼백</div><div class="cap"><b>300 mots</b>encore 86</div></div>
+        <div class="stamp lock"><div class="sq">30일</div><div class="cap"><b>30 jours de suite</b>encore 18</div></div>
+        <div class="stamp lock"><div class="sq">여행</div><div class="cap"><b>Kit voyage 100 %</b>72 % fait</div></div>
+        <div class="stamp lock"><div class="sq">출국</div><div class="cap"><b>Prêt au départ</b>avant J−30</div></div>
+      </div>
+    </div>
+  </div>
+  <nav class="tabs">
+    <div class="tab"><span class="ico">복습</span><span class="lbl">Réviser</span></div>
+    <div class="tab"><span class="ico">듣기</span><span class="lbl">Écoute</span></div>
+    <div class="tab"><span class="ico">여행</span><span class="lbl">Voyage</span></div>
+    <div class="tab active"><span class="ico">기록</span><span class="lbl">Stats</span></div>
+  </nav>
+</div>
+
+<!-- ================= MANIFESTE ================= -->
+<section class="manifesto">
+  <div class="mhead">
+    <div class="mseal">한지</div>
+    <h2>Hanji<small>le papier avant l'écran</small></h2>
+  </div>
+
+  <ul class="intent">
+    <li>Fond crème hanji, encre presque noire, et un seul rouge : celui du sceau (낙관). Rien d'autre ne crie.</li>
+    <li>Le hangul est le héros : grand, respirant, jamais coupé (keep-all) ; le français sert en serif discret, il ne domine pas.</li>
+    <li>L'air structure la page : marges larges, hairlines, ombres à peine posées — un carnet, pas un tableau de bord.</li>
+    <li>La récompense est un geste d'adulte : un tampon frappé, une date encrée. Pas de confettis, pas de mascotte.</li>
+    <li>Chaque écran pointe vers la destination : Séoul, le 1ᵉʳ octobre. La préparation est déjà le voyage.</li>
+  </ul>
+
+  <h3>Gamification — le carnet de préparation</h3>
+  <ul class="gami">
+    <li><b>Carnet de tampons (<span class="kr">도장</span>)</b> : chaque jalon mesurable (hangul, 100/300/500 mots, politesse, kit voyage 100 %, 7/30 jours) frappe un sceau rouge <b>daté</b>. L'animation : le tampon se presse en 400 ms avec un léger décalé d'encre — c'est toute la célébration.</li>
+    <li><b>Compte à rebours Séoul</b> : « J−90 » permanent dans Stats ; la barre relie le début des révisions au 1ᵉʳ octobre et les jalons du carnet y sont posés comme des étapes de route.</li>
+    <li><b>Jour encré</b> : atteindre l'objectif quotidien (20 cartes) encre la date d'un carré noir ; le streak est une ligne d'encre continue, le jour courant en rouge. Sobre, lisible en un coup d'œil.</li>
+    <li><b>Réserve d'encre</b> : 10 jours parfaits d'affilée = 1 jour de réserve (max 2) qui comble un trou dans la ligne. Se gagne, ne s'achète pas — la vie réelle passe avant l'app.</li>
+    <li><b>Duel (<span class="kr">대결</span>)</b> : le boss fight existant, rhabillé ; chaque ennemie vaincue voit son petit sceau passer du gris pointillé au rouge plein sur une page dédiée du carnet.</li>
+    <li><b>Page hebdomadaire</b> : chaque dimanche le carnet écrit sa page — mots appris, réussite, ennemie la plus coriace battue. Un journal de préparation relisible dans l'avion.</li>
+    <li><b>Sceau final « <span class="kr">출국</span> »</b> : kit voyage 100 % avant J−30 frappe le grand sceau du départ en couverture du carnet — l'objectif ultime, avec sa date.</li>
+  </ul>
+</section>
+
+</body>
+</html>
