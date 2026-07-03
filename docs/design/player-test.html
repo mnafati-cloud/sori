@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sori — test écoute passive</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* page de test uniquement — jamais servie par l'app */
+  body{padding:16px; min-height:auto; display:block; max-width:560px; margin:0 auto}
+  h1{font-size:1.2rem; margin:0 0 4px}
+  #checks{margin:14px 0; font-family:monospace; font-size:.8rem; line-height:1.7}
+  #checks .pass{color:var(--ok)} #checks .fail{color:var(--ko); font-weight:700}
+  #host{margin-top:14px}
+  .note{font-size:.78rem; color:var(--dim); margin-top:14px; line-height:1.5}
+</style>
+</head>
+<body>
+<h1>🧪 Test écoute passive (player.js)</h1>
+<p class="dim">Charge le vrai data.js + le vrai audio/index.js + le vrai style.css.
+Pistes réelles (mp3 servis depuis ../audio/) + une piste volontairement cassée
+pour vérifier le skip. Aucune écriture localStorage.</p>
+
+<div id="checks"></div>
+<div id="host"></div>
+
+<p class="note">Test manuel : appuyer sur ▶ Lancer — les mots doivent s'enchaîner
+(1,2 s d'écart), la piste « (cassée) » doit être sautée sans bloquer, et la liste
+doit boucler. Cocher « ×2 » : chaque mp3 est rejoué une seconde fois. Sur Android,
+verrouiller l'écran : la lecture continue, contrôles sur l'écran de verrouillage.</p>
+
+<script src="../data.js"></script>
+<script src="../audio/index.js"></script>
+<script src="../player.js"></script>
+<script>
+"use strict";
+/* ---------- construire ~10 pistes réelles : ids de window.AUDIO, kr/fr du seed ---------- */
+var BY_ID = {};
+SEED.items.forEach(function(it){ BY_ID[it.id] = it; });
+
+function toTrack(it){
+  return { id: it.id, kr: it.kr, fr: it.fr, stage: it.stage,
+           enemy: !!it.enemy, kit: !!it.kit, hasAudio: true };
+}
+/* prendre un éventail : kit / ennemies / stage 3-4 / stage 5 — tous avec mp3 réel */
+var withMp3 = (window.AUDIO || []).map(function(id){ return BY_ID[String(id)]; })
+                                  .filter(function(it){ return !!it; });
+function take(pred, n){
+  var out = [];
+  for(var i=0; i<withMp3.length && out.length<n; i++){
+    if(pred(withMp3[i])) out.push(toTrack(withMp3[i]));
+  }
+  return out;
+}
+var TRACKS = []
+  .concat(take(function(it){ return it.kit; }, 3))
+  .concat(take(function(it){ return it.enemy && !it.kit; }, 2))
+  .concat(take(function(it){ return !it.kit && !it.enemy && (it.stage===3 || it.stage===4); }, 3))
+  .concat(take(function(it){ return !it.kit && !it.enemy && it.stage===5; }, 2));
+
+/* piste volontairement cassée (mp3 inexistant) : le lecteur doit la sauter */
+TRACKS.push({ id:"zz-piste-inexistante", kr:"고장", fr:"(cassée) doit être sautée",
+              stage:4, enemy:false, kit:false, hasAudio:true });
+
+/* ---------- assertions automatiques (partie pure + rendu) ---------- */
+var out = [];
+function check(name, cond){ out.push({ name:name, ok:!!cond }); }
+
+check("data.js chargé (SEED.items)", Array.isArray(SEED.items) && SEED.items.length > 0);
+check("audio/index.js chargé (window.AUDIO)", Array.isArray(window.AUDIO) && window.AUDIO.length > 0);
+check("au moins 8 pistes réelles construites", TRACKS.length >= 9);
+check("SORI_PLAYER exposé (renderCard + stop)",
+      window.SORI_PLAYER && typeof SORI_PLAYER.renderCard==="function" && typeof SORI_PLAYER.stop==="function");
+
+var F = SORI_PLAYER.pure.filterTracks;
+var kitN = TRACKS.filter(function(t){ return t.kit; }).length;
+check("mode kit : exactement les pistes kit", F(TRACKS,"kit").length === kitN && kitN >= 1);
+check("mode ennemies : que des enemy", F(TRACKS,"enemy").every(function(t){ return t.enemy; }));
+check("mode en cours : que des stage 3-4", F(TRACKS,"cours").every(function(t){ return t.stage===3||t.stage===4; }));
+check("mode connu ⊇ mode en cours", F(TRACKS,"connu").length >= F(TRACKS,"cours").length);
+check("hasAudio:false exclu du filtre",
+      F([{id:"x", kr:"a", fr:"b", stage:3, hasAudio:false}], "cours").length === 0);
+check("repli window.AUDIO quand hasAudio absent : id réel inclus",
+      F([{id:String(window.AUDIO[0]), kr:"a", fr:"b", stage:3}], "cours").length === 1);
+check("repli window.AUDIO : id inconnu exclu",
+      F([{id:"id-bidon-000", kr:"a", fr:"b", stage:3}], "cours").length === 0);
+check("mode inconnu -> liste vide", F(TRACKS, "nimporte").length === 0);
+
+/* ---------- rendu réel ---------- */
+var host = document.getElementById("host");
+SORI_PLAYER.renderCard(host, { tracks: TRACKS, rate: 0.9, audioBase: "../audio/" });
+
+check("une .card rendue", host.querySelectorAll(".card").length === 1);
+check("4 chips de mode", host.querySelectorAll("[data-mode]").length === 4);
+check("bouton ▶ actif (file non vide)", !host.querySelector('[data-role="play"]').disabled);
+check("mot courant affiché", host.querySelector('[data-role="kr"]').textContent !== "—");
+check("position x / y affichée", /^\d+ \/ \d+$/.test(host.querySelector('[data-role="pos"]').textContent));
+
+/* re-render : un seul lecteur à la fois, pas de doublon d'état */
+var tmp = document.createElement("div");
+SORI_PLAYER.renderCard(tmp, { tracks: TRACKS, rate: 0.9, audioBase: "../audio/" });
+check("re-render : nouvelle carte indépendante", tmp.querySelectorAll(".card").length === 1);
+SORI_PLAYER.stop();
+
+/* remettre la carte visible comme lecteur actif (le re-render de test a volé l'état) */
+host.innerHTML = "";
+SORI_PLAYER.renderCard(host, { tracks: TRACKS, rate: 0.9, audioBase: "../audio/" });
+
+var $checks = document.getElementById("checks");
+var fails = out.filter(function(c){ return !c.ok; }).length;
+$checks.innerHTML = out.map(function(c){
+  return "<div class='" + (c.ok ? "pass'>✔ " : "fail'>✘ ") + c.name + "</div>";
+}).join("") + "<div style='margin-top:6px'>" +
+  (fails ? "<span class='fail'>" + fails + " ÉCHEC(S)</span>"
+         : "<span class='pass'>TOUT VERT (" + out.length + " checks)</span>") + "</div>";
+document.title = (fails ? "✘ " : "✔ ") + document.title;
+</script>
+</body>
+</html>

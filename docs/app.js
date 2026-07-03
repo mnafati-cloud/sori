@@ -476,6 +476,17 @@ function exoBuild(it){
 /* ---------- mode Écoute ---------- */
 let LQ=null, LPOS=0, LSCORE=0;
 function renderListen(){
+  /* écoute passive (playlist mains-libres, écran verrouillé) — docs/player.js */
+  if(window.SORI_PLAYER){
+    SORI_PLAYER.renderCard($screen, {
+      tracks: ALL_IDS.map(eff).map(it=>({
+        id: it.id, kr: it.kr, fr: it.fr, stage: it.stage,
+        enemy: !!it.enemy, kit: !!it.kit,
+        hasAudio: AUDIO_IDS.has(String(it.id))
+      })),
+      rate: ST.set.rate || 0.9
+    });
+  }
   if(!("speechSynthesis" in window)){
     $screen.appendChild(el(`<div class="card center"><h2>👂 Écoute</h2>
       <p class="dim">La synthèse vocale n'est pas disponible sur cet appareil.</p></div>`));
@@ -539,6 +550,27 @@ const TRIP_LABELS = { resto:"🍜 Restaurant", transport:"🚕 Transports", hote
 let DRILL=null, DPOS=0;
 function renderTrip(){
   if(DRILL){ renderDrill(); return; }
+  /* 🔍 Mon dictionnaire — recherche FR⇄KR dans tout le deck (search.js) */
+  if(window.SORI_SEARCH){
+    $screen.appendChild(el(`<div class="section-title">🔍 Mon dictionnaire</div>`));
+    SORI_SEARCH.renderPanel($screen, {
+      items: ALL_IDS.map(eff),
+      extra: EXTRA,
+      onSpeak: (kr, id)=>speak(kr, id)
+    });
+  }
+  /* simulations interactives (scenarios.js) — l'état "meilleur score" est additif dans ST.scen */
+  if(window.SORI_SCENARIOS && window.SCENARIOS){
+    ST.scen = ST.scen || {};
+    const scBox = el(`<div></div>`);
+    SORI_SCENARIOS.renderList(scBox, {
+      speak: (txt)=>ttsSpeak(txt),
+      onAnswer: (ok)=>logAnswer(ok, "scenario"),
+      getBest: (id)=>ST.scen[id],
+      setBest: (id, v)=>{ ST.scen[id]=v; save(); },
+    });
+    $screen.appendChild(scBox);
+  }
   const kit = ALL_IDS.map(eff).filter(it=>it.kit);
   const groups = {};
   kit.forEach(it=>{

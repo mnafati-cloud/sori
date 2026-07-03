@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sori — test recherche</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* page de test uniquement — jamais servie par l'app */
+  body{padding:16px; min-height:auto; display:block; max-width:560px; margin:0 auto}
+  h1{font-size:1.2rem; margin:0 0 4px}
+  #checks{margin:14px 0; font-family:monospace; font-size:.8rem; line-height:1.7}
+  #checks .pass{color:var(--ok)} #checks .fail{color:var(--ko); font-weight:700}
+  #panelhost{margin-top:14px}
+  .tryme{font-size:.78rem; color:var(--dim); margin:8px 0 0}
+  .tryme code{color:var(--acc)}
+</style>
+</head>
+<body>
+<h1>🧪 Test du dictionnaire personnel (search.js)</h1>
+<p class="dim">Charge les vraies données (data.js, 1079 items) + extra.js + le vrai style.css,
+et rend le panneau avec un onSpeak factice (console.log). Aucune écriture localStorage.</p>
+<p class="tryme">À essayer à la main : <code>ecole</code> (accents), <code>ㅅㅈ</code> (초성 → 성적),
+<code>성</code>, <code>eau</code> (exact d'abord), <code>zzz</code> (aucun résultat),
+tap sur un résultat (dépliage exemple/conjugaison/note), 🔊 (console).</p>
+
+<div id="checks"></div>
+<div id="panelhost"></div>
+
+<script src="../data.js"></script>
+<script src="../extra.js"></script>
+<script src="../search.js"></script>
+<script>
+"use strict";
+/* ---------- rendu réel : les vrais items du deck + onSpeak factice ---------- */
+var ITEMS = window.SEED.items.map(function(it){
+  return { id:it.id, fr:it.fr, kr:it.kr, theme:it.theme, stage:it.stage, type:it.type };
+});
+SORI_SEARCH.renderPanel(document.getElementById("panelhost"), {
+  items: ITEMS,
+  extra: window.EXTRA,
+  onSpeak: function(kr, id){ console.log("🔊 onSpeak(", kr, ",", id, ")"); }
+});
+
+/* ---------- assertions automatiques (fonctions pures) ---------- */
+var P = SORI_SEARCH.pure, out = [];
+function check(name, cond){ out.push({ name:name, ok:!!cond }); }
+var idx = P.buildIndex(ITEMS, window.EXTRA);
+function frs(res){ return res.map(function(r){ return r.e.fr; }); }
+function krs(res){ return res.map(function(r){ return r.e.kr; }); }
+
+check("index construit : 1079 items", idx.length === ITEMS.length && idx.length === 1079);
+check('"ecole" trouve « École » (accents ignorés)', frs(P.search(idx, "ecole")).indexOf("École") >= 0);
+check('"ecole" : le mot « École » avant les phrases', P.search(idx, "ecole")[0].e.fr === "École");
+check('"ㅅㅈ" (초성) trouve 성적', krs(P.search(idx, "ㅅㅈ")).indexOf("성적") >= 0);
+check('"성" trouve 성적 ET 성격',
+  krs(P.search(idx, "성")).indexOf("성적") >= 0 && krs(P.search(idx, "성")).indexOf("성격") >= 0);
+check('"eau" : « Eau » (mot exact) en premier', P.search(idx, "eau")[0].e.fr === "Eau");
+check('"e" (1 lettre latine) -> null (trop court)', P.search(idx, "e") === null);
+check('"zzqxw" -> 0 résultat', P.search(idx, "zzqxw").length === 0);
+check('le panneau est rendu (input + liste)',
+  !!document.querySelector("#panelhost .search-input") && !!document.querySelector("#panelhost .search-results"));
+
+/* perf : moyenne sur 8 requêtes × 50 tours */
+var QS = ["ecole","ㅅㅈ","성","eau","학교","restaurant","시원","ㅇㅅ"];
+QS.forEach(function(q){ P.search(idx, q); });          // échauffement
+var t0 = performance.now();
+for(var i=0;i<50;i++) QS.forEach(function(q){ P.search(idx, q); });
+var ms = (performance.now()-t0)/(50*QS.length);
+check("recherche < 5 ms (mesuré : "+ms.toFixed(2)+" ms)", ms < 5);
+
+var $checks = document.getElementById("checks");
+var fails = out.filter(function(c){ return !c.ok; }).length;
+$checks.innerHTML = out.map(function(c){
+  return "<div class='" + (c.ok ? "pass'>✔ " : "fail'>✘ ") + c.name + "</div>";
+}).join("") + "<div style='margin-top:6px'>" +
+  (fails ? "<span class='fail'>" + fails + " ÉCHEC(S)</span>"
+         : "<span class='pass'>TOUT VERT (" + out.length + " checks)</span>") + "</div>";
+document.title = (fails ? "✘ " : "✔ ") + document.title;
+</script>
+</body>
+</html>
