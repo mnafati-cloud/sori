@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sori — test saisie hangul</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* page de test uniquement — jamais servie par l'app */
+  body{padding:16px; min-height:auto; display:block; max-width:560px; margin:0 auto}
+  h1{font-size:1.2rem; margin:0 0 4px}
+  #checks{margin:14px 0; font-family:monospace; font-size:.8rem; line-height:1.7}
+  #checks .pass{color:var(--ok)} #checks .fail{color:var(--ko); font-weight:700}
+  #cards{display:flex; flex-direction:column; gap:14px; margin-top:14px}
+  .tryme{font-size:.78rem; color:var(--dim); margin:8px 0 0}
+  .tryme code{color:var(--acc)}
+</style>
+</head>
+<body>
+<h1>🧪 Test de la saisie hangul (typing.js)</h1>
+<p class="dim">Charge les vraies données (data.js) et rend 3 cartes de saisie avec
+speak/onResult factices (console.log). Aucune écriture localStorage.</p>
+<p class="tryme">À essayer à la main : la bonne réponse exacte (✔ vert),
+une syllabe fausse (<code>안녕하세여</code> → « presque »), un espacement différent
+(<code>어서오세요</code> → « vérifie l'espacement »), une réponse très fausse
+(comparatif + 2 boutons), Entrée pour valider, et le lien
+<code>je ne peux pas taper</code> (révélation + Encore/Bien).
+Le verdict part dans la console : <code>onResult(...)</code>.</p>
+
+<div id="checks"></div>
+<div id="cards"></div>
+
+<script src="../data.js"></script>
+<script src="../typing.js"></script>
+<script>
+"use strict";
+var P = SORI_TYPING.pure, out = [];
+function check(name, cond){ out.push({ name:name, ok:!!cond }); }
+function lsSnapshot(){
+  try{ var ks=[]; for(var i=0;i<localStorage.length;i++) ks.push(localStorage.key(i)); return ks.sort().join("|"); }
+  catch(e){ return "indisponible"; }
+}
+var LS0 = lsSnapshot();
+
+/* ---------- assertions automatiques : normalize ---------- */
+check('normalize : NFC compose les jamo (U+1100 U+1161 -> 가)',
+  P.normalize("가") === "가");
+check('normalize : NFC compose 한 (U+1112 U+1161 U+11AB)',
+  P.normalize("한국") === "한국");
+check('normalize : trim + espaces multiples -> un',
+  P.normalize("  안녕   하세요  ") === "안녕 하세요");
+check('normalize : ponctuation finale retirée (.)',
+  P.normalize("감사합니다.") === "감사합니다");
+check('normalize : ponctuation finale retirée (?!)',
+  P.normalize("정말?!") === "정말");
+check('normalize : espace avant ponctuation retiré',
+  P.normalize("네 ?") === "네");
+check('normalize : espace interne préservé, ponctuation finale non',
+  P.normalize("어서 오세요!") === "어서 오세요");
+
+/* ---------- assertions automatiques : judge ---------- */
+var j;
+j = P.judge("안녕하세요", "안녕하세요");
+check('judge : identique -> exact', j.exact === true && j.close === false);
+j = P.judge("안녕하세요.", "안녕하세요");
+check('judge : ponctuation finale ignorée -> exact', j.exact === true);
+j = P.judge("한국", "한국");
+check('judge : jamo décomposés (IME) -> exact via NFC', j.exact === true);
+j = P.judge("안녕하세여", "안녕하세요");
+check('judge : 1 syllabe fausse -> close (pas exact)', j.exact === false && j.close === true && j.spacing === false);
+check('judge : diffHtml marque LA syllabe divergente', j.diffHtml === "안녕하세<b>요</b>");
+j = P.judge("안녕하셔여", "안녕하세요");
+check('judge : 2 syllabes fausses -> pas close', j.exact === false && j.close === false);
+j = P.judge("어서오세요", "어서 오세요");
+check('judge : espacement seul -> close + spacing', j.exact === false && j.close === true && j.spacing === true);
+j = P.judge("", "안녕하세요");
+check('judge : réponse vide -> ni exact ni close, tout en <b>',
+  j.exact === false && j.close === false && j.diffHtml === "<b>안녕하세요</b>");
+check('judge : diffHtml échappé HTML', P.judge("x", "<b>").diffHtml.indexOf("&lt;") >= 0);
+
+/* ---------- rendu scripté : les 3 chemins de sortie ---------- */
+function ghost(item, drive){
+  var host = document.createElement("div");
+  var got = [];
+  SORI_TYPING.render(host, { item:item, speak:function(){}, onResult:function(ok){ got.push(ok); } });
+  drive(host, got);
+  return got;
+}
+var IT = { id:"t1", kr:"안녕하세요", fr:"Bonjour", type:"word" };
+var g1 = ghost(IT, function(h){
+  h.querySelector(".typing-input").value = "안녕하세요.";
+  h.querySelector(".typing-verify").click();
+});
+check("scripté : bonne réponse -> onResult(true) direct", g1.length === 1 && g1[0] === true);
+var g2 = ghost(IT, function(h){
+  h.querySelector(".typing-input").value = "감사합니다";
+  h.querySelector(".typing-verify").click();
+  var btns = h.querySelectorAll(".typing-actions .btn");
+  check("scripté : réponse fausse -> comparatif + 2 boutons",
+    btns.length === 2 && !!h.querySelector(".typing-cmp"));
+  btns[0].click();          /* « J'avais faux » */
+  btns[1].click();          /* double clic -> ignoré */
+});
+check("scripté : « J'avais faux » -> onResult(false), UNE seule fois", g2.length === 1 && g2[0] === false);
+var g3 = ghost(IT, function(h){
+  h.querySelector(".typing-nokb").click();
+  var btns = h.querySelectorAll(".typing-actions .btn");
+  check("scripté : « je ne peux pas taper » -> révélation + Encore/Bien", btns.length === 2);
+  btns[1].click();          /* « Bien » */
+});
+check("scripté : révélation + « Bien » -> onResult(true)", g3.length === 1 && g3[0] === true);
+
+/* ---------- rendu réel : 3 vrais items du deck ---------- */
+var items = window.SEED.items;
+function pick(pred){ for(var i=0;i<items.length;i++){ if(pred(items[i])) return items[i]; } return null; }
+var picks = [
+  pick(function(it){ return it.kr === "안녕하세요"; }),
+  pick(function(it){ return it.type === "word" && Array.from(it.kr).length === 2; }),
+  pick(function(it){ return it.type === "phrase" && it.kr.indexOf(" ") > 0; })
+].filter(function(x, i, a){ return x && a.indexOf(x) === i; });
+check("3 vrais items trouvés dans le deck", picks.length === 3);
+var $cards = document.getElementById("cards");
+picks.forEach(function(seed){
+  var item = { id:seed.id, kr:seed.kr, fr:seed.fr, type:seed.type };
+  SORI_TYPING.render($cards, {
+    item: item,
+    speak: function(kr, id){ console.log("🔊 speak(", kr, ",", id, ")"); },
+    onResult: function(ok){ console.log("onResult(", ok, ") pour", item.kr); }
+  });
+});
+check("3 cartes rendues (input + Vérifier + lien secours)",
+  $cards.querySelectorAll(".typing-input").length === 3 &&
+  $cards.querySelectorAll(".typing-verify").length === 3 &&
+  $cards.querySelectorAll(".typing-nokb").length === 3);
+check("zéro écriture localStorage (état identique avant/après)", lsSnapshot() === LS0);
+
+/* ---------- bilan ---------- */
+var $checks = document.getElementById("checks");
+var fails = out.filter(function(c){ return !c.ok; }).length;
+$checks.innerHTML = out.map(function(c){
+  return "<div class='" + (c.ok ? "pass'>✔ " : "fail'>✘ ") + c.name + "</div>";
+}).join("") + "<div style='margin-top:6px'>" +
+  (fails ? "<span class='fail'>" + fails + " ÉCHEC(S)</span>"
+         : "<span class='pass'>TOUT VERT (" + out.length + " checks)</span>") + "</div>";
+document.title = (fails ? "✘ " : "✔ ") + document.title;
+</script>
+</body>
+</html>

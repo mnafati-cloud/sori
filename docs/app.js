@@ -284,6 +284,15 @@ function renderReview(){
   else {
     /* les deux sens aux hauts niveaux : 40% de rappel inversé (KR->FR) */
     if(Math.random()<0.4) exoRecallRev(it);
+    else if(it.stage===5 && ST.set.typing===true && it.type==="word"
+            && window.SORI_TYPING && Math.random()<0.5){
+      /* production ultime : taper la réponse avec l'IME coréen (typing.js) */
+      SORI_TYPING.render($screen, {
+        item: it,
+        speak: (kr,id)=>speak(kr,id),
+        onResult: ok=>afterAnswer(it, ok, false, "type")
+      });
+    }
     else exoRecall(it, it.stage===4);
   }
 }
@@ -759,6 +768,7 @@ function renderStats(){
     <label>Prononcer automatiquement <input type="checkbox" id="ap" ${ST.set.autoplay?"checked":""}></label>
     <label title="Intervalles personnalisés par mot (ALGORITHM.md). Laisser décoché ~2 semaines : l'app observe d'abord.">
       Planification adaptative <input type="checkbox" id="adap" ${ST.set.adaptive?"checked":""}></label>
+    <label>Saisie au clavier coréen (niv 5) <input type="checkbox" id="typ" ${ST.set.typing?"checked":""}></label>
     <label>Vitesse de la voix <input type="number" id="rate" min="0.5" max="1.2" step="0.1" value="${ST.set.rate}"></label>
     ${koVoices().length>1 ? `<label>Voix coréenne <select id="voice">${
       koVoices().map(v=>`<option value="${esc(v.name)}" ${ST.set.voice===v.name?"selected":""}>${esc(v.name)}</option>`).join("")
@@ -788,6 +798,7 @@ function renderStats(){
   set.querySelector("#kf").onchange  = e=>{ ST.set.kitFirst=e.target.checked; save(); };
   set.querySelector("#ap").onchange  = e=>{ ST.set.autoplay=e.target.checked; save(); };
   set.querySelector("#adap").onchange= e=>{ ST.set.adaptive=e.target.checked; save(); };
+  set.querySelector("#typ").onchange = e=>{ ST.set.typing=e.target.checked; save(); };
   set.querySelector("#rate").onchange= e=>{ ST.set.rate=Math.min(1.2,Math.max(0.5,+e.target.value||0.9)); save(); };
   const vsel = set.querySelector("#voice");
   if(vsel) vsel.onchange = e=>{ ST.set.voice = e.target.value; save(); pickVoice(); ttsSpeak("안녕하세요"); };

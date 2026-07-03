@@ -226,6 +226,6 @@ test("distracteurs : le global (même type) complète quand le thème ne suffit 
 
 test("DEF_SET et STEP : valeurs contractuelles", () => {
   assert.deepEqual(DEF_SET, { newPerDay: 12, kitFirst: true, rate: 0.9, listenN: 10,
-    sessionMax: 120, mute: false, autoplay: true, adaptive: false });   // adaptive ajouté (ALGORITHM.md, additif)
+    sessionMax: 120, mute: false, autoplay: true, adaptive: false, typing: false });   // adaptive (ALGORITHM.md) et typing (typing.js) — additifs
   assert.deepEqual(STEP, { 2: 1, 3: 2, 4: 4, 5: 8 });
 });
