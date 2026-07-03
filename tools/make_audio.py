@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Genere les MP3 natifs (edge-tts, ko-KR-SunHiNeural) pour les items kit/enemy.
+"""Genere les MP3 natifs (edge-tts, ko-KR-SunHiNeural) pour tous les items du deck.
 
 Usage: python tools/make_audio.py
 Relançable: saute les MP3 deja presents et valides (>1 Ko).
@@ -43,10 +43,9 @@ def clean_kr(kr: str) -> str:
 def select_targets(items):
     targets = []
     for it in items:
-        if it.get("kit") or it.get("enemy"):
-            text = clean_kr(it.get("kr", ""))
-            if text:
-                targets.append((str(it["id"]), text))
+        text = clean_kr(it.get("kr", ""))
+        if text:
+            targets.append((str(it["id"]), text))
     return targets
 
 
@@ -108,7 +107,7 @@ def main():
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
     items = load_items()
     targets = select_targets(items)
-    print(f"Cibles: {len(targets)} items (kit ou enemy)")
+    print(f"Cibles: {len(targets)} items (tous)")
 
     asyncio.run(generate(targets))
 
