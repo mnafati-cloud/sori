@@ -203,6 +203,20 @@ function openInfo(title, body){
   back.addEventListener("click", e=>{ if(e.target===back) back.remove(); });
   document.body.appendChild(back);
 }
+/* test de niveau adaptatif en surcouche (placement.js) — estime la bande CEFR/TOPIK */
+function openPlacement(){
+  const back = el(`<div class="modal-back"></div>`);
+  const box = el(`<div style="width:100%; max-width:560px; max-height:92vh; overflow:auto"></div>`);
+  back.appendChild(box);
+  back.addEventListener("click", e=>{ if(e.target===back){ back.remove(); render(); } });  // tap dehors = abandonner
+  document.body.appendChild(back);
+  SORI_PLACEMENT.renderTest(box, {
+    items: ALL_IDS.map(eff).map(it=>({ id:it.id, kr:it.kr, fr:it.fr, type:it.type, cefr:(EXTRA[it.id]||{}).cefr })),
+    speak: (kr,id)=>speak(kr,id),
+    onFinish: r=>{ ST.placement = Object.assign({ date: todayStr() }, r); save(); },
+    onExit: ()=>{ back.remove(); render(); }
+  });
+}
 function streak(){ return ENGINE.computeStreak(ST.log, todayStr(), addDays); }
 
 /* ================= audio : MP3 natifs prioritaires, TTS en secours ================= */
@@ -890,6 +904,17 @@ function renderStats(){
     tile.onclick = ()=>openInfo(STAT_INFO[i][0], STAT_INFO[i][1]);
   });
   $screen.appendChild(grid);
+
+  /* 🎯 test de niveau adaptatif (placement.js) — action volontaire depuis l'accueil */
+  if(window.SORI_PLACEMENT){
+    const last = ST.placement;
+    const pcard = el(`<div class="card center"><h2>🎯 Évaluer mon niveau</h2>
+      <p class="dim">Test adaptatif : estime ta bande CEFR / TOPIK (reconnaissance de vocabulaire).${
+        last ? ` Dernier : <b>≈ ${esc(last.label)}</b> (${esc(last.date)}).` : ""}</p>
+      <button class="btn" id="plcgo" style="margin-top:8px">Lancer le test</button></div>`);
+    pcard.querySelector("#plcgo").onclick = openPlacement;
+    $screen.appendChild(pcard);
+  }
 
   if(leeches.length){
     $screen.appendChild(el(`<div class="card">

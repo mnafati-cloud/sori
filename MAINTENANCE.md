@@ -41,9 +41,20 @@
 - **Avec quoi** : vanilla JS, zéro dépendance runtime, zéro bundler, zéro backend. Outillage :
   Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
   PowerShell 5.1 sous Windows 11.
-- **Volumes actuels (v27)** : 2154 items dans le seed (1684 mots, 470 phrases, 79 ennemies,
-  54 kit), 1774 entrées de trivia dont **1628 phrases d'exemple gloses mot-à-mot (`gl`)**,
-  **3750 MP3 de mots + 3224 MP3 de phrases (`-ex.mp3`), ~119 Mo**, 37 tests Node, `CACHE` = `sori-v32`.
+- **Volumes actuels** : 3750 items dans le seed, 3224 phrases d'exemple glosées (`gl`),
+  **3750 MP3 de mots + 3224 MP3 de phrases (`-ex.mp3`), ~119 Mo**, **44 tests Node**, `CACHE` = `sori-v37`.
+- **DÉPLOIEMENT — `docs/.nojekyll` OBLIGATOIRE** : GitHub Pages (build legacy) lance Jekyll qui
+  traite les 7000+ fichiers → builds qui échouent/pendent (« Page build failed »). Le fichier vide
+  `docs/.nojekyll` désactive Jekyll → Pages sert les fichiers statiques tels quels. NE JAMAIS le
+  supprimer. Symptôme d'un build coincé : API `GET /repos/mnafati-cloud/sori/pages/builds/latest`
+  reste `building` ; un `git commit --allow-empty` re-déclenche. (À terme, si ça persiste, sortir
+  l'audio du repo Pages.)
+- **v37 (test de niveau adaptatif)** : nouveau module `placement.js` (SORI_PLACEMENT) — QCM par bande
+  CEFR en escalier (départ A2, +1 bande si ≥4/6, −1 si ≤2/6, stop à 3/6 ou au demi-tour) → estimation
+  `≈ B1 solide` + équiv. TOPIK + avertissement « pas un score officiel ». Bouton « 🎯 Évaluer mon
+  niveau » sur Stats ; résultat persisté dans **`ST.placement`** (champ racine additif : `{date, band,
+  label, topik, idx, results}`). 7 tests purs (`tests/placement.test.mjs`). Popin d'explication sur
+  les tuiles de Stats (v36).
 - **v32 (vague 7)** : **+617 items neufs** (deck 3133 → 3750), chaîne complète nourrie (recette R21).
   Domaines inédits (voyage, mode, argent, logement, politique, finance, environnement, 사자성어,
   onomatopées) + phrases. Distribution CEFR : **A1 480 / A2 1264 / B1 1244 / B2 603 / C1 159**.

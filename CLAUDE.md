@@ -24,7 +24,8 @@ Manuel complet (contrats de données, recettes pas-à-pas, pièges vécus) : **`
 Couche 1  docs/engine.js       moteur pur (planification legacy GELÉE + adaptative, file,
                                distracteurs, ease) — testé sous Node, contractuel
 Couche 1b MODULES autonomes    themes.js · events.js · search.js · exam.js · quests.js ·
-                               player.js · scenarios.js · typing.js · numbers.js — voir pattern
+                               player.js · scenarios.js · typing.js · numbers.js ·
+                               placement.js (test de niveau adaptatif) — voir pattern
 Couche 2  docs/app.js          UI + exercices + audio + import/export + cloud backup/restore +
                                son (WebAudio) + annulation + rapports 🐞 + Réglages en surcouche
                                (⚙️ header → openSettings) — SEUL fichier qui lit/écrit
@@ -68,6 +69,8 @@ docs/                 l'app servie telle quelle par GitHub Pages
   scenarios-data.js + scenarios.js  simulations dialoguées
   typing.js           saisie hangul (production tapée, stage 5, opt-in ST.set.typing)
   numbers.js          entraîneur de nombres à l'oreille (prix/heures/dates/quantités, onglet Écoute)
+  placement.js        test de niveau ADAPTATIF (escalier par bande cefr → estimation CEFR/TOPIK)
+  .nojekyll           DÉSACTIVE Jekyll sur GitHub Pages (obligatoire : 7000+ fichiers → builds fiables)
   sw.js               service worker network-first (CACHE à bump)   manifest.json, icônes
   design/             pages de test autonomes (events-test, quests-test, exam-test,
                       search-test, player-test, theme-test, typing-test, numbers-test,
