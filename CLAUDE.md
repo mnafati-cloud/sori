@@ -8,7 +8,7 @@ La progression vit **dans le localStorage du téléphone** (clé `sori-state-v1`
 Manuel complet (contrats de données, recettes pas-à-pas, pièges vécus) : **`MAINTENANCE.md`** — lis-le avant toute modification non triviale. Événements : **`MAINTENANCE-EVENTS.md`**. Algorithme adaptatif : **`ALGORITHM.md`**.
 
 ## RÈGLES D'OR — à ne JAMAIS violer
-1. **Ne jamais casser le schéma localStorage `sori-state-v1`.** Ne renomme jamais la clé. Ne change jamais la sémantique de `s`/`i`/`d`/`e`/`ok`/`ko`. Additif seulement : un nouveau réglage = une nouvelle clé dans `DEF_SET` (engine.js) **ET la mise à jour du test contractuel `tests/engine.test.mjs` (assert.deepEqual sur DEF_SET) dans le MÊME commit** — la migration douce de `loadState()` fait le reste.
+1. **Ne jamais casser le schéma localStorage `sori-state-v1`.** Ne renomme jamais la clé. Ne change jamais la sémantique de `s`/`i`/`d`/`e`/`ok`/`ko`. Additif seulement : un nouveau réglage = une nouvelle clé dans `DEF_SET` (engine.js) **ET la mise à jour du test contractuel `tests/engine.test.mjs` (assert.deepEqual sur DEF_SET) dans le MÊME commit** — la migration douce de `loadState()` fait le reste. `DEF_SET` actuel = `{newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true, adaptive:false, typing:false, report:false}` (les 3 dernières clés sont des ajouts depuis v9).
 2. **Un id est ÉTERNEL — tous les ids.** Items du seed (`docs/data.js`), événements (`events-data.js`, clés de `ST.evDismiss`), quêtes et badges (`quests.js`, clés de `ST.qdone`), scénarios (`scenarios-data.js`, clés de `ST.scen`) : ne jamais changer, réutiliser ni supprimer un id existant. La progression du téléphone ne référence le contenu que par id.
 3. **Ne jamais pousser `tools/snapshot.anki2` ni `sori-export-*.json`.** Données personnelles, repo PUBLIC. Ils sont dans `.gitignore` — ne l'affaiblis jamais. Les exports lus depuis le cloud `sori-data` (recette R15) ne doivent JAMAIS finir dans un repo.
 4. **`node --test tests/` doit être 100 % vert avant chaque push** (37 tests minimum : 20 engine + 17 adaptive). En plus : `node --check` sur chaque JS de `docs/` modifié (la CI le fait sur tous). Un test rouge = tu ne pousses pas, point.
@@ -24,11 +24,12 @@ Manuel complet (contrats de données, recettes pas-à-pas, pièges vécus) : **`
 Couche 1  docs/engine.js       moteur pur (planification legacy GELÉE + adaptative, file,
                                distracteurs, ease) — testé sous Node, contractuel
 Couche 1b MODULES autonomes    themes.js · events.js · search.js · exam.js · quests.js ·
-                               player.js · scenarios.js · typing.js — voir pattern ci-dessous
-Couche 2  docs/app.js          UI + exercices + audio + import/export + cloud backup —
+                               player.js · scenarios.js · typing.js · numbers.js — voir pattern
+Couche 2  docs/app.js          UI + exercices + audio + import/export + cloud backup/restore +
+                               son (WebAudio) + annulation + rapports 🐞 —
                                SEUL fichier qui lit/écrit localStorage "sori-state-v1"
-Couche 3  contenu généré       data.js (SEED 1293 items) · extra.js (EXTRA, trivia) ·
-                               audio/*.mp3 + audio/index.js (1293 MP3) · + données éditées :
+Couche 3  contenu généré       data.js (SEED ~2154 items) · extra.js (EXTRA, trivia) ·
+                               audio/*.mp3 + audio/index.js (~2154 MP3) · + données éditées :
                                events-data.js (EVENTS_DATA) · scenarios-data.js (SCENARIOS)
 Couche 4  état                 localStorage téléphone : "sori-state-v1" (progression),
                                "sori-theme" (themes.js), "sori-gh-token" (jeton cloud) —
@@ -36,45 +37,49 @@ Couche 4  état                 localStorage téléphone : "sori-state-v1" (prog
 ```
 **LE PATTERN MODULE CONTRACTUEL** (la convention du projet — tout nouveau module s'y conforme) :
 - IIFE double environnement : `module.exports` sous Node ET `root.SORI_X` dans le navigateur — la partie pure (`SORI_X.pure`) est testable sans DOM ;
+- exemple canonique récent : `numbers.js` (entraîneur de nombres à l'oreille) — `SORI_NUMBERS.pure` = convertisseurs nombre→hangul (sino/native/price/time/date/quantity) + `makeExercise`, tous purs ; `renderCard` branché dans `renderListen()` d'app.js ;
 - **ZÉRO accès localStorage** dans le module (seule exception : themes.js et SA clé `sori-theme`) — l'état entre et sort via `opts` et des callbacks (`onClaim`, `onDismiss`, `onFinish`, `setBest`…) que `app.js` branche sur `ST` ;
 - l'intégration se fait **UNIQUEMENT dans app.js** (un bloc `if(window.SORI_X){...}` dans le render de l'onglet) — l'app doit marcher si le module ou ses données sont absents ;
 - le CSS est injecté par le module (préfixe `.module-*`, une seule fois) en n'utilisant QUE les variables `:root` de style.css ; tout texte passe par `esc(...)`.
 
 **Ordre de chargement (docs/index.html, NE PAS le changer)** :
 `<head>` : style.css → themes.css → **themes.js** (avant le rendu : zéro flash de thème) ;
-fin de `<body>` : `data.js → extra.js → audio/index.js → player.js → engine.js → events-data.js → events.js → search.js → exam.js → scenarios-data.js → scenarios.js → quests.js → typing.js → app.js` → enregistrement du service worker.
+fin de `<body>` : `data.js → extra.js → audio/index.js → player.js → engine.js → events-data.js → events.js → search.js → exam.js → scenarios-data.js → scenarios.js → quests.js → typing.js → numbers.js → app.js` → enregistrement du service worker.
 Règle : les `*-data.js` avant leur moteur, tous les modules avant `app.js`, `engine.js` avant `app.js`.
 
 ## Carte du repo
 ```
 docs/                 l'app servie telle quelle par GitHub Pages
   index.html          coquille + ordre de chargement des scripts
-  app.js              couche application (~900 lignes) — seul accès à sori-state-v1
+  app.js              couche application — seul accès à sori-state-v1 (UI, exercices, audio,
+                      son WebAudio, annulation, rapports 🐞, import/export, cloud backup+restore)
   engine.js           moteur pur contractuel (legacy gelé + ease adaptatif)
   style.css           styles de base (variables :root)   themes.css + themes.js  4 thèmes
-  data.js             SEED généré (1293 items)           extra.js  EXTRA (921 trivia)
-  audio/              1293 MP3 natifs (~17 Mo) + index.js généré
+  data.js             SEED généré (~2154 items ; voir SEED.meta.counts)  extra.js  EXTRA (~1774 trivia)
+  audio/              ~2154 MP3 natifs (~28 Mo) + index.js généré
   events-data.js + events.js       événements (countdown/message/challenge)
-  search.js           dictionnaire FR⇄KR + choseong      exam.js  bilan TOPIK-lite
+  search.js           dictionnaire FR⇄KR + choseong      exam.js  bilan TOPIK-lite (3 profils + chrono)
   quests.js           quêtes du jour + badges            player.js  écoute passive MediaSession
   scenarios-data.js + scenarios.js  simulations dialoguées
   typing.js           saisie hangul (production tapée, stage 5, opt-in ST.set.typing)
+  numbers.js          entraîneur de nombres à l'oreille (prix/heures/dates/quantités, onglet Écoute)
   sw.js               service worker network-first (CACHE à bump)   manifest.json, icônes
   design/             pages de test autonomes (events-test, quests-test, exam-test,
-                      search-test, player-test, theme-test, typing-test, variant-a/b/c)
-                      — pas dans ASSETS
+                      search-test, player-test, theme-test, typing-test, numbers-test,
+                      variant-a/b/c) — pas dans ASSETS
 tools/                scripts de build Python :
   build_data.py       seed depuis snapshot.anki2 + KIT + packs ; garde-fou anti-perte d'ids INTÉGRÉ
   merge_pack.py       intègre une vague de contenu (pack + regen + trivia) — recette R11
   make_audio.py       MP3 edge-tts pour TOUT le deck, relançable
   merge_extra.py      fusionne un lot de trivia          make_icons.py  icônes (chemins OK)
   packs/              packs de contenu durables (*.json, ids pack-hash, fusionnés à chaque regen)
+  packs-staged/       RÉSERVE : packs prêts mais non activés (actuellement vidée — voir README)
 tools/snapshot.anki2  collection Anki figée, GITIGNORÉE — n'existe que sur cette machine.
                       Sans elle, build_data.py ne tourne pas. Ne jamais la supprimer.
 tests/                engine.test.mjs (20, verrouille le legacy) + adaptive.test.mjs (17, ease)
 .github/workflows/ci.yml   CI : node --test + node --check sur tous les JS de l'app
 ALGORITHM.md          spec complète de l'ease adaptatif (constantes, phases, critères §7)
-MAINTENANCE.md        LE manuel : contrats de données, recettes R1-R16, pièges P1-P11, checklist
+MAINTENANCE.md        LE manuel : contrats de données, recettes R1-R18, pièges P1-P12, checklist
 MAINTENANCE-EVENTS.md recette R10 complète (gérer les événements)
 PROPOSITIONS.md       backlog historique d'évolutions
 ```

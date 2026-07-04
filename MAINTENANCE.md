@@ -19,8 +19,8 @@
 2. [Architecture détaillée](#2-architecture-détaillée)
 3. [Contrats de données](#3-contrats-de-données)
 4. [L'échelle de maîtrise et la planification](#4-léchelle-de-maîtrise-et-la-planification)
-5. [Recettes pas-à-pas (R1-R16)](#5-recettes-pas-à-pas)
-6. [Pièges connus (vécus) (P1-P11)](#6-pièges-connus-vécus)
+5. [Recettes pas-à-pas (R1-R18)](#5-recettes-pas-à-pas)
+6. [Pièges connus (vécus) (P1-P12)](#6-pièges-connus-vécus)
 7. [Checklist de non-régression avant tout push](#7-checklist-de-non-régression-avant-tout-push)
 8. [Glossaire](#8-glossaire)
 
@@ -29,9 +29,10 @@
 ## 1. Vue d'ensemble
 
 - **Quoi** : Sori, PWA de révision de coréen FR⇄KR — QCM progressifs, rappel, saisie hangul,
-  écoute (active et passive), kit voyage, dictionnaire personnel, simulations dialoguées,
-  bilan de niveau, quêtes/badges/XP, événements, 4 thèmes graphiques, mode avion,
-  sauvegarde cloud.
+  entraîneur de nombres à l'oreille, écoute (active et passive), kit voyage, dictionnaire
+  personnel, simulations dialoguées, bilan de niveau (3 profils + chrono), quêtes/badges/XP,
+  événements, 4 thèmes graphiques, mode avion, sauvegarde + restauration cloud, rapports de
+  problème 🐞.
 - **Pour qui** : un seul utilisateur (mehdi.nafati@hotmail.fr), niveau A2→B1, sur Android,
   30-60 min/jour. Départ en Corée le 2026-10-01 : le contenu et le rythme sont calés sur ce voyage.
 - **Où** : prod = https://mnafati-cloud.github.io/sori/ — GitHub Pages sert `docs/` de la
@@ -40,8 +41,11 @@
 - **Avec quoi** : vanilla JS, zéro dépendance runtime, zéro bundler, zéro backend. Outillage :
   Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
   PowerShell 5.1 sous Windows 11.
-- **Volumes actuels (v18)** : 1293 items dans le seed (972 mots, 321 phrases, 79 ennemies,
-  54 kit), 921 entrées de trivia, 1293 MP3 natifs (~17 Mo), 37 tests Node.
+- **Volumes actuels (v26)** : 2154 items dans le seed (1684 mots, 470 phrases, 79 ennemies,
+  54 kit), 1774 entrées de trivia, 2154 MP3 natifs (~28 Mo), 37 tests Node, `CACHE` = `sori-v26`.
+  Ces compteurs bougent à chaque vague de contenu : la SOURCE DE VÉRITÉ est
+  `window.SEED.meta.counts` (dans `docs/data.js`) — vérifie-la plutôt que de recopier ces
+  nombres à l'aveugle.
 - **Environnement local** : le repo vit dans `C:\Users\33785\dev\sori` — **hors OneDrive**,
   c'est voulu (voir piège P5). Ne le déplace jamais dans un dossier synchronisé.
 
@@ -62,21 +66,22 @@
 ├───────────────────────────────────────────────────────────────────────┤
 │ COUCHE 3 — CONTENU (dans docs/, poussé avec l'app)                    │
 │   GÉNÉRÉ (jamais à la main) :                                         │
-│     data.js  → window.SEED  (1293 items)  — tools/build_data.py       │
-│     extra.js → window.EXTRA (921 trivia)  — merge_extra.py/merge_pack │
+│     data.js  → window.SEED  (~2154 items) — tools/build_data.py       │
+│     extra.js → window.EXTRA (~1774 trivia)— merge_extra.py/merge_pack │
 │     audio/*.mp3 + audio/index.js → window.AUDIO — make_audio.py       │
 │   ÉDITÉ À LA MAIN (données pures, recettes dédiées) :                 │
 │     events-data.js    → window.EVENTS_DATA  (R10)                     │
 │     scenarios-data.js → window.SCENARIOS    (R13)                     │
 ├───────────────────────────────────────────────────────────────────────┤
-│ COUCHE 2 — APPLICATION  docs/app.js (~900 lignes)                     │
-│   UI, exercices, XP/combo, TTS/MP3, import/export, cloud backup,      │
+│ COUCHE 2 — APPLICATION  docs/app.js                                   │
+│   UI, exercices, XP/combo, TTS/MP3, son WebAudio (sfx), annulation    │
+│   (UNDO), rapports 🐞, import/export, cloud backup + restore,         │
 │   mode avion, intégration des modules.                                │
 │   SEUL fichier autorisé à lire/écrire "sori-state-v1".                │
 ├───────────────────────────────────────────────────────────────────────┤
 │ COUCHE 1b — MODULES AUTONOMES (le pattern contractuel, §2.3)          │
 │   themes.js · events.js · search.js · exam.js · quests.js ·           │
-│   player.js · scenarios.js · typing.js — table complète en §2.4       │
+│   player.js · scenarios.js · typing.js · numbers.js — table en §2.4   │
 ├───────────────────────────────────────────────────────────────────────┤
 │ COUCHE 1 — MOTEUR PUR  docs/engine.js (~200 lignes)                   │
 │   computeAnswerLegacy (GELÉ), computeAnswer étendu (ease adaptatif),  │
@@ -94,7 +99,7 @@
 <head>  : style.css → themes.css → themes.js     (thème posé AVANT le premier rendu)
 <body>  : data.js → extra.js → audio/index.js → player.js → engine.js
           → events-data.js → events.js → search.js → exam.js
-          → scenarios-data.js → scenarios.js → quests.js → typing.js → app.js
+          → scenarios-data.js → scenarios.js → quests.js → typing.js → numbers.js → app.js
           → (script inline) enregistrement du service worker
 ```
 
@@ -145,12 +150,13 @@ mainteneur de toucher un module sans risquer la progression :
 | `events-data.js` | `window.EVENTS_DATA = [...]` (données pures) | — | LE fichier à éditer pour gérer un événement (R10 / MAINTENANCE-EVENTS.md). Zéro logique dedans. |
 | `events.js` | `SORI_EVENTS.renderCards(container, {today, log, dismissed, onDismiss})` + `pure.activeEvents / pure.eventProgress` | Haut de `renderStats()`. Masquage persisté par app.js dans `ST.evDismiss` via `onDismiss(id)` | Zéro localStorage. 0 événement actif ⇒ ne rend RIEN. Type inconnu ignoré sans crash. |
 | `search.js` | `SORI_SEARCH.renderPanel(container, {items, extra, onSpeak})` + `pure.normFr / choseong / isChoseongQuery / buildIndex / search` | `renderTrip()` (« Mon dictionnaire ») | N'écrit AUCUN état (ni ST, ni localStorage). Audio délégué via `onSpeak(kr, id)`. Index construit une fois (contenu statique), `stage`/`theme` rafraîchis aux rendus suivants. |
-| `exam.js` | `SORI_EXAM.renderCard(container, {items, extra, speak, history, onFinish, onExit, random})` + `pure.buildExam / summarize / gradeOf / availability` | `renderStats()`. Historique = `ST.exams` (lecture seule), résultat ajouté par app.js via `onFinish(r)` (qui pose la date et `save()`) | **ZÉRO effet sur la planification** — rien ne va vers engine.js, aucun stage/itv/due ne bouge. Zéro localStorage. RNG injectable (tests). Deck étudié < 20 questions possibles ⇒ bouton remplacé par un message. |
+| `exam.js` | `SORI_EXAM.renderCard(container, {items, extra, speak, history, onFinish, onExit, random})` + `pure.buildExam / summarize / gradeOf / availability` | `renderStats()`. Historique = `ST.exams` (lecture seule), résultat ajouté par app.js via `onFinish(r)` (qui pose la date et `save()`) | **ZÉRO effet sur la planification** — rien ne va vers engine.js, aucun stage/itv/due ne bouge. Zéro localStorage. RNG injectable (tests). Deck étudié < 20 questions possibles ⇒ bouton remplacé par un message. **3 PROFILS** choisis sur la carte (`beginner` 🌱 A1-A2 thèmes a2:: seulement, strates 5/5/2 ; `standard` 🎯 A2-B1 tout le deck, le bilan classique ; `advanced` 🔥 B1+ stage ≥ 3, thèmes b1/b2 pondérés ×2, distracteurs `conf` sans cadeau) — le profil n'est PAS dans l'API, il vit dans le module. **Chrono 10 min optionnel** : ne bloque JAMAIS l'examen, il CONSTATE le dépassement. **Champs ADDITIFS** sur le résultat : `profile` et `timeSec`/`overtime` (une entrée `ST.exams` sans `profile` compte comme `standard`). **Rétrocompat prouvée** : `buildExam(items, rnd)` (2 args) === `buildExam(items, rnd, "standard")`, même flux RNG. |
 | `quests.js` | `SORI_QUESTS.renderCard(container, {today, log, state, onClaim, compact})` + `pure.dailyQuests / questProgress / claimable / badges` | 2 endroits : fin de session dans `renderReview()` (`compact:true`) ET `renderStats()` (complet, avec badges) | Zéro localStorage. Réclamation → `onClaim(questId, bonusXp)` : app.js pose `ST.qdone.ids[id]=true` et crédite l'XP. **Ids de quêtes et de badges ÉTERNELS** (P11). Principe : des PLANCHERS, jamais des plafonds. |
 | `player.js` | `SORI_PLAYER.renderCard(container, {tracks, rate, audioBase})`, `.stop()`, `pure.MODES / filterTracks` | `renderListen()` (carte « Écoute passive ») | Zéro localStorage, zéro écriture ST. UN SEUL élément `Audio` réutilisé (exigence Android/MediaSession). Utilitaires recopiés volontairement (zéro couplage). |
 | `scenarios-data.js` | `window.SCENARIOS = [...]` (données pures, vérifiées par relecture native) | — | LE fichier à éditer pour un scénario (R13). Ids éternels (clés de `ST.scen`). |
 | `scenarios.js` | `SORI_SCENARIOS.renderList(container, {speak, onAnswer, getBest, setBest})` | `renderTrip()`. Records persistés par app.js dans `ST.scen[id]` via `setBest` ; journalisation via `onAnswer(ok)` → `logAnswer(ok, "scenario")` | Zéro localStorage. Ne touche pas la planification (journal seulement). |
 | `typing.js` | `SORI_TYPING.render(container, {item, speak, onResult})` + `pure.normalize / judge` | Dispatch de `renderReview()` : stage 5, `type==="word"`, **opt-in** `ST.set.typing===true`, 50 % du temps. Verdict → `onResult(ok)` → `afterAnswer(it, ok, false, "type")` | Zéro localStorage. Saisie à l'IME coréen : normalize NFC + juge Levenshtein syllabique (exact/presque/espacement) ; en cas d'écart, l'UTILISATEUR tranche (faute de frappe IME vs vraie erreur). Jamais bloquant sans clavier coréen (lien « je ne peux pas taper » → auto-évaluation). Kind journalisé : `type`. |
+| `numbers.js` | `SORI_NUMBERS.renderCard(container, {speak, onAnswer, random})` + `pure.sino / native / nativeCounter / price / time / date / quantity / makeExercise` | `renderListen()` (onglet Écoute) : `if(window.SORI_NUMBERS){ SORI_NUMBERS.renderCard($screen, { speak:(txt)=>ttsSpeak(txt), onAnswer:(ok)=>logAnswer(ok,"nombres") }); }` | **ZÉRO localStorage, zéro écriture ST.** Génère à l'infini des exercices prix/heures/dates/quantités (4 modes cochables). `speak` reçoit du **TEXTE BRUT** (les nombres aléatoires n'ont PAS de MP3 → `ttsSpeak`, PAS `speak(kr,id)`). Convertisseurs purs verrouillables (sino sans 일 initial, natif déterminant, 유월/시월…), RNG injectable, hors bornes ⇒ `""`. **ZÉRO effet planification** ; journalisé par app.js sous le kind `nombres`. |
 
 ### 2.5 Le flux de données complet
 
@@ -196,7 +202,7 @@ mainteneur de toucher un module sans risquer la progression :
 | `docs/audio/*` | **Jamais à la main** | Uniquement via `tools/make_audio.py` (R3). |
 | `docs/events-data.js` | Oui | Recette **R10** = `MAINTENANCE-EVENTS.md`. Ids éternels. |
 | `docs/scenarios-data.js` | Oui, avec précaution | Recette **R13**. Ids éternels, contenu à faire vérifier. |
-| `docs/events.js`, `search.js`, `exam.js`, `quests.js`, `player.js`, `scenarios.js`, `typing.js` | Oui, avec précaution | Respecter le pattern §2.3. Mettre à jour la page de test `docs/design/*-test.html` correspondante dans le même commit. Pour quests.js : recette **R12**. |
+| `docs/events.js`, `search.js`, `exam.js`, `quests.js`, `player.js`, `scenarios.js`, `typing.js`, `numbers.js` | Oui, avec précaution | Respecter le pattern §2.3. Mettre à jour la page de test `docs/design/*-test.html` correspondante dans le même commit. Pour quests.js : recette **R12**. Ajouter/retirer un module : recette **R17**. |
 | `docs/themes.js` + `docs/themes.css` | Oui | Recette **R14**. Ne jamais retirer/renommer un thème existant. |
 | `docs/sw.js` | Bump seulement | `CACHE` +1 à chaque release ; `ASSETS` si fichier JS/CSS ajouté. Ne jamais revenir à du cache-first. Ne JAMAIS purger `"sori-audio-store"`. |
 | `docs/index.html` | Rarement | Ne pas toucher l'ordre des `<script>` (§2.2). |
@@ -250,11 +256,11 @@ mainteneur de toucher un module sans risquer la progression :
 | `conf` | array d'ids | non | Jusqu'à 6 « sosies » (calculés par build_data.py). Distracteurs prioritaires dès le stage 2. |
 
 `window.SEED.meta` contient `generated`, `version`, `counts` — informatif, sert à valider un
-rebuild (compte actuel : 1293 items).
+rebuild (source de vérité du compte : `SEED.meta.counts`, ~2154 items à la v26).
 
 ### 3.2 Une entrée EXTRA (`docs/extra.js`, `window.EXTRA`)
 
-Objet indexé par id d'item du seed (921 entrées) :
+Objet indexé par id d'item du seed (~1774 entrées à la v26) :
 
 ```json
 "1763265164777": { "ex": "오늘은 바람이 아주 시원해요.", "exFr": "Aujourd'hui, le vent est très frais.",
@@ -279,7 +285,7 @@ window.AUDIO = ["1763106836914", "kit-3f2a9b1c", "pack-a1b2c3d4", ...];
 ```
 
 La présence d'un id ⇒ `docs/audio/<id>.mp3` existe et fait > 1 Ko. Depuis la v14-v16,
-**TOUT le deck** a son MP3 (1293/1293, ~17 Mo, voix `ko-KR-SunHiNeural`). `app.js` en fait un
+**TOUT le deck** a son MP3 (2154/2154 à la v26, ~28 Mo, voix `ko-KR-SunHiNeural`). `app.js` en fait un
 `Set` ; `speak(texte, id)` joue le MP3 si présent, sinon TTS du téléphone. Fichier ENTIÈREMENT
 régénéré par `make_audio.py` — jamais à la main.
 
@@ -299,14 +305,19 @@ régénéré par `make_audio.py` — jamais à la main.
   "intro": { "2026-07-03": 12 },
   "xp": 12480,
   "set": { "newPerDay": 12, "kitFirst": true, "rate": 0.9, "listenN": 10, "sessionMax": 120,
-           "mute": false, "autoplay": true, "adaptive": false, "typing": false, "voice": "Google 한국의" },
+           "mute": false, "autoplay": true, "adaptive": false, "typing": false, "report": false,
+           "voice": "Google 한국의" },
   "sess": { "d": "2026-07-03", "q": ["id1", "id2"], "p": 3, "pen": 15 },
   "scen": { "resto": 7 },
   "qdone": { "d": "2026-07-03", "ids": { "reponses30": true } },
-  "exams": [ { "date": "2026-06-28", "score": 31, "total": 40, "pct": 78,
-               "grade": "A2+ / B1 en approche",
+  "exams": [ { "date": "2026-06-28", "profile": "standard", "score": 31, "total": 40, "pct": 78,
+               "grade": "A2+ / B1 en approche", "timeSec": 420, "overtime": false,
                "sections": { "A": { "ok": 10, "n": 12, "pct": 83 } }, "weak": ["b1::travail"] } ],
   "evDismiss": { "seoul-2026": true },
+  "reports": [ { "d": "2026-07-03T18:12:00.000Z",
+                 "ctx": { "tab": "review", "carte": { "id": "1763106836914", "kr": "안녕하세요", "stage": 4 },
+                          "pos": "3/29", "derniereReponse": { "id": "…", "kr": "…", "ok": false, "kind": "rec5" } },
+                 "txt": "l'audio ne se lance pas sur cette carte" } ],
   "lastExport": "2026-06-28",
   "lastCloud": "2026-07-03"
 }
@@ -317,17 +328,31 @@ régénéré par `make_audio.py` — jamais à la main.
 | `v` | version du schéma | Actuellement 1. `loadState()` accepte `v>=1`. Passer à 2 exigerait une vraie migration — hors périmètre, ne le fais pas. |
 | `items[id]` | **delta** par item : `s` stage, `i` intervalle (jours), `d` due, `e` ease adaptative (float 2 déc., clampée [1.3, 3.0]), `ok`/`ko` compteurs | N'existe que pour les items déjà touchés. Chaque champ optionnel : `eff(id)` prend le delta s'il existe, sinon le seed. `e` absent ⇒ seed paresseux via `easeOf()` (ALGORITHM.md §3). Pattern **seed + delta** : le seed peut évoluer, le delta prime. |
 | `log[date]` | journal quotidien | `ok`/`ko`/`n` : compteurs globaux · `listen` : réponses des exercices d'écoute (kinds `listen`+`dictee`) · `xp` : XP gagnée ce jour (réponses + bonus de quêtes) · `ok1`/`ko1` : réponses **comptées** (1re présentation espacée non anticipée — la mesure « propre » de rétention) · `so`/`sn` : sommes des intervalles legacy (`so`) vs adaptatif (`sn`) sur les succès comptés (le « shadow » de la phase 1, cf. R16) · `k` : télémétrie par type d'exercice. |
-| `log[date].k[kind]` | `{o, x, t, c}` par exercice | `o`=réussites, `x`=échecs, `t`=somme des temps de réponse en **dixièmes de seconde**, `c`=réponses chronométrées. Kinds existants : `qcm1` (stage 0-1), `qcm2` (stage 2), `qcm3` (FR→KR), `build`, `rec4`, `rec5`, `recrev`, `type` (saisie hangul), `listen`, `dictee`, `scenario`. Champ absent ⇒ 0, jamais d'erreur. |
+| `log[date].k[kind]` | `{o, x, t, c}` par exercice | `o`=réussites, `x`=échecs, `t`=somme des temps de réponse en **dixièmes de seconde**, `c`=réponses chronométrées. Kinds existants : `qcm1` (stage 0-1), `qcm2` (stage 2), `qcm3` (FR→KR), `build`, `rec4`, `rec5`, `recrev`, `type` (saisie hangul), `listen`, `dictee`, `scenario`, `nombres` (entraîneur numbers.js). Champ absent ⇒ 0, jamais d'erreur. |
 | `intro[date]` | nouvelles cartes introduites ce jour | Plafonne l'introduction à `set.newPerDay`. |
 | `xp` | XP cumulée (entier) | Réponse juste : 10 + bonus combo (jusqu'à +20) ; réponse fausse : 2 ; quête réclamée : +30/50/80. Niveaux 급 par paliers (`XP_LEVELS` dans app.js) — plancher, jamais un plafond. |
-| `set` | réglages, fusionnés avec `DEF_SET` au chargement | **Migration douce** : `Object.assign({}, DEF_SET, s.set)`. `DEF_SET` (engine.js) = `{newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true, adaptive:false, typing:false}` — verrouillé par le test contractuel (P10). `voice` s'ajoute quand l'utilisateur choisit une voix TTS. `adaptive` = bascule phase 2 (R16) ; `typing` = saisie hangul au stage 5 (opt-in). |
+| `set` | réglages, fusionnés avec `DEF_SET` au chargement | **Migration douce** : `Object.assign({}, DEF_SET, s.set)`. `DEF_SET` (engine.js) = `{newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true, adaptive:false, typing:false, report:false}` — verrouillé par le test contractuel (P10). `voice` s'ajoute quand l'utilisateur choisit une voix TTS. `adaptive` = bascule phase 2 (R16) ; `typing` = saisie hangul au stage 5 (opt-in) ; `report` = affiche le bouton 🐞 de la topbar (opt-in Réglages ; `wireReport()` met `#report.hidden = ST.set.report !== true`). |
 | `sess` | session Réviser en cours : `d` date, `q` file d'ids, `p` position, `pen` en-attente | Survit au kill de l'app par Android. Restaurée si même jour. `null` hors session. |
 | `scen` | meilleurs scores des scénarios : `{scenarioId: répliquesDuPremierCoup}` | Clés = ids de `SCENARIOS` — éternels (P11). Sert au badge « Scénarios parfaits ». |
 | `qdone` | quêtes réclamées AUJOURD'HUI : `{d: date, ids: {questId: true}}` | Réinitialisé quand `d` ≠ aujourd'hui. Clés = ids de quêtes (éternels, P11). |
-| `exams` | historique des bilans de niveau (append-only) | Un objet `summarize()` + `date` par bilan. Ne jamais réécrire les entrées passées. |
+| `exams` | historique des bilans de niveau (append-only) | Un objet `summarize()` + `date` par bilan. Ne jamais réécrire les entrées passées. Champs ADDITIFS depuis v20 : `profile` (`beginner`/`standard`/`advanced` ; absent ⇒ `standard`) et `timeSec`/`overtime` (chrono). Un vieux bilan sans ces champs reste valide. |
 | `evDismiss` | événements masqués : `{eventId: true}` | PERMANENT — c'est pour ça qu'un id d'événement ne se recycle jamais (P11). |
+| `reports` | feedbacks 🐞 de l'utilisateur (append, **cap 100**) | Apparu en v24. Chaque entrée = `{d: ISO, ctx:{tab, carte:{id,kr,stage}, pos, derniereReponse:{id,kr,ok,kind}}, txt}`. Écrit par app.js (`openReportModal`) quand `ST.set.report===true` ; le cap est appliqué par `slice(-99)` avant `push`. **Embarqué dans chaque sauvegarde cloud** → c'est le canal de feedback que Claude LIT en priorité (P12, R18). N'est JAMAIS auto-effacé — l'utilisateur ne les voit pas, seul un compteur s'affiche dans Stats. |
 | `lastExport` | date du dernier export (manuel OU cloud) | Bandeau de rappel après 7 jours. |
 | `lastCloud` | date de la dernière sauvegarde cloud réussie | L'auto-backup de fin de session ne tourne qu'une fois par jour (`lastCloud !== aujourd'hui`). |
+
+**Variables de SESSION (RAM seulement — JAMAIS persistées dans `sori-state-v1`).** À connaître
+pour ne pas les confondre avec l'état :
+- `LASTANS` (`{id, kr, ok, kind}`) : la dernière réponse notée, posée par `afterAnswer`. Sert
+  UNIQUEMENT à remplir `ctx.derniereReponse` d'un rapport 🐞. Perdue au rechargement.
+- `UNDO` : snapshot COMPLET d'un niveau (copie de `ST.items`, du `log` du jour, `xp`, combo,
+  file de session) pris par `armUndo()` avant chaque réponse ; `undoLast()` le restaure puis le
+  vide. **Annulation 1 seul niveau**, anti-clic-accidentel. Non persisté : rouvrir l'app = pas
+  d'annulation disponible.
+- `COOLDOWN` (via `armCooldown()`, classe CSS `cooldown` 450 ms) : verrou anti-misclic à
+  l'apparition d'une carte (les boutons ignorent les taps pendant 450 ms). Pur affichage/timing.
+- Le **son de feedback** (`sfx(ok)`) est du WebAudio synthétisé à la volée (aucun fichier),
+  coupé si `ST.set.mute`. Rien à persister non plus.
 
 ### 3.5 L'export JSON et les sauvegardes cloud
 
@@ -336,14 +361,20 @@ régénéré par `make_audio.py` — jamais à la main.
   "seedVersion": 1, "state": { ...copie intégrale de l'état localStorage... } }
 ```
 
-- **Export manuel** (Stats → 📤) : fichier `sori-export-AAAA-MM-JJ.json`, partagé vers OneDrive.
 - **Sauvegarde cloud** (Stats → ☁️, + auto 1×/jour en fin de session) : le MÊME payload, poussé
   via l'API GitHub dans le repo **privé** `mnafati-cloud/sori-data` : `exports/latest.json`
   (écrasé) + `exports/sori-export-AAAA-MM-JJ.json` (un par jour). Jeton fine-grained (dépôt
   sori-data, permission Contents) stocké UNIQUEMENT sur le téléphone (`sori-gh-token`),
-  jamais inclus dans un export. Lecture côté PC : recette **R15**.
-- L'import (📥) vérifie `app === "sori"`, demande confirmation, **remplace** l'état local en le
-  passant par la même migration douce que le chargement : un vieil export reste valide à vie.
+  jamais inclus dans un export. C'est le canal principal (voir R18). Lecture côté PC : recette **R15**.
+- **Restauration cloud** (Stats → ↓ Restaurer, depuis v26) : `cloudRestore()` télécharge
+  `exports/latest.json` du même repo, vérifie `app === "sori"`, demande confirmation (affiche la
+  date de la sauvegarde) et **remplace** l'état local via `applyImportedState` (migration douce).
+  Backup + restore = le cloud gère TOUT le cycle de vie de la progression, sans passer par un fichier.
+- **Export/Import fichier = secours HORS-LIGNE** (repliés dans un `<details>` de Stats depuis v26) :
+  - Export manuel (📤) : fichier `sori-export-AAAA-MM-JJ.json`, partagé vers OneDrive.
+  - Import (📥) : vérifie `app === "sori"`, demande confirmation, **remplace** l'état local en le
+    passant par la même migration douce que le chargement (`applyImportedState`) : un vieil export
+    reste valide à vie.
 - Ces fichiers sont des **données personnelles** : gitignorés (`sori-export-*.json`), jamais
   dans un repo public.
 
@@ -355,7 +386,7 @@ régénéré par `make_audio.py` — jamais à la main.
 | localStorage | `sori-theme` | themes.js UNIQUEMENT | L'id du thème (`seoul`/`nuit`/`hanji`/`dansaekhwa`). Valeur inconnue ⇒ défaut. |
 | localStorage | `sori-gh-token` | app.js (`setGhToken`) | Jeton GitHub fine-grained du cloud backup. JAMAIS exporté, JAMAIS loggé. |
 | Cache Storage | `sori-vNN` | service worker | Cache réseau de l'app (purgé à chaque bump de CACHE). |
-| Cache Storage | `sori-audio-store` | app.js (bouton « Mode avion ») | Les 1293 MP3 téléchargés pour le hors-ligne total. **Le SW ne doit JAMAIS le purger** (exclusion explicite dans `activate` — ne la retire pas). |
+| Cache Storage | `sori-audio-store` | app.js (bouton « Mode avion ») | Les ~2154 MP3 (tout le deck) téléchargés pour le hors-ligne total. **Le SW ne doit JAMAIS le purger** (exclusion explicite dans `activate` — ne la retire pas). |
 
 ---
 
@@ -557,7 +588,7 @@ ne l'édite pas dans un éditeur, passe par Python :
 - [ ] 3. Lis la sortie : `MP3 valides: X / X attendus` et `OK — tous les audios sont presents.`
       En cas d'échecs réseau, le script fait 3 tentatives ; s'il sort en erreur avec des
       MANQUANTS, relance-le simplement (il reprend où il en était).
-- [ ] 4. Contrôle la taille totale imprimée : ~14 Ko par item, ~17 Mo pour 1293 items. Si la
+- [ ] 4. Contrôle la taille totale imprimée : ~13 Ko par item, ~28 Mo pour ~2154 items. Si la
       taille totale saute anormalement (> +20 % pour quelques items), demande avant de pousser.
 - [ ] 5. Test local : onglet Voyage, tape 🔊 sur une NOUVELLE phrase — voix neurale féminine,
       pas le TTS du PC/téléphone.
@@ -924,6 +955,72 @@ UTILISATEUR, pas une release.
       `TARGET_RETENTION` ne suffisent pas : rollback + post-mortem sur l'export. Le système
       legacy reste intact en dessous, par construction.
 
+### R17 — Ajouter (ou retirer) un module UI
+
+**Principe.** Tout écran/exercice autonome est un MODULE CONTRACTUEL (§2.3). L'ajout suit
+TOUJOURS le même pattern en 6 points — c'est ainsi que `numbers.js` (v21) a été ajouté sans
+toucher au moteur ni à l'état. **Un module ne lit/écrit JAMAIS localStorage** : l'état entre
+par `opts`, sort par des callbacks branchés dans app.js.
+
+- [ ] 1. **Le fichier** `docs/monmodule.js` : IIFE double environnement (§2.3), partie
+      `pure` testable sans DOM + `renderXxx(container, opts)`. CSS auto-injecté une fois
+      (`<style id="monmodule-styles">`), classes préfixées `.mon-*`, variables `:root`
+      uniquement (compatible 4 thèmes). Tout texte par `esc(...)`. Données absentes ⇒ neutre.
+- [ ] 2. **Le `<script>` dans `docs/index.html`** : ajoute `<script src="./monmodule.js"></script>`
+      APRÈS ses données éventuelles (`*-data.js`) et **AVANT `app.js`** (§2.2). Ne réordonne rien
+      d'autre.
+- [ ] 3. **L'intégration dans `app.js`** UNIQUEMENT, gardée par `if(window.SORI_MONMODULE){...}`,
+      dans le `render*()` de l'onglet concerné. L'état sort/rentre par callbacks : `speak` →
+      `ttsSpeak` (texte brut, pas de MP3) ou `speak(kr,id)` (item du deck) ; journalisation →
+      `logAnswer(ok, "monkind")` (un kind NEUF, additif) ; records → `ST.<champ>` via un setter.
+      L'app doit rester fonctionnelle si le module ou ses données manquent.
+- [ ] 4. **`ASSETS` dans `docs/sw.js`** : ajoute `"./monmodule.js"` à la liste (sinon pas de
+      hors-ligne pour ce fichier).
+- [ ] 5. **Bump `CACHE`** (`sori-vNN` → `sori-vNN+1`) — comme toute release qui touche `docs/`.
+- [ ] 6. **Doc** : une ligne dans la table §2.4 (API, où c'est appelé, droits/interdits), et si
+      le module introduit un champ d'état ou un kind de journal, documente-le en §3.4.
+      Optionnel mais encouragé : une page de test `docs/design/monmodule-test.html`.
+- [ ] 7. **Retirer un module** = l'inverse : retirer le `<script>`, le bloc `if(...)` d'app.js,
+      la ligne `ASSETS`, bumper `CACHE`. NE SUPPRIME PAS le fichier ni ses ids/kinds de la doc
+      d'un coup — un kind de journal déjà écrit reste dans l'historique des utilisateurs
+      (additif à vie) ; garde-le documenté comme « retiré », ne le recycle jamais.
+- [ ] 8. `node --check docs/monmodule.js` ; `node --test tests/` (37 vert) ; test local
+      (l'écran s'affiche, une réponse bonne ET une mauvaise). Release → **R7**.
+
+### R18 — Sauvegarde & restauration cloud (le canal principal de progression)
+
+**Principe.** Depuis la v11 (backup) et la v26 (restore), le repo **privé**
+`mnafati-cloud/sori-data` est le canal de progression à DOUBLE SENS. L'utilisateur n'a plus à
+manipuler de fichier : le cloud sauvegarde ET restaure tout seul. L'export/import fichier est un
+SECOURS hors-ligne (replié dans un `<details>` de Stats).
+
+- [ ] 1. **Sauvegarde (côté app)** : `cloudBackup()` pousse le payload complet (§3.5) via l'API
+      GitHub dans `exports/latest.json` (écrasé) + `exports/sori-export-AAAA-MM-JJ.json` (daté).
+      Déclenchée par le bouton ☁️ de Stats ET automatiquement en fin de session **1×/jour**
+      (`ST.lastCloud !== aujourd'hui`). Jeton `sori-gh-token`, local au téléphone, jamais exporté.
+- [ ] 2. **Restauration (côté app)** : bouton **↓ Restaurer** de Stats → `cloudRestore()` :
+      télécharge `exports/latest.json`, vérifie `app === "sori"` + `state` présent, affiche la
+      date, demande confirmation, puis `applyImportedState(data.state)` — MÊME migration douce
+      que le chargement (`Object.assign({}, DEF_SET, s.set)`, conteneurs par défaut) : une
+      sauvegarde ancienne reste valide à vie. Un vieil état sans `reports`/`profile`/`report`
+      s'aligne tout seul.
+- [ ] 3. **Secours fichier (hors-ligne)** : Export 📤 (partage `sori-export-AAAA-MM-JJ.json` vers
+      OneDrive) et Import 📥 (relit un fichier, même `applyImportedState`). À utiliser quand le
+      cloud est indisponible (pas de réseau, pas de jeton).
+- [ ] 4. **Comment MOI (Claude) je lis les données** — à chaque analyse de progression :
+      1. Récupère un token PC (Git Credential Manager, cf. R15) — **jamais** celui du téléphone.
+      2. `GET https://api.github.com/repos/mnafati-cloud/sori-data/contents/exports/latest.json`
+         (en-tête `Accept: application/vnd.github.raw` pour le brut, sinon décode `content` en
+         base64), fichier téléchargé **HORS du repo**, dans `$TEMP` — la mécanique exacte est en R15.
+      3. **LIS `state.reports` EN PREMIER** (P12) : ce sont les feedbacks 🐞 écrits par
+         l'utilisateur, avec le contexte de la carte. Ils dictent les priorités avant toute
+         analyse d'agrégats. Ils ne sont JAMAIS auto-effacés → recoupe les dates (`d`) pour ne
+         pas retraiter un feedback déjà traité.
+      4. Ensuite seulement : agrégats (`items` triés par `ko`, rétention `ok1/ko1`, shadow
+         `sn/so`, distribution `e` — R15/R16).
+      5. Hygiène données personnelles (R15) : le fichier reste dans `$TEMP`, supprimé après
+         analyse ; jamais collé en entier dans un commit ou un fichier du repo.
+
 ---
 
 ## 6. Pièges connus (vécus)
@@ -1018,6 +1115,18 @@ UTILISATEUR, pas une release.
 - **Règle** : retirer un objet du fichier de données = OK ; réutiliser son id = JAMAIS.
   Avant de créer un id : `git log -p --all -- <fichier> | grep '"mon-id"'` → aucune occurrence.
 
+### P12 — Les feedbacks 🐞 de l'utilisateur sont dans `state.reports` de la sauvegarde cloud
+- **Fait** : quand l'utilisateur écrit un rapport 🐞 (bouton opt-in), il est stocké dans
+  `ST.reports` (§3.4) et **embarqué dans chaque sauvegarde cloud** (`exports/latest.json` du
+  repo privé sori-data). L'utilisateur ne les voit plus après envoi (seul un compteur dans
+  Stats) : il COMPTE sur toi pour les lire. Ils ne sont JAMAIS auto-effacés (cap 100).
+- **Conséquence** : si tu analyses la progression sans lire `state.reports`, tu passes à côté du
+  seul canal où l'utilisateur te parle directement — avec le contexte exact (onglet, carte,
+  dernière réponse) de chaque souci.
+- **Règle** : à CHAQUE analyse d'un export cloud, **lis `state.reports` EN PREMIER** (R18 point
+  4) et traite-les en priorité avant les agrégats. Recoupe les dates (`d`) pour ne pas
+  retraiter un feedback déjà pris en compte à une analyse précédente.
+
 ---
 
 ## 7. Checklist de non-régression avant tout push
@@ -1041,9 +1150,10 @@ UTILISATEUR, pas une release.
       nouveau fichier JS/CSS de `docs/` ajouté à `ASSETS` ; l'exclusion `sori-audio-store`
       toujours en place.
 - [ ] 9. Test local fait (serveur 8123, piège P9 en tête) : une carte de Réviser (avec trivia +
-      « Continuer → »), une série d'Écoute + la carte Écoute passive, Voyage (recherche + un
-      scénario + 🔊 kit), Stats (quêtes/badges, carte Bilan, réglages, un export). Modules
-      touchés smoke-testés via leur page `docs/design/*-test.html` quand elle existe.
+      « Continuer → »), une série d'Écoute + la carte Écoute passive + l'entraîneur de nombres
+      (une série 🔢), Voyage (recherche + un scénario + 🔊 kit), Stats (quêtes/badges, carte Bilan
+      avec ses 3 profils, réglages, un export OU une sauvegarde cloud). Modules touchés
+      smoke-testés via leur page `docs/design/*-test.html` quand elle existe.
       Console navigateur sans erreur.
 - [ ] 10. `git status` relu ligne à ligne : AUCUN `*.anki2`, AUCUN `sori-export-*.json`, aucun
       fichier hors sujet. Les packs `tools/packs/*.json` nouveaux SONT à committer.
@@ -1059,7 +1169,7 @@ UTILISATEUR, pas une release.
 |---|---|
 | **SRS** | Spaced Repetition System — répétition espacée : plus on réussit un item, plus il revient tard. |
 | **Échelle de maîtrise / stage** | Position 0-5 d'un item : 0 nouveau · 1 QCM facile · 2 QCM piégeux · 3 production (QCM FR→KR ou word bank) · 4 rappel indicé · 5 rappel pur. Réussir monte d'un stage, échouer descend de deux (plancher 1). |
-| **Seed** | Le contenu de base : `window.SEED` dans `docs/data.js` (1293 items), généré depuis le snapshot Anki + table KIT + packs. Ne s'édite jamais à la main. |
+| **Seed** | Le contenu de base : `window.SEED` dans `docs/data.js` (~2154 items ; compte exact = `SEED.meta.counts`), généré depuis le snapshot Anki + table KIT + packs. Ne s'édite jamais à la main. |
 | **Delta** | L'entrée `ST.items[id]` du localStorage : ce que l'utilisateur a fait de l'item (`s,i,d,e,ok,ko`). Prime toujours sur le seed (fonction `eff()`). |
 | **Pack** | Fichier `tools/packs/*.json` de contenu durable (vagues de vocabulaire vérifiées). Fusionné à CHAQUE régénération du seed, ids stables `pack-<hash>`, dédupliqué par texte coréen. |
 | **Snapshot Anki** | `tools/snapshot.anki2` — copie figée de l'ancienne collection Anki, source historique du seed. Fossile gitignoré, uniquement sur la machine de dev. |
@@ -1076,16 +1186,18 @@ UTILISATEUR, pas une release.
 | **Boss fight** | Session sur les 20 ennemies les plus faibles. Compte pour la planification (en phase 2, les succès trop anticipés deviennent des no-ops — voulu). |
 | **Dictée** | Mode Écoute, 1 question sur 2 : on entend le mot, on choisit le HANGUL parmi des sosies. |
 | **Écoute passive** | Module `player.js` : playlist MP3 mains-libres, écran verrouillé, contrôles MediaSession (4 modes : kit, ennemies, en cours, tout le connu). Aucun enregistrement. |
-| **Mode avion** | Bouton des Réglages : télécharge les 1293 MP3 dans le cache `sori-audio-store` (jamais purgé par le SW) pour un hors-ligne total. |
+| **Mode avion** | Bouton des Réglages : télécharge tous les MP3 du deck (~2154) dans le cache `sori-audio-store` (jamais purgé par le SW) pour un hors-ligne total. |
 | **Trivia / EXTRA** | Encart d'aide après une réponse (exemple, 활용 conjugaison, 💡 note) : `window.EXTRA`, curé par lots via merge_extra/merge_pack. |
 | **Scénario** | Simulation dialoguée (`scenarios-data.js` + `scenarios.js`) : répliques NPC + choix commentés. Record « du premier coup » dans `ST.scen`. |
-| **Bilan de niveau** | Examen blanc TOPIK-lite (module `exam.js`) : 40 questions, 4 sections stratifiées, historique `ST.exams`. ZÉRO effet sur la planification. |
+| **Bilan de niveau** | Examen blanc TOPIK-lite (module `exam.js`) : 40 questions, 4 sections stratifiées, historique `ST.exams`. ZÉRO effet sur la planification. **3 profils** (Débutant/Standard/Avancé) + **chrono 10 min optionnel** (constate, ne bloque pas). Champs additifs `profile`/`timeSec`/`overtime` ; `buildExam` reste rétrocompatible en 2 args. |
+| **Nombres à l'oreille** | Module `numbers.js` (onglet Écoute) : prix/heures/dates/quantités générés à l'infini, TTS en texte brut (pas de MP3). Convertisseurs purs (sino/natif/…). ZÉRO effet planification ; kind de journal `nombres`. |
+| **Rapport 🐞** | Feedback utilisateur (bouton opt-in `ST.set.report`) stocké dans `ST.reports` (cap 100), embarqué dans la sauvegarde cloud pour lecture par Claude (P12, R18). Non auto-effacé. |
 | **Quêtes du jour** | 3 objectifs quotidiens déterministes (hash de la date, module `quests.js`), bonus XP à réclamer. Des planchers, jamais des plafonds. |
 | **Badges** | 13 jalons calculés à la volée (streak, mots mûrs, collection…). Jamais stockés. |
 | **XP / niveaux 급** | Points par réponse (+ bonus quêtes), paliers 9급→초단 (`XP_LEVELS`). Plancher motivant, jamais bloquant. |
 | **Événement** | Carte temporaire de l'écran Stats (countdown/message/challenge), pure donnée dans `events-data.js`. Recette R10 / MAINTENANCE-EVENTS.md. |
 | **Thème** | Habillage graphique (`themes.css`/`themes.js`) : seoul (défaut) · nuit · hanji · dansaekhwa. Clé localStorage `sori-theme`. |
-| **Cloud backup** | Export quotidien automatique vers le repo privé `sori-data` via l'API GitHub, jeton `sori-gh-token` local au téléphone. Lecture : R15. |
+| **Cloud backup / restore** | Sauvegarde quotidienne automatique + bouton ☁️ vers le repo privé `sori-data` (API GitHub, jeton `sori-gh-token` local au téléphone) ; restauration par le bouton ↓ (`cloudRestore` télécharge `latest.json`, migration douce). Canal principal de progression (R18). Lecture par Claude : R15/R18. |
 | **Due / itv** | `due` = date de prochaine révision (`AAAA-MM-JJ`) ; `itv` = intervalle en jours qui a produit cette date. |
 | **Migration douce** | Au chargement ET à l'import : `Object.assign({}, DEF_SET, s.set)` + défauts pour les conteneurs manquants. Un vieil état/export reste valide à vie ; les champs inconnus sont préservés. |
 | **Service worker (SW)** | `docs/sw.js` — hors-ligne + mises à jour. **Network-first** ; `CACHE` à bump à chaque release ; n'intercepte pas le cross-origin ; ne purge jamais `sori-audio-store`. |
@@ -1094,4 +1206,4 @@ UTILISATEUR, pas une release.
 | **edge-tts** | Bibliothèque Python appelant la synthèse neurale Microsoft Edge — produit les MP3 (`ko-KR-SunHiNeural`, rate −15 %). |
 | **Streak** | Jours consécutifs avec au moins une réponse (🔥). Aujourd'hui pas encore joué ne casse pas la série. |
 | **Saisie hangul (typing)** | Module `typing.js` : au stage 5 (mots), taper la réponse à l'IME coréen au lieu de l'auto-évaluation. Opt-in `ST.set.typing`, 50 % du temps. Juge syllabique tolérant (NFC, Levenshtein ≤ 1, espacement), l'utilisateur tranche les fautes de frappe IME. Kind `type`. |
-| **Pages de test (`docs/design/`)** | Pages HTML autonomes par module (events-test, quests-test, exam-test, search-test, player-test, theme-test, typing-test) : vraies données + vrai moteur + checks automatiques. À enrichir à chaque évolution du module concerné. |
+| **Pages de test (`docs/design/`)** | Pages HTML autonomes par module (events-test, quests-test, exam-test, search-test, player-test, theme-test, typing-test, numbers-test) : vraies données + vrai moteur + checks automatiques. À enrichir à chaque évolution du module concerné. |
