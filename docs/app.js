@@ -296,7 +296,7 @@ function distractors(it, n, field){
 
 /* ================= UI ================= */
 const $screen = document.getElementById("screen");
-let TAB = "review";
+let TAB = "stats";   // accueil = tableau de bord (on choisit de lancer Réviser soi-même)
 /* NAV = vrai pendant un rendu d'ARRIVÉE (changement d'onglet ou ouverture de l'app) :
    dans ce cas AUCUN son automatique. La prononciation auto ne se déclenche qu'en
    PROGRESSION (passage à la carte suivante après une réponse). */
@@ -1178,4 +1178,5 @@ function esc(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;
 wireMute();
 wireReport();
 wireSettings();
-NAV = true; render(); NAV = false;   // ouverture de l'app : pas de son auto (arrivée)
+document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x.dataset.tab===TAB));
+NAV = true; render(); NAV = false;   // ouverture de l'app sur l'onglet TAB : pas de son auto (arrivée)
