@@ -186,6 +186,7 @@ function streak(){ return ENGINE.computeStreak(ST.log, todayStr(), addDays); }
 
 /* ================= audio : MP3 natifs prioritaires, TTS en secours ================= */
 const AUDIO_IDS = new Set((typeof window!=="undefined" && window.AUDIO) || []);
+const AUDIO_EX_IDS = new Set((typeof window!=="undefined" && window.AUDIO_EX) || []);   // phrases d'exemple (<id>-ex.mp3)
 let CURAUDIO = null;
 let KOVOICE = null;
 function koVoices(){
@@ -213,6 +214,21 @@ function speak(text, id){
       if(CURAUDIO) CURAUDIO.pause();
       try{ speechSynthesis.cancel(); }catch(e){}
       CURAUDIO = new Audio("./audio/"+id+".mp3");
+      CURAUDIO.playbackRate = ST.set.rate || 0.9;
+      CURAUDIO.play().catch(()=>ttsSpeak(text));
+      return;
+    }catch(e){}
+  }
+  ttsSpeak(text);
+}
+/* prononciation de la phrase d'exemple (audio natif <id>-ex.mp3, repli TTS) */
+function speakEx(id, text){
+  if(ST.set.mute) return;
+  if(id && AUDIO_EX_IDS.has(String(id))){
+    try{
+      if(CURAUDIO) CURAUDIO.pause();
+      try{ speechSynthesis.cancel(); }catch(e){}
+      CURAUDIO = new Audio("./audio/"+id+"-ex.mp3");
       CURAUDIO.playbackRate = ST.set.rate || 0.9;
       CURAUDIO.play().catch(()=>ttsSpeak(text));
       return;
@@ -413,16 +429,51 @@ function startBoss(){
   document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x.dataset.tab==="review"));
   saveSess(); render();
 }
-/* encart d'aide (phrase d'exemple, faux ami, note hanja) — contenu dans extra.js */
+/* découpe une phrase KR en eojeol (mots séparés par des espaces).
+   DOIT correspondre exactement au découpage qui a servi à générer EXTRA[id].gl
+   (Python ex.split()) sinon l'alignement mot↔glose casse. */
+function exTokens(ex){ return String(ex==null?"":ex).trim().split(/\s+/).filter(Boolean); }
+
+/* encart d'aide (phrase d'exemple, faux ami, note hanja) — contenu dans extra.js.
+   Deux options opt-in (Réglages) greffées sur la phrase d'exemple :
+     • ST.set.exaudio  → bouton 🔊 (audio natif de la phrase)
+     • ST.set.wordgloss→ chaque mot cliquable affiche sa traduction (EXTRA[id].gl) */
 function showTrivia(card, it){
   const x = EXTRA[it.id];
   if(!x) return false;
+  const toks = x.ex ? exTokens(x.ex) : [];
+  const glossOn = ST.set.wordgloss===true && Array.isArray(x.gl) && x.gl.length===toks.length && toks.length>0;
   const bits = [];
-  if(x.ex) bits.push(`<div class="tkr">${esc(x.ex)}</div>${x.exFr?`<div class="tfr">${esc(x.exFr)}</div>`:""}`);
+  if(x.ex){
+    const exHtml = glossOn
+      ? toks.map((w,i)=>`<span class="w" data-i="${i}">${esc(w)}</span>`).join(" ")
+      : esc(x.ex);
+    const spk = ST.set.exaudio===true ? ` <button class="exspeak" title="Écouter la phrase">🔊</button>` : "";
+    bits.push(`<div class="tkr">${exHtml}${spk}</div>${x.exFr?`<div class="tfr">${esc(x.exFr)}</div>`:""}`);
+  }
   if(x.conj) bits.push(`<div class="tconj">활용 ${esc(x.conj)}</div>`);
   if(x.note) bits.push(`<div class="tnote">💡 ${esc(x.note)}</div>`);
   if(!bits.length) return false;
-  card.appendChild(el(`<div class="trivia">${bits.join("")}</div>`));
+  const box = el(`<div class="trivia">${bits.join("")}</div>`);
+  /* 🔊 phrase */
+  const sp = box.querySelector(".exspeak");
+  if(sp) sp.onclick = ev=>{ ev.stopPropagation(); speakEx(it.id, x.ex); };
+  /* tap-mot → glose (barre insérée juste sous la phrase) */
+  if(glossOn){
+    const bar = el(`<div class="glossbar" hidden></div>`);
+    box.querySelector(".tkr").after(bar);
+    box.querySelectorAll(".w").forEach(w=>{
+      w.onclick = ev=>{
+        ev.stopPropagation();
+        const i = +w.dataset.i;
+        box.querySelectorAll(".w.on").forEach(o=>o.classList.remove("on"));
+        w.classList.add("on");
+        bar.hidden = false;
+        bar.innerHTML = `<b>${esc(toks[i])}</b> — ${esc(x.gl[i]||"?")}`;
+      };
+    });
+  }
+  card.appendChild(box);
   return true;
 }
 function afterAnswer(it, ok, sawTrivia, kind){
@@ -886,6 +937,8 @@ function renderStats(){
       Planification adaptative <input type="checkbox" id="adap" ${ST.set.adaptive?"checked":""}></label>
     <label>Saisie au clavier coréen (niv 5) <input type="checkbox" id="typ" ${ST.set.typing?"checked":""}></label>
     <label>🐞 Bouton rapport de problème <input type="checkbox" id="rpt" ${ST.set.report?"checked":""}></label>
+    <label>🔊 Audio de la phrase d'exemple <input type="checkbox" id="exau" ${ST.set.exaudio?"checked":""}></label>
+    <label title="Dans l'encart d'exemple, taper un mot affiche sa traduction française.">👆 Traduction d'un mot au clic <input type="checkbox" id="wgl" ${ST.set.wordgloss?"checked":""}></label>
     <label>Vitesse de la voix <input type="number" id="rate" min="0.5" max="1.2" step="0.1" value="${ST.set.rate}"></label>
     ${koVoices().length>1 ? `<label>Voix coréenne <select id="voice">${
       koVoices().map(v=>`<option value="${esc(v.name)}" ${ST.set.voice===v.name?"selected":""}>${esc(v.name)}</option>`).join("")
@@ -894,8 +947,8 @@ function renderStats(){
       SORI_THEMES.list.map(th=>`<option value="${th.id}" ${SORI_THEMES.get()===th.id?"selected":""}>${esc(th.label)}</option>`).join("")
     }</select></label>` : ""}
     <div class="section-title" style="margin-top:14px">✈️ Mode avion</div>
-    <div class="row" style="margin-top:6px"><button class="btn ghost" id="dlaudio">Télécharger tout l'audio (~17 Mo)</button></div>
-    <p class="dim" id="dlstatus" style="margin-top:6px">Rend chaque prononciation disponible hors connexion (avion, métro coréen).</p>
+    <div class="row" style="margin-top:6px"><button class="btn ghost" id="dlaudio">Télécharger tout l'audio (${AUDIO_IDS.size + AUDIO_EX_IDS.size} fichiers)</button></div>
+    <p class="dim" id="dlstatus" style="margin-top:6px">Mots + phrases d'exemple, disponibles hors connexion (avion, métro coréen).</p>
     <div class="section-title" style="margin-top:14px">☁️ Sauvegarde cloud (le canal principal)</div>
     <p class="dim" style="margin-top:4px">Ta progression part toute seule dans le cloud (1×/jour) — c'est ta sauvegarde ET ce que Claude lit. Rien d'autre à faire.</p>
     <label>Jeton d'accès <input type="password" id="ghtok" placeholder="${ghToken()?"•••• configuré ••••":"github_pat_…"}" autocomplete="off"></label>
@@ -923,6 +976,8 @@ function renderStats(){
   set.querySelector("#adap").onchange= e=>{ ST.set.adaptive=e.target.checked; save(); };
   set.querySelector("#typ").onchange = e=>{ ST.set.typing=e.target.checked; save(); };
   set.querySelector("#rpt").onchange = e=>{ ST.set.report=e.target.checked; save(); wireReport(); };
+  set.querySelector("#exau").onchange= e=>{ ST.set.exaudio=e.target.checked; save(); };
+  set.querySelector("#wgl").onchange = e=>{ ST.set.wordgloss=e.target.checked; save(); };
   set.querySelector("#rate").onchange= e=>{ ST.set.rate=Math.min(1.2,Math.max(0.5,+e.target.value||0.9)); save(); };
   const vsel = set.querySelector("#voice");
   if(vsel) vsel.onchange = e=>{ ST.set.voice = e.target.value; save(); pickVoice(); ttsSpeak("안녕하세요"); };
@@ -936,21 +991,21 @@ function renderStats(){
     const btn = set.querySelector("#dlaudio"); btn.disabled = true;
     try{
       const cache = await caches.open("sori-audio-store");
-      const ids = [...AUDIO_IDS];
+      const urls = [...AUDIO_IDS].map(id=>"./audio/"+id+".mp3")
+        .concat([...AUDIO_EX_IDS].map(id=>"./audio/"+id+"-ex.mp3"));   // mots + phrases
       let done = 0, added = 0, fail = 0;
       const CONC = 6;
-      async function one(id){
-        const url = "./audio/"+id+".mp3";
+      async function one(url){
         if(!(await cache.match(url))){
           try{ await cache.add(url); added++; }catch(e){ fail++; }
         }
         done++;
-        if(done % 40 === 0 || done === ids.length)
-          st.textContent = `Téléchargement… ${done}/${ids.length}` + (fail?` (${fail} échecs)`:"");
+        if(done % 40 === 0 || done === urls.length)
+          st.textContent = `Téléchargement… ${done}/${urls.length}` + (fail?` (${fail} échecs)`:"");
       }
-      for(let i=0; i<ids.length; i+=CONC) await Promise.all(ids.slice(i, i+CONC).map(one));
-      st.textContent = fail ? `⚠️ ${done-fail}/${ids.length} audios hors-ligne (${fail} échecs — relance pour compléter).`
-                            : `✅ Tout l'audio est disponible hors connexion (${ids.length} fichiers).`;
+      for(let i=0; i<urls.length; i+=CONC) await Promise.all(urls.slice(i, i+CONC).map(one));
+      st.textContent = fail ? `⚠️ ${done-fail}/${urls.length} audios hors-ligne (${fail} échecs — relance pour compléter).`
+                            : `✅ Tout l'audio est disponible hors connexion (${urls.length} fichiers).`;
     }catch(e){ st.textContent = "❌ Échec (connexion ?) — relance pour reprendre où c'était."; }
     btn.disabled = false;
   };

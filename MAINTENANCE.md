@@ -41,8 +41,9 @@
 - **Avec quoi** : vanilla JS, zéro dépendance runtime, zéro bundler, zéro backend. Outillage :
   Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
   PowerShell 5.1 sous Windows 11.
-- **Volumes actuels (v26)** : 2154 items dans le seed (1684 mots, 470 phrases, 79 ennemies,
-  54 kit), 1774 entrées de trivia, 2154 MP3 natifs (~28 Mo), 37 tests Node, `CACHE` = `sori-v26`.
+- **Volumes actuels (v27)** : 2154 items dans le seed (1684 mots, 470 phrases, 79 ennemies,
+  54 kit), 1774 entrées de trivia dont **1628 phrases d'exemple gloses mot-à-mot (`gl`)**,
+  **2154 MP3 de mots + 1628 MP3 de phrases (`-ex.mp3`), ~61 Mo**, 37 tests Node, `CACHE` = `sori-v27`.
   Ces compteurs bougent à chaque vague de contenu : la SOURCE DE VÉRITÉ est
   `window.SEED.meta.counts` (dans `docs/data.js`) — vérifie-la plutôt que de recopier ces
   nombres à l'aveugle.
@@ -68,7 +69,7 @@
 │   GÉNÉRÉ (jamais à la main) :                                         │
 │     data.js  → window.SEED  (~2154 items) — tools/build_data.py       │
 │     extra.js → window.EXTRA (~1774 trivia)— merge_extra.py/merge_pack │
-│     audio/*.mp3 + audio/index.js → window.AUDIO — make_audio.py       │
+│     audio/*.mp3 (mots + phrases -ex) → AUDIO/AUDIO_EX — make_audio.py  │
 │   ÉDITÉ À LA MAIN (données pures, recettes dédiées) :                 │
 │     events-data.js    → window.EVENTS_DATA  (R10)                     │
 │     scenarios-data.js → window.SCENARIOS    (R13)                     │
@@ -264,7 +265,8 @@ Objet indexé par id d'item du seed (~1774 entrées à la v26) :
 
 ```json
 "1763265164777": { "ex": "오늘은 바람이 아주 시원해요.", "exFr": "Aujourd'hui, le vent est très frais.",
-                   "note": "≠ 시내 (centre-ville), 시다 (acide).", "conj": "시원해요 / 시원했어요" }
+                   "note": "≠ 시내 (centre-ville), 시다 (acide).", "conj": "시원해요 / 시원했어요",
+                   "gl": ["aujourd'hui (오늘)", "le vent (sujet)", "très", "être frais (poli, 시원하다)"] }
 ```
 
 | Champ | Règle |
@@ -274,20 +276,28 @@ Objet indexé par id d'item du seed (~1774 entrées à la v26) :
 | `exFr` | Traduction de `ex`. |
 | `note` | UNE ligne (piège, hanja, anti-confusion), ≤ 110 caractères. Affichée avec 💡. |
 | `conj` | Conjugaisons — **affichée** dans l'encart trivia (préfixe 활용) depuis la v8. |
+| `gl` | **Gloses mot-à-mot** (v27) : tableau FR aligné 1:1 avec `ex.split(espaces)`. Rempli par `merge_gloss.py` (recette R19). Alimente la traduction d'un mot au clic (réglage opt-in `wordgloss`). **Invariant CRITIQUE : `gl.length === ex.trim().split(/\s+/).length`** — app.js zippe mot↔glose par index ; sinon la fonctionnalité se désactive silencieusement pour cette entrée. |
 
 Règle éditoriale : une entrée existante qui a déjà un `ex` n'est **jamais écrasée** (contenu
-déjà vérifié) ; seul `conj` peut y être ajouté.
+déjà vérifié) ; seuls `conj` et `gl` peuvent y être ajoutés.
 
 ### 3.3 L'index audio (`docs/audio/index.js`)
 
 ```js
-window.AUDIO = ["1763106836914", "kit-3f2a9b1c", "pack-a1b2c3d4", ...];
+window.AUDIO    = ["1763106836914", "kit-3f2a9b1c", "pack-a1b2c3d4", ...];   // MP3 de MOT   <id>.mp3
+window.AUDIO_EX = ["1763265164777", ...];                                    // MP3 de PHRASE <id>-ex.mp3
 ```
 
-La présence d'un id ⇒ `docs/audio/<id>.mp3` existe et fait > 1 Ko. Depuis la v14-v16,
-**TOUT le deck** a son MP3 (2154/2154 à la v26, ~28 Mo, voix `ko-KR-SunHiNeural`). `app.js` en fait un
-`Set` ; `speak(texte, id)` joue le MP3 si présent, sinon TTS du téléphone. Fichier ENTIÈREMENT
-régénéré par `make_audio.py` — jamais à la main.
+Deux familles, même voix `ko-KR-SunHiNeural` :
+- **AUDIO** — un MP3 par item du deck (`<id>.mp3`). 2154/2154 à la v27. `app.js` → `AUDIO_IDS` ;
+  `speak(texte, id)` joue le MP3 si présent, sinon TTS du téléphone.
+- **AUDIO_EX** (v27) — un MP3 par phrase d'exemple (`<id>-ex.mp3`), pour les ids ayant un `ex`.
+  1628 à la v27. `app.js` → `AUDIO_EX_IDS` ; `speakEx(id, texte)` joue `<id>-ex.mp3`, sinon TTS.
+  Alimente le bouton 🔊 de l'encart trivia (réglage opt-in `exaudio`).
+
+Total audio ~61 Mo. La présence d'un id ⇒ le fichier existe et fait > 1 Ko. Fichier `index.js`
+ENTIÈREMENT régénéré par `make_audio.py` — jamais à la main. Le bouton « Mode avion » télécharge
+les DEUX familles dans le cache `sori-audio-store`.
 
 ### 3.4 L'état localStorage (clé `sori-state-v1`) — CONTRAT COMPLET
 
@@ -410,7 +420,8 @@ pour ne pas les confondre avec l'état :
 ```
 STEP = {2:1, 3:2, 4:4, 5:8}      // intervalle (jours) EN ARRIVANT à ce stage
 DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120,
-            mute:false, autoplay:true, adaptive:false, typing:false }
+            mute:false, autoplay:true, adaptive:false, typing:false, report:false,
+            exaudio:false, wordgloss:false }
 ```
 
 **La planification LEGACY (`computeAnswerLegacy`, GELÉE À VIE — ne se modifie JAMAIS)** :
@@ -578,14 +589,17 @@ ne l'édite pas dans un éditeur, passe par Python :
 
 ### R3 — Étendre l'audio natif
 
-**Principe.** `tools/make_audio.py` génère un MP3 pour **CHAQUE item du deck** (voix
-`ko-KR-SunHiNeural`, rate −15 %, via edge-tts — réseau requis), puis régénère
-`docs/audio/index.js`. Il est **relançable** : il saute les MP3 déjà présents et valides
-(> 1 Ko). Après un ajout de contenu (R1/R11), il ne génère donc QUE les nouveaux.
+**Principe.** `tools/make_audio.py` génère les MP3 (voix `ko-KR-SunHiNeural`, rate −15 %, via
+edge-tts — réseau requis), puis régénère `docs/audio/index.js` (les DEUX manifestes `AUDIO` +
+`AUDIO_EX`). Deux familles : **mots** `<id>.mp3` (tout le deck) et **phrases d'exemple**
+`<id>-ex.mp3` (chaque `EXTRA[id].ex`). Il est **relançable** : il saute les MP3 déjà présents et
+valides (> 1 Ko). Après un ajout de contenu (R1/R11), il ne génère donc QUE les nouveaux.
+Options : `--words` (mots seuls), `--ex` (phrases seules), rien = les deux.
 
 - [ ] 1. Une seule fois par machine : `pip install edge-tts`.
-- [ ] 2. `export PYTHONIOENCODING=utf-8` puis `python tools/make_audio.py`.
-- [ ] 3. Lis la sortie : `MP3 valides: X / X attendus` et `OK — tous les audios sont presents.`
+- [ ] 2. `export PYTHONIOENCODING=utf-8` puis `python tools/make_audio.py` (ou `--ex` après une
+      vague de gloses/trivia qui n'a ajouté que des phrases).
+- [ ] 3. Lis la sortie : `MP3 mots : X valides` / `MP3 phrase: Y valides` et `OK — tous les audios demandes sont presents.`
       En cas d'échecs réseau, le script fait 3 tentatives ; s'il sort en erreur avec des
       MANQUANTS, relance-le simplement (il reprend où il en était).
 - [ ] 4. Contrôle la taille totale imprimée : ~13 Ko par item, ~28 Mo pour ~2154 items. Si la
@@ -1021,6 +1035,31 @@ SECOURS hors-ligne (replié dans un `<details>` de Stats).
       5. Hygiène données personnelles (R15) : le fichier reste dans `$TEMP`, supprimé après
          analyse ; jamais collé en entier dans un commit ou un fichier du repo.
 
+### R19 — Générer/fusionner les gloses mot-à-mot (`EXTRA[id].gl`)
+
+**Principe.** Chaque phrase d'exemple (`EXTRA[id].ex`) peut porter un tableau `gl` de gloses FR,
+**une par mot** (eojeol séparé par espaces). Il alimente la « traduction d'un mot au clic »
+(réglage opt-in `wordgloss`). La contrainte vitale est l'ALIGNEMENT : `gl.length` DOIT égaler le
+nombre de mots de `ex` — app.js zippe par index. Génération par le workflow multi-agent
+`sori-gloses` (génération + relecture adversariale vs `exFr`), fusion par `tools/merge_gloss.py`.
+
+- [ ] 1. **Préparer l'entrée** : un script écrit `[{i,id,head,ex,exFr,ntok}]` par phrase, puis le
+      découpe en petits fichiers de lot `in_<b>.json` (les agents lisent par CHEMIN, pas via
+      `args` — trop volumineux). `ntok = len(ex.split())` sert de garde-fou dans le prompt.
+- [ ] 2. **Lancer le workflow `sori-gloses`** (30 lots × ~55 phrases) : stage `gen` écrit
+      `gen_<b>.json = [{id,ex,gl}]` ; stage `verif` (pipeline) relit et corrige vers `ver_<b>.json`.
+      Règle de glose : nom+particule = sens+rôle ; verbe/adjectif conjugué = sens + **forme du
+      dictionnaire** entre parenthèses ; ≤ ~40 caractères.
+- [ ] 3. **Fusionner** : `python tools/merge_gloss.py <dossier_gloss_out>`. Il préfère `ver_<b>`,
+      retombe sur `gen_<b>`, et **n'ajoute `gl` QUE si `len(gl) == len(ex.split())`** (les
+      désalignements sont comptés et ignorés, pas écrits). Garde-fou d'ids inclus (aucune clé
+      hors seed). Lis la sortie : `gloses ajoutees`, `desalignements ignores`, `lots manquants`.
+- [ ] 4. Si des lots manquent ou beaucoup de désalignements : relance juste ces lots du workflow
+      (les fichiers `in_<b>.json` sont là), re-fusionne. `merge_gloss.py` est idempotent.
+- [ ] 5. **Audio des phrases** si de nouvelles `ex` sont apparues : `python tools/make_audio.py --ex`.
+- [ ] 6. `node --test tests/` (37 vert), test local (réglage 👆 activé → taper un mot affiche sa
+      glose ; réglage 🔊 activé → le bouton lit la phrase). Bump `CACHE`. Release → **R7**.
+
 ---
 
 ## 6. Pièges connus (vécus)
@@ -1126,6 +1165,19 @@ SECOURS hors-ligne (replié dans un `<details>` de Stats).
 - **Règle** : à CHAQUE analyse d'un export cloud, **lis `state.reports` EN PREMIER** (R18 point
   4) et traite-les en priorité avant les agrégats. Recoupe les dates (`d`) pour ne pas
   retraiter un feedback déjà pris en compte à une analyse précédente.
+
+### P13 — L'alignement mot↔glose de `EXTRA[id].gl` (désactivation silencieuse)
+- **Fait** : la « traduction d'un mot au clic » (v27) zippe PAR INDEX les mots de `ex`
+  (`ex.trim().split(/\s+/)`) avec le tableau `gl`. `showTrivia` n'active la fonctionnalité pour
+  une entrée QUE si `gl.length === nombre de mots` — sinon la phrase s'affiche normale, sans
+  spans cliquables, **sans aucune erreur**.
+- **Conséquence** : régénérer une phrase `ex` (changer un mot, ajouter/retirer un espace, coller
+  une ponctuation) sans régénérer `gl` casse l'alignement → la glose disparaît en silence pour
+  cette carte. Un `gl` écrit à la main avec un décompte faux fait pareil.
+- **Règle** : `gl` se régénère TOUJOURS par la recette R19 (le workflow tokenise comme le JS, et
+  `merge_gloss.py` refuse d'écrire un `gl` désaligné). Le découpage Python `ex.split()` et le JS
+  `ex.trim().split(/\s+/)` DOIVENT rester équivalents — ne change ni l'un ni l'autre isolément.
+  Contrôle rapide : `sum(1 for v in EXTRA.values() if v.get('gl') and len(v['gl'])!=len(v['ex'].split()))` doit être 0.
 
 ---
 

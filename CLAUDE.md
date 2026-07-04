@@ -8,7 +8,7 @@ La progression vit **dans le localStorage du téléphone** (clé `sori-state-v1`
 Manuel complet (contrats de données, recettes pas-à-pas, pièges vécus) : **`MAINTENANCE.md`** — lis-le avant toute modification non triviale. Événements : **`MAINTENANCE-EVENTS.md`**. Algorithme adaptatif : **`ALGORITHM.md`**.
 
 ## RÈGLES D'OR — à ne JAMAIS violer
-1. **Ne jamais casser le schéma localStorage `sori-state-v1`.** Ne renomme jamais la clé. Ne change jamais la sémantique de `s`/`i`/`d`/`e`/`ok`/`ko`. Additif seulement : un nouveau réglage = une nouvelle clé dans `DEF_SET` (engine.js) **ET la mise à jour du test contractuel `tests/engine.test.mjs` (assert.deepEqual sur DEF_SET) dans le MÊME commit** — la migration douce de `loadState()` fait le reste. `DEF_SET` actuel = `{newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true, adaptive:false, typing:false, report:false}` (les 3 dernières clés sont des ajouts depuis v9).
+1. **Ne jamais casser le schéma localStorage `sori-state-v1`.** Ne renomme jamais la clé. Ne change jamais la sémantique de `s`/`i`/`d`/`e`/`ok`/`ko`. Additif seulement : un nouveau réglage = une nouvelle clé dans `DEF_SET` (engine.js) **ET la mise à jour du test contractuel `tests/engine.test.mjs` (assert.deepEqual sur DEF_SET) dans le MÊME commit** — la migration douce de `loadState()` fait le reste. `DEF_SET` actuel = `{newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true, adaptive:false, typing:false, report:false, exaudio:false, wordgloss:false}` (les 5 dernières clés — `adaptive`, `typing`, `report`, `exaudio`, `wordgloss` — sont des ajouts opt-in ; toutes défaut `false`).
 2. **Un id est ÉTERNEL — tous les ids.** Items du seed (`docs/data.js`), événements (`events-data.js`, clés de `ST.evDismiss`), quêtes et badges (`quests.js`, clés de `ST.qdone`), scénarios (`scenarios-data.js`, clés de `ST.scen`) : ne jamais changer, réutiliser ni supprimer un id existant. La progression du téléphone ne référence le contenu que par id.
 3. **Ne jamais pousser `tools/snapshot.anki2` ni `sori-export-*.json`.** Données personnelles, repo PUBLIC. Ils sont dans `.gitignore` — ne l'affaiblis jamais. Les exports lus depuis le cloud `sori-data` (recette R15) ne doivent JAMAIS finir dans un repo.
 4. **`node --test tests/` doit être 100 % vert avant chaque push** (37 tests minimum : 20 engine + 17 adaptive). En plus : `node --check` sur chaque JS de `docs/` modifié (la CI le fait sur tous). Un test rouge = tu ne pousses pas, point.
@@ -28,8 +28,10 @@ Couche 1b MODULES autonomes    themes.js · events.js · search.js · exam.js ·
 Couche 2  docs/app.js          UI + exercices + audio + import/export + cloud backup/restore +
                                son (WebAudio) + annulation + rapports 🐞 —
                                SEUL fichier qui lit/écrit localStorage "sori-state-v1"
-Couche 3  contenu généré       data.js (SEED ~2154 items) · extra.js (EXTRA, trivia) ·
-                               audio/*.mp3 + audio/index.js (~2154 MP3) · + données éditées :
+Couche 3  contenu généré       data.js (SEED ~2154 items) · extra.js (EXTRA : trivia ex/exFr/
+                               conj/note + gloses mot-à-mot `gl`) · audio/*.mp3 (mot `<id>.mp3`
+                               + phrase `<id>-ex.mp3`) + audio/index.js (AUDIO + AUDIO_EX) ·
+                               + données éditées :
                                events-data.js (EVENTS_DATA) · scenarios-data.js (SCENARIOS)
 Couche 4  état                 localStorage téléphone : "sori-state-v1" (progression),
                                "sori-theme" (themes.js), "sori-gh-token" (jeton cloud) —
@@ -55,8 +57,9 @@ docs/                 l'app servie telle quelle par GitHub Pages
                       son WebAudio, annulation, rapports 🐞, import/export, cloud backup+restore)
   engine.js           moteur pur contractuel (legacy gelé + ease adaptatif)
   style.css           styles de base (variables :root)   themes.css + themes.js  4 thèmes
-  data.js             SEED généré (~2154 items ; voir SEED.meta.counts)  extra.js  EXTRA (~1774 trivia)
-  audio/              ~2154 MP3 natifs (~28 Mo) + index.js généré
+  data.js             SEED généré (~2154 items ; voir SEED.meta.counts)  extra.js  EXTRA (~1774 trivia,
+                      dont ~1628 phrases d'exemple avec gloses mot-à-mot `gl`)
+  audio/              MP3 natifs mots `<id>.mp3` (2154) + phrases `<id>-ex.mp3` (1628) ~61 Mo + index.js
   events-data.js + events.js       événements (countdown/message/challenge)
   search.js           dictionnaire FR⇄KR + choseong      exam.js  bilan TOPIK-lite (3 profils + chrono)
   quests.js           quêtes du jour + badges            player.js  écoute passive MediaSession
@@ -70,7 +73,8 @@ docs/                 l'app servie telle quelle par GitHub Pages
 tools/                scripts de build Python :
   build_data.py       seed depuis snapshot.anki2 + KIT + packs ; garde-fou anti-perte d'ids INTÉGRÉ
   merge_pack.py       intègre une vague de contenu (pack + regen + trivia) — recette R11
-  make_audio.py       MP3 edge-tts pour TOUT le deck, relançable
+  make_audio.py       MP3 edge-tts, relançable : mots (`<id>.mp3`) + phrases (`<id>-ex.mp3`, `--ex`)
+  merge_gloss.py      fusionne les gloses mot-à-mot du workflow 'sori-gloses' dans extra.js (recette R19)
   merge_extra.py      fusionne un lot de trivia          make_icons.py  icônes (chemins OK)
   packs/              packs de contenu durables (*.json, ids pack-hash, fusionnés à chaque regen)
   packs-staged/       RÉSERVE : packs prêts mais non activés (actuellement vidée — voir README)
@@ -79,7 +83,7 @@ tools/snapshot.anki2  collection Anki figée, GITIGNORÉE — n'existe que sur c
 tests/                engine.test.mjs (20, verrouille le legacy) + adaptive.test.mjs (17, ease)
 .github/workflows/ci.yml   CI : node --test + node --check sur tous les JS de l'app
 ALGORITHM.md          spec complète de l'ease adaptatif (constantes, phases, critères §7)
-MAINTENANCE.md        LE manuel : contrats de données, recettes R1-R18, pièges P1-P12, checklist
+MAINTENANCE.md        LE manuel : contrats de données, recettes R1-R19, pièges P1-P12, checklist
 MAINTENANCE-EVENTS.md recette R10 complète (gérer les événements)
 PROPOSITIONS.md       backlog historique d'évolutions
 ```
@@ -102,8 +106,12 @@ python tools/build_data.py
 # Intégrer une VAGUE DE CONTENU (workflow -> pack + seed + trivia) — recette R11
 python tools/merge_pack.py chemin/vers/workflow_output.json pack-AAAA-MM-nom
 
-# Générer les MP3 manquants (TOUT le deck) — pip install edge-tts, réseau requis, relançable
-python tools/make_audio.py
+# Générer les MP3 manquants — pip install edge-tts, réseau requis, relançable
+python tools/make_audio.py            # mots + phrases d'exemple
+python tools/make_audio.py --ex       # phrases d'exemple seules (<id>-ex.mp3)
+
+# Fusionner les gloses mot-à-mot (sortie du workflow 'sori-gloses') dans extra.js — recette R19
+python tools/merge_gloss.py <dossier_gloss_out>
 
 # Fusionner un lot de trivia seul dans extra.js
 python tools/merge_extra.py chemin/vers/lot.json

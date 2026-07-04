@@ -89,6 +89,18 @@ h2{margin:0 0 6px; font-size:1.05rem}
 .trivia .tfr{color:var(--dim); margin-top:2px}
 .trivia .tnote{color:var(--warn); margin-top:6px}
 .trivia .tconj{color:var(--acc); margin-top:4px; font-size:.95rem}
+/* phrase d'exemple : 🔊 audio + mots cliquables (opt-in Réglages) */
+.trivia .exspeak{background:none; border:none; cursor:pointer; font-size:1rem;
+  padding:0 4px; line-height:1; vertical-align:baseline; opacity:.75}
+.trivia .exspeak:hover{opacity:1}
+.trivia .tkr .w{cursor:pointer; border-radius:5px; padding:1px 2px;
+  transition:background .12s; -webkit-tap-highlight-color:transparent}
+.trivia .tkr .w:hover{background:var(--panel); background:color-mix(in srgb, var(--acc) 22%, transparent)}
+.trivia .tkr .w.on{background:var(--acc); color:var(--bg)}
+.trivia .glossbar{margin-top:6px; padding:6px 9px; border-radius:6px;
+  background:var(--panel); background:color-mix(in srgb, var(--acc) 14%, transparent);
+  color:var(--txt); font-size:.9rem; font-weight:400}
+.trivia .glossbar b{font-weight:700}
 
 /* construction de phrase */
 .built{min-height:52px; background:var(--panel2); border:1px dashed var(--line);
