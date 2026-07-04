@@ -1,0 +1,39 @@
+name: Deploy Pages
+
+# Déploiement GitHub Pages via GitHub Actions (remplace le build "legacy" Jekyll,
+# qui hangait/échouait sur ce repo devenu gros ~137 Mo / 7000+ fichiers).
+# Sert le dossier docs/ tel quel (le .nojekyll garde les fichiers statiques intacts).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# une seule release à la fois, sans annuler celle en cours (évite les builds "superseded")
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload docs/ artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
