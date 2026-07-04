@@ -1,0 +1,3704 @@
+[
+ {
+  "fr": "Itineraire, programme (de voyage)",
+  "kr": "일정",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Le pays (par opposition a l'etranger), national",
+  "kr": "국내",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "L'etranger, a l'international",
+  "kr": "해외",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Billet d'avion",
+  "kr": "항공권",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Embarquer (dans un avion, un train)",
+  "kr": "탑승하다",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Bagage (enregistre en soute)",
+  "kr": "수하물",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Douane",
+  "kr": "세관",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Controle de l'immigration, formalites d'entree",
+  "kr": "입국 심사",
+  "type": "phrase",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Haute saison (touristique)",
+  "kr": "성수기",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Basse saison (touristique)",
+  "kr": "비수기",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Habitant local, gens du coin",
+  "kr": "현지인",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Specialite/produit du terroir",
+  "kr": "특산품",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Loger, sejourner (nuiter)",
+  "kr": "묵다",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Hebergement, sejour (nuitee)",
+  "kr": "숙박",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Chambre (d'hotel)",
+  "kr": "객실",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Petit-dejeuner (inclus, hotel)",
+  "kr": "조식",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Voiture de location",
+  "kr": "렌터카",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Guide (personne)",
+  "kr": "가이드",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Voyage organise, circuit tout compris",
+  "kr": "패키지여행",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Voyage en autonomie (sans agence)",
+  "kr": "자유여행",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Excursion a la journee (sans nuitee)",
+  "kr": "당일치기",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Avis, commentaire (de client)",
+  "kr": "후기",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Se perdre, errer (chercher son chemin)",
+  "kr": "헤매다",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Vaut le detour, merite d'etre vu",
+  "kr": "볼만하다",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Bateau de croisiere/promenade",
+  "kr": "유람선",
+  "type": "word",
+  "theme": "b1::voyage-tourisme"
+ },
+ {
+  "fr": "Poser/mettre contre soi (essayer un vêtement)",
+  "kr": "대다",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Une tenue, une mise",
+  "kr": "차림",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "S'habiller (avec soin), se parer",
+  "kr": "차려입다",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Poche",
+  "kr": "호주머니",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Col (de vêtement)",
+  "kr": "옷깃",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Longueur (d'un vêtement)",
+  "kr": "기장",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Aller (être à la bonne taille), convenir",
+  "kr": "맞다",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Retoucher, réparer (un vêtement)",
+  "kr": "수선하다",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Paire (compteur: chaussures, chaussettes)",
+  "kr": "켤레",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Tissu, étoffe (matière)",
+  "kr": "옷감",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Marque (commerciale), label",
+  "kr": "상표",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Être à la mode, faire fureur",
+  "kr": "유행하다",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Costume, tenue (de scène, d'apparat)",
+  "kr": "의상",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Manteau, pardessus",
+  "kr": "외투",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Porter, mettre (formel: casque, ceinture...)",
+  "kr": "착용하다",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Coudre, recoudre",
+  "kr": "꿰매다",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Être épais (tissu, vêtement)",
+  "kr": "두툼하다",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Vieux vêtement, vêtement usagé",
+  "kr": "헌 옷",
+  "type": "phrase",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Être raffiné, chic, élégant",
+  "kr": "세련되다",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Article (pièce, rubrique de produit)",
+  "kr": "품목",
+  "type": "word",
+  "theme": "b1::vetements-mode"
+ },
+ {
+  "fr": "Economiser, epargner",
+  "kr": "저축하다",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Virement, transfert d'argent",
+  "kr": "송금",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Transferer de l'argent (virer)",
+  "kr": "이체하다",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Depot (d'argent sur un compte)",
+  "kr": "입금",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Retrait (d'argent)",
+  "kr": "출금",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Interet (financier)",
+  "kr": "이자",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Livret d'epargne mensuelle",
+  "kr": "적금",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Depot bancaire",
+  "kr": "예금",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Rembourser (une dette)",
+  "kr": "갚다",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Solde (d'un compte)",
+  "kr": "잔액",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Livret bancaire (carnet de compte)",
+  "kr": "통장",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Carte de credit",
+  "kr": "신용카드",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Payer, regler (transaction)",
+  "kr": "결제하다",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Argent de poche",
+  "kr": "용돈",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Frais de vie, depenses courantes",
+  "kr": "생활비",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Faire faillite",
+  "kr": "망하다",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Fortune, patrimoine, biens",
+  "kr": "재산",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "Devise, monnaie (d'un pays)",
+  "kr": "화폐",
+  "type": "word",
+  "theme": "b1::argent-banque"
+ },
+ {
+  "fr": "le loyer",
+  "kr": "집세",
+  "type": "word",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "un dépôt de garantie, une caution",
+  "kr": "보증금",
+  "type": "word",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "emménager",
+  "kr": "입주하다",
+  "type": "word",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "le jeonse (bail à dépôt)",
+  "kr": "전세",
+  "type": "word",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "un(e) propriétaire (bailleur)",
+  "kr": "집주인",
+  "type": "word",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "un(e) locataire",
+  "kr": "세입자",
+  "type": "word",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "une agence immobilière",
+  "kr": "부동산 중개소",
+  "type": "phrase",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "un studio (une seule pièce)",
+  "kr": "원룸",
+  "type": "word",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "un petit immeuble bas (villa)",
+  "kr": "빌라",
+  "type": "word",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "le bureau de gestion (de l'immeuble)",
+  "kr": "관리 사무소",
+  "type": "phrase",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "déménager (quitter le logement)",
+  "kr": "이사 나가다",
+  "type": "phrase",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "le loyer d'une chambre",
+  "kr": "방세",
+  "type": "word",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "la maison voisine, les voisins",
+  "kr": "이웃집",
+  "type": "word",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "(un logement) de deux pièces",
+  "kr": "방 두 개짜리",
+  "type": "phrase",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "ensoleillé, bien exposé",
+  "kr": "햇볕이 잘 들다",
+  "type": "phrase",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "les charges (eau, électricité, gaz)",
+  "kr": "공과금",
+  "type": "word",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "meublé (venir avec des meubles)",
+  "kr": "가구가 딸리다",
+  "type": "phrase",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "un contrat de location (bail)",
+  "kr": "임대차 계약",
+  "type": "phrase",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "étroit et exigu",
+  "kr": "비좁다",
+  "type": "word",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "un logement en sous-sol",
+  "kr": "지하방",
+  "type": "word",
+  "theme": "b1::logement-immobilier"
+ },
+ {
+  "fr": "L'écran de verrouillage",
+  "kr": "잠금 화면",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Se connecter à Internet / accéder à",
+  "kr": "접속하다",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Mettre à jour (un logiciel)",
+  "kr": "업데이트하다",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Une capture d'écran",
+  "kr": "화면 캡처",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Un lien (URL)",
+  "kr": "링크",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Un fichier joint / pièce jointe",
+  "kr": "첨부 파일",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Un identifiant (pseudo, ID)",
+  "kr": "아이디",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Un réseau social",
+  "kr": "소셜 미디어",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Publier / téléverser",
+  "kr": "업로드하다",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Un commentaire (en ligne)",
+  "kr": "댓글",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Un abonnement (à une chaîne)",
+  "kr": "구독",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Bloquer (un contact, un site)",
+  "kr": "차단하다",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Un pourriel / spam",
+  "kr": "스팸",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Une arnaque, une escroquerie",
+  "kr": "사기",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Un logiciel malveillant / malware",
+  "kr": "악성코드",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Redémarrer (un appareil)",
+  "kr": "재부팅하다",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Le mode silencieux (téléphone)",
+  "kr": "무음",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Sans fil",
+  "kr": "무선",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Un écran (moniteur, dalle)",
+  "kr": "모니터",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Un clavier",
+  "kr": "키보드",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Une souris (informatique)",
+  "kr": "마우스",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Faire des achats en ligne",
+  "kr": "온라인 쇼핑",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Un signal (réseau), la réception",
+  "kr": "신호",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "En direct (streaming), le live",
+  "kr": "실시간",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "Un moteur de recherche",
+  "kr": "검색 엔진",
+  "type": "word",
+  "theme": "b1::technologie-internet-quotidien"
+ },
+ {
+  "fr": "S'approcher, se rapprocher",
+  "kr": "다가가다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Reculer",
+  "kr": "물러나다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Traverser (une rue, un espace)",
+  "kr": "가로지르다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Retourner, revenir sur ses pas",
+  "kr": "되돌아가다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "S'éloigner, prendre ses distances",
+  "kr": "멀어지다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Se déplacer, bouger (changer de place)",
+  "kr": "이동하다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Franchir, dépasser (une limite, un obstacle)",
+  "kr": "넘어서다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "S'écarter, sortir (du chemin)",
+  "kr": "벗어나다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Se précipiter, foncer (vers)",
+  "kr": "달려가다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Accourir, arriver en courant",
+  "kr": "달려오다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Sauter, bondir (vers le haut)",
+  "kr": "뛰어오르다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Sauter par-dessus, franchir d'un bond",
+  "kr": "뛰어넘다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "S'enfuir, prendre la fuite",
+  "kr": "도망가다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Entrer, franchir le seuil (d'un lieu)",
+  "kr": "들어서다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Sortir (de chez soi), se mettre en route",
+  "kr": "나서다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Passer devant, doubler",
+  "kr": "앞지르다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Suivre, emboîter le pas (par-derrière)",
+  "kr": "뒤따르다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Reculer, faire marche arrière (véhicule)",
+  "kr": "후진하다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Errer, tourner en rond, se promener sans but",
+  "kr": "돌아다니다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Y aller à pied, marcher (vers un lieu)",
+  "kr": "걸어가다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Glisser, déraper",
+  "kr": "미끄러지다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Grimper, escalader (à quatre pattes)",
+  "kr": "기어오르다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "S'extraire, se dégager (d'un lieu encombré)",
+  "kr": "빠져나오다",
+  "type": "word",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Aller chercher (quelqu'un)",
+  "kr": "데리러 가다",
+  "type": "phrase",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Passer par, faire étape par",
+  "kr": "거쳐 가다",
+  "type": "phrase",
+  "theme": "b1::verbes-mouvement-deplacement"
+ },
+ {
+  "fr": "Etre courageux",
+  "kr": "용감하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre sage, avise",
+  "kr": "현명하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre bete, stupide",
+  "kr": "어리석다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre calme, pose",
+  "kr": "침착하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre timide, craintif",
+  "kr": "소심하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre audacieux, hardi",
+  "kr": "대담하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre gai, enjoue",
+  "kr": "명랑하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre agreable, jovial",
+  "kr": "유쾌하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre bourru, sec",
+  "kr": "무뚝뚝하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre doux, aimable",
+  "kr": "상냥하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre effronte, sans gene",
+  "kr": "뻔뻔하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre lache, poltron",
+  "kr": "비겁하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre minutieux, meticuleux",
+  "kr": "꼼꼼하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre severe, strict",
+  "kr": "엄격하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre habile, competent",
+  "kr": "능숙하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre maladroit, novice",
+  "kr": "서툴다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre robuste, solide",
+  "kr": "튼튼하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre fragile, delicat",
+  "kr": "연약하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre ringard, demode",
+  "kr": "촌스럽다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre transparent, limpide",
+  "kr": "투명하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre net, distinct",
+  "kr": "선명하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre lumineux, clair",
+  "kr": "환하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre familier, connu",
+  "kr": "낯익다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Etre epice, relevant (piquant)",
+  "kr": "매콤하다",
+  "type": "word",
+  "theme": "b1::adjectifs-description"
+ },
+ {
+  "fr": "Fonder une famille",
+  "kr": "가정을 꾸리다",
+  "type": "phrase",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Grossesse",
+  "kr": "임신",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Accoucher, mettre au monde",
+  "kr": "낳다",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Nouveau-né",
+  "kr": "신생아",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "S'occuper de, prendre soin (d'un enfant)",
+  "kr": "돌보다",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Poursuivre ses études",
+  "kr": "학업을 이어가다",
+  "type": "phrase",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Devenir indépendant, quitter le nid",
+  "kr": "독립하다",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Adolescence",
+  "kr": "청소년기",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Adolescent(e)",
+  "kr": "청소년",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "La vieillesse, le troisième âge",
+  "kr": "노년",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Célibataire (personne seule)",
+  "kr": "싱글",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Faire sa demande en mariage",
+  "kr": "청혼하다",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Les jeunes mariés",
+  "kr": "신혼부부",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Belle-mère (mère du mari)",
+  "kr": "시어머니",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Beau-père (père du mari)",
+  "kr": "시아버지",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Prendre soin de, servir (ses aînés)",
+  "kr": "모시다",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "Funérailles, obsèques",
+  "kr": "장례식",
+  "type": "word",
+  "theme": "b1::famille-etapes-de-vie"
+ },
+ {
+  "fr": "la Constitution",
+  "kr": "헌법",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "la démocratie",
+  "kr": "민주주의",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "l'Assemblée nationale",
+  "kr": "국회",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "un parti (politique)",
+  "kr": "정당",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "le parti au pouvoir, la majorité",
+  "kr": "여당",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "l'opposition",
+  "kr": "야당",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "un électeur",
+  "kr": "유권자",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "un candidat",
+  "kr": "후보",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "voter",
+  "kr": "투표하다",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "être élu",
+  "kr": "당선되다",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "se présenter (à une élection)",
+  "kr": "출마하다",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "une promesse électorale",
+  "kr": "공약",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "un mandat (durée)",
+  "kr": "임기",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "la destitution",
+  "kr": "탄핵",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "le tribunal, la cour",
+  "kr": "법원",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "un juge",
+  "kr": "판사",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "un procès, un jugement",
+  "kr": "재판",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "la culpabilité, coupable",
+  "kr": "유죄",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "engager des poursuites, inculper",
+  "kr": "기소하다",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "un témoin",
+  "kr": "증인",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "un procès, une action en justice",
+  "kr": "소송",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "la diplomatie",
+  "kr": "외교",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "un traité",
+  "kr": "조약",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "la souveraineté",
+  "kr": "주권",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "la corruption",
+  "kr": "부패",
+  "type": "word",
+  "theme": "b2::politique-droit"
+ },
+ {
+  "fr": "Bourse (marché boursier)",
+  "kr": "증시",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Valeur mobilière, titre financier",
+  "kr": "증권",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Cours, prix (d'une action)",
+  "kr": "주가",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Rendement, taux de profit",
+  "kr": "수익률",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Bénéfice, gain",
+  "kr": "수익",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Déficit, perte",
+  "kr": "적자",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Excédent, bénéfice net",
+  "kr": "흑자",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Fonds (de placement)",
+  "kr": "펀드",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Épargne, économies",
+  "kr": "저축",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Prêter (de l'argent), consentir un prêt",
+  "kr": "대출하다",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Rembourser (une dette)",
+  "kr": "상환하다",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Devise, monnaie",
+  "kr": "통화",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Fluctuer, varier",
+  "kr": "변동하다",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Hausse, montée (des prix)",
+  "kr": "상승",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Baisse, chute",
+  "kr": "하락",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Krach, effondrement (du marché)",
+  "kr": "폭락",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Envolée, flambée (des prix)",
+  "kr": "폭등",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Spéculation",
+  "kr": "투기",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Fonds, capitaux (disponibles)",
+  "kr": "자금",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Défaut de paiement, dépôt de bilan",
+  "kr": "부도",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Dividende",
+  "kr": "배당금",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Volume d'échanges (bourse)",
+  "kr": "거래량",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Récession, marasme économique",
+  "kr": "경기 침체",
+  "type": "phrase",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Rebond, reprise (économique)",
+  "kr": "회복세",
+  "type": "word",
+  "theme": "b2::finance-marches"
+ },
+ {
+  "fr": "Le changement climatique",
+  "kr": "기후 변화",
+  "type": "phrase",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "Le gaz à effet de serre",
+  "kr": "온실가스",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "Émettre, rejeter (des émissions)",
+  "kr": "배출하다",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "Fondre (glace, neige)",
+  "kr": "녹아내리다",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "Le glacier",
+  "kr": "빙하",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "Le niveau de la mer",
+  "kr": "해수면",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "La protection de l'environnement",
+  "kr": "환경 보호",
+  "type": "phrase",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "L'énergie renouvelable",
+  "kr": "신재생 에너지",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "Les énergies fossiles",
+  "kr": "화석 연료",
+  "type": "phrase",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "La déforestation",
+  "kr": "삼림 벌채",
+  "type": "phrase",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "L'écosystème",
+  "kr": "생태계",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "L'espèce en voie de disparition",
+  "kr": "멸종 위기종",
+  "type": "phrase",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "S'éteindre, disparaître (espèce)",
+  "kr": "멸종하다",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "Diminuer, décroître (de soi-même)",
+  "kr": "줄어들다",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "Le feu de forêt, l'incendie",
+  "kr": "산불",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "La catastrophe naturelle",
+  "kr": "자연재해",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "La pollution de l'air",
+  "kr": "대기 오염",
+  "type": "phrase",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "Se propager, s'étendre",
+  "kr": "확산되다",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "La substance polluante, le polluant",
+  "kr": "오염 물질",
+  "type": "phrase",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "Détériorer, aggraver",
+  "kr": "악화시키다",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "Épuiser, tarir (des ressources)",
+  "kr": "고갈되다",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "L'empreinte carbone",
+  "kr": "탄소 발자국",
+  "type": "phrase",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "Respectueux de l'environnement, écologique",
+  "kr": "친환경적이다",
+  "type": "word",
+  "theme": "b2::environnement-climat"
+ },
+ {
+  "fr": "Immunité (défenses)",
+  "kr": "면역력",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Prescription (ordonnance)",
+  "kr": "처방",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Antibiotique",
+  "kr": "항생제",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Effet secondaire",
+  "kr": "부작용",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Prévention",
+  "kr": "예방",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Infection",
+  "kr": "감염",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Tension artérielle",
+  "kr": "혈압",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Glycémie / taux de sucre",
+  "kr": "혈당",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Diabète",
+  "kr": "당뇨병",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Régime / diète alimentaire",
+  "kr": "식단",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Guérir complètement",
+  "kr": "완치되다",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Récidiver (réapparaître)",
+  "kr": "재발하다",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Sortir de l'hôpital",
+  "kr": "퇴원하다",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Consultation externe",
+  "kr": "외래",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Assurance maladie",
+  "kr": "건강보험",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Chronique (maladie)",
+  "kr": "만성",
+  "type": "word",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Se blesser (subir une blessure)",
+  "kr": "부상을 입다",
+  "type": "phrase",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Reprendre des forces",
+  "kr": "기력을 회복하다",
+  "type": "phrase",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Examen médical approfondi",
+  "kr": "정밀 검사",
+  "type": "phrase",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "Se remettre sur pied",
+  "kr": "자리를 털고 일어나다",
+  "type": "phrase",
+  "theme": "b2::sante-medecine"
+ },
+ {
+  "fr": "une hypothèse",
+  "kr": "가설",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "une revue académique",
+  "kr": "학술지",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "la conférence, l'exposé (ponctuel)",
+  "kr": "강연",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "un séminaire",
+  "kr": "세미나",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "citer, référencer",
+  "kr": "인용하다",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "un sujet de recherche",
+  "kr": "연구 주제",
+  "type": "phrase",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "les statistiques",
+  "kr": "통계",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "un questionnaire, une enquête",
+  "kr": "설문 조사",
+  "type": "phrase",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "un(e) boursier(ère)",
+  "kr": "장학생",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "passer (une classe), monter de niveau",
+  "kr": "진급하다",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "corriger, réviser (un texte)",
+  "kr": "수정하다",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "une note de bas de page",
+  "kr": "각주",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "une discipline, un domaine du savoir",
+  "kr": "학문",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "le texte d'un exposé (support écrit)",
+  "kr": "발표문",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "approfondir, creuser",
+  "kr": "파고들다",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "un examen par un jury, une soutenance",
+  "kr": "심사",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "la logique, le raisonnement",
+  "kr": "논리",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "vérifier, valider (empiriquement)",
+  "kr": "검증하다",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "une méthodologie",
+  "kr": "방법론",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "un étudiant en cycle supérieur (master/doctorat)",
+  "kr": "대학원생",
+  "type": "word",
+  "theme": "b2::education-recherche"
+ },
+ {
+  "fr": "un traumatisme",
+  "kr": "트라우마",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "le comportement, la conduite",
+  "kr": "행동",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "une motivation, un mobile",
+  "kr": "동기",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "réprimer, refouler (une émotion)",
+  "kr": "억누르다",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "un stéréotype, une idée reçue",
+  "kr": "고정관념",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "l'empathie, le fait de se mettre à la place",
+  "kr": "역지사지",
+  "type": "phrase",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "l'amour-propre, la fierté (ego)",
+  "kr": "자존심",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "se mettre sur la défensive",
+  "kr": "방어적이다",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "le perfectionnisme",
+  "kr": "완벽주의",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "impulsif, impétueux",
+  "kr": "충동적이다",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "le moi, l'ego (au sens psychologique)",
+  "kr": "자아",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "s'adapter, s'acclimater",
+  "kr": "적응하다",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "une réaction, une réponse",
+  "kr": "반응",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "la volonté, la détermination",
+  "kr": "의지",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "hésiter, tergiverser",
+  "kr": "주저하다",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "insensible, indifférent (aux autres)",
+  "kr": "무관심하다",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "un besoin, un désir (pulsion)",
+  "kr": "욕구",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "se contrôler, se maîtriser",
+  "kr": "자제하다",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "un complexe d'infériorité",
+  "kr": "열등감",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "avoir une grande capacité d'empathie",
+  "kr": "공감 능력이 뛰어나다",
+  "type": "phrase",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "une manie, une habitude compulsive",
+  "kr": "버릇",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "se sentir dépassé, être submergé",
+  "kr": "압도되다",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "un sentiment d'appartenance",
+  "kr": "소속감",
+  "type": "word",
+  "theme": "b2::psychologie-comportement"
+ },
+ {
+  "fr": "Instaurer, mettre en place",
+  "kr": "마련하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Réaliser, mettre en œuvre",
+  "kr": "실현하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Estimer, évaluer (une valeur)",
+  "kr": "평가하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Concevoir, imaginer, projeter",
+  "kr": "구상하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Poursuivre, viser (un but)",
+  "kr": "추구하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Provoquer, susciter",
+  "kr": "유발하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Renforcer, consolider",
+  "kr": "강화하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Atténuer, alléger, réduire",
+  "kr": "완화하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Établir, fixer, poser (des bases)",
+  "kr": "확립하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Refléter, prendre en compte",
+  "kr": "반영하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Surmonter, dépasser (une difficulté)",
+  "kr": "극복하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Prévoir, pronostiquer",
+  "kr": "전망하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Compléter, suppléer, pallier",
+  "kr": "보완하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Adopter, introduire (un système)",
+  "kr": "도입하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Envisager, prendre en considération",
+  "kr": "고려하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Assumer, prendre en charge",
+  "kr": "부담하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Atteindre, accomplir (un objectif)",
+  "kr": "달성하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Étendre, élargir, développer",
+  "kr": "확대하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Réduire, comprimer",
+  "kr": "축소하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Encourager, promouvoir, stimuler",
+  "kr": "촉진하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Mettre en relief, faire ressortir",
+  "kr": "부각시키다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Défendre, protéger, sauvegarder",
+  "kr": "수호하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Prendre conscience de, percevoir",
+  "kr": "인식하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Se conformer à, observer (une règle)",
+  "kr": "준수하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Contribuer à, apporter sa part",
+  "kr": "기여하다",
+  "type": "word",
+  "theme": "b2::verbes-abstraits-formels"
+ },
+ {
+  "fr": "Vite fait, en un clin d'œil (avaler, faire)",
+  "kr": "후딱",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Doucement, délicatement (poser, embrasser)",
+  "kr": "살포시",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Le cœur qui palpite (peur, anxiété)",
+  "kr": "조마조마하다",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Détendu, à l'aise, sans se presser",
+  "kr": "느긋하다",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "En courant, à bout de souffle (haletant)",
+  "kr": "헐레벌떡",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Trembler (de froid ou de peur)",
+  "kr": "덜덜 떨다",
+  "type": "phrase",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "En un éclair, brusquement (se tourner, filer)",
+  "kr": "휙",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Bien rangé, net, impeccable",
+  "kr": "말끔하다",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Tiède, mou, sans conviction (réaction, attitude)",
+  "kr": "미적지근하다",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Tressaillir, sursauter (surprise, peur)",
+  "kr": "움찔하다",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Sans accroc, tout seul (couler, se dérouler)",
+  "kr": "술술",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Ne pas tenir en place, être aux cent coups",
+  "kr": "안절부절못하다",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Grelotter, frissonner (froid, fièvre)",
+  "kr": "오들오들",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Avec fracas, en s'écroulant (s'effondrer, dégringoler)",
+  "kr": "와르르",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Doucement, discrètement (sourire, faire)",
+  "kr": "살며시 웃다",
+  "type": "phrase",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Le regard vide, hébété, l'esprit ailleurs",
+  "kr": "멍하다",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Peu à peu, progressivement (graduellement)",
+  "kr": "차츰",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Lisse et doux au toucher, soyeux",
+  "kr": "매끈하다",
+  "type": "word",
+  "theme": "b2::onomatopees-mimetiques"
+ },
+ {
+  "fr": "Une semaine",
+  "kr": "일주일",
+  "type": "word",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Un mois (durée)",
+  "kr": "한 달",
+  "type": "phrase",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Toute la journée",
+  "kr": "온종일",
+  "type": "word",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Ces jours-ci / récemment",
+  "kr": "요새",
+  "type": "word",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Communément, couramment",
+  "kr": "흔히",
+  "type": "word",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Encore, de nouveau",
+  "kr": "다시",
+  "type": "word",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "À l'heure, ponctuel",
+  "kr": "제시간",
+  "type": "word",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Dernièrement / il y a peu",
+  "kr": "얼마 전",
+  "type": "phrase",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "À partir de maintenant",
+  "kr": "이제부터",
+  "type": "phrase",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Depuis longtemps / longtemps",
+  "kr": "오래",
+  "type": "word",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Une fois de plus, encore une fois",
+  "kr": "한 번 더",
+  "type": "phrase",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Presque jamais (+ verbe nié)",
+  "kr": "거의 안",
+  "type": "phrase",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "De temps en temps",
+  "kr": "때때로",
+  "type": "word",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Toute l'année",
+  "kr": "일 년 내내",
+  "type": "phrase",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Ancien, d'il y a longtemps",
+  "kr": "오래되다",
+  "type": "word",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Reporter, remettre à plus tard",
+  "kr": "미루다",
+  "type": "word",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Après-demain / dans deux jours",
+  "kr": "이틀 후",
+  "type": "phrase",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Le jour même, ce jour-là",
+  "kr": "당일",
+  "type": "word",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "À l'avance, bien à l'avance",
+  "kr": "미리미리",
+  "type": "word",
+  "theme": "a2::temps-calendrier-frequence"
+ },
+ {
+  "fr": "Droite (cote)",
+  "kr": "오른쪽",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Gauche (cote)",
+  "kr": "왼쪽",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Tout droit",
+  "kr": "직진",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Direction, sens",
+  "kr": "방향",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "En face de",
+  "kr": "맞은편",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Coin (de rue)",
+  "kr": "모퉁이",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Croisement, carrefour",
+  "kr": "교차로",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Tourner a gauche",
+  "kr": "좌회전하다",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Tourner a droite",
+  "kr": "우회전하다",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Passage a niveau",
+  "kr": "건널목",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Environs, alentours",
+  "kr": "주변",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Endroit, lieu",
+  "kr": "장소",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Position, emplacement",
+  "kr": "위치",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Loin (adverbe)",
+  "kr": "멀리",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Pres, tout pres",
+  "kr": "가까이",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Etage du dessous",
+  "kr": "아래층",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Etage du dessus",
+  "kr": "위층",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Panneau, pancarte",
+  "kr": "표지판",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Direction (a suivre), vers",
+  "kr": "방면",
+  "type": "word",
+  "theme": "a2::directions-localisation"
+ },
+ {
+  "fr": "Progrès spectaculaire qui force l'admiration",
+  "kr": "괄목상대",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Chacun pour soi, sauve-qui-peut",
+  "kr": "각자도생",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Tirer une leçon du passé pour le présent",
+  "kr": "온고지신",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Endurer de dures épreuves pour un but",
+  "kr": "와신상담",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Situation obscure, on n'y voit rien",
+  "kr": "오리무중",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "S'améliorer de jour en jour",
+  "kr": "일취월장",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Un dilemme insoluble, coincé des deux côtés",
+  "kr": "진퇴양난",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Gaspiller son temps en vain, oisiveté",
+  "kr": "허송세월",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Cohérence parfaite du début à la fin",
+  "kr": "시종일관",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Réagir avec souplesse selon la situation",
+  "kr": "임기응변",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Deux forces également puissantes",
+  "kr": "막상막하",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Se contredire soi-même",
+  "kr": "자가당착",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Danger imminent, situation critique",
+  "kr": "풍전등화",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Ingratitude, oublier les bienfaits reçus",
+  "kr": "배은망덕",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Faire les choses à l'envers, priorités inversées",
+  "kr": "본말전도",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Résolution ferme et inébranlable",
+  "kr": "확고부동",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Exagérer, faire d'une aiguille une poutre",
+  "kr": "침소봉대",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Prospérité et déclin qui alternent",
+  "kr": "흥망성쇠",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Vivre en autarcie, se suffire à soi-même",
+  "kr": "자급자족",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "Renaître de ses cendres, se refaire une santé",
+  "kr": "기사회생",
+  "type": "word",
+  "theme": "c1::sajaseongeo-4-caracteres"
+ },
+ {
+  "fr": "la nostalgie, le regret nostalgique",
+  "kr": "그리움",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "le tourment, l'angoisse intérieure",
+  "kr": "고뇌",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "le remords, le regret amer",
+  "kr": "회한",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "la résonance émotionnelle, l'écho qui persiste",
+  "kr": "여운",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "le frisson, l'émotion intense",
+  "kr": "전율",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "le silence, le mutisme",
+  "kr": "침묵",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "subtil, délicat, difficile à saisir",
+  "kr": "미묘하다",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "profond, insondable (sens, pensée)",
+  "kr": "심오하다",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "obscur, ardu, hermétique",
+  "kr": "난해하다",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "sous-entendre, contenir implicitement",
+  "kr": "내포하다",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "projeter, refléter (ses émotions)",
+  "kr": "투영하다",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "l'aspiration, le désir ardent",
+  "kr": "열망",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "la résignation, le renoncement",
+  "kr": "체념",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "le sentiment d'impuissance",
+  "kr": "무력감",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "désolé, morne, sinistre (paysage, ambiance)",
+  "kr": "황량하다",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "triste, mélancolique (teinté d'amertume)",
+  "kr": "서글프다",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "lointain, vague, estompé (souvenir, horizon)",
+  "kr": "아득하다",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "faire naître, susciter (une émotion, une atmosphère)",
+  "kr": "자아내다",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "imprégner, se répandre doucement (émotion, froid)",
+  "kr": "스미다",
+  "type": "word",
+  "theme": "c1::vocabulaire-abstrait-litteraire"
+ },
+ {
+  "fr": "Avoir le feu au derriere, urgence pressante",
+  "kr": "발등에 불이 떨어지다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Nier effrontement, faire l'innocent",
+  "kr": "오리발을 내밀다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Se ruiner, se saigner aux quatre veines",
+  "kr": "등골이 휘다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Se mettre a parler, se delier la langue",
+  "kr": "말문이 트이다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Etre a bout de patience",
+  "kr": "인내심이 바닥나다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Se defiler, se derober",
+  "kr": "꽁무니를 빼다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Peiner pour rien, le fruit revient a un autre",
+  "kr": "죽 쒀서 개 준다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Etre aveugle par l'amour",
+  "kr": "눈에 콩깍지가 씌다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Se creuser la tete",
+  "kr": "머리를 쥐어짜다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Etre le portrait crache de qqn",
+  "kr": "판박이",
+  "type": "word",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Marcher sur des oeufs, etre sur le fil du rasoir",
+  "kr": "살얼음판을 걷다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Faire la sourde oreille",
+  "kr": "귓등으로 듣다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Se distinguer, se faire remarquer",
+  "kr": "두각을 나타내다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "En avoir par-dessus la tete, en avoir marre",
+  "kr": "진저리가 나다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Se donner corps et ame",
+  "kr": "몸을 던지다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Etre pris la main dans le sac",
+  "kr": "덜미를 잡히다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Tourner autour du pot",
+  "kr": "변죽을 울리다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Piquer une colere noire, voir rouge",
+  "kr": "뚜껑이 열리다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Se sentir soulage (d'un poids)",
+  "kr": "체증이 내려가다",
+  "type": "phrase",
+  "theme": "c1::expressions-idiomatiques-2"
+ },
+ {
+  "fr": "Vous avez de la place pour trois personnes ?",
+  "kr": "세 명 자리 있어요?",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Je vais prendre la même chose.",
+  "kr": "저도 같은 걸로 할게요.",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Qu'est-ce que vous recommandez ?",
+  "kr": "뭐 추천해 주시겠어요?",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "C'est pour manger ici ou à emporter ?",
+  "kr": "드시고 가세요, 아니면 포장이세요?",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Est-ce qu'il y a un plat sans viande ?",
+  "kr": "고기 없는 메뉴 있어요?",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Un peu plus de banchan, s'il vous plaît.",
+  "kr": "반찬 좀 더 주세요.",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Ça fait combien en tout ?",
+  "kr": "다 해서 얼마예요?",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "C'est un peu trop cher pour moi.",
+  "kr": "저한테는 좀 비싸네요.",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Vous pouvez me faire un petit prix ?",
+  "kr": "좀 깎아 주실 수 있어요?",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Où sont les cabines d'essayage ?",
+  "kr": "탈의실이 어디예요?",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "C'est un peu grand pour moi.",
+  "kr": "저한테 좀 커요.",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Vous l'avez dans une autre couleur ?",
+  "kr": "다른 색도 있어요?",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Je vais juste regarder, merci.",
+  "kr": "그냥 구경 좀 할게요.",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Vous pouvez me faire un paquet cadeau ?",
+  "kr": "선물 포장 돼요?",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Je vais y réfléchir.",
+  "kr": "좀 더 생각해 볼게요.",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "C'est ma commande, elle est prête ?",
+  "kr": "제가 주문한 거 나왔어요?",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Attendez, je n'ai pas encore décidé.",
+  "kr": "잠깐만요, 아직 못 정했어요.",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Vous ouvrez à quelle heure ?",
+  "kr": "몇 시에 문을 열어요?",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Vous pouvez rajouter des glaçons ?",
+  "kr": "얼음 좀 더 넣어 주세요.",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Servez-le pas trop salé, svp.",
+  "kr": "너무 짜지 않게 해 주세요.",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Ce produit est en promotion ?",
+  "kr": "이거 할인하는 거예요?",
+  "type": "phrase",
+  "theme": "a2::phrases-restaurant-boutique"
+ },
+ {
+  "fr": "Qui est a l'appareil ?",
+  "kr": "누구세요?",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Vous m'entendez bien ?",
+  "kr": "잘 들리세요?",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "La communication est mauvaise (ca coupe).",
+  "kr": "전화가 잘 안 터져요.",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Le signal est faible.",
+  "kr": "신호가 약해요.",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Puis-je parler a M. Kim ?",
+  "kr": "김 선생님 좀 바꿔 주시겠어요?",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Un instant, je vous passe la personne.",
+  "kr": "잠시만요, 바꿔 드릴게요.",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Il/elle est absent(e) pour le moment.",
+  "kr": "지금 자리에 안 계세요.",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Voulez-vous laisser un message ?",
+  "kr": "메시지 남기시겠어요?",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Je le rappellerai plus tard.",
+  "kr": "이따가 다시 걸겠습니다.",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Pourriez-vous parler un peu plus fort ?",
+  "kr": "조금만 더 크게 말씀해 주시겠어요?",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Je vous entends mal.",
+  "kr": "소리가 잘 안 들려요.",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "C'est de la part de qui ?",
+  "kr": "누구시라고 전해 드릴까요?",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Je crois que vous avez fait un faux numero.",
+  "kr": "전화 잘못 거신 것 같아요.",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Je vous appelle au sujet de la reservation.",
+  "kr": "예약 때문에 전화드렸어요.",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Il y a de l'echo (ca resonne).",
+  "kr": "소리가 울려요.",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Vous pouvez parler la, maintenant ?",
+  "kr": "지금 통화 괜찮으세요?",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "J'ai un autre appel, je vous rappelle.",
+  "kr": "다른 전화가 와서 이따 다시 전화할게요.",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Ma batterie est presque vide.",
+  "kr": "배터리가 곧 꺼질 것 같아요.",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Je vous mets sur haut-parleur.",
+  "kr": "스피커폰으로 할게요.",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Rappelez-moi quand ca vous arrange.",
+  "kr": "편하실 때 다시 전화 주세요.",
+  "type": "phrase",
+  "theme": "b1::phrases-au-telephone"
+ },
+ {
+  "fr": "Je voudrais me faire prescrire un medicament.",
+  "kr": "약을 처방받고 싶은데요.",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Est-ce que ce medicament a des effets secondaires ?",
+  "kr": "이 약은 부작용이 있어요?",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Ce medicament se prend avant ou apres les repas ?",
+  "kr": "이 약은 식전에 먹어요, 식후에 먹어요?",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Auriez-vous quelque chose contre le mal de tete ?",
+  "kr": "두통에 먹는 약 있어요?",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Est-ce que je peux acheter ca sans ordonnance ?",
+  "kr": "이거 처방전 없이 살 수 있어요?",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Je pense que j'ai attrape froid.",
+  "kr": "감기에 걸린 것 같아요.",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Ca ne va pas mieux malgre le medicament.",
+  "kr": "약을 먹었는데도 낫지 않아요.",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Combien de comprimes dois-je prendre a chaque fois ?",
+  "kr": "한 번에 몇 알씩 먹어야 해요?",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "J'ai du manger quelque chose de mauvais.",
+  "kr": "뭘 잘못 먹었나 봐요.",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Je voudrais prendre rendez-vous chez le medecin.",
+  "kr": "진료 예약을 하고 싶은데요.",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Depuis combien de temps avez-vous ces symptomes ?",
+  "kr": "증상이 언제부터 있었어요?",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Est-ce contagieux ?",
+  "kr": "이거 옮는 병이에요?",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Ca me demange, il y a comme une eruption.",
+  "kr": "여기가 가렵고 뭐가 났어요.",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Il vaut mieux vous reposer quelques jours.",
+  "kr": "며칠 푹 쉬는 게 좋겠어요.",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Avez-vous des allergies medicamenteuses ?",
+  "kr": "약 알레르기 있으세요?",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Ce medicament donne-t-il envie de dormir ?",
+  "kr": "이 약 먹으면 졸려요?",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Je me sens un peu mieux qu'hier.",
+  "kr": "어제보다 좀 나아졌어요.",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Vous devriez faire une prise de sang.",
+  "kr": "피 검사를 한번 받아 보세요.",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Prenez-le trois fois par jour pendant trois jours.",
+  "kr": "하루 세 번, 삼 일 동안 드세요.",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Est-ce que l'assurance rembourse ?",
+  "kr": "이거 보험 처리 돼요?",
+  "type": "phrase",
+  "theme": "b1::phrases-sante-pharmacie"
+ },
+ {
+  "fr": "Ca te dit de venir ?",
+  "kr": "같이 갈래요?",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "On se fait un cine ce week-end ?",
+  "kr": "이번 주말에 영화 볼래요?",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Tu es libre demain soir ?",
+  "kr": "내일 저녁에 시간 있어요?",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Passe donc a la maison.",
+  "kr": "우리 집에 놀러 오세요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Ca fait longtemps, on se voit ?",
+  "kr": "오랜만에 한번 볼까요?",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "On prend un cafe un de ces jours ?",
+  "kr": "언제 커피 한잔해요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Tu veux te joindre a nous ?",
+  "kr": "같이 하실래요?",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Viens quand tu veux.",
+  "kr": "편할 때 언제든지 오세요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "N'hesite pas a venir.",
+  "kr": "부담 없이 오세요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "On pourrait se retrouver samedi ?",
+  "kr": "토요일에 만나면 어떨까요?",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Tu passes quand tu peux.",
+  "kr": "시간 될 때 들르세요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "On boit un verre apres le boulot ?",
+  "kr": "퇴근하고 한잔할까요?",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Amene qui tu veux.",
+  "kr": "친구 데려와도 돼요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Tu es des notres ce soir ?",
+  "kr": "오늘 저녁에 같이할 수 있어요?",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Ca vous dirait de diner ensemble ?",
+  "kr": "저녁 식사 같이 하실래요?",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "J'aimerais vous inviter.",
+  "kr": "제가 초대하고 싶어서요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Rejoins-nous si tu peux.",
+  "kr": "올 수 있으면 오세요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Dis-moi quand tu es dispo.",
+  "kr": "언제 시간 되는지 알려 주세요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "On se voit a l'occasion.",
+  "kr": "기회 되면 한번 봐요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Tu veux venir avec moi ?",
+  "kr": "저랑 같이 가실래요?",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Ce serait sympa si tu venais.",
+  "kr": "오면 좋을 것 같아요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Fais-moi signe quand tu es libre.",
+  "kr": "시간 되면 연락 주세요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "On remet ca bientot ?",
+  "kr": "조만간 또 봐요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Ca vous ferait plaisir de nous accompagner ?",
+  "kr": "같이 가시면 어때요?",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Reste manger avec nous.",
+  "kr": "밥 먹고 가세요.",
+  "type": "phrase",
+  "theme": "b1::phrases-social-invitation"
+ },
+ {
+  "fr": "Je prefere rester a la maison plutot que sortir.",
+  "kr": "저는 나가는 것보다 집에 있는 게 더 좋아요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Ce n'est pas trop mon truc.",
+  "kr": "별로 제 취향이 아니에요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "C'est tout a fait mon style.",
+  "kr": "딱 제 취향이에요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Si je devais choisir, je prendrais celui-ci.",
+  "kr": "굳이 고르자면 이걸 고를 거예요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Je suis plutot du genre a aimer les endroits calmes.",
+  "kr": "저는 조용한 곳을 좋아하는 편이에요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Je n'ai pas vraiment de preference.",
+  "kr": "딱히 선호하는 건 없어요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Je pense que demain serait mieux.",
+  "kr": "저는 내일이 더 나을 것 같아요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "J'aime vraiment la nourriture epicee.",
+  "kr": "저는 매운 음식을 정말 좋아해요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Ca m'est egal, comme tu veux.",
+  "kr": "저는 아무래도 괜찮으니까 편한 대로 골라요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "J'aime bien, mais sans plus.",
+  "kr": "좋긴 한데 그렇게까지 좋아하지는 않아요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Je prefere le the au cafe.",
+  "kr": "저는 커피보다 차를 더 좋아해요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Franchement, ni l'un ni l'autre ne me plait.",
+  "kr": "솔직히 둘 다 별로 마음에 안 들어요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "C'est ce que je prefere.",
+  "kr": "이게 제일 마음에 들어요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Je prefere de loin le printemps.",
+  "kr": "저는 봄을 훨씬 더 좋아해요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Je n'aime pas trop ce genre de chose.",
+  "kr": "저는 그런 건 별로 안 좋아해요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Ca me convient tout a fait.",
+  "kr": "저는 그게 제일 좋을 것 같아요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Je m'en fiche un peu, honnetement.",
+  "kr": "저는 별로 상관 안 해요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "J'ai un faible pour les desserts.",
+  "kr": "저는 디저트를 워낙 좋아해요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Je prefere qu'on decide ensemble.",
+  "kr": "저는 같이 정하는 게 더 좋아요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Ca depend de mon humeur.",
+  "kr": "그날 기분에 따라 달라요.",
+  "type": "phrase",
+  "theme": "b1::phrases-exprimer-preferences"
+ },
+ {
+  "fr": "Il y a du vrai dans ce que vous dites, mais...",
+  "kr": "일리가 있긴 한데요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Ça dépend du point de vue.",
+  "kr": "보는 관점에 따라 다르죠.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Je ne suis pas entièrement convaincu.",
+  "kr": "완전히 납득이 되지는 않아요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Ce n'est pas noir ou blanc.",
+  "kr": "딱 잘라 말하기 어려워요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Soyons réalistes.",
+  "kr": "현실적으로 생각해 봐요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "C'est plus nuancé que ça.",
+  "kr": "그렇게 단정 지을 일은 아니에요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "À en juger par...",
+  "kr": "~(으)로 미루어 보면",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Là n'est pas la question.",
+  "kr": "그게 핵심이 아니에요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Vous exagérez un peu.",
+  "kr": "좀 과장하시는 것 같아요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "En théorie oui, mais en pratique...",
+  "kr": "이론상으로는 그렇지만 실제로는요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Il faut voir les deux côtés.",
+  "kr": "양쪽 입장을 다 봐야죠.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Ce n'est qu'une hypothèse.",
+  "kr": "어디까지나 가정일 뿐이에요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "On peut voir ça autrement.",
+  "kr": "달리 볼 수도 있어요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Je nuancerais un peu.",
+  "kr": "조금 신중하게 말하고 싶은데요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Tout dépend de comment on le voit.",
+  "kr": "어떻게 받아들이느냐에 달려 있어요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Ce n'est pas forcément le cas.",
+  "kr": "꼭 그렇다고는 할 수 없어요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "En un sens, vous avez raison.",
+  "kr": "어떤 면에서는 맞는 말이에요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Prenons un peu de recul.",
+  "kr": "한발 물러서서 생각해 봐요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "C'est discutable.",
+  "kr": "그건 좀 따져 봐야 할 문제예요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "On ne peut pas vraiment généraliser.",
+  "kr": "일반화하기는 어렵죠.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "En fin de compte, c'est un choix personnel.",
+  "kr": "결국 개인의 선택이죠.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Je comprends votre point de vue, mais...",
+  "kr": "무슨 말씀인지는 알겠는데요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Il ne faut pas confondre les deux.",
+  "kr": "그 두 가지는 구분해야 해요.",
+  "type": "phrase",
+  "theme": "b2::phrases-debat-nuance"
+ },
+ {
+  "fr": "Je vous tiendrai au courant.",
+  "kr": "진행 상황을 계속 공유드리겠습니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Revenons à l'ordre du jour.",
+  "kr": "안건으로 돌아가겠습니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Pourriez-vous préciser ?",
+  "kr": "조금 더 구체적으로 말씀해 주시겠어요?",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Je me permets de vous relancer.",
+  "kr": "지난번 메일 관련해서 다시 연락드립니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Comme convenu",
+  "kr": "합의한 대로",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Sauf erreur de ma part",
+  "kr": "제가 잘못 알고 있는 게 아니라면",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Je vous laisse en juger.",
+  "kr": "판단은 맡기겠습니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Faisons le point.",
+  "kr": "현황을 한번 정리해 봅시다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Je vous recontacte dès que possible.",
+  "kr": "가능한 한 빨리 다시 연락드리겠습니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Cela vous convient-il ?",
+  "kr": "이렇게 진행해도 괜찮으실까요?",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Pour résumer brièvement",
+  "kr": "간단히 요약하자면",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Je reviens vers vous rapidement.",
+  "kr": "곧 회신드리겠습니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Si je comprends bien",
+  "kr": "제가 이해한 게 맞다면",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "N'hésitez pas à me solliciter.",
+  "kr": "필요하시면 언제든 말씀해 주세요.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Je m'en occupe.",
+  "kr": "제가 처리하겠습니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Reportons ce point.",
+  "kr": "그 안건은 다음으로 미루겠습니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Je note.",
+  "kr": "메모해 두겠습니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Cela relève de votre service.",
+  "kr": "그건 그쪽 부서 담당입니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Passons au point suivant.",
+  "kr": "다음 안건으로 넘어가겠습니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Je vous adresse ci-joint",
+  "kr": "첨부해서 보내 드립니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Restons-en là pour aujourd'hui.",
+  "kr": "오늘은 여기까지 하겠습니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Avez-vous des objections ?",
+  "kr": "이견 있으신 분 계신가요?",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Je vous prie de m'excuser pour ce contretemps.",
+  "kr": "불편을 끼쳐 드려 죄송합니다.",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "Comme évoqué tout à l'heure",
+  "kr": "아까 말씀드린 것처럼",
+  "type": "phrase",
+  "theme": "b2::phrases-travail-email-reunion"
+ },
+ {
+  "fr": "C'est un secret de Polichinelle.",
+  "kr": "공공연한 비밀이다",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Autant en emporte le vent / c'est de l'eau sous les ponts.",
+  "kr": "다 지나간 일이다",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Ne pas savoir sur quel pied danser.",
+  "kr": "갈피를 못 잡다",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Mettre de l'huile sur le feu.",
+  "kr": "불에 기름을 붓다",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Chaque medaille a son revers.",
+  "kr": "모든 일에는 양면이 있다",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Prendre du recul / ceder du terrain pour mieux avancer.",
+  "kr": "한 발 물러서다",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Prendre ses jambes a son cou / prendre la poudre d'escampette.",
+  "kr": "삼십육계 줄행랑을 치다",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Se creer des soucis inutiles / se faire du mauvais sang pour rien.",
+  "kr": "사서 걱정하다",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Le fruit ne tombe jamais loin de l'arbre / tel pere tel fils.",
+  "kr": "그 아버지에 그 아들",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Faire d'une pierre deux coups.",
+  "kr": "꿩 먹고 알 먹고",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Envenimer une situation en s'en melant / remuer le couteau dans la plaie.",
+  "kr": "긁어 부스럼을 만들다",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Avoir soi-meme trop de problemes pour aider les autres.",
+  "kr": "내 코가 석 자",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Mettre la charrue avant les boeufs.",
+  "kr": "순서가 뒤바뀌다",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Qui ne risque rien n'a rien.",
+  "kr": "호랑이 굴에 가야 호랑이를 잡는다",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "C'est l'hopital qui se moque de la charite.",
+  "kr": "똥 묻은 개가 겨 묻은 개 나무란다",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ },
+ {
+  "fr": "Attendre son heure / attendre le bon moment.",
+  "kr": "때를 기다리다",
+  "type": "phrase",
+  "theme": "c1::phrases-proverbes-dictons-2"
+ }
+]
