@@ -44,6 +44,13 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **43 tests Node**, `CACHE` = `sori-v41`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v43 (nav repensée : 3 onglets + accueil-lanceur)** : bottom-nav **Réviser · Exercices · Progrès**
+  (au lieu de Réviser/Écoute/Voyage/Stats). `render()` route review→renderReview, exercices→
+  **renderExercices** (nombres + simulations regroupés), progres→`renderStats` (défaut/accueil).
+  **Dictionnaire** sorti dans une icône **🔍 de l'en-tête** (`wireDico`/`openDico`, overlay `.modal.wide`,
+  accessible partout). **Accueil = lanceur** : `renderStats` commence par une carte « ▶ Réviser · N
+  cartes » (N = dues + nouvelles restantes) + « 🎯 Évaluer mon niveau », PUIS countdown + métriques.
+  `renderListen`/`renderTrip` conservés mais non routés (réactivables). CACHE `sori-v43`.
 - **v42 (élagage + révision illimitée)** : retour user « l'app doit être utile ». **Ajouté** : bouton
   « ➕ Apprendre 10 nouvelles cartes » sur l'écran fin-de-session (`learnMoreQueue`) — introduit des
   cartes stage 0 À LA DEMANDE avec VRAIE progression (au-delà du plafond `newPerDay`), répétable →

@@ -192,6 +192,27 @@ function wireSettings(){
   const b = document.getElementById("settings");
   if(b) b.onclick = openSettings;
 }
+/* icône 🔍 du header : ouvre le dictionnaire (search.js) en surcouche, accessible partout */
+function wireDico(){
+  const b = document.getElementById("dico");
+  if(b) b.onclick = openDico;
+}
+function openDico(){
+  if(!window.SORI_SEARCH) return;
+  const back = el(`<div class="modal-back"></div>`);
+  const box = el(`<div class="card modal wide"><h2>🔍 Dictionnaire</h2>
+    <div class="dico-body"></div>
+    <div class="row" style="margin-top:14px"><button class="btn ghost" id="dicoclose">Fermer</button></div></div>`);
+  back.appendChild(box);
+  SORI_SEARCH.renderPanel(box.querySelector(".dico-body"), {
+    items: ALL_IDS.map(eff),
+    extra: EXTRA,
+    onSpeak: (kr, id)=>speak(kr, id)
+  });
+  box.querySelector("#dicoclose").onclick = ()=>back.remove();
+  back.addEventListener("click", e=>{ if(e.target===back) back.remove(); });
+  document.body.appendChild(back);
+}
 /* petite popin d'explication (tuiles de stats cliquables — demande 🐞) */
 function openInfo(title, body){
   const back = el(`<div class="modal-back"><div class="card modal">
@@ -321,7 +342,7 @@ function distractors(it, n, field){
 
 /* ================= UI ================= */
 const $screen = document.getElementById("screen");
-let TAB = "stats";   // accueil = tableau de bord (on choisit de lancer Réviser soi-même)
+let TAB = "progres";   // accueil = Progrès (lanceur : bouton Réviser + niveau + métriques)
 /* NAV = vrai pendant un rendu d'ARRIVÉE (changement d'onglet ou ouverture de l'app) :
    dans ce cas AUCUN son automatique. La prononciation auto ne se déclenche qu'en
    PROGRESSION (passage à la carte suivante après une réponse). */
@@ -344,10 +365,29 @@ function armCooldown(){
 function render(){
   $screen.innerHTML="";
   if(TAB==="review"){ renderReview(); armCooldown(); }
-  else if(TAB==="listen"){ renderListen(); armCooldown(); }
-  else if(TAB==="trip") renderTrip();
-  else renderStats();
+  else if(TAB==="exercices") renderExercices();
+  else renderStats();   // "progres" (accueil)
   updateDayCount();
+}
+/* onglet Exercices : les entraînements annexes (nombres à l'oreille + simulations) */
+function renderExercices(){
+  if(window.SORI_NUMBERS){
+    SORI_NUMBERS.renderCard($screen, {
+      speak: (txt)=>ttsSpeak(txt),
+      onAnswer: (ok)=>logAnswer(ok, "nombres")
+    });
+  }
+  if(window.SORI_SCENARIOS && window.SCENARIOS){
+    ST.scen = ST.scen || {};
+    const scBox = el(`<div></div>`);
+    SORI_SCENARIOS.renderList(scBox, {
+      speak: (txt)=>ttsSpeak(txt),
+      onAnswer: (ok)=>logAnswer(ok, "scenario"),
+      getBest: (id)=>ST.scen[id],
+      setBest: (id, v)=>{ ST.scen[id]=v; save(); }
+    });
+    $screen.appendChild(scBox);
+  }
 }
 
 /* ---------- mode Réviser ---------- */
@@ -838,16 +878,9 @@ function renderDrill(){
 }
 
 /* ---------- Stats & réglages ---------- */
+/* accueil = Progrès : LANCEUR (action d'abord) puis métriques. */
 function renderStats(){
   const t=todayStr(), l=ST.log[t]||{ok:0,ko:0,n:0};
-  /* événements actifs (countdown départ, défis…) — données : events-data.js, recette : MAINTENANCE-EVENTS.md */
-  if(window.SORI_EVENTS){
-    ST.evDismiss = ST.evDismiss || {};        // champ additif, migration douce implicite
-    SORI_EVENTS.renderCards($screen, {
-      today: t, log: ST.log, dismissed: ST.evDismiss,
-      onDismiss: id => { ST.evDismiss[id] = true; save(); }
-    });
-  }
   const items = ALL_IDS.map(eff);
   const stages=[0,0,0,0,0,0];
   items.forEach(it=>stages[it.stage]++);
@@ -855,11 +888,35 @@ function renderStats(){
   const beaten = enemies.filter(it=>it.stage>=4).length;
   const matures = items.filter(it=>it.stage>=4).length;   // cartes solides (niv ≥ 4)
   const seen = items.filter(it=>it.stage>=1).length;       // cartes déjà abordées
-  // rétention 7 jours (mesure propre : 1res présentations comptées, fenêtre hier -> J-7)
   const r7 = ENGINE.retention7(ST.log, t);
   const ret = r7.r===null ? null : Math.round(100*r7.r);
-  // sangsues : ease au plancher + échecs répétés -> à retravailler autrement
   const leeches = items.filter(it=>ENGINE.isLeech(it));
+
+  /* ===== LANCEUR : l'action évidente en haut — Réviser + test de niveau ===== */
+  const dueN = ENGINE.selectDue(items, t).length;
+  const newLeft = Math.min(Math.max(0, (ST.set.newPerDay||0) - (ST.intro[t]||0)), stages[0]);
+  const todo = dueN + newLeft;
+  const launch = el(`<div class="card center">
+    <button class="btn" id="goreview" style="width:100%; font-size:1.1rem; padding:15px">▶ Réviser${todo>0?` · ${todo} carte${todo>1?"s":""}`:""}</button>
+    <p class="dim" style="margin-top:6px; font-size:.82rem">${todo>0?"à revoir ou à découvrir aujourd'hui":"tout est à jour — tu peux apprendre de nouvelles cartes"}</p>
+    ${window.SORI_PLACEMENT?`<button class="btn ghost" id="goplc" style="width:100%; margin-top:10px">🎯 Évaluer mon niveau${ST.placement?` — dernier : ≈ ${esc(ST.placement.label)}`:""}</button>`:""}
+  </div>`);
+  launch.querySelector("#goreview").onclick = ()=>{
+    TAB="review";
+    document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x.dataset.tab==="review"));
+    NAV=true; render(); NAV=false;
+  };
+  const gp = launch.querySelector("#goplc"); if(gp) gp.onclick = openPlacement;
+  $screen.appendChild(launch);
+
+  /* événements actifs (countdown départ, défis…) — events-data.js / MAINTENANCE-EVENTS.md */
+  if(window.SORI_EVENTS){
+    ST.evDismiss = ST.evDismiss || {};
+    SORI_EVENTS.renderCards($screen, {
+      today: t, log: ST.log, dismissed: ST.evDismiss,
+      onDismiss: id => { ST.evDismiss[id] = true; save(); }
+    });
+  }
 
   /* stats réelles (v28.1) : plus d'XP/niveau — gamification retirée. Mesures de PROGRÈS.
      Chaque tuile est cliquable → popin d'explication (demande utilisateur 🐞 v36). */
@@ -884,17 +941,6 @@ function renderStats(){
     tile.onclick = ()=>openInfo(STAT_INFO[i][0], STAT_INFO[i][1]);
   });
   $screen.appendChild(grid);
-
-  /* 🎯 test de niveau adaptatif (placement.js) — action volontaire depuis l'accueil */
-  if(window.SORI_PLACEMENT){
-    const last = ST.placement;
-    const pcard = el(`<div class="card center"><h2>🎯 Évaluer mon niveau</h2>
-      <p class="dim">Test adaptatif : estime ta bande CEFR / TOPIK (reconnaissance de vocabulaire).${
-        last ? ` Dernier : <b>≈ ${esc(last.label)}</b> (${esc(last.date)}).` : ""}</p>
-      <button class="btn" id="plcgo" style="margin-top:8px">Lancer le test</button></div>`);
-    pcard.querySelector("#plcgo").onclick = openPlacement;
-    $screen.appendChild(pcard);
-  }
 
   if(leeches.length){
     $screen.appendChild(el(`<div class="card">
@@ -1220,5 +1266,6 @@ function esc(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;
 wireMute();
 wireReport();
 wireSettings();
+wireDico();
 document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x.dataset.tab===TAB));
 NAV = true; render(); NAV = false;   // ouverture de l'app sur l'onglet TAB : pas de son auto (arrivée)
