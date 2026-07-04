@@ -311,7 +311,18 @@ function applyAnswer(it, ok){
   return r;
 }
 
-/* file du jour : échues + nouvelles (kit prioritaire) */
+/* rang d'introduction des nouvelles cartes : plus petit = introduit en premier.
+   Priorité au NIVEAU (A1 avant C1 — donc les mots les plus fréquents d'abord),
+   puis, à niveau égal, les MOTS avant les PHRASES (une phrase suppose de connaître ses mots).
+   Sans niveau connu → milieu (rang B1) pour ne pas doubler les vraies bases. */
+const LVL_RANK = { A1:1, A2:2, B1:3, B2:4, C1:5 };
+function newRank(it){
+  const lv = (EXTRA[it.id]||{}).cefr;
+  const base = (LVL_RANK[lv] || 3) * 10;
+  return base + (it.type==="phrase" ? 5 : 0);
+}
+
+/* file du jour : échues + nouvelles (plus simple/fréquent d'abord) */
 function buildQueue(){
   const t = todayStr();
   const effAll = ALL_IDS.map(eff);
@@ -320,7 +331,7 @@ function buildQueue(){
   const introToday = ST.intro[t]||0;
   let slots = Math.max(0, (ST.set.newPerDay||0) - introToday);
   if(slots>0){
-    for(const id of ENGINE.pickNew(effAll, slots, ST.set.kitFirst)){
+    for(const id of ENGINE.pickNew(effAll, slots, ST.set.kitFirst, newRank)){
       setItem(id, { s:1, i:0, d:t });
       due.push(id);
       ST.intro[t] = (ST.intro[t]||0)+1;
@@ -496,7 +507,7 @@ function renderReview(){
    « je veux réviser autant que je veux » : répétable, chaque lot fait avancer le deck. */
 function learnMoreQueue(n){
   const t = todayStr();
-  const news = ENGINE.pickNew(ALL_IDS.map(eff), n, ST.set.kitFirst);   // cartes stage 0
+  const news = ENGINE.pickNew(ALL_IDS.map(eff), n, ST.set.kitFirst, newRank);   // cartes stage 0, plus simple/fréquent d'abord
   news.forEach(id=>{ setItem(id, { s:1, i:0, d:t }); ST.intro[t] = (ST.intro[t]||0)+1; });
   if(news.length) save();
   return shuffle(news.slice());

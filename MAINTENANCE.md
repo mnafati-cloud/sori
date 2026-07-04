@@ -44,6 +44,17 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **43 tests Node**, `CACHE` = `sori-v41`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v44 (introduction des nouvelles cartes par niveau — le plus simple/fréquent d'abord)** :
+  `engine.pickNew` accepte un 4e param optionnel `rankOf(item)→number` ; tri = rank croissant, puis
+  kit, puis id (rétro-compatible : sans rankOf, comportement inchangé). `app.js` fournit `newRank` :
+  `LVL_RANK{A1:1…C1:5}*10 + (type==='phrase'?5:0)` → **A1 avant C1, mots avant phrases**, niveau
+  inconnu = rang B1. Utilisé dans `buildQueue` ET `learnMoreQueue`. **Motivation (retour user)** : un
+  débutant (A2) recevait des phrases de grammaire B1 (`theme b1::grammaire`) en désordre id —
+  incompréhensibles (traduction de phrase entière sans décomposition, mots inconnus). Désormais on
+  monte du bas. Vérifié : 100 premières nouvelles = 100 % A1, 0 phrase. CACHE `sori-v44`.
+  ⚠️ Le réglage utilisateur `newPerDay` reste dans SON état (non modifiable par le code) — conseiller ~10-15.
+  ⏳ Reste à discuter : rendre les PHRASES décomposables (breakdown mot-à-mot sur la carte, pas juste la
+  traduction globale) — les items `phrase` n'ont pas de `gl` ; ce serait un chantier de contenu.
 - **v43 (nav repensée : 3 onglets + accueil-lanceur)** : bottom-nav **Réviser · Exercices · Progrès**
   (au lieu de Réviser/Écoute/Voyage/Stats). `render()` route review→renderReview, exercices→
   **renderExercices** (nombres + simulations regroupés), progres→`renderStats` (défaut/accueil).

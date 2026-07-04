@@ -144,11 +144,14 @@
     return due;
   }
 
-  /* nouvelles cartes à introduire : stage 0, kit prioritaire (option), puis id */
-  function pickNew(effItems, slots, kitFirst){
+  /* nouvelles cartes à introduire : stage 0.
+     Ordre : rankOf croissant (plus simple/fréquent d'abord — ex. A1 avant B1, mots avant phrases),
+     puis kit prioritaire (option), puis id. rankOf est optionnel (défaut 0 = comportement historique). */
+  function pickNew(effItems, slots, kitFirst, rankOf){
     if(!(slots>0)) return [];
     const news = effItems.filter(it=>it.stage===0);
-    news.sort((a,b)=> (kitFirst ? (b.kit?1:0)-(a.kit?1:0) : 0) || (a.id<b.id?-1:1));
+    const rk = typeof rankOf === "function" ? rankOf : function(){ return 0; };
+    news.sort((a,b)=> (rk(a)-rk(b)) || (kitFirst ? (b.kit?1:0)-(a.kit?1:0) : 0) || (a.id<b.id?-1:1));
     return news.slice(0, slots).map(it=>it.id);
   }
 
