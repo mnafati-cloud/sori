@@ -987,8 +987,20 @@ function openSettings(){
       </div>
       <input type="file" id="impfile" accept=".json,application/json">
     </details>
-    <div class="row" style="margin-top:16px"><button class="btn ghost" id="setclose">Fermer</button></div></div>`);
+    <p class="dim" style="margin-top:16px; text-align:center; font-size:.8rem">Sori — version <b id="appver">…</b></p>
+    <div class="row" style="margin-top:8px"><button class="btn ghost" id="setclose">Fermer</button></div></div>`);
   back.appendChild(set);
+  /* version = le cache actif du service worker (source unique : ce qui tourne VRAIMENT
+     sur l'appareil, pas ce que le repo prétend) -> l'utilisateur sait ce qu'il a. */
+  (function(){
+    const av = set.querySelector("#appver");
+    if(!av) return;
+    if(typeof caches==="undefined" || !caches.keys){ av.textContent = "—"; return; }
+    caches.keys().then(keys=>{
+      const nums = keys.map(k=>/^sori-v(\d+)$/.exec(k)).filter(Boolean).map(m=>+m[1]);
+      av.textContent = nums.length ? "v"+Math.max(...nums) : "—";
+    }).catch(()=>{ av.textContent = "—"; });
+  })();
   set.querySelector("#npd").onchange = e=>{ ST.set.newPerDay=Math.max(0,+e.target.value||0); save(); };
   set.querySelector("#smax").onchange= e=>{ ST.set.sessionMax=Math.max(20,+e.target.value||120); save(); };
   set.querySelector("#kf").onchange  = e=>{ ST.set.kitFirst=e.target.checked; save(); };
