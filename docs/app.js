@@ -192,6 +192,17 @@ function wireSettings(){
   const b = document.getElementById("settings");
   if(b) b.onclick = openSettings;
 }
+/* petite popin d'explication (tuiles de stats cliquables — demande 🐞) */
+function openInfo(title, body){
+  const back = el(`<div class="modal-back"><div class="card modal">
+    <h2>${esc(title)}</h2>
+    <p class="dim" style="margin-top:6px; line-height:1.55">${esc(body)}</p>
+    <div class="row" style="margin-top:14px"><button class="btn ghost" id="infoclose">Compris</button></div>
+  </div></div>`);
+  back.querySelector("#infoclose").onclick = ()=>back.remove();
+  back.addEventListener("click", e=>{ if(e.target===back) back.remove(); });
+  document.body.appendChild(back);
+}
 function streak(){ return ENGINE.computeStreak(ST.log, todayStr(), addDays); }
 
 /* ================= audio : MP3 natifs prioritaires, TTS en secours ================= */
@@ -856,15 +867,29 @@ function renderStats(){
   // sangsues : ease au plancher + échecs répétés -> à retravailler autrement
   const leeches = items.filter(it=>ENGINE.isLeech(it));
 
-  /* stats réelles (v28.1) : plus d'XP/niveau — gamification retirée. Mesures de PROGRÈS. */
-  $screen.appendChild(el(`<div class="statgrid">
+  /* stats réelles (v28.1) : plus d'XP/niveau — gamification retirée. Mesures de PROGRÈS.
+     Chaque tuile est cliquable → popin d'explication (demande utilisateur 🐞 v36). */
+  const grid = el(`<div class="statgrid">
     <div class="stat"><div class="n">🔥 ${streak()}</div><div class="l">jours d'affilée</div></div>
     <div class="stat"><div class="n">${l.n}</div><div class="l">réponses aujourd'hui</div></div>
     <div class="stat"><div class="n">${ret===null?"—":ret+" %"}</div><div class="l">réussite (7 j)</div></div>
     <div class="stat"><div class="n">${beaten}/${enemies.length}</div><div class="l">ennemies vaincues</div></div>
     <div class="stat"><div class="n">${matures}</div><div class="l">cartes maîtrisées</div></div>
     <div class="stat"><div class="n">${seen} / ${items.length}</div><div class="l">deck abordé</div></div>
-  </div>`));
+  </div>`);
+  const STAT_INFO = [
+    ["🔥 Jours d'affilée", "Le nombre de jours consécutifs où tu as étudié au moins une carte. Rate un jour et le compteur repart de zéro — c'est ta régularité."],
+    ["Réponses aujourd'hui", "Le nombre de cartes que tu as répondues aujourd'hui, tous exercices confondus (QCM, rappel, écoute…)."],
+    ["Réussite (7 jours)", "Ton taux de bonnes réponses sur les 7 derniers jours. On ne compte que la PREMIÈRE fois que tu vois chaque carte dans la journée — c'est le vrai test de mémoire, pas les re-essais."],
+    ["Ennemies vaincues", "Tes mots les plus ratés (les « ennemies ») que tu as réussi à ramener à un bon niveau (niv ≥ 4). Le premier chiffre = domptées, le second = total de tes ennemies."],
+    ["Cartes maîtrisées", "Les cartes arrivées HAUT dans l'échelle de maîtrise (niv ≥ 4 : rappel avec indice, rappel pur ou saisie hangul). Tu les connais solidement, pas juste en reconnaissance."],
+    ["Deck abordé", "Combien de cartes du deck tu as déjà commencé à étudier (vues au moins une fois), sur le total disponible. Le reste attend d'être introduit (30 nouvelles/jour dans tes réglages)."]
+  ];
+  grid.querySelectorAll(".stat").forEach((tile,i)=>{
+    tile.classList.add("tap");
+    tile.onclick = ()=>openInfo(STAT_INFO[i][0], STAT_INFO[i][1]);
+  });
+  $screen.appendChild(grid);
 
   if(leeches.length){
     $screen.appendChild(el(`<div class="card">

@@ -137,6 +137,11 @@ h2{margin:0 0 6px; font-size:1.05rem}
   padding:14px; text-align:center}
 .stat .n{font-size:1.8rem; font-weight:700; color:var(--acc)}
 .stat .l{font-size:.78rem; color:var(--dim); margin-top:2px}
+/* tuiles cliquables -> popin d'explication */
+.stat.tap{cursor:pointer; position:relative; transition:border-color .12s, transform .06s}
+.stat.tap::after{content:"ⓘ"; position:absolute; top:5px; right:8px; font-size:.7rem; color:var(--dim); opacity:.5}
+.stat.tap:hover{border-color:var(--acc)}
+.stat.tap:active{transform:scale(.98)}
 
 .bars{display:flex; align-items:flex-end; gap:6px; min-height:96px; margin-top:10px; padding-top:4px}
 .bars .b{flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:4px}
