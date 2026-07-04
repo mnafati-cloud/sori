@@ -44,6 +44,20 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **43 tests Node**, `CACHE` = `sori-v41`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v46 (mettre de côté les cartes trop dures — réversible)** : le fix v44 empêche d'*introduire*
+  des cartes trop dures mais celles **déjà en rotation** (phrases B1 lancées quand `newPerDay` était à
+  100) reviennent comme échues. Ajout d'un flag `sus` sur l'état d'item (`eff().sus`), exclu de
+  `buildQueue` (`.filter(it=>!it.sus)`) et sauté à l'affichage même dans une session sauvegardée
+  (`if(it.sus){QPOS++;…}`). **Bouton `🚫 Trop dur`** dans l'en-tête de révision (range + avance).
+  **Réglages → section 🎚️ Niveau** : `🧹 Ranger les cartes au-dessus de mon niveau (N)` =
+  `cleanAboveLevel()` (suspend tout item `eff().stage>=1` dont `BAND_IDX[cefr] > placement.idx`,
+  défaut A2) + `↩︎ Réintégrer` = `restoreSuspended()`. **Piège corrigé** : compter/ranger via
+  `eff(id).stage` (pas `ST.items[id].s`) — une carte peut être en rotation via le seed Anki SANS delta.
+  Le compteur du lanceur (`dueN`) exclut aussi les rangées. Vérifié (seed simulé A2) : 163 B1+ rangées,
+  file = A1/A2 seulement, réintégration = 163. CACHE `sori-v46`.
+  ⏳ Reste (proposé) : découpage mot-à-mot des phrases sur la carte.
+- **v45 (bouton Quitter sur la révision)** : `leaveReview()` (saveSess + retour accueil, session gardée) ;
+  bouton `✕ Quitter` dans `.rev-head`, exempté du cooldown (`.escbtn`). CACHE `sori-v45`.
 - **v44 (introduction des nouvelles cartes par niveau — le plus simple/fréquent d'abord)** :
   `engine.pickNew` accepte un 4e param optionnel `rankOf(item)→number` ; tri = rank croissant, puis
   kit, puis id (rétro-compatible : sans rankOf, comportement inchangé). `app.js` fournit `newRank` :

@@ -53,6 +53,7 @@ function eff(id){
     due:   d.d!==undefined ? d.d : seed.due,
     ok: d.ok||0, ko: d.ko||0,
     e: d.e,                       // ease adaptative (undefined -> seed paresseux via easeOf)
+    sus: !!d.sus,                 // "mise de côté" : exclue de toute file tant que vrai (réversible)
   };
 }
 function setItem(id, patch){
@@ -325,7 +326,7 @@ function newRank(it){
 /* file du jour : échues + nouvelles (plus simple/fréquent d'abord) */
 function buildQueue(){
   const t = todayStr();
-  const effAll = ALL_IDS.map(eff);
+  const effAll = ALL_IDS.map(eff).filter(it=>!it.sus);   // les cartes mises de côté sont exclues de tout
   const due = ENGINE.selectDue(effAll, t);
   // introduction de nouvelles
   const introToday = ST.intro[t]||0;
@@ -482,6 +483,9 @@ function renderReview(){
     return;
   }
   const it = eff(Q[QPOS]);
+  /* carte mise de côté (ex. purgée par le nettoyage groupé après coup) : on la saute,
+     même si elle traîne encore dans une session sauvegardée. Rend la "mise de côté" effective partout. */
+  if(it.sus){ QPOS++; saveSess(); return renderReview(); }
   const head = el(`<div>
     <div class="progressbar"><div style="width:${Math.round(100*QPOS/Q.length)}%"></div></div>
     <div class="rev-head">
@@ -489,10 +493,14 @@ function renderReview(){
         ${it.enemy?'<span class="pill enemy">ennemie</span>':""}
         <span class="pill stage">niv ${it.stage}</span>
         ${COMBO>=3?`<span class="pill" style="color:var(--acc)">🔥 combo ×${COMBO}</span>`:""}</div>
-      <button class="escbtn" id="quitrev" title="Quitter la révision (la progression est gardée)">✕ Quitter</button>
+      <div class="rev-actions">
+        <button class="escbtn" id="susrev" title="Trop dure : mettre cette carte de côté (réversible dans ⚙️ Réglages)">🚫 Trop dur</button>
+        <button class="escbtn" id="quitrev" title="Quitter la révision (la progression est gardée)">✕ Quitter</button>
+      </div>
     </div></div>`);
   $screen.appendChild(head);
   head.querySelector("#quitrev").onclick = leaveReview;
+  head.querySelector("#susrev").onclick = ()=>{ setItem(Q[QPOS], {sus:1}); QPOS++; saveSess(); render(); };
   EXO_T0 = Date.now();
   if(it.stage<=2) exoQcmKr2Fr(it);
   else if(it.stage===3){
@@ -916,7 +924,7 @@ function renderStats(){
   const leeches = items.filter(it=>ENGINE.isLeech(it));
 
   /* ===== LANCEUR : l'action évidente en haut — Réviser + test de niveau ===== */
-  const dueN = ENGINE.selectDue(items, t).length;
+  const dueN = ENGINE.selectDue(items.filter(it=>!it.sus), t).length;   // les cartes rangées ne comptent pas
   const newLeft = Math.min(Math.max(0, (ST.set.newPerDay||0) - (ST.intro[t]||0)), stages[0]);
   const todo = dueN + newLeft;
   const launch = el(`<div class="card center">
@@ -1043,6 +1051,39 @@ function renderStats(){
 
 }
 
+/* ===== mise de côté des cartes trop dures (réversible) =====
+   Le fix v44 empêche d'INTRODUIRE des cartes trop dures, mais celles déjà en rotation
+   (ex. phrases B1 lancées quand newPerDay était à 100) reviennent en tant qu'échues.
+   Ici on peut les ranger d'un coup (au-dessus du niveau estimé) — et tout réintégrer. */
+const BAND_IDX = { A1:0, A2:1, B1:2, B2:3, C1:4 };
+function userBandIdx(){ return (ST.placement && typeof ST.placement.idx==="number") ? ST.placement.idx : 1; } // défaut A2
+function isAboveLevel(id){
+  const bi = BAND_IDX[(EXTRA[id]||{}).cefr];
+  return bi!==undefined && bi > userBandIdx();
+}
+/* stage EFFECTIF (eff) : une carte peut être en rotation via le seed importé (Anki) SANS
+   delta d'état → il faut regarder eff(id).stage, pas seulement ST.items[id]. */
+function countAboveLevel(){   // cartes en rotation (stage≥1), pas rangées, au-dessus du niveau
+  let n=0;
+  for(const id of ALL_IDS){ const it=eff(id); if(!it.sus && it.stage>=1 && isAboveLevel(id)) n++; }
+  return n;
+}
+function cleanAboveLevel(){
+  let n=0;
+  for(const id of ALL_IDS){
+    const it=eff(id);
+    if(!it.sus && it.stage>=1 && isAboveLevel(id)){ (ST.items[id]||(ST.items[id]={})).sus=1; n++; }   // crée le delta si absent, préserve le stage seed
+  }
+  if(n) save();
+  return n;
+}
+function suspendedCount(){ let n=0; for(const id of ALL_IDS){ const d=ST.items[id]; if(d && d.sus) n++; } return n; }
+function restoreSuspended(){
+  let n=0; for(const id of ALL_IDS){ const d=ST.items[id]; if(d && d.sus){ delete d.sus; n++; } }
+  if(n) save();
+  return n;
+}
+
 /* ===== Réglages en surcouche (ouverts par la roue ⚙️ du header, depuis n'importe quel onglet) ===== */
 function openSettings(){
   const back = el(`<div class="modal-back"></div>`);
@@ -1064,6 +1105,11 @@ function openSettings(){
     ${window.SORI_THEMES ? `<label>Style graphique <select id="theme">${
       SORI_THEMES.list.map(th=>`<option value="${th.id}" ${SORI_THEMES.get()===th.id?"selected":""}>${esc(th.label)}</option>`).join("")
     }</select></label>` : ""}
+    <div class="section-title" style="margin-top:14px">🎚️ Niveau & difficulté</div>
+    <p class="dim" style="margin-top:4px">Niveau estimé : <b>${ST.placement?esc(ST.placement.label):"non évalué (défaut A2)"}</b>.
+      Les cartes déjà commencées mais plus dures que ton niveau (ex. vieilles phrases B1) peuvent être rangées — c'est <b>réversible</b>.</p>
+    <div class="row" style="margin-top:6px"><button class="btn ghost" id="cleanhard">🧹 Ranger les cartes au-dessus de mon niveau (${countAboveLevel()})</button></div>
+    ${suspendedCount() ? `<div class="row" style="margin-top:6px"><button class="btn ghost" id="restorehard">↩︎ Réintégrer les cartes rangées (${suspendedCount()})</button></div>` : ""}
     <div class="section-title" style="margin-top:14px">✈️ Mode avion</div>
     <div class="row" style="margin-top:6px"><button class="btn ghost" id="dlaudio">Télécharger tout l'audio (${AUDIO_IDS.size + AUDIO_EX_IDS.size} fichiers)</button></div>
     <p class="dim" id="dlstatus" style="margin-top:6px">Mots + phrases d'exemple, disponibles hors connexion (avion, métro coréen).</p>
@@ -1109,6 +1155,20 @@ function openSettings(){
   set.querySelector("#rpt").onchange = e=>{ ST.set.report=e.target.checked; save(); wireReport(); };
   set.querySelector("#exau").onchange= e=>{ ST.set.exaudio=e.target.checked; save(); };
   set.querySelector("#wgl").onchange = e=>{ ST.set.wordgloss=e.target.checked; save(); };
+  const ch = set.querySelector("#cleanhard");
+  if(ch) ch.onclick = ()=>{
+    const n = cleanAboveLevel();
+    Q=null; ST.sess=null; save();          // file reconstruite proprement, sans les cartes rangées
+    back.remove(); openSettings();          // rafraîchit les compteurs
+    alert(n ? `${n} carte(s) rangée(s) — elles ne reviendront plus (réversible ici même).` : "Aucune carte au-dessus de ton niveau à ranger.");
+  };
+  const rh = set.querySelector("#restorehard");
+  if(rh) rh.onclick = ()=>{
+    const n = restoreSuspended();
+    Q=null; ST.sess=null; save();
+    back.remove(); openSettings();
+    alert(n ? `${n} carte(s) réintégrée(s) dans les révisions.` : "Aucune carte rangée.");
+  };
   set.querySelector("#rate").onchange= e=>{ ST.set.rate=Math.min(1.2,Math.max(0.5,+e.target.value||0.9)); save(); };
   const vsel = set.querySelector("#voice");
   if(vsel) vsel.onchange = e=>{ ST.set.voice = e.target.value; save(); pickVoice(); ttsSpeak("안녕하세요"); };
