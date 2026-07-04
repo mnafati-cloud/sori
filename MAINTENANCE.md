@@ -44,6 +44,14 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **43 tests Node**, `CACHE` = `sori-v41`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v47 (retrait de l'UI de mise de côté — le batch a fait son job)** : user « le nettoyage a
+  fonctionné, vire les machins, et pas de "Trop dur" ». Retirés : bouton `🚫 Trop dur` de la carte,
+  section `🎚️ Niveau` des Réglages (🧹/↩︎), helpers `cleanAboveLevel/countAboveLevel/restoreSuspended/
+  suspendedCount/isAboveLevel/userBandIdx/BAND_IDX`, CSS `.rev-actions`. **CONSERVÉ (mécanisme invisible)** :
+  le flag `sus` (`eff().sus`), l'exclusion dans `buildQueue`, le saut à l'affichage (`if(it.sus){QPOS++…}`)
+  et l'exclusion du compteur lanceur (`dueN`). → les ~163 cartes rangées sur le tel du user **restent
+  rangées** ; plus aucune UI pour (dé)ranger. Pour réintégrer plus tard (quand il monte en B1) : re-coder
+  un `restoreSuspended` (`for id: delete ST.items[id].sus`) ou re-run ciblé. CACHE `sori-v47`.
 - **v46 (mettre de côté les cartes trop dures — réversible)** : le fix v44 empêche d'*introduire*
   des cartes trop dures mais celles **déjà en rotation** (phrases B1 lancées quand `newPerDay` était à
   100) reviennent comme échues. Ajout d'un flag `sus` sur l'état d'item (`eff().sus`), exclu de
