@@ -44,6 +44,14 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **43 tests Node**, `CACHE` = `sori-v41`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v42 (élagage + révision illimitée)** : retour user « l'app doit être utile ». **Ajouté** : bouton
+  « ➕ Apprendre 10 nouvelles cartes » sur l'écran fin-de-session (`learnMoreQueue`) — introduit des
+  cartes stage 0 À LA DEMANDE avec VRAIE progression (au-delà du plafond `newPerDay`), répétable →
+  « réviser autant que je veux ». **Retiré** (code/modules gardés, réactivables) : entraînement libre
+  (`bonusQueue` remplacé) ; boss fight (bouton fin-de-session) ; kit voyage / phrases isolées + drill
+  (renderTrip → dico + simulations only) ; écoute passive (player) + compréhension QCM/dictée
+  (renderListen → **nombres uniquement**). Onglets restants : Réviser · Écoute=nombres · Voyage=dico+
+  simulations · Stats. CACHE `sori-v42`.
 - **v41 (liste officielle AVANCÉ — COMPLÈTE)** : +588 mots officiels C1, deck 7409→7997. **La liste
   graduée officielle 국립국어원/TOPIK est couverte à ~100 %** (6640/6642). Distribution finale :
   A1 848 / A2 1462 / B1 2866 / B2 1957 / **C1 864**. Recette R22 terminée (débutant+interm.+avancé).

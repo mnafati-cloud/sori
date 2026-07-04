@@ -371,9 +371,7 @@ function renderReview(){
     ST.sess = null; save();
     autoCloudBackup();                       // sauvegarde cloud silencieuse (1x/jour max)
     const t=todayStr(), l=ST.log[t]||{ok:0,ko:0};
-    const more = PENDING>0 ? `<button class="btn" id="more">Continuer (${PENDING} en attente)</button>` : "";
-    const boss = bossCandidates();
-    const bossBtn = boss.length ? `<button class="btn ghost" id="boss">⚔️ Boss fight (${Math.min(boss.length,20)} ennemies)</button>` : "";
+    const more = PENDING>0 ? `<button class="btn ghost" id="more">Continuer les révisions (${PENDING} en attente)</button>` : "";
     $screen.appendChild(el(`<div class="card center">
       <div class="done-banner">${PENDING>0?"💪":"🎉"}</div>
       <h2>${PENDING>0?"Session terminée !":"Tout est à jour !"}</h2>
@@ -381,9 +379,9 @@ function renderReview(){
       <p class="dim">✅ ${ALL_IDS.map(eff).filter(it=>it.stage>=4).length} cartes maîtrisées au total.</p>
       <div class="row" style="margin-top:12px">
         ${more}
-        <button class="btn ghost" id="bonus">Entraînement libre (10)</button>
+        <button class="btn" id="learnmore">➕ Apprendre 10 nouvelles cartes</button>
       </div>
-      ${bossBtn ? `<div class="row" style="margin-top:10px">${bossBtn}</div>` : ""}</div>`));
+      <p class="dim" style="margin-top:8px; font-size:.8rem">Autant de fois que tu veux — ces cartes comptent dans ta progression.</p></div>`));
     /* récap : les mots ratés de la session, à réécouter d'un tap */
     if(SESSFAIL.length){
       const rec = el(`<div class="card"><h2>📌 À retravailler (${SESSFAIL.length})</h2>
@@ -402,9 +400,11 @@ function renderReview(){
     }
     const m=document.getElementById("more");
     if(m) m.onclick = ()=>{ Q=null; render(); };
-    document.getElementById("bonus").onclick = ()=>{ Q = bonusQueue(); QPOS=0; BONUS=true; render(); };
-    const bb=document.getElementById("boss");
-    if(bb) bb.onclick = startBoss;
+    document.getElementById("learnmore").onclick = ()=>{
+      const q = learnMoreQueue(10);
+      if(!q.length){ alert("Bravo — tu as déjà commencé toutes les cartes du deck !"); return; }
+      Q = q; QPOS = 0; BONUS = false; render();
+    };
     /* 🎯 quêtes du jour en mode compact (fin de session) — masqué v28 (SHOW_QUESTS) */
     if(SHOW_QUESTS && window.SORI_QUESTS){
       const qd = (ST.qdone && ST.qdone.d===t) ? ST.qdone : (ST.qdone = {d:t, ids:{}});
@@ -451,9 +451,15 @@ function renderReview(){
     else exoRecall(it, it.stage===4);
   }
 }
-function bonusQueue(){
-  const pool = ALL_IDS.map(eff).filter(it=>it.stage>=2);
-  shuffle(pool); return pool.slice(0,10).map(it=>it.id);
+/* apprendre plus de nouvelles cartes À LA DEMANDE (au-delà du plafond quotidien),
+   avec VRAIE progression (ça compte dans la planification). Répond au besoin
+   « je veux réviser autant que je veux » : répétable, chaque lot fait avancer le deck. */
+function learnMoreQueue(n){
+  const t = todayStr();
+  const news = ENGINE.pickNew(ALL_IDS.map(eff), n, ST.set.kitFirst);   // cartes stage 0
+  news.forEach(id=>{ setItem(id, { s:1, i:0, d:t }); ST.intro[t] = (ST.intro[t]||0)+1; });
+  if(news.length) save();
+  return shuffle(news.slice());
 }
 /* boss fight : affronter ses ennemies (les mots les plus ratés), les plus faibles d'abord */
 function bossCandidates(){
@@ -699,24 +705,19 @@ function exoBuild(it){
 /* ---------- mode Écoute ---------- */
 let LQ=null, LPOS=0, LSCORE=0;
 function renderListen(){
-  /* écoute passive (playlist mains-libres, écran verrouillé) — docs/player.js */
-  if(window.SORI_PLAYER){
-    SORI_PLAYER.renderCard($screen, {
-      tracks: ALL_IDS.map(eff).map(it=>({
-        id: it.id, kr: it.kr, fr: it.fr, stage: it.stage,
-        enemy: !!it.enemy, kit: !!it.kit,
-        hasAudio: AUDIO_IDS.has(String(it.id))
-      })),
-      rate: ST.set.rate || 0.9
-    });
-  }
-  /* 🔢 entraîneur de nombres (numbers.js) — nombres générés à la volée, TTS texte brut (pas de MP3) */
+  /* Écoute = UNIQUEMENT l'entraîneur de NOMBRES à l'oreille (numbers.js).
+     v42 : écoute passive (player) + compréhension QCM/dictée retirées (peu utiles).
+     Le code du QCM plus bas est conservé mais devenu inatteignable (return ci-dessous) —
+     réactivable en retirant player/QCM du masquage. */
   if(window.SORI_NUMBERS){
     SORI_NUMBERS.renderCard($screen, {
       speak: (txt)=>ttsSpeak(txt),
       onAnswer: (ok)=>logAnswer(ok, "nombres")
     });
+  } else {
+    $screen.appendChild(el(`<div class="card center"><p class="dim">Entraîneur de nombres indisponible.</p></div>`));
   }
+  return;
   if(!("speechSynthesis" in window)){
     $screen.appendChild(el(`<div class="card center"><h2>👂 Écoute</h2>
       <p class="dim">La synthèse vocale n'est pas disponible sur cet appareil.</p></div>`));
@@ -804,30 +805,9 @@ function renderTrip(){
     });
     $screen.appendChild(scBox);
   }
-  const kit = ALL_IDS.map(eff).filter(it=>it.kit);
-  const groups = {};
-  kit.forEach(it=>{
-    const g = it.theme.startsWith("voyage::") ? it.theme.split("::")[1] : "deck";
-    (groups[g]=groups[g]||[]).push(it);
-  });
-  $screen.appendChild(el(`<div class="card center"><h2>🧳 Kit de survie voyage</h2>
-    <p class="dim">${kit.length} phrases essentielles. Écoute, répète à voix haute (shadowing), puis drille.</p>
-    <button class="btn" id="drill">▶ Drill audio</button></div>`));
-  document.getElementById("drill").onclick=()=>{ DRILL=shuffle(kit.map(x=>x.id)); DPOS=0; render(); };
-  Object.keys(TRIP_LABELS).forEach(g=>{
-    if(!groups[g]) return;
-    $screen.appendChild(el(`<div class="section-title">${TRIP_LABELS[g]}</div>`));
-    const list = el(`<div class="list"></div>`);
-    groups[g].forEach(it=>{
-      const row = el(`<div class="item"><div class="txt">
-        <div class="kr">${esc(it.kr)}</div><div class="fr">${esc(it.fr)}</div></div>
-        <span class="pill stage">niv ${it.stage}</span><button class="speak">🔊</button></div>`);
-      row.querySelector(".speak").onclick=(e)=>{ e.stopPropagation(); speak(it.kr, it.id); };
-      row.onclick=()=>speak(it.kr, it.id);
-      list.appendChild(row);
-    });
-    $screen.appendChild(list);
-  });
+  /* v42 : « kit de survie » (phrases isolées + drill audio) RETIRÉ (peu utile).
+     Voyage = dictionnaire + simulations. renderDrill/DRILL/TRIP_LABELS conservés
+     mais inatteignables (DRILL jamais réactivé ici) — réactivables si besoin. */
 }
 function renderDrill(){
   if(DPOS>=DRILL.length){
