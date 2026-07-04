@@ -17,7 +17,14 @@ OUTDIR = sys.argv[1] if len(sys.argv) > 1 else (
     r"C:\Users\33785\AppData\Local\Temp\claude"
     r"\C--Users-33785-OneDrive-Documents-Unity-Projects-My-project--8-"
     r"\8b4bfa48-bf4b-41f0-aeec-bbbdee7858c9\scratchpad\gloss_out")
-NB = 30
+import glob as _glob, re as _re
+# indices de lots presents (auto-detecte, quel que soit le nombre de lots)
+_idx = set()
+for _p in _glob.glob(os.path.join(OUTDIR, "gen_*.json")) + _glob.glob(os.path.join(OUTDIR, "ver_*.json")):
+    _m = _re.search(r"_(\d+)\.json$", os.path.basename(_p))
+    if _m:
+        _idx.add(int(_m.group(1)))
+BATCHES = sorted(_idx)
 
 
 def loadjs(path):
@@ -32,7 +39,7 @@ ids = {it["id"] for it in data["items"]}
 added = mism = missing_id = 0
 mism_samples, missing_batches = [], []
 
-for b in range(NB):
+for b in BATCHES:
     path = None
     for cand in ("ver_%d.json" % b, "gen_%d.json" % b):
         p = os.path.join(OUTDIR, cand)
