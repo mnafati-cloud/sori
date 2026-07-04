@@ -43,7 +43,12 @@
   PowerShell 5.1 sous Windows 11.
 - **Volumes actuels (v27)** : 2154 items dans le seed (1684 mots, 470 phrases, 79 ennemies,
   54 kit), 1774 entrées de trivia dont **1628 phrases d'exemple gloses mot-à-mot (`gl`)**,
-  **2154 MP3 de mots + 1628 MP3 de phrases (`-ex.mp3`), ~61 Mo**, 37 tests Node, `CACHE` = `sori-v27`.
+  **2154 MP3 de mots + 1628 MP3 de phrases (`-ex.mp3`), ~61 Mo**, 37 tests Node, `CACHE` = `sori-v28`.
+- **v28 (UX)** : Réglages sortis dans une **surcouche `openSettings()`** (roue ⚙️ du header), plus dans
+  `renderStats()`. **Gamification en veille** : quêtes/badges (`SHOW_QUESTS`) et bilan de niveau
+  (`SHOW_EXAM`) gardés en code mais non rendus (drapeaux en tête d'app.js, données préservées).
+  Auto-sauvegarde cloud **à chaque fin de bloc** (throttle 5 min, `ST.lastCloudTs`). Restauration
+  protégée par une confirmation **à minuteur** (`confirmRestore`).
   Ces compteurs bougent à chaque vague de contenu : la SOURCE DE VÉRITÉ est
   `window.SEED.meta.counts` (dans `docs/data.js`) — vérifie-la plutôt que de recopier ces
   nombres à l'aveugle.
@@ -151,8 +156,8 @@ mainteneur de toucher un module sans risquer la progression :
 | `events-data.js` | `window.EVENTS_DATA = [...]` (données pures) | — | LE fichier à éditer pour gérer un événement (R10 / MAINTENANCE-EVENTS.md). Zéro logique dedans. |
 | `events.js` | `SORI_EVENTS.renderCards(container, {today, log, dismissed, onDismiss})` + `pure.activeEvents / pure.eventProgress` | Haut de `renderStats()`. Masquage persisté par app.js dans `ST.evDismiss` via `onDismiss(id)` | Zéro localStorage. 0 événement actif ⇒ ne rend RIEN. Type inconnu ignoré sans crash. |
 | `search.js` | `SORI_SEARCH.renderPanel(container, {items, extra, onSpeak})` + `pure.normFr / choseong / isChoseongQuery / buildIndex / search` | `renderTrip()` (« Mon dictionnaire ») | N'écrit AUCUN état (ni ST, ni localStorage). Audio délégué via `onSpeak(kr, id)`. Index construit une fois (contenu statique), `stage`/`theme` rafraîchis aux rendus suivants. |
-| `exam.js` | `SORI_EXAM.renderCard(container, {items, extra, speak, history, onFinish, onExit, random})` + `pure.buildExam / summarize / gradeOf / availability` | `renderStats()`. Historique = `ST.exams` (lecture seule), résultat ajouté par app.js via `onFinish(r)` (qui pose la date et `save()`) | **ZÉRO effet sur la planification** — rien ne va vers engine.js, aucun stage/itv/due ne bouge. Zéro localStorage. RNG injectable (tests). Deck étudié < 20 questions possibles ⇒ bouton remplacé par un message. **3 PROFILS** choisis sur la carte (`beginner` 🌱 A1-A2 thèmes a2:: seulement, strates 5/5/2 ; `standard` 🎯 A2-B1 tout le deck, le bilan classique ; `advanced` 🔥 B1+ stage ≥ 3, thèmes b1/b2 pondérés ×2, distracteurs `conf` sans cadeau) — le profil n'est PAS dans l'API, il vit dans le module. **Chrono 10 min optionnel** : ne bloque JAMAIS l'examen, il CONSTATE le dépassement. **Champs ADDITIFS** sur le résultat : `profile` et `timeSec`/`overtime` (une entrée `ST.exams` sans `profile` compte comme `standard`). **Rétrocompat prouvée** : `buildExam(items, rnd)` (2 args) === `buildExam(items, rnd, "standard")`, même flux RNG. |
-| `quests.js` | `SORI_QUESTS.renderCard(container, {today, log, state, onClaim, compact})` + `pure.dailyQuests / questProgress / claimable / badges` | 2 endroits : fin de session dans `renderReview()` (`compact:true`) ET `renderStats()` (complet, avec badges) | Zéro localStorage. Réclamation → `onClaim(questId, bonusXp)` : app.js pose `ST.qdone.ids[id]=true` et crédite l'XP. **Ids de quêtes et de badges ÉTERNELS** (P11). Principe : des PLANCHERS, jamais des plafonds. |
+| `exam.js` | `SORI_EXAM.renderCard(container, {items, extra, speak, history, onFinish, onExit, random})` + `pure.buildExam / summarize / gradeOf / availability` | `renderStats()`. Historique = `ST.exams` (lecture seule), résultat ajouté par app.js via `onFinish(r)` (qui pose la date et `save()`) | **ZÉRO effet sur la planification** — rien ne va vers engine.js, aucun stage/itv/due ne bouge. Zéro localStorage. RNG injectable (tests). Deck étudié < 20 questions possibles ⇒ bouton remplacé par un message. **Masqué depuis v28** (`SHOW_EXAM=false` en tête d'app.js — module chargé, `ST.exams` intact ; repasser à `true` pour réafficher). **3 PROFILS** choisis sur la carte (`beginner` 🌱 A1-A2 thèmes a2:: seulement, strates 5/5/2 ; `standard` 🎯 A2-B1 tout le deck, le bilan classique ; `advanced` 🔥 B1+ stage ≥ 3, thèmes b1/b2 pondérés ×2, distracteurs `conf` sans cadeau) — le profil n'est PAS dans l'API, il vit dans le module. **Chrono 10 min optionnel** : ne bloque JAMAIS l'examen, il CONSTATE le dépassement. **Champs ADDITIFS** sur le résultat : `profile` et `timeSec`/`overtime` (une entrée `ST.exams` sans `profile` compte comme `standard`). **Rétrocompat prouvée** : `buildExam(items, rnd)` (2 args) === `buildExam(items, rnd, "standard")`, même flux RNG. |
+| `quests.js` | `SORI_QUESTS.renderCard(container, {today, log, state, onClaim, compact})` + `pure.dailyQuests / questProgress / claimable / badges` | 2 endroits (fin de session `renderReview()` `compact:true` ET `renderStats()` complet), **tous deux gardés par `SHOW_QUESTS`** | **Masqué depuis v28** (`SHOW_QUESTS=false` en tête d'app.js — module chargé, `ST.qdone` intact ; repasser à `true` pour réafficher). Zéro localStorage. Réclamation → `onClaim(questId, bonusXp)` : app.js pose `ST.qdone.ids[id]=true` et crédite l'XP. **Ids de quêtes et de badges ÉTERNELS** (P11). Retour prévu SOUS FORME DE CÉLÉBRATION (animation/son), pas un bloc statique. |
 | `player.js` | `SORI_PLAYER.renderCard(container, {tracks, rate, audioBase})`, `.stop()`, `pure.MODES / filterTracks` | `renderListen()` (carte « Écoute passive ») | Zéro localStorage, zéro écriture ST. UN SEUL élément `Audio` réutilisé (exigence Android/MediaSession). Utilitaires recopiés volontairement (zéro couplage). |
 | `scenarios-data.js` | `window.SCENARIOS = [...]` (données pures, vérifiées par relecture native) | — | LE fichier à éditer pour un scénario (R13). Ids éternels (clés de `ST.scen`). |
 | `scenarios.js` | `SORI_SCENARIOS.renderList(container, {speak, onAnswer, getBest, setBest})` | `renderTrip()`. Records persistés par app.js dans `ST.scen[id]` via `setBest` ; journalisation via `onAnswer(ok)` → `logAnswer(ok, "scenario")` | Zéro localStorage. Ne touche pas la planification (journal seulement). |
@@ -348,8 +353,9 @@ les DEUX familles dans le cache `sori-audio-store`.
 | `exams` | historique des bilans de niveau (append-only) | Un objet `summarize()` + `date` par bilan. Ne jamais réécrire les entrées passées. Champs ADDITIFS depuis v20 : `profile` (`beginner`/`standard`/`advanced` ; absent ⇒ `standard`) et `timeSec`/`overtime` (chrono). Un vieux bilan sans ces champs reste valide. |
 | `evDismiss` | événements masqués : `{eventId: true}` | PERMANENT — c'est pour ça qu'un id d'événement ne se recycle jamais (P11). |
 | `reports` | feedbacks 🐞 de l'utilisateur (append, **cap 100**) | Apparu en v24. Chaque entrée = `{d: ISO, ctx:{tab, carte:{id,kr,stage}, pos, derniereReponse:{id,kr,ok,kind}}, txt}`. Écrit par app.js (`openReportModal`) quand `ST.set.report===true` ; le cap est appliqué par `slice(-99)` avant `push`. **Embarqué dans chaque sauvegarde cloud** → c'est le canal de feedback que Claude LIT en priorité (P12, R18). N'est JAMAIS auto-effacé — l'utilisateur ne les voit pas, seul un compteur s'affiche dans Stats. |
-| `lastExport` | date du dernier export (manuel OU cloud) | Bandeau de rappel après 7 jours. |
-| `lastCloud` | date de la dernière sauvegarde cloud réussie | L'auto-backup de fin de session ne tourne qu'une fois par jour (`lastCloud !== aujourd'hui`). |
+| `lastExport` | date du dernier export (manuel OU cloud) | Sert au secours fichier ; le bandeau de rappel de Stats se base désormais sur `lastCloud`. |
+| `lastCloud` | date de la dernière sauvegarde cloud réussie | Affichage « dernière sauvegarde » + bandeau de rappel Stats (silencieux si < 7 j). |
+| `lastCloudTs` | **v28** — timestamp ms de la dernière tentative d'auto-backup | Throttle de l'auto-sauvegarde **par bloc** : `autoCloudBackup()` ne repart que si `Date.now() - lastCloudTs > 5 min`. Champ additif racine (pas dans `set`) ; absent ⇒ traité comme 0. |
 
 **Variables de SESSION (RAM seulement — JAMAIS persistées dans `sori-state-v1`).** À connaître
 pour ne pas les confondre avec l'état :
@@ -623,8 +629,10 @@ test « DEF_SET et STEP : valeurs contractuelles » (fin de tests/engine.test.mj
       ça ne changera RIEN pour l'utilisateur actuel — ses réglages persistés priment.
       N'écris JAMAIS de code qui force une valeur par-dessus `ST.set`.
 - [ ] 3. **Interdits** : renommer une clé, en supprimer une, changer son unité ou son sens.
-- [ ] 4. Si le réglage a une UI : ajoute le contrôle dans `renderStats()` (app.js) sur le modèle
-      des existants — `<label>` + handler `onchange` qui fait `ST.set.maClé = …; save();`.
+- [ ] 4. Si le réglage a une UI : ajoute le contrôle dans **`openSettings()`** (app.js — la
+      surcouche ⚙️, plus `renderStats()` depuis v28) sur le modèle des existants — `<label>` +
+      handler `onchange` qui fait `ST.set.maClé = …; save();` (le handler doit interroger `set`,
+      l'élément de la carte, pas le document).
 - [ ] 5. `node --test tests/` → vert. Test local (Réglages fonctionne, la valeur persiste après
       rechargement). Release → **R7**.
 
@@ -1005,19 +1013,22 @@ par `opts`, sort par des callbacks branchés dans app.js.
 
 **Principe.** Depuis la v11 (backup) et la v26 (restore), le repo **privé**
 `mnafati-cloud/sori-data` est le canal de progression à DOUBLE SENS. L'utilisateur n'a plus à
-manipuler de fichier : le cloud sauvegarde ET restaure tout seul. L'export/import fichier est un
-SECOURS hors-ligne (replié dans un `<details>` de Stats).
+manipuler de fichier : le cloud sauvegarde ET restaure tout seul. Les boutons vivent dans la
+**surcouche Réglages** (`openSettings()`, ouverte par la roue ⚙️ du header — depuis v28, plus dans
+`renderStats()`). L'export/import fichier est un SECOURS hors-ligne (replié dans un `<details>`).
 
 - [ ] 1. **Sauvegarde (côté app)** : `cloudBackup()` pousse le payload complet (§3.5) via l'API
       GitHub dans `exports/latest.json` (écrasé) + `exports/sori-export-AAAA-MM-JJ.json` (daté).
-      Déclenchée par le bouton ☁️ de Stats ET automatiquement en fin de session **1×/jour**
-      (`ST.lastCloud !== aujourd'hui`). Jeton `sori-gh-token`, local au téléphone, jamais exporté.
-- [ ] 2. **Restauration (côté app)** : bouton **↓ Restaurer** de Stats → `cloudRestore()` :
-      télécharge `exports/latest.json`, vérifie `app === "sori"` + `state` présent, affiche la
-      date, demande confirmation, puis `applyImportedState(data.state)` — MÊME migration douce
-      que le chargement (`Object.assign({}, DEF_SET, s.set)`, conteneurs par défaut) : une
-      sauvegarde ancienne reste valide à vie. Un vieil état sans `reports`/`profile`/`report`
-      s'aligne tout seul.
+      Déclenchée par le bouton ☁️ ET automatiquement (`autoCloudBackup()`) **à chaque fin de bloc**
+      (Réviser, boss, Écoute) avec un **throttle de 5 min** via `ST.lastCloudTs` (v28 — avant : 1×/jour).
+      Jeton `sori-gh-token`, local au téléphone, jamais exporté.
+- [ ] 2. **Restauration (côté app)** : bouton **↓ Restaurer** → `cloudRestore()` : télécharge
+      `exports/latest.json`, vérifie `app === "sori"` + `state` présent, puis **confirmation à
+      MINUTEUR** `confirmRestore(when, loss)` (v28) : modale rappelant ce qui sera perdu, bouton
+      **Confirmer grisé ~5 s** (compte à rebours visible), **Annuler cliquable à tout instant**
+      (clic hors carte = annuler). Sur confirmation → `applyImportedState(data.state)` — MÊME
+      migration douce que le chargement (`Object.assign({}, DEF_SET, s.set)`, conteneurs par
+      défaut) : une sauvegarde ancienne reste valide à vie ; l'overlay se ferme.
 - [ ] 3. **Secours fichier (hors-ligne)** : Export 📤 (partage `sori-export-AAAA-MM-JJ.json` vers
       OneDrive) et Import 📥 (relit un fichier, même `applyImportedState`). À utiliser quand le
       cloud est indisponible (pas de réseau, pas de jeton).

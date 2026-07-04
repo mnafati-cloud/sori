@@ -77,6 +77,9 @@ h2{margin:0 0 6px; font-size:1.05rem}
 .btn.ko{background:#7f1d1d}
 .btn.small{padding:8px 12px; min-height:0; font-size:.9rem; font-weight:500}
 .btn:disabled{opacity:.4}
+.btn.danger{background:#b91c1c}
+/* overlay Réglages : plus large et défilable si le contenu dépasse l'écran */
+.modal.wide{max-width:520px; max-height:88vh; overflow-y:auto}
 
 .speak{background:none; border:none; font-size:1.7rem; cursor:pointer; padding:6px}
 .topright{display:flex; align-items:center; gap:10px}
@@ -135,7 +138,7 @@ h2{margin:0 0 6px; font-size:1.05rem}
 .stat .n{font-size:1.8rem; font-weight:700; color:var(--acc)}
 .stat .l{font-size:.78rem; color:var(--dim); margin-top:2px}
 
-.bars{display:flex; align-items:flex-end; gap:6px; height:90px; margin-top:8px}
+.bars{display:flex; align-items:flex-end; gap:6px; min-height:96px; margin-top:10px; padding-top:4px}
 .bars .b{flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:4px}
 .bars .b>div{width:100%; background:var(--acc2); border-radius:4px 4px 0 0; min-height:2px}
 .bars .b span{font-size:.65rem; color:var(--dim)}

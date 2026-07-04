@@ -34,6 +34,11 @@ const XP_LEVELS = [[0,"9급"],[1000,"8급"],[2500,"7급"],[5000,"6급"],[8000,"5
                    [12000,"4급"],[17000,"3급"],[23000,"2급"],[30000,"1급"],[40000,"초단"]];
 function levelName(xp){ let n=XP_LEVELS[0][1]; for(const [t,l] of XP_LEVELS){ if(xp>=t) n=l; } return n; }
 const EXTRA = (typeof window!=="undefined" && window.EXTRA) || {};
+/* v28 : gamification mise en veille — à réintroduire un jour SOUS FORME DE CÉLÉBRATION
+   (animation/son), pas comme un bloc qui apparaît. Modules TOUJOURS chargés, données
+   préservées (ST.qdone, ST.exams intacts). Repasser à true pour réafficher tel quel. */
+const SHOW_QUESTS = false;   // quêtes du jour + badges (quests.js)
+const SHOW_EXAM   = false;   // bilan de niveau périodique (exam.js)
 function save(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(ST)); }catch(e){} }
 
 /* état effectif d'un item = seed + delta local */
@@ -122,7 +127,7 @@ function undoLast(){
 }
 function updateDayCount(){
   const l = ST.log[todayStr()];
-  document.getElementById("daycount").textContent = l ? l.n : 0;
+  document.getElementById("daycount").textContent = "📚 " + (l ? l.n : 0);
 }
 /* ===== rapport de problème (bouton 🐞 optionnel) =====
    Les rapports vivent dans ST.reports -> embarqués dans chaque sauvegarde cloud,
@@ -181,6 +186,11 @@ function wireMute(){
   const paint = ()=>{ b.textContent = ST.set.mute ? "🔇" : "🔊"; b.title = ST.set.mute ? "Réactiver le son" : "Couper le son"; };
   b.onclick = ()=>{ ST.set.mute = !ST.set.mute; if(ST.set.mute) try{speechSynthesis.cancel();}catch(e){} save(); paint(); };
   paint();
+}
+/* roue ⚙️ du header : ouvre les Réglages en surcouche depuis n'importe quel onglet */
+function wireSettings(){
+  const b = document.getElementById("settings");
+  if(b) b.onclick = openSettings;
 }
 function streak(){ return ENGINE.computeStreak(ST.log, todayStr(), addDays); }
 
@@ -366,8 +376,8 @@ function renderReview(){
     document.getElementById("bonus").onclick = ()=>{ Q = bonusQueue(); QPOS=0; BONUS=true; render(); };
     const bb=document.getElementById("boss");
     if(bb) bb.onclick = startBoss;
-    /* 🎯 quêtes du jour en mode compact (fin de session) */
-    if(window.SORI_QUESTS){
+    /* 🎯 quêtes du jour en mode compact (fin de session) — masqué v28 (SHOW_QUESTS) */
+    if(SHOW_QUESTS && window.SORI_QUESTS){
       const qd = (ST.qdone && ST.qdone.d===t) ? ST.qdone : (ST.qdone = {d:t, ids:{}});
       SORI_QUESTS.renderCard($screen, {
         today: t, log: ST.log, compact: true,
@@ -693,6 +703,7 @@ function renderListen(){
     }
   }
   if(LPOS>=LQ.length){
+    autoCloudBackup();                       // fin de bloc Écoute → sauvegarde cloud (throttle 5 min)
     $screen.appendChild(el(`<div class="card center"><div class="done-banner">👂</div>
       <h2>${LSCORE} / ${LQ.length}</h2><p class="dim">compréhension à l'oreille</p>
       <button class="btn" id="again" style="margin-top:10px">Encore une série</button></div>`));
@@ -709,7 +720,8 @@ function renderListen(){
   const card = el(`<div class="card center">
     <div class="dim">Écoute ${LPOS+1}/${LQ.length} — ${dictee?"quel mot as-tu entendu ?":"qu'est-ce que ça veut dire ?"}</div>
     <button class="speak" style="font-size:3rem; margin:14px 0">🔊</button>
-    <div class="opts"></div></div>`);
+    <div class="opts"></div>
+    <div class="feedback" style="min-height:2.4em; margin-top:10px"></div></div>`);
   card.querySelector(".speak").onclick=()=>speak(it.kr, it.id);
   const box = card.querySelector(".opts");
   opts.forEach(id=>{
@@ -724,7 +736,7 @@ function renderListen(){
         const target = dictee ? SEED_BY_ID[it.id].kr : SEED_BY_ID[it.id].fr;
         [...box.children].find(x=>x.textContent===target)?.classList.add("good");
       }
-      card.appendChild(el(`<div class="feedback"><span class="kr">${esc(it.kr)}</span> — ${esc(it.fr)}</div>`));
+      card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span> — ${esc(it.fr)}`;
       logAnswer(ok, dictee?"dictee":"listen", null, EXO_T0 ? Date.now()-EXO_T0 : 0);
       LPOS++;
       setTimeout(render, ok?800:1700);
@@ -853,8 +865,8 @@ function renderStats(){
       ${leeches.slice(0,8).map(x=>`<span class="pill">${esc(x.kr)}</span>`).join("")}${leeches.length>8?"…":""}</p></div>`));
   }
 
-  /* 🎯 quêtes du jour + badges (quests.js) — état additif ST.qdone */
-  if(window.SORI_QUESTS){
+  /* 🎯 quêtes du jour + badges (quests.js) — état additif ST.qdone — masqué v28 (SHOW_QUESTS) */
+  if(SHOW_QUESTS && window.SORI_QUESTS){
     const qd = (ST.qdone && ST.qdone.d===t) ? ST.qdone : (ST.qdone = {d:t, ids:{}});
     SORI_QUESTS.renderCard($screen, {
       today: t, log: ST.log,
@@ -873,8 +885,8 @@ function renderStats(){
     });
   }
 
-  /* 🎓 bilan de niveau périodique (exam.js) — historique additif ST.exams, zéro effet sur la planif */
-  if(window.SORI_EXAM){
+  /* 🎓 bilan de niveau périodique (exam.js) — historique additif ST.exams — masqué v28 (SHOW_EXAM) */
+  if(SHOW_EXAM && window.SORI_EXAM){
     ST.exams = ST.exams || [];
     SORI_EXAM.renderCard($screen, {
       items: items, extra: EXTRA,
@@ -885,14 +897,7 @@ function renderStats(){
     });
   }
 
-  const bossN = Math.min(bossCandidates().length, 20);
-  if(bossN){
-    const bcard = el(`<div class="card center"><h2>⚔️ Boss fight</h2>
-      <p class="dim">Affronte tes mots les plus ratés en QCM ciblés (${bossN} au menu).</p>
-      <button class="btn" id="boss2">Lancer le combat</button></div>`);
-    bcard.querySelector("#boss2").onclick = startBoss;
-    $screen.appendChild(bcard);
-  }
+  /* ⚔️ Boss fight retiré de Stats (v28) : c'est une ACTION, il reste accessible en fin de session. */
 
   /* avertissement voix coréenne absente (sinon accent français sur le hangul !) */
   if(koVoiceMissing()){
@@ -903,13 +908,14 @@ function renderStats(){
       → ⚙️ → Installer les données de voix → 한국어 (coréen)</b>, puis redémarre l'app.
       Les phrases du kit voyage ont aussi leur audio natif intégré (indépendant du téléphone).</p></div>`));
   }
-  /* rappel d'export : la sauvegarde ne vit que sur cet appareil */
-  const lastX = ST.lastExport;
-  const days = lastX ? Math.round((new Date(t+"T12:00:00") - new Date(lastX+"T12:00:00"))/86400000) : null;
-  if(days===null || days>=7){
+  /* rappel de sauvegarde : la progression ne vit que sur cet appareil.
+     Tu (le cloud est le canal principal) : on ne prévient QUE si aucune sauvegarde cloud récente. */
+  const cloudDays = ST.lastCloud ? Math.round((new Date(t+"T12:00:00") - new Date(ST.lastCloud+"T12:00:00"))/86400000) : null;
+  const cloudRecent = cloudDays!==null && cloudDays < 7;
+  if(!cloudRecent){
     $screen.appendChild(el(`<div class="card" style="border-color:var(--warn)">
-      <h2>⚠️ Sauvegarde</h2><p class="dim">${days===null?"Aucun export encore fait":"Dernier export il y a "+days+" j"} —
-      ta progression ne vit que sur cet appareil. Exporte-la (bouton ci-dessous) et partage vers OneDrive.</p></div>`));
+      <h2>⚠️ Sauvegarde</h2><p class="dim">${ghToken()?"Aucune sauvegarde cloud récente":"Sauvegarde cloud pas encore activée"} —
+      ta progression ne vit que sur cet appareil. Ouvre <b>⚙️ Réglages</b> pour la sauvegarder dans le cloud (ou exporter un fichier).</p></div>`));
   }
 
   const mx = Math.max(...stages,1);
@@ -928,7 +934,12 @@ function renderStats(){
     week.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.n/mx7))}px${x.d===t?";background:var(--acc)":""}"></div><span>${WD[new Date(x.d+"T12:00:00").getDay()]}<br>${x.n}</span></div>`).join("")
   }</div></div>`));
 
-  const set = el(`<div class="card settings"><h2>Réglages</h2>
+}
+
+/* ===== Réglages en surcouche (ouverts par la roue ⚙️ du header, depuis n'importe quel onglet) ===== */
+function openSettings(){
+  const back = el(`<div class="modal-back"></div>`);
+  const set = el(`<div class="card modal wide settings"><h2>⚙️ Réglages</h2>
     <label>Nouvelles cartes / jour <input type="number" id="npd" min="0" max="50" value="${ST.set.newPerDay}"></label>
     <label>Taille max de session <input type="number" id="smax" min="20" max="500" step="10" value="${ST.set.sessionMax||120}"></label>
     <label>Prioriser le kit voyage <input type="checkbox" id="kf" ${ST.set.kitFirst?"checked":""}></label>
@@ -950,14 +961,14 @@ function renderStats(){
     <div class="row" style="margin-top:6px"><button class="btn ghost" id="dlaudio">Télécharger tout l'audio (${AUDIO_IDS.size + AUDIO_EX_IDS.size} fichiers)</button></div>
     <p class="dim" id="dlstatus" style="margin-top:6px">Mots + phrases d'exemple, disponibles hors connexion (avion, métro coréen).</p>
     <div class="section-title" style="margin-top:14px">☁️ Sauvegarde cloud (le canal principal)</div>
-    <p class="dim" style="margin-top:4px">Ta progression part toute seule dans le cloud (1×/jour) — c'est ta sauvegarde ET ce que Claude lit. Rien d'autre à faire.</p>
+    <p class="dim" style="margin-top:4px">Ta progression part toute seule dans le cloud (à chaque fin de bloc) — c'est ta sauvegarde ET ce que Claude lit. Rien d'autre à faire.</p>
     <label>Jeton d'accès <input type="password" id="ghtok" placeholder="${ghToken()?"•••• configuré ••••":"github_pat_…"}" autocomplete="off"></label>
     <div class="row" style="margin-top:8px">
       <button class="btn" id="cloud">☁️ Sauvegarder maintenant</button>
       <button class="btn ghost" id="cloudrestore">↓ Restaurer</button>
     </div>
     <p class="dim" id="cloudstatus" style="margin-top:8px">${
-      ghToken() ? (ST.lastCloud ? "Dernière sauvegarde cloud : "+ST.lastCloud+" · auto 1×/jour en fin de session." : "Jeton configuré — aucune sauvegarde encore.")
+      ghToken() ? (ST.lastCloud ? "Dernière sauvegarde cloud : "+ST.lastCloud+" · auto à chaque fin de bloc." : "Jeton configuré — aucune sauvegarde encore.")
                 : "Colle un jeton GitHub fine-grained (dépôt sori-data, permission Contents) pour activer la sauvegarde automatique."}${
       (ST.reports||[]).length ? " · 🐞 "+ST.reports.length+" rapport(s) joint(s) à la prochaine sauvegarde." : ""}</p>
     <details style="margin-top:14px"><summary class="dim">Sauvegarde fichier (secours hors-ligne)</summary>
@@ -967,8 +978,9 @@ function renderStats(){
         <button class="btn ghost" id="imp">📥 Importer</button>
       </div>
       <input type="file" id="impfile" accept=".json,application/json">
-    </details></div>`);
-  $screen.appendChild(set);
+    </details>
+    <div class="row" style="margin-top:16px"><button class="btn ghost" id="setclose">Fermer</button></div></div>`);
+  back.appendChild(set);
   set.querySelector("#npd").onchange = e=>{ ST.set.newPerDay=Math.max(0,+e.target.value||0); save(); };
   set.querySelector("#smax").onchange= e=>{ ST.set.sessionMax=Math.max(20,+e.target.value||120); save(); };
   set.querySelector("#kf").onchange  = e=>{ ST.set.kitFirst=e.target.checked; save(); };
@@ -1009,7 +1021,7 @@ function renderStats(){
     }catch(e){ st.textContent = "❌ Échec (connexion ?) — relance pour reprendre où c'était."; }
     btn.disabled = false;
   };
-  set.querySelector("#ghtok").onchange = e=>{ setGhToken(e.target.value); e.target.value=""; render(); };
+  set.querySelector("#ghtok").onchange = e=>{ setGhToken(e.target.value); e.target.value=""; back.remove(); openSettings(); };
   set.querySelector("#cloud").onclick = async ()=>{
     const st = set.querySelector("#cloudstatus");
     st.textContent = "Envoi en cours…";
@@ -1020,9 +1032,12 @@ function renderStats(){
     const st = set.querySelector("#cloudstatus");
     st.textContent = "Lecture du cloud…";
     const r = await cloudRestore();
-    if(r.ok){ return; }            // render() a déjà été relancé par applyImportedState
+    if(r.ok){ back.remove(); return; }   // restauration OK : render() déjà relancé, on ferme l'overlay
     st.textContent = "❌ Restauration : "+r.msg;
   };
+  set.querySelector("#setclose").onclick = ()=>back.remove();
+  back.addEventListener("click", e=>{ if(e.target===back) back.remove(); });
+  document.body.appendChild(back);
 }
 /* ================= sauvegarde cloud (GitHub, dépôt privé sori-data) =================
    Jeton fine-grained stocké UNIQUEMENT sur l'appareil (clé séparée, jamais dans un export). */
@@ -1055,8 +1070,12 @@ async function cloudBackup(){
     return {ok:false, msg:"refus API (jeton invalide/expiré ?)"};
   }catch(e){ return {ok:false, msg:"hors ligne ?"}; }
 }
-function autoCloudBackup(){   // silencieux, au plus 1x/jour, fin de session
-  if(ghToken() && ST.lastCloud !== todayStr()) cloudBackup();
+function autoCloudBackup(){   // silencieux, fin de bloc, throttle 5 min (largement sous les limites GitHub)
+  if(!ghToken()) return;
+  const now = Date.now();
+  if(now - (ST.lastCloudTs||0) < 5*60*1000) return;   // champ additif ST.lastCloudTs (ms)
+  ST.lastCloudTs = now; save();                       // consomme la fenêtre avant l'await (anti double-tir)
+  cloudBackup();
 }
 /* migration douce commune (import fichier OU restauration cloud) */
 function applyImportedState(state){
@@ -1065,6 +1084,35 @@ function applyImportedState(state){
   s.set = Object.assign({}, DEF_SET, s.set||{});
   s.v = s.v || 1;
   ST = s; save(); Q = null; render();
+}
+/* confirmation à MINUTEUR pour une action irréversible : le bouton Confirmer reste grisé
+   quelques secondes (compte à rebours visible), Annuler est cliquable à tout instant.
+   Renvoie une Promise<bool>. Clic hors carte = Annuler. */
+function confirmRestore(when, loss){
+  return new Promise(resolve=>{
+    const back = el(`<div class="modal-back">
+      <div class="card modal">
+        <h2>⚠️ Restaurer depuis le cloud</h2>
+        <p class="dim">Ceci <b>remplace définitivement</b> la progression de cet appareil
+          (<b>${esc(loss)}</b>) par la sauvegarde cloud du <b>${esc(when)}</b>.</p>
+        <p class="dim">Utile seulement si tu changes de téléphone ou repars de zéro. Au moindre doute : Annuler.</p>
+        <div class="row" style="margin-top:14px">
+          <button class="btn ghost" id="rscancel">Annuler</button>
+          <button class="btn danger" id="rsok" disabled>Confirmer (5)</button>
+        </div></div></div>`);
+    const okb = back.querySelector("#rsok");
+    let n = 5;
+    const iv = setInterval(()=>{
+      n--;
+      if(n>0){ okb.textContent = "Confirmer ("+n+")"; }
+      else { okb.textContent = "Confirmer la restauration"; okb.disabled = false; clearInterval(iv); }
+    }, 1000);
+    const done = v=>{ clearInterval(iv); back.remove(); resolve(v); };
+    back.querySelector("#rscancel").onclick = ()=>done(false);
+    back.addEventListener("click", e=>{ if(e.target===back) done(false); });   // clic dehors = annuler
+    okb.onclick = ()=>{ if(!okb.disabled) done(true); };
+    document.body.appendChild(back);
+  });
 }
 async function cloudRestore(){
   const tok = ghToken();
@@ -1077,7 +1125,9 @@ async function cloudRestore(){
     const data = JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,"")))));
     if(data.app!=="sori" || !data.state) return {ok:false, msg:"contenu invalide"};
     const when = (data.exportedAt||"").slice(0,16).replace("T"," ");
-    if(confirm("Remplacer la progression de cet appareil par la sauvegarde cloud du "+when+" ?")){
+    const todayN = (ST.log[todayStr()]||{}).n || 0;
+    const loss = `${ST.xp||0} XP · ${levelName(ST.xp||0)} · ${todayN} révision(s) aujourd'hui`;
+    if(await confirmRestore(when, loss)){
       applyImportedState(data.state);
       return {ok:true, when};
     }
@@ -1119,4 +1169,5 @@ function esc(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;
 /* go */
 wireMute();
 wireReport();
+wireSettings();
 render();

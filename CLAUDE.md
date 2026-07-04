@@ -26,8 +26,10 @@ Couche 1  docs/engine.js       moteur pur (planification legacy GELÉE + adaptat
 Couche 1b MODULES autonomes    themes.js · events.js · search.js · exam.js · quests.js ·
                                player.js · scenarios.js · typing.js · numbers.js — voir pattern
 Couche 2  docs/app.js          UI + exercices + audio + import/export + cloud backup/restore +
-                               son (WebAudio) + annulation + rapports 🐞 —
-                               SEUL fichier qui lit/écrit localStorage "sori-state-v1"
+                               son (WebAudio) + annulation + rapports 🐞 + Réglages en surcouche
+                               (⚙️ header → openSettings) — SEUL fichier qui lit/écrit
+                               localStorage "sori-state-v1". Gamification en veille : drapeaux
+                               SHOW_QUESTS/SHOW_EXAM en tête (quêtes/bilan masqués, modules gardés)
 Couche 3  contenu généré       data.js (SEED ~2154 items) · extra.js (EXTRA : trivia ex/exFr/
                                conj/note + gloses mot-à-mot `gl`) · audio/*.mp3 (mot `<id>.mp3`
                                + phrase `<id>-ex.mp3`) + audio/index.js (AUDIO + AUDIO_EX) ·
