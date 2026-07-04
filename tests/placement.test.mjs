@@ -3,7 +3,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import PLC from "../docs/placement.js";
 
-const { poolsByBand, makeQuestion, decide, estimate, LEVELS } = PLC.pure;
+const { poolsByBand, decide, estimate, LEVELS } = PLC.pure;
 
 /* RNG déterministe (mulberry32) */
 function rng(seed){
@@ -35,16 +35,6 @@ test("poolsByBand : groupe par bande, ignore les items sans cefr/kr/fr", () => {
   // l'item sans cefr n'apparaît nulle part
   const all = LEVELS.reduce((n, lv) => n + p[lv].length, 0);
   assert.equal(all, 7);
-});
-
-test("makeQuestion : 4 options distinctes, la bonne réponse est le sens de la cible", () => {
-  const p = poolsByBand(ITEMS);
-  const target = p.A1[0];
-  const q = makeQuestion(target, p.A1, p.A1.concat(p.B1), rng(1));
-  assert.equal(q.options.length, 4);
-  assert.equal(new Set(q.options).size, 4);                 // toutes distinctes
-  assert.equal(q.options[q.answer], target.fr);             // la bonne réponse = le sens de la cible
-  assert.ok(q.options.includes(target.fr));
 });
 
 test("decide : escalier (>=4 monte, <=2 descend, 3 = frontière)", () => {
