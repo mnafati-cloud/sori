@@ -59,9 +59,9 @@ docs/                 l'app servie telle quelle par GitHub Pages
                       son WebAudio, annulation, rapports 🐞, import/export, cloud backup+restore)
   engine.js           moteur pur contractuel (legacy gelé + ease adaptatif)
   style.css           styles de base (variables :root)   themes.css + themes.js  4 thèmes
-  data.js             SEED généré (~2154 items ; voir SEED.meta.counts)  extra.js  EXTRA (~1774 trivia,
-                      dont ~1628 phrases d'exemple avec gloses mot-à-mot `gl` ; + niveau `cefr` sur les 2154 items)
-  audio/              MP3 natifs mots `<id>.mp3` (2154) + phrases `<id>-ex.mp3` (1628) ~61 Mo + index.js
+  data.js             SEED généré (~2552 items ; voir SEED.meta.counts)  extra.js  EXTRA (~2026 phrases
+                      d'exemple avec gloses mot-à-mot `gl` ; + niveau `cefr` sur les 2552 items)
+  audio/              MP3 natifs mots `<id>.mp3` (2552) + phrases `<id>-ex.mp3` (2026) ~75 Mo + index.js
   events-data.js + events.js       événements (countdown/message/challenge)
   search.js           dictionnaire FR⇄KR + choseong      exam.js  bilan TOPIK-lite (3 profils + chrono)
   quests.js           quêtes du jour + badges            player.js  écoute passive MediaSession
@@ -78,6 +78,7 @@ tools/                scripts de build Python :
   make_audio.py       MP3 edge-tts, relançable : mots (`<id>.mp3`) + phrases (`<id>-ex.mp3`, `--ex`)
   merge_gloss.py      fusionne les gloses mot-à-mot du workflow 'sori-gloses' dans extra.js (recette R19)
   merge_levels.py     fusionne les niveaux CEFR (workflow 'sori-niveaux') dans extra.js (recette R20)
+  merge_wave.py       intègre une VAGUE de contenu riche : data + trivia + cefr en une passe (recette R21)
   merge_extra.py      fusionne un lot de trivia          make_icons.py  icônes (chemins OK)
   packs/              packs de contenu durables (*.json, ids pack-hash, fusionnés à chaque regen)
   packs-staged/       RÉSERVE : packs prêts mais non activés (actuellement vidée — voir README)
@@ -86,7 +87,7 @@ tools/snapshot.anki2  collection Anki figée, GITIGNORÉE — n'existe que sur c
 tests/                engine.test.mjs (20, verrouille le legacy) + adaptive.test.mjs (17, ease)
 .github/workflows/ci.yml   CI : node --test + node --check sur tous les JS de l'app
 ALGORITHM.md          spec complète de l'ease adaptatif (constantes, phases, critères §7)
-MAINTENANCE.md        LE manuel : contrats de données, recettes R1-R20, pièges P1-P12, checklist
+MAINTENANCE.md        LE manuel : contrats de données, recettes R1-R21, pièges P1-P12, checklist
 MAINTENANCE-EVENTS.md recette R10 complète (gérer les événements)
 PROPOSITIONS.md       backlog historique d'évolutions
 ```
@@ -118,6 +119,9 @@ python tools/merge_gloss.py <dossier_gloss_out>
 
 # Fusionner les niveaux CEFR (sortie du workflow 'sori-niveaux') dans extra.js — recette R20
 python tools/merge_levels.py <dossier_lvl_out>
+
+# Intégrer une VAGUE de contenu riche (data+trivia+cefr) puis gloses + audio — recette R21
+python tools/merge_wave.py <dossier_cellules> pack-AAAA-MM-vN
 
 # Fusionner un lot de trivia seul dans extra.js
 python tools/merge_extra.py chemin/vers/lot.json

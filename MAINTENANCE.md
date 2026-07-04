@@ -43,11 +43,15 @@
   PowerShell 5.1 sous Windows 11.
 - **Volumes actuels (v27)** : 2154 items dans le seed (1684 mots, 470 phrases, 79 ennemies,
   54 kit), 1774 entrées de trivia dont **1628 phrases d'exemple gloses mot-à-mot (`gl`)**,
-  **2154 MP3 de mots + 1628 MP3 de phrases (`-ex.mp3`), ~61 Mo**, 37 tests Node, `CACHE` = `sori-v29`.
-- **v29** : **niveau CEFR sur les 2154 items** (`EXTRA[id].cefr`, recette R20 — estimation modèle,
-  distribution A1 446 / A2 1047 / B1 575 / B2 76 / C1 10) = fondation invisible pour l'estimation de
-  niveau + le ciblage de contenu. **Stats dégamifiées** : XP total et niveau 급 retirés (tuiles + fin
-  de session) au profit de « cartes maîtrisées » et « deck abordé » ; `ST.xp` continue en coulisse.
+  **2552 MP3 de mots + 2026 MP3 de phrases (`-ex.mp3`), ~75 Mo**, 37 tests Node, `CACHE` = `sori-v30`.
+- **v30 (vague 5)** : **+398 items neufs** (deck 2154 → 2552), ciblés par niveau, chaîne COMPLÈTE
+  nourrie (data + trivia ex/exFr/note/conj + `cefr` + glose `gl` + MP3 mot + MP3 phrase). Recette
+  **R21** (`merge_wave.py`). Distribution CEFR : **A1 479 / A2 1121 / B1 744 / B2 179 / C1 29**
+  (B1 et B2 renforcés pour la validité des évaluations).
+- **v29** : **niveau CEFR sur tous les items** (`EXTRA[id].cefr`, recette R20 — estimation modèle) =
+  fondation invisible pour l'estimation de niveau + le ciblage de contenu. **Stats dégamifiées** : XP
+  total et niveau 급 retirés (tuiles + fin de session) au profit de « cartes maîtrisées » et « deck
+  abordé » ; `ST.xp` continue en coulisse.
 - **v28 (UX)** : Réglages sortis dans une **surcouche `openSettings()`** (roue ⚙️ du header), plus dans
   `renderStats()`. **Gamification en veille** : quêtes/badges (`SHOW_QUESTS`) et bilan de niveau
   (`SHOW_EXAM`) gardés en code mais non rendus (drapeaux en tête d'app.js, données préservées).
@@ -286,7 +290,7 @@ Objet indexé par id d'item du seed (~1774 entrées à la v26) :
 | `note` | UNE ligne (piège, hanja, anti-confusion), ≤ 110 caractères. Affichée avec 💡. |
 | `conj` | Conjugaisons — **affichée** dans l'encart trivia (préfixe 활용) depuis la v8. |
 | `gl` | **Gloses mot-à-mot** (v27) : tableau FR aligné 1:1 avec `ex.split(espaces)`. Rempli par `merge_gloss.py` (recette R19). Alimente la traduction d'un mot au clic (réglage opt-in `wordgloss`). **Invariant CRITIQUE : `gl.length === ex.trim().split(/\s+/).length`** — app.js zippe mot↔glose par index ; sinon la fonctionnalité se désactive silencieusement pour cette entrée. |
-| `cefr` | **Niveau CEFR** (v29) `A1`/`A2`/`B1`/`B2`/`C1` — **présent sur TOUS les items du deck** (les ~380 sans autre trivia ont une entrée EXTRA minimale `{"cefr":…}`). Rempli par `merge_levels.py` (recette R20). **Estimation par modèle** (workflow `sori-niveaux`, grille de fréquence + calibrage), PAS une liste officielle TOPIK — provenance à garder en tête pour toute « estimation de niveau ». Fondation de l'estimation adaptative et du ciblage de contenu. Distribution v29 : A1 446 · A2 1047 · B1 575 · B2 76 · C1 10. |
+| `cefr` | **Niveau CEFR** (v29) `A1`/`A2`/`B1`/`B2`/`C1` — **présent sur TOUS les items du deck** (les ~380 sans autre trivia ont une entrée EXTRA minimale `{"cefr":…}`). Rempli par `merge_levels.py` (recette R20). **Estimation par modèle** (workflow `sori-niveaux`, grille de fréquence + calibrage), PAS une liste officielle TOPIK — provenance à garder en tête pour toute « estimation de niveau ». Fondation de l'estimation adaptative et du ciblage de contenu. Distribution v30 : A1 479 · A2 1121 · B1 744 · B2 179 · C1 29. |
 
 Règle éditoriale : une entrée existante qui a déjà un `ex` n'est **jamais écrasée** (contenu
 déjà vérifié) ; seuls `conj`, `gl` et `cefr` peuvent y être ajoutés.
@@ -1099,6 +1103,30 @@ contenu. **Estimation par modèle** (workflow `sori-niveaux`), PAS une liste off
 - [ ] 4. Idempotent : re-lançable, met à jour `cefr` sans toucher `ex`/`gl`/`note`. Bump `CACHE`,
       `node --test tests/` (37 vert), release → **R7**. (Invisible dans l'app tant qu'aucune UI ne
       lit `cefr` — c'est une donnée de fondation.)
+
+### R21 — Ajouter une VAGUE DE CONTENU RICHE (toutes les features nourries)
+
+**Principe.** Chaque nouvel item DOIT nourrir TOUTE la chaîne, sinon on crée des trous (un mot sans
+audio, une phrase sans glose, un item sans niveau faussent les stats/évaluations). L'orchestration
+(vague 5, +398 items) enchaîne 5 étapes ; `tools/merge_wave.py` fait le cœur.
+
+- [ ] 1. **Liste anti-doublon** : écrire `existing_kr.json` (tous les `kr` du deck) que les agents
+      lisent pour ne pas régénérer un mot présent.
+- [ ] 2. **Workflow `sori-contenu-vN`** (cellules niveau × domaine) : chaque agent génère N items
+      NEUFS `{fr, kr, type, theme, cefr, ex, exFr, note?, conj?}` (theme = `<niveau>::<domaine>`,
+      kr en forme dico pour verbes/adj), stage `Verifier` = relecture native + anti-doublon +
+      calibrage niveau → `ver_<k>.json`. Pondérer les cellules vers les bandes MINCES (cf. la
+      distribution `cefr`) pour la validité des évaluations.
+- [ ] 3. **`python tools/merge_wave.py <dir_cells> pack-AAAA-MM-vN`** : dédup (kr vs deck + interne),
+      écrit `tools/packs/<nom>.json`, régénère `data.js` (garde-fou d'ids), fusionne
+      `ex/exFr/note/conj/cefr` dans `extra.js`, émet `new_ex_ids.json` (ids neufs avec `ex`).
+- [ ] 4. **Gloses** (R19) sur les nouvelles phrases : construire l'entrée depuis `new_ex_ids.json`
+      (ou « items EXTRA avec `ex` mais sans `gl` »), workflow `sori-gloses-vN`, `merge_gloss.py`.
+- [ ] 5. **Audio** (R3) : `python tools/make_audio.py` (mots + phrases) — relançable, ne génère que
+      les nouveaux `<id>.mp3` et `<id>-ex.mp3`, régénère `AUDIO`/`AUDIO_EX`.
+- [ ] 6. **Contrôle d'intégrité OBLIGATOIRE** : pour chaque id neuf, vérifier data + `cefr` + `ex` +
+      `gl` (aligné) + MP3 mot (∈ AUDIO) + MP3 phrase (∈ AUDIO_EX) = **zéro trou**. Puis `node --check`
+      les JS, `node --test` (37 vert), bump `CACHE`, release → **R7**. Commit incluant les `.mp3`.
 
 ---
 
