@@ -408,6 +408,14 @@ function saveSess(){
   ST.sess = (BONUS || !Q) ? null : { d:todayStr(), q:Q, p:QPOS, pen:PENDING };
   save();
 }
+/* quitter la révision en cours → retour à l'accueil. La session est CONSERVÉE
+   (saveSess), donc « ▶ Réviser » reprend exactement où on s'était arrêté. */
+function leaveReview(){
+  saveSess();
+  TAB = "progres";
+  document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x.dataset.tab==="progres"));
+  NAV = true; render(); NAV = false;
+}
 function renderReview(){
   if(!Q){
     const s = ST.sess;
@@ -476,11 +484,15 @@ function renderReview(){
   const it = eff(Q[QPOS]);
   const head = el(`<div>
     <div class="progressbar"><div style="width:${Math.round(100*QPOS/Q.length)}%"></div></div>
-    <div class="dim" style="margin-top:6px">${QPOS+1} / ${Q.length}
-      ${it.enemy?'<span class="pill enemy">ennemie</span>':""}
-      <span class="pill stage">niv ${it.stage}</span>
-      ${COMBO>=3?`<span class="pill" style="color:var(--acc)">🔥 combo ×${COMBO}</span>`:""}</div></div>`);
+    <div class="rev-head">
+      <div class="dim">${QPOS+1} / ${Q.length}
+        ${it.enemy?'<span class="pill enemy">ennemie</span>':""}
+        <span class="pill stage">niv ${it.stage}</span>
+        ${COMBO>=3?`<span class="pill" style="color:var(--acc)">🔥 combo ×${COMBO}</span>`:""}</div>
+      <button class="escbtn" id="quitrev" title="Quitter la révision (la progression est gardée)">✕ Quitter</button>
+    </div></div>`);
   $screen.appendChild(head);
+  head.querySelector("#quitrev").onclick = leaveReview;
   EXO_T0 = Date.now();
   if(it.stage<=2) exoQcmKr2Fr(it);
   else if(it.stage===3){
