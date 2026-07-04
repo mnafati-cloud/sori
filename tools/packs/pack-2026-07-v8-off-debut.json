@@ -1,0 +1,4196 @@
+[
+ {
+  "fr": "Etre fin, mince (en epaisseur)",
+  "kr": "가늘다",
+  "type": "word",
+  "theme": "a2::formes"
+ },
+ {
+  "fr": "Plein, a ras bord",
+  "kr": "가득",
+  "type": "word",
+  "theme": "a2::quantite"
+ },
+ {
+  "fr": "Montrer du doigt, indiquer, designer",
+  "kr": "가리키다",
+  "type": "word",
+  "theme": "a2::actions"
+ },
+ {
+  "fr": "Poitrine, coeur (partie du corps)",
+  "kr": "가슴",
+  "type": "word",
+  "theme": "a1::corps"
+ },
+ {
+  "fr": "Chanson (de variete), chanson populaire",
+  "kr": "가요",
+  "type": "word",
+  "theme": "a2::musique"
+ },
+ {
+  "fr": "Milieu, centre",
+  "kr": "가운데",
+  "type": "word",
+  "theme": "a1::position"
+ },
+ {
+  "fr": "Le plus, au plus haut degre",
+  "kr": "가장",
+  "type": "word",
+  "theme": "a1::comparaison"
+ },
+ {
+  "fr": "Avoir, posseder, prendre (avec soi)",
+  "kr": "가지다",
+  "type": "word",
+  "theme": "a1::possession"
+ },
+ {
+  "fr": "Chacun, respectivement",
+  "kr": "각각",
+  "type": "word",
+  "theme": "a2::quantite"
+ },
+ {
+  "fr": "Simplement, brievement",
+  "kr": "간단히",
+  "type": "word",
+  "theme": "a2::maniere"
+ },
+ {
+  "fr": "Galbitang (soupe de cotes de boeuf)",
+  "kr": "갈비탕",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Kaki (fruit)",
+  "kr": "감",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Medicament contre le rhume",
+  "kr": "감기약",
+  "type": "word",
+  "theme": "a2::sante"
+ },
+ {
+  "fr": "Prix, valeur",
+  "kr": "값",
+  "type": "word",
+  "theme": "a1::argent"
+ },
+ {
+  "fr": "Avoir, posseder, prendre (avec soi)",
+  "kr": "갖다",
+  "type": "word",
+  "theme": "a2::possession"
+ },
+ {
+  "fr": "Ensemble",
+  "kr": "같이",
+  "type": "word",
+  "theme": "a1::maniere"
+ },
+ {
+  "fr": "Mois (duree, compteur)",
+  "kr": "개월",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Chose, truc (familier)",
+  "kr": "거",
+  "type": "word",
+  "theme": "a2::divers"
+ },
+ {
+  "fr": "Traverser (a pied), passer de l'autre cote",
+  "kr": "건너가다",
+  "type": "word",
+  "theme": "a2::deplacement"
+ },
+ {
+  "fr": "Cote oppose, d'en face",
+  "kr": "건너편",
+  "type": "word",
+  "theme": "a2::position"
+ },
+ {
+  "fr": "Batiment, immeuble",
+  "kr": "건물",
+  "type": "word",
+  "theme": "a1::ville"
+ },
+ {
+  "fr": "Venir a pied",
+  "kr": "걸어오다",
+  "type": "word",
+  "theme": "a1::deplacement"
+ },
+ {
+  "fr": "Pas, demarche",
+  "kr": "걸음",
+  "type": "word",
+  "theme": "a2::deplacement"
+ },
+ {
+  "fr": "Noir, couleur noire",
+  "kr": "검정",
+  "type": "word",
+  "theme": "a2::couleurs"
+ },
+ {
+  "fr": "Exterieur, surface, dehors",
+  "kr": "겉",
+  "type": "word",
+  "theme": "a2::position"
+ },
+ {
+  "fr": "Absence (a l'ecole, en cours)",
+  "kr": "결석",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Decision, resolution",
+  "kr": "결심",
+  "type": "word",
+  "theme": "a2::sentiments"
+ },
+ {
+  "fr": "Ceremonie de mariage, noces",
+  "kr": "결혼식",
+  "type": "word",
+  "theme": "a1::famille"
+ },
+ {
+  "fr": "Gyeongju (ancienne capitale de la Coree)",
+  "kr": "경주",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Police, policier",
+  "kr": "경찰",
+  "type": "word",
+  "theme": "a1::societe"
+ },
+ {
+  "fr": "Etre, se trouver (honorifique de 있다)",
+  "kr": "계시다",
+  "type": "word",
+  "theme": "a1::politesse"
+ },
+ {
+  "fr": "Tete (mouvement de tete), nuque; col (de montagne)",
+  "kr": "고개",
+  "type": "word",
+  "theme": "a2::corps"
+ },
+ {
+  "fr": "Lycee",
+  "kr": "고등학교",
+  "type": "word",
+  "theme": "a1::ecole"
+ },
+ {
+  "fr": "Lyceen, eleve de lycee",
+  "kr": "고등학생",
+  "type": "word",
+  "theme": "a1::ecole"
+ },
+ {
+  "fr": "Autocar, bus express",
+  "kr": "고속버스",
+  "type": "word",
+  "theme": "a2::transport"
+ },
+ {
+  "fr": "Etre affame, avoir faim",
+  "kr": "고프다",
+  "type": "word",
+  "theme": "a1::sante"
+ },
+ {
+  "fr": "Usine",
+  "kr": "공장",
+  "type": "word",
+  "theme": "a2::travail"
+ },
+ {
+  "fr": "Gratuit, gratuite",
+  "kr": "공짜",
+  "type": "word",
+  "theme": "a2::argent"
+ },
+ {
+  "fr": "Jour ferie",
+  "kr": "공휴일",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Souffrir, se tourmenter",
+  "kr": "괴로워하다",
+  "type": "word",
+  "theme": "a2::sentiments"
+ },
+ {
+  "fr": "Enseignant, professeur",
+  "kr": "교사",
+  "type": "word",
+  "theme": "a2::travail"
+ },
+ {
+  "fr": "Education, enseignement",
+  "kr": "교육",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Frais de transport",
+  "kr": "교통비",
+  "type": "word",
+  "theme": "a2::argent"
+ },
+ {
+  "fr": "Accident de la route, accident de circulation",
+  "kr": "교통사고",
+  "type": "word",
+  "theme": "a2::transport"
+ },
+ {
+  "fr": "Echange, troc",
+  "kr": "교환",
+  "type": "word",
+  "theme": "a2::commerce"
+ },
+ {
+  "fr": "Nationalite",
+  "kr": "국적",
+  "type": "word",
+  "theme": "a2::identite"
+ },
+ {
+  "fr": "International",
+  "kr": "국제",
+  "type": "word",
+  "theme": "a2::societe"
+ },
+ {
+  "fr": "Durcir, se figer",
+  "kr": "굳다",
+  "type": "word",
+  "theme": "a2::etats"
+ },
+ {
+  "fr": "Etre epais, gros (en diametre)",
+  "kr": "굵다",
+  "type": "word",
+  "theme": "a2::formes"
+ },
+ {
+  "fr": "Volume, tome (compteur de livres)",
+  "kr": "권",
+  "type": "word",
+  "theme": "a1::objets"
+ },
+ {
+  "fr": "Adorer, trouver mignon, choyer",
+  "kr": "귀여워하다",
+  "type": "word",
+  "theme": "a2::sentiments"
+ },
+ {
+  "fr": "Mandarine",
+  "kr": "귤",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Cela, ça, cette chose-là",
+  "kr": "그것",
+  "type": "word",
+  "theme": "a1::pronoms"
+ },
+ {
+  "fr": "Cet endroit-là, là-bas",
+  "kr": "그곳",
+  "type": "word",
+  "theme": "a1::lieux"
+ },
+ {
+  "fr": "Ce jour-là",
+  "kr": "그날",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Tel quel, ainsi, sans changer",
+  "kr": "그대로",
+  "type": "word",
+  "theme": "a2::maniere"
+ },
+ {
+  "fr": "À ce moment-là, alors",
+  "kr": "그때",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Oui, d'accord, bon",
+  "kr": "그래",
+  "type": "word",
+  "theme": "a1::conversation"
+ },
+ {
+  "fr": "Mais, cependant, toutefois",
+  "kr": "그러나",
+  "type": "word",
+  "theme": "a1::connecteurs"
+ },
+ {
+  "fr": "Donc, c'est pourquoi, alors",
+  "kr": "그러니까",
+  "type": "word",
+  "theme": "a1::connecteurs"
+ },
+ {
+  "fr": "Ce genre de, un tel",
+  "kr": "그런",
+  "type": "word",
+  "theme": "a2::determinants"
+ },
+ {
+  "fr": "Alors, dans ce cas, eh bien",
+  "kr": "그럼",
+  "type": "word",
+  "theme": "a1::connecteurs"
+ },
+ {
+  "fr": "Être ainsi, être comme ça",
+  "kr": "그렇다",
+  "type": "word",
+  "theme": "a1::etats"
+ },
+ {
+  "fr": "Mais, néanmoins, pourtant",
+  "kr": "그렇지만",
+  "type": "word",
+  "theme": "a1::connecteurs"
+ },
+ {
+  "fr": "Cette personne-là (honorifique)",
+  "kr": "그분",
+  "type": "word",
+  "theme": "a1::pronoms"
+ },
+ {
+  "fr": "Ce côté-là, par là, vous (là-bas)",
+  "kr": "그쪽",
+  "type": "word",
+  "theme": "a1::lieux"
+ },
+ {
+  "fr": "Environs, alentours, à proximité",
+  "kr": "근처",
+  "type": "word",
+  "theme": "a1::lieux"
+ },
+ {
+  "fr": "Texte, écrit, écriture",
+  "kr": "글",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Eh bien..., je ne sais pas trop",
+  "kr": "글쎄",
+  "type": "word",
+  "theme": "a2::conversation"
+ },
+ {
+  "fr": "Écriture, façon d'écrire (les lettres)",
+  "kr": "글씨",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Lettre, caractère (d'écriture)",
+  "kr": "글자",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Interdiction",
+  "kr": "금지",
+  "type": "word",
+  "theme": "a2::societe"
+ },
+ {
+  "fr": "Élever (un animal), cultiver, laisser pousser",
+  "kr": "기르다",
+  "type": "word",
+  "theme": "a2::animaux"
+ },
+ {
+  "fr": "Huile, graisse",
+  "kr": "기름",
+  "type": "word",
+  "theme": "a2::cuisine"
+ },
+ {
+  "fr": "Examen de fin de semestre, partiel",
+  "kr": "기말시험",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Se réjouir, être content (de qch)",
+  "kr": "기뻐하다",
+  "type": "word",
+  "theme": "a2::sentiments"
+ },
+ {
+  "fr": "Joie, plaisir",
+  "kr": "기쁨",
+  "type": "word",
+  "theme": "a2::sentiments"
+ },
+ {
+  "fr": "Dortoir, résidence universitaire",
+  "kr": "기숙사",
+  "type": "word",
+  "theme": "a1::maison"
+ },
+ {
+  "fr": "Se souvenir, revenir en mémoire",
+  "kr": "기억나다",
+  "type": "word",
+  "theme": "a2::esprit"
+ },
+ {
+  "fr": "Gare (ferroviaire)",
+  "kr": "기차역",
+  "type": "word",
+  "theme": "a2::transport"
+ },
+ {
+  "fr": "Billet de train",
+  "kr": "기차표",
+  "type": "word",
+  "theme": "a2::transport"
+ },
+ {
+  "fr": "Longueur",
+  "kr": "길이",
+  "type": "word",
+  "theme": "a2::mesures"
+ },
+ {
+  "fr": "Couleur noire, le noir",
+  "kr": "까만색",
+  "type": "word",
+  "theme": "a2::couleurs"
+ },
+ {
+  "fr": "Être noir, très sombre",
+  "kr": "까맣다",
+  "type": "word",
+  "theme": "a2::couleurs"
+ },
+ {
+  "fr": "En sursaut, brusquement (de surprise)",
+  "kr": "깜짝",
+  "type": "word",
+  "theme": "a2::maniere"
+ },
+ {
+  "fr": "Proprement, à fond (propre)",
+  "kr": "깨끗이",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "Chewing-gum",
+  "kr": "껌",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Fleuriste, magasin de fleurs",
+  "kr": "꽃집",
+  "type": "word",
+  "theme": "a2::commerces"
+ },
+ {
+  "fr": "Rêver, faire un rêve",
+  "kr": "꾸다",
+  "type": "word",
+  "theme": "a2::sommeil"
+ },
+ {
+  "fr": "Arrêter, couper, cesser",
+  "kr": "끊다",
+  "type": "word",
+  "theme": "a2::actions"
+ },
+ {
+  "fr": "Fin, bout, extrémité",
+  "kr": "끝",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Finir, terminer (qch), achever",
+  "kr": "끝내다",
+  "type": "word",
+  "theme": "a1::actions"
+ },
+ {
+  "fr": "Pousser, apparaître, se produire (survenir)",
+  "kr": "나다",
+  "type": "word",
+  "theme": "a1::corps"
+ },
+ {
+  "fr": "Reste, restant, surplus",
+  "kr": "나머지",
+  "type": "word",
+  "theme": "a2::quantite"
+ },
+ {
+  "fr": "Plus tard, ensuite",
+  "kr": "나중",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Apparaître, surgir, se manifester",
+  "kr": "나타나다",
+  "type": "word",
+  "theme": "a2::actions"
+ },
+ {
+  "fr": "Quatre jours",
+  "kr": "나흘",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Pêche (à la ligne)",
+  "kr": "낚시",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Jour, journée",
+  "kr": "날",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Voler (dans les airs)",
+  "kr": "날다",
+  "type": "word",
+  "theme": "a1::actions"
+ },
+ {
+  "fr": "Voltiger, voleter (ça et là)",
+  "kr": "날아다니다",
+  "type": "word",
+  "theme": "a2::nature"
+ },
+ {
+  "fr": "Date, jour (du calendrier)",
+  "kr": "날짜",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Autrui, les autres, un inconnu",
+  "kr": "남",
+  "type": "word",
+  "theme": "a2::gens"
+ },
+ {
+  "fr": "Laisser (un reste), garder",
+  "kr": "남기다",
+  "type": "word",
+  "theme": "a2::vie-quotidienne"
+ },
+ {
+  "fr": "Hommes et femmes, les deux sexes",
+  "kr": "남녀",
+  "type": "word",
+  "theme": "a1::gens"
+ },
+ {
+  "fr": "Namdaemun (grande porte sud de Séoul)",
+  "kr": "남대문",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Marché de Namdaemun (Séoul)",
+  "kr": "남대문시장",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Petit frère (d'une fille ou d'un garçon)",
+  "kr": "남동생",
+  "type": "word",
+  "theme": "a1::famille"
+ },
+ {
+  "fr": "Homme, sexe masculin",
+  "kr": "남성",
+  "type": "word",
+  "theme": "a2::gens"
+ },
+ {
+  "fr": "Le sud, côté sud",
+  "kr": "남쪽",
+  "type": "word",
+  "theme": "a1::orientation"
+ },
+ {
+  "fr": "Élève garçon, étudiant",
+  "kr": "남학생",
+  "type": "word",
+  "theme": "a1::ecole"
+ },
+ {
+  "fr": "Jour, journée (par opposition à la nuit)",
+  "kr": "낮",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Sieste",
+  "kr": "낮잠",
+  "type": "word",
+  "theme": "a2::vie-quotidienne"
+ },
+ {
+  "fr": "Mon, ma, mes (forme de 나의)",
+  "kr": "내",
+  "type": "word",
+  "theme": "a2::grammaire"
+ },
+ {
+  "fr": "Médecine interne (service)",
+  "kr": "내과",
+  "type": "word",
+  "theme": "a2::sante"
+ },
+ {
+  "fr": "L'an prochain, l'année prochaine",
+  "kr": "내년",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Sortir, produire, payer, soumettre",
+  "kr": "내다",
+  "type": "word",
+  "theme": "a1::actions"
+ },
+ {
+  "fr": "Descendre (vers ici), venir en bas",
+  "kr": "내려오다",
+  "type": "word",
+  "theme": "a1::mouvement"
+ },
+ {
+  "fr": "Contenu, teneur",
+  "kr": "내용",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Trop, excessivement",
+  "kr": "너무",
+  "type": "word",
+  "theme": "a1::adverbes"
+ },
+ {
+  "fr": "Vous (pluriel, familier), vous autres",
+  "kr": "너희",
+  "type": "word",
+  "theme": "a2::gens"
+ },
+ {
+  "fr": "Ton, ta, tes (forme de 너의)",
+  "kr": "네",
+  "type": "word",
+  "theme": "a2::grammaire"
+ },
+ {
+  "fr": "Quatrième",
+  "kr": "넷째",
+  "type": "word",
+  "theme": "a1::nombres"
+ },
+ {
+  "fr": "An, année (compteur)",
+  "kr": "년",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Être jaune",
+  "kr": "노랗다",
+  "type": "word",
+  "theme": "a2::couleurs"
+ },
+ {
+  "fr": "Cahier, carnet",
+  "kr": "노트",
+  "type": "word",
+  "theme": "a1::ecole"
+ },
+ {
+  "fr": "Vert (couleur)",
+  "kr": "녹색",
+  "type": "word",
+  "theme": "a2::couleurs"
+ },
+ {
+  "fr": "Thé vert",
+  "kr": "녹차",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Jeu (d'enfant), amusement",
+  "kr": "놀이",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Basket-ball",
+  "kr": "농구",
+  "type": "word",
+  "theme": "a2::sport"
+ },
+ {
+  "fr": "Plaisanterie, blague",
+  "kr": "농담",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Hauteur, altitude",
+  "kr": "높이",
+  "type": "word",
+  "theme": "a2::mesure"
+ },
+ {
+  "fr": "Qui",
+  "kr": "누구",
+  "type": "word",
+  "theme": "a1::grammaire"
+ },
+ {
+  "fr": "Ressentir, éprouver",
+  "kr": "느끼다",
+  "type": "word",
+  "theme": "a2::emotions"
+ },
+ {
+  "fr": "Sensation, impression, ressenti",
+  "kr": "느낌",
+  "type": "word",
+  "theme": "a2::emotions"
+ },
+ {
+  "fr": "Toujours, constamment",
+  "kr": "늘",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Tout, tous, la totalité",
+  "kr": "다",
+  "type": "word",
+  "theme": "a1::quantite"
+ },
+ {
+  "fr": "Fréquenter, aller (régulièrement)",
+  "kr": "다니다",
+  "type": "word",
+  "theme": "a1::vie-quotidienne"
+ },
+ {
+  "fr": "Repassage (du linge)",
+  "kr": "다림질",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "Cinquième",
+  "kr": "다섯째",
+  "type": "word",
+  "theme": "a1::nombres"
+ },
+ {
+  "fr": "Diversité, variété",
+  "kr": "다양",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Le suivant, la suite, la prochaine fois",
+  "kr": "다음",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Le lendemain, le jour suivant",
+  "kr": "다음날",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "S'épuiser, être à bout, faire tout son possible",
+  "kr": "다하다",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Œuf (de poule)",
+  "kr": "달걀",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Viande de poulet, poulet",
+  "kr": "닭고기",
+  "type": "word",
+  "theme": "a1::nourriture"
+ },
+ {
+  "fr": "Ressembler (à qqn)",
+  "kr": "닮다",
+  "type": "word",
+  "theme": "a2::gens"
+ },
+ {
+  "fr": "Cigarette, tabac",
+  "kr": "담배",
+  "type": "word",
+  "theme": "a1::vie-quotidienne"
+ },
+ {
+  "fr": "Réponse (à une lettre/message)",
+  "kr": "답장",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "La plupart, la majeure partie",
+  "kr": "대부분",
+  "type": "word",
+  "theme": "a2::quantite"
+ },
+ {
+  "fr": "Universite",
+  "kr": "대학",
+  "type": "word",
+  "theme": "a1::education"
+ },
+ {
+  "fr": "Etudiant(e) a l'universite",
+  "kr": "대학생",
+  "type": "word",
+  "theme": "a1::education"
+ },
+ {
+  "fr": "Ecole doctorale, cycle superieur (master/doctorat)",
+  "kr": "대학원",
+  "type": "word",
+  "theme": "a2::education"
+ },
+ {
+  "fr": "Competition, tournoi, grand rassemblement",
+  "kr": "대회",
+  "type": "word",
+  "theme": "a2::sport"
+ },
+ {
+  "fr": "Vous (poli) ; votre demeure",
+  "kr": "댁",
+  "type": "word",
+  "theme": "a2::politesse"
+ },
+ {
+  "fr": "Encore plus, davantage",
+  "kr": "더욱",
+  "type": "word",
+  "theme": "a2::quantite"
+ },
+ {
+  "fr": "Grace a, merci a (aide/faveur)",
+  "kr": "덕분",
+  "type": "word",
+  "theme": "a2::relations"
+ },
+ {
+  "fr": "Rendez-vous amoureux, date",
+  "kr": "데이트",
+  "type": "word",
+  "theme": "a2::relations"
+ },
+ {
+  "fr": "Aider, donner un coup de main",
+  "kr": "도와주다",
+  "type": "word",
+  "theme": "a1::relations"
+ },
+ {
+  "fr": "Aide, secours",
+  "kr": "도움",
+  "type": "word",
+  "theme": "a2::relations"
+ },
+ {
+  "fr": "Allemagne",
+  "kr": "독일",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Tourner, tourner autour",
+  "kr": "돌다",
+  "type": "word",
+  "theme": "a2::mouvement"
+ },
+ {
+  "fr": "Animal",
+  "kr": "동물",
+  "type": "word",
+  "theme": "a1::animaux"
+ },
+ {
+  "fr": "Meme moment, simultaneite",
+  "kr": "동시",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Est (point cardinal)",
+  "kr": "동쪽",
+  "type": "word",
+  "theme": "a1::direction"
+ },
+ {
+  "fr": "Viande de porc",
+  "kr": "돼지고기",
+  "type": "word",
+  "theme": "a1::nourriture"
+ },
+ {
+  "fr": "Deux (determinant devant un nom)",
+  "kr": "두",
+  "type": "word",
+  "theme": "a1::nombres"
+ },
+ {
+  "fr": "Deux ou trois",
+  "kr": "두세",
+  "type": "word",
+  "theme": "a2::nombres"
+ },
+ {
+  "fr": "Deuxieme, second",
+  "kr": "둘째",
+  "type": "word",
+  "theme": "a1::nombres"
+ },
+ {
+  "fr": "Derriere, l'arriere ; apres",
+  "kr": "뒤",
+  "type": "word",
+  "theme": "a1::direction"
+ },
+ {
+  "fr": "Cote arriere, l'arriere",
+  "kr": "뒤쪽",
+  "type": "word",
+  "theme": "a2::direction"
+ },
+ {
+  "fr": "Donner (a un superieur, forme humble)",
+  "kr": "드리다",
+  "type": "word",
+  "theme": "a1::politesse"
+ },
+ {
+  "fr": "Entrer, rentrer",
+  "kr": "들어오다",
+  "type": "word",
+  "theme": "a1::mouvement"
+ },
+ {
+  "fr": "Design, esthetique",
+  "kr": "디자인",
+  "type": "word",
+  "theme": "a2::art"
+ },
+ {
+  "fr": "Terre, sol, terrain",
+  "kr": "땅",
+  "type": "word",
+  "theme": "a2::nature"
+ },
+ {
+  "fr": "A cause de, en raison de",
+  "kr": "때문",
+  "type": "word",
+  "theme": "a2::grammaire"
+ },
+ {
+  "fr": "Partir, quitter",
+  "kr": "떠나다",
+  "type": "word",
+  "theme": "a1::mouvement"
+ },
+ {
+  "fr": "Faire du bruit, chahuter",
+  "kr": "떠들다",
+  "type": "word",
+  "theme": "a2::comportement"
+ },
+ {
+  "fr": "Tteok, gateau de riz",
+  "kr": "떡",
+  "type": "word",
+  "theme": "a1::nourriture"
+ },
+ {
+  "fr": "Tomber, chuter ; echouer (a un examen)",
+  "kr": "떨어지다",
+  "type": "word",
+  "theme": "a2::mouvement"
+ },
+ {
+  "fr": "De maniere identique, egalement",
+  "kr": "똑같이",
+  "type": "word",
+  "theme": "a2::quantite"
+ },
+ {
+  "fr": "Tout droit ; correctement",
+  "kr": "똑바로",
+  "type": "word",
+  "theme": "a1::direction"
+ },
+ {
+  "fr": "Courir (vers), y aller en courant",
+  "kr": "뛰어가다",
+  "type": "word",
+  "theme": "a2::mouvement"
+ },
+ {
+  "fr": "Radio",
+  "kr": "라디오",
+  "type": "word",
+  "theme": "a1::maison"
+ },
+ {
+  "fr": "Russie",
+  "kr": "러시아",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Restaurant",
+  "kr": "레스토랑",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Tete (classificateur pour animaux)",
+  "kr": "마리",
+  "type": "word",
+  "theme": "a1::animaux"
+ },
+ {
+  "fr": "Village",
+  "kr": "마을",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Fait d'aller accueillir quelqu'un",
+  "kr": "마중",
+  "type": "word",
+  "theme": "a2::relations"
+ },
+ {
+  "fr": "Dernier, ultime ; la fin",
+  "kr": "마지막",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Finir, terminer, achever",
+  "kr": "마치다",
+  "type": "word",
+  "theme": "a2::action"
+ },
+ {
+  "fr": "Supermarche, grande surface",
+  "kr": "마트",
+  "type": "word",
+  "theme": "a2::commerce"
+ },
+ {
+  "fr": "Rencontrer, retrouver, voir (qqn)",
+  "kr": "만나다",
+  "type": "word",
+  "theme": "a1::relations"
+ },
+ {
+  "fr": "Si (jamais), au cas ou",
+  "kr": "만약",
+  "type": "word",
+  "theme": "a2::grammaire"
+ },
+ {
+  "fr": "Si (jamais), au cas ou",
+  "kr": "만일",
+  "type": "word",
+  "theme": "a2::grammaire"
+ },
+ {
+  "fr": "Malaisie",
+  "kr": "말레이시아",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Chaque annee, tous les ans",
+  "kr": "매년",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Chaque mois, tous les mois",
+  "kr": "매달",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Etre loin, eloigne",
+  "kr": "멀다",
+  "type": "word",
+  "theme": "a1::distance"
+ },
+ {
+  "fr": "Elegance, style, allure",
+  "kr": "멋",
+  "type": "word",
+  "theme": "a2::apparence"
+ },
+ {
+  "fr": "Menu (carte, liste de plats)",
+  "kr": "메뉴",
+  "type": "word",
+  "theme": "a1::restaurant"
+ },
+ {
+  "fr": "Porter (en bandouliere, sur l'epaule)",
+  "kr": "메다",
+  "type": "word",
+  "theme": "a2::actions"
+ },
+ {
+  "fr": "Message",
+  "kr": "메시지",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Mail, courriel",
+  "kr": "메일",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Moustique",
+  "kr": "모기",
+  "type": "word",
+  "theme": "a2::insectes"
+ },
+ {
+  "fr": "Tout, tous, l'ensemble",
+  "kr": "모두",
+  "type": "word",
+  "theme": "a1::quantite"
+ },
+ {
+  "fr": "Tout, tous (les), chaque",
+  "kr": "모든",
+  "type": "word",
+  "theme": "a1::quantite"
+ },
+ {
+  "fr": "Apparence, allure, aspect",
+  "kr": "모습",
+  "type": "word",
+  "theme": "a2::apparence"
+ },
+ {
+  "fr": "Se rassembler, s'accumuler",
+  "kr": "모이다",
+  "type": "word",
+  "theme": "a2::actions"
+ },
+ {
+  "fr": "Reunion, rassemblement",
+  "kr": "모임",
+  "type": "word",
+  "theme": "a2::vie_sociale"
+ },
+ {
+  "fr": "Manquer, etre insuffisant",
+  "kr": "모자라다",
+  "type": "word",
+  "theme": "a2::quantite"
+ },
+ {
+  "fr": "Bains publics (sauna coreen)",
+  "kr": "목욕탕",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "Etre laid, moche",
+  "kr": "못생기다",
+  "type": "word",
+  "theme": "a2::apparence"
+ },
+ {
+  "fr": "Mongolie",
+  "kr": "몽골",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Radis blanc (legume)",
+  "kr": "무",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Quel, quelle (sorte de)",
+  "kr": "무슨",
+  "type": "word",
+  "theme": "a1::questions"
+ },
+ {
+  "fr": "Quoi, que, quelle chose",
+  "kr": "무엇",
+  "type": "word",
+  "theme": "a1::questions"
+ },
+ {
+  "fr": "Extremement, tres",
+  "kr": "무척",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Bien sur, evidemment",
+  "kr": "물론",
+  "type": "word",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Quoi ? Hein ? (interjection)",
+  "kr": "뭐",
+  "type": "word",
+  "theme": "a1::expressions"
+ },
+ {
+  "fr": "Les Etats-Unis, l'Amerique",
+  "kr": "미국",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Soupe d'algues (wakame)",
+  "kr": "미역국",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Metre (unite de longueur)",
+  "kr": "미터",
+  "type": "word",
+  "theme": "a1::mesures"
+ },
+ {
+  "fr": "Le dessous, le bas",
+  "kr": "밑",
+  "type": "word",
+  "theme": "a1::position"
+ },
+ {
+  "fr": "Le dehors, l'exterieur",
+  "kr": "바깥",
+  "type": "word",
+  "theme": "a2::position"
+ },
+ {
+  "fr": "Le cote exterieur, l'exterieur",
+  "kr": "바깥쪽",
+  "type": "word",
+  "theme": "a2::position"
+ },
+ {
+  "fr": "Bord de mer, plage",
+  "kr": "바닷가",
+  "type": "word",
+  "theme": "a2::nature"
+ },
+ {
+  "fr": "Regarder (au loin), contempler",
+  "kr": "바라보다",
+  "type": "word",
+  "theme": "a2::actions"
+ },
+ {
+  "fr": "Violon",
+  "kr": "바이올린",
+  "type": "word",
+  "theme": "a2::musique"
+ },
+ {
+  "fr": "Applaudissements",
+  "kr": "박수",
+  "type": "word",
+  "theme": "a2::vie_sociale"
+ },
+ {
+  "fr": "Le dehors, l'exterieur ; hormis",
+  "kr": "밖",
+  "type": "word",
+  "theme": "a1::position"
+ },
+ {
+  "fr": "Etre content (de revoir/rencontrer)",
+  "kr": "반갑다",
+  "type": "word",
+  "theme": "a1::sentiments"
+ },
+ {
+  "fr": "Absolument, immanquablement",
+  "kr": "반드시",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Short, culotte courte",
+  "kr": "반바지",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Ecrire sous la dictee, noter",
+  "kr": "받아쓰다",
+  "type": "word",
+  "theme": "a2::etudes"
+ },
+ {
+  "fr": "Plante du pied",
+  "kr": "발바닥",
+  "type": "word",
+  "theme": "a2::corps"
+ },
+ {
+  "fr": "Station de radiodiffusion, chaine",
+  "kr": "방송국",
+  "type": "word",
+  "theme": "a2::medias"
+ },
+ {
+  "fr": "Badminton",
+  "kr": "배드민턴",
+  "type": "word",
+  "theme": "a2::sport"
+ },
+ {
+  "fr": "Chou chinois (chou napa)",
+  "kr": "배추",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Un million",
+  "kr": "백만",
+  "type": "word",
+  "theme": "a2::nombres"
+ },
+ {
+  "fr": "Grand magasin",
+  "kr": "백화점",
+  "type": "word",
+  "theme": "a1::commerce"
+ },
+ {
+  "fr": "Serpent",
+  "kr": "뱀",
+  "type": "word",
+  "theme": "a2::animaux"
+ },
+ {
+  "fr": "Fois (nombre de fois) ; numero",
+  "kr": "번",
+  "type": "word",
+  "theme": "a1::mesures"
+ },
+ {
+  "fr": "-ieme (ordinal)",
+  "kr": "번째",
+  "type": "word",
+  "theme": "a2::nombres"
+ },
+ {
+  "fr": "Ensemble, jeu (classificateur d'habits)",
+  "kr": "벌",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Gagner (de l'argent)",
+  "kr": "벌다",
+  "type": "word",
+  "theme": "a2::argent"
+ },
+ {
+  "fr": "Le Vietnam",
+  "kr": "베트남",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Changer, se transformer",
+  "kr": "변하다",
+  "type": "word",
+  "theme": "a2::actions"
+ },
+ {
+  "fr": "Visite a un malade",
+  "kr": "병문안",
+  "type": "word",
+  "theme": "a2::sante"
+ },
+ {
+  "fr": "Riz saute (bokkeumbap)",
+  "kr": "볶음밥",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Enveloppe",
+  "kr": "봉투",
+  "type": "word",
+  "theme": "a2::courrier"
+ },
+ {
+  "fr": "Rencontrer (un aîné, poli humble)",
+  "kr": "뵙다",
+  "type": "word",
+  "theme": "a2::politesse"
+ },
+ {
+  "fr": "Busan (ville portuaire du sud)",
+  "kr": "부산",
+  "type": "word",
+  "theme": "a2::villes"
+ },
+ {
+  "fr": "Demande, service (que l'on demande)",
+  "kr": "부탁",
+  "type": "word",
+  "theme": "a2::relations"
+ },
+ {
+  "fr": "Le nord, côté nord",
+  "kr": "북쪽",
+  "type": "word",
+  "theme": "a1::directions"
+ },
+ {
+  "fr": "Snack coréen (plats de farine bon marché)",
+  "kr": "분식",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Ambiance, atmosphère",
+  "kr": "분위기",
+  "type": "word",
+  "theme": "a2::sentiments"
+ },
+ {
+  "fr": "Etre rouge, rougeâtre",
+  "kr": "붉다",
+  "type": "word",
+  "theme": "a2::couleurs"
+ },
+ {
+  "fr": "Coller, adhérer ; être collé",
+  "kr": "붙다",
+  "type": "word",
+  "theme": "a2::actions"
+ },
+ {
+  "fr": "Chemisier, blouse",
+  "kr": "블라우스",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Vidéo, cassette vidéo",
+  "kr": "비디오",
+  "type": "word",
+  "theme": "a1::multimedia"
+ },
+ {
+  "fr": "Secret",
+  "kr": "비밀",
+  "type": "word",
+  "theme": "a2::relations"
+ },
+ {
+  "fr": "Immeuble, bâtiment",
+  "kr": "빌딩",
+  "type": "word",
+  "theme": "a2::ville"
+ },
+ {
+  "fr": "Etre rouge (vif)",
+  "kr": "빨갛다",
+  "type": "word",
+  "theme": "a2::couleurs"
+ },
+ {
+  "fr": "Boulangerie",
+  "kr": "빵집",
+  "type": "word",
+  "theme": "a2::commerces"
+ },
+ {
+  "fr": "Arracher, extraire ; sélectionner",
+  "kr": "뽑다",
+  "type": "word",
+  "theme": "a2::actions"
+ },
+ {
+  "fr": "Les quatre saisons",
+  "kr": "사계절",
+  "type": "word",
+  "theme": "a2::nature"
+ },
+ {
+  "fr": "Affaire, entreprise, business",
+  "kr": "사업",
+  "type": "word",
+  "theme": "a2::travail"
+ },
+ {
+  "fr": "Espace entre, intervalle ; relation",
+  "kr": "사이",
+  "type": "word",
+  "theme": "a1::relations"
+ },
+ {
+  "fr": "Soda (limonade type Sprite)",
+  "kr": "사이다",
+  "type": "word",
+  "theme": "a2::boissons"
+ },
+ {
+  "fr": "Patron, PDG, directeur",
+  "kr": "사장",
+  "type": "word",
+  "theme": "a1::travail"
+ },
+ {
+  "fr": "Trois jours",
+  "kr": "사흘",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Carrefour à trois branches, patte-d'oie",
+  "kr": "삼거리",
+  "type": "word",
+  "theme": "a2::ville"
+ },
+ {
+  "fr": "Boîte, carton",
+  "kr": "상자",
+  "type": "word",
+  "theme": "a2::objets"
+ },
+ {
+  "fr": "Laitue",
+  "kr": "상추",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "De nouveau, à neuf",
+  "kr": "새로",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Nouvel an, nouvelle année",
+  "kr": "새해",
+  "type": "word",
+  "theme": "a2::calendrier"
+ },
+ {
+  "fr": "Couleur",
+  "kr": "색",
+  "type": "word",
+  "theme": "a1::couleurs"
+ },
+ {
+  "fr": "Sandwich",
+  "kr": "샌드위치",
+  "type": "word",
+  "theme": "a1::nourriture"
+ },
+ {
+  "fr": "Anniversaire (honorifique)",
+  "kr": "생신",
+  "type": "word",
+  "theme": "a2::politesse"
+ },
+ {
+  "fr": "Vie, existence quotidienne",
+  "kr": "생활",
+  "type": "word",
+  "theme": "a1::quotidien"
+ },
+ {
+  "fr": "Trois ou quatre (déterminant)",
+  "kr": "서너",
+  "type": "word",
+  "theme": "a2::nombres"
+ },
+ {
+  "fr": "Service (prestation, gratuité)",
+  "kr": "서비스",
+  "type": "word",
+  "theme": "a2::commerce"
+ },
+ {
+  "fr": "Occident, monde occidental",
+  "kr": "서양",
+  "type": "word",
+  "theme": "a2::culture"
+ },
+ {
+  "fr": "Séoul (capitale)",
+  "kr": "서울",
+  "type": "word",
+  "theme": "a2::villes"
+ },
+ {
+  "fr": "Gare de Séoul",
+  "kr": "서울역",
+  "type": "word",
+  "theme": "a2::transports"
+ },
+ {
+  "fr": "L'ouest, côté ouest",
+  "kr": "서쪽",
+  "type": "word",
+  "theme": "a1::directions"
+ },
+ {
+  "fr": "Maître, enseignant ; monsieur",
+  "kr": "선생",
+  "type": "word",
+  "theme": "a2::personnes"
+ },
+ {
+  "fr": "Choix, sélection",
+  "kr": "선택",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Seolleongtang (soupe de bœuf blanche)",
+  "kr": "설렁탕",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Mont Seorak",
+  "kr": "설악산",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Nom (honorifique)",
+  "kr": "성함",
+  "type": "word",
+  "theme": "a2::politesse"
+ },
+ {
+  "fr": "Trois (déterminant devant compteur)",
+  "kr": "세",
+  "type": "word",
+  "theme": "a1::nombres"
+ },
+ {
+  "fr": "Monde",
+  "kr": "세계",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Monde, société, vie ici-bas",
+  "kr": "세상",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Pressing, blanchisserie",
+  "kr": "세탁소",
+  "type": "word",
+  "theme": "a2::commerces"
+ },
+ {
+  "fr": "Centre (commercial, culturel)",
+  "kr": "센터",
+  "type": "word",
+  "theme": "a2::ville"
+ },
+ {
+  "fr": "Centimètre",
+  "kr": "센티미터",
+  "type": "word",
+  "theme": "a1::mesures"
+ },
+ {
+  "fr": "Troisième (déterminant)",
+  "kr": "셋째",
+  "type": "word",
+  "theme": "a1::nombres"
+ },
+ {
+  "fr": "Viande de bœuf",
+  "kr": "소고기",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Nouvelle, information",
+  "kr": "소식",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Excursion, sortie (scolaire)",
+  "kr": "소풍",
+  "type": "word",
+  "theme": "a1::loisirs"
+ },
+ {
+  "fr": "Intérieur, dedans",
+  "kr": "속",
+  "type": "word",
+  "theme": "a1::espace"
+ },
+ {
+  "fr": "Vitesse, allure",
+  "kr": "속도",
+  "type": "word",
+  "theme": "a2::transport"
+ },
+ {
+  "fr": "Paume (de la main)",
+  "kr": "손바닥",
+  "type": "word",
+  "theme": "a2::corps"
+ },
+ {
+  "fr": "Mouchoir",
+  "kr": "손수건",
+  "type": "word",
+  "theme": "a2::objets"
+ },
+ {
+  "fr": "Songpyeon (gâteau de riz de Chuseok)",
+  "kr": "송편",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Shopping, faire les courses",
+  "kr": "쇼핑",
+  "type": "word",
+  "theme": "a1::achats"
+ },
+ {
+  "fr": "Peine, effort (fourni)",
+  "kr": "수고",
+  "type": "word",
+  "theme": "a2::travail"
+ },
+ {
+  "fr": "Piscine",
+  "kr": "수영장",
+  "type": "word",
+  "theme": "a1::lieux"
+ },
+ {
+  "fr": "Couverts (cuillère et baguettes)",
+  "kr": "수저",
+  "type": "word",
+  "theme": "a2::repas"
+ },
+ {
+  "fr": "Carnet, calepin",
+  "kr": "수첩",
+  "type": "word",
+  "theme": "a2::objets"
+ },
+ {
+  "fr": "Devoir (scolaire)",
+  "kr": "숙제",
+  "type": "word",
+  "theme": "a1::ecole"
+ },
+ {
+  "fr": "Alcool, boisson alcoolisée",
+  "kr": "술",
+  "type": "word",
+  "theme": "a1::boissons"
+ },
+ {
+  "fr": "Bar, débit de boissons",
+  "kr": "술집",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Chiffre, nombre (écrit)",
+  "kr": "숫자",
+  "type": "word",
+  "theme": "a2::maths"
+ },
+ {
+  "fr": "Vingt (déterminant devant un nom)",
+  "kr": "스무",
+  "type": "word",
+  "theme": "a1::nombres"
+ },
+ {
+  "fr": "Soi-même, de soi-même",
+  "kr": "스스로",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Patin (à glace)",
+  "kr": "스케이트",
+  "type": "word",
+  "theme": "a2::sport"
+ },
+ {
+  "fr": "Ski",
+  "kr": "스키",
+  "type": "word",
+  "theme": "a1::sport"
+ },
+ {
+  "fr": "Station de ski, piste de ski",
+  "kr": "스키장",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Star, vedette, célébrité",
+  "kr": "스타",
+  "type": "word",
+  "theme": "a2::medias"
+ },
+ {
+  "fr": "Spaghetti",
+  "kr": "스파게티",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Être triste, s'attrister",
+  "kr": "슬퍼하다",
+  "type": "word",
+  "theme": "a2::emotions"
+ },
+ {
+  "fr": "Tristesse, chagrin",
+  "kr": "슬픔",
+  "type": "word",
+  "theme": "a2::emotions"
+ },
+ {
+  "fr": "Ville (unité administrative)",
+  "kr": "시",
+  "type": "word",
+  "theme": "a1::geographie"
+ },
+ {
+  "fr": "Emploi du temps, horaire",
+  "kr": "시간표",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Campagne, province",
+  "kr": "시골",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Examen, épreuve",
+  "kr": "시험",
+  "type": "word",
+  "theme": "a1::ecole"
+ },
+ {
+  "fr": "Membre de la famille (du foyer)",
+  "kr": "식구",
+  "type": "word",
+  "theme": "a2::famille"
+ },
+ {
+  "fr": "Pain de mie",
+  "kr": "식빵",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Table (à manger)",
+  "kr": "식탁",
+  "type": "word",
+  "theme": "a1::maison"
+ },
+ {
+  "fr": "Produit alimentaire, denrée",
+  "kr": "식품",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Marié, jeune époux",
+  "kr": "신랑",
+  "type": "word",
+  "theme": "a2::mariage"
+ },
+ {
+  "fr": "Voyage de noces, lune de miel",
+  "kr": "신혼여행",
+  "type": "word",
+  "theme": "a2::mariage"
+ },
+ {
+  "fr": "Impolitesse, manque de respect",
+  "kr": "실례",
+  "type": "word",
+  "theme": "a1::politesse"
+ },
+ {
+  "fr": "Manquer aux convenances, s'excuser",
+  "kr": "실례하다",
+  "type": "word",
+  "theme": "a2::politesse"
+ },
+ {
+  "fr": "Erreur, maladresse, bévue",
+  "kr": "실수",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Être détesté, ne pas aimer",
+  "kr": "싫다",
+  "type": "word",
+  "theme": "a1::emotions"
+ },
+ {
+  "fr": "Cent mille (100 000)",
+  "kr": "십만",
+  "type": "word",
+  "theme": "a2::nombres"
+ },
+ {
+  "fr": "Vouloir, avoir envie de (auxiliaire)",
+  "kr": "싶다",
+  "type": "word",
+  "theme": "a2::grammaire"
+ },
+ {
+  "fr": "Riz (cru, non cuit)",
+  "kr": "쌀",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Empiler, entasser, accumuler",
+  "kr": "쌓다",
+  "type": "word",
+  "theme": "a2::actions"
+ },
+ {
+  "fr": "Ah ! (interjection de surprise)",
+  "kr": "아",
+  "type": "word",
+  "theme": "a1::expressions"
+ },
+ {
+  "fr": "Jeune fille, demoiselle",
+  "kr": "아가씨",
+  "type": "word",
+  "theme": "a2::personnes"
+ },
+ {
+  "fr": "Bébé, nourrisson",
+  "kr": "아기",
+  "type": "word",
+  "theme": "a1::famille"
+ },
+ {
+  "fr": "Non ; eh non (familier)",
+  "kr": "아니",
+  "type": "word",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Ne pas être (ceci), n'être pas",
+  "kr": "아니다",
+  "type": "word",
+  "theme": "a1::grammaire"
+ },
+ {
+  "fr": "Non (réponse polie)",
+  "kr": "아니요",
+  "type": "word",
+  "theme": "a1::expressions"
+ },
+ {
+  "fr": "Bas, dessous, en dessous",
+  "kr": "아래",
+  "type": "word",
+  "theme": "a1::espace"
+ },
+ {
+  "fr": "Le bas, la partie inferieure",
+  "kr": "아래쪽",
+  "type": "word",
+  "theme": "a2::direction"
+ },
+ {
+  "fr": "Petit boulot, job d'appoint",
+  "kr": "아르바이트",
+  "type": "word",
+  "theme": "a2::travail"
+ },
+ {
+  "fr": "N'importe quel, aucun",
+  "kr": "아무",
+  "type": "word",
+  "theme": "a1::quantite"
+ },
+ {
+  "fr": "N'importe quoi, quoi que ce soit",
+  "kr": "아무것",
+  "type": "word",
+  "theme": "a2::quantite"
+ },
+ {
+  "fr": "Aussi... que, si... que",
+  "kr": "아무리",
+  "type": "word",
+  "theme": "a2::expression"
+ },
+ {
+  "fr": "Pere (respectueux), beau-pere",
+  "kr": "아버님",
+  "type": "word",
+  "theme": "a2::famille"
+ },
+ {
+  "fr": "Papa",
+  "kr": "아빠",
+  "type": "word",
+  "theme": "a1::famille"
+ },
+ {
+  "fr": "Madame, tata (femme d'age moyen)",
+  "kr": "아줌마",
+  "type": "word",
+  "theme": "a1::personne"
+ },
+ {
+  "fr": "L'interieur, le dedans",
+  "kr": "안",
+  "type": "word",
+  "theme": "a1::direction"
+ },
+ {
+  "fr": "Avis, notice, note d'information",
+  "kr": "안내문",
+  "type": "word",
+  "theme": "a2::information"
+ },
+ {
+  "fr": "Salut, bonjour (familier)",
+  "kr": "안녕",
+  "type": "word",
+  "theme": "a1::salutation"
+ },
+ {
+  "fr": "Etre en bonne sante, aller bien",
+  "kr": "안녕하다",
+  "type": "word",
+  "theme": "a2::sante"
+ },
+ {
+  "fr": "En paix, tranquillement (formule de politesse)",
+  "kr": "안녕히",
+  "type": "word",
+  "theme": "a1::salutation"
+ },
+ {
+  "fr": "Ne pas aller, mal se passer, echouer",
+  "kr": "안되다",
+  "type": "word",
+  "theme": "a1::etat"
+ },
+ {
+  "fr": "Le cote interieur, le dedans",
+  "kr": "안쪽",
+  "type": "word",
+  "theme": "a2::direction"
+ },
+ {
+  "fr": "S'asseoir",
+  "kr": "앉다",
+  "type": "word",
+  "theme": "a1::action"
+ },
+ {
+  "fr": "Faire savoir, informer, annoncer",
+  "kr": "알리다",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Etre adequat, convenir, aller bien",
+  "kr": "알맞다",
+  "type": "word",
+  "theme": "a2::etat"
+ },
+ {
+  "fr": "Devant, l'avant",
+  "kr": "앞",
+  "type": "word",
+  "theme": "a1::direction"
+ },
+ {
+  "fr": "Le cote avant, l'avant",
+  "kr": "앞쪽",
+  "type": "word",
+  "theme": "a2::direction"
+ },
+ {
+  "fr": "Album (photos, musique)",
+  "kr": "앨범",
+  "type": "word",
+  "theme": "a2::objet"
+ },
+ {
+  "fr": "He !, eh ! (interpellation)",
+  "kr": "야",
+  "type": "word",
+  "theme": "a2::interjection"
+ },
+ {
+  "fr": "Baseball",
+  "kr": "야구",
+  "type": "word",
+  "theme": "a1::sport"
+ },
+ {
+  "fr": "Legume(s)",
+  "kr": "야채",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Costume (occidental)",
+  "kr": "양복",
+  "type": "word",
+  "theme": "a1::vetement"
+ },
+ {
+  "fr": "Restaurant de cuisine occidentale",
+  "kr": "양식집",
+  "type": "word",
+  "theme": "a2::restaurant"
+ },
+ {
+  "fr": "Histoire, conversation, propos",
+  "kr": "얘기",
+  "type": "word",
+  "theme": "a1::communication"
+ },
+ {
+  "fr": "Parler, discuter, raconter",
+  "kr": "얘기하다",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Ah !, oh ! (surprise)",
+  "kr": "어",
+  "type": "word",
+  "theme": "a1::interjection"
+ },
+ {
+  "fr": "Quel, lequel (parmi plusieurs)",
+  "kr": "어느",
+  "type": "word",
+  "theme": "a1::question"
+ },
+ {
+  "fr": "Ou (interrogatif)",
+  "kr": "어디",
+  "type": "word",
+  "theme": "a2::question"
+ },
+ {
+  "fr": "Etre comment, etre de telle sorte",
+  "kr": "어떠하다",
+  "type": "word",
+  "theme": "a1::etat"
+ },
+ {
+  "fr": "Quel, quelle sorte de",
+  "kr": "어떤",
+  "type": "word",
+  "theme": "a1::question"
+ },
+ {
+  "fr": "Etre comment, de quelle sorte",
+  "kr": "어떻다",
+  "type": "word",
+  "theme": "a1::etat"
+ },
+ {
+  "fr": "Petit enfant, jeune enfant",
+  "kr": "어린아이",
+  "type": "word",
+  "theme": "a2::personne"
+ },
+ {
+  "fr": "Enfant",
+  "kr": "어린이",
+  "type": "word",
+  "theme": "a1::personne"
+ },
+ {
+  "fr": "Mere (respectueux), belle-mere",
+  "kr": "어머님",
+  "type": "word",
+  "theme": "a2::famille"
+ },
+ {
+  "fr": "Vite, allez, sans tarder",
+  "kr": "어서",
+  "type": "word",
+  "theme": "a1::expression"
+ },
+ {
+  "fr": "La nuit derniere, hier soir",
+  "kr": "어젯밤",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Cent millions (10^8)",
+  "kr": "억",
+  "type": "word",
+  "theme": "a2::nombre"
+ },
+ {
+  "fr": "Langue, langage",
+  "kr": "언어",
+  "type": "word",
+  "theme": "a2::langue"
+ },
+ {
+  "fr": "Quand (interrogatif)",
+  "kr": "언제",
+  "type": "word",
+  "theme": "a1::question"
+ },
+ {
+  "fr": "Toujours, en toute occasion",
+  "kr": "언제나",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Obtenir, recevoir, gagner",
+  "kr": "얻다",
+  "type": "word",
+  "theme": "a2::action"
+ },
+ {
+  "fr": "Combien, quelle quantite",
+  "kr": "얼마",
+  "type": "word",
+  "theme": "a1::question"
+ },
+ {
+  "fr": "Combien, a quel point",
+  "kr": "얼마나",
+  "type": "word",
+  "theme": "a1::question"
+ },
+ {
+  "fr": "Maman",
+  "kr": "엄마",
+  "type": "word",
+  "theme": "a1::famille"
+ },
+ {
+  "fr": "Ne pas y avoir, ne pas avoir, etre absent",
+  "kr": "없다",
+  "type": "word",
+  "theme": "a2::etat"
+ },
+ {
+  "fr": "Fesses, derriere",
+  "kr": "엉덩이",
+  "type": "word",
+  "theme": "a2::corps"
+ },
+ {
+  "fr": "Ici et la, un peu partout",
+  "kr": "여기저기",
+  "type": "word",
+  "theme": "a2::lieu"
+ },
+ {
+  "fr": "Sœur cadette (d'un garçon ou d'une fille)",
+  "kr": "여동생",
+  "type": "word",
+  "theme": "a1::famille"
+ },
+ {
+  "fr": "Plusieurs, divers",
+  "kr": "여러",
+  "type": "word",
+  "theme": "a1::quantite"
+ },
+ {
+  "fr": "Vous tous, mesdames et messieurs",
+  "kr": "여러분",
+  "type": "word",
+  "theme": "a1::relations"
+ },
+ {
+  "fr": "Allô ? ; Excusez-moi (pour appeler)",
+  "kr": "여보세요",
+  "type": "word",
+  "theme": "a1::telephone"
+ },
+ {
+  "fr": "Femme, sexe féminin",
+  "kr": "여성",
+  "type": "word",
+  "theme": "a2::personnes"
+ },
+ {
+  "fr": "Demander, s'adresser (humble, à un supérieur)",
+  "kr": "여쭙다",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Élève de sexe féminin, écolière",
+  "kr": "여학생",
+  "type": "word",
+  "theme": "a1::ecole"
+ },
+ {
+  "fr": "Lieu de voyage, destination touristique",
+  "kr": "여행지",
+  "type": "word",
+  "theme": "a2::voyage"
+ },
+ {
+  "fr": "Théâtre, pièce de théâtre",
+  "kr": "연극",
+  "type": "word",
+  "theme": "a2::culture"
+ },
+ {
+  "fr": "Coordonnées, numéro de contact",
+  "kr": "연락처",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Fin de l'année",
+  "kr": "연말",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Âge (forme honorifique)",
+  "kr": "연세",
+  "type": "word",
+  "theme": "a2::personnes"
+ },
+ {
+  "fr": "Train (voitures de chemin de fer)",
+  "kr": "열차",
+  "type": "word",
+  "theme": "a2::transport"
+ },
+ {
+  "fr": "Dix jours",
+  "kr": "열흘",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Carte postale",
+  "kr": "엽서",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Royaume-Uni, Angleterre",
+  "kr": "영국",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Anglais (langue)",
+  "kr": "영어",
+  "type": "word",
+  "theme": "a1::langue"
+ },
+ {
+  "fr": "Au-dessous de zéro (température)",
+  "kr": "영하",
+  "type": "word",
+  "theme": "a2::meteo"
+ },
+ {
+  "fr": "Acteur/actrice de cinéma",
+  "kr": "영화배우",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "Côté, à côté de",
+  "kr": "옆",
+  "type": "word",
+  "theme": "a1::position"
+ },
+ {
+  "fr": "Maison d'à côté, voisins",
+  "kr": "옆집",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "Art, les arts",
+  "kr": "예술",
+  "type": "word",
+  "theme": "a2::culture"
+ },
+ {
+  "fr": "Ancien, d'autrefois",
+  "kr": "옛",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Depuis longtemps, ça fait longtemps",
+  "kr": "오래간만",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Ça fait longtemps (depuis la dernière fois)",
+  "kr": "오랜만",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Pendant longtemps, longtemps",
+  "kr": "오랫동안",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Monter, grimper ; augmenter",
+  "kr": "오르다",
+  "type": "word",
+  "theme": "a1::mouvement"
+ },
+ {
+  "fr": "Main droite",
+  "kr": "오른손",
+  "type": "word",
+  "theme": "a2::corps"
+ },
+ {
+  "fr": "Monter (vers ici), remonter",
+  "kr": "올라오다",
+  "type": "word",
+  "theme": "a2::mouvement"
+ },
+ {
+  "fr": "Respectueusement (formule de clôture de lettre)",
+  "kr": "올림",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Jeux olympiques",
+  "kr": "올림픽",
+  "type": "word",
+  "theme": "a2::sport"
+ },
+ {
+  "fr": "Cette année",
+  "kr": "올해",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Être juste, correct, avoir raison",
+  "kr": "옳다",
+  "type": "word",
+  "theme": "a2::opinion"
+ },
+ {
+  "fr": "Waouh ! Oh ! (surprise, admiration)",
+  "kr": "와",
+  "type": "word",
+  "theme": "a2::expressions"
+ },
+ {
+  "fr": "Chemise (habillée, à col)",
+  "kr": "와이셔츠",
+  "type": "word",
+  "theme": "a2::vetements"
+ },
+ {
+  "fr": "Complètement, entièrement",
+  "kr": "완전히",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Roi",
+  "kr": "왕",
+  "type": "word",
+  "theme": "a2::personnes"
+ },
+ {
+  "fr": "Pourquoi",
+  "kr": "왜",
+  "type": "word",
+  "theme": "a1::questions"
+ },
+ {
+  "fr": "Étranger, pays étranger",
+  "kr": "외국",
+  "type": "word",
+  "theme": "a1::pays"
+ },
+ {
+  "fr": "Sortie (hors de chez soi)",
+  "kr": "외출",
+  "type": "word",
+  "theme": "a2::vie quotidienne"
+ },
+ {
+  "fr": "Main gauche",
+  "kr": "왼손",
+  "type": "word",
+  "theme": "a2::corps"
+ },
+ {
+  "fr": "Jour de la semaine",
+  "kr": "요일",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Oudon, nouilles udon",
+  "kr": "우동",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Notre pays, la Corée",
+  "kr": "우리나라",
+  "type": "word",
+  "theme": "a1::pays"
+ },
+ {
+  "fr": "D'abord, avant tout",
+  "kr": "우선",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Terrain de sport, cour de récréation",
+  "kr": "운동장",
+  "type": "word",
+  "theme": "a1::ecole"
+ },
+ {
+  "fr": "Pleurs, le fait de pleurer",
+  "kr": "울음",
+  "type": "word",
+  "theme": "a2::emotions"
+ },
+ {
+  "fr": "Rire, sourire",
+  "kr": "웃음",
+  "type": "word",
+  "theme": "a2::emotions"
+ },
+ {
+  "fr": "Mois",
+  "kr": "월",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Côté supérieur, le haut",
+  "kr": "위쪽",
+  "type": "word",
+  "theme": "a2::position"
+ },
+ {
+  "fr": "Jardin d'enfants, maternelle",
+  "kr": "유치원",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Etudes a l'etranger",
+  "kr": "유학",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Etudiant etranger, etudiant en echange",
+  "kr": "유학생",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Passerelle pietonne (au-dessus d'une route)",
+  "kr": "육교",
+  "type": "word",
+  "theme": "a2::ville"
+ },
+ {
+  "fr": "Hum, mmh (marque la reflexion)",
+  "kr": "음",
+  "type": "word",
+  "theme": "a2::interjection"
+ },
+ {
+  "fr": "Boisson",
+  "kr": "음료",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Boisson (rafraichissement, soda)",
+  "kr": "음료수",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Restaurant",
+  "kr": "음식점",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Musicien, musicienne",
+  "kr": "음악가",
+  "type": "word",
+  "theme": "a2::metier"
+ },
+ {
+  "fr": "Oui, ouais (reponse familiere)",
+  "kr": "응",
+  "type": "word",
+  "theme": "a2::interjection"
+ },
+ {
+  "fr": "Ceci, ce...-ci",
+  "kr": "이것",
+  "type": "word",
+  "theme": "a1::demonstratif"
+ },
+ {
+  "fr": "Ici, cet endroit",
+  "kr": "이곳",
+  "type": "word",
+  "theme": "a1::lieu"
+ },
+ {
+  "fr": "Ce jour-la",
+  "kr": "이날",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Ce moment, a ce moment-la",
+  "kr": "이때",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Ce, un tel, comme ca",
+  "kr": "이런",
+  "type": "word",
+  "theme": "a1::demonstratif"
+ },
+ {
+  "fr": "Etre ainsi, etre comme ceci",
+  "kr": "이렇다",
+  "type": "word",
+  "theme": "a1::demonstratif"
+ },
+ {
+  "fr": "Deja, desormais",
+  "kr": "이미",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Cette fois-ci",
+  "kr": "이번",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Cette personne (poli)",
+  "kr": "이분",
+  "type": "word",
+  "theme": "a1::personne"
+ },
+ {
+  "fr": "Affaires de demenagement, cartons",
+  "kr": "이삿짐",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "Usage, utilisation",
+  "kr": "이용",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Avant, auparavant, precedent",
+  "kr": "이전",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Ce cote-ci, par ici",
+  "kr": "이쪽",
+  "type": "word",
+  "theme": "a1::direction"
+ },
+ {
+  "fr": "Deux jours",
+  "kr": "이틀",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Comprendre",
+  "kr": "이해하다",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Apres, par la suite, ulterieur",
+  "kr": "이후",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Popularite",
+  "kr": "인기",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Indonesie",
+  "kr": "인도네시아",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Portion (pour une personne)",
+  "kr": "인분",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Ginseng",
+  "kr": "인삼",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Etre reconnu, se voir reconnaitre",
+  "kr": "인정받다",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Incheon (ville portuaire pres de Seoul)",
+  "kr": "인천",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Internet",
+  "kr": "인터넷",
+  "type": "word",
+  "theme": "a2::technologie"
+ },
+ {
+  "fr": "Japon",
+  "kr": "일본",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Une partie, une portion",
+  "kr": "일부",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Cuisine japonaise; eclipse de soleil",
+  "kr": "일식",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Restaurant japonais",
+  "kr": "일식집",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Se lever, se mettre debout",
+  "kr": "일어서다",
+  "type": "word",
+  "theme": "a2::corps"
+ },
+ {
+  "fr": "Perdre (un objet), egarer",
+  "kr": "잃다",
+  "type": "word",
+  "theme": "a1::abstrait"
+ },
+ {
+  "fr": "Levre, levres",
+  "kr": "입술",
+  "type": "word",
+  "theme": "a2::corps"
+ },
+ {
+  "fr": "Billet d'entree, ticket",
+  "kr": "입장권",
+  "type": "word",
+  "theme": "a2::loisir"
+ },
+ {
+  "fr": "Entree (a l'ecole), admission",
+  "kr": "입학",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Examen d'entree, concours d'admission",
+  "kr": "입학시험",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Etre (present), il y a, avoir",
+  "kr": "있다",
+  "type": "word",
+  "theme": "a1::abstrait"
+ },
+ {
+  "fr": "Oublier",
+  "kr": "잊다",
+  "type": "word",
+  "theme": "a1::abstrait"
+ },
+ {
+  "fr": "Feuille (d'arbre, de plante)",
+  "kr": "잎",
+  "type": "word",
+  "theme": "a1::nature"
+ },
+ {
+  "fr": "Presentation de soi",
+  "kr": "자기소개",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Sans cesse, a repetition, sans arret",
+  "kr": "자꾸",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Distributeur automatique",
+  "kr": "자동판매기",
+  "type": "word",
+  "theme": "a2::ville"
+ },
+ {
+  "fr": "Place, siege; endroit",
+  "kr": "자리",
+  "type": "word",
+  "theme": "a1::lieu"
+ },
+ {
+  "fr": "En detail, minutieusement",
+  "kr": "자세히",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Enfant (fils ou fille, progeniture)",
+  "kr": "자식",
+  "type": "word",
+  "theme": "a2::famille"
+ },
+ {
+  "fr": "Soi-meme, sa propre personne",
+  "kr": "자신",
+  "type": "word",
+  "theme": "a2::personne"
+ },
+ {
+  "fr": "Liberte",
+  "kr": "자유",
+  "type": "word",
+  "theme": "a2::societe"
+ },
+ {
+  "fr": "Jajangmyeon (nouilles a la sauce de haricots noirs)",
+  "kr": "자장면",
+  "type": "word",
+  "theme": "a1::nourriture"
+ },
+ {
+  "fr": "Distributeur automatique",
+  "kr": "자판기",
+  "type": "word",
+  "theme": "a2::ville"
+ },
+ {
+  "fr": "L'an dernier",
+  "kr": "작년",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Verre, tasse (recipient et unite)",
+  "kr": "잔",
+  "type": "word",
+  "theme": "a1::maison"
+ },
+ {
+  "fr": "Fete, banquet (celebration)",
+  "kr": "잔치",
+  "type": "word",
+  "theme": "a2::evenement"
+ },
+ {
+  "fr": "Bien, comme il faut",
+  "kr": "잘",
+  "type": "word",
+  "theme": "a1::communication"
+ },
+ {
+  "fr": "Bien se passer, reussir",
+  "kr": "잘되다",
+  "type": "word",
+  "theme": "a2::vie"
+ },
+ {
+  "fr": "Etre beau, avoir un beau visage",
+  "kr": "잘생기다",
+  "type": "word",
+  "theme": "a2::apparence"
+ },
+ {
+  "fr": "Bien faire, etre doue pour",
+  "kr": "잘하다",
+  "type": "word",
+  "theme": "a1::communication"
+ },
+ {
+  "fr": "Sommeil",
+  "kr": "잠",
+  "type": "word",
+  "theme": "a1::corps"
+ },
+ {
+  "fr": "Un instant, un court moment",
+  "kr": "잠깐",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Un moment, un instant",
+  "kr": "잠시",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Dormir",
+  "kr": "잠자다",
+  "type": "word",
+  "theme": "a1::corps"
+ },
+ {
+  "fr": "Manger (honorifique de 먹다)",
+  "kr": "잡수시다",
+  "type": "word",
+  "theme": "a1::nourriture"
+ },
+ {
+  "fr": "Feuille (compteur de papier, feuilles plates)",
+  "kr": "장",
+  "type": "word",
+  "theme": "a2::objets"
+ },
+ {
+  "fr": "Interet, plaisir, amusement",
+  "kr": "재미",
+  "type": "word",
+  "theme": "a1::sentiments"
+ },
+ {
+  "fr": "Cela, cette chose-la (loin)",
+  "kr": "저것",
+  "type": "word",
+  "theme": "a1::grammaire"
+ },
+ {
+  "fr": "Cet endroit-la (loin)",
+  "kr": "저곳",
+  "type": "word",
+  "theme": "a1::lieu"
+ },
+ {
+  "fr": "Epargne, economies (mise de cote)",
+  "kr": "저금",
+  "type": "word",
+  "theme": "a2::argent"
+ },
+ {
+  "fr": "Comme ca, un tel (chose eloignee)",
+  "kr": "저런",
+  "type": "word",
+  "theme": "a2::grammaire"
+ },
+ {
+  "fr": "Etre ainsi, etre comme ca (loin)",
+  "kr": "저렇다",
+  "type": "word",
+  "theme": "a2::grammaire"
+ },
+ {
+  "fr": "La derniere fois, l'autre fois",
+  "kr": "저번",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Cette personne-la (honorifique, loin)",
+  "kr": "저분",
+  "type": "word",
+  "theme": "a2::personne"
+ },
+ {
+  "fr": "Ce cote-la, par la-bas",
+  "kr": "저쪽",
+  "type": "word",
+  "theme": "a1::lieu"
+ },
+ {
+  "fr": "Etre approprie, convenable, adequat",
+  "kr": "적당하다",
+  "type": "word",
+  "theme": "a2::qualite"
+ },
+ {
+  "fr": "Tout, entier (l'ensemble de)",
+  "kr": "전",
+  "type": "word",
+  "theme": "a2::grammaire"
+ },
+ {
+  "fr": "Le tout, la totalite; entierement",
+  "kr": "전부",
+  "type": "word",
+  "theme": "a2::quantite"
+ },
+ {
+  "fr": "Metro, train electrique urbain",
+  "kr": "전철",
+  "type": "word",
+  "theme": "a2::transport"
+ },
+ {
+  "fr": "Transmettre, rapporter (un message, un objet)",
+  "kr": "전하다",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Telephone; appel telephonique",
+  "kr": "전화",
+  "type": "word",
+  "theme": "a1::communication"
+ },
+ {
+  "fr": "Appareil telephonique, poste telephonique",
+  "kr": "전화기",
+  "type": "word",
+  "theme": "a2::objets"
+ },
+ {
+  "fr": "Numero de telephone",
+  "kr": "전화번호",
+  "type": "word",
+  "theme": "a1::communication"
+ },
+ {
+  "fr": "Telephoner, passer un appel",
+  "kr": "전화하다",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "L'heure du dejeuner, la mi-journee",
+  "kr": "점심때",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "La pause dejeuner",
+  "kr": "점심시간",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Arret, station (de bus)",
+  "kr": "정거장",
+  "type": "word",
+  "theme": "a2::transport"
+ },
+ {
+  "fr": "Degre, niveau; environ",
+  "kr": "정도",
+  "type": "word",
+  "theme": "a2::quantite"
+ },
+ {
+  "fr": "Entree principale, porte de devant",
+  "kr": "정문",
+  "type": "word",
+  "theme": "a2::lieu"
+ },
+ {
+  "fr": "A toute allure, comme un fou (sans repit)",
+  "kr": "정신없이",
+  "type": "word",
+  "theme": "a2::maniere"
+ },
+ {
+  "fr": "Chirurgie orthopedique (service medical)",
+  "kr": "정형외과",
+  "type": "word",
+  "theme": "a2::sante"
+ },
+ {
+  "fr": "Mon, ma (humble, de 저)",
+  "kr": "제",
+  "type": "word",
+  "theme": "a2::grammaire"
+ },
+ {
+  "fr": "Titre (d'un livre, film, oeuvre)",
+  "kr": "제목",
+  "type": "word",
+  "theme": "a2::culture"
+ },
+ {
+  "fr": "Peu a peu, petit a petit",
+  "kr": "조금씩",
+  "type": "word",
+  "theme": "a2::maniere"
+ },
+ {
+  "fr": "Doucement, calmement, en silence",
+  "kr": "조용히",
+  "type": "word",
+  "theme": "a2::maniere"
+ },
+ {
+  "fr": "Somnoler, piquer du nez",
+  "kr": "졸다",
+  "type": "word",
+  "theme": "a2::corps"
+ },
+ {
+  "fr": "Un peu; s'il te plait (adoucissant)",
+  "kr": "좀",
+  "type": "word",
+  "theme": "a1::communication"
+ },
+ {
+  "fr": "Sorte, type, genre",
+  "kr": "종류",
+  "type": "word",
+  "theme": "a2::abstrait"
+ },
+ {
+  "fr": "Employe, salarie",
+  "kr": "종업원",
+  "type": "word",
+  "theme": "a2::travail"
+ },
+ {
+  "fr": "Aimer, apprecier",
+  "kr": "좋아하다",
+  "type": "word",
+  "theme": "a1::emotions"
+ },
+ {
+  "fr": "Etre desole, confus (poli)",
+  "kr": "죄송하다",
+  "type": "word",
+  "theme": "a1::politesse"
+ },
+ {
+  "fr": "Principalement, surtout",
+  "kr": "주로",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Dormir (honorifique)",
+  "kr": "주무시다",
+  "type": "word",
+  "theme": "a2::politesse"
+ },
+ {
+  "fr": "Jus (de fruit)",
+  "kr": "주스",
+  "type": "word",
+  "theme": "a1::boisson"
+ },
+ {
+  "fr": "Alentours, environs",
+  "kr": "주위",
+  "type": "word",
+  "theme": "a2::espace"
+ },
+ {
+  "fr": "Semaine",
+  "kr": "주일",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Preparation, preparatifs",
+  "kr": "준비",
+  "type": "word",
+  "theme": "a1::action"
+ },
+ {
+  "fr": "Preparer",
+  "kr": "준비하다",
+  "type": "word",
+  "theme": "a2::action"
+ },
+ {
+  "fr": "Ligne, corde, file",
+  "kr": "줄",
+  "type": "word",
+  "theme": "a2::objets"
+ },
+ {
+  "fr": "Milieu, centre, intervalle",
+  "kr": "중간",
+  "type": "word",
+  "theme": "a2::espace"
+ },
+ {
+  "fr": "Chine",
+  "kr": "중국",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Restaurant chinois",
+  "kr": "중국집",
+  "type": "word",
+  "theme": "a2::restaurant"
+ },
+ {
+  "fr": "Centre, coeur",
+  "kr": "중심",
+  "type": "word",
+  "theme": "a2::espace"
+ },
+ {
+  "fr": "Centre, milieu (spatial)",
+  "kr": "중앙",
+  "type": "word",
+  "theme": "a2::espace"
+ },
+ {
+  "fr": "College (secondaire 1er cycle)",
+  "kr": "중학교",
+  "type": "word",
+  "theme": "a1::ecole"
+ },
+ {
+  "fr": "Collegien(ne)",
+  "kr": "중학생",
+  "type": "word",
+  "theme": "a1::ecole"
+ },
+ {
+  "fr": "Se rejouir, etre joyeux",
+  "kr": "즐거워하다",
+  "type": "word",
+  "theme": "a2::emotions"
+ },
+ {
+  "fr": "Maintenant, en ce moment",
+  "kr": "지금",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Passer (temps, lieu)",
+  "kr": "지나다",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Le mois dernier",
+  "kr": "지난달",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "La derniere fois",
+  "kr": "지난번",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "La semaine derniere",
+  "kr": "지난주",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "L'an dernier",
+  "kr": "지난해",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Passer (du temps), aller (bien)",
+  "kr": "지내다",
+  "type": "word",
+  "theme": "a1::vie"
+ },
+ {
+  "fr": "Pousser (un cri)",
+  "kr": "지르다",
+  "type": "word",
+  "theme": "a2::action"
+ },
+ {
+  "fr": "Region, province",
+  "kr": "지방",
+  "type": "word",
+  "theme": "a2::geographie"
+ },
+ {
+  "fr": "Sous-sol, souterrain",
+  "kr": "지하",
+  "type": "word",
+  "theme": "a1::espace"
+ },
+ {
+  "fr": "Station de metro",
+  "kr": "지하철역",
+  "type": "word",
+  "theme": "a2::transport"
+ },
+ {
+  "fr": "Directement, en personne",
+  "kr": "직접",
+  "type": "word",
+  "theme": "a2::adverbes"
+ },
+ {
+  "fr": "Question",
+  "kr": "질문",
+  "type": "word",
+  "theme": "a1::communication"
+ },
+ {
+  "fr": "Poser une question, questionner",
+  "kr": "질문하다",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Pendaison de cremaillere",
+  "kr": "집들이",
+  "type": "word",
+  "theme": "a2::vie"
+ },
+ {
+  "fr": "Taches menageres",
+  "kr": "집안일",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "Construire, batir ; cuisiner (riz)",
+  "kr": "짓다",
+  "type": "word",
+  "theme": "a2::action"
+ },
+ {
+  "fr": "Paire, partenaire, moitie",
+  "kr": "짝",
+  "type": "word",
+  "theme": "a2::objets"
+ },
+ {
+  "fr": "Ragout, jjigae",
+  "kr": "찌개",
+  "type": "word",
+  "theme": "a1::nourriture"
+ },
+ {
+  "fr": "Eau froide",
+  "kr": "찬물",
+  "type": "word",
+  "theme": "a2::boisson"
+ },
+ {
+  "fr": "Melon jaune coreen (chamoe)",
+  "kr": "참외",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Livre",
+  "kr": "책",
+  "type": "word",
+  "theme": "a1::objets"
+ },
+ {
+  "fr": "Dix millions",
+  "kr": "천만",
+  "type": "word",
+  "theme": "a2::nombres"
+ },
+ {
+  "fr": "Lentement, doucement",
+  "kr": "천천히",
+  "type": "word",
+  "theme": "a1::adverbes"
+ },
+ {
+  "fr": "Premier (determinant)",
+  "kr": "첫",
+  "type": "word",
+  "theme": "a2::determinants"
+ },
+ {
+  "fr": "Premier jour",
+  "kr": "첫날",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Premier, en premier lieu",
+  "kr": "첫째",
+  "type": "word",
+  "theme": "a1::nombres"
+ },
+ {
+  "fr": "Jeune homme, jeune adulte",
+  "kr": "청년",
+  "type": "word",
+  "theme": "a2::personnes"
+ },
+ {
+  "fr": "Gymnase, salle de sport",
+  "kr": "체육관",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Regarder, fixer (les yeux)",
+  "kr": "쳐다보다",
+  "type": "word",
+  "theme": "a2::action"
+ },
+ {
+  "fr": "Carton d'invitation",
+  "kr": "초대장",
+  "type": "word",
+  "theme": "a2::fete"
+ },
+ {
+  "fr": "École primaire",
+  "kr": "초등학교",
+  "type": "word",
+  "theme": "a1::ecole"
+ },
+ {
+  "fr": "Élève d'école primaire, écolier",
+  "kr": "초등학생",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Le meilleur, le sommet, le mieux",
+  "kr": "최고",
+  "type": "word",
+  "theme": "a2::qualite"
+ },
+ {
+  "fr": "Danser (une danse)",
+  "kr": "추다",
+  "type": "word",
+  "theme": "a1::loisirs"
+ },
+ {
+  "fr": "Ballon de football",
+  "kr": "축구공",
+  "type": "word",
+  "theme": "a2::sport"
+ },
+ {
+  "fr": "Présence, appel (des présents)",
+  "kr": "출석",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Entrée et sortie, accès",
+  "kr": "출입",
+  "type": "word",
+  "theme": "a2::batiment"
+ },
+ {
+  "fr": "Immigration (entrées et sorties du pays)",
+  "kr": "출입국",
+  "type": "word",
+  "theme": "a2::voyage"
+ },
+ {
+  "fr": "Trajet domicile-travail, aller et retour au travail",
+  "kr": "출퇴근",
+  "type": "word",
+  "theme": "a2::travail"
+ },
+ {
+  "fr": "Danser",
+  "kr": "춤추다",
+  "type": "word",
+  "theme": "a1::loisirs"
+ },
+ {
+  "fr": "Étage",
+  "kr": "층",
+  "type": "word",
+  "theme": "a1::batiment"
+ },
+ {
+  "fr": "Parent, membre de la parenté",
+  "kr": "친척",
+  "type": "word",
+  "theme": "a2::famille"
+ },
+ {
+  "fr": "Curry (plat)",
+  "kr": "카레",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Kalguksu (nouilles coupées au couteau)",
+  "kr": "칼국수",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Canada",
+  "kr": "캐나다",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Café (boisson)",
+  "kr": "커피",
+  "type": "word",
+  "theme": "a1::boisson"
+ },
+ {
+  "fr": "Café (établissement), coffee shop",
+  "kr": "커피숍",
+  "type": "word",
+  "theme": "a2::ville"
+ },
+ {
+  "fr": "Ordinateur",
+  "kr": "컴퓨터",
+  "type": "word",
+  "theme": "a1::technologie"
+ },
+ {
+  "fr": "Gâteau",
+  "kr": "케이크",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Concert",
+  "kr": "콘서트",
+  "type": "word",
+  "theme": "a2::loisirs"
+ },
+ {
+  "fr": "Coca, cola",
+  "kr": "콜라",
+  "type": "word",
+  "theme": "a1::boisson"
+ },
+ {
+  "fr": "Haricot, soja",
+  "kr": "콩",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Noël",
+  "kr": "크리스마스",
+  "type": "word",
+  "theme": "a1::fete"
+ },
+ {
+  "fr": "Grande voix, cri, fanfaronnade",
+  "kr": "큰소리",
+  "type": "word",
+  "theme": "a2::communication"
+ },
+ {
+  "fr": "Taille (stature d'une personne)",
+  "kr": "키",
+  "type": "word",
+  "theme": "a1::corps"
+ },
+ {
+  "fr": "Kilogramme",
+  "kr": "킬로그램",
+  "type": "word",
+  "theme": "a2::mesure"
+ },
+ {
+  "fr": "Kilomètre",
+  "kr": "킬로미터",
+  "type": "word",
+  "theme": "a2::mesure"
+ },
+ {
+  "fr": "Tennis de table, ping-pong",
+  "kr": "탁구",
+  "type": "word",
+  "theme": "a2::sport"
+ },
+ {
+  "fr": "Tangsuyuk (porc frit sauce aigre-douce)",
+  "kr": "탕수육",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Thaïlande",
+  "kr": "태국",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Tennis",
+  "kr": "테니스",
+  "type": "word",
+  "theme": "a1::sport"
+ },
+ {
+  "fr": "Court de tennis",
+  "kr": "테니스장",
+  "type": "word",
+  "theme": "a2::sport"
+ },
+ {
+  "fr": "Télévision",
+  "kr": "텔레비전",
+  "type": "word",
+  "theme": "a1::maison"
+ },
+ {
+  "fr": "Camion",
+  "kr": "트럭",
+  "type": "word",
+  "theme": "a2::transport"
+ },
+ {
+  "fr": "Spécialement, particulièrement",
+  "kr": "특별히",
+  "type": "word",
+  "theme": "a2::adverbe"
+ },
+ {
+  "fr": "Télé, TV",
+  "kr": "티브이",
+  "type": "word",
+  "theme": "a2::maison"
+ },
+ {
+  "fr": "Être bleu (comme le ciel)",
+  "kr": "파랗다",
+  "type": "word",
+  "theme": "a2::couleur"
+ },
+ {
+  "fr": "Fête, soirée, boum",
+  "kr": "파티",
+  "type": "word",
+  "theme": "a1::fete"
+ },
+ {
+  "fr": "Se vendre, être vendu",
+  "kr": "팔리다",
+  "type": "word",
+  "theme": "a2::commerce"
+ },
+ {
+  "fr": "Supérette, épicerie de proximité (dépanneur)",
+  "kr": "편의점",
+  "type": "word",
+  "theme": "a2::ville"
+ },
+ {
+  "fr": "Être souffrant, être malade (honorifique)",
+  "kr": "편찮다",
+  "type": "word",
+  "theme": "a2::sante"
+ },
+ {
+  "fr": "Emballage, empaquetage (à emporter)",
+  "kr": "포장",
+  "type": "word",
+  "theme": "a2::commerce"
+ },
+ {
+  "fr": "Être vert, être verdoyant",
+  "kr": "푸르다",
+  "type": "word",
+  "theme": "a2::couleur"
+ },
+ {
+  "fr": "Paysage, panorama",
+  "kr": "풍경",
+  "type": "word",
+  "theme": "a2::nature"
+ },
+ {
+  "fr": "France",
+  "kr": "프랑스",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Programme, émission, logiciel",
+  "kr": "프로그램",
+  "type": "word",
+  "theme": "a2::technologie"
+ },
+ {
+  "fr": "Piano",
+  "kr": "피아노",
+  "type": "word",
+  "theme": "a1::musique"
+ },
+ {
+  "fr": "Faire fleurir ; allumer, fumer",
+  "kr": "피우다",
+  "type": "word",
+  "theme": "a1::action"
+ },
+ {
+  "fr": "Pizza",
+  "kr": "피자",
+  "type": "word",
+  "theme": "a1::nourriture"
+ },
+ {
+  "fr": "Jour, journée",
+  "kr": "하루",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Loyer de la pension (repas inclus)",
+  "kr": "하숙비",
+  "type": "word",
+  "theme": "a2::logement"
+ },
+ {
+  "fr": "Pension, maison où l'on loge (repas inclus)",
+  "kr": "하숙집",
+  "type": "word",
+  "theme": "a2::logement"
+ },
+ {
+  "fr": "Couleur blanche, blanc",
+  "kr": "하얀색",
+  "type": "word",
+  "theme": "a2::couleurs"
+ },
+ {
+  "fr": "Être blanc",
+  "kr": "하얗다",
+  "type": "word",
+  "theme": "a2::couleurs"
+ },
+ {
+  "fr": "Année scolaire, niveau (classe)",
+  "kr": "학년",
+  "type": "word",
+  "theme": "a1::ecole"
+ },
+ {
+  "fr": "Carte d'étudiant",
+  "kr": "학생증",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "École privée, institut (cours du soir)",
+  "kr": "학원",
+  "type": "word",
+  "theme": "a2::ecole"
+ },
+ {
+  "fr": "Corée (du Sud)",
+  "kr": "한국",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Hangeul, l'alphabet coréen",
+  "kr": "한글",
+  "type": "word",
+  "theme": "a1::langue"
+ },
+ {
+  "fr": "Un ou deux, quelques",
+  "kr": "한두",
+  "type": "word",
+  "theme": "a2::quantite"
+ },
+ {
+  "fr": "Une fois ; un peu (pour essayer)",
+  "kr": "한번",
+  "type": "word",
+  "theme": "a1::quantite"
+ },
+ {
+  "fr": "Cuisine coréenne, plat coréen",
+  "kr": "한식",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Restaurant de cuisine coréenne",
+  "kr": "한식집",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Un verre (une boisson)",
+  "kr": "한잔",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Le fait d'offrir à boire ou à manger",
+  "kr": "한턱",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Ensemble, avec",
+  "kr": "함께",
+  "type": "word",
+  "theme": "a1::relations"
+ },
+ {
+  "fr": "Aviation, aérien",
+  "kr": "항공",
+  "type": "word",
+  "theme": "a2::transport"
+ },
+ {
+  "fr": "Chaque année, tous les ans",
+  "kr": "해마다",
+  "type": "word",
+  "theme": "a2::temps"
+ },
+ {
+  "fr": "Voyage à l'étranger",
+  "kr": "해외여행",
+  "type": "word",
+  "theme": "a2::voyage"
+ },
+ {
+  "fr": "Téléphone portable",
+  "kr": "핸드폰",
+  "type": "word",
+  "theme": "a2::technologie"
+ },
+ {
+  "fr": "Hamburger",
+  "kr": "햄버거",
+  "type": "word",
+  "theme": "a1::nourriture"
+ },
+ {
+  "fr": "Événement, manifestation",
+  "kr": "행사",
+  "type": "word",
+  "theme": "a2::vie_sociale"
+ },
+ {
+  "fr": "Club de gym, salle de sport",
+  "kr": "헬스클럽",
+  "type": "word",
+  "theme": "a2::sport"
+ },
+ {
+  "fr": "Langue (organe)",
+  "kr": "혀",
+  "type": "word",
+  "theme": "a2::corps"
+ },
+ {
+  "fr": "Frères et sœurs, fratrie",
+  "kr": "형제",
+  "type": "word",
+  "theme": "a2::famille"
+ },
+ {
+  "fr": "Numéro (d'une revue, d'une édition)",
+  "kr": "호",
+  "type": "word",
+  "theme": "a1::medias"
+ },
+ {
+  "fr": "Australie",
+  "kr": "호주",
+  "type": "word",
+  "theme": "a2::pays"
+ },
+ {
+  "fr": "Hôtel",
+  "kr": "호텔",
+  "type": "word",
+  "theme": "a1::voyage"
+ },
+ {
+  "fr": "Seul, tout seul",
+  "kr": "혼자",
+  "type": "word",
+  "theme": "a1::vie_quotidienne"
+ },
+ {
+  "fr": "Thé noir",
+  "kr": "홍차",
+  "type": "word",
+  "theme": "a2::nourriture"
+ },
+ {
+  "fr": "Colère",
+  "kr": "화",
+  "type": "word",
+  "theme": "a1::emotions"
+ },
+ {
+  "fr": "Peintre, artiste peintre",
+  "kr": "화가",
+  "type": "word",
+  "theme": "a2::metiers"
+ },
+ {
+  "fr": "Se mettre en colère, se fâcher",
+  "kr": "화내다",
+  "type": "word",
+  "theme": "a2::emotions"
+ },
+ {
+  "fr": "Produit cosmétique, maquillage",
+  "kr": "화장품",
+  "type": "word",
+  "theme": "a2::vie_quotidienne"
+ },
+ {
+  "fr": "Accueil (chaleureux), bienvenue",
+  "kr": "환영",
+  "type": "word",
+  "theme": "a2::vie_sociale"
+ },
+ {
+  "fr": "Activement, avec entrain",
+  "kr": "활발히",
+  "type": "word",
+  "theme": "a2::comportement"
+ },
+ {
+  "fr": "Membre (d'un club, d'une association)",
+  "kr": "회원",
+  "type": "word",
+  "theme": "a2::vie_sociale"
+ },
+ {
+  "fr": "Après (délai) ; ensuite",
+  "kr": "후",
+  "type": "word",
+  "theme": "a1::temps"
+ },
+ {
+  "fr": "Être excellent, remarquable, magnifique",
+  "kr": "훌륭하다",
+  "type": "word",
+  "theme": "a2::qualites"
+ },
+ {
+  "fr": "Bien plus, beaucoup plus",
+  "kr": "훨씬",
+  "type": "word",
+  "theme": "a2::comparaison"
+ },
+ {
+  "fr": "Salle de repos, salon de détente",
+  "kr": "휴게실",
+  "type": "word",
+  "theme": "a2::lieux"
+ },
+ {
+  "fr": "Téléphone portable",
+  "kr": "휴대폰",
+  "type": "word",
+  "theme": "a2::technologie"
+ },
+ {
+  "fr": "Papier hygiénique, mouchoir en papier",
+  "kr": "휴지",
+  "type": "word",
+  "theme": "a1::maison"
+ },
+ {
+  "fr": "Poubelle, corbeille à papier",
+  "kr": "휴지통",
+  "type": "word",
+  "theme": "a1::maison"
+ },
+ {
+  "fr": "Couler, s'écouler",
+  "kr": "흐르다",
+  "type": "word",
+  "theme": "a2::nature"
+ },
+ {
+  "fr": "Verser, laisser couler, faire tomber",
+  "kr": "흘리다",
+  "type": "word",
+  "theme": "a2::actions"
+ },
+ {
+  "fr": "Espoir, espérance",
+  "kr": "희망",
+  "type": "word",
+  "theme": "a2::emotions"
+ },
+ {
+  "fr": "Être difficile, pénible, épuisant",
+  "kr": "힘들다",
+  "type": "word",
+  "theme": "a1::qualites"
+ }
+]

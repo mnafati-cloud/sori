@@ -60,9 +60,10 @@ docs/                 l'app servie telle quelle par GitHub Pages
                       son WebAudio, annulation, rapports 🐞, import/export, cloud backup+restore)
   engine.js           moteur pur contractuel (legacy gelé + ease adaptatif)
   style.css           styles de base (variables :root)   themes.css + themes.js  4 thèmes
-  data.js             SEED généré (~3750 items ; voir SEED.meta.counts)  extra.js  EXTRA (~3224 phrases
-                      d'exemple avec gloses mot-à-mot `gl` ; + niveau `cefr` sur les 3750 items)
-  audio/              MP3 natifs mots `<id>.mp3` (3750) + phrases `<id>-ex.mp3` (3224) ~119 Mo + index.js
+  data.js             SEED généré (~4449 items ; voir SEED.meta.counts)  extra.js  EXTRA (~3923 phrases
+                      d'exemple avec gloses `gl` ; + niveau `cefr` sur tous les items, OFFICIEL ou estimé)
+  audio/              MP3 natifs mots `<id>.mp3` (4449) + phrases `<id>-ex.mp3` (3923) ~140 Mo + index.js
+  .github/workflows/pages.yml  déploiement Pages via GitHub Actions (upload-pages-artifact + deploy-pages)
   events-data.js + events.js       événements (countdown/message/challenge)
   search.js           dictionnaire FR⇄KR + choseong      exam.js  bilan TOPIK-lite (3 profils + chrono)
   quests.js           quêtes du jour + badges            player.js  écoute passive MediaSession
@@ -90,7 +91,7 @@ tools/snapshot.anki2  collection Anki figée, GITIGNORÉE — n'existe que sur c
 tests/                engine.test.mjs (20, verrouille le legacy) + adaptive.test.mjs (17, ease)
 .github/workflows/ci.yml   CI : node --test + node --check sur tous les JS de l'app
 ALGORITHM.md          spec complète de l'ease adaptatif (constantes, phases, critères §7)
-MAINTENANCE.md        LE manuel : contrats de données, recettes R1-R21, pièges P1-P12, checklist
+MAINTENANCE.md        LE manuel : contrats de données, recettes R1-R22, pièges P1-P12, checklist
 MAINTENANCE-EVENTS.md recette R10 complète (gérer les événements)
 PROPOSITIONS.md       backlog historique d'évolutions
 ```
@@ -148,7 +149,7 @@ afficher `$TOKEN` dans un log, ne jamais l'écrire dans un fichier du repo.
 4. Bump `CACHE` dans `docs/sw.js` (+1) ; `ASSETS` à jour si fichier JS/CSS ajouté dans `docs/`.
 5. Test local : `python -m http.server 8123 --directory docs` → une carte de chaque onglet + les modules touchés + un export. Console (F12) sans erreur.
 6. `git add` ciblé (vérifier avec `git status` : AUCUN .anki2, AUCUN sori-export-*.json) → commit → push (méthode token ci-dessus).
-7. Vérifier : CI GitHub Actions verte (tests + node --check), puis `curl -s https://mnafati-cloud.github.io/sori/sw.js | grep CACHE` montre la nouvelle version (Pages met ~1-2 min). Ouvrir l'app sur le téléphone : le service worker network-first récupère la mise à jour tout seul.
+7. Déploiement = **GitHub Actions** (plus le build Pages legacy — voir MAINTENANCE §1). Le push déclenche le run **« Deploy Pages »**. ⚠️ l'étape `deploy-pages` échoue souvent (« Deployment failed, try again later ») → **re-lancer le run** (`POST /repos/mnafati-cloud/sori/actions/runs/<id>/rerun`), ça passe en 1-2 essais ; n'avoir qu'UN run à la fois. Vérifier ensuite `curl -s https://mnafati-cloud.github.io/sori/sw.js | grep CACHE`. Sur le téléphone, le service worker network-first récupère la mise à jour au prochain ouvrir/fermer.
 
 ## Réflexes de sécurité
 - Si un rebuild de data.js est en jeu : le build ABANDONNE tout seul si un id disparaît — si ça arrive, ne « répare » pas en supprimant le garde-fou, cherche l'id manquant (un pack ou une ligne KIT retirés ?).

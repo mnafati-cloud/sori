@@ -41,20 +41,28 @@
 - **Avec quoi** : vanilla JS, zéro dépendance runtime, zéro bundler, zéro backend. Outillage :
   Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
   PowerShell 5.1 sous Windows 11.
-- **Volumes actuels** : 3750 items dans le seed, 3224 phrases d'exemple glosées (`gl`),
-  **3750 MP3 de mots + 3224 MP3 de phrases (`-ex.mp3`), ~119 Mo**, **44 tests Node**, `CACHE` = `sori-v37`.
-- **DÉPLOIEMENT — `docs/.nojekyll` OBLIGATOIRE** : GitHub Pages (build legacy) lance Jekyll qui
-  traite les 7000+ fichiers → builds qui échouent/pendent (« Page build failed »). Le fichier vide
-  `docs/.nojekyll` désactive Jekyll → Pages sert les fichiers statiques tels quels. NE JAMAIS le
-  supprimer. Symptôme d'un build coincé : API `GET /repos/mnafati-cloud/sori/pages/builds/latest`
-  reste `building` ; un `git commit --allow-empty` re-déclenche. (À terme, si ça persiste, sortir
-  l'audio du repo Pages.)
-- **v37 (test de niveau adaptatif)** : nouveau module `placement.js` (SORI_PLACEMENT) — QCM par bande
-  CEFR en escalier (départ A2, +1 bande si ≥4/6, −1 si ≤2/6, stop à 3/6 ou au demi-tour) → estimation
-  `≈ B1 solide` + équiv. TOPIK + avertissement « pas un score officiel ». Bouton « 🎯 Évaluer mon
-  niveau » sur Stats ; résultat persisté dans **`ST.placement`** (champ racine additif : `{date, band,
-  label, topik, idx, results}`). 7 tests purs (`tests/placement.test.mjs`). Popin d'explication sur
-  les tuiles de Stats (v36).
+- **Volumes actuels** : 4449 items dans le seed, 3923 phrases d'exemple glosées (`gl`),
+  **4449 MP3 de mots + 3923 MP3 de phrases (`-ex.mp3`), ~140 Mo**, **43 tests Node**, `CACHE` = `sori-v39`.
+- **DÉPLOIEMENT = GitHub ACTIONS (plus le build legacy)** : le build Pages « legacy » (Jekyll) hangait
+  sur ce repo (~140 Mo, 8000+ fichiers). On a basculé sur un **workflow Actions** :
+  `.github/workflows/pages.yml` (checkout → `upload-pages-artifact path:docs` → `deploy-pages`), et
+  `build_type` Pages = `workflow` (mis via `PUT /repos/.../pages -d '{"build_type":"workflow"}'`).
+  Chaque push sur main déclenche le run « Deploy Pages ». **Piège** : l'étape `deploy-pages` renvoie
+  souvent « Deployment failed, try again later » (bug flaky de l'action) → **re-lancer le run**
+  (`POST /repos/.../actions/runs/<id>/rerun`), ça passe en 1-2 essais. NE créer qu'UN run à la fois
+  (les runs concurrents se bloquent). `docs/.nojekyll` reste (hygiène). Le token PC a le scope `workflow`.
+- **v39 (LISTE OFFICIELLE + recalibrage)** : intégration de la liste graduée officielle 국립국어원/TOPIK
+  (source : `raw.githubusercontent.com/julienshim/combined_korean_vocabulary_list/master/results.tsv`,
+  6642 mots, colonnes word/pos/hanja/nikl_level(초급/중급)/topik_level(A/B/C)). **Mapping officiel→CEFR**
+  (on GARDE 5 bandes) : 초급+A=A1 ; 초급 autre & (∅+A)=A2 ; 중급+A/B/∅ & ∅+B=B1 ; 중급+C=B2 ; ∅+C=C1.
+  **Recalibrage** : ~1946 de nos mots re-taggés sur leur niveau OFFICIEL (`EXTRA.cefr`). **Vague débutant** :
+  +699 mots officiels A1/A2 manquants (workflow `sori-officiel-debutant` : l'IA produit fr/ex/exFr/note/conj,
+  `kr`+`cefr` FIXES officiels), chaîne complète (merge_wave→gloss→audio→intégrité). Deck 3750→4449.
+  Distribution : A1 848 / A2 1462 / B1 1172 / B2 691 / C1 276. **Reste ~2773 중급 (intermédiaire) + avancé
+  à couvrir** (recette R22, par vagues). `cefr` provenance mixte : officiel (recalibré/vague) ou modèle.
+- **v38** : examen `placement.js` repensé en **RAPPEL + auto-évaluation** (montre KR → Révéler → « Je
+  savais »/« Je ne savais pas », ZÉRO hasard) au lieu du QCM (validable par élimination). `makeQuestion` retiré.
+- **v37** : 1re version de `placement.js` (QCM adaptatif). Popin d'explication sur les tuiles de Stats (v36).
 - **v32 (vague 7)** : **+617 items neufs** (deck 3133 → 3750), chaîne complète nourrie (recette R21).
   Domaines inédits (voyage, mode, argent, logement, politique, finance, environnement, 사자성어,
   onomatopées) + phrases. Distribution CEFR : **A1 480 / A2 1264 / B1 1244 / B2 603 / C1 159**.
@@ -1142,6 +1150,24 @@ audio, une phrase sans glose, un item sans niveau faussent les stats/évaluation
 - [ ] 6. **Contrôle d'intégrité OBLIGATOIRE** : pour chaque id neuf, vérifier data + `cefr` + `ex` +
       `gl` (aligné) + MP3 mot (∈ AUDIO) + MP3 phrase (∈ AUDIO_EX) = **zéro trou**. Puis `node --check`
       les JS, `node --test` (37 vert), bump `CACHE`, release → **R7**. Commit incluant les `.mp3`.
+
+### R22 — Combler la LISTE OFFICIELLE (niveaux authentiques, par vagues)
+
+**Principe.** La couverture cible est la liste graduée officielle (국립국어원 NIKL + TOPIK). On la
+récupère, on **recalibre** nos mots présents sur leur niveau officiel, et on **génère les manquants**
+par vagues — le mot ET son niveau sont fournis (autorité), l'IA ne produit que le contenu pédagogique.
+
+- [ ] 1. **Récupérer la liste** : `curl -L https://raw.githubusercontent.com/julienshim/combined_korean_vocabulary_list/master/results.tsv`
+      (6642 mots ; colonnes rank/word/pos/hanja/expl/nikl_level/topik_level). Sans clé API.
+- [ ] 2. **Mapping officiel→CEFR** (5 bandes, cf. §1 v39) : 초급+A=A1 ; 초급 autre=A2 ; 중급+A/B/∅=B1 ;
+      중급+C=B2 ; ∅(hors NIKL)+C=C1 ; ∅+A=A2 ; ∅+B=B1. Nettoyer les mots (retirer digits homonymes,
+      exclure 접사/조사/어미).
+- [ ] 3. **Recalibrer** : pour chaque item du deck dont `kr` (ou base sans 하다) est dans la liste,
+      écrire `EXTRA[id].cefr` = niveau mappé. (~1946 mots à la v39.)
+- [ ] 4. **Générer les manquants** (par niveau, débutant→haut) : workflow `sori-officiel-<niveau>`,
+      entrée `{word,pos,hanja,expl,cefr}` par lot ; l'agent produit `{fr,kr(=word),type:word,theme,
+      cefr(=fourni),ex,exFr,note?,conj?}`. Puis chaîne **R21** (merge_wave → gloss R19 → audio R3 →
+      intégrité). Reste à faire après v39 : ~2773 mots 중급 (intermédiaire) + l'avancé.
 
 ---
 
