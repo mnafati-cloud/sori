@@ -59,9 +59,9 @@ docs/                 l'app servie telle quelle par GitHub Pages
                       son WebAudio, annulation, rapports 🐞, import/export, cloud backup+restore)
   engine.js           moteur pur contractuel (legacy gelé + ease adaptatif)
   style.css           styles de base (variables :root)   themes.css + themes.js  4 thèmes
-  data.js             SEED généré (~2552 items ; voir SEED.meta.counts)  extra.js  EXTRA (~2026 phrases
-                      d'exemple avec gloses mot-à-mot `gl` ; + niveau `cefr` sur les 2552 items)
-  audio/              MP3 natifs mots `<id>.mp3` (2552) + phrases `<id>-ex.mp3` (2026) ~75 Mo + index.js
+  data.js             SEED généré (~3133 items ; voir SEED.meta.counts)  extra.js  EXTRA (~2607 phrases
+                      d'exemple avec gloses mot-à-mot `gl` ; + niveau `cefr` sur les 3133 items)
+  audio/              MP3 natifs mots `<id>.mp3` (3133) + phrases `<id>-ex.mp3` (2607) ~96 Mo + index.js
   events-data.js + events.js       événements (countdown/message/challenge)
   search.js           dictionnaire FR⇄KR + choseong      exam.js  bilan TOPIK-lite (3 profils + chrono)
   quests.js           quêtes du jour + badges            player.js  écoute passive MediaSession

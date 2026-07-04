@@ -43,11 +43,13 @@
   PowerShell 5.1 sous Windows 11.
 - **Volumes actuels (v27)** : 2154 items dans le seed (1684 mots, 470 phrases, 79 ennemies,
   54 kit), 1774 entrées de trivia dont **1628 phrases d'exemple gloses mot-à-mot (`gl`)**,
-  **2552 MP3 de mots + 2026 MP3 de phrases (`-ex.mp3`), ~75 Mo**, 37 tests Node, `CACHE` = `sori-v30`.
+  **3133 MP3 de mots + 2607 MP3 de phrases (`-ex.mp3`), ~96 Mo**, 37 tests Node, `CACHE` = `sori-v31`.
+- **v31 (vague 6)** : **+581 items neufs** (deck 2552 → 3133), chaîne complète nourrie (recette R21,
+  `merge_wave.py` désormais agnostique du nombre de cellules). Ciblé B1/B2/C1 + phrases situationnelles.
+  Distribution CEFR : **A1 479 / A2 1207 / B1 979 / B2 382 / C1 86**.
 - **v30 (vague 5)** : **+398 items neufs** (deck 2154 → 2552), ciblés par niveau, chaîne COMPLÈTE
   nourrie (data + trivia ex/exFr/note/conj + `cefr` + glose `gl` + MP3 mot + MP3 phrase). Recette
-  **R21** (`merge_wave.py`). Distribution CEFR : **A1 479 / A2 1121 / B1 744 / B2 179 / C1 29**
-  (B1 et B2 renforcés pour la validité des évaluations).
+  **R21** (`merge_wave.py`).
 - **v29** : **niveau CEFR sur tous les items** (`EXTRA[id].cefr`, recette R20 — estimation modèle) =
   fondation invisible pour l'estimation de niveau + le ciblage de contenu. **Stats dégamifiées** : XP
   total et niveau 급 retirés (tuiles + fin de session) au profit de « cartes maîtrisées » et « deck
@@ -290,7 +292,7 @@ Objet indexé par id d'item du seed (~1774 entrées à la v26) :
 | `note` | UNE ligne (piège, hanja, anti-confusion), ≤ 110 caractères. Affichée avec 💡. |
 | `conj` | Conjugaisons — **affichée** dans l'encart trivia (préfixe 활용) depuis la v8. |
 | `gl` | **Gloses mot-à-mot** (v27) : tableau FR aligné 1:1 avec `ex.split(espaces)`. Rempli par `merge_gloss.py` (recette R19). Alimente la traduction d'un mot au clic (réglage opt-in `wordgloss`). **Invariant CRITIQUE : `gl.length === ex.trim().split(/\s+/).length`** — app.js zippe mot↔glose par index ; sinon la fonctionnalité se désactive silencieusement pour cette entrée. |
-| `cefr` | **Niveau CEFR** (v29) `A1`/`A2`/`B1`/`B2`/`C1` — **présent sur TOUS les items du deck** (les ~380 sans autre trivia ont une entrée EXTRA minimale `{"cefr":…}`). Rempli par `merge_levels.py` (recette R20). **Estimation par modèle** (workflow `sori-niveaux`, grille de fréquence + calibrage), PAS une liste officielle TOPIK — provenance à garder en tête pour toute « estimation de niveau ». Fondation de l'estimation adaptative et du ciblage de contenu. Distribution v30 : A1 479 · A2 1121 · B1 744 · B2 179 · C1 29. |
+| `cefr` | **Niveau CEFR** (v29) `A1`/`A2`/`B1`/`B2`/`C1` — **présent sur TOUS les items du deck** (les ~380 sans autre trivia ont une entrée EXTRA minimale `{"cefr":…}`). Rempli par `merge_levels.py` (recette R20). **Estimation par modèle** (workflow `sori-niveaux`, grille de fréquence + calibrage), PAS une liste officielle TOPIK — provenance à garder en tête pour toute « estimation de niveau ». Fondation de l'estimation adaptative et du ciblage de contenu. Distribution v31 : A1 479 · A2 1207 · B1 979 · B2 382 · C1 86. |
 
 Règle éditoriale : une entrée existante qui a déjà un `ex` n'est **jamais écrasée** (contenu
 déjà vérifié) ; seuls `conj`, `gl` et `cefr` peuvent y être ajoutés.

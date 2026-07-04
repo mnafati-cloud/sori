@@ -10,7 +10,7 @@ Chaîne complète SAUF gloses (gl) et audio (faits après) :
 
 Usage: python tools/merge_wave.py <dossier_cells> <nom_pack>   (ex: pack-2026-07-v5)
 """
-import json, io, sys, os, hashlib, subprocess, collections
+import json, io, sys, os, hashlib, subprocess, collections, glob, re
 
 ROOT = r"C:\Users\33785\dev\sori"
 DATA = ROOT + r"\docs\data.js"
@@ -18,7 +18,6 @@ EXTRA = ROOT + r"\docs\extra.js"
 CELLS_DIR = sys.argv[1]
 NAME = sys.argv[2]
 PACK = ROOT + r"\tools\packs\%s.json" % NAME
-NB = 21
 VALID_CEFR = {"A1", "A2", "B1", "B2", "C1"}
 
 
@@ -28,17 +27,21 @@ def loadjs(path):
 
 
 def read_cells():
+    """Auto-detecte les cellules presentes (ver_<k> prioritaire, gen_<k> en repli) —
+       indépendant du nombre de cellules de la vague."""
+    idxs = set()
+    for p in glob.glob(os.path.join(CELLS_DIR, "gen_*.json")) + glob.glob(os.path.join(CELLS_DIR, "ver_*.json")):
+        m = re.search(r"_(\d+)\.json$", os.path.basename(p))
+        if m:
+            idxs.add(int(m.group(1)))
     rows, missing = [], []
-    for k in range(NB):
+    for k in sorted(idxs):
         path = None
         for cand in ("ver_%d.json" % k, "gen_%d.json" % k):
             p = os.path.join(CELLS_DIR, cand)
             if os.path.exists(p):
                 path = p
                 break
-        if not path:
-            missing.append(k)
-            continue
         try:
             rows += json.load(io.open(path, encoding="utf-8"))
         except Exception as exc:  # noqa: BLE001
