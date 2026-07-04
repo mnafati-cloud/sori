@@ -43,7 +43,11 @@
   PowerShell 5.1 sous Windows 11.
 - **Volumes actuels (v27)** : 2154 items dans le seed (1684 mots, 470 phrases, 79 ennemies,
   54 kit), 1774 entrées de trivia dont **1628 phrases d'exemple gloses mot-à-mot (`gl`)**,
-  **2154 MP3 de mots + 1628 MP3 de phrases (`-ex.mp3`), ~61 Mo**, 37 tests Node, `CACHE` = `sori-v28`.
+  **2154 MP3 de mots + 1628 MP3 de phrases (`-ex.mp3`), ~61 Mo**, 37 tests Node, `CACHE` = `sori-v29`.
+- **v29** : **niveau CEFR sur les 2154 items** (`EXTRA[id].cefr`, recette R20 — estimation modèle,
+  distribution A1 446 / A2 1047 / B1 575 / B2 76 / C1 10) = fondation invisible pour l'estimation de
+  niveau + le ciblage de contenu. **Stats dégamifiées** : XP total et niveau 급 retirés (tuiles + fin
+  de session) au profit de « cartes maîtrisées » et « deck abordé » ; `ST.xp` continue en coulisse.
 - **v28 (UX)** : Réglages sortis dans une **surcouche `openSettings()`** (roue ⚙️ du header), plus dans
   `renderStats()`. **Gamification en veille** : quêtes/badges (`SHOW_QUESTS`) et bilan de niveau
   (`SHOW_EXAM`) gardés en code mais non rendus (drapeaux en tête d'app.js, données préservées).
@@ -282,9 +286,10 @@ Objet indexé par id d'item du seed (~1774 entrées à la v26) :
 | `note` | UNE ligne (piège, hanja, anti-confusion), ≤ 110 caractères. Affichée avec 💡. |
 | `conj` | Conjugaisons — **affichée** dans l'encart trivia (préfixe 활용) depuis la v8. |
 | `gl` | **Gloses mot-à-mot** (v27) : tableau FR aligné 1:1 avec `ex.split(espaces)`. Rempli par `merge_gloss.py` (recette R19). Alimente la traduction d'un mot au clic (réglage opt-in `wordgloss`). **Invariant CRITIQUE : `gl.length === ex.trim().split(/\s+/).length`** — app.js zippe mot↔glose par index ; sinon la fonctionnalité se désactive silencieusement pour cette entrée. |
+| `cefr` | **Niveau CEFR** (v29) `A1`/`A2`/`B1`/`B2`/`C1` — **présent sur TOUS les items du deck** (les ~380 sans autre trivia ont une entrée EXTRA minimale `{"cefr":…}`). Rempli par `merge_levels.py` (recette R20). **Estimation par modèle** (workflow `sori-niveaux`, grille de fréquence + calibrage), PAS une liste officielle TOPIK — provenance à garder en tête pour toute « estimation de niveau ». Fondation de l'estimation adaptative et du ciblage de contenu. Distribution v29 : A1 446 · A2 1047 · B1 575 · B2 76 · C1 10. |
 
 Règle éditoriale : une entrée existante qui a déjà un `ex` n'est **jamais écrasée** (contenu
-déjà vérifié) ; seuls `conj` et `gl` peuvent y être ajoutés.
+déjà vérifié) ; seuls `conj`, `gl` et `cefr` peuvent y être ajoutés.
 
 ### 3.3 L'index audio (`docs/audio/index.js`)
 
@@ -1070,6 +1075,30 @@ nombre de mots de `ex` — app.js zippe par index. Génération par le workflow 
 - [ ] 5. **Audio des phrases** si de nouvelles `ex` sont apparues : `python tools/make_audio.py --ex`.
 - [ ] 6. `node --test tests/` (37 vert), test local (réglage 👆 activé → taper un mot affiche sa
       glose ; réglage 🔊 activé → le bouton lit la phrase). Bump `CACHE`. Release → **R7**.
+
+### R20 — Classer/fusionner les niveaux CEFR (`EXTRA[id].cefr`)
+
+**Principe.** Chaque item du deck porte un niveau CEFR (`A1`/`A2`/`B1`/`B2`/`C1`) dans `EXTRA[id].cefr`.
+C'est la **fondation** de l'estimation de niveau (examen adaptatif) et du ciblage des vagues de
+contenu. **Estimation par modèle** (workflow `sori-niveaux`), PAS une liste officielle TOPIK :
+à traiter comme un signal solide mais approximatif — toute UI qui l'expose doit dire « estimation ».
+
+- [ ] 1. **Préparer l'entrée** : un script écrit `[{i,id,kr,fr,type,domain}]` par item (domain =
+      thème SANS son préfixe de niveau, pour ne pas biaiser le jugement), découpé en lots
+      `in_<b>.json` (lus par CHEMIN). Le préfixe de thème a2/b1/b2 est un simple héritage d'écriture,
+      pas un calibrage — on re-juge le mot sur sa fréquence réelle.
+- [ ] 2. **Lancer le workflow `sori-niveaux`** (30 lots × ~72 items) : stage `Classer` écrit
+      `cls_<b>.json = [{id,cefr}]` ; stage `Calibrer` relit et corrige (rabaisse les mots trop
+      hauts, monte les rares) vers `ver_<b>.json`. Grille ancrée sur la FRÉQUENCE (pas la longueur),
+      règle « en cas de doute, bande la plus basse ».
+- [ ] 3. **Fusionner** : `python tools/merge_levels.py <dossier_lvl_out>`. Préfère `ver_<b>`,
+      retombe sur `cls_<b>`, valide `cefr ∈ {A1,A2,B1,B2,C1}`, **crée une entrée EXTRA minimale**
+      pour les items sans trivia. Garde-fou d'ids. Lis la sortie : `créés/mis à jour`, `lots
+      manquants`, **la distribution** (une majorité A1-B1, B2 minoritaire, C1 exceptionnel = sain ;
+      si tout part en B1/B2 → le calibrage a surestimé, relance le stage Calibrer).
+- [ ] 4. Idempotent : re-lançable, met à jour `cefr` sans toucher `ex`/`gl`/`note`. Bump `CACHE`,
+      `node --test tests/` (37 vert), release → **R7**. (Invisible dans l'app tant qu'aucune UI ne
+      lit `cefr` — c'est une donnée de fondation.)
 
 ---
 

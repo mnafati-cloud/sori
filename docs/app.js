@@ -349,7 +349,7 @@ function renderReview(){
       <div class="done-banner">${PENDING>0?"💪":"🎉"}</div>
       <h2>${PENDING>0?"Session terminée !":"Tout est à jour !"}</h2>
       <p class="dim">${l.ok||0} bonnes réponses aujourd'hui${l.ko?`, ${l.ko} à retravailler`:""}.</p>
-      <p class="dim">✨ +${l.xp||0} XP aujourd'hui · ${esc(levelName(ST.xp||0))} (${ST.xp||0} XP)</p>
+      <p class="dim">✅ ${ALL_IDS.map(eff).filter(it=>it.stage>=4).length} cartes maîtrisées au total.</p>
       <div class="row" style="margin-top:12px">
         ${more}
         <button class="btn ghost" id="bonus">Entraînement libre (10)</button>
@@ -843,19 +843,22 @@ function renderStats(){
   items.forEach(it=>stages[it.stage]++);
   const enemies = items.filter(it=>it.enemy);
   const beaten = enemies.filter(it=>it.stage>=4).length;
+  const matures = items.filter(it=>it.stage>=4).length;   // cartes solides (niv ≥ 4)
+  const seen = items.filter(it=>it.stage>=1).length;       // cartes déjà abordées
   // rétention 7 jours (mesure propre : 1res présentations comptées, fenêtre hier -> J-7)
   const r7 = ENGINE.retention7(ST.log, t);
   const ret = r7.r===null ? null : Math.round(100*r7.r);
   // sangsues : ease au plancher + échecs répétés -> à retravailler autrement
   const leeches = items.filter(it=>ENGINE.isLeech(it));
 
+  /* stats réelles (v28.1) : plus d'XP/niveau — gamification retirée. Mesures de PROGRÈS. */
   $screen.appendChild(el(`<div class="statgrid">
     <div class="stat"><div class="n">🔥 ${streak()}</div><div class="l">jours d'affilée</div></div>
     <div class="stat"><div class="n">${l.n}</div><div class="l">réponses aujourd'hui</div></div>
     <div class="stat"><div class="n">${ret===null?"—":ret+" %"}</div><div class="l">réussite (7 j)</div></div>
     <div class="stat"><div class="n">${beaten}/${enemies.length}</div><div class="l">ennemies vaincues</div></div>
-    <div class="stat"><div class="n">${esc(levelName(ST.xp||0))}</div><div class="l">niveau</div></div>
-    <div class="stat"><div class="n">${ST.xp||0}</div><div class="l">XP total</div></div>
+    <div class="stat"><div class="n">${matures}</div><div class="l">cartes maîtrisées</div></div>
+    <div class="stat"><div class="n">${seen} / ${items.length}</div><div class="l">deck abordé</div></div>
   </div>`));
 
   if(leeches.length){
