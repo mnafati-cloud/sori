@@ -1,0 +1,3530 @@
+[
+ {
+  "fr": "Ménage, foyer (unité domestique)",
+  "kr": "가구",
+  "type": "word",
+  "theme": "c1::société"
+ },
+ {
+  "fr": "Devenir possible, se rendre faisable",
+  "kr": "가능해지다",
+  "type": "word",
+  "theme": "c1::changement"
+ },
+ {
+  "fr": "Être caché, masqué, dissimulé (à la vue)",
+  "kr": "가려지다",
+  "type": "word",
+  "theme": "c1::perception"
+ },
+ {
+  "fr": "Par exemple, à supposer que",
+  "kr": "가령",
+  "type": "word",
+  "theme": "c1::discours"
+ },
+ {
+  "fr": "Arbre d'alignement, arbre de rue",
+  "kr": "가로수",
+  "type": "word",
+  "theme": "c1::ville"
+ },
+ {
+  "fr": "Enseignement, leçon, précepte",
+  "kr": "가르침",
+  "type": "word",
+  "theme": "c1::éducation"
+ },
+ {
+  "fr": "Supposition, hypothèse ; virtuel",
+  "kr": "가상",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Précepteur, professeur particulier",
+  "kr": "가정교사",
+  "type": "word",
+  "theme": "c1::éducation"
+ },
+ {
+  "fr": "Infliger, exercer (une force, une pression)",
+  "kr": "가하다",
+  "type": "word",
+  "theme": "c1::action"
+ },
+ {
+  "fr": "Chacun, respectivement",
+  "kr": "각기",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Cadre, dirigeant (d'une organisation)",
+  "kr": "간부",
+  "type": "word",
+  "theme": "c1::société"
+ },
+ {
+  "fr": "(Caractère) indirect, indirection",
+  "kr": "간접",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Sensibilité, réceptivité (émotionnelle)",
+  "kr": "감수성",
+  "type": "word",
+  "theme": "c1::psychologie"
+ },
+ {
+  "fr": "Émotionnel, affectif",
+  "kr": "감정적",
+  "type": "word",
+  "theme": "c1::psychologie"
+ },
+ {
+  "fr": "Boîte, étui (petit contenant)",
+  "kr": "갑",
+  "type": "word",
+  "theme": "c1::objet"
+ },
+ {
+  "fr": "Gangnam (quartier sud de Séoul)",
+  "kr": "강남",
+  "type": "word",
+  "theme": "c1::géographie"
+ },
+ {
+  "fr": "Intensité, degré (de force)",
+  "kr": "강도",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Être puissant, énergique, vigoureux",
+  "kr": "강력하다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Fortement, vigoureusement, avec force",
+  "kr": "강력히",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Être intense, violent, ardent",
+  "kr": "강렬하다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Bord de fleuve, rive",
+  "kr": "강변",
+  "type": "word",
+  "theme": "c1::géographie"
+ },
+ {
+  "fr": "Rive nord (du fleuve Han, nord de Séoul)",
+  "kr": "강북",
+  "type": "word",
+  "theme": "c1::géographie"
+ },
+ {
+  "fr": "Chaque individu, chacun (pris séparément)",
+  "kr": "개개인",
+  "type": "word",
+  "theme": "c1::société"
+ },
+ {
+  "fr": "Pays (classificateur : « ...pays »)",
+  "kr": "개국",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "À plusieurs reprises, de façon répétée",
+  "kr": "거듭",
+  "type": "word",
+  "theme": "c1::discours"
+ },
+ {
+  "fr": "Refuser, rejeter, opposer un refus",
+  "kr": "거부하다",
+  "type": "word",
+  "theme": "c1::action"
+ },
+ {
+  "fr": "Somme énorme, montant colossal",
+  "kr": "거액",
+  "type": "word",
+  "theme": "c1::économie"
+ },
+ {
+  "fr": "Affaire, cas (classificateur : « dossier »)",
+  "kr": "건",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Chambre d'en face (à travers le vestibule)",
+  "kr": "건넌방",
+  "type": "word",
+  "theme": "c1::habitat"
+ },
+ {
+  "fr": "Être sain, robuste, bien portant (moralement)",
+  "kr": "건전하다",
+  "type": "word",
+  "theme": "c1::société"
+ },
+ {
+  "fr": "La marche (activité de marcher)",
+  "kr": "걷기",
+  "type": "word",
+  "theme": "c1::santé"
+ },
+ {
+  "fr": "Moutarde (condiment)",
+  "kr": "겨자",
+  "type": "word",
+  "theme": "c1::cuisine"
+ },
+ {
+  "fr": "En conséquence, en fin de compte",
+  "kr": "결과적",
+  "type": "word",
+  "theme": "c1::discours"
+ },
+ {
+  "fr": "Économie (discipline scientifique)",
+  "kr": "경제학",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Goguryeo (ancien royaume coréen, -37 à 668)",
+  "kr": "고구려",
+  "type": "word",
+  "theme": "c1::histoire"
+ },
+ {
+  "fr": "Chaussures de caoutchouc (traditionnelles)",
+  "kr": "고무신",
+  "type": "word",
+  "theme": "c1::habitat"
+ },
+ {
+  "fr": "Tout au plus, à peine, guère plus de",
+  "kr": "고작",
+  "type": "word",
+  "theme": "c1::discours"
+ },
+ {
+  "fr": "Cri, hurlement (vocal)",
+  "kr": "고함",
+  "type": "word",
+  "theme": "c1::communication"
+ },
+ {
+  "fr": "Vallée, ravin",
+  "kr": "골짜기",
+  "type": "word",
+  "theme": "c1::géographie"
+ },
+ {
+  "fr": "Tracas, casse-tête, mal de crâne (figuré)",
+  "kr": "골치",
+  "type": "word",
+  "theme": "c1::psychologie"
+ },
+ {
+  "fr": "Armée de l'air, force aérienne",
+  "kr": "공군",
+  "type": "word",
+  "theme": "c1::militaire"
+ },
+ {
+  "fr": "Officiel, formel",
+  "kr": "공식적",
+  "type": "word",
+  "theme": "c1::société"
+ },
+ {
+  "fr": "En vain, inutilement, sans raison",
+  "kr": "공연히",
+  "type": "word",
+  "theme": "c1::discours"
+ },
+ {
+  "fr": "Les airs, l'espace aérien, en l'air",
+  "kr": "공중",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Commun, partagé (par plusieurs)",
+  "kr": "공통적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Département, service ; famille (biologie)",
+  "kr": "과",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Autocar de tourisme, bus touristique",
+  "kr": "관광버스",
+  "type": "word",
+  "theme": "c1::voyage"
+ },
+ {
+  "fr": "Idée, notion, conception (abstraite)",
+  "kr": "관념",
+  "type": "word",
+  "theme": "c1::philosophie"
+ },
+ {
+  "fr": "Coutume, usage, tradition établie",
+  "kr": "관습",
+  "type": "word",
+  "theme": "c1::société"
+ },
+ {
+  "fr": "Métier d'enseignant, profession enseignante",
+  "kr": "교직",
+  "type": "word",
+  "theme": "c1::éducation"
+ },
+ {
+  "fr": "Chaque recoin, tous les coins et recoins",
+  "kr": "구석구석",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "National, à l'échelle du pays",
+  "kr": "국가적",
+  "type": "word",
+  "theme": "c1::société"
+ },
+ {
+  "fr": "À l'intérieur comme à l'étranger",
+  "kr": "국내외",
+  "type": "word",
+  "theme": "c1::société"
+ },
+ {
+  "fr": "Populaire, national (émanant du peuple)",
+  "kr": "국민적",
+  "type": "word",
+  "theme": "c1::société"
+ },
+ {
+  "fr": "Histoire nationale (coréenne)",
+  "kr": "국사",
+  "type": "word",
+  "theme": "c1::histoire"
+ },
+ {
+  "fr": "Roi, monarque.",
+  "kr": "국왕",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "International, à l'échelle internationale.",
+  "kr": "국제적",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Soldat, militaire (homme de troupe).",
+  "kr": "군사",
+  "type": "word",
+  "theme": "c1::militaire"
+ },
+ {
+  "fr": "Consolider, affermir, durcir.",
+  "kr": "굳히다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Ultime, final.",
+  "kr": "궁극적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Intérieur de l'oreille, conduit auditif.",
+  "kr": "귓속",
+  "type": "word",
+  "theme": "c1::corps"
+ },
+ {
+  "fr": "Durant ce temps, entre-temps, ces derniers temps.",
+  "kr": "그간",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Ce type-là, ce gars (péjoratif, familier).",
+  "kr": "그놈",
+  "type": "word",
+  "theme": "c1::registre"
+ },
+ {
+  "fr": "Au cas par cas, à chaque fois.",
+  "kr": "그때그때",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Il faut faire ainsi pour que (forme contractée).",
+  "kr": "그래야",
+  "type": "word",
+  "theme": "c1::grammaire"
+ },
+ {
+  "fr": "Graphisme, graphique (informatique, arts visuels).",
+  "kr": "그래픽",
+  "type": "word",
+  "theme": "c1::technologie"
+ },
+ {
+  "fr": "Être plausible, avoir belle apparence, sembler vraisemblable.",
+  "kr": "그럴듯하다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Pied, plant (classificateur pour arbres et plantes).",
+  "kr": "그루",
+  "type": "word",
+  "theme": "c1::mesure"
+ },
+ {
+  "fr": "Par là, vers cet endroit.",
+  "kr": "그리로",
+  "type": "word",
+  "theme": "c1::espace"
+ },
+ {
+  "fr": "Regretter (l'absence de), se languir de.",
+  "kr": "그리워하다",
+  "type": "word",
+  "theme": "c1::sentiment"
+ },
+ {
+  "fr": "Ainsi, de cette manière, en conséquence.",
+  "kr": "그리하여",
+  "type": "word",
+  "theme": "c1::grammaire"
+ },
+ {
+  "fr": "Entre-temps, dans cet intervalle.",
+  "kr": "그사이",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Lui, cet homme (marque de respect ou d'affection).",
+  "kr": "그이",
+  "type": "word",
+  "theme": "c1::registre"
+ },
+ {
+  "fr": "Autrefois, le temps d'avant.",
+  "kr": "그전",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Alors seulement, ce n'est qu'à ce moment-là.",
+  "kr": "그제서야",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Pièce (de théâtre), drame.",
+  "kr": "극",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Dramaturge, auteur de théâtre.",
+  "kr": "극작가",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Travail, labeur salarié.",
+  "kr": "근로",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Origine, source, racine.",
+  "kr": "근원",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Kumgang (mont Kumgang, célèbre montagne coréenne).",
+  "kr": "금강산",
+  "type": "word",
+  "theme": "c1::geographie"
+ },
+ {
+  "fr": "Coffre-fort.",
+  "kr": "금고",
+  "type": "word",
+  "theme": "c1::objet"
+ },
+ {
+  "fr": "Médaille d'or.",
+  "kr": "금메달",
+  "type": "word",
+  "theme": "c1::sport"
+ },
+ {
+  "fr": "Aussitôt, en un instant.",
+  "kr": "금세",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Énergie vitale, souffle, esprit (ki).",
+  "kr": "기",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Appareil, dispositif, machine.",
+  "kr": "기기",
+  "type": "word",
+  "theme": "c1::technologie"
+ },
+ {
+  "fr": "Compétence, savoir-faire, aptitude technique.",
+  "kr": "기능",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Être stupéfiant, ahurissant (en bien ou en mal).",
+  "kr": "기막히다",
+  "type": "word",
+  "theme": "c1::sentiment"
+ },
+ {
+  "fr": "Technique, procédé, méthode (art, artisanat).",
+  "kr": "기법",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Ce qui est déjà établi, préexistant.",
+  "kr": "기성",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Génération précédente, les aînés établis.",
+  "kr": "기성세대",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Entrepreneur, homme d'affaires.",
+  "kr": "기업인",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Avant Jésus-Christ, av. J.-C.",
+  "kr": "기원전",
+  "type": "word",
+  "theme": "c1::histoire"
+ },
+ {
+  "fr": "Fondamental, élémentaire, de base.",
+  "kr": "기초적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Symbole, signe, notation.",
+  "kr": "기호",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Tension, sentiment de suspense.",
+  "kr": "긴장감",
+  "type": "word",
+  "theme": "c1::sentiment"
+ },
+ {
+  "fr": "S'allonger, se prolonger, s'étirer.",
+  "kr": "길어지다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Profondément, au plus profond.",
+  "kr": "깊숙이",
+  "type": "word",
+  "theme": "c1::espace"
+ },
+ {
+  "fr": "Pie (oiseau).",
+  "kr": "까치",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Kkakdugi (kimchi de radis coupé en dés).",
+  "kr": "깍두기",
+  "type": "word",
+  "theme": "c1::cuisine"
+ },
+ {
+  "fr": "Voyou, malfrat, membre de gang.",
+  "kr": "깡패",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Devenir propre, s'assainir.",
+  "kr": "깨끗해지다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Prise de conscience, illumination, éveil.",
+  "kr": "깨달음",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Sel de sésame (graines grillées et pilées).",
+  "kr": "깨소금",
+  "type": "word",
+  "theme": "c1::cuisine"
+ },
+ {
+  "fr": "Se briser, se casser, voler en éclats.",
+  "kr": "깨어지다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Gamin, petit bout, môme.",
+  "kr": "꼬마",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Allure, aspect, forme (souvent péjoratif).",
+  "kr": "꼴",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Graine de fleur.",
+  "kr": "꽃씨",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Se diviser, être partagé, se séparer.",
+  "kr": "나누어지다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Boussole, compas.",
+  "kr": "나침반",
+  "type": "word",
+  "theme": "c1::objet"
+ },
+ {
+  "fr": "Pêcheur (à la ligne), amateur de pêche.",
+  "kr": "낚시꾼",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Canne à pêche.",
+  "kr": "낚싯대",
+  "type": "word",
+  "theme": "c1::objets"
+ },
+ {
+  "fr": "Amérique du Sud (continent).",
+  "kr": "남미",
+  "type": "word",
+  "theme": "c1::geographie"
+ },
+ {
+  "fr": "Comprendre, admettre, se laisser convaincre.",
+  "kr": "납득하다",
+  "type": "word",
+  "theme": "c1::pensee"
+ },
+ {
+  "fr": "Baisser, diminuer, devenir plus bas.",
+  "kr": "낮아지다",
+  "type": "word",
+  "theme": "c1::changement"
+ },
+ {
+  "fr": "Mot, vocable.",
+  "kr": "낱말",
+  "type": "word",
+  "theme": "c1::langue"
+ },
+ {
+  "fr": "Être abaissé, être rendu (décision, ordre).",
+  "kr": "내려지다",
+  "type": "word",
+  "theme": "c1::changement"
+ },
+ {
+  "fr": "Expirer, souffler l'air hors des poumons.",
+  "kr": "내쉬다",
+  "type": "word",
+  "theme": "c1::corps"
+ },
+ {
+  "fr": "Contenu (ce qui est à l'intérieur d'un contenant).",
+  "kr": "내용물",
+  "type": "word",
+  "theme": "c1::objets"
+ },
+ {
+  "fr": "Interne, intérieur (de l'esprit).",
+  "kr": "내적",
+  "type": "word",
+  "theme": "c1::pensee"
+ },
+ {
+  "fr": "Ruisseau, eau d'un cours d'eau.",
+  "kr": "냇물",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Quatre (déterminant, devant certains classificateurs).",
+  "kr": "넉",
+  "type": "word",
+  "theme": "c1::nombres"
+ },
+ {
+  "fr": "Né(e) en (année de naissance).",
+  "kr": "년생",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Rizière.",
+  "kr": "논",
+  "type": "word",
+  "theme": "c1::agriculture"
+ },
+ {
+  "fr": "Traiter de, discuter, débattre (un sujet).",
+  "kr": "논하다",
+  "type": "word",
+  "theme": "c1::pensee"
+ },
+ {
+  "fr": "Gars, type, individu (péjoratif ou familier).",
+  "kr": "놈",
+  "type": "word",
+  "theme": "c1::registre"
+ },
+ {
+  "fr": "Cultiver la terre, faire de l'agriculture.",
+  "kr": "농사짓다",
+  "type": "word",
+  "theme": "c1::agriculture"
+ },
+ {
+  "fr": "Ferme, exploitation agricole.",
+  "kr": "농장",
+  "type": "word",
+  "theme": "c1::agriculture"
+ },
+ {
+  "fr": "Loup.",
+  "kr": "늑대",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Pendre, s'affaisser ; s'étirer, traîner en longueur.",
+  "kr": "늘어지다",
+  "type": "word",
+  "theme": "c1::changement"
+ },
+ {
+  "fr": "Actif, dynamique (attitude).",
+  "kr": "능동적",
+  "type": "word",
+  "theme": "c1::pensee"
+ },
+ {
+  "fr": "Diversité, variété.",
+  "kr": "다양성",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Se diversifier, devenir varié.",
+  "kr": "다양해지다",
+  "type": "word",
+  "theme": "c1::changement"
+ },
+ {
+  "fr": "Tasser, hacher menu ; raffermir, consolider.",
+  "kr": "다지다",
+  "type": "word",
+  "theme": "c1::action"
+ },
+ {
+  "fr": "Dispute, querelle, conflit.",
+  "kr": "다툼",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Survenir, s'abattre (malheur) ; approcher.",
+  "kr": "닥치다",
+  "type": "word",
+  "theme": "c1::evenement"
+ },
+ {
+  "fr": "Palier, gradin, degré ; niveau (échelon).",
+  "kr": "단",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Nouvelle, récit court (littérature).",
+  "kr": "단편",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Selon, conformément à ; au fur et à mesure que.",
+  "kr": "대로",
+  "type": "word",
+  "theme": "c1::grammaire"
+ },
+ {
+  "fr": "Continent.",
+  "kr": "대륙",
+  "type": "word",
+  "theme": "c1::geographie"
+ },
+ {
+  "fr": "Entrée à l'université, concours d'admission.",
+  "kr": "대입",
+  "type": "word",
+  "theme": "c1::education"
+ },
+ {
+  "fr": "Populaire, grand public.",
+  "kr": "대중적",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Diable, bon sang (renforce une question).",
+  "kr": "대체",
+  "type": "word",
+  "theme": "c1::registre"
+ },
+ {
+  "fr": "Daehangno (quartier des théâtres à Séoul).",
+  "kr": "대학로",
+  "type": "word",
+  "theme": "c1::geographie"
+ },
+ {
+  "fr": "Salle d'attente (gare, aéroport).",
+  "kr": "대합실",
+  "type": "word",
+  "theme": "c1::lieux"
+ },
+ {
+  "fr": "Encore plus, davantage.",
+  "kr": "더더욱",
+  "type": "word",
+  "theme": "c1::adverbes"
+ },
+ {
+  "fr": "Atteindre, parvenir à (un point, un état).",
+  "kr": "도달하다",
+  "type": "word",
+  "theme": "c1::changement"
+ },
+ {
+  "fr": "Morale, éthique.",
+  "kr": "도덕",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Aide, notice d'aide (informatique).",
+  "kr": "도움말",
+  "type": "word",
+  "theme": "c1::technologie"
+ },
+ {
+  "fr": "Original, inventif, créatif.",
+  "kr": "독창적",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Même, ledit (déterminant renvoyant à ce qui précède).",
+  "kr": "동",
+  "type": "word",
+  "theme": "c1::grammaire"
+ },
+ {
+  "fr": "Est et ouest ; l'Orient et l'Occident.",
+  "kr": "동서",
+  "type": "word",
+  "theme": "c1::geographie"
+ },
+ {
+  "fr": "Fait d'accompagner ; compagnon de route.",
+  "kr": "동행",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Se retourner sur son passé, faire un retour en arrière.",
+  "kr": "되돌아보다",
+  "type": "word",
+  "theme": "c1::pensee"
+ },
+ {
+  "fr": "Introduire, faire entrer, installer chez soi.",
+  "kr": "들여놓다",
+  "type": "word",
+  "theme": "c1::action"
+ },
+ {
+  "fr": "Inspirer, aspirer (l'air).",
+  "kr": "들이마시다",
+  "type": "word",
+  "theme": "c1::corps"
+ },
+ {
+  "fr": "Boire d'un trait ; aspirer avec force.",
+  "kr": "들이켜다",
+  "type": "word",
+  "theme": "c1::action"
+ },
+ {
+  "fr": "Comme si, on dirait que (marque d'apparence).",
+  "kr": "듯",
+  "type": "word",
+  "theme": "c1::grammaire"
+ },
+ {
+  "fr": "Avoir l'air de, sembler (auxiliaire de conjecture).",
+  "kr": "듯싶다",
+  "type": "word",
+  "theme": "c1::grammaire"
+ },
+ {
+  "fr": "Sembler, paraître, avoir l'air de.",
+  "kr": "듯하다",
+  "type": "word",
+  "theme": "c1::grammaire"
+ },
+ {
+  "fr": "Et cetera, et ainsi de suite.",
+  "kr": "등등",
+  "type": "word",
+  "theme": "c1::grammaire"
+ },
+ {
+  "fr": "Disque ; hernie discale (fam.).",
+  "kr": "디스크",
+  "type": "word",
+  "theme": "c1::technologie"
+ },
+ {
+  "fr": "Être tiède, doux et chaud (agréable).",
+  "kr": "따스하다",
+  "type": "word",
+  "theme": "c1::sensations"
+ },
+ {
+  "fr": "Fille (sa propre fille, affectueux).",
+  "kr": "딸아이",
+  "type": "word",
+  "theme": "c1::famille"
+ },
+ {
+  "fr": "Être bruyant, animé, plein de tapage.",
+  "kr": "떠들썩하다",
+  "type": "word",
+  "theme": "c1::sensations"
+ },
+ {
+  "fr": "Gambader, courir et jouer (enfants, animaux).",
+  "kr": "뛰놀다",
+  "type": "word",
+  "theme": "c1::action"
+ },
+ {
+  "fr": "Faire flotter, mettre à l'eau (un bateau) ; espacer, laisser un intervalle",
+  "kr": "띄우다",
+  "type": "word",
+  "theme": "c1::action"
+ },
+ {
+  "fr": "Round, manche, reprise (sport, négociation)",
+  "kr": "라운드",
+  "type": "word",
+  "theme": "c1::sport"
+ },
+ {
+  "fr": "Rival, concurrent",
+  "kr": "라이벌",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Ligne, trait ; réseau, filière ; standing",
+  "kr": "라인",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Raquette (tennis, badminton)",
+  "kr": "라켓",
+  "type": "word",
+  "theme": "c1::sport"
+ },
+ {
+  "fr": "Laser",
+  "kr": "레이저",
+  "type": "word",
+  "theme": "c1::technologie"
+ },
+ {
+  "fr": "Loisir, temps libre",
+  "kr": "레저",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Rond-point, carrefour giratoire",
+  "kr": "로터리",
+  "type": "word",
+  "theme": "c1::ville"
+ },
+ {
+  "fr": "Ri (unité de distance ancienne, ~0,4 km)",
+  "kr": "리",
+  "type": "word",
+  "theme": "c1::mesure"
+ },
+ {
+  "fr": "Ligue, championnat",
+  "kr": "리그",
+  "type": "word",
+  "theme": "c1::sport"
+ },
+ {
+  "fr": "Bourgeoise, la « patronne » (épouse, familier)",
+  "kr": "마누라",
+  "type": "word",
+  "theme": "c1::famille"
+ },
+ {
+  "fr": "Marque, repère ; marquer (au marquage sportif)",
+  "kr": "마크",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "« Vive... ! », hourra (acclamation)",
+  "kr": "만세",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Dessinateur de bandes dessinées, mangaka",
+  "kr": "만화가",
+  "type": "word",
+  "theme": "c1::art"
+ },
+ {
+  "fr": "Goûter ; connaître, éprouver (une expérience)",
+  "kr": "맛보다",
+  "type": "word",
+  "theme": "c1::action"
+ },
+ {
+  "fr": "Télescope, longue-vue",
+  "kr": "망원경",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Bonnes manières, savoir-vivre",
+  "kr": "매너",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Médias, presse et audiovisuel",
+  "kr": "매스컴",
+  "type": "word",
+  "theme": "c1::media"
+ },
+ {
+  "fr": "Préface, avant-propos",
+  "kr": "머리말",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Devenir sourd (귀를 ~), ne plus entendre",
+  "kr": "먹다",
+  "type": "word",
+  "theme": "c1::action"
+ },
+ {
+  "fr": "Commande, instruction (informatique)",
+  "kr": "명령어",
+  "type": "word",
+  "theme": "c1::technologie"
+ },
+ {
+  "fr": "Nom (au nom de qqn), titre nominal",
+  "kr": "명의",
+  "type": "word",
+  "theme": "c1::droit"
+ },
+ {
+  "fr": "Appellation, dénomination, nom (officiel)",
+  "kr": "명칭",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Gorgée, bouchée (de liquide)",
+  "kr": "모금",
+  "type": "word",
+  "theme": "c1::mesure"
+ },
+ {
+  "fr": "Chercher (à tâtons), explorer (une solution)",
+  "kr": "모색하다",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Entièrement, tout sans exception",
+  "kr": "모조리",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Groupe, bande, troupeau (~를 이루다)",
+  "kr": "무리",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Être excessif, déraisonnable ; forcer (se surmener)",
+  "kr": "무리하다",
+  "type": "word",
+  "theme": "c1::sante"
+ },
+ {
+  "fr": "Être sain et sauf, indemne, sans encombre",
+  "kr": "무사하다",
+  "type": "word",
+  "theme": "c1::sante"
+ },
+ {
+  "fr": "Danseur, danseuse (de profession)",
+  "kr": "무용가",
+  "type": "word",
+  "theme": "c1::art"
+ },
+ {
+  "fr": "Phrase, formule, tournure (écrite)",
+  "kr": "문구",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Hors de la porte, à l'extérieur (du portail)",
+  "kr": "문밖",
+  "type": "word",
+  "theme": "c1::vie"
+ },
+ {
+  "fr": "Littéraire (qui relève de la littérature)",
+  "kr": "문학적",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Physique (la science)",
+  "kr": "물리학",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Objet, corps (matériel)",
+  "kr": "물체",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Quoi ? (forme contractée et familière de 무엇)",
+  "kr": "뭣",
+  "type": "word",
+  "theme": "c1::langue"
+ },
+ {
+  "fr": "Beauté, le beau (esthétique)",
+  "kr": "미",
+  "type": "word",
+  "theme": "c1::art"
+ },
+ {
+  "fr": "Missile",
+  "kr": "미사일",
+  "type": "word",
+  "theme": "c1::militaire"
+ },
+ {
+  "fr": "Erreur, faute ; Mademoiselle (titre)",
+  "kr": "미스",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Wakamé, algue brune comestible",
+  "kr": "미역",
+  "type": "word",
+  "theme": "c1::cuisine"
+ },
+ {
+  "fr": "Le civil, le privé (par oppos. à l'État)",
+  "kr": "민간",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Folklore, traditions populaires",
+  "kr": "민속",
+  "type": "word",
+  "theme": "c1::culture"
+ },
+ {
+  "fr": "Démocratie, démocratique (élément de composition)",
+  "kr": "민주",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "Démocratisation",
+  "kr": "민주화",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "Devenir croyable, se laisser croire",
+  "kr": "믿어지다",
+  "type": "word",
+  "theme": "c1::pensee"
+ },
+ {
+  "fr": "Être étroit, intime, très lié (密接)",
+  "kr": "밀접하다",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Côté opposé, l'autre bord",
+  "kr": "반대편",
+  "type": "word",
+  "theme": "c1::espace"
+ },
+ {
+  "fr": "Ballet (danse)",
+  "kr": "발레",
+  "type": "word",
+  "theme": "c1::art"
+ },
+ {
+  "fr": "Faire preuve de, déployer (un talent), exercer",
+  "kr": "발휘하다",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "S'éclaircir, s'illuminer ; devenir plus lumineux",
+  "kr": "밝아지다",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Ciel nocturne",
+  "kr": "밤하늘",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Table dressée, plateau de repas",
+  "kr": "밥상",
+  "type": "word",
+  "theme": "c1::vie"
+ },
+ {
+  "fr": "Kimchi de chou chinois",
+  "kr": "배추김치",
+  "type": "word",
+  "theme": "c1::cuisine"
+ },
+ {
+  "fr": "Paektu (mont, plus haut sommet de la péninsule coréenne)",
+  "kr": "백두산",
+  "type": "word",
+  "theme": "c1::geographie"
+ },
+ {
+  "fr": "Blanc, couleur blanche",
+  "kr": "백색",
+  "type": "word",
+  "theme": "c1::art"
+ },
+ {
+  "fr": "Le peuple, les gens du commun.",
+  "kr": "백성",
+  "type": "word",
+  "theme": "c1::histoire"
+ },
+ {
+  "fr": "Personne de race blanche, Blanc.",
+  "kr": "백인",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Baekje (ancien royaume coréen, 18 av. J.-C.–660).",
+  "kr": "백제",
+  "type": "word",
+  "theme": "c1::histoire"
+ },
+ {
+  "fr": "Marin, homme de mer.",
+  "kr": "뱃사람",
+  "type": "word",
+  "theme": "c1::mer"
+ },
+ {
+  "fr": "Être abandonné, être jeté au rebut.",
+  "kr": "버려지다",
+  "type": "word",
+  "theme": "c1::vie"
+ },
+ {
+  "fr": "Trancher, couper (au fil d'une lame).",
+  "kr": "베다",
+  "type": "word",
+  "theme": "c1::action"
+ },
+ {
+  "fr": "Transformation, métamorphose.",
+  "kr": "변신",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Poussin.",
+  "kr": "병아리",
+  "type": "word",
+  "theme": "c1::animaux"
+ },
+ {
+  "fr": "Envoyer (vers celui qui parle), faire parvenir.",
+  "kr": "보내오다",
+  "type": "word",
+  "theme": "c1::communication"
+ },
+ {
+  "fr": "Conservatisme ; entretien, maintenance.",
+  "kr": "보수",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "Être conservateur.",
+  "kr": "보수적",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "Foulard d'emballage, carré de tissu (pour envelopper).",
+  "kr": "보자기",
+  "type": "word",
+  "theme": "c1::vie"
+ },
+ {
+  "fr": "Être universel, général.",
+  "kr": "보편적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Le présent, ce, ledit (déterminant).",
+  "kr": "본",
+  "type": "word",
+  "theme": "c1::formel"
+ },
+ {
+  "fr": "Être véritable, à proprement parler, en règle.",
+  "kr": "본격적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Siège social, maison mère.",
+  "kr": "본사",
+  "type": "word",
+  "theme": "c1::entreprise"
+ },
+ {
+  "fr": "Nature véritable, naturel profond.",
+  "kr": "본성",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Absence, inexistence.",
+  "kr": "부재",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Volume (espace occupé).",
+  "kr": "부피",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Vice-président (d'une organisation).",
+  "kr": "부회장",
+  "type": "word",
+  "theme": "c1::entreprise"
+ },
+ {
+  "fr": "Devenir clair, s'éclaircir, se préciser.",
+  "kr": "분명해지다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Être affairé, très occupé, agité.",
+  "kr": "분주하다",
+  "type": "word",
+  "theme": "c1::vie"
+ },
+ {
+  "fr": "Seulement, ne... que (à peine).",
+  "kr": "불과",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "N'être rien de plus que, se réduire à.",
+  "kr": "불과하다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Marque (commerciale), griffe.",
+  "kr": "브랜드",
+  "type": "word",
+  "theme": "c1::entreprise"
+ },
+ {
+  "fr": "Pigeon, colombe.",
+  "kr": "비둘기",
+  "type": "word",
+  "theme": "c1::animaux"
+ },
+ {
+  "fr": "Délinquance, conduite répréhensible.",
+  "kr": "비행",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Rideau de pluie, trombe d'eau.",
+  "kr": "빗줄기",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Avoir failli (faire), avoir bien failli.",
+  "kr": "뻔하다",
+  "type": "word",
+  "theme": "c1::grammaire"
+ },
+ {
+  "fr": "Cerf, biche.",
+  "kr": "사슴",
+  "type": "word",
+  "theme": "c1::animaux"
+ },
+ {
+  "fr": "Les interstices, l'espace entre chaque chose.",
+  "kr": "사이사이",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Socialisme.",
+  "kr": "사회주의",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "Sociologie.",
+  "kr": "사회학",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Gynécologie-obstétrique (service, spécialité).",
+  "kr": "산부인과",
+  "type": "word",
+  "theme": "c1::medecine"
+ },
+ {
+  "fr": "S'abstenir de, éviter (par retenue).",
+  "kr": "삼가다",
+  "type": "word",
+  "theme": "c1::formel"
+ },
+ {
+  "fr": "Les Trois Royaumes (de Corée).",
+  "kr": "삼국",
+  "type": "word",
+  "theme": "c1::histoire"
+ },
+ {
+  "fr": "Un nombre considérable, une bonne partie.",
+  "kr": "상당수",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Relativité (caractère relatif).",
+  "kr": "상대성",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Marchand, commerçant.",
+  "kr": "상인",
+  "type": "word",
+  "theme": "c1::economie"
+ },
+ {
+  "fr": "Être symbolique.",
+  "kr": "상징적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Crayon de couleur.",
+  "kr": "색연필",
+  "type": "word",
+  "theme": "c1::objets"
+ },
+ {
+  "fr": "La vie, l'existence.",
+  "kr": "생",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Force productive, capacité de production.",
+  "kr": "생산력",
+  "type": "word",
+  "theme": "c1::economie"
+ },
+ {
+  "fr": "Producteur (celui qui produit).",
+  "kr": "생산자",
+  "type": "word",
+  "theme": "c1::economie"
+ },
+ {
+  "fr": "Niveau de vie.",
+  "kr": "생활수준",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "L'Occident, l'Europe de l'Ouest.",
+  "kr": "서구",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Le petit peuple, les gens modestes.",
+  "kr": "서민",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Cercle, club (association d'étudiants).",
+  "kr": "서클",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Trois (déterminant, devant certains noms).",
+  "kr": "석",
+  "type": "word",
+  "theme": "c1::grammaire"
+ },
+ {
+  "fr": "Master, titulaire d'un master.",
+  "kr": "석사",
+  "type": "word",
+  "theme": "c1::education"
+ },
+ {
+  "fr": "Déclarer, proclamer.",
+  "kr": "선언하다",
+  "type": "word",
+  "theme": "c1::formel"
+ },
+ {
+  "fr": "Membre d'équipage, matelot.",
+  "kr": "선원",
+  "type": "word",
+  "theme": "c1::mer"
+ },
+ {
+  "fr": "Capitaine (d'un navire).",
+  "kr": "선장",
+  "type": "word",
+  "theme": "c1::mer"
+ },
+ {
+  "fr": "La Bible, les Écritures saintes.",
+  "kr": "성경",
+  "type": "word",
+  "theme": "c1::religion"
+ },
+ {
+  "fr": "Vision du monde, conception du monde.",
+  "kr": "세계관",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Le roi Sejong (roi de Joseon, créateur du hangeul)",
+  "kr": "세종대왕",
+  "type": "word",
+  "theme": "c1::histoire"
+ },
+ {
+  "fr": "Être sexy, être aguichant",
+  "kr": "섹시하다",
+  "type": "word",
+  "theme": "c1::apparence"
+ },
+ {
+  "fr": "Fait de, compte de (indique un raisonnement ou une supposition)",
+  "kr": "셈",
+  "type": "word",
+  "theme": "c1::grammaire"
+ },
+ {
+  "fr": "Être simple, sobre, sans prétention",
+  "kr": "소박하다",
+  "type": "word",
+  "theme": "c1::caractere"
+ },
+ {
+  "fr": "Appartenance, rattachement (à une organisation)",
+  "kr": "소속",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Ce qu'on appelle, soi-disant",
+  "kr": "소위",
+  "type": "word",
+  "theme": "c1::discours"
+ },
+ {
+  "fr": "Propriétaire, détenteur",
+  "kr": "소유자",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Aptitude, disposition naturelle, don",
+  "kr": "소질",
+  "type": "word",
+  "theme": "c1::education"
+ },
+ {
+  "fr": "Négligemment, à la légère",
+  "kr": "소홀히",
+  "type": "word",
+  "theme": "c1::comportement"
+ },
+ {
+  "fr": "Chuchoter, murmurer",
+  "kr": "속삭이다",
+  "type": "word",
+  "theme": "c1::communication"
+ },
+ {
+  "fr": "De ses propres mains, en personne",
+  "kr": "손수",
+  "type": "word",
+  "theme": "c1::comportement"
+ },
+ {
+  "fr": "Perte, préjudice",
+  "kr": "손실",
+  "type": "word",
+  "theme": "c1::economie"
+ },
+ {
+  "fr": "Ouate, coton (matière)",
+  "kr": "솜",
+  "type": "word",
+  "theme": "c1::materiaux"
+ },
+ {
+  "fr": "Moyen, méthode, procédé",
+  "kr": "수",
+  "type": "word",
+  "theme": "c1::grammaire"
+ },
+ {
+  "fr": "Première place, premier de sa promotion",
+  "kr": "수석",
+  "type": "word",
+  "theme": "c1::education"
+ },
+ {
+  "fr": "Études, apprentissage (d'un métier ou d'un art)",
+  "kr": "수업",
+  "type": "word",
+  "theme": "c1::education"
+ },
+ {
+  "fr": "Mâle (animal)",
+  "kr": "수컷",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Essai, texte libre (genre littéraire)",
+  "kr": "수필",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Candidat à un examen (souvent d'entrée à l'université)",
+  "kr": "수험생",
+  "type": "word",
+  "theme": "c1::education"
+ },
+ {
+  "fr": "Maître, mentor (enseignant vénéré)",
+  "kr": "스승",
+  "type": "word",
+  "theme": "c1::education"
+ },
+ {
+  "fr": "Furtivement, en douce, sans se faire remarquer",
+  "kr": "슬그머니",
+  "type": "word",
+  "theme": "c1::comportement"
+ },
+ {
+  "fr": "Match, issue d'un affrontement, décision (victoire/défaite)",
+  "kr": "승부",
+  "type": "word",
+  "theme": "c1::competition"
+ },
+ {
+  "fr": "Scénario, script",
+  "kr": "시나리오",
+  "type": "word",
+  "theme": "c1::cinema"
+ },
+ {
+  "fr": "Propre à une époque, d'époque",
+  "kr": "시대적",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "CD-ROM",
+  "kr": "시디롬",
+  "type": "word",
+  "theme": "c1::technologie"
+ },
+ {
+  "fr": "Saison (sportive, télévisée)",
+  "kr": "시즌",
+  "type": "word",
+  "theme": "c1::loisirs"
+ },
+ {
+  "fr": "Habitudes alimentaires, régime alimentaire",
+  "kr": "식생활",
+  "type": "word",
+  "theme": "c1::sante"
+ },
+ {
+  "fr": "Nouveauté, ce qui est nouveau, nouvel (élément)",
+  "kr": "신규",
+  "type": "word",
+  "theme": "c1::economie"
+ },
+ {
+  "fr": "Silla (ancien royaume coréen)",
+  "kr": "신라",
+  "type": "word",
+  "theme": "c1::histoire"
+ },
+ {
+  "fr": "Création, installation (nouvelle)",
+  "kr": "신설",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Être rapide, prompt",
+  "kr": "신속하다",
+  "type": "word",
+  "theme": "c1::action"
+ },
+ {
+  "fr": "Nouveau venu, débutant (dans un domaine)",
+  "kr": "신인",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Vraiment, en vérité, réellement",
+  "kr": "실로",
+  "type": "word",
+  "theme": "c1::discours"
+ },
+ {
+  "fr": "Situation réelle, réalité des faits",
+  "kr": "실정",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Effectif, concret, réel",
+  "kr": "실질적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "État réel, situation effective (d'un phénomène)",
+  "kr": "실태",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "S'aggraver, devenir grave/sérieux",
+  "kr": "심각해지다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "En venir à vouloir, finir par avoir envie (auxiliaire)",
+  "kr": "싶어지다",
+  "type": "word",
+  "theme": "c1::grammaire"
+ },
+ {
+  "fr": "D'un coup net, complètement (couper, effacer)",
+  "kr": "싹",
+  "type": "word",
+  "theme": "c1::onomatopee"
+ },
+ {
+  "fr": "Asphalte, bitume",
+  "kr": "아스팔트",
+  "type": "word",
+  "theme": "c1::materiaux"
+ },
+ {
+  "fr": "Aïe, oh là là (interjection de lassitude ou de surprise)",
+  "kr": "아유",
+  "type": "word",
+  "theme": "c1::interjection"
+ },
+ {
+  "fr": "Andong (ville de Corée du Sud, Gyeongsang du Nord)",
+  "kr": "안동",
+  "type": "word",
+  "theme": "c1::geographie"
+ },
+ {
+  "fr": "Aluminium",
+  "kr": "알루미늄",
+  "type": "word",
+  "theme": "c1::materiaux"
+ },
+ {
+  "fr": "Alcool (substance)",
+  "kr": "알코올",
+  "type": "word",
+  "theme": "c1::sciences"
+ },
+ {
+  "fr": "Insinuation, suggestion, allusion",
+  "kr": "암시",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Femelle (animal)",
+  "kr": "암컷",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Porte de devant, entrée principale",
+  "kr": "앞문",
+  "type": "word",
+  "theme": "c1::batiment"
+ },
+ {
+  "fr": "Le tout début, l'origine, au commencement",
+  "kr": "애초",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Stade de baseball",
+  "kr": "야구장",
+  "type": "word",
+  "theme": "c1::sport"
+ },
+ {
+  "fr": "Eau de source (minérale, réputée saine)",
+  "kr": "약수",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "S'affaiblir, faiblir, s'atténuer",
+  "kr": "약해지다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Être agaçant, être détestable (par mesquinerie)",
+  "kr": "얄밉다",
+  "type": "word",
+  "theme": "c1::caractere"
+ },
+ {
+  "fr": "Laitue (pommée)",
+  "kr": "양상추",
+  "type": "word",
+  "theme": "c1::cuisine"
+ },
+ {
+  "fr": "Alcool/spiritueux occidental (whisky, cognac...)",
+  "kr": "양주",
+  "type": "word",
+  "theme": "c1::cuisine"
+ },
+ {
+  "fr": "Hé, dis donc (interpellation familière)",
+  "kr": "얘",
+  "type": "word",
+  "theme": "c1::interjection"
+ },
+ {
+  "fr": "Devenir difficile, se compliquer.",
+  "kr": "어려워지다",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Pourquoi, pour quelle raison.",
+  "kr": "어째서",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Par hasard, à l'occasion ; comment se fait-il que.",
+  "kr": "어쩌다가",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Comment (est-ce possible) ; peut-être bien.",
+  "kr": "어쩜",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "D'un coup d'œil, fugitivement, à peine.",
+  "kr": "얼핏",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Secteur d'activité, branche (commerciale).",
+  "kr": "업종",
+  "type": "word",
+  "theme": "c1::economie"
+ },
+ {
+  "fr": "Se croiser sans se rencontrer ; diverger (opinions).",
+  "kr": "엇갈리다",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Eh ! ; hein ? (interjection d'hésitation ou de surprise).",
+  "kr": "에",
+  "type": "word",
+  "theme": "c1::oral"
+ },
+ {
+  "fr": "Être considéré comme, être tenu pour.",
+  "kr": "여겨지다",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Femme militaire, femme soldat.",
+  "kr": "여군",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Reine (souveraine).",
+  "kr": "여왕",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Être inchangé, rester comme avant.",
+  "kr": "여전하다",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Rôle (théâtre, cinéma) ; fonction.",
+  "kr": "역",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Science historique, historiographie.",
+  "kr": "역사학",
+  "type": "word",
+  "theme": "c1::academique"
+ },
+ {
+  "fr": "Associer par la pensée, évoquer (par association).",
+  "kr": "연상하다",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Être mince, léger (couleur, tissu, sourire).",
+  "kr": "엷다",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Yeongnam (région sud-est de la Corée, Gyeongsang).",
+  "kr": "영남",
+  "type": "word",
+  "theme": "c1::geographie"
+ },
+ {
+  "fr": "Festival de cinéma.",
+  "kr": "영화제",
+  "type": "word",
+  "theme": "c1::culture"
+ },
+ {
+  "fr": "Flanc, côté (du corps).",
+  "kr": "옆구리",
+  "type": "word",
+  "theme": "c1::corps"
+ },
+ {
+  "fr": "De cette année, cette année-ci.",
+  "kr": "올",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Cet automne, l'automne de cette année.",
+  "kr": "올가을",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Reine (épouse du roi).",
+  "kr": "왕비",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Prince (fils du roi).",
+  "kr": "왕자",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Réciter (de mémoire), psalmodier.",
+  "kr": "외다",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Produit étranger, article d'importation.",
+  "kr": "외제",
+  "type": "word",
+  "theme": "c1::economie"
+ },
+ {
+  "fr": "Cri, clameur ; appel.",
+  "kr": "외침",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Manuscrit, texte (à imprimer).",
+  "kr": "원고",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Directeur (d'un établissement : hôpital, institut).",
+  "kr": "원장",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Illégalité, infraction à la loi.",
+  "kr": "위법",
+  "type": "word",
+  "theme": "c1::droit"
+ },
+ {
+  "fr": "Satellite (astre ou engin en orbite).",
+  "kr": "위성",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Membre d'un comité, commissaire.",
+  "kr": "위원",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Président de comité, président de commission.",
+  "kr": "위원장",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Priorité, primauté ; le fait de mettre au premier plan.",
+  "kr": "위주",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Buste, haut du corps (torse).",
+  "kr": "윗몸",
+  "type": "word",
+  "theme": "c1::corps"
+ },
+ {
+  "fr": "Être semblable, similaire, analogue.",
+  "kr": "유사하다",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Athlétisme ; terre ferme (par opp. à la mer).",
+  "kr": "육상",
+  "type": "word",
+  "theme": "c1::sport"
+ },
+ {
+  "fr": "En général, d'ordinaire, comme il se doit.",
+  "kr": "으레",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Être feutré, tamisé, discret (lumière, son, parfum).",
+  "kr": "은은하다",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Ginkgo (arbre).",
+  "kr": "은행나무",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Intentionnel, délibéré, volontaire.",
+  "kr": "의도적",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Contre toute attente, étonnamment.",
+  "kr": "의외로",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Député, membre d'une assemblée.",
+  "kr": "의원",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "Médecine (discipline).",
+  "kr": "의학",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Ainsi, de cette façon, comme ceci.",
+  "kr": "이같이",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Ce gars, ce type (péjoratif ou familier).",
+  "kr": "이놈",
+  "type": "word",
+  "theme": "c1::oral"
+ },
+ {
+  "fr": "La prochaine fois, la suite ; plus tard.",
+  "kr": "이다음",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Idéologie.",
+  "kr": "이데올로기",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "De temps en temps, par moments.",
+  "kr": "이따금",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Depuis (tel événement, telle époque).",
+  "kr": "이래",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Théorique, relatif à la théorie.",
+  "kr": "이론적",
+  "type": "word",
+  "theme": "c1::academique"
+ },
+ {
+  "fr": "Président (d'un conseil d'administration).",
+  "kr": "이사장",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Rosée.",
+  "kr": "이슬",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Ensuite, à la suite, puis.",
+  "kr": "이어서",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Double, redoublement ; duplicité.",
+  "kr": "이중",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Voisinage, proximité, alentours.",
+  "kr": "인근",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Maintenant, à présent (var. dialectale/orale de 이제)",
+  "kr": "인제",
+  "type": "word",
+  "theme": "c1::oral"
+ },
+ {
+  "fr": "Race (humaine)",
+  "kr": "인종",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Un grand, considérable (déterminant)",
+  "kr": "일대",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Date, jour (fixé)",
+  "kr": "일자",
+  "type": "word",
+  "theme": "c1::administration"
+ },
+ {
+  "fr": "Femme enceinte",
+  "kr": "임신부",
+  "type": "word",
+  "theme": "c1::sante"
+ },
+ {
+  "fr": "Être oublié, tomber dans l'oubli",
+  "kr": "잊혀지다",
+  "type": "word",
+  "theme": "c1::langue"
+ },
+ {
+  "fr": "Toi (pronom familier entre égaux ou d'un aîné à un cadet)",
+  "kr": "자네",
+  "type": "word",
+  "theme": "c1::registre"
+ },
+ {
+  "fr": "Phénomène naturel",
+  "kr": "자연현상",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Autonomie, autodiscipline",
+  "kr": "자율",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Minuit",
+  "kr": "자정",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Trace, vestige ; existence menée (sans domicile propre)",
+  "kr": "자취",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Clavier (de saisie)",
+  "kr": "자판",
+  "type": "word",
+  "theme": "c1::technique"
+ },
+ {
+  "fr": "Fille cadette",
+  "kr": "작은딸",
+  "type": "word",
+  "theme": "c1::famille"
+ },
+ {
+  "fr": "Fils cadet",
+  "kr": "작은아들",
+  "type": "word",
+  "theme": "c1::famille"
+ },
+ {
+  "fr": "Blouson, veste (de type jumper)",
+  "kr": "잠바",
+  "type": "word",
+  "theme": "c1::vetement"
+ },
+ {
+  "fr": "Sous-marin",
+  "kr": "잠수함",
+  "type": "word",
+  "theme": "c1::militaire"
+ },
+ {
+  "fr": "Lit, couchage ; endroit où l'on dort",
+  "kr": "잠자리",
+  "type": "word",
+  "theme": "c1::quotidien"
+ },
+ {
+  "fr": "Manger (honorifique de 먹다)",
+  "kr": "잡수다",
+  "type": "word",
+  "theme": "c1::registre"
+ },
+ {
+  "fr": "Funérailles, obsèques",
+  "kr": "장례",
+  "type": "word",
+  "theme": "c1::rites"
+ },
+ {
+  "fr": "Belle-mère (mère de l'épouse)",
+  "kr": "장모님",
+  "type": "word",
+  "theme": "c1::famille"
+ },
+ {
+  "fr": "Équipement, matériel",
+  "kr": "장비",
+  "type": "word",
+  "theme": "c1::technique"
+ },
+ {
+  "fr": "Marchand, commerçant (souvent péjoratif)",
+  "kr": "장사꾼",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "À l'avenir, ultérieurement",
+  "kr": "장차",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Être fréquent, répété",
+  "kr": "잦다",
+  "type": "word",
+  "theme": "c1::langue"
+ },
+ {
+  "fr": "Être amusant, intéressant (forme contractée de 재미있다)",
+  "kr": "재밌다",
+  "type": "word",
+  "theme": "c1::oral"
+ },
+ {
+  "fr": "Finances (publiques), budget",
+  "kr": "재정",
+  "type": "word",
+  "theme": "c1::economie"
+ },
+ {
+  "fr": "Jazz",
+  "kr": "재즈",
+  "type": "word",
+  "theme": "c1::musique"
+ },
+ {
+  "fr": "Jeogori (veste courte du costume traditionnel coréen)",
+  "kr": "저고리",
+  "type": "word",
+  "theme": "c1::culture"
+ },
+ {
+  "fr": "L'autre côté, là-bas ; l'autre partie",
+  "kr": "저편",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Être approprié, convenir (à)",
+  "kr": "적합하다",
+  "type": "word",
+  "theme": "c1::langue"
+ },
+ {
+  "fr": "Première période, premier semestre",
+  "kr": "전기",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Ensemble, totalité",
+  "kr": "전반",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Global, d'ensemble",
+  "kr": "전반적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Front (ligne de combat)",
+  "kr": "전선",
+  "type": "word",
+  "theme": "c1::militaire"
+ },
+ {
+  "fr": "Jeonju (ville de Corée, province du Jeolla du Nord)",
+  "kr": "전주",
+  "type": "word",
+  "theme": "c1::geographie"
+ },
+ {
+  "fr": "Culture traditionnelle",
+  "kr": "전통문화",
+  "type": "word",
+  "theme": "c1::culture"
+ },
+ {
+  "fr": "Conversion, transformation, bascule",
+  "kr": "전환",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Convertir, transformer, faire basculer",
+  "kr": "전환하다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Remise en état, maintenance ; réaménagement",
+  "kr": "정비",
+  "type": "word",
+  "theme": "c1::technique"
+ },
+ {
+  "fr": "Psychiatrie ; service de psychiatrie",
+  "kr": "정신과",
+  "type": "word",
+  "theme": "c1::sante"
+ },
+ {
+  "fr": "Sphère politique, milieu politique",
+  "kr": "정치권",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "Science politique",
+  "kr": "정치학",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "Être démobilisé, quitter l'armée (fin du service)",
+  "kr": "제대하다",
+  "type": "word",
+  "theme": "c1::militaire"
+ },
+ {
+  "fr": "Institutionnel",
+  "kr": "제도적",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Hirondelle",
+  "kr": "제비",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Jour anniversaire d'un décès (jour du rite ancestral)",
+  "kr": "제삿날",
+  "type": "word",
+  "theme": "c1::rites"
+ },
+ {
+  "fr": "Proposition, suggestion",
+  "kr": "제의",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Proposer, suggérer",
+  "kr": "제의하다",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Coquillage, mollusque bivalve",
+  "kr": "조개",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Être tout petit, menu",
+  "kr": "조그마하다",
+  "type": "word",
+  "theme": "c1::langue"
+ },
+ {
+  "fr": "Joseon (dynastie coréenne, 1392-1897)",
+  "kr": "조선",
+  "type": "word",
+  "theme": "c1::histoire"
+ },
+ {
+  "fr": "Organisation ; tissu (biologie)",
+  "kr": "조직",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Son de cloche, tintement",
+  "kr": "종소리",
+  "type": "word",
+  "theme": "c1::quotidien"
+ },
+ {
+  "fr": "Coupable, pécheur",
+  "kr": "죄인",
+  "type": "word",
+  "theme": "c1::justice"
+ },
+ {
+  "fr": "Logement, habitation",
+  "kr": "주거",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Anniversaire (nombre d'annees ecoulees)",
+  "kr": "주년",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Ride (du visage)",
+  "kr": "주름살",
+  "type": "word",
+  "theme": "c1::corps"
+ },
+ {
+  "fr": "Etabli en Coree, resident en Coree",
+  "kr": "주한",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "D'un seul trait, tout droit",
+  "kr": "죽",
+  "type": "word",
+  "theme": "c1::maniere"
+ },
+ {
+  "fr": "Retransmission, diffusion en relais",
+  "kr": "중계방송",
+  "type": "word",
+  "theme": "c1::medias"
+ },
+ {
+  "fr": "Age mur, quarantaine-cinquantaine",
+  "kr": "중년",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Etre grave, majeur, capital",
+  "kr": "중대하다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Moyen Age",
+  "kr": "중세",
+  "type": "word",
+  "theme": "c1::histoire"
+ },
+ {
+  "fr": "Attacher de l'importance a, priser",
+  "kr": "중요시하다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Societe de courtage, maison de titres",
+  "kr": "증권사",
+  "type": "word",
+  "theme": "c1::economie"
+ },
+ {
+  "fr": "Point, degre, extremite (situation)",
+  "kr": "지경",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Zone, region, bande de terrain",
+  "kr": "지대",
+  "type": "word",
+  "theme": "c1::geographie"
+ },
+ {
+  "fr": "Jirisan (grand massif montagneux du sud)",
+  "kr": "지리산",
+  "type": "word",
+  "theme": "c1::geographie"
+ },
+ {
+  "fr": "Dominer, regner sur, controler",
+  "kr": "지배하다",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "Se poursuivre, se maintenir, durer",
+  "kr": "지속되다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Continu, durable, permanent",
+  "kr": "지속적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "S'effacer, etre efface, disparaitre",
+  "kr": "지워지다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Intellectuel, cerebral",
+  "kr": "지적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Etre pointe du doigt, etre releve (defaut)",
+  "kr": "지적되다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Signaler, relever, pointer (un defaut)",
+  "kr": "지적하다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Succursale, agence, filiale",
+  "kr": "지점",
+  "type": "word",
+  "theme": "c1::economie"
+ },
+ {
+  "fr": "Soutien, appui",
+  "kr": "지지",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "Juste avant, imminent",
+  "kr": "직전",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Vraiment, sincerement, en verite",
+  "kr": "진실로",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Douleurs de l'accouchement ; affres, tourment",
+  "kr": "진통",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Qualitatif, relatif a la qualite",
+  "kr": "질적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Collectif, de groupe",
+  "kr": "집단적",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Etre desempare, ne savoir que faire, paniquer",
+  "kr": "쩔쩔매다",
+  "type": "word",
+  "theme": "c1::emotion"
+ },
+ {
+  "fr": "Residu, restes, lie, marc",
+  "kr": "찌꺼기",
+  "type": "word",
+  "theme": "c1::concret"
+ },
+ {
+  "fr": "Moineau",
+  "kr": "참새",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Creatif, createur",
+  "kr": "창조적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Unite pour compter les maisons/batiments",
+  "kr": "채",
+  "type": "word",
+  "theme": "c1::mesure"
+ },
+ {
+  "fr": "Notation, correction (d'une copie)",
+  "kr": "채점",
+  "type": "word",
+  "theme": "c1::education"
+ },
+ {
+  "fr": "Situation, condition, sort",
+  "kr": "처지",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Etre minutieux, rigoureux, complet",
+  "kr": "철저하다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Philosophie",
+  "kr": "철학",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Philosophe",
+  "kr": "철학자",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Philosophique",
+  "kr": "철학적",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Jeunesse, printemps de la vie",
+  "kr": "청춘",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Systematique, methodique",
+  "kr": "체계적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Portrait (peint)",
+  "kr": "초상화",
+  "type": "word",
+  "theme": "c1::art"
+ },
+ {
+  "fr": "Debut du mois, premiere decade",
+  "kr": "초순",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Prairie, steppe",
+  "kr": "초원",
+  "type": "word",
+  "theme": "c1::nature"
+ },
+ {
+  "fr": "Bougie (allumee), lumiere de bougie",
+  "kr": "촛불",
+  "type": "word",
+  "theme": "c1::concret"
+ },
+ {
+  "fr": "Jeune homme celibataire",
+  "kr": "총각",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Le meilleur, le summum, le top",
+  "kr": "최상",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Le pire",
+  "kr": "최악",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Le dernier, l'ultime, la fin",
+  "kr": "최후",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Point de depart",
+  "kr": "출발점",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Maison d'edition",
+  "kr": "출판사",
+  "type": "word",
+  "theme": "c1::culture"
+ },
+ {
+  "fr": "Personnage (de fiction) ; caractere",
+  "kr": "캐릭터",
+  "type": "word",
+  "theme": "c1::culture"
+ },
+ {
+  "fr": "Condition physique, forme",
+  "kr": "컨디션",
+  "type": "word",
+  "theme": "c1::corps"
+ },
+ {
+  "fr": "Couleur ; en couleur",
+  "kr": "컬러",
+  "type": "word",
+  "theme": "c1::concret"
+ },
+ {
+  "fr": "Bout du nez",
+  "kr": "코끝",
+  "type": "word",
+  "theme": "c1::corps"
+ },
+ {
+  "fr": "Code, ensemble de règles ; code informatique",
+  "kr": "코드",
+  "type": "word",
+  "theme": "c1::technique"
+ },
+ {
+  "fr": "Cosmos ; univers ; (aussi) fleur cosmos",
+  "kr": "코스모스",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Entraîneur, coach",
+  "kr": "코치",
+  "type": "word",
+  "theme": "c1::sport"
+ },
+ {
+  "fr": "Sensation de plaisir, jouissance",
+  "kr": "쾌감",
+  "type": "word",
+  "theme": "c1::psychologie"
+ },
+ {
+  "fr": "Coup d'État, putsch",
+  "kr": "쿠데타",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "Grande révérence coréenne (prosternation)",
+  "kr": "큰절",
+  "type": "word",
+  "theme": "c1::culture"
+ },
+ {
+  "fr": "Corruption, dépravation, déchéance morale",
+  "kr": "타락",
+  "type": "word",
+  "theme": "c1::morale"
+ },
+ {
+  "fr": "Type, genre, catégorie",
+  "kr": "타입",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Machine à écrire",
+  "kr": "타자기",
+  "type": "word",
+  "theme": "c1::objet"
+ },
+ {
+  "fr": "D'un coup sec ; nettement (bruit ou geste)",
+  "kr": "탁",
+  "type": "word",
+  "theme": "c1::onomatopée"
+ },
+ {
+  "fr": "Être remarquable, excellent, éminent",
+  "kr": "탁월하다",
+  "type": "word",
+  "theme": "c1::qualité"
+ },
+ {
+  "fr": "Faute, cause (d'un mal) ; à cause de",
+  "kr": "탓",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Fœtus, embryon",
+  "kr": "태아",
+  "type": "word",
+  "theme": "c1::biologie"
+ },
+ {
+  "fr": "Terrain, emplacement ; site, fondement",
+  "kr": "터",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Terrorisme, attentat",
+  "kr": "테러",
+  "type": "word",
+  "theme": "c1::politique"
+ },
+ {
+  "fr": "Texte, énoncé écrit",
+  "kr": "텍스트",
+  "type": "word",
+  "theme": "c1::linguistique"
+ },
+ {
+  "fr": "Fondement, base, assise",
+  "kr": "토대",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Participant à un débat, débatteur",
+  "kr": "토론자",
+  "type": "word",
+  "theme": "c1::communication"
+ },
+ {
+  "fr": "Séance de débat, colloque",
+  "kr": "토론회",
+  "type": "word",
+  "theme": "c1::communication"
+ },
+ {
+  "fr": "Passage, couloir, voie",
+  "kr": "통로",
+  "type": "word",
+  "theme": "c1::espace"
+ },
+ {
+  "fr": "Contrôle, régulation, mainmise",
+  "kr": "통제",
+  "type": "word",
+  "theme": "c1::société"
+ },
+ {
+  "fr": "Intégration, unification, fusion",
+  "kr": "통합",
+  "type": "word",
+  "theme": "c1::société"
+ },
+ {
+  "fr": "Indemnité de départ, prime de retraite",
+  "kr": "퇴직금",
+  "type": "word",
+  "theme": "c1::travail"
+ },
+ {
+  "fr": "Rebondir ; gicler ; (fig.) se démarquer",
+  "kr": "튀다",
+  "type": "word",
+  "theme": "c1::mouvement"
+ },
+ {
+  "fr": "Surgir, jaillir, sortir en saillie",
+  "kr": "튀어나오다",
+  "type": "word",
+  "theme": "c1::mouvement"
+ },
+ {
+  "fr": "S'ouvrir, se dégager ; (esprit) s'éveiller",
+  "kr": "트이다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Classe supérieure, catégorie de luxe ; express",
+  "kr": "특급",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Spécificité, particularité, caractère propre",
+  "kr": "특수성",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Être particulier, singulier, inhabituel",
+  "kr": "특이하다",
+  "type": "word",
+  "theme": "c1::qualité"
+ },
+ {
+  "fr": "Solidement, fermement, robustement",
+  "kr": "튼튼히",
+  "type": "word",
+  "theme": "c1::manière"
+ },
+ {
+  "fr": "Cadre, moule, structure ; châssis",
+  "kr": "틀",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Saisir, comprendre, cerner (une situation)",
+  "kr": "파악하다",
+  "type": "word",
+  "theme": "c1::cognition"
+ },
+ {
+  "fr": "Situation, tournure ; partie (jeu) ; scène",
+  "kr": "판",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Jugement, verdict, sentence judiciaire",
+  "kr": "판결",
+  "type": "word",
+  "theme": "c1::droit"
+ },
+ {
+  "fr": "Chanson pop",
+  "kr": "팝송",
+  "type": "word",
+  "theme": "c1::musique"
+ },
+ {
+  "fr": "Fax, télécopie",
+  "kr": "팩스",
+  "type": "word",
+  "theme": "c1::technique"
+ },
+ {
+  "fr": "Télécopieur, fac-similé",
+  "kr": "팩시밀리",
+  "type": "word",
+  "theme": "c1::technique"
+ },
+ {
+  "fr": "Peinture (produit), laque",
+  "kr": "페인트",
+  "type": "word",
+  "theme": "c1::objet"
+ },
+ {
+  "fr": "Pyeong (unité de surface, env. 3,3 m²)",
+  "kr": "평",
+  "type": "word",
+  "theme": "c1::unité"
+ },
+ {
+  "fr": "Pyongyang, capitale de la Corée du Nord",
+  "kr": "평양",
+  "type": "word",
+  "theme": "c1::géographie"
+ },
+ {
+  "fr": "Point (aspect essentiel) ; point (score)",
+  "kr": "포인트",
+  "type": "word",
+  "theme": "c1::general"
+ },
+ {
+  "fr": "Échoppe ambulante, gargote de rue bâchée",
+  "kr": "포장마차",
+  "type": "word",
+  "theme": "c1::culture"
+ },
+ {
+  "fr": "Réalisateur, producteur (TV, radio)",
+  "kr": "피디",
+  "type": "word",
+  "theme": "c1::média"
+ },
+ {
+  "fr": "Poivron",
+  "kr": "피망",
+  "type": "word",
+  "theme": "c1::alimentation"
+ },
+ {
+  "fr": "(Caractère) inévitable, nécessaire, fatal",
+  "kr": "필연적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Auteur (d'un écrit), rédacteur",
+  "kr": "필자",
+  "type": "word",
+  "theme": "c1::littéraire"
+ },
+ {
+  "fr": "Dieu (protestant), le Seigneur",
+  "kr": "하나님",
+  "type": "word",
+  "theme": "c1::religion"
+ },
+ {
+  "fr": "Matériel informatique, hardware",
+  "kr": "하드웨어",
+  "type": "word",
+  "theme": "c1::technique"
+ },
+ {
+  "fr": "Une nuit, la durée d'une nuit",
+  "kr": "하룻밤",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Second semestre (d'une année)",
+  "kr": "하반기",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Dernier tiers du mois (21-30/31)",
+  "kr": "하순",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Justement, comme par un fait exprès (négatif)",
+  "kr": "하필",
+  "type": "word",
+  "theme": "c1::adverbe"
+ },
+ {
+  "fr": "Vie scolaire, vie à l'école",
+  "kr": "학교생활",
+  "type": "word",
+  "theme": "c1::éducation"
+ },
+ {
+  "fr": "Classe (groupe d'élèves)",
+  "kr": "학급",
+  "type": "word",
+  "theme": "c1::éducation"
+ },
+ {
+  "fr": "Numéro/année d'entrée à l'université (promotion)",
+  "kr": "학번",
+  "type": "word",
+  "theme": "c1::éducation"
+ },
+ {
+  "fr": "Science, savoir académique",
+  "kr": "학술",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Crédit (unité universitaire), note",
+  "kr": "학점",
+  "type": "word",
+  "theme": "c1::education"
+ },
+ {
+  "fr": "Un coin, un recoin",
+  "kr": "한구석",
+  "type": "word",
+  "theme": "c1::espace"
+ },
+ {
+  "fr": "Ensemble, au même endroit",
+  "kr": "한데",
+  "type": "word",
+  "theme": "c1::espace"
+ },
+ {
+  "fr": "Péninsule coréenne",
+  "kr": "한반도",
+  "type": "word",
+  "theme": "c1::geographie"
+ },
+ {
+  "fr": "Être limité, restreint",
+  "kr": "한정되다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Limiter, restreindre",
+  "kr": "한정하다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Toute une vie, la vie entière",
+  "kr": "한평생",
+  "type": "word",
+  "theme": "c1::temps"
+ },
+ {
+  "fr": "Aéronef, avion",
+  "kr": "항공기",
+  "type": "word",
+  "theme": "c1::technique"
+ },
+ {
+  "fr": "Marine (militaire)",
+  "kr": "해군",
+  "type": "word",
+  "theme": "c1::militaire"
+ },
+ {
+  "fr": "Solution, réponse",
+  "kr": "해답",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Analyse, interprétation",
+  "kr": "해석",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Interpréter, expliquer",
+  "kr": "해석하다",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Noyau ; nucléaire",
+  "kr": "핵",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Jambon",
+  "kr": "햄",
+  "type": "word",
+  "theme": "c1::alimentation"
+ },
+ {
+  "fr": "Être exécuté, avoir lieu (se pratiquer)",
+  "kr": "행해지다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Hélicoptère",
+  "kr": "헬기",
+  "type": "word",
+  "theme": "c1::technique"
+ },
+ {
+  "fr": "Actuel, en fonction (déterminant)",
+  "kr": "현",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Porte d'entrée (d'un logement)",
+  "kr": "현관문",
+  "type": "word",
+  "theme": "c1::habitat"
+ },
+ {
+  "fr": "Sang",
+  "kr": "혈액",
+  "type": "word",
+  "theme": "c1::medecine"
+ },
+ {
+  "fr": "Inspecteur (de police), policier",
+  "kr": "형사",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Belle-sœur (épouse du frère aîné)",
+  "kr": "형수",
+  "type": "word",
+  "theme": "c1::famille"
+ },
+ {
+  "fr": "Formel, de pure forme",
+  "kr": "형식적",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Honam (sud-ouest de la Corée)",
+  "kr": "호남",
+  "type": "word",
+  "theme": "c1::geographie"
+ },
+ {
+  "fr": "Monologue, parole dite à soi-même",
+  "kr": "혼잣말",
+  "type": "word",
+  "theme": "c1::communication"
+ },
+ {
+  "fr": "Seul, en solitaire",
+  "kr": "홀로",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Flèche",
+  "kr": "화살",
+  "type": "word",
+  "theme": "c1::objet"
+ },
+ {
+  "fr": "Chimie",
+  "kr": "화학",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Fixation, détermination (définitive)",
+  "kr": "확정",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Pollution de l'environnement",
+  "kr": "환경오염",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Devenir actif, s'animer",
+  "kr": "활발해지다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Entrevue, entretien (officiel)",
+  "kr": "회견",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Salle, hall (grand bâtiment public)",
+  "kr": "회관",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Rotation, giration",
+  "kr": "회전",
+  "type": "word",
+  "theme": "c1::science"
+ },
+ {
+  "fr": "Se troubler, devenir flou",
+  "kr": "흐려지다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Personne noire, Noir",
+  "kr": "흑인",
+  "type": "word",
+  "theme": "c1::societe"
+ },
+ {
+  "fr": "Pièce de théâtre, drame (texte)",
+  "kr": "희곡",
+  "type": "word",
+  "theme": "c1::litteraire"
+ },
+ {
+  "fr": "Être pénible, dur (à supporter)",
+  "kr": "힘겹다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ },
+ {
+  "fr": "Peiner, avoir du mal, souffrir",
+  "kr": "힘들어하다",
+  "type": "word",
+  "theme": "c1::abstrait"
+ }
+]

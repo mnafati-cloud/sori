@@ -41,13 +41,14 @@
 - **Avec quoi** : vanilla JS, zéro dépendance runtime, zéro bundler, zéro backend. Outillage :
   Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
   PowerShell 5.1 sous Windows 11.
-- **Volumes actuels** : 7409 items dans le seed, 6883 phrases d'exemple glosées (`gl`),
-  **7409 MP3 de mots + 6883 MP3 de phrases (`-ex.mp3`), ~234 Mo**, **43 tests Node**, `CACHE` = `sori-v40`.
-  ⚠️ **L'audio (~234 Mo) devient lourd** : envisager de le sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
-- **v40 (liste officielle INTERMÉDIAIRE)** : +2960 mots officiels B1/B2 manquants (workflow `sori-officiel-inter`,
-  chaîne R21/R22), deck 4449→7409. Distribution : A1 848 / A2 1462 / **B1 2866 / B2 1957** / C1 276. **Débutant +
-  intermédiaire officiels quasi couverts** ; reste ~1018 mots AVANCÉ (∅+C=C1) à faire. **Fix** : `merge_gloss.py`
-  rendu agnostique du nombre de lots (glob au lieu de `NB=30` — sinon >30 lots = gloses tronquées silencieusement).
+- **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
+  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **43 tests Node**, `CACHE` = `sori-v41`.
+  ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v41 (liste officielle AVANCÉ — COMPLÈTE)** : +588 mots officiels C1, deck 7409→7997. **La liste
+  graduée officielle 국립국어원/TOPIK est couverte à ~100 %** (6640/6642). Distribution finale :
+  A1 848 / A2 1462 / B1 2866 / B2 1957 / **C1 864**. Recette R22 terminée (débutant+interm.+avancé).
+- **v40 (liste officielle INTERMÉDIAIRE)** : +2960 mots officiels B1/B2, deck 4449→7409. **Fix** :
+  `merge_gloss.py` rendu agnostique du nombre de lots (glob au lieu de `NB=30` — sinon >30 lots = gloses tronquées silencieusement).
 - **DÉPLOIEMENT = GitHub ACTIONS (plus le build legacy)** : le build Pages « legacy » (Jekyll) hangait
   sur ce repo (~140 Mo, 8000+ fichiers). On a basculé sur un **workflow Actions** :
   `.github/workflows/pages.yml` (checkout → `upload-pages-artifact path:docs` → `deploy-pages`), et
