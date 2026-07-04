@@ -297,11 +297,15 @@ function distractors(it, n, field){
 /* ================= UI ================= */
 const $screen = document.getElementById("screen");
 let TAB = "review";
+/* NAV = vrai pendant un rendu d'ARRIVÉE (changement d'onglet ou ouverture de l'app) :
+   dans ce cas AUCUN son automatique. La prononciation auto ne se déclenche qu'en
+   PROGRESSION (passage à la carte suivante après une réponse). */
+let NAV = false;
 document.getElementById("tabs").addEventListener("click", e=>{
   const b = e.target.closest("button"); if(!b) return;
   TAB = b.dataset.tab;
   document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x===b));
-  render();
+  NAV = true; render(); NAV = false;
 });
 function el(html){ const t=document.createElement("template"); t.innerHTML=html.trim(); return t.content.firstChild; }
 let COOLDOWN_T = null;
@@ -541,7 +545,7 @@ function exoQcmKr2Fr(it){
     box.appendChild(b);
   });
   $screen.appendChild(card);
-  if(ST.set.autoplay) speak(it.kr, it.id);
+  if(ST.set.autoplay && !NAV) speak(it.kr, it.id);
 }
 /* stage 3 : QCM français -> coréen */
 function exoQcmFr2Kr(it){
@@ -623,7 +627,7 @@ function exoRecallRev(it){
     row.append(again, good);
   };
   $screen.appendChild(card);
-  if(ST.set.autoplay) speak(it.kr, it.id);
+  if(ST.set.autoplay && !NAV) speak(it.kr, it.id);
 }
 /* stage 3 (phrases) : construction de phrase façon Duolingo */
 function exoBuild(it){
@@ -744,7 +748,8 @@ function renderListen(){
     box.appendChild(b);
   });
   $screen.appendChild(card);
-  setTimeout(()=>speak(it.kr, it.id), 250);
+  const speakOnLand = !NAV;   // pas de son auto si on vient juste d'arriver sur l'onglet Écoute
+  setTimeout(()=>{ if(speakOnLand) speak(it.kr, it.id); }, 250);
 }
 
 /* ---------- mode Voyage ---------- */
@@ -824,7 +829,7 @@ function renderDrill(){
     } else { DPOS++; render(); }
   };
   $screen.appendChild(card);
-  speak(it.kr, it.id);
+  if(!NAV) speak(it.kr, it.id);   // drill : silencieux à l'arrivée, sonore en progression
 }
 
 /* ---------- Stats & réglages ---------- */
@@ -1173,4 +1178,4 @@ function esc(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;
 wireMute();
 wireReport();
 wireSettings();
-render();
+NAV = true; render(); NAV = false;   // ouverture de l'app : pas de son auto (arrivée)
