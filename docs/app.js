@@ -498,24 +498,31 @@ function renderReview(){
   $screen.appendChild(head);
   head.querySelector("#quitrev").onclick = leaveReview;
   EXO_T0 = Date.now();
-  if(it.stage<=2) exoQcmKr2Fr(it);
-  else if(it.stage===3){
-    if(it.type==="phrase" && it.kr.split(" ").length>=3) exoBuild(it);
-    else exoQcmFr2Kr(it);
-  }
-  else {
-    /* les deux sens aux hauts niveaux : 40% de rappel inversé (KR->FR) */
-    if(Math.random()<0.4) exoRecallRev(it);
-    else if(it.stage===5 && ST.set.typing===true && it.type==="word"
-            && window.SORI_TYPING && Math.random()<0.5){
-      /* production ultime : taper la réponse avec l'IME coréen (typing.js) */
+  /* Échelle RACCOURCIE (v50) — on atteint le RAPPEL vite (le rappel fait apprendre, pas le QCM).
+     MOTS    : 1 = QCM compréhension (KR→FR)  →  2 = rappel + 1re syllabe (production FR→KR)  →  3 = rappel + syllabe (amorti)  →  4+ = rappel sans aide (+ saisie hangul au sommet)
+     PHRASES : 1 = QCM  →  2+ = construction (word-bank) + parfois rappel du sens (produire une phrase entière de mémoire est trop dur pour un débutant) */
+  const isPhrase = it.type==="phrase" && it.kr.split(" ").length>=3;
+  if(it.stage<=1){
+    exoQcmKr2Fr(it);
+  } else if(isPhrase){
+    if(it.stage>=4 && Math.random()<0.35) exoRecallRev(it);   // garder le sens de temps en temps
+    else exoBuild(it);
+  } else if(it.stage<=3){
+    exoRecall(it, true);                       // rappel PRODUCTION avec 1re syllabe (stades 2-3 : amorti)
+  } else {
+    /* stade 4+ : rappel sans aide (+ 25% rappel inversé du sens pour garder la compréhension, saisie hangul au sommet) */
+    if(it.stage===5 && ST.set.typing===true && it.type==="word"
+       && window.SORI_TYPING && Math.random()<0.5){
       SORI_TYPING.render($screen, {
         item: it,
         speak: (kr,id)=>speak(kr,id),
         onResult: ok=>afterAnswer(it, ok, false, "type")
       });
+    } else if(Math.random()<0.25){
+      exoRecallRev(it);
+    } else {
+      exoRecall(it, false);
     }
-    else exoRecall(it, it.stage===4);
   }
 }
 /* apprendre plus de nouvelles cartes À LA DEMANDE (au-delà du plafond quotidien),

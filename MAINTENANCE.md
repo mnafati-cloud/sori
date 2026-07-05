@@ -51,6 +51,18 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v50 (échelle d'exercices raccourcie — on atteint le rappel vite)** : retour user « trop de temps
+  sur l'introduction (QCM) ». Le QCM couvrait 3 stades ; le principe pédagogique (le RAPPEL fait
+  apprendre, pas la reconnaissance) veut qu'on y arrive vite. Nouveau dispatch dans `renderReview` :
+  **MOTS** — stade 1 = QCM (KR→FR) · 2-3 = rappel + 1ʳᵉ syllabe (production FR→KR, amorti sur 2 stades
+  pour ne pas brutaliser les cartes existantes) · 4+ = rappel sans aide (+ 25% rappel inversé du sens,
+  saisie hangul au sommet). **PHRASES** — 1 = QCM · 2+ = construction word-bank (+35% rappel du sens à
+  partir du stade 4). `exoQcmFr2Kr` n'est plus appelé (gardé pour la Phase 2 recto/verso). Migration :
+  stades stockés inchangés (le score est préservé) ; les cartes déjà montées voient un exercice plus
+  dur — c'est voulu. Impact mesuré sur la sauvegarde user : 100 mots stade 2 + ~180 stade 3 passent au
+  rappel-indicé, pas au rappel sec. Vérifié en preview stade par stade. CACHE `sori-v50`. 43 tests.
+  ⏳ Phase 2 (v51) : séparer recto (compréhension KR→FR) / verso (production FR→KR) en 2 cartes à
+  maîtrise indépendante (`ST.rev` store), introduites ensemble ; fwd = `ST.items` existant (score gardé).
 - **v49 (retrait du test de niveau)** : suite au choix user (« le supprimer »). Retiré le bouton
   `#goplc` « 🎯 Évaluer mon niveau » du lanceur + son câblage `onclick=openPlacement`. `placement.js`
   reste **chargé mais dormant** et `openPlacement()` reste défini (réactivable : re-ajouter le bouton).
