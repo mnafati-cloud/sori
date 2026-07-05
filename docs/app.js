@@ -44,6 +44,9 @@ function loadState(){
         s.items = s.items||{}; s.log = s.log||{}; s.intro = s.intro||{};
         s.set = Object.assign({}, DEF_SET, s.set||{});
         s.xp = s.xp||0;
+        /* v52 : split recto/verso retiré (doublait le deck). Bascule UNE FOIS les utilisateurs
+           qui l'avaient activé (v51) vers OFF ; le toggle Réglages reste libre ensuite. */
+        if(s.reverseMig !== 1){ s.set.reverse = false; s.reverseMig = 1; }
         return s;
       }
     }
@@ -579,11 +582,19 @@ function renderReview(){
     /* ===== carte RECTO — COMPRÉHENSION KR→FR : la production est sur la carte verso ===== */
     exoRecallRev(it);                            // montre KR, rappelle le sens (auto-évalué)
   } else {
-    /* ===== reverse OFF : échelle v50 (le recto fait aussi la production) ===== */
-    if(it.stage<=3) exoRecall(it, true);
-    else if(typingTop && it.type==="word") typingExo();
-    else if(Math.random()<0.25) exoRecallRev(it);
-    else exoRecall(it, false);
+    /* ===== CARTE UNIQUE (mode par défaut) — une seule carte teste LES DEUX SENS :
+       niv 1 = QCM (géré au-dessus) · niv 2 = production FR→KR + 1re syllabe (amorce) ·
+       niv 3+ = ALTERNANCE production (sans aide) / sens INVERSÉ (compréhension KR→FR), + hangul au sommet.
+       L'inversé est ainsi un exercice ALTERNATIF dès le niveau 3, testé au même titre que le sens normal. */
+    if(it.stage<=2){
+      exoRecall(it, true);                       // production + 1re syllabe
+    } else if(typingTop && it.type==="word" && Math.random()<0.5){
+      typingExo();
+    } else if(Math.random()<0.5){
+      exoRecallRev(it);                          // sens inversé (compréhension) — alternative à parité
+    } else {
+      exoRecall(it, false);                      // production sans aide
+    }
   }
 }
 /* apprendre plus de nouvelles cartes À LA DEMANDE (au-delà du plafond quotidien),

@@ -51,7 +51,18 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
-- **v51 (recto/verso : compréhension et production en cartes séparées à maîtrise indépendante — Phase 2)** :
+- **v52 (retour au deck SIMPLE : split recto/verso désactivé, l'inversé redevient un exercice alternatif)** :
+  doute user (juste) — le split (v51) **doublait le deck (~15k cartes) pour un gain marginal** (le suivi
+  séparé reconnaissance/production ne vaut pas ×2 la charge pour un débutant). `DEF_SET.reverse` → **false**
+  (défaut). Migration UNE FOIS dans `loadState` (`if(s.reverseMig!==1){ s.set.reverse=false; s.reverseMig=1 }`)
+  → bascule l'utilisateur v51 vers OFF, puis le toggle Réglages reste libre. Le code recto/verso reste
+  **dormant** (réactivable via le toggle). **Nouvelle échelle carte-unique** (branche `reverse OFF` du
+  dispatch) : niv 1 = QCM KR→FR · niv 2 = production FR→KR + 1re syllabe · **niv 3+ = alternance ~50/50
+  production (sans aide) / sens inversé (compréhension KR→FR)** + hangul au sommet → l'inversé est un
+  exercice ALTERNATIF testé à parité, SANS doubler les cartes. Les états verso (ST.items[…␞]) de v51
+  restent orphelins/inertes (ALL_IDS=BASE_IDS). Vérifié preview : ALL_IDS=7997, migration one-time,
+  dispatch 2 sens à parité au niv 3, 0 erreur. CACHE `sori-v52`. 43 tests.
+- **v51 (recto/verso : compréhension et production en cartes séparées à maîtrise indépendante — Phase 2, RETIRÉ en v52)** :
   demande user. Chaque **MOT** a désormais 2 cartes : **recto** (compréhension KR→FR, id de base, état
   `ST.items[id]` — INCHANGÉ, score préservé) et **verso** (production FR→KR, id = base + `REV` (U+241E),
   état `ST.items[id+REV]`). Les phrases n'ont pas de verso. Mécanisme : `SEED_BY_ID` augmenté d'un seed
