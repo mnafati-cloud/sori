@@ -969,6 +969,25 @@ function renderStats(){
   });
   $screen.appendChild(grid);
 
+  /* ===== Ta maîtrise par niveau (CEFR) — l'image de niveau TOUJOURS À JOUR, tirée des
+     données stockées (stade≥4 = maîtrisé) plutôt que d'un test one-shot. % vers le niveau suivant. */
+  const BANDS = ["A1","A2","B1","B2","C1"];
+  const tot={A1:0,A2:0,B1:0,B2:0,C1:0}, mas={A1:0,A2:0,B1:0,B2:0,C1:0};
+  items.forEach(it=>{ const c=(EXTRA[it.id]||{}).cefr; if(tot[c]!==undefined){ tot[c]++; if(it.stage>=4) mas[c]++; } });
+  const pct = b => tot[b] ? Math.round(100*mas[b]/tot[b]) : 0;
+  let working = null;
+  for(const b of BANDS){ if(tot[b] && mas[b]/tot[b] < 0.8){ working = b; break; } }
+  $screen.appendChild(el(`<div class="card"><h2>📊 Ta maîtrise par niveau</h2>
+    <p class="dim" style="margin-top:2px;font-size:.85rem">${working
+      ? `Tu travailles le <b>${working}</b> — ${pct(working)}% maîtrisé. Chaque barre = mots solides (niv ≥ 4) sur le total du niveau.`
+      : `Tous les niveaux du deck sont solides. 🏆`}</p>
+    <div class="levelbars">${BANDS.map(b=>`
+      <div class="lvlrow">
+        <span class="lvlname">${b}</span>
+        <span class="lvltrack"><span class="lvlfill${b===working?" work":""}" style="width:${pct(b)}%"></span></span>
+        <span class="lvlpct">${pct(b)}% <span class="dim" style="font-size:.72rem">(${mas[b]}/${tot[b]})</span></span>
+      </div>`).join("")}</div></div>`));
+
   if(leeches.length){
     $screen.appendChild(el(`<div class="card">
       <h2>🩸 Sangsues (${leeches.length})</h2>
@@ -1044,6 +1063,16 @@ function renderStats(){
   $screen.appendChild(el(`<div class="card"><h2>Activité — 7 jours</h2><div class="bars">${
     week.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.n/mx7))}px${x.d===t?";background:var(--acc)":""}"></div><span>${WD[new Date(x.d+"T12:00:00").getDay()]}<br>${x.n}</span></div>`).join("")
   }</div></div>`));
+
+  /* vitesse de progression : nouveaux mots découverts par jour (ST.intro) sur 14 jours */
+  const days14 = [];
+  for(let i=13;i>=0;i--){ const d=addDays(t,-i); days14.push({d, n: ST.intro[d]||0}); }
+  const mxN = Math.max(...days14.map(x=>x.n),1);
+  const sum7 = days14.slice(7).reduce((s,x)=>s+x.n,0);
+  const avg7 = Math.round(sum7/7*10)/10;
+  $screen.appendChild(el(`<div class="card"><h2>Nouveaux mots — 14 jours</h2>
+    <p class="dim" style="font-size:.82rem;margin-bottom:6px">Ton rythme de découverte${avg7>0?` — ≈ <b>${avg7}</b> mots/jour cette semaine`:""}.</p>
+    <div class="bars">${days14.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.n/mxN))}px${x.d===t?";background:var(--acc)":""}"></div><span>${x.n}</span></div>`).join("")}</div></div>`));
 
 }
 

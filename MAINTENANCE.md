@@ -44,6 +44,15 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **43 tests Node**, `CACHE` = `sori-v41`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v48 (Progrès : maîtrise par niveau + vitesse)** : deux visualisations dans `renderStats`.
+  (1) **📊 Ta maîtrise par niveau** : une barre par bande CEFR = `mas[b]/tot[b]` où `mas`=items
+  `stage>=4` et `tot`=items du niveau (via `EXTRA[id].cefr`), + ligne « tu travailles le <bande la
+  première <80%> ». C'est l'**image de niveau toujours à jour** tirée des données stockées (bien plus
+  fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
+  (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
+  + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+  ⏳ Décision en attente : sort du test de niveau (le garder en check optionnel, ou le supprimer puisque
+  les barres le rendent redondant).
 - **v47 (retrait de l'UI de mise de côté — le batch a fait son job)** : user « le nettoyage a
   fonctionné, vire les machins, et pas de "Trop dur" ». Retirés : bouton `🚫 Trop dur` de la carte,
   section `🎚️ Niveau` des Réglages (🧹/↩︎), helpers `cleanAboveLevel/countAboveLevel/restoreSuspended/

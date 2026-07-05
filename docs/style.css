@@ -54,6 +54,15 @@ h2{margin:0 0 6px; font-size:1.05rem}
 
 /* en-tête de révision : compteur à gauche, bouton Quitter à droite */
 .rev-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}
+
+/* barres de maîtrise par niveau CEFR (page Progrès) */
+.levelbars{display:flex;flex-direction:column;gap:9px;margin-top:10px}
+.lvlrow{display:flex;align-items:center;gap:9px}
+.lvlname{width:26px;font-weight:600;font-size:.86rem;flex-shrink:0}
+.lvltrack{flex:1;height:12px;border-radius:6px;background:var(--line,#334155);overflow:hidden}
+.lvlfill{display:block;height:100%;background:var(--dim,#94a3b8);border-radius:6px;transition:width .3s}
+.lvlfill.work{background:var(--acc)}
+.lvlpct{min-width:104px;text-align:right;font-size:.82rem;font-variant-numeric:tabular-nums;flex-shrink:0}
 .escbtn{background:none;border:1px solid var(--line,#334155);color:var(--dim,#94a3b8);
   font-size:.8rem;padding:4px 10px;border-radius:8px;cursor:pointer;white-space:nowrap}
 .escbtn:hover{color:var(--fg,#e2e8f0);border-color:var(--dim,#94a3b8)}
