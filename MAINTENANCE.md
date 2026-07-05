@@ -51,8 +51,11 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
-  ⏳ Décision en attente : sort du test de niveau (le garder en check optionnel, ou le supprimer puisque
-  les barres le rendent redondant).
+- **v49 (retrait du test de niveau)** : suite au choix user (« le supprimer »). Retiré le bouton
+  `#goplc` « 🎯 Évaluer mon niveau » du lanceur + son câblage `onclick=openPlacement`. `placement.js`
+  reste **chargé mais dormant** et `openPlacement()` reste défini (réactivable : re-ajouter le bouton).
+  Les barres « maîtrise par niveau » (v48) remplacent le test one-shot. `ST.placement` (déjà écrit chez
+  les users l'ayant passé) devient inutilisé, non lu. CACHE `sori-v49`.
 - **v47 (retrait de l'UI de mise de côté — le batch a fait son job)** : user « le nettoyage a
   fonctionné, vire les machins, et pas de "Trop dur" ». Retirés : bouton `🚫 Trop dur` de la carte,
   section `🎚️ Niveau` des Réglages (🧹/↩︎), helpers `cleanAboveLevel/countAboveLevel/restoreSuspended/

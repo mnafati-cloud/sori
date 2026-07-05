@@ -926,14 +926,14 @@ function renderStats(){
   const launch = el(`<div class="card center">
     <button class="btn" id="goreview" style="width:100%; font-size:1.1rem; padding:15px">▶ Réviser${todo>0?` · ${todo} carte${todo>1?"s":""}`:""}</button>
     <p class="dim" style="margin-top:6px; font-size:.82rem">${todo>0?"à revoir ou à découvrir aujourd'hui":"tout est à jour — tu peux apprendre de nouvelles cartes"}</p>
-    ${window.SORI_PLACEMENT?`<button class="btn ghost" id="goplc" style="width:100%; margin-top:10px">🎯 Évaluer mon niveau${ST.placement?` — dernier : ≈ ${esc(ST.placement.label)}`:""}</button>`:""}
   </div>`);
   launch.querySelector("#goreview").onclick = ()=>{
     TAB="review";
     document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x.dataset.tab==="review"));
     NAV=true; render(); NAV=false;
   };
-  const gp = launch.querySelector("#goplc"); if(gp) gp.onclick = openPlacement;
+  /* test de niveau one-shot retiré (v49) : les barres « maîtrise par niveau » sont plus
+     fiables et toujours à jour. placement.js reste chargé mais dormant (réactivable). */
   $screen.appendChild(launch);
 
   /* événements actifs (countdown départ, défis…) — events-data.js / MAINTENANCE-EVENTS.md */
