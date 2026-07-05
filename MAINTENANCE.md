@@ -51,6 +51,25 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v51 (recto/verso : compréhension et production en cartes séparées à maîtrise indépendante — Phase 2)** :
+  demande user. Chaque **MOT** a désormais 2 cartes : **recto** (compréhension KR→FR, id de base, état
+  `ST.items[id]` — INCHANGÉ, score préservé) et **verso** (production FR→KR, id = base + `REV` (U+241E),
+  état `ST.items[id+REV]`). Les phrases n'ont pas de verso. Mécanisme : `SEED_BY_ID` augmenté d'un seed
+  verso par mot (partage kr/fr, stage/itv/due=0, enemy/kit=false, rev=true) ; `BASE_IDS`/`REV_IDS` ;
+  `ALL_IDS = base(+verso si ST.set.reverse!==false)` → **tout le moteur (buildQueue/selectDue/pickNew)
+  gère les verso sans réécriture**. Helpers `isRev`/`baseId`/`mateOf`/`introduceCards`. **Résolutions via
+  `baseId`** : audio (`speak`), trivia/glose/cefr (`showTrivia`), note du récap SESSFAIL. `distractors`
+  puise dans `BASE_IDS` (exclut la base de la réponse pour un verso → pas de doublon). **Dispatch** : verso
+  = QCM FR→KR(1)→rappel+syllabe(2-3)→sans aide(4+)/hangul ; recto mot = QCM KR→FR(1)→rappel du sens(2+).
+  Pill « 🔄 production » / « 👂 compréhension ». **Introduction CONJOINTE** (`introduceCards` : paires
+  recto+verso) — mots neufs = les deux ensemble ; backlog (recto déjà connu) = verso seul, progressif.
+  **Stats** : compteurs/barres via `baseItems` (pas ×2) ; « à réviser » et « deck abordé » corrects.
+  **Réglage** `reverse` (DEF_SET, défaut TRUE) toggle Réglages → `location.reload()` (ALL_IDS figé au load).
+  Migration : score de compréhension jamais touché ; production = compétence neuve, démarre à 0 (honnête).
+  ⚠️ **DOUBLE la charge de révision** à terme (rollout limité par newPerDay). Vérifié en preview
+  (14944 cartes, dispatch 2 sens, maîtrise indépendante, save/restore, reverse-off=v50, dico sans doublon)
+  + **revue adversariale 4 lentilles** (2 bugs corrigés : SESSFAIL note & openPlacement cefr via baseId).
+  CACHE `sori-v51`. 43 tests. Rollback instantané = réglage reverse OFF.
 - **v50 (échelle d'exercices raccourcie — on atteint le rappel vite)** : retour user « trop de temps
   sur l'introduction (QCM) ». Le QCM couvrait 3 stades ; le principe pédagogique (le RAPPEL fait
   apprendre, pas la reconnaissance) veut qu'on y arrive vite. Nouveau dispatch dans `renderReview` :

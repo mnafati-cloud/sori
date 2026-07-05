@@ -6,6 +6,27 @@ const LS_KEY = "sori-state-v1";
 const SEED_BY_ID = {};
 SEED.items.forEach(it => SEED_BY_ID[it.id] = it);
 
+/* ===== cartes VERSO (production FR→KR) — Phase 2 =====
+   Chaque MOT a une carte "recto" (compréhension KR→FR, id de base, état dans ST.items[id])
+   ET une carte "verso" (production FR→KR, id = base + REV, état séparé dans ST.items[revId]).
+   Maîtrise indépendante : ce sont deux ids distincts, planifiés séparément par le moteur.
+   Le seed verso PARTAGE kr/fr/type du recto (aucune duplication de data.js). L'audio, les gloses
+   et le niveau CEFR se résolvent toujours via l'id de BASE (baseId). Actif seulement si ST.set.reverse. */
+const REV = "␞";                         // séparateur improbable dans un id de base
+const BASE_IDS = SEED.items.map(it => it.id);
+function isRev(id){ return typeof id === "string" && id.endsWith(REV); }
+function baseId(id){ return isRev(id) ? id.slice(0, -REV.length) : id; }
+const REV_IDS = [];
+SEED.items.forEach(it => {
+  if(it.type === "word"){                     // production d'une phrase entière = trop dur ⇒ mots seulement
+    const rid = it.id + REV;
+    /* démarre FRAIS (stade 0, jamais échu) : la production est une compétence neuve,
+       indépendante du score de compréhension. enemy/kit remis à zéro (propres au recto). */
+    SEED_BY_ID[rid] = Object.assign({}, it, { id: rid, rev: true, stage: 0, itv: 0, due: null, enemy: false, kit: false });
+    REV_IDS.push(rid);
+  }
+});
+
 function todayStr(){ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
 /* moteur pur (planification, sélection, distracteurs) : docs/engine.js, chargé avant ce fichier */
 const addDays = ENGINE.addDays;
@@ -54,6 +75,7 @@ function eff(id){
     ok: d.ok||0, ko: d.ko||0,
     e: d.e,                       // ease adaptative (undefined -> seed paresseux via easeOf)
     sus: !!d.sus,                 // "mise de côté" : exclue de toute file tant que vrai (réversible)
+    rev: !!seed.rev,              // carte verso (production FR→KR) vs recto (compréhension KR→FR)
   };
 }
 function setItem(id, patch){
@@ -61,7 +83,9 @@ function setItem(id, patch){
   ST.items[id] = Object.assign(cur, patch);
   save();
 }
-const ALL_IDS = SEED.items.map(it=>it.id);
+/* recto seul, ou recto + verso si le mode production est actif (réglage `reverse`).
+   Tout le moteur (buildQueue/selectDue/pickNew) itère ALL_IDS → gère les cartes verso sans réécriture. */
+const ALL_IDS = (ST.set.reverse !== false) ? BASE_IDS.concat(REV_IDS) : BASE_IDS.slice();
 
 /* ================= journal & stats (télémétrie additive) =================
    Par jour : compteurs globaux ok/ko/n + par TYPE d'exercice (k), temps de
@@ -206,7 +230,7 @@ function openDico(){
     <div class="row" style="margin-top:14px"><button class="btn ghost" id="dicoclose">Fermer</button></div></div>`);
   back.appendChild(box);
   SORI_SEARCH.renderPanel(box.querySelector(".dico-body"), {
-    items: ALL_IDS.map(eff),
+    items: BASE_IDS.map(eff),        // dictionnaire = vocabulaire de base (pas de doublon recto/verso)
     extra: EXTRA,
     onSpeak: (kr, id)=>speak(kr, id)
   });
@@ -233,7 +257,7 @@ function openPlacement(){
   back.addEventListener("click", e=>{ if(e.target===back){ back.remove(); render(); } });  // tap dehors = abandonner
   document.body.appendChild(back);
   SORI_PLACEMENT.renderTest(box, {
-    items: ALL_IDS.map(eff).map(it=>({ id:it.id, kr:it.kr, fr:it.fr, type:it.type, cefr:(EXTRA[it.id]||{}).cefr })),
+    items: BASE_IDS.map(eff).map(it=>({ id:it.id, kr:it.kr, fr:it.fr, type:it.type, cefr:(EXTRA[it.id]||{}).cefr })),   // test de niveau = mots de base (dormant depuis v49)
     speak: (kr,id)=>speak(kr,id),
     onFinish: r=>{ ST.placement = Object.assign({ date: todayStr() }, r); save(); },
     onExit: ()=>{ back.remove(); render(); }
@@ -265,12 +289,14 @@ function koVoiceMissing(){
 }
 function speak(text, id){
   if(ST.set.mute) return;
-  /* 1) audio natif pré-généré si disponible (indépendant du TTS du téléphone) */
-  if(id && AUDIO_IDS.has(String(id))){
+  /* 1) audio natif pré-généré si disponible (indépendant du TTS du téléphone).
+     Indexé par l'id de BASE : une carte verso (␞) réutilise le MP3 du mot. */
+  const aid = baseId(id);
+  if(aid && AUDIO_IDS.has(String(aid))){
     try{
       if(CURAUDIO) CURAUDIO.pause();
       try{ speechSynthesis.cancel(); }catch(e){}
-      CURAUDIO = new Audio("./audio/"+id+".mp3");
+      CURAUDIO = new Audio("./audio/"+aid+".mp3");
       CURAUDIO.playbackRate = ST.set.rate || 0.9;
       CURAUDIO.play().catch(()=>ttsSpeak(text));
       return;
@@ -318,9 +344,38 @@ function applyAnswer(it, ok){
    Sans niveau connu → milieu (rang B1) pour ne pas doubler les vraies bases. */
 const LVL_RANK = { A1:1, A2:2, B1:3, B2:4, C1:5 };
 function newRank(it){
-  const lv = (EXTRA[it.id]||{}).cefr;
+  const lv = (EXTRA[baseId(it.id)]||{}).cefr;    // le verso hérite du niveau CEFR de sa base
   const base = (LVL_RANK[lv] || 3) * 10;
+  /* dans un niveau : mots avant phrases. Recto et verso ont le MÊME rang — ils sont
+     introduits ensemble par introduceCards (paire recto+verso). */
   return base + (it.type==="phrase" ? 5 : 0);
+}
+
+/* pendant recto↔verso d'une carte (pour l'introduction conjointe). null si pas de verso. */
+function mateOf(id){
+  if(ST.set.reverse === false) return null;
+  if(isRev(id)) return baseId(id);
+  return (SEED_BY_ID[id] && SEED_BY_ID[id].type === "word") ? id + REV : null;
+}
+/* introduit des cartes neuves (stade 0→1) en PAIRES recto+verso quand c'est possible
+   (« les deux jeux introduits conjointement »). Respecte le budget `slots`. Retourne les ids introduits. */
+function introduceCards(picked, slots, t){
+  const introduced = [], seen = new Set();
+  for(const id of picked){
+    if(introduced.length >= slots) break;
+    if(seen.has(id)) continue;
+    const group = [id];
+    const m = mateOf(id);
+    if(m && !seen.has(m) && SEED_BY_ID[m] && eff(m).stage === 0 && !eff(m).sus) group.push(m);
+    for(const g of group){
+      if(seen.has(g)) continue;
+      seen.add(g);
+      setItem(g, { s:1, i:0, d:t });
+      ST.intro[t] = (ST.intro[t]||0) + 1;
+      introduced.push(g);
+    }
+  }
+  return introduced;
 }
 
 /* file du jour : échues + nouvelles (plus simple/fréquent d'abord) */
@@ -332,11 +387,9 @@ function buildQueue(){
   const introToday = ST.intro[t]||0;
   let slots = Math.max(0, (ST.set.newPerDay||0) - introToday);
   if(slots>0){
-    for(const id of ENGINE.pickNew(effAll, slots, ST.set.kitFirst, newRank)){
-      setItem(id, { s:1, i:0, d:t });
-      due.push(id);
-      ST.intro[t] = (ST.intro[t]||0)+1;
-    }
+    /* on pioche large (×2 : recto+verso) puis introduceCards forme les paires dans la limite du budget */
+    const picked = ENGINE.pickNew(effAll, slots*2, ST.set.kitFirst, newRank);
+    introduceCards(picked, slots, t).forEach(id => due.push(id));
     save();
   }
   shuffle(due);
@@ -349,7 +402,10 @@ const shuffle = ENGINE.shuffle;
 
 /* ================= distracteurs (logique dans engine.js) ================= */
 function distractors(it, n, field){
-  return ENGINE.pickDistractors(it, n, field, SEED_BY_ID, ALL_IDS);
+  /* pool = ids de BASE uniquement (une carte verso a le même kr/fr que sa base → doublons).
+     Pour une carte verso, exclure aussi l'id de base de la réponse (sinon une option identique à la bonne). */
+  const pool = it.rev ? BASE_IDS.filter(x => x !== baseId(it.id)) : BASE_IDS;
+  return ENGINE.pickDistractors(it, n, field, SEED_BY_ID, pool);
 }
 
 /* ================= UI ================= */
@@ -436,7 +492,7 @@ function renderReview(){
       <div class="done-banner">${PENDING>0?"💪":"🎉"}</div>
       <h2>${PENDING>0?"Session terminée !":"Tout est à jour !"}</h2>
       <p class="dim">${l.ok||0} bonnes réponses aujourd'hui${l.ko?`, ${l.ko} à retravailler`:""}.</p>
-      <p class="dim">✅ ${ALL_IDS.map(eff).filter(it=>it.stage>=4).length} cartes maîtrisées au total.</p>
+      <p class="dim">✅ ${BASE_IDS.map(eff).filter(it=>it.stage>=4).length} cartes maîtrisées au total.</p>
       <div class="row" style="margin-top:12px">
         ${more}
         <button class="btn" id="learnmore">➕ Apprendre 10 nouvelles cartes</button>
@@ -450,8 +506,9 @@ function renderReview(){
       const list = rec.querySelector(".list");
       SESSFAIL.slice(0,10).forEach(id=>{
         const o = SEED_BY_ID[id]; if(!o) return;
+        const xn = (EXTRA[baseId(id)]||{}).note;      // note résolue via l'id de base (cartes verso)
         const row = el(`<div class="item"><div class="txt"><div class="kr">${esc(o.kr)}</div>
-          <div class="fr">${esc(o.fr)}${EXTRA[id]&&EXTRA[id].note?` — 💡 ${esc(EXTRA[id].note)}`:""}</div></div>
+          <div class="fr">${esc(o.fr)}${xn?` — 💡 ${esc(xn)}`:""}</div></div>
           <button class="speak">🔊</button></div>`);
         row.onclick = ()=>speak(o.kr, id);
         list.appendChild(row);
@@ -490,6 +547,7 @@ function renderReview(){
     <div class="progressbar"><div style="width:${Math.round(100*QPOS/Q.length)}%"></div></div>
     <div class="rev-head">
       <div class="dim">${QPOS+1} / ${Q.length}
+        ${it.rev?'<span class="pill" style="color:var(--acc)">🔄 production</span>':(ST.set.reverse!==false && it.type==="word"?'<span class="pill">👂 compréhension</span>':"")}
         ${it.enemy?'<span class="pill enemy">ennemie</span>':""}
         <span class="pill stage">niv ${it.stage}</span>
         ${COMBO>=3?`<span class="pill" style="color:var(--acc)">🔥 combo ×${COMBO}</span>`:""}</div>
@@ -498,31 +556,34 @@ function renderReview(){
   $screen.appendChild(head);
   head.querySelector("#quitrev").onclick = leaveReview;
   EXO_T0 = Date.now();
-  /* Échelle RACCOURCIE (v50) — on atteint le RAPPEL vite (le rappel fait apprendre, pas le QCM).
-     MOTS    : 1 = QCM compréhension (KR→FR)  →  2 = rappel + 1re syllabe (production FR→KR)  →  3 = rappel + syllabe (amorti)  →  4+ = rappel sans aide (+ saisie hangul au sommet)
-     PHRASES : 1 = QCM  →  2+ = construction (word-bank) + parfois rappel du sens (produire une phrase entière de mémoire est trop dur pour un débutant) */
   const isPhrase = it.type==="phrase" && it.kr.split(" ").length>=3;
-  if(it.stage<=1){
-    exoQcmKr2Fr(it);
+  const revMode = ST.set.reverse !== false;
+  const typingTop = it.stage===5 && ST.set.typing===true && window.SORI_TYPING && Math.random()<0.5;
+  function typingExo(){
+    SORI_TYPING.render($screen, { item: it, speak:(kr,id)=>speak(kr,id), onResult: ok=>afterAnswer(it, ok, false, "type") });
+  }
+  if(it.rev){
+    /* ===== carte VERSO — PRODUCTION FR→KR (mots) : QCM(1) → rappel+syllabe(2-3) → sans aide(4+) → hangul(5) ===== */
+    if(it.stage<=1) exoQcmFr2Kr(it);
+    else if(it.stage<=3) exoRecall(it, true);
+    else if(typingTop) typingExo();
+    else exoRecall(it, false);
   } else if(isPhrase){
-    if(it.stage>=4 && Math.random()<0.35) exoRecallRev(it);   // garder le sens de temps en temps
+    /* ===== PHRASES (recto unique) : QCM(1) → construction(2+) + parfois rappel du sens ===== */
+    if(it.stage<=1) exoQcmKr2Fr(it);
+    else if(it.stage>=4 && Math.random()<0.35) exoRecallRev(it);
     else exoBuild(it);
-  } else if(it.stage<=3){
-    exoRecall(it, true);                       // rappel PRODUCTION avec 1re syllabe (stades 2-3 : amorti)
+  } else if(it.stage<=1){
+    exoQcmKr2Fr(it);                             // QCM compréhension KR→FR (les deux modes)
+  } else if(revMode){
+    /* ===== carte RECTO — COMPRÉHENSION KR→FR : la production est sur la carte verso ===== */
+    exoRecallRev(it);                            // montre KR, rappelle le sens (auto-évalué)
   } else {
-    /* stade 4+ : rappel sans aide (+ 25% rappel inversé du sens pour garder la compréhension, saisie hangul au sommet) */
-    if(it.stage===5 && ST.set.typing===true && it.type==="word"
-       && window.SORI_TYPING && Math.random()<0.5){
-      SORI_TYPING.render($screen, {
-        item: it,
-        speak: (kr,id)=>speak(kr,id),
-        onResult: ok=>afterAnswer(it, ok, false, "type")
-      });
-    } else if(Math.random()<0.25){
-      exoRecallRev(it);
-    } else {
-      exoRecall(it, false);
-    }
+    /* ===== reverse OFF : échelle v50 (le recto fait aussi la production) ===== */
+    if(it.stage<=3) exoRecall(it, true);
+    else if(typingTop && it.type==="word") typingExo();
+    else if(Math.random()<0.25) exoRecallRev(it);
+    else exoRecall(it, false);
   }
 }
 /* apprendre plus de nouvelles cartes À LA DEMANDE (au-delà du plafond quotidien),
@@ -530,8 +591,8 @@ function renderReview(){
    « je veux réviser autant que je veux » : répétable, chaque lot fait avancer le deck. */
 function learnMoreQueue(n){
   const t = todayStr();
-  const news = ENGINE.pickNew(ALL_IDS.map(eff), n, ST.set.kitFirst, newRank);   // cartes stage 0, plus simple/fréquent d'abord
-  news.forEach(id=>{ setItem(id, { s:1, i:0, d:t }); ST.intro[t] = (ST.intro[t]||0)+1; });
+  const picked = ENGINE.pickNew(ALL_IDS.map(eff), n*2, ST.set.kitFirst, newRank);   // ×2 : recto+verso, plus simple/fréquent d'abord
+  const news = introduceCards(picked, n, t);                                        // paires recto+verso
   if(news.length) save();
   return shuffle(news.slice());
 }
@@ -558,7 +619,8 @@ function exTokens(ex){ return String(ex==null?"":ex).trim().split(/\s+/).filter(
      • ST.set.exaudio  → bouton 🔊 (audio natif de la phrase)
      • ST.set.wordgloss→ chaque mot cliquable affiche sa traduction (EXTRA[id].gl) */
 function showTrivia(card, it){
-  const x = EXTRA[it.id];
+  const bid = baseId(it.id);          // trivia/glose/cefr indexés par l'id de base (partagés recto/verso)
+  const x = EXTRA[bid];
   if(!x) return false;
   const toks = x.ex ? exTokens(x.ex) : [];
   const glossOn = ST.set.wordgloss===true && Array.isArray(x.gl) && x.gl.length===toks.length && toks.length>0;
@@ -576,7 +638,7 @@ function showTrivia(card, it){
   const box = el(`<div class="trivia">${bits.join("")}</div>`);
   /* 🔊 phrase */
   const sp = box.querySelector(".exspeak");
-  if(sp) sp.onclick = ev=>{ ev.stopPropagation(); speakEx(it.id, x.ex); };
+  if(sp) sp.onclick = ev=>{ ev.stopPropagation(); speakEx(bid, x.ex); };
   /* tap-mot → glose (barre insérée juste sous la phrase) */
   if(glossOn){
     const bar = el(`<div class="glossbar" hidden></div>`);
@@ -862,7 +924,7 @@ function renderTrip(){
   if(window.SORI_SEARCH){
     $screen.appendChild(el(`<div class="section-title">🔍 Mon dictionnaire</div>`));
     SORI_SEARCH.renderPanel($screen, {
-      items: ALL_IDS.map(eff),
+      items: BASE_IDS.map(eff),        // pas de doublon recto/verso
       extra: EXTRA,
       onSpeak: (kr, id)=>speak(kr, id)
     });
@@ -915,20 +977,22 @@ function renderDrill(){
 /* accueil = Progrès : LANCEUR (action d'abord) puis métriques. */
 function renderStats(){
   const t=todayStr(), l=ST.log[t]||{ok:0,ko:0,n:0};
-  const items = ALL_IDS.map(eff);
+  const items = ALL_IDS.map(eff);              // recto + verso (pour le compteur du lanceur)
+  const baseItems = items.filter(it=>!it.rev); // deck de compréhension : les métriques affichées comptent le vocabulaire, pas ×2
   const stages=[0,0,0,0,0,0];
-  items.forEach(it=>stages[it.stage]++);
-  const enemies = items.filter(it=>it.enemy);
+  baseItems.forEach(it=>stages[it.stage]++);
+  const enemies = baseItems.filter(it=>it.enemy);
   const beaten = enemies.filter(it=>it.stage>=4).length;
-  const matures = items.filter(it=>it.stage>=4).length;   // cartes solides (niv ≥ 4)
-  const seen = items.filter(it=>it.stage>=1).length;       // cartes déjà abordées
+  const matures = baseItems.filter(it=>it.stage>=4).length;   // cartes solides (niv ≥ 4)
+  const seen = baseItems.filter(it=>it.stage>=1).length;       // cartes déjà abordées
   const r7 = ENGINE.retention7(ST.log, t);
   const ret = r7.r===null ? null : Math.round(100*r7.r);
-  const leeches = items.filter(it=>ENGINE.isLeech(it));
+  const leeches = baseItems.filter(it=>ENGINE.isLeech(it));
 
-  /* ===== LANCEUR : l'action évidente en haut — Réviser + test de niveau ===== */
+  /* ===== LANCEUR : l'action évidente en haut. Compte recto ET verso (tout ce qui est à réviser). ===== */
   const dueN = ENGINE.selectDue(items.filter(it=>!it.sus), t).length;   // les cartes rangées ne comptent pas
-  const newLeft = Math.min(Math.max(0, (ST.set.newPerDay||0) - (ST.intro[t]||0)), stages[0]);
+  const stage0all = items.filter(it=>it.stage===0 && !it.sus).length;   // introduisibles (recto + verso)
+  const newLeft = Math.min(Math.max(0, (ST.set.newPerDay||0) - (ST.intro[t]||0)), stage0all);
   const todo = dueN + newLeft;
   const launch = el(`<div class="card center">
     <button class="btn" id="goreview" style="width:100%; font-size:1.1rem; padding:15px">▶ Réviser${todo>0?` · ${todo} carte${todo>1?"s":""}`:""}</button>
@@ -960,7 +1024,7 @@ function renderStats(){
     <div class="stat"><div class="n">${ret===null?"—":ret+" %"}</div><div class="l">réussite (7 j)</div></div>
     <div class="stat"><div class="n">${beaten}/${enemies.length}</div><div class="l">ennemies vaincues</div></div>
     <div class="stat"><div class="n">${matures}</div><div class="l">cartes maîtrisées</div></div>
-    <div class="stat"><div class="n">${seen} / ${items.length}</div><div class="l">deck abordé</div></div>
+    <div class="stat"><div class="n">${seen} / ${baseItems.length}</div><div class="l">deck abordé</div></div>
   </div>`);
   const STAT_INFO = [
     ["🔥 Jours d'affilée", "Le nombre de jours consécutifs où tu as étudié au moins une carte. Rate un jour et le compteur repart de zéro — c'est ta régularité."],
@@ -980,7 +1044,7 @@ function renderStats(){
      données stockées (stade≥4 = maîtrisé) plutôt que d'un test one-shot. % vers le niveau suivant. */
   const BANDS = ["A1","A2","B1","B2","C1"];
   const tot={A1:0,A2:0,B1:0,B2:0,C1:0}, mas={A1:0,A2:0,B1:0,B2:0,C1:0};
-  items.forEach(it=>{ const c=(EXTRA[it.id]||{}).cefr; if(tot[c]!==undefined){ tot[c]++; if(it.stage>=4) mas[c]++; } });
+  baseItems.forEach(it=>{ const c=(EXTRA[it.id]||{}).cefr; if(tot[c]!==undefined){ tot[c]++; if(it.stage>=4) mas[c]++; } });
   const pct = b => tot[b] ? Math.round(100*mas[b]/tot[b]) : 0;
   let working = null;
   for(const b of BANDS){ if(tot[b] && mas[b]/tot[b] < 0.8){ working = b; break; } }
@@ -1097,6 +1161,7 @@ function openSettings(){
     <label>Prononcer automatiquement <input type="checkbox" id="ap" ${ST.set.autoplay?"checked":""}></label>
     <label title="Intervalles personnalisés par mot (ALGORITHM.md). Laisser décoché ~2 semaines : l'app observe d'abord.">
       Planification adaptative <input type="checkbox" id="adap" ${ST.set.adaptive?"checked":""}></label>
+    <label title="Chaque mot devient DEUX cartes à maîtrise séparée : comprendre (KR→FR) et produire (FR→KR). Recommandé, mais double la charge de révision.">🔄 Production séparée (recto/verso) <input type="checkbox" id="rev" ${ST.set.reverse!==false?"checked":""}></label>
     <label>Saisie au clavier coréen (niv 5) <input type="checkbox" id="typ" ${ST.set.typing?"checked":""}></label>
     <label>🐞 Bouton rapport de problème <input type="checkbox" id="rpt" ${ST.set.report?"checked":""}></label>
     <label>🔊 Audio de la phrase d'exemple <input type="checkbox" id="exau" ${ST.set.exaudio?"checked":""}></label>
@@ -1150,6 +1215,7 @@ function openSettings(){
   set.querySelector("#ap").onchange  = e=>{ ST.set.autoplay=e.target.checked; save(); };
   set.querySelector("#adap").onchange= e=>{ ST.set.adaptive=e.target.checked; save(); };
   set.querySelector("#typ").onchange = e=>{ ST.set.typing=e.target.checked; save(); };
+  set.querySelector("#rev").onchange = e=>{ ST.set.reverse=e.target.checked; save(); location.reload(); };  // ALL_IDS fixé au chargement → recharger
   set.querySelector("#rpt").onchange = e=>{ ST.set.report=e.target.checked; save(); wireReport(); };
   set.querySelector("#exau").onchange= e=>{ ST.set.exaudio=e.target.checked; save(); };
   set.querySelector("#wgl").onchange = e=>{ ST.set.wordgloss=e.target.checked; save(); };
