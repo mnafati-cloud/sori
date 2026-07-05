@@ -41,7 +41,7 @@ function loadState(){
     if(raw){
       const s = JSON.parse(raw);
       if(s && s.v>=1){
-        s.items = s.items||{}; s.log = s.log||{}; s.intro = s.intro||{};
+        s.items = s.items||{}; s.log = s.log||{}; s.intro = s.intro||{}; s.rlog = s.rlog||[];
         s.set = Object.assign({}, DEF_SET, s.set||{});
         s.xp = s.xp||0;
         /* v52 : split recto/verso retiré (doublait le deck). Bascule UNE FOIS les utilisateurs
@@ -51,7 +51,7 @@ function loadState(){
       }
     }
   }catch(e){}
-  return { v:1, items:{}, log:{}, intro:{}, xp:0, set: Object.assign({}, DEF_SET) };
+  return { v:1, items:{}, log:{}, intro:{}, rlog:[], xp:0, set: Object.assign({}, DEF_SET) };
 }
 /* niveaux façon échelle coréenne (급) — plancher, jamais un plafond */
 const XP_LEVELS = [[0,"9급"],[1000,"8급"],[2500,"7급"],[5000,"6급"],[8000,"5급"],
@@ -77,6 +77,7 @@ function eff(id){
     due:   d.d!==undefined ? d.d : seed.due,
     ok: d.ok||0, ko: d.ko||0,
     e: d.e,                       // ease adaptative (undefined -> seed paresseux via easeOf)
+    S: d.S, D: d.D,               // FSRS : stabilité (jours) & difficulté (1-10) — undefined = amorcé au 1er passage
     sus: !!d.sus,                 // "mise de côté" : exclue de toute file tant que vrai (réversible)
     rev: !!seed.rev,              // carte verso (production FR→KR) vs recto (compréhension KR→FR)
   };
@@ -107,7 +108,7 @@ function logAnswer(ok, kind, r, rt){
   }
   if(r && r.counted){                       // 1re présentation espacée non anticipée
     if(ok) l.ok1=(l.ok1||0)+1; else l.ko1=(l.ko1||0)+1;
-    if(ok){ l.so=(l.so||0)+r.iLegacy; l.sn=(l.sn||0)+r.iAdaptive; }   // shadow legacy vs adaptatif
+    if(ok){ l.so=(l.so||0)+(r.iLegacy||0); l.sn=(l.sn||0)+(r.iAdaptive||0); }   // shadow legacy (0 en mode FSRS)
   }
   save(); updateDayCount();
 }
@@ -141,6 +142,7 @@ function armUndo(){
     log: ST.log[t] ? JSON.parse(JSON.stringify(ST.log[t])) : null,
     xp: ST.xp||0, combo: COMBO, sessfail: [...SESSFAIL],
     q: [...Q], qpos: QPOS,
+    rlogLen: (ST.rlog||[]).length,     // FSRS : pour retirer l'entrée de journal en cas d'annulation
   };
 }
 function undoLast(){
@@ -150,6 +152,7 @@ function undoLast(){
   if(UNDO.log === null) delete ST.log[t]; else ST.log[t] = UNDO.log;
   ST.xp = UNDO.xp; COMBO = UNDO.combo; SESSFAIL = UNDO.sessfail;
   Q = UNDO.q; QPOS = UNDO.qpos;
+  if(ST.rlog && typeof UNDO.rlogLen === "number" && ST.rlog.length > UNDO.rlogLen) ST.rlog.length = UNDO.rlogLen;  // retire l'entrée de journal annulée
   UNDO = null;
   save(); saveSess(); updateDayCount(); render();
 }
@@ -334,11 +337,35 @@ function ttsSpeak(text){
   }catch(e){}
 }
 
-/* ================= planification (logique dans engine.js) ================= */
+/* ================= planification (logique dans engine.js) =================
+   Deux planificateurs, choisis par ST.set.scheduler :
+   - "fsrs"   : modèle DSR moderne (stabilité/difficulté par carte) — défaut.
+   - "legacy" : échelle de stades + ease (ALGORITHM.md) — repli/rollback.
+   Dans les deux cas le STAGE (choix d'exercice) évolue pareil. */
 function applyAnswer(it, ok){
+  if(ST.set.scheduler !== "legacy"){
+    const G = ok ? 3 : 1;   // Sori binaire : juste → Good(3), faux → Again(1)
+    const r = ENGINE.fsrsSchedule(it, G, todayStr(), { retention: ST.set.fsrsRetention || 0.9 });
+    setItem(it.id, { s:r.stage, i:r.i, d:r.d, S:r.S, D:r.D, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) });
+    logReview(it.id, G, r.elapsed);   // journal (fit hors-ligne des poids) — toutes les révisions
+    return { s:r.stage, i:r.i, d:r.d, counted:r.counted };
+  }
   const r = ENGINE.computeAnswer(it, ok, todayStr(), ST.set.adaptive === true);
   setItem(it.id, { s:r.s, i:r.i, d:r.d, e:r.e, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) });
   return r;
+}
+/* journal de révisions — enregistrements compacts [date, id, note, jours écoulés] pour
+   l'ajustement HORS-LIGNE des 21 poids FSRS (optimiseur Python sur l'export cloud).
+   Plafonné (FIFO) pour borner localStorage/cloud. */
+/* plafond du journal : FIFO. 10000 entrées ≈ ~400 Ko → la sauvegarde cloud (state:ST, GitHub
+   Contents API ~1 Mo/fichier) ne peut pas échouer silencieusement, et c'est amplement assez
+   pour ajuster les poids FSRS (fit hors-ligne sur l'historique récent). */
+const RLOG_CAP = 10000;
+function logReview(id, G, elapsed){
+  ST.rlog = ST.rlog || [];
+  ST.rlog.push([todayStr(), id, G, elapsed|0]);
+  if(ST.rlog.length > RLOG_CAP) ST.rlog.splice(0, ST.rlog.length - RLOG_CAP);
+  save();   // le push arrive APRÈS le save() de setItem → persister explicitement
 }
 
 /* rang d'introduction des nouvelles cartes : plus petit = introduit en premier.
@@ -1170,8 +1197,11 @@ function openSettings(){
     <label>Taille max de session <input type="number" id="smax" min="20" max="500" step="10" value="${ST.set.sessionMax||120}"></label>
     <label>Prioriser le kit voyage <input type="checkbox" id="kf" ${ST.set.kitFirst?"checked":""}></label>
     <label>Prononcer automatiquement <input type="checkbox" id="ap" ${ST.set.autoplay?"checked":""}></label>
-    <label title="Intervalles personnalisés par mot (ALGORITHM.md). Laisser décoché ~2 semaines : l'app observe d'abord.">
-      Planification adaptative <input type="checkbox" id="adap" ${ST.set.adaptive?"checked":""}></label>
+    <label title="FSRS = algorithme moderne (modèle mémoire stabilité/difficulté par carte, ~25% de révisions en moins). Classique = échelle de stades historique.">🧠 Algorithme de répétition
+      <select id="sched"><option value="fsrs" ${ST.set.scheduler!=="legacy"?"selected":""}>FSRS (moderne)</option><option value="legacy" ${ST.set.scheduler==="legacy"?"selected":""}>Classique</option></select></label>
+    <label title="Rétention cible FSRS : proba de te souvenir au moment de la révision. Plus haut = plus de révisions, meilleure mémoire. Défaut 0.90.">Rétention cible (FSRS) <input type="number" id="fsrsret" min="0.7" max="0.97" step="0.01" value="${ST.set.fsrsRetention||0.9}"></label>
+    <label title="Intervalles personnalisés par mot (ALGORITHM.md), UNIQUEMENT en mode Classique. Laisser décoché ~2 semaines : l'app observe d'abord.">
+      Planification adaptative (mode Classique) <input type="checkbox" id="adap" ${ST.set.adaptive?"checked":""}></label>
     <label title="Chaque mot devient DEUX cartes à maîtrise séparée : comprendre (KR→FR) et produire (FR→KR). Recommandé, mais double la charge de révision.">🔄 Production séparée (recto/verso) <input type="checkbox" id="rev" ${ST.set.reverse!==false?"checked":""}></label>
     <label>Saisie au clavier coréen (niv 5) <input type="checkbox" id="typ" ${ST.set.typing?"checked":""}></label>
     <label>🐞 Bouton rapport de problème <input type="checkbox" id="rpt" ${ST.set.report?"checked":""}></label>
@@ -1225,6 +1255,8 @@ function openSettings(){
   set.querySelector("#kf").onchange  = e=>{ ST.set.kitFirst=e.target.checked; save(); };
   set.querySelector("#ap").onchange  = e=>{ ST.set.autoplay=e.target.checked; save(); };
   set.querySelector("#adap").onchange= e=>{ ST.set.adaptive=e.target.checked; save(); };
+  set.querySelector("#sched").onchange = e=>{ ST.set.scheduler=e.target.value; save(); };
+  set.querySelector("#fsrsret").onchange = e=>{ ST.set.fsrsRetention=Math.min(0.97, Math.max(0.7, +e.target.value||0.9)); save(); };
   set.querySelector("#typ").onchange = e=>{ ST.set.typing=e.target.checked; save(); };
   set.querySelector("#rev").onchange = e=>{ ST.set.reverse=e.target.checked; save(); location.reload(); };  // ALL_IDS fixé au chargement → recharger
   set.querySelector("#rpt").onchange = e=>{ ST.set.report=e.target.checked; save(); wireReport(); };
@@ -1320,7 +1352,7 @@ function autoCloudBackup(){   // silencieux, fin de bloc, throttle 5 min (largem
 /* migration douce commune (import fichier OU restauration cloud) */
 function applyImportedState(state){
   const s = state;
-  s.items = s.items||{}; s.log = s.log||{}; s.intro = s.intro||{};
+  s.items = s.items||{}; s.log = s.log||{}; s.intro = s.intro||{}; s.rlog = s.rlog||[];
   s.set = Object.assign({}, DEF_SET, s.set||{});
   s.v = s.v || 1;
   ST = s; save(); Q = null; render();

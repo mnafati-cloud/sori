@@ -51,6 +51,27 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v53 (planificateur FSRS — Phase A)** : passage du SM-2-maison à **FSRS** (Free Spaced Repetition
+  Scheduler, modèle DSR). Demande user. **Moteur pur** dans `engine.js` : `fsrsR`/`fsrsIntervalDays`/
+  `fsrsNextInterval`/`fsrsInitS`/`fsrsInitD`/`fsrsNextD`/`fsrsSuccS`/`fsrsFailS`/`fsrsSchedule` + `easeToD`.
+  Formules **FSRS-5** (19 poids par défaut, DECAY=-0.5, FACTOR=19/81) — **vérifiées mot pour mot vs
+  ts-fsrs** par revue adversariale. Courbe R(t,S)=(1+F·t/S)^DECAY ; intervalle I=(S/F)·(Rd^(1/DECAY)-1)
+  (à Rd=0.9, I=S). `S`=stabilité (jours), `D`=difficulté (1-10). **10 tests dédiés** (`tests/fsrs.test.mjs`,
+  valeurs connues + propriétés) → 53 tests. **DEF_SET** += `scheduler:"fsrs"` (défaut), `fsrsRetention:0.9`.
+  **app.js** : `applyAnswer` bascule sur `ST.set.scheduler` ('fsrs'/'legacy') ; en FSRS note binaire
+  juste→Good(3)/faux→Again(1) ; `eff()` expose `S`,`D` ; échec = re-vu en session (i=0,d=today) comme legacy.
+  **Migration NON destructive** (paresseuse, au 1er passage FSRS d'une carte existante) : `S ← itv`,
+  `D ← easeToD(ease)` ; les due existantes ne sont pas réécrites ; le stage (exercice) évolue comme avant.
+  **Journal `ST.rlog`** (compact `[date,id,note,elapsed]`, FIFO **RLOG_CAP=10000** ≈400 Ko pour ne pas
+  casser la sauvegarde cloud GitHub ~1 Mo) → part dans `exportPayload` (state:ST) pour **fit hors-ligne
+  des poids perso** (optimiseur Python, routine mensuelle du mainteneur). `undoLast` retire l'entrée de
+  journal annulée (`UNDO.rlogLen`) ; `logAnswer` garde-fou `r.iLegacy||0` ; `loadState`/`applyImportedState`
+  init `rlog:[]`. **Toggle Réglages** « 🧠 Algorithme » (FSRS/Classique, pas de reload) + « Rétention cible ».
+  **Rollback = repli 'legacy' en un clic** (S/D restent inertes). Vérifié preview (défaut fsrs, carte neuve
+  S₀=3.173, migration, échec, journal, undo, repli legacy, effet rétention) + **revue adversariale 2 lentilles**
+  (formules EXACTES ; 3 correctifs : undo orphelin, plafond journal 40000→10000, rlog init import). CACHE `sori-v53`.
+  ⏳ Phase B (~3-4 sem.) : fitter les poids perso depuis `rlog` de l'export cloud. Piège connu : boss fight
+  (révision anticipée) est compté par FSRS (le legacy le neutralisait) — correct pour FSRS, à surveiller.
 - **v52 (retour au deck SIMPLE : split recto/verso désactivé, l'inversé redevient un exercice alternatif)** :
   doute user (juste) — le split (v51) **doublait le deck (~15k cartes) pour un gain marginal** (le suivi
   séparé reconnaissance/production ne vaut pas ×2 la charge pour un débutant). `DEF_SET.reverse` → **false**

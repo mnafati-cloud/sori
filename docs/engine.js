@@ -9,7 +9,7 @@
   "use strict";
 
   /* ================= constantes partagées ================= */
-  const DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true, adaptive:false, typing:false, report:false, exaudio:false, wordgloss:false, reverse:false };
+  const DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true, adaptive:false, typing:false, report:false, exaudio:false, wordgloss:false, reverse:false, scheduler:"fsrs", fsrsRetention:0.9 };
   const STEP = {2:1, 3:2, 4:4, 5:8};   // intervalle (jours) en arrivant à ce stage
 
   /* ===== ease adaptatif (ALGORITHM.md) — constantes =====
@@ -193,10 +193,91 @@
     return out.slice(0,n);
   }
 
+  /* ================= FSRS (Free Spaced Repetition Scheduler) — planificateur DSR =================
+     3 variables par carte : S (stabilité = jours pour R→90%), D (difficulté 1-10), R (récupérabilité).
+     Remplace UNIQUEMENT le timing ; l'échelle de stades reste pour le choix d'exercice.
+     Formules FSRS-5 (19 poids), DECAY=-0.5 fixe. Poids par défaut = entraînés sur ~700M révisions réelles.
+     Notes binaires de Sori : faux → Again(1), juste → Good(3). Poids perso à ajuster HORS-LIGNE
+     (optimiseur Python) depuis le journal ST.rlog. Sources : expertium.github.io/Algorithm.html,
+     borretti.me/article/implementing-fsrs-in-100-lines, open-spaced-repetition/ts-fsrs. */
+  const FSRS_W = [0.40255,1.18385,3.173,15.69105,7.1949,0.5345,1.4604,0.0046,1.54575,0.1192,1.01925,1.9395,0.11,0.29605,2.2698,0.2315,2.9898,0.51655,0.6621];
+  const FSRS_DECAY = -0.5;
+  const FSRS_FACTOR = 19/81;          // = 0.9^(1/DECAY) - 1 : garantit R=0.9 quand t=S
+  const FSRS_S_MIN = 0.1, FSRS_S_MAX = 36500, FSRS_DR = 0.9;
+  function fsrsClampS(s){ return Math.min(FSRS_S_MAX, Math.max(FSRS_S_MIN, s)); }
+  function fsrsClampD(d){ return Math.min(10, Math.max(1, d)); }
+  function round3(x){ return Math.round(x*1000)/1000; }
+  function fsrsR(t, S){ return Math.pow(1 + FSRS_FACTOR * t / S, FSRS_DECAY); }                     // récupérabilité après t jours
+  function fsrsIntervalDays(S, Rd){ return (S / FSRS_FACTOR) * (Math.pow(Rd, 1/FSRS_DECAY) - 1); }  // intervalle exact pour viser Rd
+  function fsrsNextInterval(S, Rd, maxItv){ return Math.min(maxItv||MAX_ITV, Math.max(1, Math.round(fsrsIntervalDays(S, Rd||FSRS_DR)))); }
+  function fsrsInitS(G, w){ w=w||FSRS_W; return fsrsClampS(w[Math.min(3, Math.max(0, G-1))]); }      // stabilité initiale par note
+  function fsrsInitD(G, w){ w=w||FSRS_W; return fsrsClampD(w[4] - Math.exp(w[5]*(G-1)) + 1); }       // difficulté initiale par note
+  function fsrsNextD(D, G, w){                                                                        // MAJ difficulté + retour à la moyenne
+    w=w||FSRS_W;
+    const lin = D + (-w[6]*(G-3))*(10-D)/9;
+    return fsrsClampD(w[7]*fsrsInitD(4, w) + (1-w[7])*lin);
+  }
+  function fsrsSuccS(D, S, R, G, w){                                                                  // stabilité après rappel réussi (croît)
+    w=w||FSRS_W;
+    const hard = G===2 ? w[15] : 1, easy = G===4 ? w[16] : 1;
+    const inc = Math.exp(w[8]) * (11-D) * Math.pow(S, -w[9]) * (Math.exp(w[10]*(1-R))-1) * hard * easy;
+    return fsrsClampS(S * (1 + inc));
+  }
+  function fsrsFailS(D, S, R, w){                                                                     // stabilité post-oubli (≤ S)
+    w=w||FSRS_W;
+    const post = w[11] * Math.pow(D, -w[12]) * (Math.pow(S+1, w[13]) - 1) * Math.exp(w[14]*(1-R));
+    return fsrsClampS(Math.min(post, S));
+  }
+  function easeToD(e){ return fsrsClampD(10 - (Math.min(3, Math.max(1.3, e)) - 1.3)/1.7 * 9); }       // ease Sori (1.3 dur→3 facile) → D (10 dur→1 facile)
+
+  /* planification FSRS d'UNE réponse. it = état effectif (S?, D? optionnels ; sinon amorcés).
+     G = note 1..4 (Sori binaire : 1 échec, 3 succès). opts = {w, retention, maxItv}.
+     Retourne { S, D, i, d, stage, elapsed, counted }. Le stage (exercice) suit la règle existante. */
+  function fsrsSchedule(it, G, today, opts){
+    opts = opts || {};
+    const w = opts.w || FSRS_W, Rd = opts.retention || FSRS_DR, maxItv = opts.maxItv || MAX_ITV;
+    const success = G >= 2;
+    const known = !!it.due;
+    const elapsed = known ? Math.max(0, daysBetween(prevReviewDate(it), today)) : 0;
+    const stage = success ? Math.min(5, (it.stage||0) + 1) : Math.max(1, (it.stage||1) - 2);
+    let S = (typeof it.S === "number") ? it.S : null;
+    let D = (typeof it.D === "number") ? it.D : null;
+
+    if(S === null || D === null){
+      const hasHistory = ((it.ok||0)+(it.ko||0)) > 0 || (it.itv||0) >= 1;
+      if(!hasHistory){                                   // vraie 1re révision d'une carte neuve
+        const s0 = fsrsInitS(G, w), d0 = fsrsInitD(G, w);
+        const i = success ? fsrsNextInterval(s0, Rd, maxItv) : 0;
+        return { S: round3(s0), D: round3(d0), i, d: success ? addDays(today, i) : today, stage, elapsed, counted:false };
+      }
+      S = fsrsClampS(Math.max(0.5, it.itv || 1));         // migration : S ← intervalle actuel
+      D = easeToD(easeOf(it));                            //             D ← ease
+    }
+
+    if(elapsed < 1){                                      // re-vu de session / anticipé : S/D gelés
+      if(!success) return { S: round3(S), D: round3(D), i:0, d: today, stage, elapsed, counted:false };
+      const i = fsrsNextInterval(S, Rd, maxItv);
+      return { S: round3(S), D: round3(D), i, d: addDays(today, i), stage, elapsed, counted:false };
+    }
+
+    const R = fsrsR(elapsed, S);                          // révision COMPTÉE
+    const D2 = fsrsNextD(D, G, w);
+    if(!success){
+      const S2 = fsrsFailS(D, S, R, w);
+      return { S: round3(S2), D: round3(D2), i:0, d: today, stage, elapsed, counted:true };  // échec = re-vu en session (comme legacy)
+    }
+    const S2 = fsrsSuccS(D, S, R, G, w);
+    const i = fsrsNextInterval(S2, Rd, maxItv);
+    return { S: round3(S2), D: round3(D2), i, d: addDays(today, i), stage, elapsed, counted:true };
+  }
+
   /* ================= export double environnement ================= */
   const ENGINE = { addDays, daysBetween, computeAnswer, computeAnswerLegacy, easeOf, isLeech,
                    prevReviewDate, retention7, selectDue, pickNew, computeStreak,
                    pickDistractors, shuffle, sample, DEF_SET, STEP,
+                   fsrsSchedule, fsrsR, fsrsIntervalDays, fsrsNextInterval, fsrsInitS, fsrsInitD,
+                   fsrsNextD, fsrsSuccS, fsrsFailS, easeToD,
+                   FSRS: { W: FSRS_W, DECAY: FSRS_DECAY, FACTOR: FSRS_FACTOR, S_MIN: FSRS_S_MIN, S_MAX: FSRS_S_MAX, DR: FSRS_DR },
                    EASE: { EASE_START, EASE_MIN, EASE_MAX, SEED_MIN, SEED_MAX, TARGET_RETENTION,
                            EASE_GAIN, EASE_LOSS, EARLY_RATIO, LATE_CREDIT_CAP, MAX_ITV, S5_FLOOR, LEECH_KO } };
   if (typeof module !== "undefined" && module.exports) module.exports = ENGINE;
