@@ -51,6 +51,15 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v58 (plafond de note par difficulté d'exercice — piège des 4 boutons)** : retour user juste — la
+  difficulté de l'exercice monte avec le stade (QCM→indice→sans aide→écrit), mais FSRS suppose un test
+  de rappel constant → un « Bien » sur un QCM (reconnaissance facile) gonflait la stabilité à tort.
+  Fix : `KIND_MAXGRADE = {qcm1/2/3:2, build/rec4/recrev:3, rec5/type:4}` ; `afterAnswer` calcule
+  `G = ok ? min(grade||3, maxG) : 1` (la note effective est **plafonnée par l'aide de l'exercice**).
+  `gradeButtons` n'affiche que les notes atteignables (rappel indicé → 3 boutons, pas de « Facile » ;
+  sans aide → 4). Effet : **QCM correct = Difficile(2)**, la stabilité ne grimpe qu'avec une vraie preuve
+  de mémoire, et ça aligne montée de stade ↔ montée de stabilité. Vérifié preview (QCM→journal note 2,
+  indice→3 boutons, sans aide→4 + Facile→note 4). CACHE `sori-v58`. 53 tests.
 - **v57 (petits gains : notation 4 boutons + « je le sais déjà »)** : choix user.
   **(1) 4 boutons** — `applyAnswer(it, ok, grade)` et `afterAnswer(…, grade)` portent une note 1-4
   (1 Encore/Again · 2 Difficile/Hard · 3 Bien/Good · 4 Facile/Easy) ; FSRS l'utilise (w15 pénalité Hard,

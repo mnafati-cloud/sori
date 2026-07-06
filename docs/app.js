@@ -750,10 +750,16 @@ function showTrivia(card, it){
   card.appendChild(box);
   return true;
 }
+/* plafond de note FSRS par EXERCICE (l'aide fournie borne la preuve de mémoire) :
+   reconnaissance (QCM) = Difficile(2) max ; rappel indicé/construction/sens = Bien(3) ;
+   rappel sans aide / écrit = Facile(4). Empêche une réponse assistée de gonfler la stabilité. */
+const KIND_MAXGRADE = { qcm1:2, qcm2:2, qcm3:2, build:3, rec4:3, recrev:3, rec5:4, type:4 };
 function afterAnswer(it, ok, sawTrivia, kind, grade){
   LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞
   armUndo();                                // photo AVANT toute mutation (annulation possible)
-  const r = BONUS ? null : applyAnswer(it, ok, grade);   // grade 1-4 optionnel (4 boutons) ; sinon ok→3/1
+  const maxG = KIND_MAXGRADE[kind] || 3;
+  const G = ok ? Math.min(grade || 3, maxG) : 1;         // note plafonnée par l'aide de l'exercice
+  const r = BONUS ? null : applyAnswer(it, ok, G);
   logAnswer(ok, kind || "review", r, EXO_T0 ? Date.now()-EXO_T0 : 0);
   /* combo & XP (plancher motivant, jamais bloquant) */
   if(ok) COMBO++; else { COMBO = 0; if(!SESSFAIL.includes(it.id)) SESSFAIL.push(it.id); }
@@ -839,18 +845,18 @@ function exoQcmFr2Kr(it){
    (Difficile = pénalité w15, Facile = bonus w16). ok = note ≥ 2 (pour combo/rétention). */
 function gradeButtons(row, it, kind){
   row.innerHTML = "";
+  const maxG = KIND_MAXGRADE[kind] || 3;   // note max justifiée par l'aide de l'exercice
   const wire = (b, ok, g) => { b.onclick = ()=>{ [...row.children].forEach(x=>x.disabled=true); afterAnswer(it, ok, false, kind, g); }; return b; };
   if(ST.set.grade4 !== false){
     row.classList.add("g4row");
-    row.append(
-      wire(el(`<button class="btn ko g4">Encore</button>`),   false, 1),
-      wire(el(`<button class="btn g4">Difficile</button>`),   true,  2),
-      wire(el(`<button class="btn g4">Bien</button>`),        true,  3),
-      wire(el(`<button class="btn ok g4">Facile</button>`),   true,  4));
+    /* on n'offre que les notes atteignables : ex. rappel indicé → pas de « Facile » (plafond Bien). */
+    const defs = [["Encore","btn ko",false,1],["Difficile","btn",true,2],["Bien","btn",true,3],["Facile","btn ok",true,4]];
+    defs.filter(d => d[3] <= maxG).forEach(([lbl,cls,ok,g]) =>
+      row.append(wire(el(`<button class="${cls} g4">${lbl}</button>`), ok, g)));
   } else {
     row.append(
       wire(el(`<button class="btn ko">Encore</button>`), false, 1),
-      wire(el(`<button class="btn ok">Bien</button>`),   true,  3));
+      wire(el(`<button class="btn ok">Bien</button>`),   true,  Math.min(3, maxG)));
   }
 }
 function exoRecall(it, hinted){
