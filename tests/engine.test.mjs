@@ -227,6 +227,6 @@ test("distracteurs : le global (même type) complète quand le thème ne suffit 
 test("DEF_SET et STEP : valeurs contractuelles", () => {
   assert.deepEqual(DEF_SET, { newPerDay: 12, kitFirst: true, rate: 0.9, listenN: 10,
     sessionMax: 120, mute: false, autoplay: true, adaptive: false, typing: false, report: false,
-    exaudio: false, wordgloss: false, reverse: false, scheduler: "fsrs", fsrsRetention: 0.9 });   // planificateur FSRS par défaut (rétention 0.9) ; reverse OFF ; reste opt-in
+    exaudio: false, wordgloss: false, reverse: false, scheduler: "fsrs", fsrsRetention: 0.9, grade4: true });   // FSRS + 4 boutons par défaut ; reverse OFF ; reste opt-in
   assert.deepEqual(STEP, { 2: 1, 3: 2, 4: 4, 5: 8 });
 });

@@ -342,9 +342,9 @@ function ttsSpeak(text){
    - "fsrs"   : modèle DSR moderne (stabilité/difficulté par carte) — défaut.
    - "legacy" : échelle de stades + ease (ALGORITHM.md) — repli/rollback.
    Dans les deux cas le STAGE (choix d'exercice) évolue pareil. */
-function applyAnswer(it, ok){
+function applyAnswer(it, ok, grade){
+  const G = grade || (ok ? 3 : 1);   // note FSRS : 1 Encore(Again) · 2 Difficile(Hard) · 3 Bien(Good) · 4 Facile(Easy)
   if(ST.set.scheduler !== "legacy"){
-    const G = ok ? 3 : 1;   // Sori binaire : juste → Good(3), faux → Again(1)
     const r = ENGINE.fsrsSchedule(it, G, todayStr(), { retention: ST.set.fsrsRetention || 0.9 });
     setItem(it.id, { s:r.stage, i:r.i, d:r.d, S:r.S, D:r.D, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) });
     logReview(it.id, G, r.elapsed);   // journal (fit hors-ligne des poids) — toutes les révisions
@@ -366,6 +366,19 @@ function logReview(id, G, elapsed){
   ST.rlog.push([todayStr(), id, G, elapsed|0]);
   if(ST.rlog.length > RLOG_CAP) ST.rlog.splice(0, ST.rlog.length - RLOG_CAP);
   save();   // le push arrive APRÈS le save() de setItem → persister explicitement
+}
+/* « je le sais déjà » : fast-track d'un mot déjà connu → planifié LOIN, sans le tester.
+   PAS de journal FSRS (ce n'est pas un vrai rappel, ça biaiserait le fit). FSRS & Classique. */
+function markKnown(id){
+  const t = todayStr();
+  if(ST.set.scheduler !== "legacy"){
+    const S = Math.max(21, ENGINE.FSRS.W[3]);                          // stabilité confortable
+    const D = Math.round(ENGINE.fsrsInitD(4, ENGINE.FSRS.W)*1000)/1000; // difficulté « Facile »
+    const i = ENGINE.fsrsNextInterval(S, ST.set.fsrsRetention||0.9, ENGINE.EASE.MAX_ITV);
+    setItem(id, { s:5, i, d:addDays(t,i), S:Math.round(S*1000)/1000, D });
+  } else {
+    setItem(id, { s:5, i:21, d:addDays(t,21) });
+  }
 }
 
 /* rang d'introduction des nouvelles cartes : plus petit = introduit en premier.
@@ -587,10 +600,15 @@ function renderReview(){
         ${it.enemy?'<span class="pill enemy">ennemie</span>':""}
         <span class="pill stage">niv ${it.stage}</span>
         ${COMBO>=3?`<span class="pill" style="color:var(--acc)">🔥 combo ×${COMBO}</span>`:""}</div>
-      <button class="escbtn" id="quitrev" title="Quitter la révision (la progression est gardée)">✕ Quitter</button>
+      <div class="rev-actions">
+        ${it.stage<4 ? '<button class="escbtn" id="knowrev" title="Je connais déjà ce mot — l\'espacer fortement">✓ Je le sais</button>' : ""}
+        <button class="escbtn" id="quitrev" title="Quitter la révision (la progression est gardée)">✕ Quitter</button>
+      </div>
     </div></div>`);
   $screen.appendChild(head);
   head.querySelector("#quitrev").onclick = leaveReview;
+  const kr = head.querySelector("#knowrev");
+  if(kr) kr.onclick = ()=>{ markKnown(Q[QPOS]); QPOS++; saveSess(); render(); };   // fast-track + carte suivante
   EXO_T0 = Date.now();
   const isPhrase = it.type==="phrase" && it.kr.split(" ").length>=3;
   const revMode = ST.set.reverse !== false;
@@ -732,10 +750,10 @@ function showTrivia(card, it){
   card.appendChild(box);
   return true;
 }
-function afterAnswer(it, ok, sawTrivia, kind){
+function afterAnswer(it, ok, sawTrivia, kind, grade){
   LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞
   armUndo();                                // photo AVANT toute mutation (annulation possible)
-  const r = BONUS ? null : applyAnswer(it, ok);
+  const r = BONUS ? null : applyAnswer(it, ok, grade);   // grade 1-4 optionnel (4 boutons) ; sinon ok→3/1
   logAnswer(ok, kind || "review", r, EXO_T0 ? Date.now()-EXO_T0 : 0);
   /* combo & XP (plancher motivant, jamais bloquant) */
   if(ok) COMBO++; else { COMBO = 0; if(!SESSFAIL.includes(it.id)) SESSFAIL.push(it.id); }
@@ -816,6 +834,25 @@ function exoQcmFr2Kr(it){
   $screen.appendChild(card);
 }
 /* stage 4-5 : rappel (indicé ou pur), auto-évalué */
+/* boutons d'auto-évaluation après « Montrer » : 4 notes FSRS (Encore/Difficile/Bien/Facile)
+   si ST.set.grade4, sinon binaire (Encore/Bien). La note (1-4) affine la planification FSRS
+   (Difficile = pénalité w15, Facile = bonus w16). ok = note ≥ 2 (pour combo/rétention). */
+function gradeButtons(row, it, kind){
+  row.innerHTML = "";
+  const wire = (b, ok, g) => { b.onclick = ()=>{ [...row.children].forEach(x=>x.disabled=true); afterAnswer(it, ok, false, kind, g); }; return b; };
+  if(ST.set.grade4 !== false){
+    row.classList.add("g4row");
+    row.append(
+      wire(el(`<button class="btn ko g4">Encore</button>`),   false, 1),
+      wire(el(`<button class="btn g4">Difficile</button>`),   true,  2),
+      wire(el(`<button class="btn g4">Bien</button>`),        true,  3),
+      wire(el(`<button class="btn ok g4">Facile</button>`),   true,  4));
+  } else {
+    row.append(
+      wire(el(`<button class="btn ko">Encore</button>`), false, 1),
+      wire(el(`<button class="btn ok">Bien</button>`),   true,  3));
+  }
+}
 function exoRecall(it, hinted){
   /* indice : 1re syllabe révélée, les autres en tuiles douces (espaces = respiration) */
   let hint = "";
@@ -837,14 +874,7 @@ function exoRecall(it, hinted){
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span>`;
     speak(it.kr, it.id);
     showTrivia(card, it);        // lisible pendant l'auto-évaluation
-    const row = card.querySelector(".row");
-    row.innerHTML = "";
-    const again = el(`<button class="btn ko">Encore</button>`);
-    const good  = el(`<button class="btn ok">Bien</button>`);
-    const kind = hinted ? "rec4" : "rec5";
-    again.onclick = ()=>{ again.disabled=good.disabled=true; afterAnswer(it, false, false, kind); };
-    good.onclick  = ()=>{ again.disabled=good.disabled=true; afterAnswer(it, true, false, kind); };
-    row.append(again, good);
+    gradeButtons(card.querySelector(".row"), it, hinted ? "rec4" : "rec5");
   };
   $screen.appendChild(card);
 }
@@ -860,13 +890,7 @@ function exoRecallRev(it){
   card.querySelector("#show").onclick = ()=>{
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.fr)}</span>`;
     showTrivia(card, it);
-    const row = card.querySelector(".row");
-    row.innerHTML = "";
-    const again = el(`<button class="btn ko">Encore</button>`);
-    const good  = el(`<button class="btn ok">Bien</button>`);
-    again.onclick = ()=>{ again.disabled=good.disabled=true; afterAnswer(it, false, false, "recrev"); };
-    good.onclick  = ()=>{ again.disabled=good.disabled=true; afterAnswer(it, true, false, "recrev"); };
-    row.append(again, good);
+    gradeButtons(card.querySelector(".row"), it, "recrev");
   };
   $screen.appendChild(card);
   if(ST.set.autoplay && !NAV) speak(it.kr, it.id);
@@ -1237,6 +1261,7 @@ function openSettings(){
     <label title="FSRS = algorithme moderne (modèle mémoire stabilité/difficulté par carte, ~25% de révisions en moins). Classique = échelle de stades historique.">🧠 Algorithme de répétition
       <select id="sched"><option value="fsrs" ${ST.set.scheduler!=="legacy"?"selected":""}>FSRS (moderne)</option><option value="legacy" ${ST.set.scheduler==="legacy"?"selected":""}>Classique</option></select></label>
     <label title="Rétention cible FSRS : proba de te souvenir au moment de la révision. Plus haut = plus de révisions, meilleure mémoire. Défaut 0.90.">Rétention cible (FSRS) <input type="number" id="fsrsret" min="0.7" max="0.97" step="0.01" value="${ST.set.fsrsRetention||0.9}"></label>
+    <label title="Au rappel : 4 boutons (Encore/Difficile/Bien/Facile) au lieu de 2. Note plus fine → FSRS mieux calibré.">🎚️ Notation à 4 boutons <input type="checkbox" id="g4" ${ST.set.grade4!==false?"checked":""}></label>
     <label title="Intervalles personnalisés par mot (ALGORITHM.md), UNIQUEMENT en mode Classique. Laisser décoché ~2 semaines : l'app observe d'abord.">
       Planification adaptative (mode Classique) <input type="checkbox" id="adap" ${ST.set.adaptive?"checked":""}></label>
     <label title="Chaque mot devient DEUX cartes à maîtrise séparée : comprendre (KR→FR) et produire (FR→KR). Recommandé, mais double la charge de révision.">🔄 Production séparée (recto/verso) <input type="checkbox" id="rev" ${ST.set.reverse!==false?"checked":""}></label>
@@ -1294,6 +1319,7 @@ function openSettings(){
   set.querySelector("#adap").onchange= e=>{ ST.set.adaptive=e.target.checked; save(); };
   set.querySelector("#sched").onchange = e=>{ ST.set.scheduler=e.target.value; save(); };
   set.querySelector("#fsrsret").onchange = e=>{ ST.set.fsrsRetention=Math.min(0.97, Math.max(0.7, +e.target.value||0.9)); save(); };
+  set.querySelector("#g4").onchange = e=>{ ST.set.grade4=e.target.checked; save(); };
   set.querySelector("#typ").onchange = e=>{ ST.set.typing=e.target.checked; save(); };
   set.querySelector("#rev").onchange = e=>{ ST.set.reverse=e.target.checked; save(); location.reload(); };  // ALL_IDS fixé au chargement → recharger
   set.querySelector("#rpt").onchange = e=>{ ST.set.report=e.target.checked; save(); wireReport(); };

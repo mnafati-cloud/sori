@@ -52,8 +52,13 @@ h2{margin:0 0 6px; font-size:1.05rem}
 /* ...sauf le bouton Quitter : on doit TOUJOURS pouvoir sortir d'un exercice */
 .cooldown .escbtn{pointer-events:auto}
 
-/* en-tête de révision : compteur à gauche, bouton Quitter à droite */
+/* en-tête de révision : compteur à gauche, actions (Je le sais / Quitter) à droite */
 .rev-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}
+.rev-actions{display:flex;gap:6px;flex-shrink:0}
+
+/* auto-évaluation à 4 boutons (Encore/Difficile/Bien/Facile) — tiennent sur une ligne */
+.g4row{display:flex;gap:6px}
+.btn.g4{flex:1;min-width:0;padding:11px 4px;font-size:.9rem}
 
 /* décomposition mot-à-mot d'une phrase (encart trivia) */
 .wbreak{margin-bottom:8px}

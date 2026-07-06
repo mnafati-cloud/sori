@@ -51,6 +51,17 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v57 (petits gains : notation 4 boutons + « je le sais déjà »)** : choix user.
+  **(1) 4 boutons** — `applyAnswer(it, ok, grade)` et `afterAnswer(…, grade)` portent une note 1-4
+  (1 Encore/Again · 2 Difficile/Hard · 3 Bien/Good · 4 Facile/Easy) ; FSRS l'utilise (w15 pénalité Hard,
+  w16 bonus Easy), legacy reste binaire (utilise `ok`). Helper `gradeButtons(row, it, kind)` = 4 boutons
+  si `ST.set.grade4` sinon 2 ; utilisé par `exoRecall` + `exoRecallRev` (QCM/build restent binaires).
+  `ok = note≥2` (Hard/Good/Easy = pass). CSS `.g4row/.btn.g4`. DEF_SET `grade4:true` + toggle Réglages.
+  **(2) Fast-track** — bouton `✓ Je le sais` dans l'en-tête si `stage<4` ; `markKnown(id)` planifie LOIN
+  sans tester (FSRS : `S=max(21,W[3])`, `D=fsrsInitD(4)`, stage 5, dû à +~21j ; legacy : stage 5, itv 21) et
+  **ne logge PAS** dans `ST.rlog` (déclaratif, ne doit pas biaiser le fit). Réutilise `.rev-actions`
+  (re-ajouté au CSS, retiré en v47). Vérifié preview : 4 boutons (Facile→S 5→35, journal note 4),
+  fast-track (stage 5, S 21, dû +21j, avance, 0 journal, masqué si stage≥4). CACHE `sori-v57`. 53 tests.
 - **v56 (décomposition mot-à-mot + construction des PHRASES)** : demande user (« quand on traduit une
   phrase entière, un trivia qui explique les mots et leur construction »). **Rendu** : `showTrivia` affiche,
   pour une carte `type:phrase`, un bloc **« 📝 Mot à mot »** (une ligne par bout : `EXTRA[id].words`

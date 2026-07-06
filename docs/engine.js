@@ -9,7 +9,7 @@
   "use strict";
 
   /* ================= constantes partagées ================= */
-  const DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true, adaptive:false, typing:false, report:false, exaudio:false, wordgloss:false, reverse:false, scheduler:"fsrs", fsrsRetention:0.9 };
+  const DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true, adaptive:false, typing:false, report:false, exaudio:false, wordgloss:false, reverse:false, scheduler:"fsrs", fsrsRetention:0.9, grade4:true };
   const STEP = {2:1, 3:2, 4:4, 5:8};   // intervalle (jours) en arrivant à ce stage
 
   /* ===== ease adaptatif (ALGORITHM.md) — constantes =====
