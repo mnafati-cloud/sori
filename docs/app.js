@@ -525,6 +525,7 @@ function renderReview(){
       <p class="dim">✅ ${BASE_IDS.map(eff).filter(it=>it.stage>=4).length} cartes maîtrisées au total.</p>
       <div class="row" style="margin-top:12px">
         ${more}
+        <button class="btn" id="reviewmore">🔁 Réviser 10 cartes</button>
         <button class="btn" id="learnmore">➕ Apprendre 10 nouvelles cartes</button>
       </div>
       <p class="dim" style="margin-top:8px; font-size:.8rem">Autant de fois que tu veux — ces cartes comptent dans ta progression.</p></div>`));
@@ -547,6 +548,11 @@ function renderReview(){
     }
     const m=document.getElementById("more");
     if(m) m.onclick = ()=>{ Q=null; render(); };
+    document.getElementById("reviewmore").onclick = ()=>{
+      const q = reviewMoreQueue(10);
+      if(!q.length){ alert("Aucune carte commencée à réviser pour l'instant — apprends-en de nouvelles !"); return; }
+      Q = q; QPOS = 0; BONUS = false; render();
+    };
     document.getElementById("learnmore").onclick = ()=>{
       const q = learnMoreQueue(10);
       if(!q.length){ alert("Bravo — tu as déjà commencé toutes les cartes du deck !"); return; }
@@ -633,6 +639,21 @@ function learnMoreQueue(n){
   const news = introduceCards(picked, n, t);                                        // paires recto+verso
   if(news.length) save();
   return shuffle(news.slice());
+}
+/* réviser plus de cartes À LA DEMANDE (au-delà des échues du jour), les plus FRAGILES d'abord :
+   stage le plus bas, puis ease la plus faible, puis les plus souvent ratées. Répond au besoin
+   « j'ai fini mes révisions et j'ai encore du temps » : révision anticipée, vraie planif (ça compte).
+   Les cartes de la file qu'on vient de terminer sont dépriorisées (pas resservies en boucle). */
+function reviewMoreQueue(n){
+  const doneNow = new Set(Q||[]);
+  const cands = ALL_IDS.map(eff).filter(it=>!it.sus && it.stage>=1);   // cartes déjà commencées, hors mises de côté
+  cands.sort((a,b)=>
+    (doneNow.has(a.id)?1:0)-(doneNow.has(b.id)?1:0)     // pas revues à l'instant → d'abord
+    || a.stage-b.stage                                   // plus fragile : stage le plus bas
+    || ENGINE.easeOf(a)-ENGINE.easeOf(b)                 // puis ease la plus faible
+    || (b.ko-a.ko)                                        // puis les plus souvent ratées
+    || (a.id<b.id?-1:1));                                 // départage stable
+  return shuffle(cands.slice(0,n).map(it=>it.id));
 }
 /* boss fight : affronter ses ennemies (les mots les plus ratés), les plus faibles d'abord */
 function bossCandidates(){
