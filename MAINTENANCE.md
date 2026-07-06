@@ -51,6 +51,17 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v55 (bouton « Réviser 10 cartes » : fragilité FSRS-native)** : le bouton v54 (créé par l'user)
+  triait « fragile » via `stage`+`easeOf` (notions legacy). Depuis FSRS actif, le vrai « fragile » =
+  **récupérabilité la plus basse** (proba de rappel maintenant). Ajout `cardRetrievability(it)` =
+  `fsrsR(elapsed, S)` avec `S` = stabilité FSRS si présente, sinon amorcée depuis l'intervalle (cohérent
+  avec la migration) → mesure unifiée en mode FSRS comme Classique. `reviewMoreQueue` trie par R croissant
+  (au bord de l'oubli d'abord), puis ko, puis id, puis shuffle. Vérifié preview : sélectionne exactement
+  les 10 R les plus bas du deck. CACHE `sori-v55`. 53 tests. (Analyse données user : FSRS actif, 209/1025
+  cartes avec état FSRS, journal 637 rév., rétention mesurée 71% mais échantillon minuscule/biaisé fragiles
+  court-intervalle — trop tôt, vrai diagnostic = fit Phase B ~2-3 sem.)
+- **v54 (bouton « Réviser 10 cartes » — créé par l'user)** : révision anticipée à la demande sur la fin
+  de session ; `reviewMoreQueue(n)` (fragiles d'abord). ⚠️ FSRS compte les révisions anticipées (reprogramme).
 - **v53 (planificateur FSRS — Phase A)** : passage du SM-2-maison à **FSRS** (Free Spaced Repetition
   Scheduler, modèle DSR). Demande user. **Moteur pur** dans `engine.js` : `fsrsR`/`fsrsIntervalDays`/
   `fsrsNextInterval`/`fsrsInitS`/`fsrsInitD`/`fsrsNextD`/`fsrsSuccS`/`fsrsFailS`/`fsrsSchedule` + `easeToD`.

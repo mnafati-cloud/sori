@@ -640,17 +640,25 @@ function learnMoreQueue(n){
   if(news.length) save();
   return shuffle(news.slice());
 }
+/* récupérabilité FSRS estimée « maintenant » d'une carte (proba de rappel) — plus BASSE = plus fragile.
+   Unifiée : utilise la stabilité FSRS S si présente, sinon l'amorce depuis l'intervalle (comme la migration),
+   d'où une mesure cohérente pour toutes les cartes, en mode FSRS comme Classique. */
+function cardRetrievability(it){
+  const S = (typeof it.S === "number") ? it.S : Math.max(0.5, it.itv || 1);
+  const elapsed = it.due ? Math.max(0, ENGINE.daysBetween(ENGINE.prevReviewDate(it), todayStr())) : 0;
+  return ENGINE.fsrsR(elapsed, S);
+}
 /* réviser plus de cartes À LA DEMANDE (au-delà des échues du jour), les plus FRAGILES d'abord :
-   stage le plus bas, puis ease la plus faible, puis les plus souvent ratées. Répond au besoin
-   « j'ai fini mes révisions et j'ai encore du temps » : révision anticipée, vraie planif (ça compte).
-   Les cartes de la file qu'on vient de terminer sont dépriorisées (pas resservies en boucle). */
+   fragilité FSRS = récupérabilité la plus basse (cartes au bord de l'oubli), puis les plus souvent ratées.
+   Répond au besoin « j'ai fini mes révisions et j'ai encore du temps » : révision anticipée, vraie planif
+   (ça compte). Les cartes de la file qu'on vient de terminer sont dépriorisées (pas resservies en boucle). */
 function reviewMoreQueue(n){
   const doneNow = new Set(Q||[]);
   const cands = ALL_IDS.map(eff).filter(it=>!it.sus && it.stage>=1);   // cartes déjà commencées, hors mises de côté
+  const R = new Map(cands.map(it=>[it.id, cardRetrievability(it)]));   // calcul une seule fois par carte
   cands.sort((a,b)=>
     (doneNow.has(a.id)?1:0)-(doneNow.has(b.id)?1:0)     // pas revues à l'instant → d'abord
-    || a.stage-b.stage                                   // plus fragile : stage le plus bas
-    || ENGINE.easeOf(a)-ENGINE.easeOf(b)                 // puis ease la plus faible
+    || R.get(a.id)-R.get(b.id)                           // récupérabilité la plus basse = au bord de l'oubli
     || (b.ko-a.ko)                                        // puis les plus souvent ratées
     || (a.id<b.id?-1:1));                                 // départage stable
   return shuffle(cands.slice(0,n).map(it=>it.id));
