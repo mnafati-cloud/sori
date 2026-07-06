@@ -51,6 +51,16 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v56 (décomposition mot-à-mot + construction des PHRASES)** : demande user (« quand on traduit une
+  phrase entière, un trivia qui explique les mots et leur construction »). **Rendu** : `showTrivia` affiche,
+  pour une carte `type:phrase`, un bloc **« 📝 Mot à mot »** (une ligne par bout : `EXTRA[id].words`
+  = `[[bout_kr, sens_fr], …]`) puis **« 🔧 Construction »** (`EXTRA[id].build`). Dégradation propre si absents.
+  CSS `.wbreak/.wbrow/.wbk/.wbg`. **Contenu** : `words`+`build` générés pour **981 phrases multi-mots** via
+  workflow `sori-phrase-breakdown` (36 lots × gen→vérif native adversariale ; la vérif a corrigé irréguliers,
+  particules, typos coréennes). Fusion `tools/merge_phrase_breakdown.py <dossier_out>` (garde-fous : paires
+  [str,str] non vides, build non vide). Intégrité : 981/981 avec words, recouvrement 981/981 (les bouts
+  concaténés = la phrase), 0 sans build. **⚠️ extra.js pèse maintenant ~2,4 Mo** (parsé au chargement ;
+  acceptable, ordre de grandeur < audio, mais à surveiller). CACHE `sori-v56`. 53 tests.
 - **v55 (bouton « Réviser 10 cartes » : fragilité FSRS-native)** : le bouton v54 (créé par l'user)
   triait « fragile » via `stage`+`easeOf` (notions legacy). Depuis FSRS actif, le vrai « fragile » =
   **récupérabilité la plus basse** (proba de rappel maintenant). Ajout `cardRetrievability(it)` =

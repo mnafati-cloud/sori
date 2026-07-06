@@ -701,6 +701,14 @@ function showTrivia(card, it){
   }
   if(x.conj) bits.push(`<div class="tconj">활용 ${esc(x.conj)}</div>`);
   if(x.note) bits.push(`<div class="tnote">💡 ${esc(x.note)}</div>`);
+  /* décomposition d'une PHRASE : chaque bout de la phrase + son sens, puis la construction (grammaire).
+     Répond au besoin « quand on traduit une phrase entière, expliquer les mots et leur construction ».
+     Contrat : EXTRA[id].words = [[bout_kr, sens_fr], …] ; EXTRA[id].build = "explication". */
+  if(it.type==="phrase" && Array.isArray(x.words) && x.words.length){
+    const rows = x.words.map(p=>`<div class="wbrow"><span class="wbk">${esc(p[0])}</span><span class="wbg">${esc(p[1]||"")}</span></div>`).join("");
+    bits.unshift(`<div class="wbreak"><div class="wbt">📝 Mot à mot</div>${rows}</div>`);
+  }
+  if(it.type==="phrase" && x.build) bits.push(`<div class="tnote">🔧 <b>Construction :</b> ${esc(x.build)}</div>`);
   if(!bits.length) return false;
   const box = el(`<div class="trivia">${bits.join("")}</div>`);
   /* 🔊 phrase */

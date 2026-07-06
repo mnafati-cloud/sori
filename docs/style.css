@@ -55,6 +55,14 @@ h2{margin:0 0 6px; font-size:1.05rem}
 /* en-tête de révision : compteur à gauche, bouton Quitter à droite */
 .rev-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}
 
+/* décomposition mot-à-mot d'une phrase (encart trivia) */
+.wbreak{margin-bottom:8px}
+.wbt{font-size:.78rem;opacity:.7;margin-bottom:4px}
+.wbrow{display:flex;gap:10px;align-items:baseline;padding:3px 0;border-bottom:1px solid var(--line,#334155)}
+.wbrow:last-child{border-bottom:0}
+.wbk{flex:0 0 40%;font-weight:600;font-size:1.02rem;word-break:break-word}
+.wbg{flex:1;font-size:.86rem;opacity:.9}
+
 /* barres de maîtrise par niveau CEFR (page Progrès) */
 .levelbars{display:flex;flex-direction:column;gap:9px;margin-top:10px}
 .lvlrow{display:flex;align-items:center;gap:9px}
