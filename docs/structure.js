@@ -5,18 +5,38 @@
    décomposition mot-à-mot + construction, v56) explique tout.
    - SORI_STRUCTURE.renderCard(container, opts)
    - opts = {
-       pool:     [ { id, kr, fr, base:[[lemme,fr]], words:[[bout,gloss]], build } ]  (fourni par app.js)
+       pool:     [ { id, kr, fr, base:[[lemme,fr]], words:[[bout,gloss]], build } ]  (fourni par app.js,
+                 TRIÉ facile->dur : l'exercice démarre par les phrases courtes/simples et monte — v62)
        speak:    function(kr, id)   TTS/audio natif délégué à app.js
        onAnswer: function(ok)       journalisation déléguée (télémétrie, PAS de planification)
+       startPos: number             position de progression PERSISTÉE (index dans le pool trié) — v62
+       onPos:    function(pos)       émet l'avancée -> app.js sauve dans ST.strPos (v62)
        random:   function()->[0,1)  optionnel (tests)
      }
-   - N'écrit AUCUN état (ni localStorage, ni ST). État de session dans la fermeture. */
+   - N'accède PAS à localStorage. La POSITION de progression ENTRE par opts.startPos et SORT par
+     opts.onPos (comme scenarios.js getBest/setBest) — sinon, la fermeture étant recréée à chaque
+     changement d'onglet, l'apprenant resterait bloqué sur les 12 phrases les plus faciles (défaut v62).
+   - pure: { rampOrder } exposé pour les tests. */
 (function(root){
   "use strict";
   function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
     return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
   function el(html){ var t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstChild; }
-  function shuffle(a, rng){ for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(rng() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  /* Ordre de parcours à difficulté CROISSANTE : le pool est fourni TRIÉ facile->dur (par app.js).
+     On mélange par FENÊTRES de `win` (défaut 6) → on garde la rampe (les faciles d'abord) tout en
+     variant l'ordre d'une série à l'autre. Retourne une permutation de [0..n-1]. PURE (RNG injecté). */
+  function rampOrder(n, rng, win){
+    win = (win && win > 0) ? win : 6;
+    var idx = []; for(var i = 0; i < n; i++) idx.push(i);
+    for(var s = 0; s < n; s += win){
+      var end = Math.min(s + win, n);
+      for(var k = end - 1; k > s; k--){
+        var j = s + Math.floor(rng() * (k - s + 1));
+        var t = idx[k]; idx[k] = idx[j]; idx[j] = t;
+      }
+    }
+    return idx;
+  }
 
   var CSS = [
     ".str-fr{font-size:1.3rem; font-weight:600; margin:10px 0 4px; line-height:1.35}",
@@ -41,15 +61,25 @@
     var pool     = Array.isArray(opts.pool) ? opts.pool : [];
     var speak    = typeof opts.speak    === "function" ? opts.speak    : function(){};
     var onAnswer = typeof opts.onAnswer === "function" ? opts.onAnswer : function(){};
+    var onPos    = typeof opts.onPos    === "function" ? opts.onPos    : function(){};
+    var startPos = opts.startPos | 0;
     var rng      = typeof opts.random   === "function" ? opts.random   : Math.random;
     injectStyles();
     var card = el('<div class="card center str-card"></div>');
-    var order = [], done = 0, hit = 0;
+    var order = [], ptr = 0, done = 0, hit = 0, primed = false;
 
     function pick(){
       if(!pool.length) return null;
-      if(!order.length){ order = pool.map(function(_, i){ return i; }); shuffle(order, rng); }
-      return pool[order.pop()];
+      if(!primed){                                                          // reprend la progression persistée (au-delà de la fermeture)
+        order = rampOrder(pool.length, rng, 6);
+        ptr = ((startPos % pool.length) + pool.length) % pool.length;       // borné/wrap : where on en était dans la rampe facile->dur
+        primed = true;
+      }
+      if(ptr >= order.length){ order = rampOrder(pool.length, rng, 6); ptr = 0; }   // tout le pool parcouru -> on repart en douceur
+      var it = pool[order[ptr]];
+      ptr++;
+      onPos(ptr);                                                           // persiste l'avancée -> app.js sauve ST.strPos (plus de mur entre visites)
+      return it;
     }
 
     function paintStart(last){
@@ -121,7 +151,7 @@
     return card;
   }
 
-  var SORI_STRUCTURE = { renderCard: renderCard };
+  var SORI_STRUCTURE = { renderCard: renderCard, pure: { rampOrder: rampOrder } };
   if (typeof module !== "undefined" && module.exports) module.exports = SORI_STRUCTURE;
   else root.SORI_STRUCTURE = SORI_STRUCTURE;
 })(typeof self !== "undefined" ? self : this);

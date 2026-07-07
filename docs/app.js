@@ -44,6 +44,7 @@ function loadState(){
         s.items = s.items||{}; s.log = s.log||{}; s.intro = s.intro||{}; s.rlog = s.rlog||[];
         s.set = Object.assign({}, DEF_SET, s.set||{});
         s.xp = s.xp||0;
+        s.strPos = s.strPos||0;                    // v62 : position persistée de l'exercice Structure (rampe facile->dur)
         /* v52 : split recto/verso retiré (doublait le deck). Bascule UNE FOIS les utilisateurs
            qui l'avaient activé (v51) vers OFF ; le toggle Réglages reste libre ensuite. */
         if(s.reverseMig !== 1){ s.set.reverse = false; s.reverseMig = 1; }
@@ -493,14 +494,22 @@ function renderExercices(){
   if(window.SORI_STRUCTURE){
     const pool = BASE_IDS.map(eff)
       .filter(it => it.type === "phrase" && it.kr.split(" ").length >= 3)
-      .map(it => { const x = EXTRA[it.id] || {}; return { id: it.id, kr: it.kr, fr: it.fr, base: x.base, words: x.words, build: x.build }; })
+      .map(it => { const x = EXTRA[it.id] || {}; return { id: it.id, kr: it.kr, fr: it.fr, base: x.base, words: x.words, build: x.build, cefr: x.cefr }; })
       .filter(it => Array.isArray(it.base) && it.base.length && Array.isArray(it.words) && it.words.length);
+    /* trié FACILE -> DUR (démarrage progressif, v62) : moins de mots, niveau plus bas, phrase plus courte */
+    pool.sort((a, b) =>
+         (a.kr.split(" ").length - b.kr.split(" ").length)
+      || ((LVL_RANK[a.cefr] || 3) - (LVL_RANK[b.cefr] || 3))
+      || (a.kr.length - b.kr.length)
+      || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
     if(pool.length){
       const stBox = el(`<div></div>`);
       SORI_STRUCTURE.renderCard(stBox, {
         pool,
         speak: (kr, id) => speak(kr, id),
-        onAnswer: (ok) => logAnswer(ok, "structure")
+        onAnswer: (ok) => logAnswer(ok, "structure"),
+        startPos: ST.strPos | 0,                              // reprend la progression (la fermeture est recréée à chaque visite d'onglet)
+        onPos: (pos) => { ST.strPos = pos; save(); }          // persiste l'avancée dans la rampe facile->dur (v62)
       });
       $screen.appendChild(stBox);
     }
@@ -1496,6 +1505,7 @@ function applyImportedState(state){
   const s = state;
   s.items = s.items||{}; s.log = s.log||{}; s.intro = s.intro||{}; s.rlog = s.rlog||[];
   s.set = Object.assign({}, DEF_SET, s.set||{});
+  s.strPos = s.strPos||0;                    // v62 : position persistée de l'exercice Structure
   s.v = s.v || 1;
   ST = s; save(); Q = null; render();
 }

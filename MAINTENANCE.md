@@ -51,6 +51,35 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v60-v61 (livrés par l'user depuis une autre machine — doc à compléter par lui)** : `v60` = bouton 🔊 au
+  rappel pour réécouter le mot pendant la notation ; `v61` = clic sur le n° de version (Réglages) → historique
+  des versions. (Détails non documentés ici : commits `aa5164d` / `40ef703`. Signalés pour ne pas laisser de
+  trou dans la numérotation des CACHE `sori-vNN`.)
+- **v62 (Structure : démarrage FACILE -> DUR)** : retour user — l'exercice v59 tirait le pool AU HASARD
+  (Fisher-Yates global), il est tombé direct sur une phrase difficile (un proverbe C1 de 9 mots) et a
+  abandonné (« trop dur »). Fix en deux temps : (1) `renderExercices` (app.js) **trie le pool facile->dur**
+  = `nb de mots (kr.split(" ")) ASC, puis niveau CEFR (LVL_RANK) ASC, puis longueur kr, puis id` (cefr
+  absent → rang B1) ; (2) `structure.js` parcourt le pool trié par **`rampOrder(n, rng, win=6)`** (fonction
+  PURE exportée dans `SORI_STRUCTURE.pure`) = mélange PAR FENÊTRES de 6 → garde « les faciles d'abord » tout
+  en variant l'ordre d'une série à l'autre ; `pick()` avance via un pointeur `ptr` (au lieu d'un
+  `order.pop()` sur un shuffle global). Invariant testé : chaque fenêtre de sortie ne contient QUE ses index
+  d'entrée (aucune phrase dure ne remonte). **Nouveau `tests/structure.test.mjs`** (6 tests : permutation
+  exacte, faciles-d'abord, déterminisme, non-identité, win par défaut, n=0/1) → **59 tests**. Vérifié preview
+  (pool 583 : 1re carte = `내일 뭐 해요?` A1 3 mots ; les 10 premières toutes A1 3 mots ; reveal + décompo OK ;
+  0 erreur console). **Revue adversariale 3 lentilles via Workflow → 1 défaut MAJEUR rattrapé** : le curseur
+  `ptr`/`order` vivait UNIQUEMENT dans la fermeture de `renderCard`, recréée à chaque changement d'onglet
+  (l'app ouvre sur Progrès, `renderExercices` ne tourne qu'au switch → nouvelle fermeture `ptr=0`). Comme
+  `rampOrder(win=6)` mélange PAR fenêtres, la 1re série d'une visite tire toujours dans {0..11} → un débutant
+  faisant ≤1 série/visite serait resté **bloqué sur les 12 phrases les plus faciles** (571/583 = 97,9 %
+  inatteignables). **Correctif** : persister la position via **`ST.strPos`** (racine, additif, init loadState +
+  applyImportedState) ; `renderCard` reçoit `startPos` (entrée) et émet `onPos(pos)` (sortie → `save()`), comme
+  `scenarios.js` (getBest/setBest) — le module ne touche TOUJOURS pas localStorage. `pick()` amorce `ptr` depuis
+  `startPos` (borné/wrap) → la rampe facile→dur progresse ENTRE les visites, tout le pool est atteignable. Vérifié
+  preview (2 fermetures successives = 0 recouvrement de phrases ; pos 300→4 mots A2, pos 560→6 mots B1/B2 ;
+  câblage réel : strPos 0→2 dans localStorage). Rétrocompat : exercice autonome (télémétrie seule), aucune
+  donnée SR touchée ; `ST.strPos` défaut 0. CACHE `sori-v62`. **LEÇON : un tri « facile d'abord » sans état
+  persistant = mur silencieux ; la revue adversariale a échangé un défaut visible (proverbe C1 en 1er) qui en
+  cachait un pire (98 % du pool gelé). La progression d'un exercice « sans SR » doit quand même persister.**
 - **v59 (exercice « Structure de phrase » — particules & conjugaison)** : demande user (travailler les
   particules qu'il confond). Nouvel exercice AUTONOME (comme numbers/scenarios, PAS de répétition espacée)
   dans l'onglet Exercices. Principe : phrase en FR + **vocabulaire de base** (lemmes sans grammaire) →
