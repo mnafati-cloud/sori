@@ -894,7 +894,9 @@ function exoRecall(it, hinted){
       <button class="btn" id="show">Montrer</button>
     </div></div>`);
   card.querySelector("#show").onclick = ()=>{
-    card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span>`;
+    /* mot révélé + bouton 🔊 pour le réécouter pendant la notation */
+    card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span> <button class="speak" title="écouter">🔊</button>`;
+    card.querySelector(".feedback .speak").onclick = ()=>speak(it.kr, it.id);
     speak(it.kr, it.id);
     showTrivia(card, it);        // lisible pendant l'auto-évaluation
     gradeButtons(card.querySelector(".row"), it, hinted ? "rec4" : "rec5");
