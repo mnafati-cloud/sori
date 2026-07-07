@@ -1331,6 +1331,11 @@ function openSettings(){
   (function(){
     const av = set.querySelector("#appver");
     if(!av) return;
+    /* clic sur la version → popin historique (versions/commits/dates, tirés de GitHub) */
+    av.style.cursor = "pointer";
+    av.style.textDecoration = "underline dotted";
+    av.title = "Voir l'historique des versions";
+    av.onclick = openVersionHistory;
     if(typeof caches==="undefined" || !caches.keys){ av.textContent = "—"; return; }
     caches.keys().then(keys=>{
       const nums = keys.map(k=>/^sori-v(\d+)$/.exec(k)).filter(Boolean).map(m=>+m[1]);
@@ -1398,6 +1403,55 @@ function openSettings(){
   set.querySelector("#setclose").onclick = ()=>back.remove();
   back.addEventListener("click", e=>{ if(e.target===back) back.remove(); });
   document.body.appendChild(back);
+}
+/* ===== Historique des versions (popin ouverte au clic sur le n° de version) =====
+   Données tirées EN DIRECT de l'API publique GitHub (repo public, sans jeton) : chaque
+   release est un commit « vNN: … ». Repli propre hors-ligne / si limite d'API atteinte. */
+function vhStyleOnce(){
+  if(document.getElementById("vh-style")) return;
+  const s = document.createElement("style"); s.id = "vh-style";
+  s.textContent = `
+    .vh-list{max-height:62vh;overflow-y:auto;margin-top:4px;text-align:left}
+    .vh-item{display:flex;gap:10px;align-items:flex-start;padding:8px 2px;border-bottom:1px solid rgba(128,128,128,.18)}
+    .vh-item:last-child{border-bottom:0}
+    .vh-tag{flex:0 0 auto;font-weight:700;font-size:.72rem;border:1px solid var(--acc);color:var(--acc);border-radius:6px;padding:1px 6px;margin-top:2px;min-width:34px;text-align:center}
+    .vh-title{font-size:.9rem;line-height:1.3}
+    .vh-meta{font-size:.72rem;opacity:.6;margin-top:2px}`;
+  document.head.appendChild(s);
+}
+function openVersionHistory(){
+  vhStyleOnce();
+  const back = el(`<div class="modal-back"></div>`);
+  const box = el(`<div class="card modal wide"><h2>🗒️ Historique des versions</h2>
+    <div id="vhlist" class="vh-list"><p class="dim">Chargement…</p></div>
+    <div class="row" style="margin-top:8px"><button class="btn ghost" id="vhclose">Fermer</button></div></div>`);
+  back.appendChild(box);
+  box.querySelector("#vhclose").onclick = ()=>back.remove();
+  back.addEventListener("click", e=>{ if(e.target===back) back.remove(); });
+  document.body.appendChild(back);
+  const list = box.querySelector("#vhlist");
+  const ghUrl = "https://github.com/mnafati-cloud/sori/commits/main";
+  fetch("https://api.github.com/repos/mnafati-cloud/sori/commits?sha=main&per_page=60",
+        { headers:{ "Accept":"application/vnd.github+json" }, cache:"no-store" })
+    .then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(commits=>{
+      if(!Array.isArray(commits) || !commits.length){ list.innerHTML = `<p class="dim">Aucune version trouvée.</p>`; return; }
+      list.innerHTML = commits.map(c=>{
+        const msg  = ((c.commit && c.commit.message) || "").split("\n")[0];
+        const iso  = c.commit && c.commit.author && c.commit.author.date;
+        const dstr = iso ? new Date(iso).toLocaleDateString("fr-FR", {day:"2-digit", month:"short", year:"numeric"}) : "";
+        const mv   = /^v(\d+)\s*[:\-–]\s*/.exec(msg);
+        const tag  = mv ? `<span class="vh-tag">v${mv[1]}</span>` : `<span class="vh-tag" style="opacity:.45">·</span>`;
+        const title= mv ? msg.slice(mv[0].length).trim() : msg;
+        const sha  = (c.sha || "").slice(0,7);
+        return `<div class="vh-item">${tag}<div class="vh-body"><div class="vh-title">${esc(title)}</div>
+          <div class="vh-meta">${esc(dstr)}${sha?` · ${esc(sha)}`:""}</div></div></div>`;
+      }).join("");
+    })
+    .catch(()=>{
+      list.innerHTML = `<p class="dim">Impossible de charger l'historique (hors-ligne, ou limite GitHub atteinte).<br>
+        Il reste consultable sur <a href="${ghUrl}" target="_blank" rel="noopener">GitHub</a>.</p>`;
+    });
 }
 /* ================= sauvegarde cloud (GitHub, dépôt privé sori-data) =================
    Jeton fine-grained stocké UNIQUEMENT sur l'appareil (clé séparée, jamais dans un export). */
