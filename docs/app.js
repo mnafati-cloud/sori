@@ -488,6 +488,23 @@ function renderExercices(){
       onAnswer: (ok)=>logAnswer(ok, "nombres")
     });
   }
+  /* 🧩 Structure de phrase : phrases (mots de base fournis) où l'on devine particules/conjugaison.
+     Pool = phrases (≥3 mots) qui ont le vocabulaire de base ET la décomposition (v56). */
+  if(window.SORI_STRUCTURE){
+    const pool = BASE_IDS.map(eff)
+      .filter(it => it.type === "phrase" && it.kr.split(" ").length >= 3)
+      .map(it => { const x = EXTRA[it.id] || {}; return { id: it.id, kr: it.kr, fr: it.fr, base: x.base, words: x.words, build: x.build }; })
+      .filter(it => Array.isArray(it.base) && it.base.length && Array.isArray(it.words) && it.words.length);
+    if(pool.length){
+      const stBox = el(`<div></div>`);
+      SORI_STRUCTURE.renderCard(stBox, {
+        pool,
+        speak: (kr, id) => speak(kr, id),
+        onAnswer: (ok) => logAnswer(ok, "structure")
+      });
+      $screen.appendChild(stBox);
+    }
+  }
   if(window.SORI_SCENARIOS && window.SCENARIOS){
     ST.scen = ST.scen || {};
     const scBox = el(`<div></div>`);

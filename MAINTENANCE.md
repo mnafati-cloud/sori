@@ -51,6 +51,18 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v59 (exercice « Structure de phrase » — particules & conjugaison)** : demande user (travailler les
+  particules qu'il confond). Nouvel exercice AUTONOME (comme numbers/scenarios, PAS de répétition espacée)
+  dans l'onglet Exercices. Principe : phrase en FR + **vocabulaire de base** (lemmes sans grammaire) →
+  l'apprenant devine la phrase KR complète (particules/conjugaison/ordre) DANS SA TÊTE → « Montrer » →
+  révèle le KR + décompo mot-à-mot + construction (données v56) → **auto-évaluation** (✗/✓, série de 10).
+  Aucune saisie/construction dans l'app (choix user). Module `docs/structure.js` (IIFE, CSS injecté,
+  `SORI_STRUCTURE.renderCard(container, {pool, speak, onAnswer})`, zéro état persistant). `renderExercices`
+  construit le pool = phrases ≥3 mots ayant `EXTRA[id].base` + `words`. **Contenu** : `EXTRA[id].base`
+  = `[[lemme_kr, sens_fr], …]` (forme dictionnaire, particules/terminaisons retirées) généré pour les
+  **981 phrases** via workflow `sori-phrase-basewords` (gen→vérif native) + `tools/merge_basewords.py`.
+  Ajouté à index.html (script) + sw.js (ASSETS). Vérifié preview (rendu + vraies données : « ensoleillé »
+  → base 햇볕/잘/들다 → 햇볕이 잘 들다 + décompo/construction). **extra.js ~2,5 Mo.** CACHE `sori-v59`. 53 tests.
 - **v58 (plafond de note par difficulté d'exercice — piège des 4 boutons)** : retour user juste — la
   difficulté de l'exercice monte avec le stade (QCM→indice→sans aide→écrit), mais FSRS suppose un test
   de rappel constant → un « Bien » sur un QCM (reconnaissance facile) gonflait la stabilité à tort.
