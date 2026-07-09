@@ -135,3 +135,30 @@ test("fsrsSchedule : invariants (pas de mutation, pas de NaN, succès répétés
   }
   assert.ok(lastS > 10, `S finale trop basse: ${lastS}`);
 });
+
+test("fsrsSchedule : opts.gradeD dissocie stabilité (note plafonnée) et difficulté (note brute)", () => {
+  /* v64 : les exercices aidés plafonnent la note à Difficile(2) pour freiner la CROISSANCE de S,
+     mais la difficulté D ne doit pas dériver en cliquet (un 2 IMPOSÉ n'est pas un 2 choisi).
+     -> S suit G (plafonné), D suit opts.gradeD (la note réellement choisie). */
+  const base  = () => ({ stage:3, itv:5, due:"2026-07-02", S:5, D:5, ok:3, ko:0 });
+  const today = "2026-07-09";
+  const capped = fsrsSchedule(base(), 2, today, {});                // sans dissociation (référence)
+  const split  = fsrsSchedule(base(), 2, today, { gradeD: 3 });     // v64 : D neutre
+  const good   = fsrsSchedule(base(), 3, today, {});
+  assert.equal(split.S, capped.S, "stabilité = canal plafonné (pénalité w15)");
+  assert.equal(split.D, good.D,   "difficulté = canal note brute");
+  assert.ok(capped.D > split.D,   "sans dissociation, D dériverait vers le haut");
+  assert.ok(split.S < good.S,     "le frein voulu sur S reste actif");
+  // carte NEUVE : initS via G, initD via gradeD
+  const r3 = x => Math.round(x*1000)/1000;
+  const n = fsrsSchedule({ stage:0, itv:0, due:null }, 2, today, { gradeD: 3 });
+  assert.equal(n.S, r3(fsrsInitS(2, W)), "S0 = canal plafonné");
+  assert.equal(n.D, r3(fsrsInitD(3, W)), "D0 = canal note brute");
+  // rétrocompatible : sans opts.gradeD, comportement inchangé
+  const legacy = fsrsSchedule(base(), 2, today, {});
+  assert.deepEqual(legacy, capped);
+  // échec : gradeD=1 n'adoucit rien
+  const f = fsrsSchedule(base(), 1, today, { gradeD: 1 });
+  const f0 = fsrsSchedule(base(), 1, today, {});
+  assert.deepEqual(f, f0);
+});

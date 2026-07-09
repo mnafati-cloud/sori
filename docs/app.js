@@ -143,7 +143,7 @@ function armUndo(){
     log: ST.log[t] ? JSON.parse(JSON.stringify(ST.log[t])) : null,
     xp: ST.xp||0, combo: COMBO, sessfail: [...SESSFAIL],
     q: [...Q], qpos: QPOS,
-    rlogLen: (ST.rlog||[]).length,     // FSRS : pour retirer l'entrée de journal en cas d'annulation
+    rlogPushed: false,                 // FSRS : posé par logReview → undoLast retire l'entrée (fiable même à RLOG_CAP)
   };
 }
 function undoLast(){
@@ -153,7 +153,7 @@ function undoLast(){
   if(UNDO.log === null) delete ST.log[t]; else ST.log[t] = UNDO.log;
   ST.xp = UNDO.xp; COMBO = UNDO.combo; SESSFAIL = UNDO.sessfail;
   Q = UNDO.q; QPOS = UNDO.qpos;
-  if(ST.rlog && typeof UNDO.rlogLen === "number" && ST.rlog.length > UNDO.rlogLen) ST.rlog.length = UNDO.rlogLen;  // retire l'entrée de journal annulée
+  if(ST.rlog && UNDO.rlogPushed && ST.rlog.length) ST.rlog.pop();  // retire l'entrée poussée depuis le snapshot (à RLOG_CAP, comparer les longueurs mentait)
   UNDO = null;
   save(); saveSess(); updateDayCount(); render();
 }
@@ -343,12 +343,13 @@ function ttsSpeak(text){
    - "fsrs"   : modèle DSR moderne (stabilité/difficulté par carte) — défaut.
    - "legacy" : échelle de stades + ease (ALGORITHM.md) — repli/rollback.
    Dans les deux cas le STAGE (choix d'exercice) évolue pareil. */
-function applyAnswer(it, ok, grade){
+function applyAnswer(it, ok, grade, gradeRaw, kind){
   const G = grade || (ok ? 3 : 1);   // note FSRS : 1 Encore(Again) · 2 Difficile(Hard) · 3 Bien(Good) · 4 Facile(Easy)
+  const GD = gradeRaw || G;          // note BRUTE (non plafonnée) → canal difficulté (v64, cf. engine.fsrsSchedule)
   if(ST.set.scheduler !== "legacy"){
-    const r = ENGINE.fsrsSchedule(it, G, todayStr(), { retention: ST.set.fsrsRetention || 0.9 });
+    const r = ENGINE.fsrsSchedule(it, G, todayStr(), { retention: ST.set.fsrsRetention || 0.9, gradeD: GD });
     setItem(it.id, { s:r.stage, i:r.i, d:r.d, S:r.S, D:r.D, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) });
-    logReview(it.id, G, r.elapsed);   // journal (fit hors-ligne des poids) — toutes les révisions
+    logReview(it.id, G, r.elapsed, kind);   // journal (fit hors-ligne des poids) — toutes les révisions
     return { s:r.stage, i:r.i, d:r.d, counted:r.counted };
   }
   const r = ENGINE.computeAnswer(it, ok, todayStr(), ST.set.adaptive === true);
@@ -362,10 +363,13 @@ function applyAnswer(it, ok, grade){
    Contents API ~1 Mo/fichier) ne peut pas échouer silencieusement, et c'est amplement assez
    pour ajuster les poids FSRS (fit hors-ligne sur l'historique récent). */
 const RLOG_CAP = 10000;
-function logReview(id, G, elapsed){
+function logReview(id, G, elapsed, kind){
   ST.rlog = ST.rlog || [];
-  ST.rlog.push([todayStr(), id, G, elapsed|0]);
+  /* 5e champ (v64, additif) : le TYPE d'exercice — permet au fit Phase B de distinguer un 2 CHOISI
+     (vrai rappel hésitant) d'un 2 IMPOSÉ par le plafond (les vieilles entrées à 4 champs n'en ont pas). */
+  ST.rlog.push([todayStr(), id, G, elapsed|0, kind || ""]);
   if(ST.rlog.length > RLOG_CAP) ST.rlog.splice(0, ST.rlog.length - RLOG_CAP);
+  if(UNDO) UNDO.rlogPushed = true;   // marqueur consommé par undoLast (fiable même à RLOG_CAP)
   save();   // le push arrive APRÈS le save() de setItem → persister explicitement
 }
 /* « je le sais déjà » : fast-track d'un mot déjà connu → planifié LOIN, sans le tester.
@@ -561,7 +565,7 @@ function renderReview(){
       <div class="done-banner">${PENDING>0?"💪":"🎉"}</div>
       <h2>${PENDING>0?"Session terminée !":"Tout est à jour !"}</h2>
       <p class="dim">${l.ok||0} bonnes réponses aujourd'hui${l.ko?`, ${l.ko} à retravailler`:""}.</p>
-      <p class="dim">✅ ${BASE_IDS.map(eff).filter(it=>it.stage>=4).length} cartes maîtrisées au total.</p>
+      <p class="dim">✅ ${(m=>`${m.length} cartes maîtrisées, dont ${m.filter(it=>it.itv>=14).length} ancrées (intervalle ≥ 2 semaines)`)(BASE_IDS.map(eff).filter(it=>it.stage>=4))}.</p>
       <div class="row" style="margin-top:12px">
         ${more}
         <button class="btn" id="reviewmore">🔁 Réviser 10 cartes</button>
@@ -779,13 +783,24 @@ function showTrivia(card, it){
 /* plafond de note FSRS par EXERCICE (l'aide fournie borne la preuve de mémoire) :
    reconnaissance (QCM) = Difficile(2) max ; rappel indicé/construction/sens = Bien(3) ;
    rappel sans aide / écrit = Facile(4). Empêche une réponse assistée de gonfler la stabilité. */
-const KIND_MAXGRADE = { qcm1:2, qcm2:2, qcm3:2, build:3, rec4:3, recrev:3, rec5:4, type:4 };
+/* v64 (retour user) : le rappel INDICÉ (1re syllabe = indice énorme) et le sens INVERSÉ (KR→FR,
+   direction facile) ne créditent plus que Difficile(2) — la stabilité ne grimpe vite que sur une
+   preuve de PRODUCTION sans aide (rec5/type). build reste à 3 : seule vraie « production » des phrases. */
+const KIND_MAXGRADE = { qcm1:2, qcm2:2, qcm3:2, build:3, rec4:2, recrev:2, rec5:4, type:4 };
+function maxGradeFor(it, kind){
+  /* en mode « Production séparée » (reverse ON), le rappel inversé est l'exercice CANONIQUE de la
+     carte recto (la production vit sur sa carte verso) → pas un exercice « aidé », plafond normal.
+     Sans ça, une carte recto ne pourrait JAMAIS créditer mieux que Difficile (revue adversariale v64). */
+  if(kind === "recrev" && ST.set.reverse !== false && it && !it.rev) return 3;
+  return KIND_MAXGRADE[kind] || 3;
+}
 function afterAnswer(it, ok, sawTrivia, kind, grade){
   LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞
   armUndo();                                // photo AVANT toute mutation (annulation possible)
-  const maxG = KIND_MAXGRADE[kind] || 3;
-  const G = ok ? Math.min(grade || 3, maxG) : 1;         // note plafonnée par l'aide de l'exercice
-  const r = BONUS ? null : applyAnswer(it, ok, G);
+  const maxG = maxGradeFor(it, kind);
+  const Graw = ok ? (grade || 3) : 1;                    // la note réellement CHOISIE (Bien par défaut)
+  const G = ok ? Math.min(Graw, maxG) : 1;               // note plafonnée par l'aide (canal stabilité)
+  const r = BONUS ? null : applyAnswer(it, ok, G, Graw, kind);
   logAnswer(ok, kind || "review", r, EXO_T0 ? Date.now()-EXO_T0 : 0);
   /* combo & XP (plancher motivant, jamais bloquant) */
   if(ok) COMBO++; else { COMBO = 0; if(!SESSFAIL.includes(it.id)) SESSFAIL.push(it.id); }
@@ -871,9 +886,12 @@ function exoQcmFr2Kr(it){
    (Difficile = pénalité w15, Facile = bonus w16). ok = note ≥ 2 (pour combo/rétention). */
 function gradeButtons(row, it, kind){
   row.innerHTML = "";
-  const maxG = KIND_MAXGRADE[kind] || 3;   // note max justifiée par l'aide de l'exercice
+  const maxG = maxGradeFor(it, kind);   // note max justifiée par l'aide de l'exercice
   const wire = (b, ok, g) => { b.onclick = ()=>{ [...row.children].forEach(x=>x.disabled=true); afterAnswer(it, ok, false, kind, g); }; return b; };
-  if(ST.set.grade4 !== false){
+  /* plafond ≤ Difficile (exercice aidé) : une seule note positive possible → paire binaire,
+     comme le QCM. On transmet la note BRUTE (Bien) : afterAnswer plafonne pour la stabilité,
+     la difficulté D reste sur la note choisie (v64, dissociation des canaux). */
+  if(ST.set.grade4 !== false && maxG > 2){
     row.classList.add("g4row");
     /* on n'offre que les notes atteignables : ex. rappel indicé → pas de « Facile » (plafond Bien). */
     const defs = [["Encore","btn ko",false,1],["Difficile","btn",true,2],["Bien","btn",true,3],["Facile","btn ok",true,4]];
@@ -882,7 +900,7 @@ function gradeButtons(row, it, kind){
   } else {
     row.append(
       wire(el(`<button class="btn ko">Encore</button>`), false, 1),
-      wire(el(`<button class="btn ok">Bien</button>`),   true,  Math.min(3, maxG)));
+      wire(el(`<button class="btn ok">Bien</button>`),   true,  3));   // brute ; afterAnswer plafonne (canal S)
   }
 }
 function exoRecall(it, hinted){
@@ -1182,7 +1200,7 @@ function renderStats(){
     ["Réponses aujourd'hui", "Le nombre de cartes que tu as répondues aujourd'hui, tous exercices confondus (QCM, rappel, écoute…)."],
     ["Réussite (7 jours)", "Ton taux de bonnes réponses sur les 7 derniers jours. On ne compte que la PREMIÈRE fois que tu vois chaque carte dans la journée — c'est le vrai test de mémoire, pas les re-essais."],
     ["Ennemies vaincues", "Tes mots les plus ratés (les « ennemies ») que tu as réussi à ramener à un bon niveau (niv ≥ 4). Le premier chiffre = domptées, le second = total de tes ennemies."],
-    ["Cartes maîtrisées", "Les cartes arrivées HAUT dans l'échelle de maîtrise (niv ≥ 4 : rappel avec indice, rappel pur ou saisie hangul). Tu les connais solidement, pas juste en reconnaissance."],
+    ["Cartes maîtrisées", `Les cartes arrivées HAUT dans l'échelle de maîtrise (niv ≥ 4). Attention : monter l'échelle ≠ ancré durablement — ${baseItems.filter(it=>it.stage>=4 && it.itv>=14).length} d'entre elles sont ANCRÉES (intervalle ≥ 2 semaines, une vraie preuve de mémoire longue). L'écart entre les deux, c'est ce qui reste à consolider.`],
     ["Deck abordé", "Combien de cartes du deck tu as déjà commencé à étudier (vues au moins une fois), sur le total disponible. Le reste attend d'être introduit (30 nouvelles/jour dans tes réglages)."]
   ];
   grid.querySelectorAll(".stat").forEach((tile,i)=>{
@@ -1352,7 +1370,7 @@ function openSettings(){
     <label title="FSRS = algorithme moderne (modèle mémoire stabilité/difficulté par carte, ~25% de révisions en moins). Classique = échelle de stades historique.">🧠 Algorithme de répétition
       <select id="sched"><option value="fsrs" ${ST.set.scheduler!=="legacy"?"selected":""}>FSRS (moderne)</option><option value="legacy" ${ST.set.scheduler==="legacy"?"selected":""}>Classique</option></select></label>
     <label title="Rétention cible FSRS : proba de te souvenir au moment de la révision. Plus haut = plus de révisions, meilleure mémoire. Défaut 0.90.">Rétention cible (FSRS) <input type="number" id="fsrsret" min="0.7" max="0.97" step="0.01" value="${ST.set.fsrsRetention||0.9}"></label>
-    <label title="Au rappel : 4 boutons (Encore/Difficile/Bien/Facile) au lieu de 2. Note plus fine → FSRS mieux calibré.">🎚️ Notation à 4 boutons <input type="checkbox" id="g4" ${ST.set.grade4!==false?"checked":""}></label>
+    <label title="Au rappel SANS AIDE : 4 boutons (Encore/Difficile/Bien/Facile). Les exercices aidés (QCM, indice, sens inversé) restent à 2 boutons — leur note est plafonnée à Difficile. Note plus fine → FSRS mieux calibré.">🎚️ Notation à 4 boutons <input type="checkbox" id="g4" ${ST.set.grade4!==false?"checked":""}></label>
     <label title="Intervalles personnalisés par mot (ALGORITHM.md), UNIQUEMENT en mode Classique. Laisser décoché ~2 semaines : l'app observe d'abord.">
       Planification adaptative (mode Classique) <input type="checkbox" id="adap" ${ST.set.adaptive?"checked":""}></label>
     <label title="Chaque mot devient DEUX cartes à maîtrise séparée : comprendre (KR→FR) et produire (FR→KR). Recommandé, mais double la charge de révision.">🔄 Production séparée (recto/verso) <input type="checkbox" id="rev" ${ST.set.reverse!==false?"checked":""}></label>

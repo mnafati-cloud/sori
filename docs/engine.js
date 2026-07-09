@@ -236,6 +236,12 @@
   function fsrsSchedule(it, G, today, opts){
     opts = opts || {};
     const w = opts.w || FSRS_W, Rd = opts.retention || FSRS_DR, maxItv = opts.maxItv || MAX_ITV;
+    /* v64 — deux canaux : la STABILITÉ suit G (note plafonnée par l'aide de l'exercice, pénalité
+       w15 voulue) ; la DIFFICULTÉ suit opts.gradeD (la note réellement choisie) — sinon chaque 2
+       IMPOSÉ par le plafond ferait dériver D en cliquet vers ~9.8 (une carte parfaitement connue
+       finirait notée comme une leech, et le facteur (11-D) freinerait AUSSI les révisions non
+       plafonnées). Sans opts.gradeD : comportement inchangé. */
+    const GD = opts.gradeD || G;
     const success = G >= 2;
     const known = !!it.due;
     const elapsed = known ? Math.max(0, daysBetween(prevReviewDate(it), today)) : 0;
@@ -246,7 +252,7 @@
     if(S === null || D === null){
       const hasHistory = ((it.ok||0)+(it.ko||0)) > 0 || (it.itv||0) >= 1;
       if(!hasHistory){                                   // vraie 1re révision d'une carte neuve
-        const s0 = fsrsInitS(G, w), d0 = fsrsInitD(G, w);
+        const s0 = fsrsInitS(G, w), d0 = fsrsInitD(GD, w);
         const i = success ? fsrsNextInterval(s0, Rd, maxItv) : 0;
         return { S: round3(s0), D: round3(d0), i, d: success ? addDays(today, i) : today, stage, elapsed, counted:false };
       }
@@ -261,7 +267,7 @@
     }
 
     const R = fsrsR(elapsed, S);                          // révision COMPTÉE
-    const D2 = fsrsNextD(D, G, w);
+    const D2 = fsrsNextD(D, GD, w);
     if(!success){
       const S2 = fsrsFailS(D, S, R, w);
       return { S: round3(S2), D: round3(D2), i:0, d: today, stage, elapsed, counted:true };  // échec = re-vu en session (comme legacy)

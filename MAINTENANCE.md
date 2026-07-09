@@ -51,6 +51,44 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v64 (la stabilité ne grimpe vite que sur la PRODUCTION sans aide)** : retour user affûté — le rappel
+  indicé (1re syllabe = indice énorme en coréen, « fausse impression de savoir ») et le sens inversé
+  (KR→FR = direction facile) créditaient Bien(3) comme un rappel pur → une carte pouvait atteindre le badge
+  « maîtrisée » (stage 4) par QCM→indice→sens inversé SANS avoir jamais produit le mot sans aide, avec S
+  gonflée sur la compétence facile (mesuré en preview : un recrev juste faisait S 3→21 j ; plafonné → 7 j).
+  Fix (validé par AskUserQuestion, choix « production d'abord ») : **`KIND_MAXGRADE rec4:3→2, recrev:3→2`**
+  (build reste 3 = seule production des phrases ; typing inchangé — l'arbitrage faute-de-frappe existe déjà).
+  `gradeButtons` : si `maxG<=2` → paire binaire Encore/Bien (une seule note positive possible, crédit 2 en
+  interne, précédent v58 QCM) — condition `grade4 !== false && maxG > 2`. Le stage grimpe TOUJOURS à chaque
+  succès (les exercices durcissent) ; seule la CROISSANCE de S est tempérée (w15=0.2315). + **métrique honnête
+  « ancrées »** : fin de session et popin « Cartes maîtrisées » affichent `stage>=4 && itv>=14` (« maîtrisée »
+  = a grimpé l'échelle ≠ ancrée en mémoire). Vérifié preview (état piloté 2 cartes + sus sur le reste du deck,
+  Math.random forcé : rec4 binaire note 2, recrev binaire note 2 stage 3→4, rec5 4 boutons note 3, écran fin
+  + popin, 0 erreur console). CACHE `sori-v64`. **LEÇON : sur une échelle d'exercices, le plafond de note doit
+  refléter l'AIDE (indice) ET la DIRECTION (compréhension vs production) — sinon le planificateur espace des
+  mots que l'user sait reconnaître mais pas produire (le biais exactement dans le mauvais sens pour un voyage).**
+  **REVUE ADVERSARIALE (2 lentilles + réfutation, 7 confirmés) — correctifs intégrés au même lot** :
+  (1) MAJEUR, la note plafonnée nourrissait AUSSI `fsrsNextD` → D dérivait en cliquet vers ~9,8 (point fixe
+  mesuré sur le moteur réel ; une carte parfaitement connue convergeait vers la D d'une leech, et le facteur
+  (11-D) freinait même les rec5 non plafonnés : +48 % de révisions/an). Fix : **dissociation des canaux** —
+  `fsrsSchedule(it, G, today, {gradeD})` : S suit G (plafonné, pénalité w15 = l'intention), **D suit
+  `opts.gradeD`** (la note réellement choisie, transmise brute par `gradeButtons`→`afterAnswer`→`applyAnswer`).
+  Sans l'option : comportement inchangé (rétrocompatible). Test dédié (60 tests). Vérifié preview : recrev
+  « Bien » → S=7.216 (freinée) / D=4.992 (=canal 3) au lieu de D=5.799.
+  (2) MAJEUR (dormant), en mode « Production séparée » (reverse ON) la carte recto ne voyait QUE recrev →
+  plafond 2 À VIE sans échappatoire. Fix : `maxGradeFor(it, kind)` — recrev sur une carte recto en mode
+  reverse = exercice CANONIQUE (pas « aidé ») → plafond 3.
+  (3) mineur, undo × RLOG_CAP : à 10 000 entrées, push+splice laissait la longueur inchangée → l'entrée
+  annulée restait. Fix : marqueur `UNDO.rlogPushed` posé par `logReview`, consommé par `undoLast` (pop).
+  (4) mineur, `.g4row{gap:6px}` était morte (perdait contre `.row{gap:10px}` déclarée après) → `.row.g4row`.
+  (5-7) nits : tooltip « 4 boutons » précisé (rappel SANS AIDE seulement), commentaire v63→v64, double
+  `BASE_IDS.map(eff)` de l'écran de fin factorisé. **BONUS journal : `rlog` gagne un 5e champ ADDITIF `kind`**
+  (`[date,id,noteplafonnée,elapsed,kind]`) → le fit Phase B pourra distinguer un 2 CHOISI d'un 2 IMPOSÉ et
+  segmenter par type d'exercice (les vieilles entrées à 4 champs restent valides). **PIÈGE re-confirmé en
+  preview : le cache heuristique du navigateur sert un engine.js périmé après édition — `fetch(url,
+  {cache:"reload"})` puis reload avant toute vérification (cf. gotcha v16).**
+- **v63 (livré par l'user depuis une autre machine)** : Stats — niveau actuel, ETA vers le niveau suivant,
+  graphes succès & maîtrise/jour (commit `6e2751d`, doc à compléter par lui).
 - **v60-v61 (livrés par l'user depuis une autre machine — doc à compléter par lui)** : `v60` = bouton 🔊 au
   rappel pour réécouter le mot pendant la notation ; `v61` = clic sur le n° de version (Réglages) → historique
   des versions. (Détails non documentés ici : commits `aa5164d` / `40ef703`. Signalés pour ne pas laisser de

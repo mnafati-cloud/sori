@@ -56,8 +56,9 @@ h2{margin:0 0 6px; font-size:1.05rem}
 .rev-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}
 .rev-actions{display:flex;gap:6px;flex-shrink:0}
 
-/* auto-évaluation à 4 boutons (Encore/Difficile/Bien/Facile) — tiennent sur une ligne */
-.g4row{display:flex;gap:6px}
+/* auto-évaluation à 4 boutons (Encore/Difficile/Bien/Facile) — tiennent sur une ligne.
+   .row.g4row : spécificité > .row{gap:10px} déclarée plus bas, sinon le resserrement était mort (revue v64) */
+.row.g4row{display:flex;gap:6px}
 .btn.g4{flex:1;min-width:0;padding:11px 4px;font-size:.9rem}
 
 /* décomposition mot-à-mot d'une phrase (encart trivia) */
