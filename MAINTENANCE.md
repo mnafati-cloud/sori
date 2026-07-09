@@ -51,6 +51,45 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v65 (OBSERVABILITÉ — « pour bien décider a posteriori, il faut avoir bien loggué »)** : audit demandé
+  par l'user (« tu récupères toutes les exceptions ? tu distingues tous les types d'exercices ? »). Constat :
+  exceptions JS = RIEN (catch(e){} muets partout), échecs d'auto-backup cloud AVALÉS (jeton expire
+  2026-12-31 → arrêt silencieux), fast-track/undo non comptés, ni heure ni temps de réponse au journal.
+  Ajouts (tous ADDITIFS dans l'état, embarqués dans la sauvegarde cloud → **à LIRE à chaque analyse,
+  comme state.reports — P12 étendu à `state.errors`**) :
+  (1) **`ST.errors`** (cap 50, dédup consécutive msg+src avec compteur `n`) : `logErr(type,msg,src)` +
+  handlers globaux `error`/`unhandledrejection` (jamais de throw, tab contexte) ; `autoCloudBackup`
+  logge ses échecs (type `cloud`).
+  (2) **`ST.rlog` passe à 7 champs** : `[date, id, note, elapsed, kind, rt(dixièmes de s, cap 600),
+  minuteDuJour]` — hésitation + patterns circadiens pour le fit/analyses. Entrées 4 champs (≤v63) et
+  5 champs (v64) restent valides, segmenter par longueur. **RLOG_CAP 10000→8000 = BUDGET CLOUD**
+  (8000×~55 o ≈ 440 Ko, état ~600 Ko brut → ~800 Ko base64, limite API ~1 Mo — ne pas remonter sans refaire le calcul).
+  (3) **`ST.log[j].known`** (fast-track « Je le sais » — avant, usage invisible, inféré par heuristique)
+  et **`ST.log[j].undo`** (taux de mis-clics).
+  (4) **`ST.vlog`** `[[date,"vNN"],…]` (cap 50) au boot via `caches.keys()` — borne les changements de
+  RÉGIME de notation (v58/v64) pour le fit Phase B.
+  Vérifié preview (exception+rejet capturés, vlog posé, entrée 7 champs rt=148/min=1425, known=1,
+  undo→pop rlog+compteur), 60 tests. CACHE `sori-v65`. **Ce qui reste HORS de portée (assumé) : console
+  téléphone, réseau, appareil — on ne voit QUE ce que l'app écrit dans son état.**
+  **REVUE ADVERSARIALE v65 (6 confirmés) — correctifs intégrés** :
+  (a) MAJEUR, TDZ : `typeof TAB` dans logErr THROW avant l'init de `let TAB` (typeof ne protège pas la
+  TDZ) → une erreur au BOOT était avalée — le cas exact que la couche devait capturer. Fix : lecture de
+  TAB isolée dans son propre try.
+  (b) MAJEUR, **BOMBE BUDGET CLOUD** : le poste dominant de l'état n'est PAS le rlog mais **ST.items
+  (~84 o × cartes touchées ≈ 673 Ko à deck complet)** → l'export dépassera la limite API ~1 Mo vers
+  l'automne 2026 ; sauvegarde ET restauration casseraient avec des messages TROMPEURS (« refus API
+  jeton ? », « hors ligne ? »). Mitigé : garde de taille dans cloudBackup (logErr au-delà de 700 Ko).
+  **CHANTIER PLANIFIÉ (avant sept. 2026) : sortir rlog/errors du fichier restaurable (fichier cloud
+  séparé) et/ou compacter ST.items.** Pour Phase B : l'historique complet au-delà du FIFO =
+  union des snapshots quotidiens datés `exports/sori-export-*.json` (archive de facto).
+  (c) filet d'erreurs PRÉCOCE : 16 scripts se chargent avant app.js — SyntaxError amont/crash du boot
+  étaient invisibles. Fix : inline `<script>` en tête d'index.html → clé SÉPARÉE `sori-earlyerrs`
+  (cap 20, ne touche jamais sori-state-v1), drainée dans ST.errors au boot (marqueur `[avant-boot]`).
+  (d) save() de logErr déplacé dans la branche « nouvelle entrée » (une rafale dédupliquée ne sérialise
+  plus ~600 Ko en boucle) ; (e) rejets-objets : message dérivé (JSON.stringify) au lieu de
+  « [object Object] » qui fusionnait des causes distinctes sous la dédup ; (f) fenêtre rlog à ~670
+  rév/j ≈ 12 j glissants — assumé, cf. (b) snapshots datés. Vérifié preview : earlyerrs drainée
+  `[avant-boot]` + clé nettoyée, 2 rejets-objets → 2 messages JSON distincts.
 - **v64 (la stabilité ne grimpe vite que sur la PRODUCTION sans aide)** : retour user affûté — le rappel
   indicé (1re syllabe = indice énorme en coréen, « fausse impression de savoir ») et le sens inversé
   (KR→FR = direction facile) créditaient Bien(3) comme un rappel pur → une carte pouvait atteindre le badge

@@ -4,6 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0f172a">
+<script>
+/* v65 : filet d'erreurs PRÉCOCE — data.js/engine.js/… se chargent avant app.js ; une SyntaxError
+   amont ou un crash du boot seraient invisibles sans lui. Persiste dans la clé SÉPARÉE
+   "sori-earlyerrs" (cap 20) — app.js la draine dans ST.errors au boot. NE TOUCHE PAS sori-state-v1. */
+(function(){
+  function push(rec){ try{
+    var k = "sori-earlyerrs", a = [];
+    try{ a = JSON.parse(localStorage.getItem(k) || "[]") || []; }catch(_){ }
+    a.push(rec); if(a.length > 20) a.splice(0, a.length - 20);
+    localStorage.setItem(k, JSON.stringify(a));
+  }catch(_){ } }
+  window.__earlyErrH = function(e){ try{ push({
+    d: new Date().toISOString(),
+    type: (e && e.reason !== undefined) ? "promise" : "js",
+    msg: String((e && e.reason && (e.reason.message || e.reason)) || (e && e.message) || "?").slice(0, 300),
+    src: (((e && e.filename) || "") + ":" + ((e && e.lineno) || 0)).slice(0, 120)
+  }); }catch(_){ } };
+  window.addEventListener("error", window.__earlyErrH);
+  window.addEventListener("unhandledrejection", window.__earlyErrH);
+})();
+</script>
 <title>Sori — coréen</title>
 <link rel="manifest" href="./manifest.json">
 <link rel="icon" href="./icon-192.png">

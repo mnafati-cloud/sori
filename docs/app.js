@@ -45,6 +45,7 @@ function loadState(){
         s.set = Object.assign({}, DEF_SET, s.set||{});
         s.xp = s.xp||0;
         s.strPos = s.strPos||0;                    // v62 : position persistée de l'exercice Structure (rampe facile->dur)
+        s.errors = s.errors||[]; s.vlog = s.vlog||[];   // v65 : exceptions capturées + journal de versions
         /* v52 : split recto/verso retiré (doublait le deck). Bascule UNE FOIS les utilisateurs
            qui l'avaient activé (v51) vers OFF ; le toggle Réglages reste libre ensuite. */
         if(s.reverseMig !== 1){ s.set.reverse = false; s.reverseMig = 1; }
@@ -65,6 +66,80 @@ const EXTRA = (typeof window!=="undefined" && window.EXTRA) || {};
 const SHOW_QUESTS = false;   // quêtes du jour + badges (quests.js)
 const SHOW_EXAM   = false;   // bilan de niveau périodique (exam.js)
 function save(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(ST)); }catch(e){} }
+
+/* ===== v65 : capture d'EXCEPTIONS — avant, les catch silencieux et les erreurs globales
+   laissaient l'app muette en cas de casse sur le téléphone (zéro visibilité à l'analyse).
+   Anneau borné ST.errors (additif), embarqué dans chaque sauvegarde cloud → lu à chaque
+   analyse, comme les rapports 🐞. Garde-fous : le handler ne throw JAMAIS, dédup du même
+   message (compteur n), cap 50. */
+const ERR_CAP = 50;
+function logErr(type, msg, src){
+  try{
+    ST.errors = ST.errors || [];
+    msg = String(msg || "?").slice(0, 300); src = String(src || "").slice(0, 120);
+    /* TAB est un `let` déclaré PLUS BAS : avant son initialisation (boot), même `typeof TAB`
+       throw (TDZ — typeof ne protège que les identifiants NON déclarés). Lecture isolée pour
+       que l'entrée survive à un crash du top-level (revue v65). */
+    let tab = "?";
+    try{ if(typeof TAB === "string") tab = TAB; }catch(_){}
+    const last = ST.errors[ST.errors.length - 1];
+    if(last && last.msg === msg && last.src === src){
+      last.n = (last.n||1) + 1; last.d = new Date().toISOString();
+      /* pas de save() ici : une erreur en RAFALE dédupliquée ne doit pas sérialiser l'état
+         (~600 Ko) en boucle — les compteurs partiront avec le prochain save organique. */
+    } else {
+      ST.errors.push({ d: new Date().toISOString(), type, msg, src, tab, n: 1 });
+      if(ST.errors.length > ERR_CAP) ST.errors.splice(0, ST.errors.length - ERR_CAP);
+      save();
+    }
+  }catch(_){}
+}
+/* bascule depuis le filet PRÉCOCE de index.html (clé séparée sori-earlyerrs — les scripts amont
+   et le haut d'app.js se chargent AVANT ces handlers ; sans le filet, une SyntaxError de data.js
+   ou un crash du boot resteraient invisibles). */
+try{
+  if(window.__earlyErrH){
+    window.removeEventListener("error", window.__earlyErrH);
+    window.removeEventListener("unhandledrejection", window.__earlyErrH);
+  }
+}catch(_){}
+window.addEventListener("error", e => logErr("js", e.message, (e.filename || "") + ":" + (e.lineno || 0)));
+window.addEventListener("unhandledrejection", e => {
+  /* dérive un message UTILE quel que soit e.reason (objet sans .message → JSON, pas "[object Object]") */
+  let m = "?";
+  try{
+    const r = e && e.reason;
+    if(r && typeof r.message === "string" && r.message) m = r.message;
+    else if(typeof r === "string" && r) m = r;
+    else if(r && typeof r === "object"){ try{ m = JSON.stringify(r).slice(0, 200); }catch(_){ m = Object.prototype.toString.call(r); } }
+    else if(r !== undefined && r !== null && r !== "") m = String(r);
+  }catch(_){}
+  logErr("promise", m, "");
+});
+try{
+  const early = JSON.parse(localStorage.getItem("sori-earlyerrs") || "[]") || [];
+  if(early.length){
+    early.forEach(x => logErr(x.type || "js", String(x.msg || "?") + " [avant-boot]", x.src || ""));
+    localStorage.removeItem("sori-earlyerrs");
+  }
+}catch(_){}
+
+/* v65 : journal de VERSIONS (ST.vlog = [[date, "vNN"], …]) — borne les changements de régime
+   (ex. plafonds de note v58/v64) pour le fit Phase B. Source = cache SW actif (même mécanisme
+   que l'affichage de version v35) ; enregistré au boot suivant l'activation, c'est suffisant. */
+(function(){
+  try{
+    if(typeof caches === "undefined" || !caches.keys) return;
+    caches.keys().then(keys => {
+      const nums = keys.map(k => /^sori-v(\d+)$/.exec(k)).filter(Boolean).map(m => +m[1]);
+      if(!nums.length) return;
+      const v = "v" + Math.max(...nums);
+      ST.vlog = ST.vlog || [];
+      const last = ST.vlog[ST.vlog.length - 1];
+      if(!last || last[1] !== v){ ST.vlog.push([todayStr(), v]); if(ST.vlog.length > 50) ST.vlog.splice(0, ST.vlog.length - 50); save(); }
+    }).catch(() => {});
+  }catch(_){}
+})();
 
 /* état effectif d'un item = seed + delta local */
 function eff(id){
@@ -154,6 +229,10 @@ function undoLast(){
   ST.xp = UNDO.xp; COMBO = UNDO.combo; SESSFAIL = UNDO.sessfail;
   Q = UNDO.q; QPOS = UNDO.qpos;
   if(ST.rlog && UNDO.rlogPushed && ST.rlog.length) ST.rlog.pop();  // retire l'entrée poussée depuis le snapshot (à RLOG_CAP, comparer les longueurs mentait)
+  /* v65 : compteur d'annulations (télémétrie) — mesure le taux de mis-clics, invisible avant
+     (l'undo restaure le log du jour, donc on incrémente APRÈS la restauration). */
+  const lu = ST.log[t] || (ST.log[t] = {ok:0,ko:0,n:0,listen:0});
+  lu.undo = (lu.undo||0) + 1;
   UNDO = null;
   save(); saveSess(); updateDayCount(); render();
 }
@@ -343,31 +422,38 @@ function ttsSpeak(text){
    - "fsrs"   : modèle DSR moderne (stabilité/difficulté par carte) — défaut.
    - "legacy" : échelle de stades + ease (ALGORITHM.md) — repli/rollback.
    Dans les deux cas le STAGE (choix d'exercice) évolue pareil. */
-function applyAnswer(it, ok, grade, gradeRaw, kind){
+function applyAnswer(it, ok, grade, gradeRaw, kind, rt){
   const G = grade || (ok ? 3 : 1);   // note FSRS : 1 Encore(Again) · 2 Difficile(Hard) · 3 Bien(Good) · 4 Facile(Easy)
   const GD = gradeRaw || G;          // note BRUTE (non plafonnée) → canal difficulté (v64, cf. engine.fsrsSchedule)
   if(ST.set.scheduler !== "legacy"){
     const r = ENGINE.fsrsSchedule(it, G, todayStr(), { retention: ST.set.fsrsRetention || 0.9, gradeD: GD });
     setItem(it.id, { s:r.stage, i:r.i, d:r.d, S:r.S, D:r.D, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) });
-    logReview(it.id, G, r.elapsed, kind);   // journal (fit hors-ligne des poids) — toutes les révisions
+    logReview(it.id, G, r.elapsed, kind, rt);   // journal (fit hors-ligne des poids) — toutes les révisions
     return { s:r.stage, i:r.i, d:r.d, counted:r.counted };
   }
   const r = ENGINE.computeAnswer(it, ok, todayStr(), ST.set.adaptive === true);
   setItem(it.id, { s:r.s, i:r.i, d:r.d, e:r.e, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) });
   return r;
 }
-/* journal de révisions — enregistrements compacts [date, id, note, jours écoulés] pour
-   l'ajustement HORS-LIGNE des 21 poids FSRS (optimiseur Python sur l'export cloud).
-   Plafonné (FIFO) pour borner localStorage/cloud. */
-/* plafond du journal : FIFO. 10000 entrées ≈ ~400 Ko → la sauvegarde cloud (state:ST, GitHub
-   Contents API ~1 Mo/fichier) ne peut pas échouer silencieusement, et c'est amplement assez
-   pour ajuster les poids FSRS (fit hors-ligne sur l'historique récent). */
-const RLOG_CAP = 10000;
-function logReview(id, G, elapsed, kind){
+/* journal de révisions — enregistrements compacts pour l'ajustement HORS-LIGNE des poids FSRS
+   (optimiseur Python sur l'export cloud) ET les analyses de comportement.
+   Format v65 : [date, id, note, jours écoulés, kind, tempsRéponse(dixièmes de s, plafonné 600),
+   minuteDuJour]. Les vieilles entrées à 4 (≤v63) ou 5 (v64) champs restent valides — le fit
+   segmente par longueur. Le kind distingue un 2 CHOISI d'un 2 IMPOSÉ par le plafond ; rt et
+   l'heure permettent hésitation & patterns circadiens. */
+/* Plafond FIFO : BUDGET CLOUD. rlog au cap = 8000 × ~55 o ≈ 440 Ko. ⚠️ Le poste DOMINANT de
+   l'état est AILLEURS : ST.items ≈ 84 o × cartes touchées (≈ 673 Ko à deck complet, 7997) —
+   le budget total dépassera la limite API ~1 Mo à l'automne 2026 au rythme d'intro actuel.
+   Garde de taille dans cloudBackup (alerte > 700 Ko) ; correctif de fond planifié (journal dans
+   un fichier cloud séparé, cf. MAINTENANCE v65). NE PAS remonter ce cap sans refaire le calcul.
+   Pour le fit Phase B : l'historique COMPLET (au-delà du FIFO) se reconstruit en unionnant les
+   snapshots quotidiens datés de sori-data (exports/sori-export-AAAA-MM-JJ.json). */
+const RLOG_CAP = 8000;
+function logReview(id, G, elapsed, kind, rt){
   ST.rlog = ST.rlog || [];
-  /* 5e champ (v64, additif) : le TYPE d'exercice — permet au fit Phase B de distinguer un 2 CHOISI
-     (vrai rappel hésitant) d'un 2 IMPOSÉ par le plafond (les vieilles entrées à 4 champs n'en ont pas). */
-  ST.rlog.push([todayStr(), id, G, elapsed|0, kind || ""]);
+  const now = new Date();
+  ST.rlog.push([todayStr(), id, G, elapsed|0, kind || "",
+                Math.min(600, Math.round((rt || 0) / 100)), now.getHours()*60 + now.getMinutes()]);
   if(ST.rlog.length > RLOG_CAP) ST.rlog.splice(0, ST.rlog.length - RLOG_CAP);
   if(UNDO) UNDO.rlogPushed = true;   // marqueur consommé par undoLast (fiable même à RLOG_CAP)
   save();   // le push arrive APRÈS le save() de setItem → persister explicitement
@@ -384,6 +470,11 @@ function markKnown(id){
   } else {
     setItem(id, { s:5, i:21, d:addDays(t,21) });
   }
+  /* v65 : compteur quotidien (télémétrie) — l'usage du fast-track était invisible à l'analyse
+     (pas de rlog, exprès) ; il fallait l'inférer par heuristique S-sans-journal. */
+  const l = ST.log[t] || (ST.log[t] = {ok:0,ko:0,n:0,listen:0});
+  l.known = (l.known||0) + 1;
+  save();
 }
 
 /* rang d'introduction des nouvelles cartes : plus petit = introduit en premier.
@@ -800,8 +891,9 @@ function afterAnswer(it, ok, sawTrivia, kind, grade){
   const maxG = maxGradeFor(it, kind);
   const Graw = ok ? (grade || 3) : 1;                    // la note réellement CHOISIE (Bien par défaut)
   const G = ok ? Math.min(Graw, maxG) : 1;               // note plafonnée par l'aide (canal stabilité)
-  const r = BONUS ? null : applyAnswer(it, ok, G, Graw, kind);
-  logAnswer(ok, kind || "review", r, EXO_T0 ? Date.now()-EXO_T0 : 0);
+  const rt = EXO_T0 ? Date.now() - EXO_T0 : 0;           // temps de réponse (ms) — agrégats ET journal (v65)
+  const r = BONUS ? null : applyAnswer(it, ok, G, Graw, kind, rt);
+  logAnswer(ok, kind || "review", r, rt);
   /* combo & XP (plancher motivant, jamais bloquant) */
   if(ok) COMBO++; else { COMBO = 0; if(!SESSFAIL.includes(it.id)) SESSFAIL.push(it.id); }
   if(!BONUS){
@@ -1560,6 +1652,15 @@ async function cloudBackup(){
   const tok = ghToken();
   if(!tok) return {ok:false, msg:"aucun jeton configuré"};
   const b64 = btoa(unescape(encodeURIComponent(exportPayload())));
+  /* v65 (revue) : GARDE DE TAILLE — l'API Contents plafonne ~1 Mo/fichier ; au-delà, sauvegarde
+     ET restauration cassent avec des messages trompeurs (« refus API », « introuvable »). Le poste
+     DOMINANT est ST.items (~84 o × cartes touchées → ~673 Ko à deck complet), pas le rlog. On
+     alerte AVANT le mur ; le vrai correctif (journal dans un fichier cloud séparé / compaction
+     des items) est planifié — cf. MAINTENANCE v65. */
+  const bytes = Math.floor(b64.length * 3 / 4);
+  if(bytes > 700 * 1024){
+    logErr("cloud", "export " + Math.round(bytes/1024) + " Ko — approche la limite API ~1 Mo : sortir le rlog du fichier restaurable / compacter items (plan MAINTENANCE v65)", "");
+  }
   const H = { "Authorization": "Bearer "+tok, "Accept": "application/vnd.github+json" };
   try{
     const ok1 = await ghPut("exports/latest.json", b64, H);
@@ -1573,7 +1674,9 @@ function autoCloudBackup(){   // silencieux, fin de bloc, throttle 5 min (largem
   const now = Date.now();
   if(now - (ST.lastCloudTs||0) < 5*60*1000) return;   // champ additif ST.lastCloudTs (ms)
   ST.lastCloudTs = now; save();                       // consomme la fenêtre avant l'await (anti double-tir)
-  cloudBackup();
+  /* v65 : un échec de sauvegarde automatique n'est plus AVALÉ — loggué dans ST.errors
+     (jeton expiré, hors-ligne persistant, API en panne : visible à la prochaine analyse). */
+  cloudBackup().then(r => { if(r && !r.ok) logErr("cloud", "auto-backup : " + (r.msg || "?"), ""); }).catch(() => {});
 }
 /* migration douce commune (import fichier OU restauration cloud) */
 function applyImportedState(state){
@@ -1581,6 +1684,7 @@ function applyImportedState(state){
   s.items = s.items||{}; s.log = s.log||{}; s.intro = s.intro||{}; s.rlog = s.rlog||[];
   s.set = Object.assign({}, DEF_SET, s.set||{});
   s.strPos = s.strPos||0;                    // v62 : position persistée de l'exercice Structure
+  s.errors = s.errors||[]; s.vlog = s.vlog||[];   // v65
   s.v = s.v || 1;
   ST = s; save(); Q = null; render();
 }
