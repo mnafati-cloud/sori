@@ -49,6 +49,9 @@ function loadState(){
         /* v52 : split recto/verso retiré (doublait le deck). Bascule UNE FOIS les utilisateurs
            qui l'avaient activé (v51) vers OFF ; le toggle Réglages reste libre ensuite. */
         if(s.reverseMig !== 1){ s.set.reverse = false; s.reverseMig = 1; }
+        /* v68 : adaptive n'est lu qu'en mode legacy — le laisser à true minerait un futur rollback
+           (planif adaptative silencieuse au lieu du legacy gelé). Désamorcé une fois. */
+        if(s.adapMig !== 1){ if(s.set.scheduler !== "legacy") s.set.adaptive = false; s.adapMig = 1; }
         return s;
       }
     }
@@ -154,6 +157,7 @@ function eff(id){
     ok: d.ok||0, ko: d.ko||0,
     e: d.e,                       // ease adaptative (undefined -> seed paresseux via easeOf)
     S: d.S, D: d.D,               // FSRS : stabilité (jours) & difficulté (1-10) — undefined = amorcé au 1er passage
+    lp: d.lp || 0,                // v68 : rattrapage post-lapse restant (production forcée)
     sus: !!d.sus,                 // "mise de côté" : exclue de toute file tant que vrai (réversible)
     rev: !!seed.rev,              // carte verso (production FR→KR) vs recto (compréhension KR→FR)
   };
@@ -219,6 +223,7 @@ function armUndo(){
     xp: ST.xp||0, combo: COMBO, sessfail: [...SESSFAIL],
     q: [...Q], qpos: QPOS,
     rlogPushed: false,                 // FSRS : posé par logReview → undoLast retire l'entrée (fiable même à RLOG_CAP)
+    failpos: new Map(FAILPOS), consol: new Set(CONSOL), pending: PENDING,   // v68 : transitoires de session (sinon l'undo les désynchronise)
   };
 }
 function undoLast(){
@@ -228,6 +233,8 @@ function undoLast(){
   if(UNDO.log === null) delete ST.log[t]; else ST.log[t] = UNDO.log;
   ST.xp = UNDO.xp; COMBO = UNDO.combo; SESSFAIL = UNDO.sessfail;
   Q = UNDO.q; QPOS = UNDO.qpos;
+  FAILPOS = UNDO.failpos || new Map(); CONSOL = UNDO.consol || new Set();   // v68
+  if(typeof UNDO.pending === "number") PENDING = UNDO.pending;
   if(ST.rlog && UNDO.rlogPushed && ST.rlog.length) ST.rlog.pop();  // retire l'entrée poussée depuis le snapshot (à RLOG_CAP, comparer les longueurs mentait)
   /* v65 : compteur d'annulations (télémétrie) — mesure le taux de mis-clics, invisible avant
      (l'undo restaure le log du jour, donc on incrémente APRÈS la restauration). */
@@ -425,14 +432,31 @@ function ttsSpeak(text){
 function applyAnswer(it, ok, grade, gradeRaw, kind, rt){
   const G = grade || (ok ? 3 : 1);   // note FSRS : 1 Encore(Again) · 2 Difficile(Hard) · 3 Bien(Good) · 4 Facile(Easy)
   const GD = gradeRaw || G;          // note BRUTE (non plafonnée) → canal difficulté (v64, cf. engine.fsrsSchedule)
+  /* v68 : rattrapage post-lapse — quand une carte MÛRE (S>=7) est ratée, ses 2 prochaines
+     révisions forcent la PRODUCTION : c'est elle qui a lâché, et le tirage recrev plafonné
+     ralentissait la reconstruction de +48% vs FSRS nominal (audit). GATE (revue v68) : seulement
+     les cartes qui PEUVENT voir rec5/type (mot, pas une carte recto en mode Production séparée),
+     sinon lp resterait bloqué à vie ; logique COMMUNE aux deux planificateurs (le dispatch lit lp
+     quel que soit le mode — un rollback legacy ne doit pas verrouiller le rec5 forcé). */
+  let lpNext;
+  const canProd = it.type === "word" && !((ST.set.reverse !== false) && !it.rev);
+  const prevS = (typeof it.S === "number") ? it.S : (it.itv || 0);
+  if(!ok && prevS >= 7 && canProd) lpNext = 2;
+  else if(ok && (kind === "rec5" || kind === "type") && (it.lp|0) > 0) lpNext = it.lp - 1;
   if(ST.set.scheduler !== "legacy"){
-    const r = ENGINE.fsrsSchedule(it, G, todayStr(), { retention: ST.set.fsrsRetention || 0.9, gradeD: GD });
-    setItem(it.id, { s:r.stage, i:r.i, d:r.d, S:r.S, D:r.D, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) });
+    const t = todayStr();
+    const r = ENGINE.fsrsSchedule(it, G, t, { retention: ST.set.fsrsRetention || 0.9, gradeD: GD,
+                                              fuzz: it.id + "|" + t });   // v68 : désynchronise les cohortes
+    const patch = { s:r.stage, i:r.i, d:r.d, S:r.S, D:r.D, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) };
+    if(lpNext !== undefined) patch.lp = lpNext;
+    setItem(it.id, patch);
     logReview(it.id, G, r.elapsed, kind, rt);   // journal (fit hors-ligne des poids) — toutes les révisions
     return { s:r.stage, i:r.i, d:r.d, counted:r.counted };
   }
   const r = ENGINE.computeAnswer(it, ok, todayStr(), ST.set.adaptive === true);
-  setItem(it.id, { s:r.s, i:r.i, d:r.d, e:r.e, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) });
+  const lpatch = { s:r.s, i:r.i, d:r.d, e:r.e, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) };
+  if(lpNext !== undefined) lpatch.lp = lpNext;   // v68 : lp vit dans les DEUX modes (rollback sûr)
+  setItem(it.id, lpatch);
   return r;
 }
 /* journal de révisions — enregistrements compacts pour l'ajustement HORS-LIGNE des poids FSRS
@@ -465,7 +489,8 @@ function markKnown(id){
   if(ST.set.scheduler !== "legacy"){
     const S = Math.max(21, ENGINE.FSRS.W[3]);                          // stabilité confortable
     const D = Math.round(ENGINE.fsrsInitD(4, ENGINE.FSRS.W)*1000)/1000; // difficulté « Facile »
-    const i = ENGINE.fsrsNextInterval(S, ST.set.fsrsRetention||0.9, ENGINE.EASE.MAX_ITV);
+    const i = ENGINE.fuzzInterval(ENGINE.fsrsNextInterval(S, ST.set.fsrsRetention||0.9, ENGINE.EASE.MAX_ITV),
+                                  id + "|" + t, ENGINE.EASE.MAX_ITV);   // v68 : fuzz aussi (sinon cohorte « Je le sais » synchronisée)
     setItem(id, { s:5, i, d:addDays(t,i), S:Math.round(S*1000)/1000, D });
   } else {
     setItem(id, { s:5, i:21, d:addDays(t,21) });
@@ -506,8 +531,9 @@ function introduceCards(picked, slots, t){
     const group = [id];
     const m = mateOf(id);
     if(m && !seen.has(m) && SEED_BY_ID[m] && eff(m).stage === 0 && !eff(m).sus) group.push(m);
+    if(introduced.length + group.length > slots) continue;   // v68 : une paire ne déborde pas le budget (la coupe éjecterait une échue à sa place)
     for(const g of group){
-      if(seen.has(g)) continue;
+      if(seen.has(g) || eff(g).sus) continue;   // v68 : jamais ré-introduire une carte rangée
       seen.add(g);
       setItem(g, { s:1, i:0, d:t });
       ST.intro[t] = (ST.intro[t]||0) + 1;
@@ -521,20 +547,32 @@ function introduceCards(picked, slots, t){
 function buildQueue(){
   const t = todayStr();
   const effAll = ALL_IDS.map(eff).filter(it=>!it.sus);   // les cartes mises de côté sont exclues de tout
-  const due = ENGINE.selectDue(effAll, t);
-  // introduction de nouvelles
+  let due = ENGINE.selectDue(effAll, t);
+  const cap = ST.set.sessionMax || 120;
+  /* v68 : les nouvelles n'entrent que s'il RESTE de la place sous le plafond (comportement Anki) —
+     avant, elles concurrençaient les échues à égalité dans la coupe, et le budget d'intro était
+     consommé même pour une carte coupée jamais montrée. */
   const introToday = ST.intro[t]||0;
-  let slots = Math.max(0, (ST.set.newPerDay||0) - introToday);
+  let slots = Math.max(0, Math.min((ST.set.newPerDay||0) - introToday, cap - due.length));
   if(slots>0){
     /* on pioche large (×2 : recto+verso) puis introduceCards forme les paires dans la limite du budget */
     const picked = ENGINE.pickNew(effAll, slots*2, ST.set.kitFirst, newRank);
     introduceCards(picked, slots, t).forEach(id => due.push(id));
     save();
   }
+  /* v68 : si la file déborde quand même (retour d'absence), écarter les cartes les MOINS à risque
+     (R le plus haut) — avant, la coupe post-shuffle écartait au hasard, fragiles comprises. */
+  if(due.length > cap){
+    const byId = {}; effAll.forEach(x => { byId[x.id] = x; });
+    const R = new Map(due.map(id => [id, cardRetrievability(byId[id])]));   // mémoïsé, pas dans le comparateur (revue v68)
+    due.sort((a,b) =>
+      ((byId[a].itv===0 && byId[a].due<=t)?0:1) - ((byId[b].itv===0 && byId[b].due<=t)?0:1)   // ratées du jour d'abord (leur R=1.0 les faisait couper en premier)
+      || R.get(a) - R.get(b));
+    PENDING = due.length - cap;
+    due = due.slice(0, cap);
+  } else PENDING = 0;
   shuffle(due);
-  const cap = ST.set.sessionMax || 120;
-  PENDING = Math.max(0, due.length - cap);      // reste pour plus tard
-  return due.slice(0, cap);
+  return due;
 }
 let PENDING = 0;
 const shuffle = ENGINE.shuffle;
@@ -604,7 +642,8 @@ function renderExercices(){
 let Q = null, QPOS = 0, BONUS = false, COMBO = 0, SESSFAIL = [];
 /* la session en cours survit à un kill de l'app (Android) */
 function saveSess(){
-  ST.sess = (BONUS || !Q) ? null : { d:todayStr(), q:Q, p:QPOS, pen:PENDING };
+  ST.sess = (BONUS || !Q) ? null : { d:todayStr(), q:Q, p:QPOS, pen:PENDING,
+    fp:[...FAILPOS], co:[...CONSOL] };   // v68 : sinon un kill transforme les vues blanches en révisions réelles (stage+1 gratuit)
   save();
 }
 /* quitter la révision en cours → retour à l'accueil. La session est CONSERVÉE
@@ -620,8 +659,10 @@ function renderReview(){
     const s = ST.sess;
     if(s && s.d===todayStr() && Array.isArray(s.q) && s.p < s.q.length){
       Q = s.q; QPOS = s.p; PENDING = s.pen||0; BONUS = false;   // reprise
+      FAILPOS = new Map(s.fp||[]); CONSOL = new Set(s.co||[]);    // v68 : transitoires restaurés (vieilles sess sans fp/co → vides)
     } else {
       Q = buildQueue(); QPOS = 0; BONUS = false; COMBO = 0; SESSFAIL = [];
+      FAILPOS.clear(); CONSOL.clear();                            // v68 : jamais de marqueurs d'une file précédente
       saveSess();
     }
   }
@@ -663,12 +704,12 @@ function renderReview(){
     document.getElementById("reviewmore").onclick = ()=>{
       const q = reviewMoreQueue(10);
       if(!q.length){ alert("Aucune carte commencée à réviser pour l'instant — apprends-en de nouvelles !"); return; }
-      Q = q; QPOS = 0; BONUS = false; render();
+      Q = q; QPOS = 0; BONUS = false; FAILPOS.clear(); CONSOL.clear(); render();
     };
     document.getElementById("learnmore").onclick = ()=>{
       const q = learnMoreQueue(10);
       if(!q.length){ alert("Bravo — tu as déjà commencé toutes les cartes du deck !"); return; }
-      Q = q; QPOS = 0; BONUS = false; render();
+      Q = q; QPOS = 0; BONUS = false; FAILPOS.clear(); CONSOL.clear(); render();
     };
     /* 🎯 quêtes du jour en mode compact (fin de session) — masqué v28 (SHOW_QUESTS) */
     if(SHOW_QUESTS && window.SORI_QUESTS){
@@ -700,7 +741,7 @@ function renderReview(){
         <span class="pill stage">niv ${it.stage}</span>
         ${COMBO>=3?`<span class="pill" style="color:var(--acc)">🔥 combo ×${COMBO}</span>`:""}</div>
       <div class="rev-actions">
-        ${it.stage<4 ? '<button class="escbtn" id="knowrev" title="Je connais déjà ce mot — l\'espacer fortement">✓ Je le sais</button>' : ""}
+        ${(it.itv||0) < 14 ? '<button class="escbtn" id="knowrev" title="Je connais déjà ce mot — l\'espacer fortement">✓ Je le sais</button>' : ""}
         <button class="escbtn" id="quitrev" title="Quitter la révision (la progression est gardée)">✕ Quitter</button>
       </div>
     </div></div>`);
@@ -738,9 +779,14 @@ function renderReview(){
        L'inversé est ainsi un exercice ALTERNATIF dès le niveau 3, testé au même titre que le sens normal. */
     if(it.stage<=2){
       exoRecall(it, true);                       // production + 1re syllabe
+    } else if(it.lp > 0){
+      exoRecall(it, false);                      // v68 : rattrapage post-lapse — production forcée (2 révisions)
     } else if(typingTop && it.type==="word" && Math.random()<0.5){
       typingExo();
-    } else if(Math.random()<0.5){
+    } else if(((it.ok + it.ko) % 2) === 0){
+      /* v68 : alternance DÉTERMINISTE par carte (parité des réponses) — l'ancien tirage par rendu
+         laissait 6% des cartes sans AUCUNE production sur 4 révisions (écart de stabilité ×13
+         entre les extrêmes), et quitter/rouvrir re-tirait l'exercice. */
       exoRecallRev(it);                          // sens inversé (compréhension) — alternative à parité
     } else {
       exoRecall(it, false);                      // production sans aide
@@ -752,7 +798,7 @@ function renderReview(){
    « je veux réviser autant que je veux » : répétable, chaque lot fait avancer le deck. */
 function learnMoreQueue(n){
   const t = todayStr();
-  const picked = ENGINE.pickNew(ALL_IDS.map(eff), n*2, ST.set.kitFirst, newRank);   // ×2 : recto+verso, plus simple/fréquent d'abord
+  const picked = ENGINE.pickNew(ALL_IDS.map(eff).filter(it=>!it.sus), n*2, ST.set.kitFirst, newRank);   // ×2 recto+verso ; !sus : les rangées ne reviennent pas par ce chemin (v68)
   const news = introduceCards(picked, n, t);                                        // paires recto+verso
   if(news.length) save();
   return shuffle(news.slice());
@@ -771,18 +817,21 @@ function cardRetrievability(it){
    (ça compte). Les cartes de la file qu'on vient de terminer sont dépriorisées (pas resservies en boucle). */
 function reviewMoreQueue(n){
   const doneNow = new Set(Q||[]);
+  const t = todayStr();
   const cands = ALL_IDS.map(eff).filter(it=>!it.sus && it.stage>=1);   // cartes déjà commencées, hors mises de côté
   const R = new Map(cands.map(it=>[it.id, cardRetrievability(it)]));   // calcul une seule fois par carte
   cands.sort((a,b)=>
     (doneNow.has(a.id)?1:0)-(doneNow.has(b.id)?1:0)     // pas revues à l'instant → d'abord
+    || ((a.due && a.due<=t)?0:1)-((b.due && b.due<=t)?0:1)   // v68 : échues/ratées du jour d'abord (leur R vaut 1.0 à elapsed 0 et les reléguait en queue)
     || R.get(a.id)-R.get(b.id)                           // récupérabilité la plus basse = au bord de l'oubli
     || (b.ko-a.ko)                                        // puis les plus souvent ratées
     || (a.id<b.id?-1:1));                                 // départage stable
   return shuffle(cands.slice(0,n).map(it=>it.id));
 }
-/* boss fight : affronter ses ennemies (les mots les plus ratés), les plus faibles d'abord */
+/* boss fight — DORMANT (aucun bouton câblé depuis v42 ; audit v68). Si réactivé : refuser de
+   démarrer si ST.sess existe (sinon écrase la session en cours) et recalculer PENDING. */
 function bossCandidates(){
-  return ALL_IDS.map(eff).filter(it=>it.enemy && it.stage>=1 && it.stage<=4)
+  return ALL_IDS.map(eff).filter(it=>it.enemy && !it.sus && it.stage>=1 && it.stage<=4)
     .sort((a,b)=>a.stage-b.stage || (a.ko-b.ko));
 }
 function startBoss(){
@@ -863,6 +912,16 @@ function maxGradeFor(it, kind){
   if(kind === "recrev" && ST.set.reverse !== false && it && !it.rev) return 3;
   return KIND_MAXGRADE[kind] || 3;
 }
+/* v68 — re-vus INTRA-SESSION de consolidation (audit : rétention à J+1 des vraies nouveautés = 69%
+   alors que le modèle suppose 91% ; et le re-vu d'échec arrive ~30-45 s après = mémoire courte).
+   Deux files transitoires (session courante ; perdues à la reprise, dégradation douce) :
+   - FAILPOS  : position de l'échec → si le re-vu réussi arrive à <3 cartes d'écart (fin de file),
+     c'est de la mémoire immédiate → vue BLANCHE (aucun crédit, la carte reste due) ; sinon crédit
+     normal + une vue de consolidation planifiée à +20-30 cartes.
+   - CONSOL   : ids dont la prochaine présentation est une vue BLANCHE (exercice joué, journalisé
+     dans les stats du jour, mais AUCUNE replanification/stage) ; une vue blanche RATÉE redevient
+     un échec réel. Les vraies nouveautés (1re exposition réussie) reçoivent une vue à +8-12. */
+let FAILPOS = new Map(), CONSOL = new Set();
 function afterAnswer(it, ok, sawTrivia, kind, grade){
   LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞
   armUndo();                                // photo AVANT toute mutation (annulation possible)
@@ -870,7 +929,21 @@ function afterAnswer(it, ok, sawTrivia, kind, grade){
   const Graw = ok ? (grade || 3) : 1;                    // la note réellement CHOISIE (Bien par défaut)
   const G = ok ? Math.min(Graw, maxG) : 1;               // note plafonnée par l'aide (canal stabilité)
   const rt = EXO_T0 ? Date.now() - EXO_T0 : 0;           // temps de réponse (ms) — agrégats ET journal (v65)
-  const r = BONUS ? null : applyAnswer(it, ok, G, Graw, kind, rt);
+  let blanc = false;
+  if(!BONUS && CONSOL.has(it.id)){ CONSOL.delete(it.id); if(ok) blanc = true; }   // consolidation réussie = blanche ; ratée = échec réel
+  if(!BONUS && ok && FAILPOS.has(it.id)){
+    const gap = QPOS - FAILPOS.get(it.id);
+    FAILPOS.delete(it.id);
+    if(gap < 3){ blanc = true; PENDING++; }              // re-vu immédiat (clamp fin de file) : pas de crédit — la carte reste DUE, comptée en attente (revue v68)
+    else if(!blanc){                                     // rattrapage crédité → consolidation à +20-30 cartes
+      const p = Math.min(Q.length, QPOS + 20 + Math.floor(Math.random()*11));
+      Q.splice(p, 0, it.id); CONSOL.add(it.id);
+    }
+  } else if(!BONUS && !blanc && ok && it.stage === 1 && (it.ok|0) === 0 && (it.ko|0) === 0){
+    const p = Math.min(Q.length, QPOS + 8 + Math.floor(Math.random()*5));   // vraie nouveauté : consolider le jour même
+    Q.splice(p, 0, it.id); CONSOL.add(it.id);
+  }
+  const r = (BONUS || blanc) ? null : applyAnswer(it, ok, G, Graw, kind, rt);
   logAnswer(ok, kind || "review", r, rt);
   /* combo & XP (plancher motivant, jamais bloquant) */
   if(ok) COMBO++; else { COMBO = 0; if(!SESSFAIL.includes(it.id)) SESSFAIL.push(it.id); }
@@ -880,6 +953,7 @@ function afterAnswer(it, ok, sawTrivia, kind, grade){
     const l = ST.log[todayStr()]; if(l) l.xp = (l.xp||0) + gain;
   }
   if(!ok && !BONUS){ // re-poser dans la session, 3-5 cartes plus loin
+    FAILPOS.set(it.id, QPOS);                            // v68 : mémorise la position d'échec (crédit du re-vu conditionné à l'écart)
     const pos = Math.min(Q.length, QPOS + 3 + Math.floor(Math.random()*3));
     Q.splice(pos, 0, it.id);
   }

@@ -51,6 +51,58 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v68 (LOT MOTEUR — audit du pipeline de révision, 31 constats vérifiés dont 30 retenus)** : demande
+  user (« on a fait un système un poil bancal, fais une revue précise »). Audit 4 lentilles × réfutation
+  chiffrée (chaque nombre recalculé en EXÉCUTANT engine.js, souvent Monte-Carlo). Décisions user :
+  triage-à-l'introduction REJETÉ (« mes mots connus sont fragiles, je les confonds à une lettre près »
+  — l'échelle d'intro désambiguïse les sosies, ce n'est pas du gaspillage) ; idem « réponse rapide =
+  facile » rejeté ; lot moteur complet ACCEPTÉ ; rétention 0.85 = son réglage (conseillé, pas codé).
+  Livré :
+  (1) **fuzz d'intervalle** (engine `fuzzInterval`, DÉTERMINISTE FNV-1a id+date, ±max(1, 5%·i), i≥3,
+  borné [2, maxItv], identité sans clé → rétrocompatible ; opts.fuzz de fsrsSchedule ; markKnown non
+  fuzzé) — désynchronise les cohortes (échéances mesurées 1..119/j) ;
+  (2) **alternance DÉTERMINISTE** production/compréhension au stage 3+ : `(it.ok+it.ko)%2` au lieu de
+  Math.random par rendu (6% des cartes n'avaient AUCUNE production sur 4 révisions ; écart de
+  stabilité ×13 entre extrêmes ; le re-rendu re-tirait l'exercice) ;
+  (3) **rattrapage post-lapse `lp`** (champ additif d'item, eff().lp) : échec d'une carte MÛRE
+  (S≥7) → lp=2 → rec5 forcé au stage 3+ jusqu'à 2 succès production (rec5/type) — la reconstruction
+  coûtait +48% vs FSRS nominal à cause du tirage recrev plafonné ;
+  (4) **re-vus intra-session de consolidation** (rétention J+1 des vraies nouveautés : 69% mesuré vs
+  91% supposé) : Map `FAILPOS` + Set `CONSOL` (transitoires, perdus à la reprise = dégradation douce).
+  Échec → position mémorisée ; re-vu réussi à <3 cartes d'écart = vue BLANCHE (mémoire immédiate :
+  aucun crédit, la carte reste due) ; à ≥3 = crédit + consolidation à +20-30 cartes ; 1re exposition
+  réussie d'une vraie nouveauté → consolidation à +8-12. **Vue blanche = exercice joué + stats du jour,
+  mais AUCUNE replanification (pas de setItem/rlog/stage)** ; une vue blanche RATÉE redevient un échec réel ;
+  (5) **file** : les nouvelles n'entrent que sous le cap (`slots = min(newPerDay−intro, cap−dues)`,
+  comportement Anki) ; si débordement, coupe par récupérabilité CROISSANTE (on écarte les moins à
+  risque, plus au hasard) ; `reviewMoreQueue` sert les échues du jour d'abord (leur R=1.0 à elapsed 0
+  les reléguait en queue) ;
+  (6) hygiène : filtre `!sus` dans learnMoreQueue/introduceCards/bossCandidates (défense en profondeur),
+  migration one-time `adapMig` (adaptive=false hors legacy — minait le rollback), bouton « Je le sais »
+  affiché si `itv<14` (il s'éteignait au stage 4 avec 1-2 révisions à purger), boss marqué DORMANT.
+  **Pistes AUDITÉES et non retenues** : tri de la file du jour (aucun effet FSRS, grain jour), retouche
+  des poids à la main (w15 sur 2-imposé, S0 surestimé ×5.5 → c'est le travail du fit Phase B, le rlog
+  v65 kind/rt le permet), MAX_ITV 365 (post-départ). 61 tests. Vérifié preview (alternance, lp, gap<3
+  blanc / ≥3 crédit+consol, consolidation 1re exposition, zéro delta d'état sur vue blanche). CACHE `sori-v68`.
+  **REVUE ADVERSARIALE v68 (13 constats, 12 confirmés) — tous corrigés dans le même lot** :
+  (a) MAJEUR, undo × FAILPOS/CONSOL : `armUndo` ne snapshotait pas les transitoires → un mis-clic
+  « raté » annulé puis rejoué juste devenait une vue BLANCHE (bonne réponse jetée en silence). Fix :
+  snapshot `failpos/consol/pending` dans UNDO + restauration. Vérifié preview (mis-clic→undo→Bien =
+  crédit réel, stage 3→4, S 5→27.7).
+  (b) marqueurs périmés : FAILPOS/CONSOL jamais purgés au rebuild de file (leaveReview puis lendemain
+  dans le même process = positions d'un autre référentiel) → `clear()` à chaque nouvelle file
+  (rebuild + reviewmore + learnmore).
+  (c) kill Android : `saveSess` persiste désormais `fp`/`co` (champs ADDITIFS de ST.sess) et la reprise
+  les restaure — sinon les copies de consolidation de la Q sauvée redevenaient des révisions réelles
+  (stage+1 gratuit).
+  (d) `lp` gaté à l'écriture (mot pouvant voir rec5/type : pas les phrases, pas le recto en mode
+  Production séparée — sinon bloqué à 2 à vie) et géré dans les DEUX planificateurs (un rollback
+  legacy ne verrouille plus le rec5 forcé).
+  (e) blanc gap<3 → `PENDING++` (l'écran « Tout est à jour ! » ne ment plus, la carte restait due) ;
+  (f) tri de coupe mémoïsé (Map avant sort) + ratées du jour prioritaires dans la coupe (leur R=1.0
+  les faisait écarter en premier) ; (g) `introduceCards` respecte le budget PAR GROUPE (une paire
+  recto+verso ne déborde plus le cap) ; (h) `markKnown` fuzzé aussi (cohorte « Je le sais » sinon
+  synchronisée à J+21). 61 tests.
 - **v67 (retrait de l'exercice « Structure de phrase »)** : décision user après essai réel (« je n'en
   vois pas l'intérêt au final » — 9 réponses le 07/07, 7/7 après le fix v62, plus jamais rouvert).
   Retiré : le bloc SORI_STRUCTURE de `renderExercices` (l'onglet Exercices = nombres + simulations).

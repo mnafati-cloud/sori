@@ -162,3 +162,37 @@ test("fsrsSchedule : opts.gradeD dissocie stabilité (note plafonnée) et diffic
   const f0 = fsrsSchedule(base(), 1, today, {});
   assert.deepEqual(f, f0);
 });
+
+test("fsrsSchedule : opts.fuzz désynchronise les échéances (déterministe, borné, i>=3 seulement)", () => {
+  /* v68 : sans fuzz les cohortes introduites le même jour reviennent le même jour à vie
+     (échéances mesurées 1..119/j). opts.fuzz = clé (id+date) -> décalage déterministe
+     de max(1, 5% de i), i>=3 seulement, résultat >= 2, <= maxItv. Sans opts.fuzz : inchangé. */
+  const { fuzzInterval } = ENGINE;
+  const today = "2026-07-10";
+  // borné et >= 2
+  for(const i of [3, 5, 10, 11, 35, 60, 119]){
+    for(const key of ["a|d", "b|d", "carte-123|2026-07-10", "x", "y", "z"]){
+      const f = fuzzInterval(i, key, 120);
+      const amp = Math.max(1, Math.round(i * 0.05));
+      assert.ok(Math.abs(f - i) <= amp, `|Δ|<=amp pour i=${i} key=${key} (f=${f})`);
+      assert.ok(f >= 2 && f <= 120, `bornes pour i=${i} (f=${f})`);
+    }
+  }
+  // déterministe : même clé -> même résultat
+  assert.equal(fuzzInterval(35, "id9|2026-07-10", 120), fuzzInterval(35, "id9|2026-07-10", 120));
+  // des clés différentes produisent des décalages différents quelque part (désynchronisation réelle)
+  const vals = new Set(["k1","k2","k3","k4","k5","k6","k7","k8"].map(k => fuzzInterval(35, k, 120)));
+  assert.ok(vals.size >= 2, "au moins deux échéances distinctes sur 8 cartes");
+  // i < 3 : jamais touché
+  assert.equal(fuzzInterval(1, "k", 120), 1);
+  assert.equal(fuzzInterval(2, "k", 120), 2);
+  // maxItv respecté
+  assert.ok(fuzzInterval(120, "kk", 120) <= 120);
+  // intégration fsrsSchedule : sans opts.fuzz -> identique à avant ; avec -> |Δi| <= amp
+  const base = () => ({ stage:4, itv:11, due:"2026-06-29", S:11, D:5, ok:5, ko:0 });
+  const sans = fsrsSchedule(base(), 3, today, {});
+  const avec = fsrsSchedule(base(), 3, today, { fuzz: "carte|2026-07-10" });
+  assert.equal(sans.S, avec.S, "le fuzz ne touche que l'intervalle, pas S");
+  const amp = Math.max(1, Math.round(sans.i * 0.05));
+  assert.ok(Math.abs(avec.i - sans.i) <= amp, `i fuzzé dans la fenêtre (${avec.i} vs ${sans.i})`);
+});

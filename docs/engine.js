@@ -210,6 +210,20 @@
   function fsrsR(t, S){ return Math.pow(1 + FSRS_FACTOR * t / S, FSRS_DECAY); }                     // récupérabilité après t jours
   function fsrsIntervalDays(S, Rd){ return (S / FSRS_FACTOR) * (Math.pow(Rd, 1/FSRS_DECAY) - 1); }  // intervalle exact pour viser Rd
   function fsrsNextInterval(S, Rd, maxItv){ return Math.min(maxItv||MAX_ITV, Math.max(1, Math.round(fsrsIntervalDays(S, Rd||FSRS_DR)))); }
+  /* v68 : FUZZ d'intervalle — désynchronise les cohortes introduites le même jour (sans lui, 68
+     cartes au même S reviennent le même jour À VIE ; échéances mesurées : 1 à 119/jour).
+     DÉTERMINISTE (hash FNV-1a de la clé id+date) : pur, testable, stable au re-calcul du même jour.
+     i>=3 seulement (les intervalles courts portent l'apprentissage), amplitude max(1, 5% de i),
+     résultat borné [2, maxItv]. Sans clé : identité (rétrocompatible). */
+  function fuzzInterval(i, key, maxItv){
+    if(!(i >= 3) || !key) return i;
+    const amp = Math.max(1, Math.round(i * 0.05));
+    let h = 2166136261;
+    const s = String(key);
+    for(let k = 0; k < s.length; k++){ h ^= s.charCodeAt(k); h = Math.imul(h, 16777619); }
+    const off = ((h >>> 0) % (2*amp + 1)) - amp;
+    return Math.min(maxItv || MAX_ITV, Math.max(2, i + off));
+  }
   function fsrsInitS(G, w){ w=w||FSRS_W; return fsrsClampS(w[Math.min(3, Math.max(0, G-1))]); }      // stabilité initiale par note
   function fsrsInitD(G, w){ w=w||FSRS_W; return fsrsClampD(w[4] - Math.exp(w[5]*(G-1)) + 1); }       // difficulté initiale par note
   function fsrsNextD(D, G, w){                                                                        // MAJ difficulté + retour à la moyenne
@@ -253,7 +267,7 @@
       const hasHistory = ((it.ok||0)+(it.ko||0)) > 0 || (it.itv||0) >= 1;
       if(!hasHistory){                                   // vraie 1re révision d'une carte neuve
         const s0 = fsrsInitS(G, w), d0 = fsrsInitD(GD, w);
-        const i = success ? fsrsNextInterval(s0, Rd, maxItv) : 0;
+        const i = success ? fuzzInterval(fsrsNextInterval(s0, Rd, maxItv), opts.fuzz, maxItv) : 0;
         return { S: round3(s0), D: round3(d0), i, d: success ? addDays(today, i) : today, stage, elapsed, counted:false };
       }
       S = fsrsClampS(Math.max(0.5, it.itv || 1));         // migration : S ← intervalle actuel
@@ -262,7 +276,7 @@
 
     if(elapsed < 1){                                      // re-vu de session / anticipé : S/D gelés
       if(!success) return { S: round3(S), D: round3(D), i:0, d: today, stage, elapsed, counted:false };
-      const i = fsrsNextInterval(S, Rd, maxItv);
+      const i = fuzzInterval(fsrsNextInterval(S, Rd, maxItv), opts.fuzz, maxItv);
       return { S: round3(S), D: round3(D), i, d: addDays(today, i), stage, elapsed, counted:false };
     }
 
@@ -273,7 +287,7 @@
       return { S: round3(S2), D: round3(D2), i:0, d: today, stage, elapsed, counted:true };  // échec = re-vu en session (comme legacy)
     }
     const S2 = fsrsSuccS(D, S, R, G, w);
-    const i = fsrsNextInterval(S2, Rd, maxItv);
+    const i = fuzzInterval(fsrsNextInterval(S2, Rd, maxItv), opts.fuzz, maxItv);
     return { S: round3(S2), D: round3(D2), i, d: addDays(today, i), stage, elapsed, counted:true };
   }
 
@@ -281,7 +295,7 @@
   const ENGINE = { addDays, daysBetween, computeAnswer, computeAnswerLegacy, easeOf, isLeech,
                    prevReviewDate, retention7, selectDue, pickNew, computeStreak,
                    pickDistractors, shuffle, sample, DEF_SET, STEP,
-                   fsrsSchedule, fsrsR, fsrsIntervalDays, fsrsNextInterval, fsrsInitS, fsrsInitD,
+                   fsrsSchedule, fsrsR, fsrsIntervalDays, fsrsNextInterval, fuzzInterval, fsrsInitS, fsrsInitD,
                    fsrsNextD, fsrsSuccS, fsrsFailS, easeToD,
                    FSRS: { W: FSRS_W, DECAY: FSRS_DECAY, FACTOR: FSRS_FACTOR, S_MIN: FSRS_S_MIN, S_MAX: FSRS_S_MAX, DR: FSRS_DR },
                    EASE: { EASE_START, EASE_MIN, EASE_MAX, SEED_MIN, SEED_MAX, TARGET_RETENTION,
