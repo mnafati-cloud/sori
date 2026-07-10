@@ -584,31 +584,9 @@ function renderExercices(){
       onAnswer: (ok)=>logAnswer(ok, "nombres")
     });
   }
-  /* 🧩 Structure de phrase : phrases (mots de base fournis) où l'on devine particules/conjugaison.
-     Pool = phrases (≥3 mots) qui ont le vocabulaire de base ET la décomposition (v56). */
-  if(window.SORI_STRUCTURE){
-    const pool = BASE_IDS.map(eff)
-      .filter(it => it.type === "phrase" && it.kr.split(" ").length >= 3)
-      .map(it => { const x = EXTRA[it.id] || {}; return { id: it.id, kr: it.kr, fr: it.fr, base: x.base, words: x.words, build: x.build, cefr: x.cefr }; })
-      .filter(it => Array.isArray(it.base) && it.base.length && Array.isArray(it.words) && it.words.length);
-    /* trié FACILE -> DUR (démarrage progressif, v62) : moins de mots, niveau plus bas, phrase plus courte */
-    pool.sort((a, b) =>
-         (a.kr.split(" ").length - b.kr.split(" ").length)
-      || ((LVL_RANK[a.cefr] || 3) - (LVL_RANK[b.cefr] || 3))
-      || (a.kr.length - b.kr.length)
-      || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
-    if(pool.length){
-      const stBox = el(`<div></div>`);
-      SORI_STRUCTURE.renderCard(stBox, {
-        pool,
-        speak: (kr, id) => speak(kr, id),
-        onAnswer: (ok) => logAnswer(ok, "structure"),
-        startPos: ST.strPos | 0,                              // reprend la progression (la fermeture est recréée à chaque visite d'onglet)
-        onPos: (pos) => { ST.strPos = pos; save(); }          // persiste l'avancée dans la rampe facile->dur (v62)
-      });
-      $screen.appendChild(stBox);
-    }
-  }
+  /* 🧩 Structure de phrase : RETIRÉ de l'onglet en v67 (user : « je n'en vois pas l'intérêt »).
+     structure.js reste chargé mais DORMANT (comme placement.js) ; le contenu EXTRA[id].base
+     (981 phrases) et ST.strPos restent — réactivable en recâblant ce bloc (cf. MAINTENANCE v59/v62). */
   if(window.SORI_SCENARIOS && window.SCENARIOS){
     ST.scen = ST.scen || {};
     const scBox = el(`<div></div>`);

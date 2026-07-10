@@ -51,6 +51,15 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v67 (retrait de l'exercice « Structure de phrase »)** : décision user après essai réel (« je n'en
+  vois pas l'intérêt au final » — 9 réponses le 07/07, 7/7 après le fix v62, plus jamais rouvert).
+  Retiré : le bloc SORI_STRUCTURE de `renderExercices` (l'onglet Exercices = nombres + simulations).
+  **CONSERVÉ (dormant, convention placement.js)** : `docs/structure.js` chargé (index.html + ASSETS),
+  `tests/structure.test.mjs`, le contenu `EXTRA[id].base` des 981 phrases (contrat additif — jamais de
+  suppression de champ), `ST.strPos` (inerte). Réactivation = recâbler le bloc dans renderExercices
+  (cf. v59/v62). Le kind `structure` reste dans les stats historiques. CACHE `sori-v67`.
+- **v66 (livré par l'user depuis une autre machine)** : progression de niveau en graphiques (retour
+  rapport 🐞, commit `f957518`, doc à compléter par lui).
 - **v65 (OBSERVABILITÉ — « pour bien décider a posteriori, il faut avoir bien loggué »)** : audit demandé
   par l'user (« tu récupères toutes les exceptions ? tu distingues tous les types d'exercices ? »). Constat :
   exceptions JS = RIEN (catch(e){} muets partout), échecs d'auto-backup cloud AVALÉS (jeton expire
