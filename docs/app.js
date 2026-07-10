@@ -1318,17 +1318,11 @@ function renderStats(){
   const pts = Object.keys(ST.lvlhist||{}).sort().filter(d=>dd(t,d)<=21).map(d=>({d, tt:lvlTotal(ST.lvlhist[d])}));
   let pace=null;
   if(pts.length>=2){ const a=pts[0], b=pts[pts.length-1], span=dd(b.d,a.d); if(span>=1 && b.tt>a.tt) pace=(b.tt-a.tt)/span; }
-  const eta = (working && need>0 && pace) ? Math.ceil(need/pace) : null;
   const paceTxt = pace!=null ? (Math.round(pace*10)/10) : null;
-  const etaLine = working
-    ? (need===0 ? `Tu viens d'atteindre le seuil du ${working} — le niveau suivant se débloque. 🎉`
-       : eta ? `À ton rythme récent (~${paceTxt} carte${pace>=2?"s":""}/j), ≈ <b>${eta} jour${eta>1?"s":""}</b> avant le ${nextBand||"niveau suivant"}.`
-       : `Encore <b>${need}</b> carte${need>1?"s":""} à solidifier pour le ${nextBand||"niveau suivant"}. L'estimation en jours s'affinera avec quelques jours d'historique.`)
-    : `Toutes les bandes du deck sont solides. 🏆`;
+  const nextPct = working ? Math.min(100, Math.round(100*(mas[working]/(0.8*tot[working])))) : 100;   // % du chemin vers le palier suivant
   $screen.appendChild(el(`<div class="card"><h2>🎯 Ton niveau</h2>
     <p style="margin:2px 0 8px"><span class="dim" style="font-size:.82rem">Niveau actuel (d'après tes acquis)</span><br>
-      <b style="font-size:1.6rem;color:var(--acc)">${working||"🏆 tout acquis"}</b>${acquired.length?` <span class="dim" style="font-size:.8rem">· ${acquired.join(" · ")} acquis</span>`:""}</p>
-    <p class="dim" style="font-size:.85rem;margin-bottom:6px">${etaLine}</p>
+      <b style="font-size:1.6rem;color:var(--acc)">${working||"🏆 tout acquis"}</b>${acquired.length?` <span class="dim" style="font-size:.8rem">· ${acquired.join(" · ")} acquis</span>`:""}${working&&nextBand?`<br><span class="dim" style="font-size:.82rem">Prochain palier : <b>${nextBand}</b> — ${nextPct}% du chemin</span>`:""}</p>
     <div class="levelbars">${BANDS.map(b=>`
       <div class="lvlrow">
         <span class="lvlname">${b}</span>
@@ -1336,20 +1330,31 @@ function renderStats(){
         <span class="lvlpct">${pct(b)}% <span class="dim" style="font-size:.72rem">(${mas[b]}/${tot[b]})</span></span>
       </div>`).join("")}</div></div>`));
 
-  /* 🧗 maîtrise gagnée / jour (14 j) — diff des snapshots ST.lvlhist = vitesse vers le niveau suivant */
+  /* 🧗 gain quotidien vers le prochain niveau (%/jour) — Δ maîtrise du niveau en cours ÷ son seuil (80%), 14 j */
   const gWin=[]; for(let i=13;i>=0;i--) gWin.push(addDays(t,-i));
-  let lastT=null;
-  Object.keys(ST.lvlhist||{}).sort().forEach(d=>{ if(dd(gWin[0],d)>0) lastT=lvlTotal(ST.lvlhist[d]); });   // baseline juste avant la fenêtre
-  const gains=gWin.map(d=>{ const s=(ST.lvlhist||{})[d]; if(!s) return {d,g:null}; const tt=lvlTotal(s); const g=(lastT==null)?null:Math.max(0,tt-lastT); lastT=tt; return {d,g}; });
-  const anyGain = gains.some(x=>x.g!=null);
-  const mxg=Math.max(1,...gains.map(x=>x.g||0));
-  const gWeek = gains.slice(7).filter(x=>x.g!=null);
-  const gAvg = gWeek.length ? Math.round(gWeek.reduce((s,x)=>s+x.g,0)/gWeek.length*10)/10 : null;
-  $screen.appendChild(el(`<div class="card"><h2>🧗 Maîtrise gagnée — 14 jours</h2>
-    <p class="dim" style="font-size:.82rem;margin-bottom:6px">Cartes solidifiées (niv ≥ 4) chaque jour — ta vitesse de progression vers le niveau suivant.${gAvg!=null?` ≈ <b>${gAvg}</b>/j cette semaine.`:""}</p>
-    ${anyGain
-      ? `<div class="bars">${gains.map(x=>`<div class="b"><div style="height:${x.g==null?2:Math.max(2,Math.round(70*x.g/mxg))}px${x.d===t?";background:var(--acc)":""}${x.g==null?";opacity:.25":""}"></div><span>${x.g==null?"·":x.g}</span></div>`).join("")}</div>`
-      : `<p class="dim" style="font-size:.82rem">L'historique se construit — reviens les prochains jours pour voir ta courbe de maîtrise. 📈</p>`}</div>`));
+  const wb = working, tgt = wb ? 0.8*tot[wb] : 0;
+  let lastW=null;
+  Object.keys(ST.lvlhist||{}).sort().forEach(d=>{ if(dd(gWin[0],d)>0){ const s=ST.lvlhist[d]; if(s) lastW = s[wb]||0; } });   // baseline avant la fenêtre
+  const pg=gWin.map(d=>{ const s=(ST.lvlhist||{})[d]; if(!s||!wb) return {d,p:null}; const w=s[wb]||0; const dg=(lastW==null)?null:Math.max(0,w-lastW); lastW=w; return {d, p:(dg==null||tgt<=0)?null:(dg/tgt*100)}; });
+  const anyPg = pg.some(x=>x.p!=null && x.p>0);
+  const mxp = Math.max(0.5,...pg.map(x=>x.p||0));
+  $screen.appendChild(el(`<div class="card"><h2>🧗 Gain vers le niveau suivant — 14 j</h2>
+    <p class="dim" style="font-size:.82rem;margin-bottom:6px">${wb?`Chaque barre = <b>% du chemin</b> vers <b>${nextBand||"le niveau suivant"}</b> gagné ce jour-là (cartes solidifiées ÷ seuil du niveau).`:"Tous les niveaux du deck sont acquis. 🏆"}</p>
+    ${wb ? (anyPg
+      ? `<div class="bars">${pg.map(x=>`<div class="b"><div style="height:${x.p==null?2:Math.max(2,Math.round(70*x.p/mxp))}px${x.d===t?";background:var(--acc)":""}${x.p==null?";opacity:.25":""}"></div><span>${x.p==null?"·":(Math.round(x.p*10)/10)}</span></div>`).join("")}</div>`
+      : `<p class="dim" style="font-size:.82rem">L'historique se construit — les barres apparaîtront au fil de tes jours de révision. 📈</p>`) : ""}</div>`));
+
+  /* ⏳ temps estimé vers CHAQUE niveau à venir (cumulé) — cartes restantes ÷ vitesse récente */
+  const wi = BANDS.indexOf(working);
+  const upcoming = (wi>=0 ? BANDS.slice(wi) : []).filter(b=>tot[b] && mas[b]/tot[b] < 0.8);
+  let cum=0; const etas = upcoming.map(b=>{ cum += Math.max(0, Math.ceil(0.8*tot[b]) - mas[b]); return {b, days: pace ? Math.ceil(cum/pace) : null}; });
+  const mxe = Math.max(1,...etas.map(x=>x.days||0));
+  $screen.appendChild(el(`<div class="card"><h2>⏳ Temps estimé vers les niveaux</h2>
+    <p class="dim" style="font-size:.82rem;margin-bottom:6px">Jours estimés pour atteindre chaque niveau${paceTxt!=null?`, à ton rythme récent (~${paceTxt} carte${pace>=2?"s":""}/j)`:""}.</p>
+    ${etas.length ? (pace
+      ? `<div class="bars">${etas.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.days/mxe))}px"></div><span>${x.b}<br>${x.days} j</span></div>`).join("")}</div>`
+      : `<p class="dim" style="font-size:.82rem">Estimation dispo dès quelques jours d'historique de maîtrise (ta vitesse récente est encore inconnue).</p>`)
+      : `<p class="dim">🏆 Tous les niveaux du deck sont acquis.</p>`}</div>`));
 
   /* 📈 réussite / jour (14 j) — % de bonnes réponses au 1er essai (compteurs propres ok1/ko1) */
   const sWin=[]; for(let i=13;i>=0;i--){ const d=addDays(t,-i); const L=ST.log[d]||{}; const o=(L.ok1!=null?L.ok1:L.ok)||0, k=(L.ko1!=null?L.ko1:L.ko)||0, n=o+k; sWin.push({d,p:n?Math.round(100*o/n):null}); }
