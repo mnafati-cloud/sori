@@ -70,13 +70,14 @@
 /* verre : flou seulement si supporté — sinon les fonds rgba restent
    lisibles tels quels sur le noir (fallback sûr, rien à faire) */
 @supports ((backdrop-filter:blur(14px)) or (-webkit-backdrop-filter:blur(14px))){
-  .theme-seoul .card, .theme-seoul .stat, .theme-seoul .list .item,
+  .theme-seoul .card, .theme-seoul .stat,
   .theme-seoul #topbar, .theme-seoul #tabs{
     -webkit-backdrop-filter:blur(14px) saturate(1.15);
     backdrop-filter:blur(14px) saturate(1.15);
   }
 }
-.theme-seoul .card, .theme-seoul .stat, .theme-seoul .list .item{
+/* v72 : .list .item retiré des deux sélecteurs — les listes sont un registre (lignes), plus des boîtes */
+.theme-seoul .card, .theme-seoul .stat{
   box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 8px 24px rgba(0,0,0,.35);
 }
 /* surcharges des couleurs en dur de style.css */
@@ -150,7 +151,7 @@
   /* v69 : céladon FONCÉ (thème clair — l'ancien clair était illisible sur crème) */
   --seal:#A93226; --seal-ink:#FFFDF6; --cel:#2E6B57; --cel-dim:#9CC0B0;
 }
-.theme-hanji .card, .theme-hanji .stat, .theme-hanji .list .item{
+.theme-hanji .card, .theme-hanji .stat{   /* v72 : .list .item retiré (registre, plus de boîte) */
   box-shadow:0 1px 2px rgba(84,62,26,.05), 0 6px 18px rgba(84,62,26,.05);
 }
 /* surcharges des couleurs sombres en dur de style.css */

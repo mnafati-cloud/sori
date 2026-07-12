@@ -9,18 +9,34 @@
 
   let CUR = null;   // {sc, pos, firstTry, tries}
 
+  /* v72 : mot-lieu hangul par scène — l'ancre myeongjo du registre */
+  const PLACE = { resto:"식당", taxi:"택시", hotel:"호텔", pharmacie:"약국",
+                  konbini:"편의점", marche:"시장" };
+  const CHEV = '<span class="chev"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span>';
+
   function renderList(container, opts){
     CUR = null;
     const data = root.SCENARIOS || [];
     if(!data.length) return;
-    container.appendChild(el(`<div class="section-title">Simulations — joue la scène</div>`));
+    container.appendChild(el(`<div class="section-title">Les scènes — joue ta réplique</div>`));
     const list = el(`<div class="list"></div>`);
     data.forEach(sc=>{
       const best = opts.getBest ? opts.getBest(sc.id) : null;
-      const row = el(`<div class="item"><div class="txt">
-        <div class="kr">${esc(sc.title)}</div>
-        <div class="fr">${sc.steps.length} répliques${best!=null?` · record ${best}/${sc.steps.length} du premier coup`:""}</div>
-      </div><span class="pill stage">jouer</span></div>`);
+      const tot = sc.steps.length;
+      /* record en points (céladon) ; scène parfaite = tamponnée 완벽 (sceau) */
+      let mark = "";
+      if(best != null && best >= tot){
+        mark = `<span class="perfect"><span class="kr">완벽</span></span>`;
+      } else if(best != null){
+        let dots = "";
+        for(let i = 0; i < tot; i++) dots += `<i${i < best ? ' class="on"' : ""}></i>`;
+        mark = `<span class="rec">${dots}</span>`;
+      }
+      const sub = `${tot} répliques${best!=null ? (best>=tot ? " · scène parfaite" : ` · record ${best}/${tot}`) : ""}`;
+      const row = el(`<div class="item">
+        <span class="place">${PLACE[sc.id]||""}</span>
+        <div class="txt"><div class="t">${esc(sc.title)}</div><div class="s">${sub}</div></div>
+        ${mark}${CHEV}</div>`);
       row.onclick = ()=>{ CUR = {sc, pos:0, firstTry:0, answered:false}; renderPlay(container, opts); };
       list.appendChild(row);
     });
@@ -60,7 +76,8 @@
           if(opts.onAnswer) opts.onAnswer(firstShot);
           if(opts.speak) opts.speak(ch.kr);
           const fb = card.querySelector(".feedback");
-          fb.innerHTML = `<div class="trivia"><div class="tfr">✓ ${esc(ch.why)}</div>${step.tip?`<div class="tnote">💡 ${esc(step.tip)}</div>`:""}</div>`;
+          /* v72 : verdict au filet céladon, astuce en note de bas — plus de ✓/💡 */
+          fb.innerHTML = `<div class="verdict">${esc(ch.why)}${step.tip?`<span class="tip"><i>À retenir</i>${esc(step.tip)}</span>`:""}</div>`;
           const row = el(`<div class="row" style="margin-top:10px"><button class="btn" id="scnext">${CUR.pos+1>=sc.steps.length?"Terminer":"Suite"}</button></div>`);
           row.querySelector("#scnext").onclick = ()=>{ CUR.pos++; renderPlay(container, opts); };
           card.appendChild(row);
@@ -68,7 +85,7 @@
           /* mauvaise réplique : elle s'explique puis se retire — on rejoue l'étape */
           firstShot = false;
           b.classList.add("bad"); b.disabled = true;
-          card.querySelector(".feedback").innerHTML = `<div class="trivia"><div class="tfr">✘ ${esc(ch.why)}</div></div>`;
+          card.querySelector(".feedback").innerHTML = `<div class="verdict ko">${esc(ch.why)}</div>`;
         }
       };
       box.appendChild(b);

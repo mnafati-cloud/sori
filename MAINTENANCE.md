@@ -51,6 +51,36 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v72 (Exercices sans les deux bleus — maquette artifact 2f01481b validée user)** : la page
+  Exercices restait « intermédiaire » entre les deux styles. Diagnostic : (1) les cases à cocher
+  des modes n'avaient AUCUN accent-color → bleu Chrome par défaut ; (2) le céladon #7CC7AC, trop
+  saturé, tirait au cyan sur l'encre ET servait de décoration (pill « jouer », `.num-hangul` en
+  `--acc`, badges « niv ») ; (3) les listes `.list .item` = boîtes génériques jamais redessinées
+  en v69. **Trois règles** : ① **coché = tamponné** — plus AUCUNE case à cocher visible : tuiles-
+  tampon dans numbers.js (`<button class="num-mode">` + carré `.st` vermillon incliné, exemples
+  hangul par mode) et `input[type=checkbox]` GLOBAL restylé en interrupteur-sceau (appearance:none,
+  pouce = le carré du streak/끝 ; l'input natif reste dans le DOM → Réglages inchangés côté JS) ;
+  ② **céladon REGLACÉ** `--cel/--acc/--ok:#93BFA6`, `--cel-dim:#4F7561` (thème encre seulement —
+  les 4 autres gardent leurs accents) + doctrine : céladon = réussite/progression SEULEMENT,
+  `.pill.stage` neutre, `.progressbar>div` en cel-dim, `.num-hangul` en hanji myeongjo ;
+  ③ **du carton au REGISTRE** — `.list/.item` global : fond transparent, hairlines, `.kr` myeongjo
+  1.2rem (scènes + dico + « À retravailler » héritent) ; scenarios.js réécrit en registre : mot-lieu
+  hangul en ancre (`PLACE` : 식당/택시/호텔/약국/편의점/시장), record en points `.rec`, scène
+  parfaite tamponnée `.perfect` 완벽, la LIGNE entière est le bouton (pill « jouer » supprimée) ;
+  verdict de scène `.verdict` au filet céladon/sceau + « À retenir » (fin des ✓/✘/💡). Au passage :
+  3 émojis v70 rescapés retirés (🏆, ⏳ de « Temps estimé », ⚠️ de la modale restauration — le ⏳
+  avait échappé au scan v70 : U+23F3 hors plage du regex). Vérifié preview : 0 case native visible,
+  tampons/registre/verdicts aux bonnes couleurs, garde-fou « aucun mode », dico 31 hits en registre,
+  fantôme de bordure sur liste vide corrigé (`.list:empty`). 61 tests. CACHE `sori-v72`.
+  **Revue adversariale (2 défauts, corrigés)** : hairline fantôme sous le dico (la liste de
+  résultats existe VIDE avant toute requête → `.list:empty{border-top:none}`) ; commentaire
+  `.pill.stage` complété (app.js aussi consommateur, pas seulement search.js). Vérifié sans
+  défaut : checkbox global vs modules dormants (exam/player s'insèrent proprement), renderList
+  appelé de 2 endroits, thèmes (toutes les nouvelles classes n'utilisent que des vars définies
+  par thème), pas de collision `.t/.s/.place/.rec/.perfect/.chev/.verdict`.
+  ⚠️ Leçon (2e fois) : les vérifs de transitions CSS en preview mentent quand l'onglet est
+  `visibilityState:"hidden"` — transitions GELÉES aux valeurs de départ ; neutraliser les
+  transitions (`*{transition:none}`) avant de lire les computed styles.
 - **v71 (REPRISE intra-journée — demande user, validée après analyse)** : la stabilité réelle d'une
   vraie nouveauté est ~0,2 jour (≈5 h — mesuré : 69 % à J+1) et l'user ouvre l'app plusieurs fois
   par jour → les fragiles du jour sont maintenant retouchées entre les sessions, pas seulement le

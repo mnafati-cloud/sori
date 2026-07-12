@@ -1479,7 +1479,7 @@ function renderStats(){
   const anyPg = pg.some(x=>x.p!=null && x.p>0);
   const mxp = Math.max(0.5,...pg.map(x=>x.p||0));
   $screen.appendChild(el(`<div class="card"><h2>Gain vers le niveau suivant — 14 j</h2>
-    <p class="dim" style="font-size:.82rem;margin-bottom:6px">${wb?`Chaque barre = <b>% du chemin</b> vers <b>${nextBand||"le niveau suivant"}</b> gagné ce jour-là (cartes solidifiées ÷ seuil du niveau).`:"Tous les niveaux du deck sont acquis. 🏆"}</p>
+    <p class="dim" style="font-size:.82rem;margin-bottom:6px">${wb?`Chaque barre = <b>% du chemin</b> vers <b>${nextBand||"le niveau suivant"}</b> gagné ce jour-là (cartes solidifiées ÷ seuil du niveau).`:"Tous les niveaux du deck sont acquis."}</p>
     ${wb ? (anyPg
       ? `<div class="bars">${pg.map(x=>`<div class="b"><div style="height:${x.p==null?2:Math.max(2,Math.round(70*x.p/mxp))}px${x.d===t?";background:var(--acc)":""}${x.p==null?";opacity:.25":""}"></div><span>${x.p==null?"·":(Math.round(x.p*10)/10)}</span></div>`).join("")}</div>`
       : `<p class="dim" style="font-size:.82rem">L'historique se construit — les barres apparaîtront au fil de tes jours de révision.</p>`) : ""}</div>`));
@@ -1489,7 +1489,7 @@ function renderStats(){
   const upcoming = (wi>=0 ? BANDS.slice(wi) : []).filter(b=>tot[b] && mas[b]/tot[b] < 0.8);
   let cum=0; const etas = upcoming.map(b=>{ cum += Math.max(0, Math.ceil(0.8*tot[b]) - mas[b]); return {b, days: pace ? Math.ceil(cum/pace) : null}; });
   const mxe = Math.max(1,...etas.map(x=>x.days||0));
-  $screen.appendChild(el(`<div class="card"><h2>⏳ Temps estimé vers les niveaux</h2>
+  $screen.appendChild(el(`<div class="card"><h2>Temps estimé vers les niveaux</h2>
     <p class="dim" style="font-size:.82rem;margin-bottom:6px">Jours estimés pour atteindre chaque niveau${paceTxt!=null?`, à ton rythme récent (~${paceTxt} carte${pace>=2?"s":""}/j)`:""}.</p>
     ${etas.length ? (pace
       ? `<div class="bars">${etas.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.days/mxe))}px"></div><span>${x.b}<br>${x.days} j</span></div>`).join("")}</div>`
@@ -1841,7 +1841,7 @@ function confirmRestore(when, loss){
   return new Promise(resolve=>{
     const back = el(`<div class="modal-back">
       <div class="card modal">
-        <h2>⚠️ Restaurer depuis le cloud</h2>
+        <h2>Restaurer depuis le cloud</h2>
         <p class="dim">Ceci <b>remplace définitivement</b> la progression de cet appareil
           (<b>${esc(loss)}</b>) par la sauvegarde cloud du <b>${esc(when)}</b>.</p>
         <p class="dim">Utile seulement si tu changes de téléphone ou repars de zéro. Au moindre doute : Annuler.</p>

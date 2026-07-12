@@ -230,11 +230,12 @@
     return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
   function el(html){ var t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstChild; }
 
+  /* v72 : chaque mode montre un exemple en hangul (myeongjo) dans sa tuile */
   var MODES = [
-    { id: "prix",      label: "Prix" },
-    { id: "heures",    label: "Heures" },
-    { id: "dates",     label: "Dates" },
-    { id: "quantites", label: "Quantités" }
+    { id: "prix",      label: "Prix",      kr: "사천오백 원" },
+    { id: "heures",    label: "Heures",    kr: "세 시 반" },
+    { id: "dates",     label: "Dates",     kr: "시월 일일" },
+    { id: "quantites", label: "Quantités", kr: "맥주 두 병" }
   ];
   var MODE_LABEL = {};
   MODES.forEach(function(mo){ MODE_LABEL[mo.id] = mo.label; });
@@ -242,19 +243,34 @@
   /* Styles .num-* injectés une seule fois — uniquement les variables :root
      de style.css (compatibles avec les 4 thèmes sans rien faire). */
   var CSS = [
-    ".num-modes{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}",
-    ".num-mode{flex:1 1 45%; display:flex; align-items:center; gap:10px;",
-    "  background:var(--panel2); border:1px solid var(--line); border-radius:var(--r);",
-    "  padding:10px 12px; font-size:.95rem; cursor:pointer; text-align:left}",
-    ".num-mode input{transform:scale(1.25); margin:0}",
-    ".num-speak{background:none; border:none; font-size:3rem; cursor:pointer;",
-    "  padding:6px; margin:8px auto 0; display:block}",
+    /* v72 : tuiles-tampon — coché = tamponné (carré vermillon incliné), plus de case native */
+    ".num-modes{display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:14px}",
+    ".num-mode{position:relative; text-align:left; background:none; font:inherit;",
+    "  border:1px solid var(--line); border-radius:13px; padding:11px 13px 10px;",
+    "  color:var(--dim); cursor:pointer;",
+    "  transition:border-color .12s, background-color .12s, color .12s}",
+    ".num-mode b{display:block; font-size:.85rem; font-weight:600}",
+    ".num-mode .mkr{display:block; font-family:var(--kr-display); font-size:1rem;",
+    "  margin-top:3px; opacity:.62; word-break:keep-all}",
+    ".num-mode .st{position:absolute; top:10px; right:11px; width:13px; height:13px;",
+    "  border-radius:4px; border:1px solid var(--line); transform:rotate(-4deg);",
+    "  transition:background-color .12s, border-color .12s}",
+    ".num-mode.on{background:var(--panel2); border-color:var(--dim); color:var(--txt)}",
+    ".num-mode.on .mkr{opacity:.85}",
+    ".num-mode.on .st{background:var(--seal); border-color:transparent}",
+    ".num-mode:focus-visible{outline:2px solid var(--seal); outline-offset:2px}",
+    ".num-go{display:flex; align-items:center; justify-content:space-between; width:100%; margin-top:12px}",
+    ".num-go .n{background:rgba(0,0,0,.25); padding:2px 11px; border-radius:99px;",
+    "  font-size:.8rem; font-weight:600}",
+    ".num-speak{width:88px; height:88px; border-radius:50%; background:var(--panel2);",
+    "  border:1px solid var(--line); color:var(--txt); cursor:pointer;",
+    "  display:flex; align-items:center; justify-content:center; margin:14px auto 0}",
     ".num-toggle{background:none; border:none; color:var(--dim); font-size:.82rem;",
     "  cursor:pointer; padding:4px 8px; text-decoration:underline dotted}",
-    ".num-hangul{font-size:1.35rem; font-weight:600; color:var(--acc);",
+    ".num-hangul{font-family:var(--kr-display); font-size:1.5rem; font-weight:700; color:var(--txt);",
     "  margin:8px 0 2px; word-break:keep-all; min-height:1.4em}",
     ".num-warn{color:var(--warn); font-size:.85rem; margin-top:8px}",
-    ".num-last{color:var(--dim); font-size:.9rem; margin:6px 0 0}"
+    ".num-last{color:var(--dim); font-size:.9rem; margin:12px 0 0}"
   ].join("\n");
   function injectStyles(){
     if(document.getElementById("numbers-styles")) return;
@@ -280,23 +296,27 @@
       card.innerHTML = "";
       card.appendChild(el("<h2>Les nombres à l'oreille</h2>"));
       card.appendChild(el('<p class="dim">Écoute un prix, une heure, une date ou une ' +
-        'quantité en coréen, puis choisis le bon nombre. Série de ' + N + '.</p>'));
-      if(lastScore != null)
-        card.appendChild(el('<p class="num-last">Dernière série : <b>' + lastScore + " / " + N + "</b></p>"));
+        'quantité en coréen, puis choisis le bon nombre.</p>'));
       var box = el('<div class="num-modes"></div>');
       MODES.forEach(function(mo){
-        var lab = el('<label class="num-mode"><input type="checkbox"' +
-          (enabled[mo.id] ? " checked" : "") + "><span>" + esc(mo.label) + "</span></label>");
-        lab.querySelector("input").onchange = function(e){
-          enabled[mo.id] = e.target.checked;
+        /* v72 : tuile-tampon (bouton), plus de case à cocher */
+        var lab = el('<button type="button" class="num-mode' + (enabled[mo.id] ? " on" : "") +
+          '" aria-pressed="' + (enabled[mo.id] ? "true" : "false") + '"><b>' + esc(mo.label) +
+          "</b><span class=\"mkr\">" + esc(mo.kr) + '</span><span class="st"></span></button>');
+        lab.onclick = function(){
+          enabled[mo.id] = !enabled[mo.id];
+          lab.classList.toggle("on", enabled[mo.id]);
+          lab.setAttribute("aria-pressed", enabled[mo.id] ? "true" : "false");
           warn.hidden = MODES.some(function(x){ return enabled[x.id]; });
         };
         box.appendChild(lab);
       });
       card.appendChild(box);
-      var warn = el('<p class="num-warn" hidden>Coche au moins un mode.</p>');
+      var warn = el('<p class="num-warn" hidden>Choisis au moins un mode.</p>');
       card.appendChild(warn);
-      var go = el('<button class="btn" style="width:100%; margin-top:12px">▶ Commencer</button>');
+      if(lastScore != null)
+        card.appendChild(el('<p class="num-last">Dernière série : <b>' + lastScore + " / " + N + "</b></p>"));
+      var go = el('<button class="btn num-go">Commencer<span class="n">série de ' + N + "</span></button>");
       go.onclick = function(){
         var ids = MODES.filter(function(mo){ return enabled[mo.id]; })
                        .map(function(mo){ return mo.id; });
