@@ -25,6 +25,15 @@
 }
 
 /* ============================================================
+   THÈME « ENCRE & SCEAU » — défaut v69 (refonte, maquette validée)
+   = le :root de style.css tel quel : encre froide, hanji chaud,
+   vermillon du sceau (action), céladon (progression).
+   theme-color recommandé : #10141B
+   ============================================================ */
+.theme-encre{ color-scheme:dark; }
+/* aucune surcharge : style.css EST ce thème */
+
+/* ============================================================
    THÈME « SÉOUL NUIT » — défaut (maquette design/variant-b.html)
    Noir profond, duo néon rose/cyan strictement dosé :
    rose = action / attention · cyan = réussite / information.
@@ -47,6 +56,8 @@
   --r:18px;
   --glow:0 0 18px rgba(255,122,184,.22);
   --grad:linear-gradient(90deg,#cc3a76,#4be1e8);
+  /* v69 : accents de la nouvelle structure, exprimés dans la langue du thème */
+  --seal:#cc3a76; --seal-ink:#ffffff; --cel:#4be1e8; --cel-dim:#1d7f85;
 }
 /* halos urbains flous derrière l'app */
 .theme-seoul body{
@@ -89,7 +100,7 @@
   box-shadow:0 0 12px rgba(75,225,232,.15);
 }
 .theme-seoul .progressbar>div{background:var(--grad); box-shadow:0 0 12px rgba(75,225,232,.35)}
-.theme-seoul .trivia{background:rgba(75,225,232,.06); border-left-color:var(--acc)}
+.theme-seoul .trivia{background:rgba(75,225,232,.06)}
 
 /* ============================================================
    THÈME « NUIT » — l'actuel, à l'identique (valeurs de style.css)
@@ -112,8 +123,8 @@
   --r:14px;
   --glow:none;
   --grad:linear-gradient(90deg, var(--acc2), var(--acc));
+  --seal:#0d9488; --seal-ink:#ffffff; --cel:#2dd4bf; --cel-dim:#14655c;   /* v69 */
 }
-/* aucune surcharge : les couleurs en dur de style.css SONT ce thème */
 
 /* ============================================================
    THÈME « HANJI » — clair (maquette design/variant-a.html)
@@ -136,6 +147,8 @@
   --r:14px;
   --glow:none;
   --grad:linear-gradient(90deg,#A93226,#C0563F);
+  /* v69 : céladon FONCÉ (thème clair — l'ancien clair était illisible sur crème) */
+  --seal:#A93226; --seal-ink:#FFFDF6; --cel:#2E6B57; --cel-dim:#9CC0B0;
 }
 .theme-hanji .card, .theme-hanji .stat, .theme-hanji .list .item{
   box-shadow:0 1px 2px rgba(84,62,26,.05), 0 6px 18px rgba(84,62,26,.05);
@@ -144,11 +157,8 @@
 .theme-hanji .opts button:active{background:#EAE0CB}
 .theme-hanji .opts button.good{background:#F4E5DE; border-color:var(--acc)}       /* teinte sceau diluée */
 .theme-hanji .opts button.bad{background:#EFE7D6; border-color:#CFC2A8; border-style:dashed; color:var(--dim)}
-.theme-hanji .btn.ok{background:#166534}       /* inchangé mais explicite : blanc sur vert = AA */
-.theme-hanji .btn.ko{background:#7f1d1d}
 .theme-hanji .progressbar{background:#EAE0CB}
 .theme-hanji .progressbar>div{background:var(--acc)}
-.theme-hanji .trivia{border-left-color:var(--acc)}
 .theme-hanji #daycount{border:1px solid var(--line); background:var(--panel)}
 
 /* ============================================================
@@ -174,19 +184,17 @@
   --r:12px;
   --glow:none;
   --grad:linear-gradient(90deg,#e3a64f,#e3a64f);
+  --seal:#e3a64f; --seal-ink:#201a10; --cel:#e3a64f; --cel-dim:#8a6a3a;   /* v69 : l'ambre reste seul */
 }
-/* l'ambre est clair : les boutons/chips pleins passent à l'encre-sur-ambre
-   (le blanc en dur de style.css serait illisible : 2.1:1) */
-.theme-dansaekhwa .btn{color:#201a10}
+/* v69 : plus de surcharge .btn{color} (le texte suit --seal-ink) ni .chip{color} (suit --txt) —
+   elles rendaient Difficile/Facile et les chips illisibles sur la nouvelle structure (revue v69) */
 .theme-dansaekhwa .btn.ghost{background:none; border:1px solid var(--line); color:var(--dim)}
 .theme-dansaekhwa .btn.ok{background:var(--acc); color:#201a10}
 .theme-dansaekhwa .btn.ko{background:#3a2018; color:#f2ddd6}
-.theme-dansaekhwa .chip{color:#201a10; font-weight:700}
-.theme-dansaekhwa .chip.src{color:var(--txt); font-weight:400}
+.theme-dansaekhwa .chip.src{font-weight:400}
 /* surcharges des verts/rouges en dur de style.css */
 .theme-dansaekhwa .opts button:active{background:#332a1d}
 .theme-dansaekhwa .opts button.good{background:rgba(227,166,79,.10); border-color:var(--acc); font-weight:700}
 .theme-dansaekhwa .opts button.bad{background:#2a1713; border-color:#7a4437}
 .theme-dansaekhwa .progressbar{background:var(--line)}
 .theme-dansaekhwa #daycount{background:none; border:1px solid var(--line)}
-.theme-dansaekhwa .trivia{border-left-width:2px}

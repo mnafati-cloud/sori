@@ -1,8 +1,29 @@
+/* ============================================================
+   Sori — style.css · refonte v69 « Encre & sceau »
+   ============================================================
+   Direction (maquette validée user) : le hangul en AFFICHE (myeongjo
+   embarquée), un seul accent — le vermillon du sceau (action, accompli,
+   attention) — le céladon pour les progressions, texte hanji chaud sur
+   encre froide, zéro émoji dans le chrome (icônes SVG trait).
+   Les NOMS de classes de l'ancienne feuille sont conservés : les 4
+   thèmes de themes.css continuent de piloter les variables. Le :root
+   ci-dessous EST le nouveau thème par défaut « encre » (themes.js).
+   ============================================================ */
+
+/* police d'affiche hangul — sous-ensemble du deck (tools/make_font.py, ~124 Ko, hors-ligne) */
+@font-face{
+  font-family:"NanumMyeongjoSub";
+  src:url("./fonts/nanum-myeongjo-bold-sub.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:swap;
+}
+
 :root{
-  --bg:#0f172a; --panel:#1e293b; --panel2:#273449; --line:#334155;
-  --txt:#e2e8f0; --dim:#94a3b8; --acc:#2dd4bf; --acc2:#0d9488;
-  --ok:#4ade80; --ko:#f87171; --warn:#fbbf24;
-  --r:14px;
+  --bg:#10141B; --panel:#171C25; --panel2:#1D2430; --line:rgba(237,233,224,.09);
+  --txt:#EDE9E0; --dim:#9C978B; --acc:#7CC7AC; --acc2:#E4584A;
+  --ok:#7CC7AC; --ko:#E4584A; --warn:#D9A441;
+  --r:16px;
+  --seal:#E4584A; --seal-ink:#1F0F0B; --cel:#7CC7AC; --cel-dim:#4E7A6B;
+  --kr-display:"NanumMyeongjoSub","Nanum Myeongjo","Gungsuh","Batang","AppleMyungjo","Noto Serif KR",serif;
 }
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
 html,body{margin:0; padding:0; background:var(--bg); color:var(--txt);
@@ -10,174 +31,206 @@ html,body{margin:0; padding:0; background:var(--bg); color:var(--txt);
   height:100%; overscroll-behavior:none}
 body{display:flex; flex-direction:column; min-height:100dvh}
 
+/* ---------- chrome ---------- */
 #topbar{display:flex; align-items:center; justify-content:space-between;
-  padding:10px 16px; padding-top:calc(10px + env(safe-area-inset-top));
-  background:var(--panel); border-bottom:1px solid var(--line)}
-.brand{font-weight:700; font-size:1.15rem; letter-spacing:.5px}
-.brand span{color:var(--acc); font-weight:500; font-size:.9rem}
-#daycount{background:var(--panel2); border-radius:999px; padding:4px 12px;
-  font-variant-numeric:tabular-nums; color:var(--acc); font-weight:600}
+  padding:14px 20px 10px; padding-top:calc(14px + env(safe-area-inset-top));
+  background:var(--bg)}
+.brand{font-family:var(--kr-display); font-weight:700; font-size:1.3rem; letter-spacing:.02em}
+.brand span{color:var(--dim); font-family:system-ui,sans-serif; font-weight:500; font-size:.68rem;
+  letter-spacing:.14em; text-transform:uppercase; margin-left:6px}
+#daycount{font-variant-numeric:tabular-nums; color:var(--dim); font-weight:600; font-size:.85rem;
+  border:1px solid var(--line); border-radius:999px; padding:3px 11px}
 
-#screen{flex:1; overflow-y:auto; padding:16px; max-width:560px; width:100%; margin:0 auto;
+#screen{flex:1; overflow-y:auto; padding:14px 20px 20px; max-width:560px; width:100%; margin:0 auto;
   display:flex; flex-direction:column; gap:14px}
 
-#tabs{display:flex; background:var(--panel); border-top:1px solid var(--line);
-  padding-bottom:env(safe-area-inset-bottom)}
+#tabs{display:flex; background:var(--bg); border-top:1px solid var(--line);
+  padding:8px 6px calc(10px + env(safe-area-inset-bottom))}
 #tabs button{flex:1; background:none; border:none; color:var(--dim);
-  padding:8px 0 6px; font-size:1.3rem; display:flex; flex-direction:column; align-items:center; gap:2px; cursor:pointer}
-#tabs button span{font-size:.68rem; font-family:inherit}
-#tabs button.active{color:var(--acc)}
+  padding:6px 0 2px; display:flex; flex-direction:column; align-items:center; gap:4px; cursor:pointer}
+#tabs button svg{width:21px; height:21px; stroke:currentColor; stroke-width:1.6; fill:none;
+  stroke-linecap:round; stroke-linejoin:round}
+#tabs button span{font-size:.62rem; letter-spacing:.08em; font-family:inherit}
+#tabs button.active{color:var(--txt)}
+#tabs button.active::after{content:""; width:4px; height:4px; border-radius:50%; background:var(--seal)}
 
-.card{background:var(--panel); border:1px solid var(--line); border-radius:var(--r); padding:16px}
+/* ---------- surfaces & typo ---------- */
+.card{background:var(--panel); border:1px solid var(--line); border-radius:var(--r); padding:18px}
 .center{text-align:center}
-h2{margin:0 0 6px; font-size:1.05rem}
+h2{margin:0 0 8px; font-size:.72rem; font-weight:600; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--dim)}
 .dim{color:var(--dim); font-size:.85rem}
-.big-kr{font-size:2.6rem; line-height:1.25; font-weight:600; margin:12px 0; word-break:keep-all}
-.big-kr.phrase{font-size:1.6rem}
-.big-fr{font-size:1.5rem; line-height:1.35; margin:12px 0}
+.num, #daycount, .stat .n, .lvlpct, .ans-ivl{font-variant-numeric:tabular-nums}
+
+/* le hangul d'affiche : myeongjo, énorme, seul en scène */
+.big-kr{font-family:var(--kr-display); font-size:3.4rem; line-height:1.18; font-weight:700;
+  margin:18px 0; word-break:keep-all; letter-spacing:.01em}
+.big-kr.phrase{font-size:1.9rem; line-height:1.35}
+.big-fr{font-size:1.55rem; line-height:1.35; margin:14px 0; font-weight:600; text-wrap:balance}
 .hint{font-size:1.9rem; letter-spacing:4px; color:var(--acc); margin:8px 0}
 
-/* indice syllabique : 1re syllabe révélée + tuiles douces pour le caché */
-.hint2{display:flex; justify-content:center; align-items:center; gap:6px; margin:14px 0; flex-wrap:wrap}
+/* indice syllabique : tuiles sobres, la syllabe révélée en céladon */
+.hint2{display:flex; justify-content:center; align-items:center; gap:6px; margin:16px 0; flex-wrap:wrap}
 .hint2 .hs{display:inline-flex; align-items:center; justify-content:center;
   min-width:1.5em; height:1.7em; font-size:1.7rem; border-radius:10px;
-  background:linear-gradient(160deg, var(--panel2), var(--line));
-  border:1px solid var(--line); box-shadow:inset 0 -3px 6px rgba(0,0,0,.18)}
-.hint2 .hs.show{background:none; border-color:var(--acc); color:var(--acc); font-weight:700;
-  box-shadow:0 0 10px color-mix(in srgb, var(--acc) 30%, transparent)}
+  font-family:var(--kr-display); background:var(--panel2); border:1px solid var(--line)}
+.hint2 .hs.show{background:none; border-color:var(--cel-dim); color:var(--cel); font-weight:700}
 .hint2 .hgap{width:.7em}
 
 /* anti-misclick : nouvelle carte -> boutons gelés 450 ms */
 .cooldown button{pointer-events:none}
-/* ...sauf le bouton Quitter : on doit TOUJOURS pouvoir sortir d'un exercice */
 .cooldown .escbtn{pointer-events:auto}
 
-/* en-tête de révision : compteur à gauche, actions (Je le sais / Quitter) à droite */
-.rev-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}
+/* en-tête de révision : compteur discret, actions texte sobres */
+.rev-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px}
+.rev-head .dim{font-size:.8rem}
 .rev-actions{display:flex;gap:6px;flex-shrink:0}
 
-/* auto-évaluation à 4 boutons (Encore/Difficile/Bien/Facile) — tiennent sur une ligne.
-   .row.g4row : spécificité > .row{gap:10px} déclarée plus bas, sinon le resserrement était mort (revue v64) */
-.row.g4row{display:flex;gap:6px}
-.btn.g4{flex:1;min-width:0;padding:11px 4px;font-size:.9rem}
+/* auto-évaluation : notes = tuiles neutres, Encore en sceau, Bien en céladon,
+   avec l'INTERVALLE résultant sous l'étiquette (v69) */
+.row.g4row{display:flex;gap:7px}
+.btn.g4{flex:1;min-width:0;padding:11px 2px 9px;font-size:.88rem;font-weight:600;
+  background:var(--panel);border:1px solid var(--line);color:var(--txt);box-shadow:none}
+.btn.g4 .ans-ivl{display:block;font-size:.66rem;font-weight:500;color:var(--dim);margin-top:3px}
+.btn.g4.ko{background:none;border-color:var(--seal);
+  border-color:color-mix(in srgb, var(--seal) 45%, transparent);color:var(--seal)}
+.btn.g4.ko .ans-ivl{color:var(--seal);color:color-mix(in srgb, var(--seal) 70%, var(--dim))}
+.btn.g4.ok{background:var(--panel2);border-color:var(--cel-dim);color:var(--cel)}
+.btn.g4.ok .ans-ivl{color:var(--cel);color:color-mix(in srgb, var(--cel) 70%, var(--dim))}
 
-/* décomposition mot-à-mot d'une phrase (encart trivia) */
+/* décomposition mot-à-mot (encart) */
 .wbreak{margin-bottom:8px}
-.wbt{font-size:.78rem;opacity:.7;margin-bottom:4px}
-.wbrow{display:flex;gap:10px;align-items:baseline;padding:3px 0;border-bottom:1px solid var(--line,#334155)}
+.wbt{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:5px}
+.wbrow{display:flex;gap:12px;align-items:baseline;padding:5px 0;border-bottom:1px solid var(--line)}
 .wbrow:last-child{border-bottom:0}
-.wbk{flex:0 0 40%;font-weight:600;font-size:1.02rem;word-break:break-word}
-.wbg{flex:1;font-size:.86rem;opacity:.9}
+.wbk{flex:0 0 40%;font-family:var(--kr-display);font-weight:700;font-size:1.05rem;word-break:break-word}
+.wbg{flex:1;font-size:.85rem;color:var(--dim)}
 
-/* barres de maîtrise par niveau CEFR (page Progrès) */
-.levelbars{display:flex;flex-direction:column;gap:9px;margin-top:10px}
-.lvlrow{display:flex;align-items:center;gap:9px}
-.lvlname{width:26px;font-weight:600;font-size:.86rem;flex-shrink:0}
-.lvltrack{flex:1;height:12px;border-radius:6px;background:var(--line,#334155);overflow:hidden}
-.lvlfill{display:block;height:100%;background:var(--dim,#94a3b8);border-radius:6px;transition:width .3s}
-.lvlfill.work{background:var(--acc)}
-.lvlpct{min-width:104px;text-align:right;font-size:.82rem;font-variant-numeric:tabular-nums;flex-shrink:0}
-.escbtn{background:none;border:1px solid var(--line,#334155);color:var(--dim,#94a3b8);
-  font-size:.8rem;padding:4px 10px;border-radius:8px;cursor:pointer;white-space:nowrap}
-.escbtn:hover{color:var(--fg,#e2e8f0);border-color:var(--dim,#94a3b8)}
+/* barres de maîtrise par niveau — fines, céladon, niveau en cours éclairé */
+.levelbars{display:flex;flex-direction:column;gap:11px;margin-top:12px}
+.lvlrow{display:flex;align-items:center;gap:11px}
+.lvlname{width:26px;font-weight:650;font-size:.82rem;flex-shrink:0;color:var(--dim)}
+.lvltrack{flex:1;height:5px;border-radius:3px;background:var(--line);overflow:hidden}
+.lvlfill{display:block;height:100%;background:var(--cel-dim);border-radius:3px;transition:width .3s}
+.lvlfill.work{background:var(--cel)}
+.lvlpct{min-width:104px;text-align:right;font-size:.8rem;flex-shrink:0}
+.escbtn{background:none;border:1px solid var(--line);color:var(--dim);
+  font-size:.78rem;padding:5px 11px;border-radius:9px;cursor:pointer;white-space:nowrap}
+.escbtn:hover{color:var(--txt);border-color:var(--dim)}
 
-/* popin rapport de problème */
-.modal-back{position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:50;
+/* popins */
+.modal-back{position:fixed; inset:0; background:rgba(4,6,10,.66); z-index:50;
   display:flex; align-items:center; justify-content:center; padding:20px}
 .modal{max-width:420px; width:100%}
 .modal textarea{width:100%; background:var(--panel2); border:1px solid var(--line);
   color:var(--txt); border-radius:10px; padding:10px; font-size:1rem; font-family:inherit;
   resize:vertical; margin-top:8px}
+.modal.wide{max-width:520px; max-height:88vh; overflow-y:auto}
 
-.opts{display:flex; flex-direction:column; gap:10px; margin-top:8px}
+/* QCM : options calmes, verdict céladon/sceau */
+.opts{display:flex; flex-direction:column; gap:9px; margin-top:8px}
 .opts button{background:var(--panel2); color:var(--txt); border:1px solid var(--line);
-  border-radius:var(--r); padding:14px 12px; font-size:1.05rem; text-align:center; cursor:pointer;
+  border-radius:13px; padding:14px 12px; font-size:1.02rem; text-align:center; cursor:pointer;
   transition:background .12s; min-height:52px; word-break:keep-all}
-.opts button.kr{font-size:1.35rem}
-.opts button:active{background:#31415c}
-.opts button.good{background:#14532d; border-color:var(--ok)}
-.opts button.bad{background:#5f1f1f; border-color:var(--ko)}
-.opts button:disabled{opacity:.85}
+.opts button.kr{font-family:var(--kr-display); font-size:1.4rem; font-weight:700}
+.opts button:active{background:var(--panel); background:color-mix(in srgb, var(--txt) 10%, var(--panel2))}
+.opts button.good{background:var(--panel); background:color-mix(in srgb, var(--cel) 13%, var(--panel));
+  border-color:var(--cel-dim); color:var(--cel)}
+.opts button.bad{background:var(--panel); background:color-mix(in srgb, var(--seal) 10%, var(--panel));
+  border-color:var(--seal); border-color:color-mix(in srgb, var(--seal) 45%, transparent); color:var(--txt)}
+.opts button:disabled{opacity:.9}
 
 .row{display:flex; gap:10px}
 .row>*{flex:1}
-.btn{background:var(--acc2); color:#fff; border:none; border-radius:var(--r);
-  padding:14px; font-size:1.05rem; font-weight:600; cursor:pointer; min-height:52px}
-.btn.ghost{background:var(--panel2); border:1px solid var(--line); color:var(--txt)}
-.btn.ok{background:#166534}
-.btn.ko{background:#7f1d1d}
-.btn.small{padding:8px 12px; min-height:0; font-size:.9rem; font-weight:500}
+
+/* boutons : l'action principale porte le sceau, tout le reste est calme */
+.btn{background:var(--seal); color:var(--seal-ink); border:none; border-radius:14px;
+  padding:14px; font-size:1.02rem; font-weight:700; cursor:pointer; min-height:52px}
+.btn.ghost{background:var(--panel); border:1px solid var(--line); color:var(--txt); font-weight:600}
+.btn.ok{background:var(--panel2); background:color-mix(in srgb, var(--cel) 14%, var(--panel));
+  border:1px solid var(--cel-dim); color:var(--cel)}
+.btn.ko{background:none; border:1px solid var(--seal);
+  border:1px solid color-mix(in srgb, var(--seal) 45%, transparent); color:var(--seal)}
+.btn.small{padding:8px 12px; min-height:0; font-size:.88rem; font-weight:600}
 .btn:disabled{opacity:.4}
-.btn.danger{background:#b91c1c}
-/* overlay Réglages : plus large et défilable si le contenu dépasse l'écran */
-.modal.wide{max-width:520px; max-height:88vh; overflow-y:auto}
+.btn.danger{background:#8C2B22; color:#F6E2DE}
 
-.speak{background:none; border:none; font-size:1.7rem; cursor:pointer; padding:6px}
-.topright{display:flex; align-items:center; gap:10px}
-.iconbtn{background:none; border:none; font-size:1.25rem; cursor:pointer; padding:2px}
+.speak{background:none; border:none; cursor:pointer; padding:6px; color:var(--dim); font-size:1.5rem}
+.speak:hover{color:var(--txt)}
+.topright{display:flex; align-items:center; gap:6px}
+.iconbtn{background:none; border:none; cursor:pointer; padding:6px; color:var(--dim); font-size:1.15rem}
+.iconbtn svg{width:19px; height:19px; stroke:currentColor; stroke-width:1.6; fill:none;
+  stroke-linecap:round; stroke-linejoin:round; display:block}
+.iconbtn:hover{color:var(--txt)}
 
-/* encart trivia (aide après réponse) */
-.trivia{margin-top:12px; padding:10px 12px; background:var(--panel2);
-  border-left:3px solid var(--acc); border-radius:8px; text-align:left; font-size:.92rem}
-.trivia .tkr{font-size:1.05rem; font-weight:600}
-.trivia .tfr{color:var(--dim); margin-top:2px}
-.trivia .tnote{color:var(--warn); margin-top:6px}
-.trivia .tconj{color:var(--acc); margin-top:4px; font-size:.95rem}
-/* phrase d'exemple : 🔊 audio + mots cliquables (opt-in Réglages) */
-.trivia .exspeak{background:none; border:none; cursor:pointer; font-size:1rem;
-  padding:0 4px; line-height:1; vertical-align:baseline; opacity:.75}
+/* encart trivia : rangé, pas décoré */
+.trivia{margin-top:14px; padding:13px 15px; background:var(--panel2);
+  border:1px solid var(--line); border-radius:13px; text-align:left; font-size:.92rem}
+.trivia .tkr{font-family:var(--kr-display); font-size:1.08rem; font-weight:700; line-height:1.5}
+.trivia .tfr{color:var(--dim); margin-top:3px; font-size:.85rem}
+.trivia .tnote{color:var(--dim); margin-top:10px; padding-top:10px; border-top:1px solid var(--line);
+  font-size:.85rem; line-height:1.5}
+.trivia .tnote::before{content:"≠"; color:var(--seal); font-weight:700; margin-right:7px}
+.trivia .tnote.tbuild::before{content:none}
+.trivia .tconj{color:var(--cel); margin-top:6px; font-size:.9rem}
+.trivia .exspeak{background:none; border:none; cursor:pointer; font-size:.95rem;
+  padding:0 4px; line-height:1; vertical-align:baseline; opacity:.7}
 .trivia .exspeak:hover{opacity:1}
-.trivia .tkr .w{cursor:pointer; border-radius:5px; padding:1px 2px;
-  transition:background .12s; -webkit-tap-highlight-color:transparent}
-.trivia .tkr .w:hover{background:var(--panel); background:color-mix(in srgb, var(--acc) 22%, transparent)}
-.trivia .tkr .w.on{background:var(--acc); color:var(--bg)}
-.trivia .glossbar{margin-top:6px; padding:6px 9px; border-radius:6px;
-  background:var(--panel); background:color-mix(in srgb, var(--acc) 14%, transparent);
-  color:var(--txt); font-size:.9rem; font-weight:400}
+.trivia .tkr .w{cursor:pointer; border-radius:5px; padding:1px 2px; transition:background .12s}
+.trivia .tkr .w:hover{background:var(--panel); background:color-mix(in srgb, var(--cel) 22%, transparent)}
+.trivia .tkr .w.on{background:var(--cel); color:var(--bg)}
+.trivia .glossbar{margin-top:7px; padding:6px 9px; border-radius:7px;
+  background:var(--panel); background:color-mix(in srgb, var(--cel) 13%, transparent); font-size:.88rem}
 .trivia .glossbar b{font-weight:700}
 
 /* construction de phrase */
 .built{min-height:52px; background:var(--panel2); border:1px dashed var(--line);
-  border-radius:var(--r); padding:8px; display:flex; flex-wrap:wrap; gap:6px;
+  border-radius:13px; padding:8px; display:flex; flex-wrap:wrap; gap:6px;
   align-items:center; justify-content:center; margin:10px 0}
 .pool{display:flex; flex-wrap:wrap; gap:8px; justify-content:center}
-.chip{background:var(--acc2); color:#fff; border:none; border-radius:10px;
-  padding:10px 14px; font-size:1.15rem; cursor:pointer; word-break:keep-all}
-.chip.src{background:var(--panel2); border:1px solid var(--line); color:var(--txt)}
-.chip:disabled{opacity:.7}
+.chip{background:var(--panel2); color:var(--txt); border:1px solid var(--line); border-radius:11px;
+  padding:10px 14px; font-size:1.15rem; cursor:pointer; word-break:keep-all;
+  font-family:var(--kr-display); font-weight:700}
+.chip.src{background:var(--panel); font-weight:700}
+.chip:disabled{opacity:.55}
 
 /* bulle PNJ des scénarios */
-.npc{position:relative; background:var(--panel2); border-radius:var(--r); padding:12px 44px 12px 14px}
-.npc .npc-kr{font-size:1.35rem; font-weight:600; line-height:1.35; word-break:keep-all}
-.npc .npc-fr{color:var(--dim); font-size:.88rem; margin-top:4px}
-.npc .speak{position:absolute; right:4px; top:8px; font-size:1.3rem}
+.npc{position:relative; background:var(--panel2); border:1px solid var(--line);
+  border-radius:var(--r); padding:12px 44px 12px 14px}
+.npc .npc-kr{font-family:var(--kr-display); font-size:1.35rem; font-weight:700; line-height:1.4; word-break:keep-all}
+.npc .npc-fr{color:var(--dim); font-size:.86rem; margin-top:4px}
+.npc .speak{position:absolute; right:4px; top:8px; font-size:1.25rem}
 
-.pill{display:inline-block; background:var(--panel2); border-radius:999px;
-  padding:3px 10px; font-size:.75rem; color:var(--dim); margin:2px}
-.pill.enemy{color:var(--warn)}
-.pill.stage{color:var(--acc)}
+.pill{display:inline-block; background:none; border:1px solid var(--line); border-radius:999px;
+  padding:3px 10px; font-size:.72rem; color:var(--dim); margin:2px; letter-spacing:.03em}
+.pill.enemy{color:var(--warn); border-color:var(--warn);
+  border-color:color-mix(in srgb, var(--warn) 40%, transparent)}
+.pill.stage{color:var(--cel); border-color:var(--cel-dim)}
 
-.progressbar{height:8px; background:var(--panel2); border-radius:4px; overflow:hidden}
-.progressbar>div{height:100%; background:var(--acc); border-radius:4px; transition:width .25s}
+.progressbar{height:3px; background:var(--line); border-radius:2px; overflow:hidden}
+.progressbar>div{height:100%; background:var(--cel); border-radius:2px; transition:width .25s}
 
 .feedback{font-size:1.05rem; margin-top:10px; min-height:1.4em}
-.feedback .kr{font-size:1.3rem; font-weight:600}
+.feedback .kr{font-family:var(--kr-display); font-size:1.5rem; font-weight:700}
 
-.statgrid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-.stat{background:var(--panel); border:1px solid var(--line); border-radius:var(--r);
-  padding:14px; text-align:center}
-.stat .n{font-size:1.8rem; font-weight:700; color:var(--acc)}
-.stat .l{font-size:.78rem; color:var(--dim); margin-top:2px}
-/* tuiles cliquables -> popin d'explication */
+/* tuiles de stats : chiffre en hanji, étiquette en petites capitales */
+.statgrid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+.stat{background:var(--panel); border:1px solid var(--line); border-radius:14px;
+  padding:14px 15px; text-align:left}
+.stat .n{font-size:1.6rem; font-weight:650; color:var(--txt); letter-spacing:-.01em}
+.stat .l{font-size:.68rem; color:var(--dim); margin-top:3px; letter-spacing:.1em; text-transform:uppercase}
 .stat.tap{cursor:pointer; position:relative; transition:border-color .12s, transform .06s}
-.stat.tap::after{content:"ⓘ"; position:absolute; top:5px; right:8px; font-size:.7rem; color:var(--dim); opacity:.5}
-.stat.tap:hover{border-color:var(--acc)}
+.stat.tap::after{content:"i"; position:absolute; top:8px; right:11px; font-size:.62rem;
+  color:var(--dim); opacity:.6; border:1px solid var(--line); border-radius:50%;
+  width:13px; height:13px; display:flex; align-items:center; justify-content:center; font-style:italic}
+.stat.tap:hover{border-color:var(--dim)}
 .stat.tap:active{transform:scale(.98)}
 
-.bars{display:flex; align-items:flex-end; gap:6px; min-height:96px; margin-top:10px; padding-top:4px}
+/* graphes en barres (14 j) */
+.bars{display:flex; align-items:flex-end; gap:5px; min-height:96px; margin-top:10px; padding-top:4px}
 .bars .b{flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:4px}
-.bars .b>div{width:100%; background:var(--acc2); border-radius:4px 4px 0 0; min-height:2px}
-.bars .b span{font-size:.65rem; color:var(--dim)}
+.bars .b>div{width:100%; background:var(--cel-dim); border-radius:3px 3px 0 0; min-height:2px}
+.bars .b span{font-size:.62rem; color:var(--dim)}
 
 .list{display:flex; flex-direction:column; gap:8px}
 .list .item{background:var(--panel); border:1px solid var(--line); border-radius:var(--r);
@@ -186,12 +239,47 @@ h2{margin:0 0 6px; font-size:1.05rem}
 .list .item .kr{font-size:1.15rem; font-weight:600}
 .list .item .fr{font-size:.85rem; color:var(--dim)}
 
-.section-title{font-size:.8rem; text-transform:uppercase; letter-spacing:1px; color:var(--dim); margin:10px 0 2px}
+.section-title{font-size:.7rem; text-transform:uppercase; letter-spacing:.15em; color:var(--dim); margin:10px 0 2px}
 .done-banner{font-size:2.5rem; margin:20px 0 6px}
 input[type=file]{display:none}
-.settings label{display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); font-size:.95rem}
+.settings label{display:flex; align-items:center; justify-content:space-between; padding:10px 0;
+  border-bottom:1px solid var(--line); font-size:.95rem}
 .settings input[type=number]{width:70px; background:var(--panel2); border:1px solid var(--line);
   color:var(--txt); border-radius:8px; padding:6px; font-size:1rem; text-align:center}
-.settings input[type=checkbox]{transform:scale(1.35)}
+.settings input[type=checkbox]{transform:scale(1.35); accent-color:var(--seal)}
 .settings select{background:var(--panel2); border:1px solid var(--line); color:var(--txt);
   border-radius:8px; padding:6px; font-size:.9rem; max-width:55%}
+
+/* ---------- v69 : accueil « Encre & sceau » ---------- */
+.hero{padding:6px 2px 2px}
+.hero-kr{font-family:var(--kr-display); font-size:2.1rem; font-weight:700; line-height:1.25}
+.hero-sub{color:var(--dim); font-size:.88rem; margin:6px 0 0}
+.streak{display:flex; align-items:center; gap:7px; margin:14px 0 4px}
+.streak i{width:7px; height:7px; border-radius:50%; background:var(--line)}
+.streak i.on{background:var(--cel-dim)}
+.streak i.today{width:16px; height:16px; background:var(--seal); border-radius:5px;
+  transform:rotate(-4deg); box-shadow:0 2px 10px rgba(0,0,0,.3);
+  box-shadow:0 2px 10px color-mix(in srgb, var(--seal) 35%, transparent)}
+.streak b{font-size:.75rem; color:var(--dim); font-weight:500; margin-left:4px}
+.cta{display:flex; align-items:center; justify-content:space-between; width:100%;
+  font-size:1.06rem; padding:17px 19px}
+.cta .num{background:rgba(0,0,0,.35); padding:3px 12px; border-radius:99px; font-size:.85rem; font-weight:700}
+.korea-line{display:flex; align-items:center; justify-content:space-between;
+  padding:2px 4px; color:var(--dim); font-size:.82rem}
+.korea-line b{color:var(--txt); font-weight:600}
+
+/* ---------- v69 : fin de session — le sceau ---------- */
+.seal-wrap{display:flex; flex-direction:column; align-items:center; gap:14px; padding:18px 0 6px}
+.dojang{width:84px; height:84px; border-radius:17px; background:var(--seal); color:var(--seal-ink);
+  display:flex; align-items:center; justify-content:center; transform:rotate(-5deg);
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  box-shadow:0 10px 30px color-mix(in srgb, var(--seal) 35%, transparent)}
+.dojang span{font-family:var(--kr-display); font-size:2rem; font-weight:700; line-height:1}
+.done-kr{font-family:var(--kr-display); font-size:1.8rem; font-weight:700}
+
+/* haut-parleurs SVG (remplacent l'émoji dans les exercices) */
+.speak svg{width:24px;height:24px;stroke:currentColor;stroke-width:1.6;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:middle}
+.exspeak svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.7;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;vertical-align:-2px}
+.btn.g4 b{display:block;font-weight:inherit}

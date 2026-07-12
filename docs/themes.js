@@ -14,13 +14,22 @@
 (function(){
   "use strict";
   var KEY = "sori-theme";
-  var DEFAULT_ID = "seoul";
+  var DEFAULT_ID = "encre";
   var THEMES = [
+    {id:"encre",      label:"Encre & sceau",  cls:"theme-encre",      color:"#10141B"},
     {id:"seoul",      label:"Séoul nuit",     cls:"theme-seoul",      color:"#0a0a12"},
     {id:"nuit",       label:"Bleu nuit",      cls:"theme-nuit",       color:"#0f172a"},
     {id:"hanji",      label:"Hanji (clair)",  cls:"theme-hanji",      color:"#FFFDF6"},
     {id:"dansaekhwa", label:"Dansaekhwa",     cls:"theme-dansaekhwa", color:"#0f0d0a"}
   ];
+  /* v69 : migration UNE FOIS vers le nouveau défaut « Encre & sceau » (refonte validée user).
+     Un thème choisi APRÈS la migration reste respecté (la clé -mig l'atteste). */
+  try{
+    if(localStorage.getItem(KEY + "-mig") !== "1"){
+      localStorage.setItem(KEY + "-mig", "1");
+      if(localStorage.getItem(KEY) === "seoul") localStorage.setItem(KEY, "encre");
+    }
+  }catch(e){}
 
   function find(id){
     for(var i=0;i<THEMES.length;i++) if(THEMES[i].id===id) return THEMES[i];

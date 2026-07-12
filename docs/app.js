@@ -245,7 +245,7 @@ function undoLast(){
 }
 function updateDayCount(){
   const l = ST.log[todayStr()];
-  document.getElementById("daycount").textContent = "📚 " + (l ? l.n : 0);
+  document.getElementById("daycount").textContent = String(l ? l.n : 0);
 }
 /* ===== rapport de problème (bouton 🐞 optionnel) =====
    Les rapports vivent dans ST.reports -> embarqués dans chaque sauvegarde cloud,
@@ -283,7 +283,7 @@ function openReportModal(){
     ST.reports = (ST.reports||[]).slice(-99);          // cap: garder les 100 derniers
     ST.reports.push({ d: new Date().toISOString(), ctx, txt });
     save();
-    back.querySelector(".modal").innerHTML = `<h2>✅ Noté</h2>
+    back.querySelector(".modal").innerHTML = `<h2>Noté</h2>
       <p class="dim">Partira avec la prochaine sauvegarde cloud — Claude le lira.</p>`;
     setTimeout(()=>back.remove(), 1200);
   };
@@ -298,10 +298,13 @@ function wireReport(){
 }
 
 /* bouton muet global (l'app reste 100% utilisable sans audio) */
+/* v69 : haut-parleur en SVG (fini l'émoji 🔊 dans le chrome) */
+const SVG_SPK = '<svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/></svg>';
+const SVG_SPK_OFF = '<svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M17 9.5l5 5M22 9.5l-5 5"/></svg>';
 function wireMute(){
   const b = document.getElementById("mute");
   if(!b) return;
-  const paint = ()=>{ b.textContent = ST.set.mute ? "🔇" : "🔊"; b.title = ST.set.mute ? "Réactiver le son" : "Couper le son"; };
+  const paint = ()=>{ b.innerHTML = ST.set.mute ? SVG_SPK_OFF : SVG_SPK; b.title = ST.set.mute ? "Réactiver le son" : "Couper le son"; };
   b.onclick = ()=>{ ST.set.mute = !ST.set.mute; if(ST.set.mute) try{speechSynthesis.cancel();}catch(e){} save(); paint(); };
   paint();
 }
@@ -672,19 +675,20 @@ function renderReview(){
     const t=todayStr(), l=ST.log[t]||{ok:0,ko:0};
     const more = PENDING>0 ? `<button class="btn ghost" id="more">Continuer les révisions (${PENDING} en attente)</button>` : "";
     $screen.appendChild(el(`<div class="card center">
-      <div class="done-banner">${PENDING>0?"💪":"🎉"}</div>
-      <h2>${PENDING>0?"Session terminée !":"Tout est à jour !"}</h2>
+      ${PENDING>0
+        ? `<div class="seal-wrap"><div class="done-kr">수고했어요</div></div><h2>Session terminée — il en reste</h2>`
+        : `<div class="seal-wrap"><div class="dojang"><span>끝</span></div><div class="done-kr">오늘 끝.</div></div><h2>Tout est à jour</h2>`}
       <p class="dim">${l.ok||0} bonnes réponses aujourd'hui${l.ko?`, ${l.ko} à retravailler`:""}.</p>
-      <p class="dim">✅ ${(m=>`${m.length} cartes maîtrisées, dont ${m.filter(it=>it.itv>=14).length} ancrées (intervalle ≥ 2 semaines)`)(BASE_IDS.map(eff).filter(it=>it.stage>=4))}.</p>
+      <p class="dim">${(m=>`${m.length} cartes maîtrisées, dont ${m.filter(it=>it.itv>=14).length} ancrées (intervalle ≥ 2 semaines)`)(BASE_IDS.map(eff).filter(it=>it.stage>=4))}.</p>
       <div class="row" style="margin-top:12px">
         ${more}
-        <button class="btn" id="reviewmore">🔁 Réviser 10 cartes</button>
-        <button class="btn" id="learnmore">➕ Apprendre 10 nouvelles cartes</button>
+        <button class="btn ghost" id="reviewmore">Réviser 10 de plus</button>
+        <button class="btn ghost" id="learnmore">Apprendre 10 nouvelles</button>
       </div>
       <p class="dim" style="margin-top:8px; font-size:.8rem">Autant de fois que tu veux — ces cartes comptent dans ta progression.</p></div>`));
     /* récap : les mots ratés de la session, à réécouter d'un tap */
     if(SESSFAIL.length){
-      const rec = el(`<div class="card"><h2>📌 À retravailler (${SESSFAIL.length})</h2>
+      const rec = el(`<div class="card"><h2>À retravailler (${SESSFAIL.length})</h2>
         <p class="dim">Les ratés de cette session — tape un mot pour l'écouter.</p>
         <div class="list"></div></div>`);
       const list = rec.querySelector(".list");
@@ -692,8 +696,8 @@ function renderReview(){
         const o = SEED_BY_ID[id]; if(!o) return;
         const xn = (EXTRA[baseId(id)]||{}).note;      // note résolue via l'id de base (cartes verso)
         const row = el(`<div class="item"><div class="txt"><div class="kr">${esc(o.kr)}</div>
-          <div class="fr">${esc(o.fr)}${xn?` — 💡 ${esc(xn)}`:""}</div></div>
-          <button class="speak">🔊</button></div>`);
+          <div class="fr">${esc(o.fr)}${xn?` — ${esc(xn)}`:""}</div></div>
+          <button class="speak">${SVG_SPK}</button></div>`);
         row.onclick = ()=>speak(o.kr, id);
         list.appendChild(row);
       });
@@ -739,10 +743,10 @@ function renderReview(){
         ${it.rev?'<span class="pill" style="color:var(--acc)">🔄 production</span>':(ST.set.reverse!==false && it.type==="word"?'<span class="pill">👂 compréhension</span>':"")}
         ${it.enemy?'<span class="pill enemy">ennemie</span>':""}
         <span class="pill stage">niv ${it.stage}</span>
-        ${COMBO>=3?`<span class="pill" style="color:var(--acc)">🔥 combo ×${COMBO}</span>`:""}</div>
+        ${COMBO>=3?`<span class="pill stage">×${COMBO}</span>`:""}</div>
       <div class="rev-actions">
-        ${(it.itv||0) < 14 ? '<button class="escbtn" id="knowrev" title="Je connais déjà ce mot — l\'espacer fortement">✓ Je le sais</button>' : ""}
-        <button class="escbtn" id="quitrev" title="Quitter la révision (la progression est gardée)">✕ Quitter</button>
+        ${(it.itv||0) < 14 ? '<button class="escbtn" id="knowrev" title="Je connais déjà ce mot — l\'espacer fortement">Je le sais</button>' : ""}
+        <button class="escbtn" id="quitrev" title="Quitter la révision (la progression est gardée)">Quitter</button>
       </div>
     </div></div>`);
   $screen.appendChild(head);
@@ -862,19 +866,19 @@ function showTrivia(card, it){
     const exHtml = glossOn
       ? toks.map((w,i)=>`<span class="w" data-i="${i}">${esc(w)}</span>`).join(" ")
       : esc(x.ex);
-    const spk = ST.set.exaudio===true ? ` <button class="exspeak" title="Écouter la phrase">🔊</button>` : "";
+    const spk = ST.set.exaudio===true ? ` <button class="exspeak" title="Écouter la phrase">${SVG_SPK}</button>` : "";
     bits.push(`<div class="tkr">${exHtml}${spk}</div>${x.exFr?`<div class="tfr">${esc(x.exFr)}</div>`:""}`);
   }
   if(x.conj) bits.push(`<div class="tconj">활용 ${esc(x.conj)}</div>`);
-  if(x.note) bits.push(`<div class="tnote">💡 ${esc(x.note)}</div>`);
+  if(x.note) bits.push(`<div class="tnote">${esc(x.note)}</div>`);
   /* décomposition d'une PHRASE : chaque bout de la phrase + son sens, puis la construction (grammaire).
      Répond au besoin « quand on traduit une phrase entière, expliquer les mots et leur construction ».
      Contrat : EXTRA[id].words = [[bout_kr, sens_fr], …] ; EXTRA[id].build = "explication". */
   if(it.type==="phrase" && Array.isArray(x.words) && x.words.length){
     const rows = x.words.map(p=>`<div class="wbrow"><span class="wbk">${esc(p[0])}</span><span class="wbg">${esc(p[1]||"")}</span></div>`).join("");
-    bits.unshift(`<div class="wbreak"><div class="wbt">📝 Mot à mot</div>${rows}</div>`);
+    bits.unshift(`<div class="wbreak"><div class="wbt">Mot à mot</div>${rows}</div>`);
   }
-  if(it.type==="phrase" && x.build) bits.push(`<div class="tnote">🔧 <b>Construction :</b> ${esc(x.build)}</div>`);
+  if(it.type==="phrase" && x.build) bits.push(`<div class="tnote tbuild"><b>Construction :</b> ${esc(x.build)}</div>`);
   if(!bits.length) return false;
   const box = el(`<div class="trivia">${bits.join("")}</div>`);
   /* 🔊 phrase */
@@ -975,7 +979,7 @@ function exoQcmKr2Fr(it){
   const card = el(`<div class="card center">
     <div class="dim">Que veut dire…</div>
     <div class="big-kr ${it.type==="phrase"?"phrase":""}">${esc(it.kr)}</div>
-    <button class="speak" title="écouter">🔊</button>
+    <button class="speak" title="écouter">${SVG_SPK}</button>
     <div class="opts"></div></div>`);
   card.querySelector(".speak").onclick = ()=>speak(it.kr, it.id);
   const box = card.querySelector(".opts");
@@ -1032,19 +1036,33 @@ function gradeButtons(row, it, kind){
   row.innerHTML = "";
   const maxG = maxGradeFor(it, kind);   // note max justifiée par l'aide de l'exercice
   const wire = (b, ok, g) => { b.onclick = ()=>{ [...row.children].forEach(x=>x.disabled=true); afterAnswer(it, ok, false, kind, g); }; return b; };
+  /* v69 : l'INTERVALLE résultant s'affiche sous chaque note — la conséquence du choix devient
+     visible. Prévisualisation EXACTE : mêmes options que applyAnswer (plafond, gradeD, fuzz). */
+  const ivl = g => {
+    if(ST.set.scheduler === "legacy") return "";
+    /* vue BLANCHE à venir (v68 : consolidation, ou re-vu immédiat de fin de file) :
+       la réponse ne replanifiera rien — afficher un intervalle serait mentir. */
+    if(CONSOL.has(it.id) || (FAILPOS.has(it.id) && (QPOS - FAILPOS.get(it.id)) < 3)) return "";
+    try{
+      const t = todayStr();
+      const r = ENGINE.fsrsSchedule(it, Math.min(g, maxG), t,
+        { retention: ST.set.fsrsRetention || 0.9, gradeD: g, fuzz: it.id + "|" + t });
+      return `<span class="ans-ivl">${g === 1 ? "re-vu" : (r.i <= 0 ? "aujourd'hui" : r.i + " j")}</span>`;
+    }catch(_){ return ""; }
+  };
   /* plafond ≤ Difficile (exercice aidé) : une seule note positive possible → paire binaire,
      comme le QCM. On transmet la note BRUTE (Bien) : afterAnswer plafonne pour la stabilité,
      la difficulté D reste sur la note choisie (v64, dissociation des canaux). */
   if(ST.set.grade4 !== false && maxG > 2){
     row.classList.add("g4row");
     /* on n'offre que les notes atteignables : ex. rappel indicé → pas de « Facile » (plafond Bien). */
-    const defs = [["Encore","btn ko",false,1],["Difficile","btn",true,2],["Bien","btn",true,3],["Facile","btn ok",true,4]];
+    const defs = [["Encore","btn ko",false,1],["Difficile","btn",true,2],["Bien","btn ok",true,3],["Facile","btn",true,4]];
     defs.filter(d => d[3] <= maxG).forEach(([lbl,cls,ok,g]) =>
-      row.append(wire(el(`<button class="${cls} g4">${lbl}</button>`), ok, g)));
+      row.append(wire(el(`<button class="${cls} g4"><b>${lbl}</b>${ivl(g)}</button>`), ok, g)));
   } else {
     row.append(
-      wire(el(`<button class="btn ko">Encore</button>`), false, 1),
-      wire(el(`<button class="btn ok">Bien</button>`),   true,  3));   // brute ; afterAnswer plafonne (canal S)
+      wire(el(`<button class="btn ko g4"><b>Encore</b>${ivl(1)}</button>`), false, 1),
+      wire(el(`<button class="btn ok g4"><b>Bien</b>${ivl(3)}</button>`),   true,  3));   // brute ; afterAnswer plafonne (canal S)
   }
 }
 function exoRecall(it, hinted){
@@ -1062,11 +1080,11 @@ function exoRecall(it, hinted){
     <div class="big-fr">${esc(it.fr)}</div>${hint}
     <div class="feedback"></div>
     <div class="row" style="margin-top:12px">
-      <button class="btn" id="show">Montrer</button>
+      <button class="btn ghost" id="show">Montrer</button>
     </div></div>`);
   card.querySelector("#show").onclick = ()=>{
     /* mot révélé + bouton 🔊 pour le réécouter pendant la notation */
-    card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span> <button class="speak" title="écouter">🔊</button>`;
+    card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span> <button class="speak" title="écouter">${SVG_SPK}</button>`;
     card.querySelector(".feedback .speak").onclick = ()=>speak(it.kr, it.id);
     speak(it.kr, it.id);
     showTrivia(card, it);        // lisible pendant l'auto-évaluation
@@ -1079,9 +1097,9 @@ function exoRecallRev(it){
   const card = el(`<div class="card center">
     <div class="dim">Rappel inversé — que veut dire…</div>
     <div class="big-kr ${it.type==="phrase"?"phrase":""}">${esc(it.kr)}</div>
-    <button class="speak" title="écouter">🔊</button>
+    <button class="speak" title="écouter">${SVG_SPK}</button>
     <div class="feedback"></div>
-    <div class="row" style="margin-top:12px"><button class="btn" id="show">Montrer</button></div></div>`);
+    <div class="row" style="margin-top:12px"><button class="btn ghost" id="show">Montrer</button></div></div>`);
   card.querySelector(".speak").onclick = ()=>speak(it.kr, it.id);
   card.querySelector("#show").onclick = ()=>{
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.fr)}</span>`;
@@ -1307,11 +1325,20 @@ function renderStats(){
   const stage0all = items.filter(it=>it.stage===0 && !it.sus).length;   // introduisibles (recto + verso)
   const newLeft = Math.min(Math.max(0, (ST.set.newPerDay||0) - (ST.intro[t]||0)), stage0all);
   const todo = dueN + newLeft;
-  const launch = el(`<div class="card center">
-    <button class="btn" id="goreview" style="width:100%; font-size:1.1rem; padding:15px">▶ Réviser${todo>0?` · ${todo} carte${todo>1?"s":""}`:""}</button>
-    <p class="dim" style="margin-top:6px; font-size:.82rem">${todo>0?"à revoir ou à découvrir aujourd'hui":"tout est à jour — tu peux apprendre de nouvelles cartes"}</p>
-  </div>`);
-  launch.querySelector("#goreview").onclick = ()=>{
+  /* v69 : HÉROS d'accueil — salut selon l'heure, streak en points (le jour courant porte le
+     sceau), CTA vermillon, compte à rebours Corée. Remplace la carte-lanceur (id conservé). */
+  const hour = new Date().getHours();
+  const greet = hour < 6 ? "안녕하세요" : hour < 12 ? "좋은 아침이에요" : hour < 18 ? "좋은 오후예요" : "좋은 저녁이에요";
+  const stk = streak();
+  const dots = []; for(let i=6;i>=0;i--){ const d=addDays(t,-i); const L=ST.log[d];
+    dots.push(`<i class="${d===t?"today":(L&&L.n>0?"on":"")}"></i>`); }
+  $screen.appendChild(el(`<div class="hero">
+    <div class="hero-kr">${greet}</div>
+    <p class="hero-sub">${stk>1?`${stk} jours d'affilée.`:"Prêt quand tu l'es."}</p>
+    <div class="streak">${dots.join("")}<b>aujourd'hui</b></div>
+  </div>`));
+  const launch = el(`<button class="btn cta" id="goreview">Réviser<span class="num">${todo>0?`${todo} carte${todo>1?"s":""}`:"tout est à jour"}</span></button>`);
+  launch.onclick = ()=>{
     TAB="review";
     document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x.dataset.tab==="review"));
     NAV=true; render(); NAV=false;
@@ -1319,6 +1346,9 @@ function renderStats(){
   /* test de niveau one-shot retiré (v49) : les barres « maîtrise par niveau » sont plus
      fiables et toujours à jour. placement.js reste chargé mais dormant (réactivable). */
   $screen.appendChild(launch);
+  const jx = Math.round((new Date("2026-10-01T12:00:00") - new Date(t+"T12:00:00"))/864e5);
+  const evSeoul = window.SORI_EVENTS && !((ST.evDismiss||{})["seoul-2026"]);   // la carte événement affiche déjà le compte à rebours
+  if(jx > 0 && !evSeoul) $screen.appendChild(el(`<div class="korea-line"><span>Départ pour la Corée</span><b class="num">J − ${jx}</b></div>`));
 
   /* événements actifs (countdown départ, défis…) — events-data.js / MAINTENANCE-EVENTS.md */
   if(window.SORI_EVENTS){
@@ -1332,7 +1362,7 @@ function renderStats(){
   /* stats réelles (v28.1) : plus d'XP/niveau — gamification retirée. Mesures de PROGRÈS.
      Chaque tuile est cliquable → popin d'explication (demande utilisateur 🐞 v36). */
   const grid = el(`<div class="statgrid">
-    <div class="stat"><div class="n">🔥 ${streak()}</div><div class="l">jours d'affilée</div></div>
+    <div class="stat"><div class="n">${streak()}</div><div class="l">jours d'affilée</div></div>
     <div class="stat"><div class="n">${l.n}</div><div class="l">réponses aujourd'hui</div></div>
     <div class="stat"><div class="n">${ret===null?"—":ret+" %"}</div><div class="l">réussite (7 j)</div></div>
     <div class="stat"><div class="n">${beaten}/${enemies.length}</div><div class="l">ennemies vaincues</div></div>
@@ -1340,7 +1370,7 @@ function renderStats(){
     <div class="stat"><div class="n">${seen} / ${baseItems.length}</div><div class="l">deck abordé</div></div>
   </div>`);
   const STAT_INFO = [
-    ["🔥 Jours d'affilée", "Le nombre de jours consécutifs où tu as étudié au moins une carte. Rate un jour et le compteur repart de zéro — c'est ta régularité."],
+    ["Jours d'affilée", "Le nombre de jours consécutifs où tu as étudié au moins une carte. Rate un jour et le compteur repart de zéro — c'est ta régularité."],
     ["Réponses aujourd'hui", "Le nombre de cartes que tu as répondues aujourd'hui, tous exercices confondus (QCM, rappel, écoute…)."],
     ["Réussite (7 jours)", "Ton taux de bonnes réponses sur les 7 derniers jours. On ne compte que la PREMIÈRE fois que tu vois chaque carte dans la journée — c'est le vrai test de mémoire, pas les re-essais."],
     ["Ennemies vaincues", "Tes mots les plus ratés (les « ennemies ») que tu as réussi à ramener à un bon niveau (niv ≥ 4). Le premier chiffre = domptées, le second = total de tes ennemies."],

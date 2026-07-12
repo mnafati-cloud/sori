@@ -51,6 +51,33 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v69 (REFONTE VISUELLE « Encre & sceau » — maquette validée user)** : le user trouvait le visuel
+  « dégueulasse » — diagnostic : pas la palette (thèmes soignés) mais l'EXÉCUTION (émojis-icônes,
+  aucune échelle typo, accent partout, tout au même poids). Refonte **CSS + templates, AUCUNE logique** :
+  (1) **style.css réécrit** — palette par défaut : encre #10141B / hanji #EDE9E0 / **sceau #E4584A**
+  (= --acc2/--ko : action, accompli, attention) / **céladon #7CC7AC** (= --acc/--ok : progression).
+  TOUS les noms de classes conservés → les 4 anciens thèmes restent fonctionnels (surcharge de variables).
+  (2) **hangul d'affiche en myeongjo** : `docs/fonts/nanum-myeongjo-bold-sub.woff2` (124 Ko, OFL),
+  **sous-ensemble du deck** généré par `tools/make_font.py` (⚠️ À RELANCER après toute vague de contenu ;
+  glyphe manquant → fallback système sans casse). Appliquée via --kr-display à .big-kr/.hint2/.feedback
+  .kr/.opts .kr/.chip/.npc-kr/.wbk/.tkr/.brand. Dans ASSETS (hors-ligne).
+  (3) **zéro émoji dans le chrome** : tabs + en-tête en SVG inline (ids inchangés), haut-parleurs SVG
+  (const SVG_SPK), daycount nu, combo ×N, boutons sans glyphes. Les émojis des cartes-graphes v63/v66
+  (l'user les a écrites) et des Réglages sont CONSERVÉS volontairement.
+  (4) **accueil = héros** : salut selon l'heure (좋은 아침/오후/저녁), streak 7 points (aujourd'hui =
+  carré-sceau), CTA vermillon plein (id goreview conservé), ligne « Départ pour la Corée J−x »
+  (constante 2026-10-01). Le lanceur-carte disparaît ; les cartes v63/v66 du user restent en dessous.
+  (5) **fin de session = le sceau** : tampon .dojang « 끝 » + « 오늘 끝. » (si PENDING>0 : 수고했어요,
+  pas de tampon) ; boutons en ghost.
+  (6) **intervalle résultant sous chaque note** (gradeButtons) : prévisualisation EXACTE via
+  fsrsSchedule avec les MÊMES options que applyAnswer (plafond, gradeD, fuzz id+date) — masquée en
+  mode legacy. Bien porte la classe .ok (accent céladon).
+  (7) **thème « encre » par défaut** (themes.js, classe .theme-encre = :root nu) + migration one-time
+  `sori-theme-mig` (seoul stocké → encre ; un choix postérieur est respecté). theme-color #10141B.
+  Vérifié preview : police chargée (document.fonts.check), héros/streak/J−81, binaire « Encore·re-vu /
+  Bien·13 j », 4 notes « re-vu/6 j/15 j/40 j », myeongjo partout où voulu, sceau 끝, 5 thèmes commutables,
+  0 erreur console, 61 tests. CACHE `sori-v69`. **RESTE assumé : émojis des labels Réglages + titres des
+  cartes-graphes ; modules annexes (numbers/scenarios/search) héritent de la palette sans re-design.**
 - **v68 (LOT MOTEUR — audit du pipeline de révision, 31 constats vérifiés dont 30 retenus)** : demande
   user (« on a fait un système un poil bancal, fais une revue précise »). Audit 4 lentilles × réfutation
   chiffrée (chaque nombre recalculé en EXÉCUTANT engine.js, souvent Monte-Carlo). Décisions user :

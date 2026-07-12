@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0f172a">
+<meta name="theme-color" content="#10141B">
 <script>
 /* v65 : filet d'erreurs PRÉCOCE — data.js/engine.js/… se chargent avant app.js ; une SyntaxError
    amont ou un crash du boot seraient invisibles sans lui. Persiste dans la clé SÉPARÉE
@@ -27,6 +27,7 @@
 </script>
 <title>Sori — coréen</title>
 <link rel="manifest" href="./manifest.json">
+<link rel="preload" href="./fonts/nanum-myeongjo-bold-sub.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="./icon-192.png">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <link rel="stylesheet" href="./style.css">
@@ -37,20 +38,30 @@
 <header id="topbar">
   <div class="brand">소리 <span>Sori</span></div>
   <div class="topright">
-    <button id="report" class="iconbtn" title="Signaler un problème" hidden>🐞</button>
-    <button id="dico" class="iconbtn" title="Dictionnaire">🔍</button>
-    <button id="mute" class="iconbtn" title="Couper le son">🔊</button>
-    <button id="settings" class="iconbtn" title="Réglages">⚙️</button>
-    <div id="daycount" title="révisions aujourd'hui">📚 0</div>
+    <button id="report" class="iconbtn" title="Signaler un problème" hidden>
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16.5v.01"/></svg></button>
+    <button id="dico" class="iconbtn" title="Dictionnaire">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+    <button id="mute" class="iconbtn" title="Couper le son">
+      <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/></svg></button>
+    <button id="settings" class="iconbtn" title="Réglages">
+      <svg viewBox="0 0 24 24"><path d="M4 8h10M4 16h7"/><circle cx="17" cy="8" r="2.4"/><circle cx="14" cy="16" r="2.4"/></svg></button>
+    <div id="daycount" title="révisions aujourd'hui">0</div>
   </div>
 </header>
 
 <main id="screen"><!-- rendu par app.js --></main>
 
 <nav id="tabs">
-  <button data-tab="review">📚<span>Réviser</span></button>
-  <button data-tab="exercices">🎮<span>Exercices</span></button>
-  <button data-tab="progres" class="active">📈<span>Progrès</span></button>
+  <button data-tab="review">
+    <svg viewBox="0 0 24 24"><rect x="5" y="3.5" width="13" height="17" rx="2.5"/><path d="M9 8.5h5"/></svg>
+    <span>Réviser</span></button>
+  <button data-tab="exercices">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M10 9.3l5 2.7-5 2.7z"/></svg>
+    <span>Exercices</span></button>
+  <button data-tab="progres" class="active">
+    <svg viewBox="0 0 24 24"><path d="M5 20v-6M12 20V9M19 20V4"/></svg>
+    <span>Progrès</span></button>
 </nav>
 
 <script src="./data.js"></script>
