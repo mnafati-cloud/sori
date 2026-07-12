@@ -51,6 +51,27 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v71 (REPRISE intra-journée — demande user, validée après analyse)** : la stabilité réelle d'une
+  vraie nouveauté est ~0,2 jour (≈5 h — mesuré : 69 % à J+1) et l'user ouvre l'app plusieurs fois
+  par jour → les fragiles du jour sont maintenant retouchées entre les sessions, pas seulement le
+  lendemain. **Mécanique** : `repriseQueue(dueSet, t)` (constantes `REPRISE_ON/MAX=12/GAP_MIN=150`)
+  scanne le rlog du jour — cibles = cartes **RATÉES aujourd'hui** (grade 1) ou **INTRODUITES
+  aujourd'hui** (toutes entrées du jour à elapsed<1 et rien avant dans le rlog) ; dernier contact =
+  minuteDuJour du journal, complété par **`ST.rep`** (champ racine ADDITIF `{d, m:{id:minute}}`,
+  remis à zéro chaque jour) car les vues blanches ne journalisent pas — sans lui, re-proposition en
+  boucle. Exclusions : déjà due (pas de doublon), sus, contact < 2 h 30, heure inconnue (vieilles
+  entrées 4-6 champs). Injection EN TÊTE de file (hors cap, ≤12), semée dans CONSOL après la purge
+  v68 → **vues BLANCHES** (réussie = entraînement pur, zéro FSRS/rlog ; ratée = vrai échec) avec
+  pill « reprise ». **Compatibilité FSRS : par construction** (elapsed<1 gelé ; la voie « comptée »
+  = poids court-terme w17/w18 de FSRS-5, volontairement non activés — à reconsidérer après le fit
+  Phase B). Vérifié preview : sélection (ratée d'abord, trop-récente/non-fragile/déjà-due exclues),
+  vue blanche = zéro delta d'état, ST.rep écrit, PAS de re-proposition après contact, session
+  jusqu'au sceau, 0 erreur console. 61 tests. CACHE `sori-v71`.
+  **Revue adversariale (3 mineurs, corrigés)** : pill « reprise » sur un marqueur DÉDIÉ `REPRISE_IDS`
+  (sous-ensemble de CONSOL — sinon les consolidations v68 intra-session portaient la pill à tort ;
+  persisté dans `ST.sess.rp`) ; `ST.rep` + `REPRISE_IDS` couverts par armUndo/undoLast (trinité
+  undo/reprise/rebuild, leçon v68) ; ⚠️ **la reprise vit dans le rlog → elle est INERTE en mode
+  legacy** (la branche legacy ne journalise pas — assumé, le rollback legacy gèle aussi cette feature).
 - **v70 (FINITION de la refonte — « ça fait mélange, je vois encore des émojis »)** : la v69 avait
   volontairement épargné les cartes-graphes v63/v66, les Réglages et les modules — le user a tranché :
   TOUT nettoyer. Balayage exhaustif (59 retouches, 6 fichiers) : app.js (titres des cartes-graphes,

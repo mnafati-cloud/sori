@@ -46,6 +46,7 @@ function loadState(){
         s.xp = s.xp||0;
         s.strPos = s.strPos||0;                    // v62 : position persistée de l'exercice Structure (rampe facile->dur)
         s.errors = s.errors||[]; s.vlog = s.vlog||[];   // v65 : exceptions capturées + journal de versions
+        s.rep = s.rep||{d:"",m:{}};                     // v71 : derniers contacts des vues blanches (reprise)
         /* v52 : split recto/verso retiré (doublait le deck). Bascule UNE FOIS les utilisateurs
            qui l'avaient activé (v51) vers OFF ; le toggle Réglages reste libre ensuite. */
         if(s.reverseMig !== 1){ s.set.reverse = false; s.reverseMig = 1; }
@@ -224,6 +225,8 @@ function armUndo(){
     q: [...Q], qpos: QPOS,
     rlogPushed: false,                 // FSRS : posé par logReview → undoLast retire l'entrée (fiable même à RLOG_CAP)
     failpos: new Map(FAILPOS), consol: new Set(CONSOL), pending: PENDING,   // v68 : transitoires de session (sinon l'undo les désynchronise)
+    repIds: new Set(REPRISE_IDS),
+    rep: ST.rep ? { d: ST.rep.d, m: Object.assign({}, ST.rep.m) } : null,     // v71
   };
 }
 function undoLast(){
@@ -234,6 +237,8 @@ function undoLast(){
   ST.xp = UNDO.xp; COMBO = UNDO.combo; SESSFAIL = UNDO.sessfail;
   Q = UNDO.q; QPOS = UNDO.qpos;
   FAILPOS = UNDO.failpos || new Map(); CONSOL = UNDO.consol || new Set();   // v68
+  REPRISE_IDS = UNDO.repIds || new Set();
+  if(UNDO.rep !== undefined && UNDO.rep !== null) ST.rep = UNDO.rep;          // v71
   if(typeof UNDO.pending === "number") PENDING = UNDO.pending;
   if(ST.rlog && UNDO.rlogPushed && ST.rlog.length) ST.rlog.pop();  // retire l'entrée poussée depuis le snapshot (à RLOG_CAP, comparer les longueurs mentait)
   /* v65 : compteur d'annulations (télémétrie) — mesure le taux de mis-clics, invisible avant
@@ -546,6 +551,48 @@ function introduceCards(picked, slots, t){
   return introduced;
 }
 
+/* ===== v71 : REPRISE intra-journée =====
+   La stabilité réelle d'une vraie nouveauté est ~0,2 jour (≈5 h, mesuré : 69% à J+1) — or le
+   système ne retouchait les fragiles que le lendemain. À chaque NOUVELLE file du même jour, on
+   remet en tête les cartes RATÉES aujourd'hui et INTRODUITES aujourd'hui dont le dernier contact
+   date de ≥ REPRISE_GAP_MIN, en VUES BLANCHES (mécanique v68 : réussie = entraînement pur, zéro
+   effet FSRS ; ratée = vrai échec). Le dernier contact vient du journal du jour (minuteDuJour,
+   v65) ; les vues blanches elles-mêmes ne journalisent pas → leur heure vit dans ST.rep
+   (champ racine ADDITIF {d, m:{id:minute}}, remis à zéro chaque jour) sinon elles seraient
+   re-proposées en boucle. Désactivable : REPRISE_ON. */
+const REPRISE_ON = true, REPRISE_MAX = 12, REPRISE_GAP_MIN = 150;
+let REPRISE = [];   // ids sélectionnés par le dernier buildQueue → semés dans CONSOL par renderReview
+function repriseQueue(dueSet, t){
+  if(!REPRISE_ON || !Array.isArray(ST.rlog) || !ST.rlog.length) return [];
+  const now = new Date(), nowMin = now.getHours()*60 + now.getMinutes();
+  const before = new Set(), info = new Map();
+  for(const e of ST.rlog){
+    if(!Array.isArray(e) || e.length < 4) continue;
+    if(e[0] !== t){ before.add(e[1]); continue; }
+    const o = info.get(e[1]) || { fail:false, allSameDay:true, last:-1 };
+    if(e[2] === 1) o.fail = true;
+    if((e[3]|0) >= 1) o.allSameDay = false;
+    const mod = (e.length > 6 && typeof e[6] === "number") ? e[6] : null;
+    if(mod !== null && mod > o.last) o.last = mod;
+    info.set(e[1], o);
+  }
+  const cands = [];
+  info.forEach((o, id) => {
+    if(dueSet.has(id)) return;                                  // déjà échue → vraie révision, pas de doublon
+    const it = eff(id);
+    if(!it || it.sus || it.stage < 1) return;
+    const introToday = o.allSameDay && !before.has(id);          // toutes les entrées du jour à elapsed<1 et rien avant = introduite aujourd'hui
+    if(!o.fail && !introToday) return;                           // cible : ratées du jour OU vraies nouveautés du jour
+    let last = o.last;
+    if(ST.rep && ST.rep.d === t && typeof (ST.rep.m||{})[id] === "number") last = Math.max(last, ST.rep.m[id]);
+    if(last < 0) return;                                         // pas d'heure connue (vieilles entrées 4-5 champs)
+    if(nowMin - last < REPRISE_GAP_MIN) return;                  // touchée il y a moins de ~2 h 30
+    cands.push({ id, fail: o.fail ? 1 : 0, last });
+  });
+  cands.sort((a, b) => (b.fail - a.fail) || (a.last - b.last));  // ratées d'abord, puis les plus anciennes
+  return cands.slice(0, REPRISE_MAX).map(c => c.id);
+}
+
 /* file du jour : échues + nouvelles (plus simple/fréquent d'abord) */
 function buildQueue(){
   const t = todayStr();
@@ -575,6 +622,9 @@ function buildQueue(){
     due = due.slice(0, cap);
   } else PENDING = 0;
   shuffle(due);
+  /* v71 : la REPRISE passe en tête (vues blanches, hors cap — ≤ REPRISE_MAX) */
+  REPRISE = repriseQueue(new Set(due), t);
+  if(REPRISE.length) due = REPRISE.concat(due);
   return due;
 }
 let PENDING = 0;
@@ -646,7 +696,7 @@ let Q = null, QPOS = 0, BONUS = false, COMBO = 0, SESSFAIL = [];
 /* la session en cours survit à un kill de l'app (Android) */
 function saveSess(){
   ST.sess = (BONUS || !Q) ? null : { d:todayStr(), q:Q, p:QPOS, pen:PENDING,
-    fp:[...FAILPOS], co:[...CONSOL] };   // v68 : sinon un kill transforme les vues blanches en révisions réelles (stage+1 gratuit)
+    fp:[...FAILPOS], co:[...CONSOL], rp:[...REPRISE_IDS] };   // v68/v71 : sinon un kill transforme les vues blanches en révisions réelles
   save();
 }
 /* quitter la révision en cours → retour à l'accueil. La session est CONSERVÉE
@@ -662,10 +712,12 @@ function renderReview(){
     const s = ST.sess;
     if(s && s.d===todayStr() && Array.isArray(s.q) && s.p < s.q.length){
       Q = s.q; QPOS = s.p; PENDING = s.pen||0; BONUS = false;   // reprise
-      FAILPOS = new Map(s.fp||[]); CONSOL = new Set(s.co||[]);    // v68 : transitoires restaurés (vieilles sess sans fp/co → vides)
+      FAILPOS = new Map(s.fp||[]); CONSOL = new Set(s.co||[]); REPRISE_IDS = new Set(s.rp||[]);   // v68/v71 : transitoires restaurés
     } else {
       Q = buildQueue(); QPOS = 0; BONUS = false; COMBO = 0; SESSFAIL = [];
       FAILPOS.clear(); CONSOL.clear();                            // v68 : jamais de marqueurs d'une file précédente
+      REPRISE_IDS = new Set(REPRISE);                             // v71 : marqueur d'affichage dédié
+      REPRISE.forEach(id => CONSOL.add(id)); REPRISE = [];        // v71 : les reprises sont des vues blanches
       saveSess();
     }
   }
@@ -708,12 +760,12 @@ function renderReview(){
     document.getElementById("reviewmore").onclick = ()=>{
       const q = reviewMoreQueue(10);
       if(!q.length){ alert("Aucune carte commencée à réviser pour l'instant — apprends-en de nouvelles !"); return; }
-      Q = q; QPOS = 0; BONUS = false; FAILPOS.clear(); CONSOL.clear(); render();
+      Q = q; QPOS = 0; BONUS = false; FAILPOS.clear(); CONSOL.clear(); REPRISE_IDS.clear(); render();
     };
     document.getElementById("learnmore").onclick = ()=>{
       const q = learnMoreQueue(10);
       if(!q.length){ alert("Bravo — tu as déjà commencé toutes les cartes du deck !"); return; }
-      Q = q; QPOS = 0; BONUS = false; FAILPOS.clear(); CONSOL.clear(); render();
+      Q = q; QPOS = 0; BONUS = false; FAILPOS.clear(); CONSOL.clear(); REPRISE_IDS.clear(); render();
     };
     /* 🎯 quêtes du jour en mode compact (fin de session) — masqué v28 (SHOW_QUESTS) */
     if(SHOW_QUESTS && window.SORI_QUESTS){
@@ -742,6 +794,7 @@ function renderReview(){
       <div class="dim">${QPOS+1} / ${Q.length}
         ${it.rev?'<span class="pill stage">production</span>':(ST.set.reverse!==false && it.type==="word"?'<span class="pill">compréhension</span>':"")}
         ${it.enemy?'<span class="pill enemy">ennemie</span>':""}
+        ${REPRISE_IDS.has(it.id)?'<span class="pill">reprise</span>':""}
         <span class="pill stage">niv ${it.stage}</span>
         ${COMBO>=3?`<span class="pill stage">×${COMBO}</span>`:""}</div>
       <div class="rev-actions">
@@ -925,7 +978,7 @@ function maxGradeFor(it, kind){
    - CONSOL   : ids dont la prochaine présentation est une vue BLANCHE (exercice joué, journalisé
      dans les stats du jour, mais AUCUNE replanification/stage) ; une vue blanche RATÉE redevient
      un échec réel. Les vraies nouveautés (1re exposition réussie) reçoivent une vue à +8-12. */
-let FAILPOS = new Map(), CONSOL = new Set();
+let FAILPOS = new Map(), CONSOL = new Set(), REPRISE_IDS = new Set();   // v71 : pill « reprise » (sous-ensemble de CONSOL)
 function afterAnswer(it, ok, sawTrivia, kind, grade){
   LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞
   armUndo();                                // photo AVANT toute mutation (annulation possible)
@@ -934,7 +987,12 @@ function afterAnswer(it, ok, sawTrivia, kind, grade){
   const G = ok ? Math.min(Graw, maxG) : 1;               // note plafonnée par l'aide (canal stabilité)
   const rt = EXO_T0 ? Date.now() - EXO_T0 : 0;           // temps de réponse (ms) — agrégats ET journal (v65)
   let blanc = false;
-  if(!BONUS && CONSOL.has(it.id)){ CONSOL.delete(it.id); if(ok) blanc = true; }   // consolidation réussie = blanche ; ratée = échec réel
+  if(!BONUS && CONSOL.has(it.id)){ CONSOL.delete(it.id); REPRISE_IDS.delete(it.id); if(ok) blanc = true; }   // consolidation réussie = blanche ; ratée = échec réel
+  if(blanc){                                                     // v71 : heure du contact (les vues blanches ne journalisent pas)
+    const nw = new Date(), td = todayStr();
+    if(!ST.rep || ST.rep.d !== td) ST.rep = { d: td, m: {} };
+    ST.rep.m[it.id] = nw.getHours()*60 + nw.getMinutes();
+  }
   if(!BONUS && ok && FAILPOS.has(it.id)){
     const gap = QPOS - FAILPOS.get(it.id);
     FAILPOS.delete(it.id);
@@ -1772,6 +1830,7 @@ function applyImportedState(state){
   s.set = Object.assign({}, DEF_SET, s.set||{});
   s.strPos = s.strPos||0;                    // v62 : position persistée de l'exercice Structure
   s.errors = s.errors||[]; s.vlog = s.vlog||[];   // v65
+  s.rep = s.rep||{d:"",m:{}};                     // v71
   s.v = s.v || 1;
   ST = s; save(); Q = null; render();
 }
