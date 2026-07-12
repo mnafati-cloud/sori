@@ -51,6 +51,30 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v73 (le son et le sceau — demande user : sons thématiques, tampon animé, icône à jour)** :
+  ① **Thème sonore « encre & papier »** : les 2 bips oscillateur de `sfx()` remplacés par du BRUIT
+  FILTRÉ (zéro asset audio) — helpers `actx()` (contexte + buffer de bruit partagé `NOISE`),
+  `paperVoice`/`toneVoice`. Juste = trait de plume (bandpass 4200→2400, 90 ms) ; faux = frottement
+  sourd + sine grave ; `sfxStamp()` = coup de tampon (sine 96→62 Hz + claque de bruit) ;
+  `sfxTick()` = clic feutré sur TOUT toggle (2 listeners délégués document : click `.num-mode`,
+  change checkbox). Volumes bas exprès (~600 réponses/j). Tout respecte `ST.set.mute`.
+  ② **Le tampon SE POSE** : `@keyframes stamp-in` (.32 s, opacity+rotate+scale, un seul rebond sec)
+  sur `.dojang`, `prefers-reduced-motion` → none ; son calé sur l'impact
+  (`if(PENDING===0 && !NAV) setTimeout(sfxStamp, 170)` dans l'écran de fin). UN moment orchestré,
+  rien d'autre n'est animé.
+  ③ **Icônes PWA « Encre & sceau »** : `tools/make_icons.py` réécrit (fond encre PLEIN pour
+  maskable, 소리 en NanumMyeongjo-Bold, carré-sceau vermillon posé en signature au bout du trait
+  du 리 ; rendu 4x + LANCZOS ; TTF non versionné — URL OFL dans l'en-tête du script, repli Batang).
+  L'icône Android (WebAPK) se met à jour avec le délai du système (ou réinstaller la PWA).
+  Vérifié preview : graphe audio construit et `running` après geste, 0 exception, animation
+  `stamp-in .32s` calculée, 0 nouvelle erreur ST.errors. 61 tests. CACHE `sori-v73`.
+  **Revue adversariale (2 défauts, corrigés)** : (a) la zone sûre maskable est le CERCLE de rayon
+  0.40·S (spec W3C), PAS le carré des 80 % — le sceau débordait (r=240 px > 204.8) → clamp RADIAL
+  dans make_icons.py (mesuré 196.7) ; (b) `applyImportedState` re-rendait l'écran de fin avec
+  NAV=false → coup de tampon sonore après une restauration cloud → encadré `NAV=true`.
+  ⚠️ Pièges preview re-confirmés : onglet `hidden` → transitions/animations CSS gelées ; et le
+  mute était actif dans le navigateur de preview (toujours vérifier `ST.set.mute` avant de
+  conclure que l'audio est cassé).
 - **v72 (Exercices sans les deux bleus — maquette artifact 2f01481b validée user)** : la page
   Exercices restait « intermédiaire » entre les deux styles. Diagnostic : (1) les cases à cocher
   des modes n'avaient AUCUN accent-color → bleu Chrome par défaut ; (2) le céladon #7CC7AC, trop

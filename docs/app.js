@@ -195,24 +195,80 @@ function logAnswer(ok, kind, r, rt){
 }
 let EXO_T0 = 0;   // début d'affichage de l'exercice courant (temps de réponse)
 
-/* ===== sons de feedback (WebAudio généré, discret, immédiat) — respecte le mute ===== */
-let ACTX = null;
+/* ===== v73 : sons « encre & papier » (WebAudio généré, zéro asset) — respecte le mute =====
+   Matière sonore = bruit filtré (papier, plume, tampon), plus d'oscillateurs électroniques.
+   Volumes bas exprès : ~600 réponses/jour, le son doit accompagner, jamais fatiguer. */
+let ACTX = null, NOISE = null;
+function actx(){
+  ACTX = ACTX || new (window.AudioContext||window.webkitAudioContext)();
+  if(ACTX.state === "suspended") ACTX.resume();
+  if(!NOISE){
+    NOISE = ACTX.createBuffer(1, Math.floor(ACTX.sampleRate/2), ACTX.sampleRate);
+    const d = NOISE.getChannelData(0);
+    for(let i=0;i<d.length;i++) d[i] = Math.random()*2 - 1;
+  }
+  return ACTX;
+}
+/* une « voix » de bruit filtré : type/freq(→sweep)/durée/pic */
+function paperVoice(ctx, t0, o){
+  const src = ctx.createBufferSource(); src.buffer = NOISE; src.loop = true;
+  const f = ctx.createBiquadFilter(); f.type = o.type; f.Q.value = o.q || 1;
+  f.frequency.setValueAtTime(o.freq, t0);
+  if(o.sweep) f.frequency.exponentialRampToValueAtTime(o.sweep, t0 + o.dur);
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0.0001, t0);
+  g.gain.exponentialRampToValueAtTime(o.peak, t0 + (o.attack || 0.008));
+  g.gain.exponentialRampToValueAtTime(0.0001, t0 + o.dur);
+  src.connect(f); f.connect(g); g.connect(ctx.destination);
+  src.start(t0); src.stop(t0 + o.dur + 0.02);
+}
+function toneVoice(ctx, t0, o){
+  const osc = ctx.createOscillator(); osc.type = o.type || "sine";
+  osc.frequency.setValueAtTime(o.freq, t0);
+  if(o.sweep) osc.frequency.exponentialRampToValueAtTime(o.sweep, t0 + o.dur);
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0.0001, t0);
+  g.gain.exponentialRampToValueAtTime(o.peak, t0 + (o.attack || 0.006));
+  g.gain.exponentialRampToValueAtTime(0.0001, t0 + o.dur);
+  osc.connect(g); g.connect(ctx.destination);
+  osc.start(t0); osc.stop(t0 + o.dur + 0.02);
+}
 function sfx(ok){
   if(ST.set.mute) return;
   try{
-    ACTX = ACTX || new (window.AudioContext||window.webkitAudioContext)();
-    if(ACTX.state === "suspended") ACTX.resume();
-    const t = ACTX.currentTime;
-    const g = ACTX.createGain(); g.connect(ACTX.destination);
-    g.gain.setValueAtTime(0.0001, t);
-    g.gain.exponentialRampToValueAtTime(ok ? 0.10 : 0.13, t + 0.01);
-    g.gain.exponentialRampToValueAtTime(0.0001, t + (ok ? 0.22 : 0.28));
-    const o = ACTX.createOscillator(); o.connect(g);
-    if(ok){ o.type = "sine"; o.frequency.setValueAtTime(880, t); o.frequency.setValueAtTime(1318.5, t + 0.08); }
-    else  { o.type = "triangle"; o.frequency.setValueAtTime(220, t); o.frequency.exponentialRampToValueAtTime(150, t + 0.24); }
-    o.start(t); o.stop(t + (ok ? 0.24 : 0.3));
+    const ctx = actx(), t = ctx.currentTime;
+    if(ok){
+      /* trait de plume : bref, clair, vers le grave (le geste s'achève) */
+      paperVoice(ctx, t, {type:"bandpass", freq:4200, sweep:2400, q:2.2, dur:0.09, peak:0.09});
+    } else {
+      /* raté : frottement sourd, papier qu'on froisse à moitié */
+      paperVoice(ctx, t, {type:"lowpass", freq:420, sweep:240, dur:0.22, peak:0.12, attack:0.015});
+      toneVoice(ctx, t, {type:"sine", freq:130, sweep:95, dur:0.18, peak:0.05});
+    }
   }catch(e){}
 }
+/* tampon : coup sourd + claque de bruit — joué quand le sceau 끝 se pose */
+function sfxStamp(){
+  if(ST.set.mute) return;
+  try{
+    const ctx = actx(), t = ctx.currentTime;
+    toneVoice(ctx, t, {type:"sine", freq:96, sweep:62, dur:0.16, peak:0.30, attack:0.004});
+    paperVoice(ctx, t, {type:"lowpass", freq:800, dur:0.045, peak:0.16, attack:0.003});
+  }catch(e){}
+}
+/* petit clic feutré : tuiles-tampon et interrupteurs */
+function sfxTick(){
+  if(ST.set.mute) return;
+  try{
+    const ctx = actx(), t = ctx.currentTime;
+    paperVoice(ctx, t, {type:"highpass", freq:2600, dur:0.02, peak:0.05, attack:0.003});
+  }catch(e){}
+}
+/* délégué : tout toggle (tuile de mode, interrupteur de réglage) fait tic */
+document.addEventListener("click", e=>{ if(e.target.closest(".num-mode")) sfxTick(); });
+document.addEventListener("change", e=>{
+  if(e.target instanceof HTMLInputElement && e.target.type === "checkbox") sfxTick();
+});
 
 /* ===== annulation de la dernière réponse (clic accidentel) — 1 niveau ===== */
 let UNDO = null;
@@ -726,6 +782,8 @@ function renderReview(){
     autoCloudBackup();                       // sauvegarde cloud silencieuse (1x/jour max)
     const t=todayStr(), l=ST.log[t]||{ok:0,ko:0};
     const more = PENDING>0 ? `<button class="btn ghost" id="more">Continuer les révisions (${PENDING} en attente)</button>` : "";
+    /* v73 : le sceau se POSE — son du tampon calé sur l'impact de l'animation (~55% de .32s) */
+    if(PENDING===0 && !NAV) setTimeout(sfxStamp, 170);
     $screen.appendChild(el(`<div class="card center">
       ${PENDING>0
         ? `<div class="seal-wrap"><div class="done-kr">수고했어요</div></div><h2>Session terminée — il en reste</h2>`
@@ -1832,7 +1890,8 @@ function applyImportedState(state){
   s.errors = s.errors||[]; s.vlog = s.vlog||[];   // v65
   s.rep = s.rep||{d:"",m:{}};                     // v71
   s.v = s.v || 1;
-  ST = s; save(); Q = null; render();
+  ST = s; save(); Q = null;
+  NAV = true; render(); NAV = false;   // v73 : rendu d'ARRIVÉE — pas de coup de tampon post-restauration
 }
 /* confirmation à MINUTEUR pour une action irréversible : le bouton Confirmer reste grisé
    quelques secondes (compte à rebours visible), Annuler est cliquable à tout instant.
