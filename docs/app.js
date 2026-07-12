@@ -267,7 +267,7 @@ function openReportModal(){
   const ctx = reportCtx();                     // figé à l'OUVERTURE (la carte d'où l'on vient)
   const back = el(`<div class="modal-back">
     <div class="card modal">
-      <h2>🐞 Signaler un problème</h2>
+      <h2>Signaler un problème</h2>
       <p class="dim">${ctx.carte ? "Carte : "+esc(ctx.carte.kr)+" ("+esc(ctx.pos||"")+")" : "Onglet : "+esc(ctx.tab)}
         — le contexte et l'heure sont joints automatiquement.</p>
       <textarea id="rpttxt" rows="5" placeholder="Décris le souci ou la remarque…"></textarea>
@@ -321,7 +321,7 @@ function wireDico(){
 function openDico(){
   if(!window.SORI_SEARCH) return;
   const back = el(`<div class="modal-back"></div>`);
-  const box = el(`<div class="card modal wide"><h2>🔍 Dictionnaire</h2>
+  const box = el(`<div class="card modal wide"><h2>Dictionnaire</h2>
     <div class="dico-body"></div>
     <div class="row" style="margin-top:14px"><button class="btn ghost" id="dicoclose">Fermer</button></div></div>`);
   back.appendChild(box);
@@ -740,7 +740,7 @@ function renderReview(){
     <div class="progressbar"><div style="width:${Math.round(100*QPOS/Q.length)}%"></div></div>
     <div class="rev-head">
       <div class="dim">${QPOS+1} / ${Q.length}
-        ${it.rev?'<span class="pill" style="color:var(--acc)">🔄 production</span>':(ST.set.reverse!==false && it.type==="word"?'<span class="pill">👂 compréhension</span>':"")}
+        ${it.rev?'<span class="pill stage">production</span>':(ST.set.reverse!==false && it.type==="word"?'<span class="pill">compréhension</span>':"")}
         ${it.enemy?'<span class="pill enemy">ennemie</span>':""}
         <span class="pill stage">niv ${it.stage}</span>
         ${COMBO>=3?`<span class="pill stage">×${COMBO}</span>`:""}</div>
@@ -966,7 +966,7 @@ function afterAnswer(it, ok, sawTrivia, kind, grade){
   /* TOUJOURS au clic (cohérent, fini les avances-surprises) + annulation à portée de pouce */
   const row = el(`<div class="row" style="margin-top:12px">
     <button class="btn ghost" id="undo" title="annuler cette réponse" style="flex:0 0 25%">↶</button>
-    <button class="btn" id="cont">Continuer →</button></div>`);
+    <button class="btn ghost" id="cont">Continuer</button></div>`);
   row.querySelector("#cont").onclick = ()=>{ UNDO = null; render(); };
   row.querySelector("#undo").onclick = undoLast;
   ($screen.querySelector(".card:last-of-type") || $screen).appendChild(row);
@@ -1141,8 +1141,8 @@ function exoBuild(it){
     const got = built.map(t=>t.w).join(" ");
     const ok = got === answer;
     card.querySelector(".feedback").innerHTML =
-      ok ? `<span style="color:var(--ok)">✔ ${esc(answer)}</span>`
-         : `<span style="color:var(--ko)">✘</span> <span class="kr">${esc(answer)}</span>`;
+      ok ? `<span style="color:var(--ok)">✓ ${esc(answer)}</span>`
+         : `<span style="color:var(--ko)">✗</span> <span class="kr">${esc(answer)}</span>`;
     [...card.querySelectorAll(".chip")].forEach(b=>b.disabled=true);
     speak(answer, it.id);
     afterAnswer(it, ok, showTrivia(card, it), "build");
@@ -1235,7 +1235,7 @@ function renderTrip(){
   if(DRILL){ renderDrill(); return; }
   /* 🔍 Mon dictionnaire — recherche FR⇄KR dans tout le deck (search.js) */
   if(window.SORI_SEARCH){
-    $screen.appendChild(el(`<div class="section-title">🔍 Mon dictionnaire</div>`));
+    $screen.appendChild(el(`<div class="section-title">Mon dictionnaire</div>`));
     SORI_SEARCH.renderPanel($screen, {
       items: BASE_IDS.map(eff),        // pas de doublon recto/verso
       extra: EXTRA,
@@ -1402,9 +1402,9 @@ function renderStats(){
   if(pts.length>=2){ const a=pts[0], b=pts[pts.length-1], span=dd(b.d,a.d); if(span>=1 && b.tt>a.tt) pace=(b.tt-a.tt)/span; }
   const paceTxt = pace!=null ? (Math.round(pace*10)/10) : null;
   const nextPct = working ? Math.min(100, Math.round(100*(mas[working]/(0.8*tot[working])))) : 100;   // % du chemin vers le palier suivant
-  $screen.appendChild(el(`<div class="card"><h2>🎯 Ton niveau</h2>
+  $screen.appendChild(el(`<div class="card"><h2>Ton niveau</h2>
     <p style="margin:2px 0 8px"><span class="dim" style="font-size:.82rem">Niveau actuel (d'après tes acquis)</span><br>
-      <b style="font-size:1.6rem;color:var(--acc)">${working||"🏆 tout acquis"}</b>${acquired.length?` <span class="dim" style="font-size:.8rem">· ${acquired.join(" · ")} acquis</span>`:""}${working&&nextBand?`<br><span class="dim" style="font-size:.82rem">Prochain palier : <b>${nextBand}</b> — ${nextPct}% du chemin</span>`:""}</p>
+      <b style="font-size:1.6rem;color:var(--acc)">${working||"tout acquis"}</b>${acquired.length?` <span class="dim" style="font-size:.8rem">· ${acquired.join(" · ")} acquis</span>`:""}${working&&nextBand?`<br><span class="dim" style="font-size:.82rem">Prochain palier : <b>${nextBand}</b> — ${nextPct}% du chemin</span>`:""}</p>
     <div class="levelbars">${BANDS.map(b=>`
       <div class="lvlrow">
         <span class="lvlname">${b}</span>
@@ -1420,11 +1420,11 @@ function renderStats(){
   const pg=gWin.map(d=>{ const s=(ST.lvlhist||{})[d]; if(!s||!wb) return {d,p:null}; const w=s[wb]||0; const dg=(lastW==null)?null:Math.max(0,w-lastW); lastW=w; return {d, p:(dg==null||tgt<=0)?null:(dg/tgt*100)}; });
   const anyPg = pg.some(x=>x.p!=null && x.p>0);
   const mxp = Math.max(0.5,...pg.map(x=>x.p||0));
-  $screen.appendChild(el(`<div class="card"><h2>🧗 Gain vers le niveau suivant — 14 j</h2>
+  $screen.appendChild(el(`<div class="card"><h2>Gain vers le niveau suivant — 14 j</h2>
     <p class="dim" style="font-size:.82rem;margin-bottom:6px">${wb?`Chaque barre = <b>% du chemin</b> vers <b>${nextBand||"le niveau suivant"}</b> gagné ce jour-là (cartes solidifiées ÷ seuil du niveau).`:"Tous les niveaux du deck sont acquis. 🏆"}</p>
     ${wb ? (anyPg
       ? `<div class="bars">${pg.map(x=>`<div class="b"><div style="height:${x.p==null?2:Math.max(2,Math.round(70*x.p/mxp))}px${x.d===t?";background:var(--acc)":""}${x.p==null?";opacity:.25":""}"></div><span>${x.p==null?"·":(Math.round(x.p*10)/10)}</span></div>`).join("")}</div>`
-      : `<p class="dim" style="font-size:.82rem">L'historique se construit — les barres apparaîtront au fil de tes jours de révision. 📈</p>`) : ""}</div>`));
+      : `<p class="dim" style="font-size:.82rem">L'historique se construit — les barres apparaîtront au fil de tes jours de révision.</p>`) : ""}</div>`));
 
   /* ⏳ temps estimé vers CHAQUE niveau à venir (cumulé) — cartes restantes ÷ vitesse récente */
   const wi = BANDS.indexOf(working);
@@ -1436,19 +1436,19 @@ function renderStats(){
     ${etas.length ? (pace
       ? `<div class="bars">${etas.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.days/mxe))}px"></div><span>${x.b}<br>${x.days} j</span></div>`).join("")}</div>`
       : `<p class="dim" style="font-size:.82rem">Estimation dispo dès quelques jours d'historique de maîtrise (ta vitesse récente est encore inconnue).</p>`)
-      : `<p class="dim">🏆 Tous les niveaux du deck sont acquis.</p>`}</div>`));
+      : `<p class="dim">Tous les niveaux du deck sont acquis.</p>`}</div>`));
 
   /* 📈 réussite / jour (14 j) — % de bonnes réponses au 1er essai (compteurs propres ok1/ko1) */
   const sWin=[]; for(let i=13;i>=0;i--){ const d=addDays(t,-i); const L=ST.log[d]||{}; const o=(L.ok1!=null?L.ok1:L.ok)||0, k=(L.ko1!=null?L.ko1:L.ko)||0, n=o+k; sWin.push({d,p:n?Math.round(100*o/n):null}); }
   const sDays=sWin.filter(x=>x.p!=null);
   const sAvg = sDays.length ? Math.round(sDays.reduce((s,x)=>s+x.p,0)/sDays.length) : null;
-  $screen.appendChild(el(`<div class="card"><h2>📈 Réussite quotidienne — 14 jours</h2>
+  $screen.appendChild(el(`<div class="card"><h2>Réussite quotidienne — 14 jours</h2>
     <p class="dim" style="font-size:.82rem;margin-bottom:6px">% de bonnes réponses au 1er essai chaque jour${sAvg!=null?` — moyenne ≈ <b>${sAvg}%</b>`:""}.</p>
     <div class="bars">${sWin.map(x=>`<div class="b"><div style="height:${x.p==null?2:Math.max(2,Math.round(70*x.p/100))}px${x.d===t?";background:var(--acc)":""}${x.p==null?";opacity:.25":""}" title="${x.p==null?"pas de révision":x.p+'%'}"></div><span>${x.p==null?"·":x.p}</span></div>`).join("")}</div></div>`));
 
   if(leeches.length){
     $screen.appendChild(el(`<div class="card">
-      <h2>🩸 Sangsues (${leeches.length})</h2>
+      <h2>Sangsues (${leeches.length})</h2>
       <p class="dim">Ces mots résistent à la répétition — change d'angle : mnémotechnique, phrase à toi, post-it.
       ${leeches.slice(0,8).map(x=>`<span class="pill">${esc(x.kr)}</span>`).join("")}${leeches.length>8?"…":""}</p></div>`));
   }
@@ -1490,7 +1490,7 @@ function renderStats(){
   /* avertissement voix coréenne absente (sinon accent français sur le hangul !) */
   if(koVoiceMissing()){
     $screen.appendChild(el(`<div class="card" style="border-color:var(--ko)">
-      <h2>🗣️ Voix coréenne absente</h2>
+      <h2>Voix coréenne absente</h2>
       <p class="dim">Ton appareil lit le coréen avec une voix française. Pour corriger sur Android :
       <b>Paramètres → Gestion générale (ou Système) → Synthèse vocale → moteur "Synthèse vocale Google"
       → ⚙️ → Installer les données de voix → 한국어 (coréen)</b>, puis redémarre l'app.
@@ -1502,8 +1502,8 @@ function renderStats(){
   const cloudRecent = cloudDays!==null && cloudDays < 7;
   if(!cloudRecent){
     $screen.appendChild(el(`<div class="card" style="border-color:var(--warn)">
-      <h2>⚠️ Sauvegarde</h2><p class="dim">${ghToken()?"Aucune sauvegarde cloud récente":"Sauvegarde cloud pas encore activée"} —
-      ta progression ne vit que sur cet appareil. Ouvre <b>⚙️ Réglages</b> pour la sauvegarder dans le cloud (ou exporter un fichier).</p></div>`));
+      <h2>Sauvegarde</h2><p class="dim">${ghToken()?"Aucune sauvegarde cloud récente":"Sauvegarde cloud pas encore activée"} —
+      ta progression ne vit que sur cet appareil. Ouvre <b>Réglages</b> pour la sauvegarder dans le cloud (ou exporter un fichier).</p></div>`));
   }
 
   const mx = Math.max(...stages,1);
@@ -1541,22 +1541,22 @@ function renderStats(){
 /* ===== Réglages en surcouche (ouverts par la roue ⚙️ du header, depuis n'importe quel onglet) ===== */
 function openSettings(){
   const back = el(`<div class="modal-back"></div>`);
-  const set = el(`<div class="card modal wide settings"><h2>⚙️ Réglages</h2>
+  const set = el(`<div class="card modal wide settings"><h2>Réglages</h2>
     <label>Nouvelles cartes / jour <input type="number" id="npd" min="0" max="50" value="${ST.set.newPerDay}"></label>
     <label>Taille max de session <input type="number" id="smax" min="20" max="500" step="10" value="${ST.set.sessionMax||120}"></label>
     <label>Prioriser le kit voyage <input type="checkbox" id="kf" ${ST.set.kitFirst?"checked":""}></label>
     <label>Prononcer automatiquement <input type="checkbox" id="ap" ${ST.set.autoplay?"checked":""}></label>
-    <label title="FSRS = algorithme moderne (modèle mémoire stabilité/difficulté par carte, ~25% de révisions en moins). Classique = échelle de stades historique.">🧠 Algorithme de répétition
+    <label title="FSRS = algorithme moderne (modèle mémoire stabilité/difficulté par carte, ~25% de révisions en moins). Classique = échelle de stades historique.">Algorithme de répétition
       <select id="sched"><option value="fsrs" ${ST.set.scheduler!=="legacy"?"selected":""}>FSRS (moderne)</option><option value="legacy" ${ST.set.scheduler==="legacy"?"selected":""}>Classique</option></select></label>
     <label title="Rétention cible FSRS : proba de te souvenir au moment de la révision. Plus haut = plus de révisions, meilleure mémoire. Défaut 0.90.">Rétention cible (FSRS) <input type="number" id="fsrsret" min="0.7" max="0.97" step="0.01" value="${ST.set.fsrsRetention||0.9}"></label>
-    <label title="Au rappel SANS AIDE : 4 boutons (Encore/Difficile/Bien/Facile). Les exercices aidés (QCM, indice, sens inversé) restent à 2 boutons — leur note est plafonnée à Difficile. Note plus fine → FSRS mieux calibré.">🎚️ Notation à 4 boutons <input type="checkbox" id="g4" ${ST.set.grade4!==false?"checked":""}></label>
+    <label title="Au rappel SANS AIDE : 4 boutons (Encore/Difficile/Bien/Facile). Les exercices aidés (QCM, indice, sens inversé) restent à 2 boutons — leur note est plafonnée à Difficile. Note plus fine → FSRS mieux calibré.">Notation à 4 boutons <input type="checkbox" id="g4" ${ST.set.grade4!==false?"checked":""}></label>
     <label title="Intervalles personnalisés par mot (ALGORITHM.md), UNIQUEMENT en mode Classique. Laisser décoché ~2 semaines : l'app observe d'abord.">
       Planification adaptative (mode Classique) <input type="checkbox" id="adap" ${ST.set.adaptive?"checked":""}></label>
-    <label title="Chaque mot devient DEUX cartes à maîtrise séparée : comprendre (KR→FR) et produire (FR→KR). Recommandé, mais double la charge de révision.">🔄 Production séparée (recto/verso) <input type="checkbox" id="rev" ${ST.set.reverse!==false?"checked":""}></label>
+    <label title="Chaque mot devient DEUX cartes à maîtrise séparée : comprendre (KR→FR) et produire (FR→KR). Recommandé, mais double la charge de révision.">Production séparée (recto/verso) <input type="checkbox" id="rev" ${ST.set.reverse!==false?"checked":""}></label>
     <label>Saisie au clavier coréen (niv 5) <input type="checkbox" id="typ" ${ST.set.typing?"checked":""}></label>
-    <label>🐞 Bouton rapport de problème <input type="checkbox" id="rpt" ${ST.set.report?"checked":""}></label>
-    <label>🔊 Audio de la phrase d'exemple <input type="checkbox" id="exau" ${ST.set.exaudio?"checked":""}></label>
-    <label title="Dans l'encart d'exemple, taper un mot affiche sa traduction française.">👆 Traduction d'un mot au clic <input type="checkbox" id="wgl" ${ST.set.wordgloss?"checked":""}></label>
+    <label>Bouton rapport de problème <input type="checkbox" id="rpt" ${ST.set.report?"checked":""}></label>
+    <label>Audio de la phrase d'exemple <input type="checkbox" id="exau" ${ST.set.exaudio?"checked":""}></label>
+    <label title="Dans l'encart d'exemple, taper un mot affiche sa traduction française.">Traduction d'un mot au clic <input type="checkbox" id="wgl" ${ST.set.wordgloss?"checked":""}></label>
     <label>Vitesse de la voix <input type="number" id="rate" min="0.5" max="1.2" step="0.1" value="${ST.set.rate}"></label>
     ${koVoices().length>1 ? `<label>Voix coréenne <select id="voice">${
       koVoices().map(v=>`<option value="${esc(v.name)}" ${ST.set.voice===v.name?"selected":""}>${esc(v.name)}</option>`).join("")
@@ -1564,25 +1564,25 @@ function openSettings(){
     ${window.SORI_THEMES ? `<label>Style graphique <select id="theme">${
       SORI_THEMES.list.map(th=>`<option value="${th.id}" ${SORI_THEMES.get()===th.id?"selected":""}>${esc(th.label)}</option>`).join("")
     }</select></label>` : ""}
-    <div class="section-title" style="margin-top:14px">✈️ Mode avion</div>
+    <div class="section-title" style="margin-top:14px">Mode avion</div>
     <div class="row" style="margin-top:6px"><button class="btn ghost" id="dlaudio">Télécharger tout l'audio (${AUDIO_IDS.size + AUDIO_EX_IDS.size} fichiers)</button></div>
     <p class="dim" id="dlstatus" style="margin-top:6px">Mots + phrases d'exemple, disponibles hors connexion (avion, métro coréen).</p>
-    <div class="section-title" style="margin-top:14px">☁️ Sauvegarde cloud (le canal principal)</div>
+    <div class="section-title" style="margin-top:14px">Sauvegarde cloud (le canal principal)</div>
     <p class="dim" style="margin-top:4px">Ta progression part toute seule dans le cloud (à chaque fin de bloc) — c'est ta sauvegarde ET ce que Claude lit. Rien d'autre à faire.</p>
     <label>Jeton d'accès <input type="password" id="ghtok" placeholder="${ghToken()?"•••• configuré ••••":"github_pat_…"}" autocomplete="off"></label>
     <div class="row" style="margin-top:8px">
-      <button class="btn" id="cloud">☁️ Sauvegarder maintenant</button>
+      <button class="btn" id="cloud">Sauvegarder maintenant</button>
       <button class="btn ghost" id="cloudrestore">↓ Restaurer</button>
     </div>
     <p class="dim" id="cloudstatus" style="margin-top:8px">${
       ghToken() ? (ST.lastCloud ? "Dernière sauvegarde cloud : "+ST.lastCloud+" · auto à chaque fin de bloc." : "Jeton configuré — aucune sauvegarde encore.")
                 : "Colle un jeton GitHub fine-grained (dépôt sori-data, permission Contents) pour activer la sauvegarde automatique."}${
-      (ST.reports||[]).length ? " · 🐞 "+ST.reports.length+" rapport(s) joint(s) à la prochaine sauvegarde." : ""}</p>
+      (ST.reports||[]).length ? " · "+ST.reports.length+" rapport(s) joint(s) à la prochaine sauvegarde." : ""}</p>
     <details style="margin-top:14px"><summary class="dim">Sauvegarde fichier (secours hors-ligne)</summary>
       <p class="dim" style="margin-top:6px">Optionnel. Un fichier JSON à garder toi-même (ex. sans jeton cloud). Le cloud ci-dessus fait déjà tout.</p>
       <div class="row" style="margin-top:6px">
-        <button class="btn ghost" id="exp">📤 Exporter</button>
-        <button class="btn ghost" id="imp">📥 Importer</button>
+        <button class="btn ghost" id="exp">Exporter</button>
+        <button class="btn ghost" id="imp">Importer</button>
       </div>
       <input type="file" id="impfile" accept=".json,application/json">
     </details>
@@ -1644,9 +1644,9 @@ function openSettings(){
           st.textContent = `Téléchargement… ${done}/${urls.length}` + (fail?` (${fail} échecs)`:"");
       }
       for(let i=0; i<urls.length; i+=CONC) await Promise.all(urls.slice(i, i+CONC).map(one));
-      st.textContent = fail ? `⚠️ ${done-fail}/${urls.length} audios hors-ligne (${fail} échecs — relance pour compléter).`
-                            : `✅ Tout l'audio est disponible hors connexion (${urls.length} fichiers).`;
-    }catch(e){ st.textContent = "❌ Échec (connexion ?) — relance pour reprendre où c'était."; }
+      st.textContent = fail ? `${done-fail}/${urls.length} audios hors-ligne (${fail} échecs — relance pour compléter).`
+                            : `Tout l'audio est disponible hors connexion (${urls.length} fichiers).`;
+    }catch(e){ st.textContent = "Échec (connexion ?) — relance pour reprendre où c'était."; }
     btn.disabled = false;
   };
   set.querySelector("#ghtok").onchange = e=>{ setGhToken(e.target.value); e.target.value=""; back.remove(); openSettings(); };
@@ -1654,14 +1654,14 @@ function openSettings(){
     const st = set.querySelector("#cloudstatus");
     st.textContent = "Envoi en cours…";
     const r = await cloudBackup();
-    st.textContent = r.ok ? "✅ Sauvegardé dans le cloud ("+todayStr()+")." : "❌ Échec : "+r.msg;
+    st.textContent = r.ok ? "Sauvegardé dans le cloud ("+todayStr()+")." : "Échec : "+r.msg;
   };
   set.querySelector("#cloudrestore").onclick = async ()=>{
     const st = set.querySelector("#cloudstatus");
     st.textContent = "Lecture du cloud…";
     const r = await cloudRestore();
     if(r.ok){ back.remove(); return; }   // restauration OK : render() déjà relancé, on ferme l'overlay
-    st.textContent = "❌ Restauration : "+r.msg;
+    st.textContent = "Restauration : "+r.msg;
   };
   set.querySelector("#setclose").onclick = ()=>back.remove();
   back.addEventListener("click", e=>{ if(e.target===back) back.remove(); });
@@ -1685,7 +1685,7 @@ function vhStyleOnce(){
 function openVersionHistory(){
   vhStyleOnce();
   const back = el(`<div class="modal-back"></div>`);
-  const box = el(`<div class="card modal wide"><h2>🗒️ Historique des versions</h2>
+  const box = el(`<div class="card modal wide"><h2>Historique des versions</h2>
     <div id="vhlist" class="vh-list"><p class="dim">Chargement…</p></div>
     <div class="row" style="margin-top:8px"><button class="btn ghost" id="vhclose">Fermer</button></div></div>`);
   back.appendChild(box);

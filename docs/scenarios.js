@@ -13,14 +13,14 @@
     CUR = null;
     const data = root.SCENARIOS || [];
     if(!data.length) return;
-    container.appendChild(el(`<div class="section-title">🎭 Simulations — joue la scène</div>`));
+    container.appendChild(el(`<div class="section-title">Simulations — joue la scène</div>`));
     const list = el(`<div class="list"></div>`);
     data.forEach(sc=>{
       const best = opts.getBest ? opts.getBest(sc.id) : null;
       const row = el(`<div class="item"><div class="txt">
-        <div class="kr">${esc(sc.emoji)} ${esc(sc.title)}</div>
+        <div class="kr">${esc(sc.title)}</div>
         <div class="fr">${sc.steps.length} répliques${best!=null?` · record ${best}/${sc.steps.length} du premier coup`:""}</div>
-      </div><span class="pill stage">jouer ▶</span></div>`);
+      </div><span class="pill stage">jouer</span></div>`);
       row.onclick = ()=>{ CUR = {sc, pos:0, firstTry:0, answered:false}; renderPlay(container, opts); };
       list.appendChild(row);
     });
@@ -35,13 +35,13 @@
 
     container.appendChild(el(`<div>
       <div class="progressbar"><div style="width:${Math.round(100*CUR.pos/sc.steps.length)}%"></div></div>
-      <div class="dim" style="margin-top:6px">${esc(sc.emoji)} ${esc(sc.title)} — ${CUR.pos+1}/${sc.steps.length}
+      <div class="dim" style="margin-top:6px">${esc(sc.title)} — ${CUR.pos+1}/${sc.steps.length}
         <button class="btn small ghost" id="scquit" style="float:right">quitter</button></div></div>`));
     container.querySelector("#scquit").onclick = ()=>{ container.innerHTML=""; renderList(container, opts); };
 
     const card = el(`<div class="card">
       <div class="npc"><div class="npc-kr">${esc(step.npc)}</div><div class="npc-fr">${esc(step.npcFr)}</div>
-        <button class="speak" title="réécouter">🔊</button></div>
+        <button class="speak" title="réécouter"><svg viewBox="0 0 24 24" style="width:22px;height:22px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/></svg></button></div>
       <div class="dim center" style="margin:10px 0 6px">Ta réplique :</div>
       <div class="opts"></div>
       <div class="feedback"></div></div>`);
@@ -60,15 +60,15 @@
           if(opts.onAnswer) opts.onAnswer(firstShot);
           if(opts.speak) opts.speak(ch.kr);
           const fb = card.querySelector(".feedback");
-          fb.innerHTML = `<div class="trivia"><div class="tfr">✔ ${esc(ch.why)}</div>${step.tip?`<div class="tnote">💡 ${esc(step.tip)}</div>`:""}</div>`;
-          const row = el(`<div class="row" style="margin-top:10px"><button class="btn" id="scnext">${CUR.pos+1>=sc.steps.length?"Terminer":"Suite →"}</button></div>`);
+          fb.innerHTML = `<div class="trivia"><div class="tfr">✓ ${esc(ch.why)}</div>${step.tip?`<div class="tnote">💡 ${esc(step.tip)}</div>`:""}</div>`;
+          const row = el(`<div class="row" style="margin-top:10px"><button class="btn" id="scnext">${CUR.pos+1>=sc.steps.length?"Terminer":"Suite"}</button></div>`);
           row.querySelector("#scnext").onclick = ()=>{ CUR.pos++; renderPlay(container, opts); };
           card.appendChild(row);
         } else {
           /* mauvaise réplique : elle s'explique puis se retire — on rejoue l'étape */
           firstShot = false;
           b.classList.add("bad"); b.disabled = true;
-          card.querySelector(".feedback").innerHTML = `<div class="trivia" style="border-left-color:var(--ko)"><div class="tfr">✘ ${esc(ch.why)}</div></div>`;
+          card.querySelector(".feedback").innerHTML = `<div class="trivia"><div class="tfr">✘ ${esc(ch.why)}</div></div>`;
         }
       };
       box.appendChild(b);
@@ -87,7 +87,7 @@
     }
     container.innerHTML = "";
     container.appendChild(el(`<div class="card center">
-      <div class="done-banner">${perfect?"🏆":"🎭"}</div>
+      <div class="done-kr">${perfect?"완벽해요":"끝"}</div>
       <h2>${esc(sc.title)} — terminé</h2>
       <p class="dim">${firstTry}/${total} répliques du premier coup${perfect?" — scène parfaite !":""}</p>
       <div class="row" style="margin-top:12px">

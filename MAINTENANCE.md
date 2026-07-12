@@ -51,6 +51,18 @@
   fiable que le test one-shot `placement.js` — insight user). CSS `.levelbars/.lvlrow/.lvltrack/.lvlfill(.work)`.
   (2) **Nouveaux mots — 14 jours** : bar chart de `ST.intro[jour]` (déjà loggé, jour→count persistant)
   + « ≈ N mots/jour cette semaine ». Mesure l'EXPOSITION (pas la rétention). CACHE `sori-v48`.
+- **v70 (FINITION de la refonte — « ça fait mélange, je vois encore des émojis »)** : la v69 avait
+  volontairement épargné les cartes-graphes v63/v66, les Réglages et les modules — le user a tranché :
+  TOUT nettoyer. Balayage exhaustif (59 retouches, 6 fichiers) : app.js (titres des cartes-graphes,
+  Sangsues, Voix, Sauvegarde, dico/rapport/historique, TOUS les labels des Réglages et leurs messages
+  de statut, pills production/compréhension, « Continuer » passé en ghost — le sceau reste rare),
+  numbers.js (titre, 4 labels de mode, haut-parleur SVG, fin en 끝), scenarios.js (titre, émojis de
+  scénario masqués — les DONNÉES scenarios-data gardent leur champ emoji —, haut-parleur SVG, fin
+  완벽해요/끝, inline border-left mort retiré), search.js + events.js (émoji d'événement masqué [données
+  intactes], ✓, × typographique), typing.js. **Vérifié par BALAYAGE ÉMOJI du DOM** (regex U+1F000-1FAFF
+  + dingbats sur body.innerText) : accueil / révision+trivia / exercices / réglages / dico = **AUCUN**.
+  Restent émojis UNIQUEMENT dans les modules invisibles (quests/exam masqués v28, player/placement/
+  structure/listen/drill dormants) — à nettoyer si réactivés. 61 tests. CACHE `sori-v70`.
 - **v69 (REFONTE VISUELLE « Encre & sceau » — maquette validée user)** : le user trouvait le visuel
   « dégueulasse » — diagnostic : pas la palette (thèmes soignés) mais l'EXÉCUTION (émojis-icônes,
   aucune échelle typo, accent partout, tout au même poids). Refonte **CSS + templates, AUCUNE logique** :

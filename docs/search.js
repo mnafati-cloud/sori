@@ -217,7 +217,7 @@
       '<div class="kr">' + esc(e.kr) + '</div>' +
       '<div class="fr">' + esc(e.fr) + '</div>' +
       '<div class="search-pills">' + pills + '</div></div>' +
-      (typeof onSpeak === "function" ? '<button class="speak" title="écouter">🔊</button>' : "") +
+      (typeof onSpeak === "function" ? '<button class="speak" title="écouter"><svg viewBox="0 0 24 24" style="width:22px;height:22px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/></svg></button>' : "") +
       '</div>');
     var sp = row.querySelector(".speak");
     if(sp) sp.onclick = function(ev){ ev.stopPropagation(); onSpeak(e.kr, e.id); };
@@ -229,7 +229,7 @@
       if(e.ex) bits.push('<div class="tkr">' + esc(e.ex) + '</div>' +
         (e.exFr ? '<div class="tfr">' + esc(e.exFr) + '</div>' : ""));
       if(e.conj) bits.push('<div class="tconj">활용 ' + esc(e.conj) + '</div>');
-      if(e.note) bits.push('<div class="tnote">💡 ' + esc(e.note) + '</div>');
+      if(e.note) bits.push('<div class="tnote">' + esc(e.note) + '</div>');
       if(!bits.length) return;
       row.querySelector(".txt").appendChild(el('<div class="trivia">' + bits.join("") + '</div>'));
     };
@@ -269,7 +269,7 @@
       '<div class="search-box">' +
       '<input type="search" class="search-input" placeholder="Chercher un mot du deck…"' +
       ' enterkeyhint="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">' +
-      '<button class="search-clear" title="Effacer" hidden>✕</button></div>' +
+      '<button class="search-clear" title="Effacer" hidden>×</button></div>' +
       '<div class="search-count"></div>' +
       '<div class="list search-results"></div></div>');
     var $input = panel.querySelector(".search-input");

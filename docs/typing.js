@@ -154,7 +154,7 @@
     injectStyles();
 
     var card = el('<div class="card center typing-card">' +
-      '<div class="dim">✍️ Écris-le en coréen</div>' +
+      '<div class="dim">Écris-le en coréen</div>' +
       '<div class="big-fr">' + esc(it.fr == null ? "" : it.fr) + '</div>' +
       '<input class="typing-input" type="text" lang="ko" enterkeyhint="done"' +
       ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"' +
@@ -190,7 +190,7 @@
       var j = judge(raw, it.kr);
       speak(it.kr, it.id);
       if(j.exact){
-        $fb.innerHTML = '<div class="typing-okmark">✔</div>' +
+        $fb.innerHTML = '<div class="typing-okmark">✓</div>' +
           '<div class="kr">' + esc(normalize(it.kr)) + '</div>';
         $act.innerHTML = "";
         finish(true);

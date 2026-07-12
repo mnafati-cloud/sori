@@ -117,7 +117,7 @@
   }
 
   function headHtml(ev){
-    return '<div class="event-head"><span class="event-emoji">'+esc(ev.emoji||"📅")+
+    return '<div class="event-head"><span class="event-emoji" hidden>'+esc(ev.emoji||"")+
            '</span><h2 class="event-title">'+esc(ev.title||"")+'</h2></div>';
   }
   function cardCountdown(ev, p){
@@ -125,7 +125,7 @@
       '<div class="event-days">J-'+p.daysLeft+
         '<small>'+(p.daysLeft>1 ? p.daysLeft+" jours" : "dernier jour")+" — le "+esc(frDate(ev.to))+'</small></div>'+
       '<div class="progressbar"><div style="width:'+Math.round(100*p.ratio)+'%"></div></div>'+
-      (p.milestone ? '<div class="dim event-milestone">📍 '+esc(p.milestone.label||"")+'</div>' : "")+
+      (p.milestone ? '<div class="dim event-milestone">'+esc(p.milestone.label||"")+'</div>' : "")+
       '</div>');
   }
   function cardMessage(ev){
@@ -136,7 +136,7 @@
   var METRIC_LABEL = { reviews:"réponses", ok:"bonnes réponses", listen:"réponses en écoute", days:"jours actifs" };
   function cardChallenge(ev, p){
     return el('<div class="card event-card event-challenge">'+headHtml(ev)+
-      '<div class="event-count'+(p.done?" done":"")+'">'+(p.done?"✅ ":"")+p.count+" / "+p.target+
+      '<div class="event-count'+(p.done?" done":"")+'">'+(p.done?"✓ ":"")+p.count+" / "+p.target+
         ' <span class="dim" style="font-size:.8rem; font-weight:500">'+(METRIC_LABEL[p.metric]||p.metric)+'</span></div>'+
       '<div class="progressbar"><div style="width:'+Math.round(100*p.ratio)+'%"></div></div>'+
       (ev.text ? '<p class="dim event-text">'+esc(ev.text)+'</p>' : "")+
@@ -169,7 +169,7 @@
       if(!card) return;                   // type inconnu / invalide -> ignoré sans bruit
       if(n===0) injectStyles();
       if(typeof opts.onDismiss==="function"){
-        var b = el('<button class="event-dismiss" title="Masquer cet événement">✕</button>');
+        var b = el('<button class="event-dismiss" title="Masquer cet événement">×</button>');
         b.onclick = function(){ card.remove(); opts.onDismiss(ev.id); };
         card.appendChild(b);
       }

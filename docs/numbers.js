@@ -231,10 +231,10 @@
   function el(html){ var t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstChild; }
 
   var MODES = [
-    { id: "prix",      label: "💰 Prix" },
-    { id: "heures",    label: "🕐 Heures" },
-    { id: "dates",     label: "📅 Dates" },
-    { id: "quantites", label: "📦 Quantités" }
+    { id: "prix",      label: "Prix" },
+    { id: "heures",    label: "Heures" },
+    { id: "dates",     label: "Dates" },
+    { id: "quantites", label: "Quantités" }
   ];
   var MODE_LABEL = {};
   MODES.forEach(function(mo){ MODE_LABEL[mo.id] = mo.label; });
@@ -278,7 +278,7 @@
 
     function paintConfig(lastScore){
       card.innerHTML = "";
-      card.appendChild(el("<h2>🔢 Les nombres à l'oreille</h2>"));
+      card.appendChild(el("<h2>Les nombres à l'oreille</h2>"));
       card.appendChild(el('<p class="dim">Écoute un prix, une heure, une date ou une ' +
         'quantité en coréen, puis choisis le bon nombre. Série de ' + N + '.</p>'));
       if(lastScore != null)
@@ -319,10 +319,10 @@
         card.innerHTML = "";
         card.appendChild(el('<div class="dim">Nombre ' + (pos + 1) + " / " + N +
           " — " + esc(MODE_LABEL[ex.mode]) + "</div>"));
-        var hear = el('<button class="num-speak" title="réécouter">🔊</button>');
+        var hear = el('<button class="num-speak" title="réécouter"><svg viewBox="0 0 24 24" style="width:34px;height:34px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/></svg></button>');
         hear.onclick = function(){ speak(ex.hangul); };
         card.appendChild(hear);
-        var tog = el('<button class="num-toggle">👁 voir le hangul</button>');
+        var tog = el('<button class="num-toggle">voir le hangul</button>');
         var kr  = el('<div class="num-hangul" hidden></div>');
         kr.textContent = ex.hangul;
         tog.onclick = function(){ kr.hidden = !kr.hidden; };
@@ -350,7 +350,7 @@
 
       function paintEnd(){
         card.innerHTML = "";
-        card.appendChild(el('<div class="done-banner">🔢</div>'));
+        card.appendChild(el('<div class="done-kr">끝</div>'));
         card.appendChild(el("<h2>" + score + " / " + N + "</h2>"));
         card.appendChild(el('<p class="dim">compréhension des nombres</p>'));
         var row = el('<div class="row" style="margin-top:12px">' +
