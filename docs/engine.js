@@ -291,8 +291,46 @@
     return { S: round3(S2), D: round3(D2), i, d: addDays(today, i), stage, elapsed, counted:true };
   }
 
+  /* ===== indice de rappel (rec4) : QUELLE partie du mot montrer, et COMBIEN elle aide =====
+     Problème (retour user) : montrer toujours la 1re syllabe révèle tout sur les mots courts —
+     1 syllabe = le mot entier ; verbe 2 syllabes en 다 = radical + 다 prévisible = le mot entier.
+     Deux corrections, ses deux idées :
+       (A) la syllabe montrée TOURNE d'un passage à l'autre (n = ok+ko) → on n'apprend plus à
+           reconstruire depuis UNE amorce fixe mais depuis n'importe quelle position ;
+       (B) le crédit dépend de ce qui est révélé :
+           - si révéler le bloc donnerait le mot (1 syll, ou le radical seul d'un verbe 2 syll),
+             on n'expose que l'ATTAQUE (초성) — jamais le mot entier ;
+           - révéler le 다 final d'un verbe ne donne RIEN (prévisible) → meaningful=false : l'appelant
+             journalise rec5 (rappel quasi-libre, NON plafonné) ;
+           - sinon, indice réel partiel → meaningful=true → rec4 (plafonné à Difficile, inchangé v64).
+     Fonction PURE (kr, n) → { tiles:[{t:'gap'|'show'|'jamo'|'hide', ch}], meaningful, S, infoSylls, revealSyl }. */
+  const HANGUL_CHO = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+  function isHangulSyllable(ch){ const c = ch.charCodeAt(0); return c >= 0xAC00 && c <= 0xD7A3; }
+  function leadJamo(ch){ return isHangulSyllable(ch) ? HANGUL_CHO[Math.floor((ch.charCodeAt(0) - 0xAC00) / 588)] : ch; }
+  function hintPlan(kr, n){
+    const chars = [...String(kr)];
+    const sylIdx = [];
+    chars.forEach((c, i) => { if(isHangulSyllable(c)) sylIdx.push(i); });   // indices des blocs hangul (hors espaces)
+    const S = sylIdx.length;
+    if(S === 0) return { tiles: chars.map(c => ({ t: c === " " ? "gap" : "show", ch: c })), meaningful: false, S: 0, infoSylls: 0, revealSyl: -1 };
+    const isVerb = S >= 2 && chars[sylIdx[S - 1]] === "다";          // forme dictionnaire : le 다 final est prévisible
+    const infoSylls = isVerb ? S - 1 : S;                            // blocs porteurs d'information
+    const revealSyl = (((n | 0) % S) + S) % S;                       // position révélée (tourne avec n ; sûr pour n<0)
+    const revealCharIdx = sylIdx[revealSyl];
+    const revealIsPredictable = isVerb && revealSyl === S - 1;       // on tombe sur le 다
+    const giveaway = !revealIsPredictable && infoSylls <= 1;         // montrer ce bloc entier donnerait le mot
+    const tiles = chars.map((c, i) => {
+      if(c === " ") return { t: "gap", ch: c };
+      if(i !== revealCharIdx) return { t: "hide", ch: c };
+      if(giveaway) return { t: "jamo", ch: leadJamo(c) };            // n'exposer que l'attaque
+      return { t: "show", ch: c };
+    });
+    return { tiles, meaningful: !revealIsPredictable, S, infoSylls, revealSyl };
+  }
+
   /* ================= export double environnement ================= */
   const ENGINE = { addDays, daysBetween, computeAnswer, computeAnswerLegacy, easeOf, isLeech,
+                   leadJamo, hintPlan,
                    prevReviewDate, retention7, selectDue, pickNew, computeStreak,
                    pickDistractors, shuffle, sample, DEF_SET, STEP,
                    fsrsSchedule, fsrsR, fsrsIntervalDays, fsrsNextInterval, fuzzInterval, fsrsInitS, fsrsInitD,

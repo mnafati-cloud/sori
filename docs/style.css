@@ -77,6 +77,8 @@ h2{margin:0 0 8px; font-size:.72rem; font-weight:600; letter-spacing:.15em;
   min-width:1.5em; height:1.7em; font-size:1.7rem; border-radius:10px;
   font-family:var(--kr-display); background:var(--panel2); border:1px solid var(--line)}
 .hint2 .hs.show{background:none; border-color:var(--cel-dim); color:var(--cel); font-weight:700}
+/* v76 : indice PARTIEL au jamo (attaque seule) — plus discret que le bloc entier, jamais le mot complet */
+.hint2 .hs.jamo{background:none; border-style:dashed; border-color:var(--line); color:var(--dim); font-weight:600; font-size:1.25rem}
 .hint2 .hgap{width:.7em}
 
 /* anti-misclick : nouvelle carte -> boutons gelés 450 ms */

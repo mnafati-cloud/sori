@@ -1046,10 +1046,10 @@ function maxGradeFor(it, kind){
      dans les stats du jour, mais AUCUNE replanification/stage) ; une vue blanche RATÉE redevient
      un échec réel. Les vraies nouveautés (1re exposition réussie) reçoivent une vue à +8-12. */
 let FAILPOS = new Map(), CONSOL = new Set(), REPRISE_IDS = new Set();   // v71 : pill « reprise » (sous-ensemble de CONSOL)
-function afterAnswer(it, ok, sawTrivia, kind, grade){
+function afterAnswer(it, ok, sawTrivia, kind, grade, capMax){
   LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞
   armUndo();                                // photo AVANT toute mutation (annulation possible)
-  const maxG = maxGradeFor(it, kind);
+  const maxG = (capMax !== undefined) ? capMax : maxGradeFor(it, kind);   // v76 : override de plafond (indice 다) sans toucher `kind` (stats/lp/quêtes)
   const Graw = ok ? (grade || 3) : 1;                    // la note réellement CHOISIE (Bien par défaut)
   const G = ok ? Math.min(Graw, maxG) : 1;               // note plafonnée par l'aide (canal stabilité)
   const rt = EXO_T0 ? Date.now() - EXO_T0 : 0;           // temps de réponse (ms) — agrégats ET journal (v65)
@@ -1157,10 +1157,10 @@ function exoQcmFr2Kr(it){
 /* boutons d'auto-évaluation après « Montrer » : 4 notes FSRS (Encore/Difficile/Bien/Facile)
    si ST.set.grade4, sinon binaire (Encore/Bien). La note (1-4) affine la planification FSRS
    (Difficile = pénalité w15, Facile = bonus w16). ok = note ≥ 2 (pour combo/rétention). */
-function gradeButtons(row, it, kind){
+function gradeButtons(row, it, kind, capMax){
   row.innerHTML = "";
-  const maxG = maxGradeFor(it, kind);   // note max justifiée par l'aide de l'exercice
-  const wire = (b, ok, g) => { b.onclick = ()=>{ [...row.children].forEach(x=>x.disabled=true); afterAnswer(it, ok, false, kind, g); }; return b; };
+  const maxG = (capMax !== undefined) ? capMax : maxGradeFor(it, kind);   // capMax : override v76 (indice 다 = plafond levé, `kind` reste rec4)
+  const wire = (b, ok, g) => { b.onclick = ()=>{ [...row.children].forEach(x=>x.disabled=true); afterAnswer(it, ok, false, kind, g, maxG); }; return b; };
   /* v69 : l'INTERVALLE résultant s'affiche sous chaque note — la conséquence du choix devient
      visible. Prévisualisation EXACTE : mêmes options que applyAnswer (plafond, gradeD, fuzz). */
   const ivl = g => {
@@ -1191,13 +1191,21 @@ function gradeButtons(row, it, kind){
   }
 }
 function exoRecall(it, hinted){
-  /* indice : 1re syllabe révélée, les autres en tuiles douces (espaces = respiration) */
-  let hint = "";
+  /* indice (v76) : ENGINE.hintPlan choisit une position TOURNANTE (compteur ok+ko) et n'expose que
+     l'attaque (jamo) quand révéler le bloc donnerait le mot (1 syll, radical d'un verbe 2 syll).
+     meaningful=false (on est tombé sur le 다 prévisible) → l'indice ne donne rien → on LÈVE le plafond
+     (recCap=Facile) SANS changer `kind` (reste rec4 : stats/lp/quêtes intacts — revue v76) ; sinon
+     indice réel → rec4 plafonné à Difficile (inchangé v64). Le rappel SANS aide reste rec5. */
+  let hint = "", recKind = "rec5", recCap;
   if(hinted){
-    const chars = [...it.kr];
-    hint = `<div class="hint2">` + chars.map((c,i)=>
-      c===" " ? `<span class="hgap"></span>`
-      : (i===0 ? `<span class="hs show">${esc(c)}</span>` : `<span class="hs"></span>`)
+    const plan = ENGINE.hintPlan(it.kr, (it.ok||0) + (it.ko||0));
+    recKind = "rec4";
+    recCap = plan.meaningful ? undefined : 4;   // undefined -> plafond normal rec4 (Difficile) ; 4 -> Facile permis
+    hint = `<div class="hint2">` + plan.tiles.map(u =>
+        u.t === "gap"  ? `<span class="hgap"></span>`
+      : u.t === "show" ? `<span class="hs show">${esc(u.ch)}</span>`
+      : u.t === "jamo" ? `<span class="hs jamo">${esc(u.ch)}</span>`
+      :                  `<span class="hs"></span>`
     ).join("") + `</div>`;
   }
   const card = el(`<div class="card center">
@@ -1213,7 +1221,7 @@ function exoRecall(it, hinted){
     card.querySelector(".feedback .speak").onclick = ()=>speak(it.kr, it.id);
     speak(it.kr, it.id);
     showTrivia(card, it);        // lisible pendant l'auto-évaluation
-    gradeButtons(card.querySelector(".row"), it, hinted ? "rec4" : "rec5");
+    gradeButtons(card.querySelector(".row"), it, recKind, recCap);
   };
   $screen.appendChild(card);
 }
