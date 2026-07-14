@@ -903,7 +903,14 @@ function renderReview(){
   const kr = head.querySelector("#knowrev");
   if(kr) kr.onclick = ()=>{ markKnown(Q[QPOS]); QPOS++; saveSess(); render(); };   // fast-track + carte suivante
   EXO_T0 = Date.now();
-  const isPhrase = it.type==="phrase" && it.kr.split(" ").length>=3;
+  /* v78 : une PHRASE conjuguée (≥2 mots, PAS un bloc lexical en forme dictionnaire) passe par le
+     chemin phrase — compréhension + construction par étiquettes (la grammaire est DONNÉE par les
+     chips). Avant, le seuil ≥3 mots laissait les phrases courtes filer en production libre FR→KR,
+     où le français ne peut pas spécifier le connecteur/la politesse (retour user : « rien n'indiquait
+     quelle construction faire »). On garde en production : les blocs en 다 (손을 씻다 = une seule
+     forme) et les expressions d'un seul mot. */
+  const krCore = it.kr.trim().replace(/[.?!…]+$/, "");
+  const isPhrase = it.type==="phrase" && krCore.split(" ").length>=2 && !/다$/.test(krCore);
   const revMode = ST.set.reverse !== false;
   const typingTop = it.stage===5 && ST.set.typing===true && window.SORI_TYPING && Math.random()<0.5;
   function typingExo(){
