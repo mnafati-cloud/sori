@@ -1593,10 +1593,13 @@ function renderStats(){
   const upcoming = (wi>=0 ? BANDS.slice(wi) : []).filter(b=>tot[b] && mas[b]/tot[b] < 0.8);
   let cum=0; const etas = upcoming.map(b=>{ cum += Math.max(0, Math.ceil(0.8*tot[b]) - mas[b]); return {b, days: pace ? Math.ceil(cum/pace) : null}; });
   const mxe = Math.max(1,...etas.map(x=>x.days||0));
-  $screen.appendChild(el(`<div class="card"><h2>Temps estimé vers les niveaux</h2>
-    <p class="dim" style="font-size:.82rem;margin-bottom:6px">Jours estimés pour atteindre chaque niveau${paceTxt!=null?`, à ton rythme récent (~${paceTxt} carte${pace>=2?"s":""}/j)`:""}.</p>
+  /* v79 : libellé clarifié (retour user) — le 1er barreau est le niveau EN COURS (le « niveau actuel »
+     affiché plus haut) ; « X j » = temps pour l'AMENER à 80 % (le finir), pas pour « l'atteindre ». */
+  $screen.appendChild(el(`<div class="card"><h2>Temps pour valider chaque niveau</h2>
+    <p class="dim" style="font-size:.82rem;margin-bottom:6px">Jours estimés pour amener chaque niveau à <b>80 % de maîtrise</b> (le seuil « acquis »)${paceTxt!=null?`, à ton rythme récent (~${paceTxt} carte${pace>=2?"s":""}/j)`:""}.</p>
     ${etas.length ? (pace
-      ? `<div class="bars">${etas.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.days/mxe))}px"></div><span>${x.b}<br>${x.days} j</span></div>`).join("")}</div>`
+      ? `<div class="bars">${etas.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.days/mxe))}px"></div><span>${x.b===working?"finir "+x.b:x.b}<br>${x.days} j</span></div>`).join("")}</div>
+         <p class="dim" style="font-size:.78rem;margin-top:6px">Estimation <b>optimiste</b> : basée sur ta vitesse des derniers jours, qui ralentit quand tu introduis moins de nouvelles cartes.</p>`
       : `<p class="dim" style="font-size:.82rem">Estimation dispo dès quelques jours d'historique de maîtrise (ta vitesse récente est encore inconnue).</p>`)
       : `<p class="dim">Tous les niveaux du deck sont acquis.</p>`}</div>`));
 
