@@ -31,7 +31,14 @@ const GLOSS_FIX = {
   "항상":"Toujours (habituellement)", "언제나":"Toujours (en toute occasion)",
   "가격":"Prix (tarif, commercial)", "값":"Prix (valeur, ce que ça vaut)",
   "이렇다":"Être comme ceci (ce que je montre / présent)", "그렇다":"Être comme ça / c'est le cas (déjà évoqué)",
-  "그래서":"Donc (résultat)", "그러니까":"Donc (c'est pourquoi)"
+  "그래서":"Donc (résultat)", "그러니까":"Donc (c'est pourquoi)",
+  /* v80 : PRÉVENTION (collisions de glose sans erreur encore — go user) : mêmes discriminants,
+     seulement là où la glose du mot est nue et la distinction nette (le jumeau est déjà marqué). */
+  "들어가다":"Entrer (en s'éloignant)", "들어오다":"Entrer (vers ici)",
+  "카페":"Café (le lieu)", "생선":"Poisson (à manger)",
+  "이제":"Désormais / à partir de maintenant", "지금":"Maintenant (à l'instant présent)",
+  "같이":"Ensemble (courant)", "함께":"Ensemble (soutenu)",
+  "좋아하다":"Aimer bien / apprécier"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 
