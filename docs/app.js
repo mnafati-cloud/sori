@@ -766,7 +766,9 @@ function leaveReview(){
 function renderReview(){
   if(!Q){
     const s = ST.sess;
-    if(s && s.d===todayStr() && Array.isArray(s.q) && s.p < s.q.length){
+    /* v74 : une session commencée hier soir et non finie reste REPRENABLE (cas du passage de minuit) —
+       avant, s.d===today échouait et jetait la file, perdant la place. On tolère hier ; au-delà, on reconstruit. */
+    if(s && (s.d===todayStr() || s.d===addDays(todayStr(),-1)) && Array.isArray(s.q) && s.p < s.q.length){
       Q = s.q; QPOS = s.p; PENDING = s.pen||0; BONUS = false;   // reprise
       FAILPOS = new Map(s.fp||[]); CONSOL = new Set(s.co||[]); REPRISE_IDS = new Set(s.rp||[]);   // v68/v71 : transitoires restaurés
     } else {
@@ -781,11 +783,18 @@ function renderReview(){
     ST.sess = null; save();
     autoCloudBackup();                       // sauvegarde cloud silencieuse (1x/jour max)
     const t=todayStr(), l=ST.log[t]||{ok:0,ko:0};
-    const more = PENDING>0 ? `<button class="btn ghost" id="more">Continuer les révisions (${PENDING} en attente)</button>` : "";
-    /* v73 : le sceau se POSE — son du tampon calé sur l'impact de l'animation (~55% de .32s) */
-    if(PENDING===0 && !NAV) setTimeout(sfxStamp, 170);
+    /* v74 : ne plus annoncer « tout est à jour » sur la seule base du débordement de session (PENDING).
+       Recompter ce qui est RÉELLEMENT dû/disponible maintenant — exactement comme le lanceur — pour
+       capter les cartes fraîchement échues (minuit franchi, révisions étalées sur la journée). */
+    const effAll = ALL_IDS.map(eff).filter(x=>!x.sus);
+    const stage0all = effAll.filter(x=>x.stage===0).length;
+    const newLeft = Math.min(Math.max(0,(ST.set.newPerDay||0)-(ST.intro[t]||0)), stage0all);
+    const remaining = ENGINE.selectDue(effAll, t).length + newLeft;
+    const more = remaining>0 ? `<button class="btn ghost" id="more">Continuer les révisions (${remaining} en attente)</button>` : "";
+    /* v73 : le sceau se POSE, son calé sur l'impact ; v74 : seulement si plus rien n'est réellement dû */
+    if(remaining===0 && !NAV) setTimeout(sfxStamp, 170);
     $screen.appendChild(el(`<div class="card center">
-      ${PENDING>0
+      ${remaining>0
         ? `<div class="seal-wrap"><div class="done-kr">수고했어요</div></div><h2>Session terminée — il en reste</h2>`
         : `<div class="seal-wrap"><div class="dojang"><span>끝</span></div><div class="done-kr">오늘 끝.</div></div><h2>Tout est à jour</h2>`}
       <p class="dim">${l.ok||0} bonnes réponses aujourd'hui${l.ko?`, ${l.ko} à retravailler`:""}.</p>
