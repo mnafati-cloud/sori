@@ -1441,17 +1441,12 @@ function renderStats(){
   const stage0all = items.filter(it=>it.stage===0 && !it.sus).length;   // introduisibles (recto + verso)
   const newLeft = Math.min(Math.max(0, (ST.set.newPerDay||0) - (ST.intro[t]||0)), stage0all);
   const todo = dueN + newLeft;
-  /* v69 : HÉROS d'accueil — salut selon l'heure, streak en points (le jour courant porte le
-     sceau), CTA vermillon, compte à rebours Corée. Remplace la carte-lanceur (id conservé). */
+  /* v74 : HÉROS d'accueil — salut selon l'heure + CTA. Série de jours (streak + points) RETIRÉE
+     sur retour user (« je ne vois pas l'intérêt »). streak() reste pour events/quests. */
   const hour = new Date().getHours();
   const greet = hour < 6 ? "안녕하세요" : hour < 12 ? "좋은 아침이에요" : hour < 18 ? "좋은 오후예요" : "좋은 저녁이에요";
-  const stk = streak();
-  const dots = []; for(let i=6;i>=0;i--){ const d=addDays(t,-i); const L=ST.log[d];
-    dots.push(`<i class="${d===t?"today":(L&&L.n>0?"on":"")}"></i>`); }
   $screen.appendChild(el(`<div class="hero">
     <div class="hero-kr">${greet}</div>
-    <p class="hero-sub">${stk>1?`${stk} jours d'affilée.`:"Prêt quand tu l'es."}</p>
-    <div class="streak">${dots.join("")}<b>aujourd'hui</b></div>
   </div>`));
   const launch = el(`<button class="btn cta" id="goreview">Réviser<span class="num">${todo>0?`${todo} carte${todo>1?"s":""}`:"tout est à jour"}</span></button>`);
   launch.onclick = ()=>{
@@ -1478,7 +1473,6 @@ function renderStats(){
   /* stats réelles (v28.1) : plus d'XP/niveau — gamification retirée. Mesures de PROGRÈS.
      Chaque tuile est cliquable → popin d'explication (demande utilisateur 🐞 v36). */
   const grid = el(`<div class="statgrid">
-    <div class="stat"><div class="n">${streak()}</div><div class="l">jours d'affilée</div></div>
     <div class="stat"><div class="n">${l.n}</div><div class="l">réponses aujourd'hui</div></div>
     <div class="stat"><div class="n">${ret===null?"—":ret+" %"}</div><div class="l">réussite (7 j)</div></div>
     <div class="stat"><div class="n">${beaten}/${enemies.length}</div><div class="l">ennemies vaincues</div></div>
@@ -1486,7 +1480,6 @@ function renderStats(){
     <div class="stat"><div class="n">${seen} / ${baseItems.length}</div><div class="l">deck abordé</div></div>
   </div>`);
   const STAT_INFO = [
-    ["Jours d'affilée", "Le nombre de jours consécutifs où tu as étudié au moins une carte. Rate un jour et le compteur repart de zéro — c'est ta régularité."],
     ["Réponses aujourd'hui", "Le nombre de cartes que tu as répondues aujourd'hui, tous exercices confondus (QCM, rappel, écoute…)."],
     ["Réussite (7 jours)", "Ton taux de bonnes réponses sur les 7 derniers jours. On ne compte que la PREMIÈRE fois que tu vois chaque carte dans la journée — c'est le vrai test de mémoire, pas les re-essais."],
     ["Ennemies vaincues", "Tes mots les plus ratés (les « ennemies ») que tu as réussi à ramener à un bon niveau (niv ≥ 4). Le premier chiffre = domptées, le second = total de tes ennemies."],
