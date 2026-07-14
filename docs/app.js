@@ -6,6 +6,35 @@ const LS_KEY = "sori-state-v1";
 const SEED_BY_ID = {};
 SEED.items.forEach(it => SEED_BY_ID[it.id] = it);
 
+/* v77 : DISCRIMINANTS de glose — des mots coréens DISTINCTS partageaient une définition française
+   identique, donc en production FR→KR le prompt ne disait pas lequel produire (retour user 2026-07-14 :
+   « ça manque de trivia sur des mots proches »). On enrichit SEULEMENT ces gloses en collision d'un
+   discriminant court, clé = kr. La source de vérité reste Anki (tools/build_data.py) ; ce patch en
+   place survit à une régénération de data.js et se retire d'un bloc. Discriminants validés avec l'user. */
+const GLOSS_FIX = {
+  "공휴일":"Jour férié (officiel)", "휴일":"Jour de congé / repos",
+  "오래":"Longtemps (durée)", "오래간만":"Ça fait longtemps (qu'on s'est vus)",
+  "혼자":"Seul (sans personne autour)", "외롭다":"Se sentir seul (solitude)",
+  "떠나다":"Partir (quitter un lieu)", "출발하다":"Partir (se mettre en route)",
+  "얘기":"Histoire (récit, ce qu'on raconte)", "이야기":"Histoire (récit, ce qu'on raconte)", "역사":"Histoire (la discipline, le passé)",
+  "계획":"Plan (projet, intention)", "지도":"Plan (carte géographique)",
+  "임차하다":"Louer (prendre en location — locataire)", "임대하다":"Louer (donner en location — propriétaire)",
+  "경험":"Expérience (vécu personnel)", "경력":"Expérience (professionnelle)",
+  "힘들다":"Difficile (pénible, effort)", "어렵다":"Difficile (ardu, complexe)",
+  "분명하다":"Clair (évident, net)", "맑다":"Clair (limpide, ensoleillé)",
+  "어린이":"Enfant (les enfants, général)", "아이":"Enfant (gamin, petit)",
+  "아줌마":"Madame (familier, « tata »)", "아주머니":"Madame (poli)",
+  "휴지통":"Corbeille (à papier)", "쓰레기통":"Poubelle (ordures)",
+  "관심":"Intérêt (attention, curiosité)", "재미":"Intérêt (plaisir, amusement)",
+  "장소":"Endroit (lieu précis)", "곳":"Endroit (lieu, vague)",
+  "하지만":"Mais (courant)", "그러나":"Mais (écrit, formel)", "그렇지만":"Mais quand même / pourtant",
+  "항상":"Toujours (habituellement)", "언제나":"Toujours (en toute occasion)",
+  "가격":"Prix (tarif, commercial)", "값":"Prix (valeur, ce que ça vaut)",
+  "이렇다":"Être comme ceci (ce que je montre / présent)", "그렇다":"Être comme ça / c'est le cas (déjà évoqué)",
+  "그래서":"Donc (résultat)", "그러니까":"Donc (c'est pourquoi)"
+};
+SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
+
 /* ===== cartes VERSO (production FR→KR) — Phase 2 =====
    Chaque MOT a une carte "recto" (compréhension KR→FR, id de base, état dans ST.items[id])
    ET une carte "verso" (production FR→KR, id = base + REV, état séparé dans ST.items[revId]).
