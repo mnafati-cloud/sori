@@ -529,6 +529,12 @@ function ttsSpeak(text){
    - "fsrs"   : modèle DSR moderne (stabilité/difficulté par carte) — défaut.
    - "legacy" : échelle de stades + ease (ALGORITHM.md) — repli/rollback.
    Dans les deux cas le STAGE (choix d'exercice) évolue pareil. */
+/* Poids FSRS ACTIFS : personnalisés (fit Phase B, engine.FSRS.W_PERSONAL) par défaut, ou
+   génériques si ST.set.fsrsPersonal===false (rollback 1-clic). Les poids ne sont JAMAIS stockés
+   dans l'état — seul le booléen l'est — pour qu'un refit d'engine.js atteigne l'utilisateur. */
+function fsrsW(){ return (ST.set.fsrsPersonal !== false ? ENGINE.FSRS.W_PERSONAL : ENGINE.FSRS.W) || ENGINE.FSRS.W; }
+  // repli || ENGINE.FSRS.W : si un app.js neuf voyait un engine.js périmé sans W_PERSONAL (course de
+  // propagation CDN < 1 s), markKnown indexe WW[3] directement — sans ce garde il lèverait un TypeError.
 function applyAnswer(it, ok, grade, gradeRaw, kind, rt){
   const G = grade || (ok ? 3 : 1);   // note FSRS : 1 Encore(Again) · 2 Difficile(Hard) · 3 Bien(Good) · 4 Facile(Easy)
   const GD = gradeRaw || G;          // note BRUTE (non plafonnée) → canal difficulté (v64, cf. engine.fsrsSchedule)
@@ -545,7 +551,7 @@ function applyAnswer(it, ok, grade, gradeRaw, kind, rt){
   else if(ok && (kind === "rec5" || kind === "type") && (it.lp|0) > 0) lpNext = it.lp - 1;
   if(ST.set.scheduler !== "legacy"){
     const t = todayStr();
-    const r = ENGINE.fsrsSchedule(it, G, t, { retention: ST.set.fsrsRetention || 0.9, gradeD: GD,
+    const r = ENGINE.fsrsSchedule(it, G, t, { w: fsrsW(), retention: ST.set.fsrsRetention || 0.9, gradeD: GD,
                                               fuzz: it.id + "|" + t });   // v68 : désynchronise les cohortes
     const patch = { s:r.stage, i:r.i, d:r.d, S:r.S, D:r.D, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) };
     if(lpNext !== undefined) patch.lp = lpNext;
@@ -587,8 +593,9 @@ function logReview(id, G, elapsed, kind, rt){
 function markKnown(id){
   const t = todayStr();
   if(ST.set.scheduler !== "legacy"){
-    const S = Math.max(21, ENGINE.FSRS.W[3]);                          // stabilité confortable
-    const D = Math.round(ENGINE.fsrsInitD(4, ENGINE.FSRS.W)*1000)/1000; // difficulté « Facile »
+    const WW = fsrsW();
+    const S = Math.max(21, WW[3]);                          // stabilité confortable (poids actifs)
+    const D = Math.round(ENGINE.fsrsInitD(4, WW)*1000)/1000; // difficulté « Facile »
     const i = ENGINE.fuzzInterval(ENGINE.fsrsNextInterval(S, ST.set.fsrsRetention||0.9, ENGINE.EASE.MAX_ITV),
                                   id + "|" + t, ENGINE.EASE.MAX_ITV);   // v68 : fuzz aussi (sinon cohorte « Je le sais » synchronisée)
     setItem(id, { s:5, i, d:addDays(t,i), S:Math.round(S*1000)/1000, D });
@@ -1214,7 +1221,7 @@ function gradeButtons(row, it, kind, capMax){
     try{
       const t = todayStr();
       const r = ENGINE.fsrsSchedule(it, Math.min(g, maxG), t,
-        { retention: ST.set.fsrsRetention || 0.9, gradeD: g, fuzz: it.id + "|" + t });
+        { w: fsrsW(), retention: ST.set.fsrsRetention || 0.9, gradeD: g, fuzz: it.id + "|" + t });
       return `<span class="ans-ivl">${g === 1 ? "re-vu" : (r.i <= 0 ? "aujourd'hui" : r.i + " j")}</span>`;
     }catch(_){ return ""; }
   };
@@ -1721,6 +1728,7 @@ function openSettings(){
     <label title="FSRS = algorithme moderne (modèle mémoire stabilité/difficulté par carte, ~25% de révisions en moins). Classique = échelle de stades historique.">Algorithme de répétition
       <select id="sched"><option value="fsrs" ${ST.set.scheduler!=="legacy"?"selected":""}>FSRS (moderne)</option><option value="legacy" ${ST.set.scheduler==="legacy"?"selected":""}>Classique</option></select></label>
     <label title="Rétention cible FSRS : proba de te souvenir au moment de la révision. Plus haut = plus de révisions, meilleure mémoire. Défaut 0.90.">Rétention cible (FSRS) <input type="number" id="fsrsret" min="0.7" max="0.97" step="0.01" value="${ST.set.fsrsRetention||0.9}"></label>
+    <label title="Poids FSRS ajustés À TES données réelles (fit du 15/07 : le modèle générique te surestimait, R prédit ≈0.89 vs réel ≈0.78). Coché = intervalles calés sur ta mémoire. Décoché = poids génériques (rollback).">Poids FSRS personnalisés <input type="checkbox" id="fsrsperso" ${ST.set.fsrsPersonal!==false?"checked":""}></label>
     <label title="Au rappel SANS AIDE : 4 boutons (Encore/Difficile/Bien/Facile). Les exercices aidés (QCM, indice, sens inversé) restent à 2 boutons — leur note est plafonnée à Difficile. Note plus fine → FSRS mieux calibré.">Notation à 4 boutons <input type="checkbox" id="g4" ${ST.set.grade4!==false?"checked":""}></label>
     <label title="Intervalles personnalisés par mot (ALGORITHM.md), UNIQUEMENT en mode Classique. Laisser décoché ~2 semaines : l'app observe d'abord.">
       Planification adaptative (mode Classique) <input type="checkbox" id="adap" ${ST.set.adaptive?"checked":""}></label>
@@ -1784,6 +1792,7 @@ function openSettings(){
   set.querySelector("#adap").onchange= e=>{ ST.set.adaptive=e.target.checked; save(); };
   set.querySelector("#sched").onchange = e=>{ ST.set.scheduler=e.target.value; save(); };
   set.querySelector("#fsrsret").onchange = e=>{ ST.set.fsrsRetention=Math.min(0.97, Math.max(0.7, +e.target.value||0.9)); save(); };
+  set.querySelector("#fsrsperso").onchange = e=>{ ST.set.fsrsPersonal=e.target.checked; save(); };
   set.querySelector("#g4").onchange = e=>{ ST.set.grade4=e.target.checked; save(); };
   set.querySelector("#typ").onchange = e=>{ ST.set.typing=e.target.checked; save(); };
   set.querySelector("#rev").onchange = e=>{ ST.set.reverse=e.target.checked; save(); location.reload(); };  // ALL_IDS fixé au chargement → recharger

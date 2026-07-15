@@ -42,8 +42,35 @@
   Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
   PowerShell 5.1 sous Windows 11.
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
-  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **43 tests Node**, `CACHE` = `sori-v41`.
+  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **70 tests Node**, `CACHE` = `sori-v81`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v81 (FSRS Phase B — poids ajustés aux données réelles de l'utilisateur)** : le point de contrôle
+  « mi-juillet » attendait assez de recul calendaire pour ajuster les 19 poids FSRS aux vraies données
+  (au lieu des poids génériques). **Outillage mainteneur** (`tools/`) : `fsrs_ref_gen.js` (émet
+  `fsrs_ref.json` = 161 valeurs de référence du modèle FSRS depuis engine.js) + `fsrs_fit.py` (rejeu du
+  journal `ST.rlog` + optimiseur numpy). Le fitter a d'abord un **selftest** qui reproduit engine.js au
+  bit près (écart 3.8e-16) — sinon il refuse d'ajuster. **Fit du 15/07** (4498 rév. / 1252 cartes, dont
+  828 migrées d'Anki, / 10 jours) : le modèle générique SURESTIME (prédit R≈0.89 vs réel ≈0.78) → gain
+  log-loss hors-échantillon **+8.0%**, calibration 0.797 vs 0.800. Effet = mots jeunes revus plus tôt
+  (S0 Good 3.17j→0.60j, 1er intervalle 3j→1j). **Intégration** : `engine.js` expose `FSRS_W_PERSONAL`
+  (à côté du générique `FSRS_W`, gardé pour rollback), `DEF_SET.fsrsPersonal:true` ; `app.js` `fsrsW()`
+  choisit les poids actifs (repli `|| FSRS.W`) et les passe aux 3 sites de planification (applyAnswer,
+  aperçu d'intervalle, markKnown) ; toggle Réglages « Poids FSRS personnalisés ». Les poids NE sont PAS
+  copiés dans l'état (seul le booléen l'est) → un refit d'engine.js atteint l'utilisateur.
+  **Revue adversariale (3 lentilles → vérif, 6 confirmés) — corrigés AVANT push** : (a MAJEUR) le rejeu
+  traitait les cartes migrées comme neuves (init) alors que le moteur COMPTE leur 1re révision (S←itv) —
+  elles DOMINENT (66%) → amorçage S←itv proxy (elapsed₀) + D←easeToD(ease), révision comptée ;
+  (b MAJEUR) le canal difficulté suivait la note plafonnée au lieu de gradeD brut → réintroduisait le
+  cliquet de D corrigé en v64 → reconstruction de gradeD depuis `kind` (dissociation v64) ; (c MAJEUR)
+  poids livrés = cliquet de D (w6=4/w7=0.001 aux bornes, +2.6× révisions sur cartes ratées) + 5/17 poids
+  épinglés = sur-apprentissage → **on ne fitte QUE le bloc identifié** (S0 + croissance court/moyen),
+  w6,7,9,12,14,16,17,18 GELÉS au générique ; (d nit) `fsrsW()` repli `|| FSRS.W` (markKnown indexe direct).
+  **LEÇONS : (1) un fit FSRS doit rejouer EXACTEMENT le moteur — cartes migrées (seed≠init) et
+  dissociation S/D des notes plafonnées sont les deux pièges ; (2) sur peu de jours calendaires, geler
+  les poids non identifiables (dynamique de D, cartes mûres, Easy) au générique évite le cliquet et le
+  sur-apprentissage — n'ajuster que ce que les données contraignent.** ⚠️ **RÉAFFINER début sept. 2026**
+  (relancer `python tools/fsrs_fit.py --fit <export> --out <w.json>`) quand les intervalles longs seront
+  peuplés ; dégeler alors la dynamique de D/mûres. 70 tests. CACHE `sori-v81`.
 - **v48 (Progrès : maîtrise par niveau + vitesse)** : deux visualisations dans `renderStats`.
   (1) **📊 Ta maîtrise par niveau** : une barre par bande CEFR = `mas[b]/tot[b]` où `mas`=items
   `stage>=4` et `tot`=items du niveau (via `EXTRA[id].cefr`), + ligne « tu travailles le <bande la

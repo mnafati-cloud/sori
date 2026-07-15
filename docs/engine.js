@@ -9,7 +9,7 @@
   "use strict";
 
   /* ================= constantes partagées ================= */
-  const DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true, adaptive:false, typing:false, report:false, exaudio:false, wordgloss:false, reverse:false, scheduler:"fsrs", fsrsRetention:0.9, grade4:true };
+  const DEF_SET = { newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true, adaptive:false, typing:false, report:false, exaudio:false, wordgloss:false, reverse:false, scheduler:"fsrs", fsrsRetention:0.9, grade4:true, fsrsPersonal:true };
   const STEP = {2:1, 3:2, 4:4, 5:8};   // intervalle (jours) en arrivant à ce stage
 
   /* ===== ease adaptatif (ALGORITHM.md) — constantes =====
@@ -201,6 +201,21 @@
      (optimiseur Python) depuis le journal ST.rlog. Sources : expertium.github.io/Algorithm.html,
      borretti.me/article/implementing-fsrs-in-100-lines, open-spaced-repetition/ts-fsrs. */
   const FSRS_W = [0.40255,1.18385,3.173,15.69105,7.1949,0.5345,1.4604,0.0046,1.54575,0.1192,1.01925,1.9395,0.11,0.29605,2.2698,0.2315,2.9898,0.51655,0.6621];
+  /* FSRS Phase B — poids AJUSTÉS aux données réelles de l'utilisateur (tools/fsrs_fit.py sur ST.rlog).
+     Fit 2026-07-15 : 4498 révisions / 1252 cartes (828 migrées d'Anki + 424 neuves) / 10 jours calendaires.
+     Constat robuste (rejeu fidèle) : le modèle générique le SURESTIME — prédit R≈0.89 pour un rappel réel
+     ≈0.78 → intervalles trop longs. Ajusté : prédiction ≈0.79, calée sur la réalité ; gain log-loss
+     HORS-ÉCHANTILLON +8.0% (calibration test 0.797 prédit vs 0.800 réel). Effet = mots jeunes revus plus
+     tôt (S0 Good 3.17j→0.60j → 1er intervalle 3j→1j) ; rétention réelle remonte vers la cible.
+     Méthode (après revue adversariale) : cartes migrées amorcées S←itv, D←ease et COMPTÉES ; canal
+     difficulté sur la note BRUTE reconstruite (dissociation v64) ; SEUL le bloc identifiable est ajusté —
+     w6,w7,w9,w12,w14,w16 (dynamique de D + amortissement + post-lapse + bonus Easy, régimes creux en 10 j)
+     GELÉS au générique pour éviter le CLIQUET de difficulté et le sur-apprentissage ; w17/w18 (court terme)
+     inutilisés. DECAY figé -0.5. ⚠️ RÉAFFINER (relancer fsrs_fit.py) début sept. 2026 quand les intervalles
+     longs (>2 sem.) seront peuplés — dégeler alors la dynamique de D/mûres. Actif via ST.set.fsrsPersonal
+     (toggle Réglages, rollback = poids génériques). NE PAS copier ces poids dans l'état utilisateur (sinon
+     un refit ne l'atteindrait plus) : seul le booléen fsrsPersonal vit dans ST.set, les poids restent ici. */
+  const FSRS_W_PERSONAL = [0.01,0.48865,0.601911,15.69105,6.217666,0.785713,1.4604,0.0046,1.635294,0.1192,0.162247,1.746416,0.11,0.215791,2.2698,0.457168,2.9898,0.51655,0.6621];
   const FSRS_DECAY = -0.5;
   const FSRS_FACTOR = 19/81;          // = 0.9^(1/DECAY) - 1 : garantit R=0.9 quand t=S
   const FSRS_S_MIN = 0.1, FSRS_S_MAX = 36500, FSRS_DR = 0.9;
@@ -335,7 +350,7 @@
                    pickDistractors, shuffle, sample, DEF_SET, STEP,
                    fsrsSchedule, fsrsR, fsrsIntervalDays, fsrsNextInterval, fuzzInterval, fsrsInitS, fsrsInitD,
                    fsrsNextD, fsrsSuccS, fsrsFailS, easeToD,
-                   FSRS: { W: FSRS_W, DECAY: FSRS_DECAY, FACTOR: FSRS_FACTOR, S_MIN: FSRS_S_MIN, S_MAX: FSRS_S_MAX, DR: FSRS_DR },
+                   FSRS: { W: FSRS_W, W_PERSONAL: FSRS_W_PERSONAL, DECAY: FSRS_DECAY, FACTOR: FSRS_FACTOR, S_MIN: FSRS_S_MIN, S_MAX: FSRS_S_MAX, DR: FSRS_DR },
                    EASE: { EASE_START, EASE_MIN, EASE_MAX, SEED_MIN, SEED_MAX, TARGET_RETENTION,
                            EASE_GAIN, EASE_LOSS, EARLY_RATIO, LATE_CREDIT_CAP, MAX_ITV, S5_FLOOR, LEECH_KO } };
   if (typeof module !== "undefined" && module.exports) module.exports = ENGINE;

@@ -227,6 +227,24 @@ test("distracteurs : le global (même type) complète quand le thème ne suffit 
 test("DEF_SET et STEP : valeurs contractuelles", () => {
   assert.deepEqual(DEF_SET, { newPerDay: 12, kitFirst: true, rate: 0.9, listenN: 10,
     sessionMax: 120, mute: false, autoplay: true, adaptive: false, typing: false, report: false,
-    exaudio: false, wordgloss: false, reverse: false, scheduler: "fsrs", fsrsRetention: 0.9, grade4: true });   // FSRS + 4 boutons par défaut ; reverse OFF ; reste opt-in
+    exaudio: false, wordgloss: false, reverse: false, scheduler: "fsrs", fsrsRetention: 0.9, grade4: true,
+    fsrsPersonal: true });   // FSRS + 4 boutons + poids perso par défaut ; reverse OFF ; reste opt-in
   assert.deepEqual(STEP, { 2: 1, 3: 2, 4: 4, 5: 8 });
+});
+
+test("FSRS_W_PERSONAL : forme valide + planification cohérente (Phase B)", () => {
+  const { FSRS, fsrsSchedule } = ENGINE;
+  const WP = FSRS.W_PERSONAL;
+  assert.equal(WP.length, 19, "19 poids (FSRS-5)");
+  assert.ok(WP.every(x => typeof x === "number" && isFinite(x)), "tous finis");
+  // les poids court-terme (17,18) ne sont pas ajustés → identiques aux génériques
+  assert.equal(WP[17], FSRS.W[17]); assert.equal(WP[18], FSRS.W[18]);
+  // au moins un poids diffère des génériques (sinon le fit n'a rien changé)
+  assert.ok(WP.some((x, i) => x !== FSRS.W[i]), "distinct des génériques");
+  // une planification réelle avec les poids perso produit un état sain
+  const it = { S: 10, D: 5, stage: 3, itv: 10, ok: 3, ko: 1, due: "2026-07-01" };
+  const r = fsrsSchedule(it, 3, "2026-07-10", { w: WP });
+  assert.ok(r.S >= FSRS.S_MIN && r.S <= FSRS.S_MAX, "S borné");
+  assert.ok(r.D >= 1 && r.D <= 10, "D borné");
+  assert.ok(r.i >= 1, "intervalle >= 1");
 });
