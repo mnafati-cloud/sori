@@ -38,7 +38,15 @@ const GLOSS_FIX = {
   "카페":"Café (le lieu)", "생선":"Poisson (à manger)",
   "이제":"Désormais / à partir de maintenant", "지금":"Maintenant (à l'instant présent)",
   "같이":"Ensemble (courant)", "함께":"Ensemble (soutenu)",
-  "좋아하다":"Aimer bien / apprécier"
+  "좋아하다":"Aimer bien / apprécier",
+  /* v82 : rapports in-app 16-17/07. Séries démonstratives 이/그/저 (le FR ne distingue pas ci/là/là-bas)
+     pour personnes ET choses ; verbe directionnel 나가다 (calque de 들어가다) ; interrogatifs 무슨/어느 ;
+     + note de polysémie sur l'HOMOGRAPHE 위 (estomac ↔ au-dessus — le coréen est ambigu, pas le français). */
+  "나가다":"Sortir (en s'éloignant)",
+  "이분":"Cette personne-ci (près de moi)", "그분":"Cette personne-là (près de toi / dont on parle)", "저분":"Cette personne là-bas (loin de nous deux)",
+  "이것":"Ceci (près de moi)", "그것":"Ça (près de toi / dont on parle)", "저것":"Ça là-bas (loin de nous deux)",
+  "무슨":"Quel type de… (quelle sorte de)", "어느":"Lequel (choix parmi un ensemble connu)",
+  "위":"Estomac (l'organe) — 위 signifie aussi « au-dessus / le haut »"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 
