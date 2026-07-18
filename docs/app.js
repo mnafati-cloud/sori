@@ -796,6 +796,26 @@ function renderExercices(){
     });
     $screen.appendChild(scBox);
   }
+  /* v83 : Conversation IA — micro (STT navigateur) → LLM (OpenAI/Anthropic, choix Réglages) → voix.
+     Le contexte du modèle = SES mots maîtrisés (stage>=4) + ses 8 mots les plus fragiles
+     (récupérabilité FSRS la plus basse) que le modèle glisse dans la conversation. */
+  if(window.SORI_CONVERSATION){
+    const mastered = BASE_IDS
+      .filter(id => SEED_BY_ID[id].type === "word")
+      .map(id => eff(id))
+      .filter(it => !it.sus && it.stage >= 4);
+    const frag = mastered
+      .map(it => ({ kr: SEED_BY_ID[it.id].kr, r: cardRetrievability(it) }))
+      .sort((a,b) => a.r - b.r).slice(0, 8).map(x => x.kr);
+    const cvBox = el(`<div></div>`);
+    SORI_CONVERSATION.renderCard(cvBox, {
+      cfg: convCfg,
+      words: mastered.map(it => SEED_BY_ID[it.id].kr),
+      fragiles: frag,
+      speak: (txt)=>ttsSpeak(txt)
+    });
+    $screen.appendChild(cvBox);
+  }
 }
 
 /* ---------- mode Réviser ---------- */
@@ -1752,6 +1772,13 @@ function openSettings(){
     ${window.SORI_THEMES ? `<label>Style graphique <select id="theme">${
       SORI_THEMES.list.map(th=>`<option value="${th.id}" ${SORI_THEMES.get()===th.id?"selected":""}>${esc(th.label)}</option>`).join("")
     }</select></label>` : ""}
+    <div class="section-title" style="margin-top:14px">Conversation (IA)</div>
+    <p class="dim" style="margin-top:4px">Partenaire de conversation en coréen (onglet Exercices). La clé API reste sur CET appareil — jamais dans la sauvegarde cloud. Seul Anthropic autorise les appels directs depuis un navigateur (OpenAI les bloque : option gardée pour un futur proxy).</p>
+    <label>Fournisseur <select id="cvprov">
+      <option value="anthropic" ${convCfg().prov!=="openai"?"selected":""}>Anthropic (Claude Haiku 4.5)</option>
+      <option value="openai" ${convCfg().prov==="openai"?"selected":""}>OpenAI (gpt-5-mini) — bloqué navigateur</option></select></label>
+    <label>Clé OpenAI <input type="password" id="cvok" placeholder="${convCfg().ok?"•••• configurée ••••":"sk-…"}" autocomplete="off"></label>
+    <label>Clé Anthropic <input type="password" id="cvak" placeholder="${convCfg().ak?"•••• configurée ••••":"sk-ant-…"}" autocomplete="off"></label>
     <div class="section-title" style="margin-top:14px">Mode avion</div>
     <div class="row" style="margin-top:6px"><button class="btn ghost" id="dlaudio">Télécharger tout l'audio (${AUDIO_IDS.size + AUDIO_EX_IDS.size} fichiers)</button></div>
     <p class="dim" id="dlstatus" style="margin-top:6px">Mots + phrases d'exemple, disponibles hors connexion (avion, métro coréen).</p>
@@ -1805,6 +1832,11 @@ function openSettings(){
   set.querySelector("#typ").onchange = e=>{ ST.set.typing=e.target.checked; save(); };
   set.querySelector("#rev").onchange = e=>{ ST.set.reverse=e.target.checked; save(); location.reload(); };  // ALL_IDS fixé au chargement → recharger
   set.querySelector("#rpt").onchange = e=>{ ST.set.report=e.target.checked; save(); wireReport(); };
+  set.querySelector("#cvprov").onchange = e=>{ setConvCfg({prov: e.target.value}); };
+  set.querySelector("#cvok").onchange = e=>{ setConvCfg({ok: e.target.value.trim()});
+    e.target.value=""; e.target.placeholder = convCfg().ok ? "•••• configurée ••••" : "sk-…"; };
+  set.querySelector("#cvak").onchange = e=>{ setConvCfg({ak: e.target.value.trim()});
+    e.target.value=""; e.target.placeholder = convCfg().ak ? "•••• configurée ••••" : "sk-ant-…"; };
   set.querySelector("#exau").onchange= e=>{ ST.set.exaudio=e.target.checked; save(); };
   set.querySelector("#wgl").onchange = e=>{ ST.set.wordgloss=e.target.checked; save(); };
   set.querySelector("#rate").onchange= e=>{ ST.set.rate=Math.min(1.2,Math.max(0.5,+e.target.value||0.9)); save(); };
@@ -1904,6 +1936,18 @@ function openVersionHistory(){
       list.innerHTML = `<p class="dim">Impossible de charger l'historique (hors-ligne, ou limite GitHub atteinte).<br>
         Il reste consultable sur <a href="${ghUrl}" target="_blank" rel="noopener">GitHub</a>.</p>`;
     });
+}
+/* ===== Conversation (IA) — config HORS de ST : les clés API ne partent JAMAIS dans la
+   sauvegarde cloud (le state ST est exporté vers sori-data ; même modèle que sori-gh-token).
+   {prov: "openai"|"anthropic", ok: clé OpenAI, ak: clé Anthropic} */
+const CONV_CFG_KEY = "sori-conv-cfg";
+function convCfg(){ try{ return JSON.parse(localStorage.getItem(CONV_CFG_KEY) || "{}") || {}; }catch(e){ return {}; } }
+function setConvCfg(patch){
+  try{
+    const c = Object.assign(convCfg(), patch);
+    Object.keys(c).forEach(k => { if(c[k] === "" || c[k] == null) delete c[k]; });   // champ vidé = retiré
+    localStorage.setItem(CONV_CFG_KEY, JSON.stringify(c));
+  }catch(e){}
 }
 /* ================= sauvegarde cloud (GitHub, dépôt privé sori-data) =================
    Jeton fine-grained stocké UNIQUEMENT sur l'appareil (clé séparée, jamais dans un export). */

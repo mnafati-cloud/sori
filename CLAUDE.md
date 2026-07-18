@@ -70,6 +70,8 @@ docs/                 l'app servie telle quelle par GitHub Pages
   scenarios-data.js + scenarios.js  simulations dialoguées
   typing.js           saisie hangul (production tapée, stage 5, opt-in ST.set.typing)
   numbers.js          entraîneur de nombres à l'oreille (prix/heures/dates/quantités, onglet Écoute)
+  conversation.js     conversation IA en coréen (STT navigateur → LLM Anthropic/OpenAI → TTS) ;
+                      clés API dans localStorage "sori-conv-cfg" (JAMAIS dans ST/export cloud)
   placement.js        test de niveau ADAPTATIF (escalier par bande cefr → estimation CEFR/TOPIK)
   .nojekyll           DÉSACTIVE Jekyll sur GitHub Pages (obligatoire : 7000+ fichiers → builds fiables)
   sw.js               service worker network-first (CACHE à bump)   manifest.json, icônes

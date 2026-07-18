@@ -44,6 +44,30 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **70 tests Node**, `CACHE` = `sori-v81`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v83 (Conversation IA — parler coréen avec un LLM)** : demande user (« une conversation en coréen
+  améliorerait mon coréen » ; STT et TTS gratuits, LLM peu coûteux, son niveau + ses mots en contexte).
+  Chaîne complète SANS serveur : **micro → Web Speech API** (`SpeechRecognition` ko-KR, gratuite, le texte
+  reconnu s'affiche dans le champ et l'utilisateur VALIDE avant l'envoi = retour sur sa prononciation ;
+  repli saisie clavier si indisponible) → **LLM en appel direct navigateur** → **réponse lue par
+  `ttsSpeak`** (voix ko-KR déjà en place, re-écoute au tap sur la bulle). Nouveau module contractuel
+  `docs/conversation.js` (`SORI_CONVERSATION`, partie pure testée : `buildSystem`/`trimHistory`/
+  `buildRequest`/`parseReply`, 7 tests `tests/conversation.test.mjs`). **Contexte du modèle** = prompt
+  système STABLE (→ cache de prompt, ~centimes/conversation) : niveau A2, règles (hangul only pour le TTS,
+  1-2 phrases courtes, question de relance, reformulation des erreurs, aide en FR sur demande),
+  **vocabulaire = SES mots maîtrisés** (stage≥4, type word, hors sus) et **8 mots fragiles** (récupérabilité
+  FSRS la plus basse) que le modèle glisse dans la conversation (vérifié en réel : il recycle bien 어느).
+  **Deux fournisseurs, choix dans Réglages → Conversation** : Anthropic `claude-haiku-4-5` (défaut —
+  SEUL à autoriser les appels navigateur, en-tête `anthropic-dangerous-direct-browser-access` +
+  `cache_control` explicite) et OpenAI `gpt-5-mini` (`max_completion_tokens` + `reasoning_effort:minimal`
+  — ⚠️ **api.openai.com N'ENVOIE PAS les en-têtes CORS, vérifié en preview : « Failed to fetch »** →
+  option étiquetée « bloqué navigateur », chemin gardé pour un futur proxy ; le même code marche sous
+  Node, testé en réel avec la vraie clé : 2 tours de conversation corrects, 1,6-3 s de latence).
+  **Clés API : JAMAIS dans ST** (le state part dans la sauvegarde cloud !) — clé localStorage séparée
+  `sori-conv-cfg` `{prov, ok, ak}` (helpers `convCfg`/`setConvCfg`, modèle sori-gh-token), champs
+  password dans Réglages avec placeholder masqué. Le SW n'intercepte ni POST ni cross-origin (déjà le
+  cas). 77 tests. CACHE `sori-v83`. **LEÇON : « tel fournisseur accepte les appels navigateur » se
+  VÉRIFIE depuis la page (clé bidon → 401 lisible = CORS passé ; TypeError = bloqué) — ne jamais
+  l'affirmer sur souvenir.**
 - **v81 (FSRS Phase B — poids ajustés aux données réelles de l'utilisateur)** : le point de contrôle
   « mi-juillet » attendait assez de recul calendaire pour ajuster les 19 poids FSRS aux vraies données
   (au lieu des poids génériques). **Outillage mainteneur** (`tools/`) : `fsrs_ref_gen.js` (émet
