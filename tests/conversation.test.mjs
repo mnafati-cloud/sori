@@ -72,6 +72,15 @@ test("parseReply anthropic : texte, erreur API, réponse vide", () => {
   assert.ok(parseReply("anthropic", null, 529).err.includes("529"));
 });
 
+test("frDate : date courte française pour la liste", () => {
+  const { frDate } = CONV.pure;
+  assert.equal(frDate("2026-07-18"), "18 juil.");
+  assert.equal(frDate("2026-01-05"), "5 janv.");
+  assert.equal(frDate("2026-12-31"), "31 déc.");
+  assert.equal(frDate(""), "");
+  assert.equal(frDate("n'importe quoi"), "n'importe quoi");
+});
+
 test("SCENARIOS : ids uniques, rôle défini, libellés KR+FR", () => {
   const { SCENARIOS, scenarioById } = CONV.pure;
   assert.ok(SCENARIOS.length >= 6);

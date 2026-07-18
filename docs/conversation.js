@@ -38,6 +38,13 @@
   /* historique stocké [{r:"u"|"a", c:texte, hid?:1}] → messages API (hid = caché à l'AFFICHAGE seulement) */
   function toApi(h){ return (h || []).map(m => ({ role: m.r === "a" ? "assistant" : "user", content: m.c })); }
 
+  /* v96 : date courte à la française pour la liste (« 18 juil. ») */
+  const FR_MONTHS = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+  function frDate(iso){
+    const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ""));
+    return m ? (+m[3]) + " " + FR_MONTHS[(+m[2]) - 1] : String(iso || "");
+  }
+
   function buildSystem(words, fragiles, scenarioSys){
     words = words || []; fragiles = fragiles || [];
     return [
@@ -230,6 +237,7 @@
   const SVG_MIC = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg>';
   const SVG_STOP = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>';
   const SVG_SEND = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14"/><path d="M13 6l6 6-6 6"/></svg>';
+  const SVG_SPK = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
 
   let cssDone = false;
   function injectCSS(){
@@ -237,36 +245,55 @@
     cssDone = true;
     const s = document.createElement("style");
     s.textContent = [
-      ".conv-log{display:flex;flex-direction:column;gap:8px;margin:10px 0;max-height:46vh;overflow-y:auto}",
-      ".conv-b{max-width:85%;padding:8px 12px;border-radius:10px;line-height:1.45;white-space:pre-wrap;word-break:break-word}",
-      ".conv-b.u{align-self:flex-end;background:color-mix(in srgb, var(--acc2) 12%, transparent);border:1px solid color-mix(in srgb, var(--acc2) 30%, transparent)}",
-      ".conv-b.a{align-self:flex-start;border:1px solid var(--line);font-family:var(--kr-display, inherit);font-size:1.05rem;cursor:pointer}",
-      /* v95 : la saisie est une zone MULTI-LIGNES qui grandit avec le texte (retour user : un message
-         plus long que la ligne était invisible) — plafond ~5 lignes puis défilement interne */
-      ".conv-row{display:flex;gap:6px;align-items:flex-end;margin-top:8px}",
-      ".conv-row .conv-in{flex:1;min-width:0;font:inherit;line-height:1.45;color:inherit;background:none;",
-      "  border:1px solid var(--line);border-radius:10px;padding:9px 12px;resize:none;overflow-y:auto;max-height:7.6em}",
-      ".conv-mic{display:inline-flex;align-items:center;justify-content:center;width:40px;height:38px;flex:none}",
-      /* v91 : état d'écoute IMPOSSIBLE à rater — bouton plein vermillon qui pulse, icône carré STOP */
-      ".conv-mic.rec{background:var(--acc2);color:#fff;border-color:var(--acc2);animation:conv-pulse 1.2s ease-in-out infinite}",
-      "@keyframes conv-pulse{50%{box-shadow:0 0 0 6px color-mix(in srgb, var(--acc2) 30%, transparent)}}",
-      "@media (prefers-reduced-motion: reduce){.conv-mic.rec{animation:none}}",
-      ".conv-status{min-height:1.2em;font-size:.85rem;margin-top:6px}",
-      ".conv-head{display:flex;align-items:center;justify-content:space-between;gap:8px}",
-      ".conv-head h2{margin:0}",
-      ".conv-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}",
-      ".conv-item{display:flex;align-items:center;gap:8px;cursor:pointer}",
+      /* ===== v96 : passe de design — maquette « Encre & sceau » validée (artifact 0d9f77c0) ===== */
+      /* en-têtes d'écran : hangul d'affiche + libellé discret */
+      ".conv-head{display:flex;align-items:center;gap:10px;margin-bottom:2px}",
+      ".conv-head .kr-big{font-family:var(--kr-display, inherit);font-size:1.5rem;line-height:1.1}",
+      ".conv-head .lbl{font-size:.8rem;color:var(--dim)}",
+      ".conv-x{margin-left:auto;flex:none}",
+      ".conv-back{flex:none;padding:4px 12px}",
+      ".conv-sect{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);padding:14px 2px 8px;border-top:1px solid var(--line);margin-top:12px}",
+      ".conv-sect.first{border-top:none;margin-top:6px}",
+      /* tuiles scénarios, visibles d'entrée (langage des modes de Nombres) */
+      ".conv-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}",
+      ".conv-tile{border:1px solid var(--line);border-radius:10px;padding:10px 6px 8px;text-align:center;cursor:pointer;background:none;color:inherit;font:inherit}",
+      ".conv-tile .h{font-family:var(--kr-display, inherit);font-size:1.25rem;line-height:1.3}",
+      ".conv-tile .f{font-size:.66rem;color:var(--dim);margin-top:2px}",
+      ".conv-tile.libre{border-style:dashed}",
+      ".conv-tile.libre .h{color:var(--acc)}",
+      /* liste « Reprendre » en registre : ancre hangul du scénario */
+      ".conv-item{display:flex;align-items:center;gap:12px;cursor:pointer}",
+      ".conv-item .anchor{font-family:var(--kr-display, inherit);font-size:1.3rem;width:44px;text-align:center;flex:none}",
       ".conv-item .conv-meta{flex:1;min-width:0}",
-      ".conv-item .conv-t{font-family:var(--kr-display, inherit)}",
+      ".conv-item .conv-t{font-size:.95rem}",
+      ".conv-item .conv-s{font-size:.76rem}",
       ".conv-item .conv-del{flex:none}",
+      /* fil de discussion */
+      ".conv-log{display:flex;flex-direction:column;gap:10px;margin:10px 0;max-height:46vh;overflow-y:auto}",
+      ".conv-b{max-width:85%;padding:10px 13px;border-radius:12px;line-height:1.5;white-space:pre-wrap;word-break:break-word}",
+      ".conv-b.u{align-self:flex-end;background:color-mix(in srgb, var(--acc2) 10%, transparent);border:1px solid color-mix(in srgb, var(--acc2) 35%, transparent)}",
+      ".conv-b.a{align-self:flex-start;border:1px solid var(--line);background:color-mix(in srgb, var(--line) 22%, transparent);font-family:var(--kr-display, inherit);font-size:1.08rem;cursor:pointer}",
+      ".conv-spk{display:inline-block;margin-left:8px;opacity:.5;vertical-align:-2px}",
+      /* barre de saisie : zone qui grandit (v95), gros boutons RONDS, micro = bouton principal à droite */
+      ".conv-row{display:flex;gap:8px;align-items:flex-end;margin-top:8px}",
+      ".conv-row .conv-in{flex:1;min-width:0;font:inherit;line-height:1.45;color:inherit;background:none;",
+      "  border:1px solid var(--line);border-radius:22px;padding:11px 14px;resize:none;overflow-y:auto;max-height:7.6em}",
+      ".conv-send{width:44px;height:44px;border-radius:50%;padding:0;display:inline-flex;align-items:center;justify-content:center;flex:none}",
+      ".conv-mic{width:52px;height:52px;border-radius:50%;padding:0;display:inline-flex;align-items:center;justify-content:center;flex:none;border-color:var(--acc2);color:var(--acc2)}",
+      /* v91 : état d'écoute impossible à rater — plein vermillon pulsant, carré STOP */
+      ".conv-mic.rec{background:var(--acc2);color:#fff;animation:conv-pulse 1.2s ease-in-out infinite}",
+      "@keyframes conv-pulse{50%{box-shadow:0 0 0 8px color-mix(in srgb, var(--acc2) 25%, transparent)}}",
+      "@media (prefers-reduced-motion: reduce){.conv-mic.rec{animation:none}}",
+      ".conv-status{min-height:1.2em;font-size:.82rem;margin-top:6px}",
+      ".conv-state{color:var(--acc2)}",
+      ".conv-state::before{content:\"\";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc2);margin-right:6px;vertical-align:1px}",
       /* v93 : mot-à-mot sous la bulle (registre des révisions) */
       ".conv-gl-t{font-size:.72rem;color:var(--dim);margin-top:7px;letter-spacing:.04em;cursor:pointer}",
       ".conv-gl{margin-top:5px;border-top:1px solid var(--line);padding-top:5px}",
       ".conv-gl-r{display:flex;gap:10px;padding:2px 0;font-size:.85rem}",
       ".conv-gl-r .gk{font-family:var(--kr-display, inherit);min-width:5.5em}",
       ".conv-gl-r .gf{color:var(--dim)}",
-      /* v94 : l'ATTENTE se voit — points animés sur tout appel en cours (retour user :
-         « je ne sais pas si c'est en attente ou si ça ne marche pas ») */
+      /* v94 : l'ATTENTE se voit — points animés sur tout appel en cours */
       ".conv-wait::after{content:\"…\";display:inline-block;width:1.2em;text-align:left;animation:convdots 1.2s steps(4,end) infinite}",
       "@keyframes convdots{0%{content:\"\"}25%{content:\".\"}50%{content:\"..\"}75%{content:\"...\"}}",
       "@media (prefers-reduced-motion: reduce){.conv-wait::after{animation:none;content:\"…\"}}",
@@ -290,52 +317,51 @@
     const box = document.createElement("div");
     box.className = "card";
     box.innerHTML =
-      '<div class="conv-head"><h2>Conversations</h2><button class="btn ghost conv-exit">Fermer</button></div>' +
-      '<p class="dim">Parle coréen avec un partenaire IA — à ton niveau, avec tes mots. Reprends une conversation ou lances-en une nouvelle.</p>' +
-      '<div class="row" style="margin-top:10px"><button class="btn conv-new">Nouvelle conversation</button></div>' +
-      '<div class="conv-sc" style="display:none"></div>' +
-      '<div class="list conv-list" style="margin-top:12px"></div>' +
-      '<p class="dim conv-empty" style="display:none;margin-top:10px">Aucune conversation enregistrée.</p>';
+      '<div class="conv-head"><span class="kr-big">대화</span><span class="lbl">Conversations</span><button class="btn ghost conv-x">✕</button></div>' +
+      '<div class="conv-sect first">Nouvelle</div>' +
+      '<div class="conv-tiles"></div>' +
+      '<div class="conv-sect conv-rep" style="display:none">Reprendre</div>' +
+      '<div class="list conv-list"></div>';
     container.appendChild(box);
-    box.querySelector(".conv-exit").onclick = () => { if(opts.onExit) opts.onExit(); };
+    box.querySelector(".conv-x").onclick = () => { if(opts.onExit) opts.onExit(); };
 
-    /* nouvelle conversation → choix : libre, ou un scénario de jeu de rôle */
-    const scBox = box.querySelector(".conv-sc");
-    box.querySelector(".conv-new").onclick = () => {
-      if(scBox.style.display !== "none"){ scBox.style.display = "none"; return; }
-      scBox.style.display = "";
-      scBox.innerHTML = '<p class="dim" style="margin-top:10px">Un scénario ? (ou discussion libre)</p><div class="conv-chips"></div>';
-      const chips = scBox.querySelector(".conv-chips");
-      const mk = (label, sc) => {
-        const b = document.createElement("button");
-        b.className = "btn ghost"; b.textContent = label;
-        b.onclick = () => {
-          const conv = opts.store.create(sc ? sc.id : null);
-          if(!conv) return;                                  // cap atteint — app.js a affiché pourquoi
-          if(sc){ conv.t = sc.kr + " · " + sc.fr; opts.store.save(conv); }
-          renderChat(container, opts, conv);
-        };
-        chips.appendChild(b);
+    /* tuiles VISIBLES D'ENTRÉE (maquette) : Libre en pointillés céladon + 8 scénarios hangul */
+    const tiles = box.querySelector(".conv-tiles");
+    const mkTile = (h, f, sc, cls) => {
+      const b = document.createElement("button");
+      b.className = "conv-tile" + (cls ? " " + cls : "");
+      const eh = document.createElement("div"); eh.className = "h"; eh.textContent = h;
+      const ef = document.createElement("div"); ef.className = "f"; ef.textContent = f;
+      b.appendChild(eh); b.appendChild(ef);
+      b.onclick = () => {
+        const conv = opts.store.create(sc ? sc.id : null);
+        if(!conv) return;                                  // cap atteint — app.js a affiché pourquoi
+        if(sc){ conv.t = sc.kr + " · " + sc.fr; opts.store.save(conv); }
+        renderChat(container, opts, conv);
       };
-      mk("Libre", null);
-      SCENARIOS.forEach(s => mk(s.kr + " · " + s.fr, s));
+      tiles.appendChild(b);
     };
+    mkTile("자유", "Libre", null, "libre");
+    SCENARIOS.forEach(s => mkTile(s.kr, s.fr, s));
 
-    /* liste des conversations enregistrées (plus récente d'abord) — reprendre au tap, supprimer au ✕ */
+    /* « Reprendre » : registre avec ancre hangul, plus récente d'abord — tap = reprendre, ✕ = supprimer */
     const lst = box.querySelector(".conv-list");
     const convs = (opts.store.list() || []).slice().sort((a, b) => String(b.u || b.d || "").localeCompare(String(a.u || a.d || "")));
-    box.querySelector(".conv-empty").style.display = convs.length ? "none" : "";
+    if(convs.length) box.querySelector(".conv-rep").style.display = "";
     convs.forEach(cv => {
       const row = document.createElement("div");
       row.className = "item conv-item";
+      const s = cv.sc ? scenarioById(cv.sc) : null;
       const visible = (cv.h || []).filter(m => !m.hid).length;
-      row.innerHTML = '<div class="conv-meta"><div class="conv-t"></div><div class="dim conv-s"></div></div>' +
+      row.innerHTML = '<span class="anchor"></span>' +
+                      '<div class="conv-meta"><div class="conv-t"></div><div class="dim conv-s"></div></div>' +
                       '<button class="btn ghost conv-del" title="Supprimer">✕</button>';
-      row.querySelector(".conv-t").textContent = cv.t || "Conversation libre";
-      row.querySelector(".conv-s").textContent = (cv.u || cv.d || "") + " · " + visible + " message" + (visible > 1 ? "s" : "");
+      row.querySelector(".anchor").textContent = s ? s.kr : "—";
+      row.querySelector(".conv-t").textContent = s ? s.fr : (cv.t || "Conversation libre");
+      row.querySelector(".conv-s").textContent = frDate(cv.u || cv.d) + " · " + visible + " message" + (visible > 1 ? "s" : "");
       row.querySelector(".conv-del").onclick = e => {
         e.stopPropagation();
-        if(!root.confirm || confirm("Supprimer « " + (cv.t || "Conversation libre") + " » ?")){
+        if(!root.confirm || confirm("Supprimer « " + (s ? s.fr : (cv.t || "Conversation libre")) + " » ?")){
           opts.store.remove(cv.id);
           renderHome(container, opts);
         }
@@ -358,15 +384,18 @@
     const box = document.createElement("div");
     box.className = "card";
     box.innerHTML =
-      '<div class="conv-head"><h2></h2><button class="btn ghost conv-back">‹ Liste</button></div>' +
+      '<div class="conv-head"><button class="btn ghost conv-back">‹</button>' +
+        '<span class="kr-big conv-anchor"></span><span class="lbl conv-sub"></span></div>' +
       '<div class="conv-log"></div>' +
       '<div class="conv-status dim"></div>' +
       '<div class="conv-row">' +
+        '<textarea class="conv-in" rows="1" placeholder="한국어로…" autocomplete="off"></textarea>' +
+        '<button class="btn ghost conv-send" title="Envoyer">' + SVG_SEND + '</button>' +
         '<button class="btn ghost conv-mic" title="Parler (coréen)">' + SVG_MIC + '</button>' +
-        '<textarea class="conv-in" rows="1" placeholder="한국어로 말해 보세요…" autocomplete="off"></textarea>' +
-        '<button class="btn conv-send" title="Envoyer">' + SVG_SEND + '</button>' +
       '</div>';
-    box.querySelector("h2").textContent = conv.t || "Conversation libre";
+    /* en-tête maquette : ancre hangul du scénario + libellé FR ; libre = titre seul */
+    box.querySelector(".conv-anchor").textContent = sc ? sc.kr : "";
+    box.querySelector(".conv-sub").textContent = sc ? sc.fr : (conv.t || "Conversation libre");
     container.appendChild(box);
     box.querySelector(".conv-back").onclick = () => { stopMic(); renderHome(container, opts); };
 
@@ -406,7 +435,12 @@
       b.className = "conv-b " + (role === "user" ? "u" : "a");
       b.textContent = text;
       if(role === "assistant"){
-        b.onclick = () => say(text);   // re-écouter au tap
+        /* v96 : la ré-écoute se VOIT — petit haut-parleur accroché à la bulle (toute la bulle reste tapable) */
+        const sp = document.createElement("span");
+        sp.className = "conv-spk";
+        sp.innerHTML = SVG_SPK;
+        b.appendChild(sp);
+        b.onclick = () => say(text);
         attachGloss(b, pairs);
       }
       log.appendChild(b);
@@ -419,6 +453,14 @@
       const s = document.createElement("span");
       s.className = "conv-wait";
       s.textContent = label;
+      status.appendChild(s);
+    }
+    /* v96 : état d'écoute maquette — pastille vermillon + « En écoute » */
+    function showListen(){
+      status.textContent = "";
+      const s = document.createElement("span");
+      s.className = "conv-state";
+      s.textContent = "En écoute";
       status.appendChild(s);
     }
     /* mot-à-mot asynchrone : appel SÉPARÉ après la réponse — la conversation n'attend jamais dessus,
@@ -532,7 +574,7 @@
        v85 (retour user réel) : dans l'app installée il n'y a NI cadenas NI barre d'adresse, et « Infos de
        l'appli » ne liste souvent PAS le micro pour une WebAPK — la permission du SITE se gère dans CHROME
        et l'app installée en hérite. Le message donne CE chemin-là. */
-    const MSG_DENIED = "Micro bloqué. Dans CHROME : menu ⋮ → Paramètres → Paramètres des sites → Micro → touche mnafati-cloud.github.io dans « Bloqués » → Autoriser, puis relance Sori. (S'il n'y est pas : ouvre le site dans un onglet Chrome et autorise le micro là-bas — l'appli installée hérite du choix.) En attendant, écris ta phrase au clavier.";
+    const MSG_DENIED = "Micro bloqué. Chrome → ⋮ → Paramètres → Paramètres des sites → Micro → autorise mnafati-cloud.github.io (l'appli installée hérite du choix).";
     const SR_ERRS = {
       "no-speech": "Je n'ai rien entendu — réessaie.",
       "not-allowed": MSG_DENIED,
@@ -572,7 +614,7 @@
       mrec.start();
       listening = true;
       micBtn.classList.add("rec"); micBtn.innerHTML = SVG_STOP;
-      status.textContent = "En écoute";
+      showListen();
     }
     /* arrêt UTILE (2e tap) : déclenche la transcription — stopMic() reste l'arrêt-poubelle (envoi/voix/retour) */
     function finishRecord(){
@@ -643,7 +685,7 @@
           rec.start(); listening = true;
           micBtn.classList.add("rec");
           micBtn.innerHTML = SVG_STOP;    // v91 : l'état d'écoute se voit — carré STOP sur fond vermillon
-          status.textContent = "En écoute";
+          showListen();
         }catch(e){ status.textContent = "Micro indisponible."; }
       };
     }
@@ -652,7 +694,7 @@
   const API = {
     renderHome, renderChat,
     callLLM, callStt, callGloss,
-    pure: { buildSystem, trimHistory, buildRequest, parseReply, sttMerge, toApi, scenarioById,
+    pure: { buildSystem, trimHistory, buildRequest, parseReply, sttMerge, toApi, scenarioById, frDate,
             buildSttRequest, parseSttReply, glossPrompt, parseGloss,
             SCENARIOS, BOOTSTRAP, MODELS, MAX_HISTORY }
   };

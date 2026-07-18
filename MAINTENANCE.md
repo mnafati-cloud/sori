@@ -44,6 +44,21 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **70 tests Node**, `CACHE` = `sori-v81`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v96 (Conversation : PASSE DE DESIGN — maquette validée, artifact 0d9f77c0)** : l'user a constaté
+  que l'app ne ressemblait pas à la maquette (jamais implémentée, en attente de son verdict) et l'a
+  validée (« j'aimais bien les maquettes »). Livré fidèle aux 4 panneaux : **accueil** = en-tête 대화
+  + « Conversations » + ✕ ; sections hairline NOUVELLE/REPRENDRE ; **tuiles hangul visibles d'entrée**
+  (3 colonnes, 자유 Libre en pointillés céladon + 8 scénarios, langage des modes de Nombres — fin du
+  bouton « Nouvelle conversation » à déplier) ; liste en registre avec **ancre hangul** (— pour une
+  libre), titre FR, **date courte** (`frDate` : « 18 juil. », testée) ; **discussion** = ‹ retour +
+  ancre hangul + libellé, bulles (assistant : fond léger + myeongjo 1.08rem + **haut-parleur visible**
+  `SVG_SPK` — la ré-écoute n'est plus à deviner ; user : teinte sceau à droite), **barre réordonnée
+  saisie · envoi rond 44 · MICRO ROND 52 vermillon à droite** (pouce, bouton principal) ; état
+  d'écoute = pastille + « En écoute » (`showListen`, `.conv-state`). **Textes-instructions retirés
+  partout** (sa critique « comme si tu collais des bouts de notre conversation dans l'app ») :
+  lanceur et accueil sans prose, Réglages → section « Conversation » réduite aux champs (fournisseur
+  « Anthropic »/« OpenAI » nus, détails en infobulle), MSG_DENIED raccourci de moitié. 86 tests.
+  Vérifié preview (15 points DOM + 2 captures écran conformes). CACHE `sori-v96`.
 - **v93 (Conversation : STT Gemini + mot-à-mot asynchrone)** : réponse aux deux problèmes de fond du
   vocal (Web Speech intolérante à l'accent d'apprenant, aucune possibilité de contexte).
   ① **STT Gemini (si clé)** : le micro ENREGISTRE l'audio (MediaRecorder webm/opus, tap-démarre/

@@ -807,7 +807,6 @@ function renderExercices(){
   if(window.SORI_CONVERSATION){
     const n = (ST.conv||[]).length;
     const cvCard = el(`<div class="card"><h2>Conversation</h2>
-      <p class="dim">Parle coréen avec un partenaire IA — à ton niveau, avec tes mots. Scénarios (restaurant, taxi…) ou discussion libre.</p>
       <div class="row" style="margin-top:8px"><button class="btn" id="goconv">Ouvrir${n ? " · " + n + " enregistrée" + (n>1?"s":"") : ""}</button></div></div>`);
     cvCard.querySelector("#goconv").onclick = openConversation;
     $screen.appendChild(cvCard);
@@ -1811,11 +1810,10 @@ function openSettings(){
     ${window.SORI_THEMES ? `<label>Style graphique <select id="theme">${
       SORI_THEMES.list.map(th=>`<option value="${th.id}" ${SORI_THEMES.get()===th.id?"selected":""}>${esc(th.label)}</option>`).join("")
     }</select></label>` : ""}
-    <div class="section-title" style="margin-top:14px">Conversation (IA)</div>
-    <p class="dim" style="margin-top:4px">Partenaire de conversation en coréen (onglet Exercices). La clé arrive automatiquement depuis ton cloud privé (grâce au jeton GitHub ci-dessous) — rien à coller. Seul Anthropic autorise les appels directs depuis un navigateur (OpenAI les bloque : option gardée pour un futur proxy).</p>
-    <label>Fournisseur <select id="cvprov">
-      <option value="anthropic" ${convCfg().prov!=="openai"?"selected":""}>Anthropic (Claude Haiku 4.5)</option>
-      <option value="openai" ${convCfg().prov==="openai"?"selected":""}>OpenAI (gpt-5-mini) — bloqué navigateur</option></select></label>
+    <div class="section-title" style="margin-top:14px">Conversation</div>
+    <label>Fournisseur <select id="cvprov" title="Anthropic (Claude Haiku) répond depuis le navigateur ; OpenAI bloque les appels navigateur — option gardée pour un futur proxy.">
+      <option value="anthropic" ${convCfg().prov!=="openai"?"selected":""}>Anthropic</option>
+      <option value="openai" ${convCfg().prov==="openai"?"selected":""}>OpenAI</option></select></label>
     <label>Clé OpenAI <input type="password" id="cvok" placeholder="${convCfg().ok?"•••• configurée ••••":"sk-…"}" autocomplete="off"></label>
     <label>Clé Anthropic <input type="password" id="cvak" placeholder="${convCfg().ak?"•••• configurée ••••":"sk-ant-…"}" autocomplete="off"></label>
     <label title="Transcription vocale par Gemini (enregistrement audio + contexte de la conversation) — bien meilleure sur un accent d'apprenant que la reconnaissance du navigateur.">Clé Gemini (voix) <input type="password" id="cvgk" placeholder="${convCfg().gk?"•••• configurée ••••":"AQ.… / AIza…"}" autocomplete="off"></label>
