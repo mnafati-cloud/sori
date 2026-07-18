@@ -186,14 +186,28 @@
     return t ? { text: t } : { err: "réponse vide" };
   }
 
-  /* ================= appel réseau (navigateur ou Node 18+) ================= */
+  /* ================= appel réseau (navigateur ou Node 18+) =================
+     v94 : DÉLAI MAXIMAL 25 s sur tout appel — un réseau qui rame devient une erreur affichée,
+     jamais un silence ambigu (retour user : impossible de distinguer attente et panne). */
+  const CALL_TIMEOUT_MS = 25000;
+  async function timedFetch(url, init){
+    const ctl = (typeof AbortController !== "undefined") ? new AbortController() : null;
+    const tm = ctl ? setTimeout(() => ctl.abort(), CALL_TIMEOUT_MS) : null;
+    if(ctl) init.signal = ctl.signal;
+    try{ return await fetch(url, init); }
+    finally{ if(tm) clearTimeout(tm); }
+  }
+  function fetchErr(e){
+    return (e && e.name === "AbortError") ? "délai dépassé (25 s) — réseau lent ? réessaie"
+                                          : "réseau indisponible (" + (e && e.message || e) + ")";
+  }
   async function callLLM(provider, key, system, history){
     const r = buildRequest(provider, key, system, trimHistory(history));
     let res;
     try{
-      res = await fetch(r.url, { method: "POST", headers: r.headers, body: JSON.stringify(r.body) });
+      res = await timedFetch(r.url, { method: "POST", headers: r.headers, body: JSON.stringify(r.body) });
     }catch(e){
-      return { err: "réseau indisponible (" + (e && e.message || e) + ")" };
+      return { err: fetchErr(e) };
     }
     const data = await res.json().catch(() => null);
     return parseReply(provider, data, res.status);
@@ -201,8 +215,8 @@
   async function callStt(key, mime, b64, ctx){
     const r = buildSttRequest(key, mime, b64, ctx);
     let res;
-    try{ res = await fetch(r.url, { method: "POST", headers: r.headers, body: JSON.stringify(r.body) }); }
-    catch(e){ return { err: "réseau indisponible" }; }
+    try{ res = await timedFetch(r.url, { method: "POST", headers: r.headers, body: JSON.stringify(r.body) }); }
+    catch(e){ return { err: fetchErr(e) }; }
     const data = await res.json().catch(() => null);
     return parseSttReply(data, res.status);
   }
@@ -247,7 +261,13 @@
       ".conv-gl{margin-top:5px;border-top:1px solid var(--line);padding-top:5px}",
       ".conv-gl-r{display:flex;gap:10px;padding:2px 0;font-size:.85rem}",
       ".conv-gl-r .gk{font-family:var(--kr-display, inherit);min-width:5.5em}",
-      ".conv-gl-r .gf{color:var(--dim)}"
+      ".conv-gl-r .gf{color:var(--dim)}",
+      /* v94 : l'ATTENTE se voit — points animés sur tout appel en cours (retour user :
+         « je ne sais pas si c'est en attente ou si ça ne marche pas ») */
+      ".conv-wait::after{content:\"…\";display:inline-block;width:1.2em;text-align:left;animation:convdots 1.2s steps(4,end) infinite}",
+      "@keyframes convdots{0%{content:\"\"}25%{content:\".\"}50%{content:\"..\"}75%{content:\"...\"}}",
+      "@media (prefers-reduced-motion: reduce){.conv-wait::after{animation:none;content:\"…\"}}",
+      ".conv-gl-p{cursor:default;opacity:.7}"
     ].join("\n");
     document.head.appendChild(s);
   }
@@ -387,19 +407,34 @@
       log.scrollTop = log.scrollHeight;
       return b;
     }
+    /* v94 : indicateur d'attente animé — l'user DOIT pouvoir distinguer « en cours » et « rien » */
+    function showWait(label){
+      status.textContent = "";
+      const s = document.createElement("span");
+      s.className = "conv-wait";
+      s.textContent = label;
+      status.appendChild(s);
+    }
     /* mot-à-mot asynchrone : appel SÉPARÉ après la réponse — la conversation n'attend jamais dessus,
-       le résultat est stocké avec le message (la reprise n'a rien à re-demander). */
+       le résultat est stocké avec le message (la reprise n'a rien à re-demander).
+       v94 : un « mot à mot… » en pointillés s'affiche PENDANT le chargement ; il devient dépliable
+       au succès, disparaît à l'échec — l'attente et la panne ne se ressemblent plus. */
     function glossify(msg, b){
       const c = cfg();
-      if(c.gl === false || msg.gl) return;
+      if(c.gl === false || msg.gl) return;      // toggle OFF = AUCUN appel
       const key = keyFor(c);
       if(!key) return;
+      const p = document.createElement("div");
+      p.className = "conv-gl-t conv-gl-p conv-wait";
+      p.textContent = "mot à mot";
+      b.appendChild(p);
       callGloss(provOf(c), key, msg.c).then(pairs => {
+        p.remove();
         if(!pairs) return;
         msg.gl = pairs;
         opts.store.save(conv);
         attachGloss(b, pairs);
-      }).catch(() => {});
+      }).catch(() => { p.remove(); });
     }
     /* reprise : rejouer les bulles depuis l'historique persistant (amorces hid cachées, gloses stockées) */
     conv.h.forEach(m => { if(!m.hid) bubble(m.r === "a" ? "assistant" : "user", m.c, m.gl); });
@@ -423,7 +458,7 @@
       const key = keyFor(c);
       if(!key){ status.textContent = "Ajoute ta clé API (" + prov + ") dans Réglages → Conversation."; return false; }
       busy = true; sendBtn.disabled = true;
-      status.textContent = "…";
+      showWait("Réponse");
       const r = await callLLM(prov, key, system, toApi(conv.h));
       busy = false; sendBtn.disabled = false;
       if(r.err){
@@ -517,7 +552,7 @@
         micBtn.classList.remove("rec"); micBtn.innerHTML = SVG_MIC;
         const blob = new Blob(chunks, { type: mime || "audio/webm" });
         if(blob.size < 1200){ status.textContent = "Je n'ai rien entendu — réessaie."; return; }
-        status.textContent = "…";
+        showWait("Transcription");
         const b64 = await new Promise(done => { const fr = new FileReader(); fr.onloadend = () => done(String(fr.result).split(",")[1] || ""); fr.readAsDataURL(blob); });
         const recent = conv.h.filter(m => !m.hid).slice(-4);
         const r = await callStt(cfg().gk, blob.type || "audio/webm", b64, { words: opts.words, recent });
@@ -543,7 +578,8 @@
       micBtn.title = "Reconnaissance vocale indisponible dans ce navigateur — écris ta phrase.";
     } else {
       micBtn.onclick = async () => {
-        const useGemini = !!cfg().gk && !!(root.MediaRecorder && navigator.mediaDevices);
+        /* v94 : interrupteur « Voix par Gemini » (cfg.stt) — OFF = micro navigateur même avec une clé */
+        const useGemini = !!cfg().gk && cfg().stt !== false && !!(root.MediaRecorder && navigator.mediaDevices);
         if(listening){
           if(useGemini && mrec){ finishRecord(); return; }
           stopMic();

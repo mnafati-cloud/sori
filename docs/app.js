@@ -1819,6 +1819,7 @@ function openSettings(){
     <label>Clé OpenAI <input type="password" id="cvok" placeholder="${convCfg().ok?"•••• configurée ••••":"sk-…"}" autocomplete="off"></label>
     <label>Clé Anthropic <input type="password" id="cvak" placeholder="${convCfg().ak?"•••• configurée ••••":"sk-ant-…"}" autocomplete="off"></label>
     <label title="Transcription vocale par Gemini (enregistrement audio + contexte de la conversation) — bien meilleure sur un accent d'apprenant que la reconnaissance du navigateur.">Clé Gemini (voix) <input type="password" id="cvgk" placeholder="${convCfg().gk?"•••• configurée ••••":"AQ.… / AIza…"}" autocomplete="off"></label>
+    <label title="Coché : le micro enregistre puis transcrit via Gemini (précis, ~3 s). Décoché : reconnaissance instantanée du navigateur (moins fiable).">Voix par Gemini <input type="checkbox" id="cvstt" ${convCfg().stt!==false?"checked":""}></label>
     <label title="Après chaque réponse du partenaire, une petite traduction mot à mot se charge sous la bulle (appel séparé, ~0,1 centime).">Mot à mot sous les réponses <input type="checkbox" id="cvgl" ${convCfg().gl!==false?"checked":""}></label>
     <div class="section-title" style="margin-top:14px">Mode avion</div>
     <div class="row" style="margin-top:6px"><button class="btn ghost" id="dlaudio">Télécharger tout l'audio (${AUDIO_IDS.size + AUDIO_EX_IDS.size} fichiers)</button></div>
@@ -1881,6 +1882,7 @@ function openSettings(){
   set.querySelector("#cvgk").onchange = e=>{ setConvCfg({gk: e.target.value.trim()});
     e.target.value=""; e.target.placeholder = convCfg().gk ? "•••• configurée ••••" : "AQ.… / AIza…"; };
   set.querySelector("#cvgl").onchange = e=>{ setConvCfg({gl: e.target.checked ? null : false}); };  // ON = défaut (clé retirée)
+  set.querySelector("#cvstt").onchange = e=>{ setConvCfg({stt: e.target.checked ? null : false}); };
   set.querySelector("#exau").onchange= e=>{ ST.set.exaudio=e.target.checked; save(); };
   set.querySelector("#wgl").onchange = e=>{ ST.set.wordgloss=e.target.checked; save(); };
   set.querySelector("#rate").onchange= e=>{ ST.set.rate=Math.min(1.2,Math.max(0.5,+e.target.value||0.9)); save(); };
