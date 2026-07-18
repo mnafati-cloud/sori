@@ -55,16 +55,27 @@
     ].filter(Boolean).join("\n");
   }
 
-  /* v90 (retour user : « ça écrit plusieurs fois le mot ») : sur Android, resultIndex est BUGUÉ
-     (souvent 0) et les segments finaux sont RE-LIVRÉS à chaque événement → l'accumulation
-     incrémentale v88 les ré-ajoutait. Le modèle correct : pendant UNE session d'écoute, la liste
-     ev.results est cumulative et fait AUTORITÉ → on RECONSTRUIT tout depuis l'indice 0 à chaque
-     événement (re-livraison = même résultat, zéro doublon). `base` = le texte d'AVANT la session
-     en cours (sessions précédentes après relance auto, ou texte déjà tapé/corrigé au champ). */
-  function sttFold(base, results){
-    let t = "";
-    for(let i = 0; i < results.length; i++) t += results[i][0].transcript;
-    return (String(base || "") + " " + t).replace(/\s+/g, " ").trim();
+  /* v92 (lu dans SES transcriptions réelles : « 기분기분 좋아요 », « 한국어를 ×5 ») : sur Android,
+     les segments de reconnaissance se CHEVAUCHENT — l'interim suivant re-contient le final déjà vu,
+     et des finals identiques sont re-livrés. Ni l'accumulation (v88) ni la concaténation (v90) ne
+     suffisent : il faut FUSIONNER PAR CHEVAUCHEMENT. parts = [base, ...transcripts] dans l'ordre :
+     - un segment qui CONTIENT déjà l'accumulé le REMPLACE (interim global) ;
+     - un segment déjà entièrement dans l'accumulé est JETÉ (re-livraison) ;
+     - sinon on ne colle que la partie NOUVELLE (plus long suffixe de l'accumulé = préfixe du segment).
+     Effet assumé : une vraie répétition volontaire (« 네 네 ») est repliée — corrigeable au champ. */
+  function sttMerge(parts){
+    let acc = "";
+    for(let raw of parts || []){
+      const t = String(raw || "").replace(/\s+/g, " ").trim();
+      if(!t) continue;
+      if(!acc){ acc = t; continue; }
+      if(t.indexOf(acc) === 0){ acc = t; continue; }          // t re-contient tout l'accumulé
+      let ov = Math.min(acc.length, t.length);
+      while(ov > 0 && acc.slice(acc.length - ov) !== t.slice(0, ov)) ov--;
+      if(ov === t.length) continue;                            // t déjà entièrement dans acc
+      acc = ov ? acc + t.slice(ov) : acc + " " + t;
+    }
+    return acc;
   }
 
   function trimHistory(h, max){
@@ -413,7 +424,11 @@
         rec.lang = "ko-KR";
         rec.interimResults = true;
         rec.continuous = true;
-        rec.onresult = ev => { input.value = sttFold(sessionBase, ev.results); };
+        rec.onresult = ev => {
+          const parts = [sessionBase];
+          for(let i = 0; i < ev.results.length; i++) parts.push(ev.results[i][0].transcript);
+          input.value = sttMerge(parts);
+        };
         rec.onerror = ev => {
           if(ev.error === "no-speech" && listening) return;           // silence → la relance auto s'en charge
           if(ev.error === "not-allowed" || ev.error === "service-not-allowed" || ev.error === "audio-capture") listening = false;
@@ -442,7 +457,7 @@
   const API = {
     renderHome, renderChat,
     callLLM,
-    pure: { buildSystem, trimHistory, buildRequest, parseReply, sttFold, toApi, scenarioById,
+    pure: { buildSystem, trimHistory, buildRequest, parseReply, sttMerge, toApi, scenarioById,
             SCENARIOS, BOOTSTRAP, MODELS, MAX_HISTORY }
   };
   if(typeof module !== "undefined" && module.exports) module.exports = API;

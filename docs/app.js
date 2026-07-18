@@ -46,7 +46,12 @@ const GLOSS_FIX = {
   "이분":"Cette personne-ci (près de moi)", "그분":"Cette personne-là (près de toi / dont on parle)", "저분":"Cette personne là-bas (loin de nous deux)",
   "이것":"Ceci (près de moi)", "그것":"Ça (près de toi / dont on parle)", "저것":"Ça là-bas (loin de nous deux)",
   "무슨":"Quel type de… (quelle sorte de)", "어느":"Lequel (choix parmi un ensemble connu)",
-  "위":"Estomac (l'organe) — 위 signifie aussi « au-dessus / le haut »"
+  "위":"Estomac (l'organe) — 위 signifie aussi « au-dessus / le haut »",
+  /* v92 : rapports in-app 18/07 (« Pas 나다 ? » sur 생기다 ; « différence avec 정류장 ? » sur 정거장) */
+  "나다":"Sortir, pousser (émaner de soi : bruit, odeur, fièvre, feuille)",
+  "생기다":"Apparaître, se former (survenir : problème, occasion)",
+  "정류장":"Arrêt de bus (le mot courant)",
+  "정거장":"Station, arrêt (terme large : train, métro)"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 

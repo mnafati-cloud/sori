@@ -107,24 +107,28 @@ test("toApi : mapping des rôles ; hid n'affecte que l'affichage, pas l'API", ()
 /* mock d'un SpeechRecognitionResult : liste [{transcript}] + drapeau isFinal */
 const srr = (t, fin) => Object.assign([{ transcript: t }], { isFinal: !!fin });
 
-test("sttFold : reconstruction depuis la liste COMPLÈTE — les finals re-livrés ne se dupliquent pas (bug Android v88)", () => {
-  const { sttFold } = CONV.pure;
-  // événement 1 : un final
-  assert.equal(sttFold("", [srr("안녕하세요", true)]), "안녕하세요");
-  // événement 2 : Android RE-LIVRE le final déjà vu (resultIndex bugué à 0) + le nouvel interim —
-  // l'accumulation incrémentale v88 doublait « 안녕하세요 » ; la reconstruction, non
-  assert.equal(sttFold("", [srr("안녕하세요 ", true), srr("오늘 날씨가", false)]), "안녕하세요 오늘 날씨가");
-  // événement 3 : le 2e segment devient final à son tour, toujours dans la même liste
-  assert.equal(sttFold("", [srr("안녕하세요 ", true), srr("오늘 날씨가 좋아요", true)]), "안녕하세요 오늘 날씨가 좋아요");
+test("sttMerge : les segments Android se CHEVAUCHENT — cas réels lus dans sa sauvegarde (v92)", () => {
+  const { sttMerge } = CONV.pure;
+  // « 기분기분 좋아요 » : l'interim RE-CONTIENT le final déjà vu → il le REMPLACE
+  assert.equal(sttMerge(["", "기분", "기분 좋아요"]), "기분 좋아요");
+  // « 한국어를 ×5 » : finals re-livrés à l'identique → jetés
+  assert.equal(sttMerge(["", "한국어를", "한국어를", "한국어를", "한국어를", "한국어를"]), "한국어를");
+  // « 한국 거는 ×5 … 단어들 » : re-livraisons puis suite avec chevauchement partiel
+  assert.equal(sttMerge(["", "한국 거는", "한국 거는", "한국 거는 단어들 이제 돼요"]), "한국 거는 단어들 이제 돼요");
+  // chevauchement suffixe/préfixe : seule la partie NOUVELLE est collée
+  assert.equal(sttMerge(["", "오늘은 드라마", "드라마 봤어요"]), "오늘은 드라마 봤어요");
 });
 
-test("sttFold : la base (sessions précédentes / texte déjà tapé) est préservée ; espaces normalisés", () => {
-  const { sttFold } = CONV.pure;
-  // Android a coupé à une pause → relance auto : la nouvelle session repart avec une liste VIDE,
-  // le texte d'avant vit dans base
-  assert.equal(sttFold("첫 문장", [srr("둘째 문장", false)]), "첫 문장 둘째 문장");
-  assert.equal(sttFold("", []), "");
-  assert.equal(sttFold("a  ", [srr("  b ", false)]), "a b");
+test("sttMerge : segments disjoints inchangés ; base préservée ; espaces normalisés", () => {
+  const { sttMerge } = CONV.pure;
+  // segments réellement disjoints (comportement desktop) : concaténation normale
+  assert.equal(sttMerge(["", "안녕하세요", "오늘 날씨가 좋아요"]), "안녕하세요 오늘 날씨가 좋아요");
+  // base = texte des sessions d'avant la relance auto (ou déjà tapé) — préservée
+  assert.equal(sttMerge(["첫 문장", "둘째 문장"]), "첫 문장 둘째 문장");
+  // base re-contenue par un interim global : pas de doublon non plus
+  assert.equal(sttMerge(["안녕하세요", "안녕하세요 오늘"]), "안녕하세요 오늘");
+  assert.equal(sttMerge([""]), "");
+  assert.equal(sttMerge(["a  ", "  b "]), "a b");
 });
 
 test("parseReply openai : texte, erreur API, contenu nul", () => {
