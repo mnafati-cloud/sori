@@ -170,8 +170,12 @@
       log.scrollTop = log.scrollHeight;
     }
 
-    /* garde-fou : pas de clé pour le fournisseur choisi → guider vers Réglages */
-    function keyFor(c){ return (c.prov === "anthropic") ? c.ak : c.ok; }
+    /* v87 : UNE seule résolution fournisseur→clé, avec LE MÊME défaut (anthropic) partout —
+       le bug réel : send() prenait anthropic par défaut mais keyFor prenait la clé OpenAI
+       quand prov n'était pas défini (sélecteur jamais touché) → « ajoute ta clé » à tort
+       alors que la clé Anthropic était bien là. */
+    function provOf(c){ return c.prov === "openai" ? "openai" : "anthropic"; }
+    function keyFor(c){ return provOf(c) === "openai" ? c.ok : c.ak; }
 
     let busy = false;
     async function send(){
@@ -181,7 +185,7 @@
          (vérifié : api.openai.com n'envoie pas les en-têtes CORS — le chemin OpenAI reste dans le
          code pour un éventuel proxy futur, mais ne peut pas marcher depuis la PWA). */
       const c = cfg();
-      const prov = c.prov === "openai" ? "openai" : "anthropic";
+      const prov = provOf(c);
       const key = keyFor(c);
       if(!key){ status.textContent = "Ajoute ta clé API (" + prov + ") dans Réglages → Conversation."; return; }
       busy = true; sendBtn.disabled = true;
