@@ -1959,12 +1959,26 @@ function openVersionHistory(){
   document.body.appendChild(back);
   const list = box.querySelector("#vhlist");
   const ghUrl = "https://github.com/mnafati-cloud/sori/commits/main";
-  fetch("https://api.github.com/repos/mnafati-cloud/sori/commits?sha=main&per_page=60",
-        { headers:{ "Accept":"application/vnd.github+json" }, cache:"no-store" })
-    .then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
-    .then(commits=>{
-      if(!Array.isArray(commits) || !commits.length){ list.innerHTML = `<p class="dim">Aucune version trouvée.</p>`; return; }
-      list.innerHTML = commits.map(c=>{
+  /* v98 : l'API est PAGINÉE (60 commits par page) — « Charger la suite » remonte jusqu'à la v1 */
+  const PER_PAGE = 60;
+  const moreRow = el(`<div class="row" style="margin-top:8px"><button class="btn ghost" style="display:none">Charger la suite</button></div>`);
+  list.after(moreRow);
+  const moreBtn = moreRow.querySelector("button");
+  let page = 1, loading = false;
+  async function loadPage(){
+    if(loading) return;
+    loading = true; moreBtn.disabled = true;
+    try{
+      const r = await fetch("https://api.github.com/repos/mnafati-cloud/sori/commits?sha=main&per_page=" + PER_PAGE + "&page=" + page,
+                            { headers:{ "Accept":"application/vnd.github+json" }, cache:"no-store" });
+      if(!r.ok) throw new Error(r.status);
+      const commits = await r.json();
+      if(!Array.isArray(commits)) throw new Error("format");
+      if(page === 1){
+        list.innerHTML = "";
+        if(!commits.length){ list.innerHTML = `<p class="dim">Aucune version trouvée.</p>`; return; }
+      }
+      list.insertAdjacentHTML("beforeend", commits.map(c=>{
         const msg  = ((c.commit && c.commit.message) || "").split("\n")[0];
         const iso  = c.commit && c.commit.author && c.commit.author.date;
         const dstr = iso ? new Date(iso).toLocaleDateString("fr-FR", {day:"2-digit", month:"short", year:"numeric"}) : "";
@@ -1974,12 +1988,21 @@ function openVersionHistory(){
         const sha  = (c.sha || "").slice(0,7);
         return `<div class="vh-item">${tag}<div class="vh-body"><div class="vh-title">${esc(title)}</div>
           <div class="vh-meta">${esc(dstr)}${sha?` · ${esc(sha)}`:""}</div></div></div>`;
-      }).join("");
-    })
-    .catch(()=>{
-      list.innerHTML = `<p class="dim">Impossible de charger l'historique (hors-ligne, ou limite GitHub atteinte).<br>
-        Il reste consultable sur <a href="${ghUrl}" target="_blank" rel="noopener">GitHub</a>.</p>`;
-    });
+      }).join(""));
+      moreBtn.style.display = commits.length === PER_PAGE ? "" : "none";   // page pleine = il y a une suite
+      page++;
+    }catch(e){
+      if(page === 1){
+        list.innerHTML = `<p class="dim">Impossible de charger l'historique (hors-ligne, ou limite GitHub atteinte).<br>
+          Il reste consultable sur <a href="${ghUrl}" target="_blank" rel="noopener">GitHub</a>.</p>`;
+      }
+      moreBtn.style.display = "none";
+    }finally{
+      loading = false; moreBtn.disabled = false;
+    }
+  }
+  moreBtn.onclick = loadPage;
+  loadPage();
 }
 /* ===== Conversation (IA) — config HORS de ST : les clés API ne partent JAMAIS dans la
    sauvegarde cloud (le state ST est exporté vers sori-data ; même modèle que sori-gh-token).
