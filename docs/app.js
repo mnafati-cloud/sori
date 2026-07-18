@@ -1818,6 +1818,8 @@ function openSettings(){
       <option value="openai" ${convCfg().prov==="openai"?"selected":""}>OpenAI (gpt-5-mini) — bloqué navigateur</option></select></label>
     <label>Clé OpenAI <input type="password" id="cvok" placeholder="${convCfg().ok?"•••• configurée ••••":"sk-…"}" autocomplete="off"></label>
     <label>Clé Anthropic <input type="password" id="cvak" placeholder="${convCfg().ak?"•••• configurée ••••":"sk-ant-…"}" autocomplete="off"></label>
+    <label title="Transcription vocale par Gemini (enregistrement audio + contexte de la conversation) — bien meilleure sur un accent d'apprenant que la reconnaissance du navigateur.">Clé Gemini (voix) <input type="password" id="cvgk" placeholder="${convCfg().gk?"•••• configurée ••••":"AQ.… / AIza…"}" autocomplete="off"></label>
+    <label title="Après chaque réponse du partenaire, une petite traduction mot à mot se charge sous la bulle (appel séparé, ~0,1 centime).">Mot à mot sous les réponses <input type="checkbox" id="cvgl" ${convCfg().gl!==false?"checked":""}></label>
     <div class="section-title" style="margin-top:14px">Mode avion</div>
     <div class="row" style="margin-top:6px"><button class="btn ghost" id="dlaudio">Télécharger tout l'audio (${AUDIO_IDS.size + AUDIO_EX_IDS.size} fichiers)</button></div>
     <p class="dim" id="dlstatus" style="margin-top:6px">Mots + phrases d'exemple, disponibles hors connexion (avion, métro coréen).</p>
@@ -1876,6 +1878,9 @@ function openSettings(){
     e.target.value=""; e.target.placeholder = convCfg().ok ? "•••• configurée ••••" : "sk-…"; };
   set.querySelector("#cvak").onchange = e=>{ setConvCfg({ak: e.target.value.trim()});
     e.target.value=""; e.target.placeholder = convCfg().ak ? "•••• configurée ••••" : "sk-ant-…"; };
+  set.querySelector("#cvgk").onchange = e=>{ setConvCfg({gk: e.target.value.trim()});
+    e.target.value=""; e.target.placeholder = convCfg().gk ? "•••• configurée ••••" : "AQ.… / AIza…"; };
+  set.querySelector("#cvgl").onchange = e=>{ setConvCfg({gl: e.target.checked ? null : false}); };  // ON = défaut (clé retirée)
   set.querySelector("#exau").onchange= e=>{ ST.set.exaudio=e.target.checked; save(); };
   set.querySelector("#wgl").onchange = e=>{ ST.set.wordgloss=e.target.checked; save(); };
   set.querySelector("#rate").onchange= e=>{ ST.set.rate=Math.min(1.2,Math.max(0.5,+e.target.value||0.9)); save(); };
@@ -2001,7 +2006,7 @@ function setGhToken(t){ try{ t ? localStorage.setItem(GH_KEY, t.trim()) : localS
 async function fetchConvKeys(){
   try{
     const c = convCfg();
-    if((c.ak && c.ok) || !ghToken()) return;
+    if((c.ak && c.ok && c.gk) || !ghToken()) return;
     const res = await fetch("https://api.github.com/repos/" + GH_REPO + "/contents/config/conv-cfg.json",
       { headers: { "Authorization": "Bearer " + ghToken(), "Accept": "application/vnd.github.raw" } });
     if(!res.ok) return;                       // 404 = pas de fichier déposé, silencieux
@@ -2010,6 +2015,7 @@ async function fetchConvKeys(){
     const patch = {};
     if(cfg.ak && !c.ak) patch.ak = cfg.ak;
     if(cfg.ok && !c.ok) patch.ok = cfg.ok;
+    if(cfg.gk && !c.gk) patch.gk = cfg.gk;    // v93 : clé Gemini (voix)
     if(Object.keys(patch).length) setConvCfg(patch);
   }catch(e){}
 }

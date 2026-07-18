@@ -44,6 +44,26 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **70 tests Node**, `CACHE` = `sori-v81`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v93 (Conversation : STT Gemini + mot-à-mot asynchrone)** : réponse aux deux problèmes de fond du
+  vocal (Web Speech intolérante à l'accent d'apprenant, aucune possibilité de contexte).
+  ① **STT Gemini (si clé)** : le micro ENREGISTRE l'audio (MediaRecorder webm/opus, tap-démarre/
+  tap-transcrit) puis transcription PROMPTÉE via `generativelanguage.googleapis.com` — le prompt
+  contient le profil (« Français A2, accent, hésitations »), le VOCABULAIRE connu et les 4 derniers
+  échanges → le modèle sait que 배워요 est probable et 미워요 non. Modèle = **alias `gemini-flash-latest`**
+  (⚠️ les modèles datés se ferment aux nouveaux comptes : 2.5-flash→404, 2.0-flash→quota 0, constatés) ;
+  clé en EN-TÊTE `x-goog-api-key`, jamais dans l'URL ; palier gratuit AI Studio (pas de carte).
+  Testé EN RÉEL : audio edge-tts coréen → transcription exacte en 3,3 s via le code du module.
+  `stopMic()` = arrêt-poubelle (envoi/voix/retour, audio jeté) ; `finishRecord()` = arrêt utile (2e tap
+  → transcription). Repli Web Speech inchangé sans clé. Clé distribuée comme les autres :
+  sori-data `config/conv-cfg.json` {ak, gk} + `fetchConvKeys`.
+  ② **Mot-à-mot ASYNCHRONE (demande user)** : après chaque réponse du partenaire, un appel SÉPARÉ
+  (même fournisseur que la conversation, système « glossateur », sortie JSON strict `[["mot","glose"]]`,
+  `parseGloss` avec garde-fou → au moindre doute on n'affiche rien) ; ~0,06 centime/réponse ; résultat
+  ATTACHÉ au message (`conv.h[i].gl`) → la reprise n'appelle rien ; affichage = dépliable « mot à mot »
+  sous la bulle (registre v56). Réglages : « Clé Gemini (voix) » + toggle « Mot à mot sous les réponses »
+  (cfg.gl, défaut ON). Textes du chemin repli sobrés au passage (« En écoute », fin des consignes).
+  Pure += buildSttRequest/parseSttReply/glossPrompt/parseGloss (3 tests → 85). Vérifié preview
+  (MediaRecorder stubbé : enregistre→transcrit→envoie→glose affichée et stockée). CACHE `sori-v93`.
 - **v89 (Conversation IA : écran dédié, historique persistant, scénarios)** : demande user (« son propre
   écran, des conversations enregistrées en liste, supprimables, on en poursuit une ou on en crée une
   nouvelle, avec un scénario ou pas »). La carte inline de l'onglet Exercices devient un LANCEUR ;

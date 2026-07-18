@@ -12,7 +12,9 @@
 
   /* ================= partie pure (testable sous Node) ================= */
 
-  const MODELS = { openai: "gpt-5-mini", anthropic: "claude-haiku-4-5" };
+  /* gemini : ALIAS volontaire — les modèles datés se ferment aux nouveaux comptes
+     (2.5-flash → 404, 2.0-flash → quota gratuit 0, constatés le 2026-07-18) ; l'alias suit la gamme. */
+  const MODELS = { openai: "gpt-5-mini", anthropic: "claude-haiku-4-5", gemini: "gemini-flash-latest" };
   const MAX_HISTORY = 24;          // messages envoyés au modèle (12 échanges) — borne le coût
   const MAX_REPLY_TOKENS = 1000;   // réponses courtes (1-2 phrases) ; marge pour le raisonnement OpenAI
 
@@ -76,6 +78,53 @@
       acc = ov ? acc + t.slice(ov) : acc + " " + t;
     }
     return acc;
+  }
+
+  /* ===== v93 : STT par Gemini — transcription PROMPTÉE (le levier que la Web Speech API n'a pas) =====
+     On envoie l'audio AVEC le contexte : niveau, vocabulaire connu, derniers échanges → le modèle
+     sait que « 배워요 » est probable et « 미워요 » non. La clé passe en EN-TÊTE, jamais dans l'URL. */
+  function buildSttRequest(key, mime, b64, ctx){
+    ctx = ctx || {};
+    const lines = [
+      "Transcris fidèlement en hangul ce que dit ce locuteur : un Français de niveau A2 qui parle CORÉEN avec un accent français, lentement, avec des hésitations.",
+      "Réponds UNIQUEMENT avec la transcription en hangul (pas de romanisation, pas de commentaire, pas de ponctuation finale superflue).",
+      "S'il ne parle pas coréen ou si l'audio est vide, réponds une chaîne vide.",
+      (ctx.recent && ctx.recent.length) ? "Contexte — derniers échanges de la conversation :\n" + ctx.recent.map(m => (m.r === "a" ? "Partenaire : " : "Apprenant : ") + m.c).join("\n") : "",
+      (ctx.words && ctx.words.length) ? "Mots que l'apprenant connaît (il utilise très probablement ceux-là) : " + ctx.words.join(" ") : ""
+    ].filter(Boolean).join("\n\n");
+    return {
+      url: "https://generativelanguage.googleapis.com/v1beta/models/" + MODELS.gemini + ":generateContent",
+      headers: { "Content-Type": "application/json", "x-goog-api-key": key },
+      body: { contents: [{ parts: [{ text: lines }, { inline_data: { mime_type: mime, data: b64 } }] }] }
+    };
+  }
+  function parseSttReply(data, status){
+    if(!data) return { err: "réponse illisible (HTTP " + (status || "?") + ")" };
+    if(data.error) return { err: (data.error.status === "RESOURCE_EXHAUSTED" ? "quota Gemini atteint — réessaie dans une minute" : (data.error.message || "erreur Gemini").slice(0, 120)) };
+    const c = data.candidates && data.candidates[0];
+    const t = c && c.content && c.content.parts ? c.content.parts.map(p => p.text || "").join("").trim() : "";
+    return { text: t };   // vide = rien reconnu (pas une erreur)
+  }
+
+  /* ===== v93 : mot-à-mot ASYNCHRONE (demande user) — un petit appel séparé par réponse ===== */
+  const GLOSS_SYSTEM = "Tu es un glossateur coréen→français pour un apprenant A2. Réponds UNIQUEMENT en JSON strict, sans texte autour.";
+  function glossPrompt(sentence){
+    return "Traduis MOT À MOT cette phrase coréenne (chaque mot/bloc avec sa glose française courte, particules et conjugaison comprises dans la glose). " +
+           'Format STRICT : [["mot","glose"],["mot","glose"]]\n\nPhrase : ' + sentence;
+  }
+  function parseGloss(text){
+    if(!text) return null;
+    const m = String(text).replace(/```json|```/g, "").trim();
+    try{
+      const a = JSON.parse(m);
+      if(!Array.isArray(a) || !a.length) return null;
+      const out = [];
+      for(const p of a){
+        if(!Array.isArray(p) || p.length < 2 || typeof p[0] !== "string" || typeof p[1] !== "string") return null;
+        out.push([p[0], p[1]]);
+      }
+      return out;
+    }catch(e){ return null; }
   }
 
   function trimHistory(h, max){
@@ -149,6 +198,18 @@
     const data = await res.json().catch(() => null);
     return parseReply(provider, data, res.status);
   }
+  async function callStt(key, mime, b64, ctx){
+    const r = buildSttRequest(key, mime, b64, ctx);
+    let res;
+    try{ res = await fetch(r.url, { method: "POST", headers: r.headers, body: JSON.stringify(r.body) }); }
+    catch(e){ return { err: "réseau indisponible" }; }
+    const data = await res.json().catch(() => null);
+    return parseSttReply(data, res.status);
+  }
+  async function callGloss(provider, key, sentence){
+    const r = await callLLM(provider, key, GLOSS_SYSTEM, [{ role: "user", content: glossPrompt(sentence) }]);
+    return r.err ? null : parseGloss(r.text);
+  }
 
   /* ================= rendu (navigateur seulement) ================= */
 
@@ -180,7 +241,13 @@
       ".conv-item{display:flex;align-items:center;gap:8px;cursor:pointer}",
       ".conv-item .conv-meta{flex:1;min-width:0}",
       ".conv-item .conv-t{font-family:var(--kr-display, inherit)}",
-      ".conv-item .conv-del{flex:none}"
+      ".conv-item .conv-del{flex:none}",
+      /* v93 : mot-à-mot sous la bulle (registre des révisions) */
+      ".conv-gl-t{font-size:.72rem;color:var(--dim);margin-top:7px;letter-spacing:.04em;cursor:pointer}",
+      ".conv-gl{margin-top:5px;border-top:1px solid var(--line);padding-top:5px}",
+      ".conv-gl-r{display:flex;gap:10px;padding:2px 0;font-size:.85rem}",
+      ".conv-gl-r .gk{font-family:var(--kr-display, inherit);min-width:5.5em}",
+      ".conv-gl-r .gf{color:var(--dim)}"
     ].join("\n");
     document.head.appendChild(s);
   }
@@ -289,16 +356,53 @@
     /* v91 : TOUTE sortie vocale coupe d'abord le micro — sinon la voix de synthèse est
        transcrite dans le champ (l'user a vu l'app « écouter la réponse faite »). */
     function say(t){ stopMic(); if(opts.speak) opts.speak(t); }
-    function bubble(role, text){
+    /* v93 : mot-à-mot dépliable sous la bulle (même registre que le « Mot à mot » des révisions) */
+    function attachGloss(b, pairs){
+      if(!pairs || !pairs.length || b.querySelector(".conv-gl-t")) return;
+      const t = document.createElement("div");
+      t.className = "conv-gl-t";
+      t.textContent = "mot à mot";
+      const gl = document.createElement("div");
+      gl.className = "conv-gl";
+      gl.style.display = "none";
+      pairs.forEach(p => {
+        const row = document.createElement("div");
+        row.className = "conv-gl-r";
+        const k = document.createElement("span"); k.className = "gk"; k.textContent = p[0];
+        const f = document.createElement("span"); f.className = "gf"; f.textContent = p[1];
+        row.appendChild(k); row.appendChild(f); gl.appendChild(row);
+      });
+      t.onclick = e => { e.stopPropagation(); gl.style.display = gl.style.display === "none" ? "" : "none"; };
+      b.appendChild(t); b.appendChild(gl);
+    }
+    function bubble(role, text, pairs){
       const b = document.createElement("div");
       b.className = "conv-b " + (role === "user" ? "u" : "a");
       b.textContent = text;
-      if(role === "assistant") b.onclick = () => say(text);   // re-écouter au tap
+      if(role === "assistant"){
+        b.onclick = () => say(text);   // re-écouter au tap
+        attachGloss(b, pairs);
+      }
       log.appendChild(b);
       log.scrollTop = log.scrollHeight;
+      return b;
     }
-    /* reprise : rejouer les bulles depuis l'historique persistant (les amorces hid restent cachées) */
-    conv.h.forEach(m => { if(!m.hid) bubble(m.r === "a" ? "assistant" : "user", m.c); });
+    /* mot-à-mot asynchrone : appel SÉPARÉ après la réponse — la conversation n'attend jamais dessus,
+       le résultat est stocké avec le message (la reprise n'a rien à re-demander). */
+    function glossify(msg, b){
+      const c = cfg();
+      if(c.gl === false || msg.gl) return;
+      const key = keyFor(c);
+      if(!key) return;
+      callGloss(provOf(c), key, msg.c).then(pairs => {
+        if(!pairs) return;
+        msg.gl = pairs;
+        opts.store.save(conv);
+        attachGloss(b, pairs);
+      }).catch(() => {});
+    }
+    /* reprise : rejouer les bulles depuis l'historique persistant (amorces hid cachées, gloses stockées) */
+    conv.h.forEach(m => { if(!m.hid) bubble(m.r === "a" ? "assistant" : "user", m.c, m.gl); });
 
     /* v87 : UNE seule résolution fournisseur→clé, avec LE MÊME défaut (anthropic) partout —
        le bug réel : send() prenait anthropic par défaut mais keyFor prenait la clé OpenAI
@@ -330,10 +434,12 @@
         return false;
       }
       status.textContent = "";
-      conv.h.push({ r: "a", c: r.text });
+      const msg = { r: "a", c: r.text };
+      conv.h.push(msg);
       opts.store.save(conv);
-      bubble("assistant", r.text);
+      const b = bubble("assistant", r.text);
       say(r.text);
+      glossify(msg, b);   // v93 : mot-à-mot en arrière-plan, jamais bloquant
       return true;
     }
     async function send(){
@@ -368,13 +474,17 @@
        (voir ce que le micro a compris = retour sur la prononciation). */
     const SR = root.SpeechRecognition || root.webkitSpeechRecognition;
     let rec = null, listening = false;
+    let mrec = null, mstream = null;   // v93 : enregistreur du chemin Gemini
     /* v91 : arrêt NET — débranche les handlers (un résultat tardif ne réécrira pas le champ),
-       stoppe la reco, restaure l'icône micro. Appelé par : 2e tap, ENVOI, toute voix (say), retour liste. */
+       stoppe la reco, restaure l'icône micro. Appelé par : 2e tap, ENVOI, toute voix (say), retour liste.
+       v93 : coupe AUSSI l'enregistreur Gemini (audio jeté — l'arrêt « utile » passe par stopRecord). */
     function stopMic(){
       listening = false;
       micBtn.classList.remove("rec");
       micBtn.innerHTML = SVG_MIC;
       if(rec){ try{ rec.onresult = null; rec.onend = null; rec.onerror = null; rec.stop(); }catch(e){} rec = null; }
+      if(mrec){ try{ mrec.ondataavailable = null; mrec.onstop = null; mrec.stop(); }catch(e){} mrec = null; }
+      if(mstream){ try{ mstream.getTracks().forEach(t => t.stop()); }catch(e){} mstream = null; }
     }
     /* v84 : « not-allowed » sans explication = impasse. Invite de permission forcée via getUserMedia —
        sur une PWA installée (WebAPK Android), SpeechRecognition ne déclenche pas toujours l'invite lui-même.
@@ -389,14 +499,54 @@
       "audio-capture": "Aucun micro détecté sur cet appareil.",
       "network": "Réseau indisponible pour la reconnaissance vocale — réessaie connecté."
     };
-    if(!SR){
+    /* ===== v93 : chemin Gemini (si clé) — on ENREGISTRE l'audio nous-mêmes puis transcription
+       PROMPTÉE avec le contexte. Plus de Web Speech du tout sur ce chemin : les coupures aux pauses,
+       les chevauchements et l'accent mal toléré disparaissent avec lui. Repli Web Speech sans clé. */
+    async function startRecord(){
+      try{ mstream = await navigator.mediaDevices.getUserMedia({ audio: true }); }
+      catch(e){ status.textContent = MSG_DENIED; return; }
+      const mime = (root.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported("audio/webm;codecs=opus")) ? "audio/webm;codecs=opus" : "";
+      const chunks = [];
+      try{ mrec = mime ? new MediaRecorder(mstream, { mimeType: mime }) : new MediaRecorder(mstream); }
+      catch(e){ status.textContent = "Enregistreur indisponible."; try{ mstream.getTracks().forEach(t=>t.stop()); }catch(_){} mstream = null; return; }
+      mrec.ondataavailable = ev => { if(ev.data && ev.data.size) chunks.push(ev.data); };
+      mrec.onstop = async () => {
+        const stream = mstream; mstream = null; mrec = null;
+        try{ if(stream) stream.getTracks().forEach(t => t.stop()); }catch(e){}
+        listening = false;
+        micBtn.classList.remove("rec"); micBtn.innerHTML = SVG_MIC;
+        const blob = new Blob(chunks, { type: mime || "audio/webm" });
+        if(blob.size < 1200){ status.textContent = "Je n'ai rien entendu — réessaie."; return; }
+        status.textContent = "…";
+        const b64 = await new Promise(done => { const fr = new FileReader(); fr.onloadend = () => done(String(fr.result).split(",")[1] || ""); fr.readAsDataURL(blob); });
+        const recent = conv.h.filter(m => !m.hid).slice(-4);
+        const r = await callStt(cfg().gk, blob.type || "audio/webm", b64, { words: opts.words, recent });
+        if(r.err){ status.textContent = "Voix : " + r.err; return; }
+        if(!r.text){ status.textContent = "Je n'ai rien reconnu — réessaie."; return; }
+        status.textContent = "";
+        input.value = (input.value.trim() + " " + r.text).trim();
+        input.focus();
+      };
+      mrec.start();
+      listening = true;
+      micBtn.classList.add("rec"); micBtn.innerHTML = SVG_STOP;
+      status.textContent = "En écoute";
+    }
+    /* arrêt UTILE (2e tap) : déclenche la transcription — stopMic() reste l'arrêt-poubelle (envoi/voix/retour) */
+    function finishRecord(){
+      listening = false;
+      try{ if(mrec) mrec.stop(); else stopMic(); }catch(e){ stopMic(); }
+    }
+
+    if(!SR && !(root.MediaRecorder && navigator.mediaDevices)){
       micBtn.disabled = true;
       micBtn.title = "Reconnaissance vocale indisponible dans ce navigateur — écris ta phrase.";
     } else {
       micBtn.onclick = async () => {
+        const useGemini = !!cfg().gk && !!(root.MediaRecorder && navigator.mediaDevices);
         if(listening){
+          if(useGemini && mrec){ finishRecord(); return; }
           stopMic();
-          if(input.value) status.textContent = "Vérifie la phrase, corrige si besoin, puis envoie.";
           input.focus();
           return;
         }
@@ -407,6 +557,8 @@
             if(p && p.state === "denied"){ status.textContent = MSG_DENIED; return; }
           }
         }catch(e){}
+        if(useGemini){ await startRecord(); return; }
+        if(!SR){ status.textContent = "Reconnaissance vocale indisponible ici — ajoute une clé Gemini (Réglages) ou écris ta phrase."; return; }
         /* 2. forcer l'INVITE de permission (fiable même en WebAPK), puis relâcher le flux */
         try{
           if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
@@ -441,14 +593,13 @@
           }
           micBtn.classList.remove("rec");
           micBtn.innerHTML = SVG_MIC;
-          if(input.value) status.textContent = "Vérifie la phrase, corrige si besoin, puis envoie.";
           input.focus();
         };
         try{
           rec.start(); listening = true;
           micBtn.classList.add("rec");
           micBtn.innerHTML = SVG_STOP;    // v91 : l'état d'écoute se voit — carré STOP sur fond vermillon
-          status.textContent = "J'écoute… parle, prends ton temps. Touche le carré (ou envoie) pour arrêter.";
+          status.textContent = "En écoute";
         }catch(e){ status.textContent = "Micro indisponible."; }
       };
     }
@@ -456,8 +607,9 @@
 
   const API = {
     renderHome, renderChat,
-    callLLM,
+    callLLM, callStt, callGloss,
     pure: { buildSystem, trimHistory, buildRequest, parseReply, sttMerge, toApi, scenarioById,
+            buildSttRequest, parseSttReply, glossPrompt, parseGloss,
             SCENARIOS, BOOTSTRAP, MODELS, MAX_HISTORY }
   };
   if(typeof module !== "undefined" && module.exports) module.exports = API;

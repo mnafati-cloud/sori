@@ -104,6 +104,39 @@ test("toApi : mapping des rôles ; hid n'affecte que l'affichage, pas l'API", ()
   assert.deepEqual(toApi([]), []);
 });
 
+test("buildSttRequest : Gemini avec clé en EN-TÊTE, alias de modèle, audio + contexte", () => {
+  const { buildSttRequest, MODELS } = CONV.pure;
+  const r = buildSttRequest("GKEY", "audio/webm", "QUJD", { words: ["학교", "친구"], recent: [{ r: "a", c: "어서 오세요" }, { r: "u", c: "안녕하세요" }] });
+  assert.ok(r.url.includes("/models/" + MODELS.gemini + ":generateContent"));
+  assert.ok(!r.url.includes("GKEY"));                        // JAMAIS la clé dans l'URL
+  assert.equal(r.headers["x-goog-api-key"], "GKEY");
+  const parts = r.body.contents[0].parts;
+  assert.equal(parts.length, 2);
+  assert.ok(parts[0].text.includes("hangul"));
+  assert.ok(parts[0].text.includes("학교 친구"));             // vocabulaire injecté
+  assert.ok(parts[0].text.includes("어서 오세요"));           // contexte injecté
+  assert.deepEqual(parts[1].inline_data, { mime_type: "audio/webm", data: "QUJD" });
+});
+
+test("parseSttReply : texte, quota, vide-sans-erreur", () => {
+  const { parseSttReply } = CONV.pure;
+  assert.deepEqual(parseSttReply({ candidates: [{ content: { parts: [{ text: " 안녕하세요 " }] } }] }), { text: "안녕하세요" });
+  assert.ok(parseSttReply({ error: { status: "RESOURCE_EXHAUSTED", message: "quota" } }, 429).err.includes("quota Gemini"));
+  assert.deepEqual(parseSttReply({ candidates: [{ content: { parts: [{ text: "" }] } }] }), { text: "" });   // rien reconnu ≠ erreur
+  assert.ok(parseSttReply(null, 500).err);
+});
+
+test("parseGloss : JSON strict, clôtures de code tolérées, rejets propres", () => {
+  const { parseGloss, glossPrompt } = CONV.pure;
+  assert.deepEqual(parseGloss('[["어서","vite"],["오세요","venez"]]'), [["어서", "vite"], ["오세요", "venez"]]);
+  assert.deepEqual(parseGloss('```json\n[["몇","combien"]]\n```'), [["몇", "combien"]]);   // fence retirée
+  assert.equal(parseGloss("Voici la traduction : bonjour"), null);       // pas du JSON → caché
+  assert.equal(parseGloss('[["seul"]]'), null);                          // paire incomplète → caché
+  assert.equal(parseGloss("[]"), null);
+  assert.ok(glossPrompt("어서 오세요").includes("어서 오세요"));
+  assert.ok(glossPrompt("x").includes("MOT À MOT"));
+});
+
 /* mock d'un SpeechRecognitionResult : liste [{transcript}] + drapeau isFinal */
 const srr = (t, fin) => Object.assign([{ transcript: t }], { isFinal: !!fin });
 
