@@ -212,10 +212,12 @@
        (voir ce que le micro a compris = retour sur la prononciation). */
     const SR = root.SpeechRecognition || root.webkitSpeechRecognition;
     let rec = null, listening = false;
-    /* v84 : « not-allowed » sans explication = impasse. Message ACTIONNABLE (chemin Android/Chrome)
-       + invite de permission forcée via getUserMedia — sur une PWA installée (WebAPK Android),
-       SpeechRecognition ne déclenche pas toujours l'invite lui-même. */
-    const MSG_DENIED = "Micro refusé pour Sori. Autorise-le : appui long sur l'icône Sori → Infos de l'appli → Autorisations → Micro. (Dans Chrome : cadenas à gauche de l'adresse → Autorisations → Micro.)";
+    /* v84 : « not-allowed » sans explication = impasse. Invite de permission forcée via getUserMedia —
+       sur une PWA installée (WebAPK Android), SpeechRecognition ne déclenche pas toujours l'invite lui-même.
+       v85 (retour user réel) : dans l'app installée il n'y a NI cadenas NI barre d'adresse, et « Infos de
+       l'appli » ne liste souvent PAS le micro pour une WebAPK — la permission du SITE se gère dans CHROME
+       et l'app installée en hérite. Le message donne CE chemin-là. */
+    const MSG_DENIED = "Micro bloqué. Dans CHROME : menu ⋮ → Paramètres → Paramètres des sites → Micro → touche mnafati-cloud.github.io dans « Bloqués » → Autoriser, puis relance Sori. (S'il n'y est pas : ouvre le site dans un onglet Chrome et autorise le micro là-bas — l'appli installée hérite du choix.) En attendant, écris ta phrase au clavier.";
     const SR_ERRS = {
       "no-speech": "Je n'ai rien entendu — réessaie.",
       "not-allowed": MSG_DENIED,
