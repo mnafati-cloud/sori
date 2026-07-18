@@ -44,6 +44,25 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **70 tests Node**, `CACHE` = `sori-v81`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v89 (Conversation IA : écran dédié, historique persistant, scénarios)** : demande user (« son propre
+  écran, des conversations enregistrées en liste, supprimables, on en poursuit une ou on en crée une
+  nouvelle, avec un scénario ou pas »). La carte inline de l'onglet Exercices devient un LANCEUR ;
+  « Ouvrir » → **écran d'accueil** (`renderHome`) : bouton Nouvelle conversation (chips : Libre + 8
+  scénarios de jeu de rôle A2 utiles au voyage — 식당 serveur, 카페, 택시, 호텔, 시장, 친구, 약국, 길),
+  liste des conversations enregistrées (plus récente d'abord, titre + date + nb de messages, reprise au
+  tap, suppression au ✕ avec confirm) ; **écran de discussion** (`renderChat`) : bulles rejouées depuis
+  l'historique, retour ‹ Liste (coupe le micro). **Persistance : `ST.conv`** (champ racine ADDITIF, init
+  loadState + applyImportedState → part dans la sauvegarde cloud, survit à une réinstallation) —
+  `{id, t, d, u, sc, h:[{r:"u"|"a", c, hid?}]}` ; **caps budget cloud v65 : 12 conversations × 40
+  messages stockés ≈ 30 Ko max** (CONV_MAX/CONV_MAX_MSGS, app.js). **Scénario → le modèle parle en
+  PREMIER** (le serveur accueille) : amorce `hid:1` (l'API exige un tour user en tête ; `toApi` l'envoie,
+  l'affichage la cache, le compteur de la liste l'exclut). Titre = libellé du scénario, ou 1re phrase
+  (24 chars) en libre. `buildSystem(words, fragiles, scenarioSys)` insère le rôle avant le lexique.
+  En cas d'erreur API sur un envoi : message retiré de l'historique ET rendu au champ (rien de perdu).
+  Module : `renderCard` REMPLACÉ par `renderHome`/`renderChat` (consommateur unique = app.js, même
+  commit) ; pure += SCENARIOS/scenarioById/toApi/BOOTSTRAP (5 tests ajoutés → 82). Vérifié preview
+  (parcours complet stubbé : lanceur→accueil→scénario→amorce cachée+TTS→réponse persistée→liste→
+  reprise→suppression→retour Exercices). CACHE `sori-v89`.
 - **v83 (Conversation IA — parler coréen avec un LLM)** : demande user (« une conversation en coréen
   améliorerait mon coréen » ; STT et TTS gratuits, LLM peu coûteux, son niveau + ses mots en contexte).
   Chaîne complète SANS serveur : **micro → Web Speech API** (`SpeechRecognition` ko-KR, gratuite, le texte

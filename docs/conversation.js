@@ -16,7 +16,27 @@
   const MAX_HISTORY = 24;          // messages envoyés au modèle (12 échanges) — borne le coût
   const MAX_REPLY_TOKENS = 1000;   // réponses courtes (1-2 phrases) ; marge pour le raisonnement OpenAI
 
-  function buildSystem(words, fragiles){
+  /* v89 : scénarios de jeu de rôle — le modèle tient un rôle et OUVRE la conversation.
+     Situations utiles pour son voyage (2026-10-01), vocabulaire A2. */
+  const SCENARIOS = [
+    { id: "resto",  kr: "식당", fr: "Au restaurant",        sys: "Tu joues le SERVEUR d'un restaurant coréen ; l'apprenant est le client. Accueille-le, prends sa commande, propose une boisson. Reste dans ce rôle." },
+    { id: "cafe",   kr: "카페", fr: "Au café",              sys: "Tu joues le BARISTA d'un café coréen ; l'apprenant est le client. Prends sa commande : boisson, taille, sur place ou à emporter." },
+    { id: "taxi",   kr: "택시", fr: "En taxi",              sys: "Tu joues un CHAUFFEUR DE TAXI coréen ; l'apprenant est le passager. Demande la destination, parle du trajet et du temps, annonce un prix." },
+    { id: "hotel",  kr: "호텔", fr: "À l'hôtel",            sys: "Tu joues le RÉCEPTIONNISTE d'un hôtel coréen ; l'apprenant est un voyageur. Enregistrement, questions sur la chambre, le petit-déjeuner, les horaires." },
+    { id: "marche", kr: "시장", fr: "Au marché",            sys: "Tu joues un VENDEUR de marché coréen ; l'apprenant est un client. Propose tes produits, donne les prix, négocie gentiment." },
+    { id: "ami",    kr: "친구", fr: "Faire connaissance",   sys: "Tu joues un Coréen sympathique que l'apprenant rencontre pour la première fois. Faites connaissance : prénom, ville, travail, loisirs, week-end." },
+    { id: "pharma", kr: "약국", fr: "À la pharmacie",       sys: "Tu joues le PHARMACIEN ; l'apprenant est un peu malade (rhume, mal de tête). Demande les symptômes, conseille simplement." },
+    { id: "rue",    kr: "길",   fr: "Demander son chemin",  sys: "Tu joues un PASSANT coréen ; l'apprenant cherche son chemin (métro, banque, toilettes…). Donne des directions simples." }
+  ];
+  function scenarioById(id){ for(const s of SCENARIOS) if(s.id === id) return s; return null; }
+  /* 1er message CACHÉ d'une conversation à scénario : l'API exige que ça commence par un tour
+     user — celui-ci n'est pas affiché, il fait parler le modèle en premier (le serveur accueille). */
+  const BOOTSTRAP = "(Commence la conversation dans ton rôle, en coréen.)";
+
+  /* historique stocké [{r:"u"|"a", c:texte, hid?:1}] → messages API (hid = caché à l'AFFICHAGE seulement) */
+  function toApi(h){ return (h || []).map(m => ({ role: m.r === "a" ? "assistant" : "user", content: m.c })); }
+
+  function buildSystem(words, fragiles, scenarioSys){
     words = words || []; fragiles = fragiles || [];
     return [
       "Tu es un partenaire de conversation en coréen pour un apprenant français de niveau A2.",
@@ -29,6 +49,7 @@
       "- S'il fait une erreur de coréen, commence ta réponse en reformulant sa phrase correctement (naturellement, sans commentaire), puis enchaîne.",
       "- S'il écrit en français ou demande de l'aide, explique BRIÈVEMENT en français, puis reviens au coréen.",
       fragiles.length ? "- Quand c'est pertinent, glisse naturellement ces mots dans la conversation (il est en train de les oublier) : " + fragiles.join(", ") : "",
+      scenarioSys ? "\nSCÉNARIO : " + scenarioSys : "",
       "",
       "VOCABULAIRE CONNU : " + words.join(" ")
     ].filter(Boolean).join("\n");
@@ -138,27 +159,102 @@
       ".conv-row input{flex:1;min-width:0}",
       ".conv-mic{display:inline-flex;align-items:center;justify-content:center;width:40px;height:38px;flex:none}",
       ".conv-mic.rec{color:var(--acc2);border-color:var(--acc2)}",
-      ".conv-status{min-height:1.2em;font-size:.85rem;margin-top:6px}"
+      ".conv-status{min-height:1.2em;font-size:.85rem;margin-top:6px}",
+      ".conv-head{display:flex;align-items:center;justify-content:space-between;gap:8px}",
+      ".conv-head h2{margin:0}",
+      ".conv-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}",
+      ".conv-item{display:flex;align-items:center;gap:8px;cursor:pointer}",
+      ".conv-item .conv-meta{flex:1;min-width:0}",
+      ".conv-item .conv-t{font-family:var(--kr-display, inherit)}",
+      ".conv-item .conv-del{flex:none}"
     ].join("\n");
     document.head.appendChild(s);
   }
   function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
 
-  /* opts = { cfg: () => {prov, ok, ak},   // fournisseur + clés, relus à CHAQUE envoi (Réglages à chaud)
+  /* ===== v89 : écran d'ACCUEIL — conversations enregistrées + nouvelle (scénario ou libre) =====
+     opts = { cfg: () => {prov, ok, ak},          // fournisseur + clés, relus à CHAQUE envoi
               words: [kr...], fragiles: [kr...],
-              speak: (texte) => void }                                                      */
-  function renderCard(container, opts){
+              speak: (texte) => void,
+              store: { list(), create(scId|null), save(conv), remove(id) },   // app.js ↔ ST.conv
+              onExit: () => void }                 // retour à l'onglet Exercices
+     conv = { id, t (titre), d/u (dates), sc (id scénario|null), h: [{r:"u"|"a", c, hid?}] } */
+  function renderHome(container, opts){
     injectCSS();
     opts = opts || {};
-    const cfg = typeof opts.cfg === "function" ? opts.cfg : () => ({});
-    const system = buildSystem(opts.words, opts.fragiles);
-    const history = [];   // [{role, content}] — état de la conversation, vit dans cette vue
-
+    container.innerHTML = "";
     const box = document.createElement("div");
     box.className = "card";
     box.innerHTML =
-      '<h2>Conversation</h2>' +
-      '<p class="dim">Parle (ou écris) en coréen — ton partenaire répond à ton niveau, avec tes mots.</p>' +
+      '<div class="conv-head"><h2>Conversations</h2><button class="btn ghost conv-exit">Fermer</button></div>' +
+      '<p class="dim">Parle coréen avec un partenaire IA — à ton niveau, avec tes mots. Reprends une conversation ou lances-en une nouvelle.</p>' +
+      '<div class="row" style="margin-top:10px"><button class="btn conv-new">Nouvelle conversation</button></div>' +
+      '<div class="conv-sc" style="display:none"></div>' +
+      '<div class="list conv-list" style="margin-top:12px"></div>' +
+      '<p class="dim conv-empty" style="display:none;margin-top:10px">Aucune conversation enregistrée.</p>';
+    container.appendChild(box);
+    box.querySelector(".conv-exit").onclick = () => { if(opts.onExit) opts.onExit(); };
+
+    /* nouvelle conversation → choix : libre, ou un scénario de jeu de rôle */
+    const scBox = box.querySelector(".conv-sc");
+    box.querySelector(".conv-new").onclick = () => {
+      if(scBox.style.display !== "none"){ scBox.style.display = "none"; return; }
+      scBox.style.display = "";
+      scBox.innerHTML = '<p class="dim" style="margin-top:10px">Un scénario ? (ou discussion libre)</p><div class="conv-chips"></div>';
+      const chips = scBox.querySelector(".conv-chips");
+      const mk = (label, sc) => {
+        const b = document.createElement("button");
+        b.className = "btn ghost"; b.textContent = label;
+        b.onclick = () => {
+          const conv = opts.store.create(sc ? sc.id : null);
+          if(!conv) return;                                  // cap atteint — app.js a affiché pourquoi
+          if(sc){ conv.t = sc.kr + " · " + sc.fr; opts.store.save(conv); }
+          renderChat(container, opts, conv);
+        };
+        chips.appendChild(b);
+      };
+      mk("Libre", null);
+      SCENARIOS.forEach(s => mk(s.kr + " · " + s.fr, s));
+    };
+
+    /* liste des conversations enregistrées (plus récente d'abord) — reprendre au tap, supprimer au ✕ */
+    const lst = box.querySelector(".conv-list");
+    const convs = (opts.store.list() || []).slice().sort((a, b) => String(b.u || b.d || "").localeCompare(String(a.u || a.d || "")));
+    box.querySelector(".conv-empty").style.display = convs.length ? "none" : "";
+    convs.forEach(cv => {
+      const row = document.createElement("div");
+      row.className = "item conv-item";
+      const visible = (cv.h || []).filter(m => !m.hid).length;
+      row.innerHTML = '<div class="conv-meta"><div class="conv-t"></div><div class="dim conv-s"></div></div>' +
+                      '<button class="btn ghost conv-del" title="Supprimer">✕</button>';
+      row.querySelector(".conv-t").textContent = cv.t || "Conversation libre";
+      row.querySelector(".conv-s").textContent = (cv.u || cv.d || "") + " · " + visible + " message" + (visible > 1 ? "s" : "");
+      row.querySelector(".conv-del").onclick = e => {
+        e.stopPropagation();
+        if(!root.confirm || confirm("Supprimer « " + (cv.t || "Conversation libre") + " » ?")){
+          opts.store.remove(cv.id);
+          renderHome(container, opts);
+        }
+      };
+      row.onclick = () => renderChat(container, opts, cv);
+      lst.appendChild(row);
+    });
+  }
+
+  /* ===== écran de DISCUSSION — une conversation persistée (conv.h), reprise comprise ===== */
+  function renderChat(container, opts, conv){
+    injectCSS();
+    opts = opts || {};
+    const cfg = typeof opts.cfg === "function" ? opts.cfg : () => ({});
+    const sc = conv.sc ? scenarioById(conv.sc) : null;
+    const system = buildSystem(opts.words, opts.fragiles, sc ? sc.sys : null);
+    conv.h = conv.h || [];
+
+    container.innerHTML = "";
+    const box = document.createElement("div");
+    box.className = "card";
+    box.innerHTML =
+      '<div class="conv-head"><h2></h2><button class="btn ghost conv-back">‹ Liste</button></div>' +
       '<div class="conv-log"></div>' +
       '<div class="conv-status dim"></div>' +
       '<div class="conv-row">' +
@@ -166,7 +262,9 @@
         '<input type="text" class="conv-in" placeholder="한국어로 말해 보세요…" autocomplete="off">' +
         '<button class="btn conv-send" title="Envoyer">' + SVG_SEND + '</button>' +
       '</div>';
+    box.querySelector("h2").textContent = conv.t || "Conversation libre";
     container.appendChild(box);
+    box.querySelector(".conv-back").onclick = () => { stopMic(); renderHome(container, opts); };
 
     const log = box.querySelector(".conv-log");
     const status = box.querySelector(".conv-status");
@@ -182,6 +280,8 @@
       log.appendChild(b);
       log.scrollTop = log.scrollHeight;
     }
+    /* reprise : rejouer les bulles depuis l'historique persistant (les amorces hid restent cachées) */
+    conv.h.forEach(m => { if(!m.hid) bubble(m.r === "a" ? "assistant" : "user", m.c); });
 
     /* v87 : UNE seule résolution fournisseur→clé, avec LE MÊME défaut (anthropic) partout —
        le bug réel : send() prenait anthropic par défaut mais keyFor prenait la clé OpenAI
@@ -191,44 +291,65 @@
     function keyFor(c){ return provOf(c) === "openai" ? c.ok : c.ak; }
 
     let busy = false;
-    async function send(){
-      const txt = input.value.trim();
-      if(!txt || busy) return;
+    /* un ÉCHANGE : appelle le LLM sur conv.h (persistant), affiche + prononce la réponse, sauvegarde.
+       Utilisé par send() ET par l'amorce de scénario (le modèle parle en premier). */
+    async function exchange(){
       /* défaut = anthropic : SEUL fournisseur qui autorise les appels directs depuis un navigateur
          (vérifié : api.openai.com n'envoie pas les en-têtes CORS — le chemin OpenAI reste dans le
          code pour un éventuel proxy futur, mais ne peut pas marcher depuis la PWA). */
       const c = cfg();
       const prov = provOf(c);
       const key = keyFor(c);
-      if(!key){ status.textContent = "Ajoute ta clé API (" + prov + ") dans Réglages → Conversation."; return; }
+      if(!key){ status.textContent = "Ajoute ta clé API (" + prov + ") dans Réglages → Conversation."; return false; }
       busy = true; sendBtn.disabled = true;
-      input.value = "";
-      bubble("user", txt);
-      history.push({ role: "user", content: txt });
       status.textContent = "…";
-      const r = await callLLM(prov, key, system, history);
+      const r = await callLLM(prov, key, system, toApi(conv.h));
       busy = false; sendBtn.disabled = false;
       if(r.err){
-        history.pop();                                   // l'échange n'a pas eu lieu — historique cohérent
         status.textContent = "Erreur : " + r.err +
           (prov === "openai" && r.err.indexOf("réseau") === 0
             ? " — OpenAI bloque les appels depuis un navigateur ; choisis Anthropic dans Réglages."
             : "");
-        return;
+        return false;
       }
       status.textContent = "";
-      history.push({ role: "assistant", content: r.text });
+      conv.h.push({ r: "a", c: r.text });
+      opts.store.save(conv);
       bubble("assistant", r.text);
       if(opts.speak) opts.speak(r.text);
+      return true;
+    }
+    async function send(){
+      const txt = input.value.trim();
+      if(!txt || busy) return;
+      input.value = "";
+      bubble("user", txt);
+      conv.h.push({ r: "u", c: txt });
+      if(!conv.t) conv.t = txt.length > 24 ? txt.slice(0, 24) + "…" : txt;   // titre = 1re phrase (libre)
+      opts.store.save(conv);
+      const ok = await exchange();
+      if(!ok){
+        conv.h.pop();                                    // l'échange n'a pas eu lieu — historique cohérent
+        opts.store.save(conv);
+        log.removeChild(log.lastChild);                  // retire la bulle user orpheline
+        input.value = txt;                               // la phrase n'est pas perdue
+      }
     }
     sendBtn.onclick = send;
     input.onkeydown = e => { if(e.key === "Enter") send(); };
+    /* scénario tout neuf : amorce CACHÉE (l'API veut un tour user en premier) → le modèle ouvre
+       la conversation dans son rôle (le serveur accueille, le chauffeur demande la destination…) */
+    if(sc && conv.h.length === 0){
+      conv.h.push({ r: "u", c: BOOTSTRAP, hid: 1 });
+      exchange().then(ok => { if(!ok){ conv.h.pop(); opts.store.save(conv); } });
+    }
 
     /* ===== STT — Web Speech API (ko-KR), gratuite, intégrée au navigateur =====
        Le texte reconnu va dans le champ : l'utilisateur VALIDE avant l'envoi
        (voir ce que le micro a compris = retour sur la prononciation). */
     const SR = root.SpeechRecognition || root.webkitSpeechRecognition;
     let rec = null, listening = false;
+    function stopMic(){ listening = false; try{ if(rec) rec.stop(); }catch(e){} }   // au retour à la liste
     /* v84 : « not-allowed » sans explication = impasse. Invite de permission forcée via getUserMedia —
        sur une PWA installée (WebAPK Android), SpeechRecognition ne déclenche pas toujours l'invite lui-même.
        v85 (retour user réel) : dans l'app installée il n'y a NI cadenas NI barre d'adresse, et « Infos de
@@ -296,9 +417,10 @@
   }
 
   const API = {
-    renderCard,
+    renderHome, renderChat,
     callLLM,
-    pure: { buildSystem, trimHistory, buildRequest, parseReply, sttFold, MODELS, MAX_HISTORY }
+    pure: { buildSystem, trimHistory, buildRequest, parseReply, sttFold, toApi, scenarioById,
+            SCENARIOS, BOOTSTRAP, MODELS, MAX_HISTORY }
   };
   if(typeof module !== "undefined" && module.exports) module.exports = API;
   else root.SORI_CONVERSATION = API;

@@ -72,6 +72,38 @@ test("parseReply anthropic : texte, erreur API, réponse vide", () => {
   assert.ok(parseReply("anthropic", null, 529).err.includes("529"));
 });
 
+test("SCENARIOS : ids uniques, rôle défini, libellés KR+FR", () => {
+  const { SCENARIOS, scenarioById } = CONV.pure;
+  assert.ok(SCENARIOS.length >= 6);
+  const ids = SCENARIOS.map(s => s.id);
+  assert.equal(new Set(ids).size, ids.length);          // pas de doublon
+  for(const s of SCENARIOS){
+    assert.ok(s.sys && s.sys.length > 20, s.id);        // vraie instruction de rôle
+    assert.ok(s.kr && s.fr, s.id);
+  }
+  assert.equal(scenarioById("resto").kr, "식당");
+  assert.equal(scenarioById("inconnu"), null);
+});
+
+test("buildSystem : le scénario s'insère, absent sinon", () => {
+  const avec = buildSystem(["학교"], [], "Tu joues le SERVEUR.");
+  assert.ok(avec.includes("SCÉNARIO : Tu joues le SERVEUR."));
+  assert.ok(avec.indexOf("SCÉNARIO") < avec.indexOf("VOCABULAIRE CONNU : "));   // avant la ligne du lexique
+  assert.ok(!buildSystem(["학교"], []).includes("SCÉNARIO"));
+});
+
+test("toApi : mapping des rôles ; hid n'affecte que l'affichage, pas l'API", () => {
+  const { toApi } = CONV.pure;
+  const h = [{ r: "u", c: "(amorce)", hid: 1 }, { r: "a", c: "어서 오세요!" }, { r: "u", c: "안녕하세요" }];
+  const api = toApi(h);
+  assert.deepEqual(api, [
+    { role: "user", content: "(amorce)" },              // l'amorce cachée PART bien à l'API
+    { role: "assistant", content: "어서 오세요!" },
+    { role: "user", content: "안녕하세요" }
+  ]);
+  assert.deepEqual(toApi([]), []);
+});
+
 /* mock d'un SpeechRecognitionResult : liste [{transcript}] + drapeau isFinal */
 const srr = (t, fin) => Object.assign([{ transcript: t }], { isFinal: !!fin });
 

@@ -91,6 +91,7 @@ function loadState(){
         s.strPos = s.strPos||0;                    // v62 : position persistée de l'exercice Structure (rampe facile->dur)
         s.errors = s.errors||[]; s.vlog = s.vlog||[];   // v65 : exceptions capturées + journal de versions
         s.rep = s.rep||{d:"",m:{}};                     // v71 : derniers contacts des vues blanches (reprise)
+        s.conv = s.conv||[];                            // v89 : conversations IA enregistrées (cap 12×40 msgs ≈ 30 Ko max)
         /* v52 : split recto/verso retiré (doublait le deck). Bascule UNE FOIS les utilisateurs
            qui l'avaient activé (v51) vers OFF ; le toggle Réglages reste libre ensuite. */
         if(s.reverseMig !== 1){ s.set.reverse = false; s.reverseMig = 1; }
@@ -796,26 +797,59 @@ function renderExercices(){
     });
     $screen.appendChild(scBox);
   }
-  /* v83 : Conversation IA — micro (STT navigateur) → LLM (OpenAI/Anthropic, choix Réglages) → voix.
-     Le contexte du modèle = SES mots maîtrisés (stage>=4) + ses 8 mots les plus fragiles
-     (récupérabilité FSRS la plus basse) que le modèle glisse dans la conversation. */
+  /* v83→v89 : Conversation IA — désormais un ÉCRAN dédié (liste des conversations enregistrées,
+     reprise, suppression, nouvelle avec ou sans scénario). Ici : juste la carte-lanceur. */
   if(window.SORI_CONVERSATION){
-    const mastered = BASE_IDS
-      .filter(id => SEED_BY_ID[id].type === "word")
-      .map(id => eff(id))
-      .filter(it => !it.sus && it.stage >= 4);
-    const frag = mastered
-      .map(it => ({ kr: SEED_BY_ID[it.id].kr, r: cardRetrievability(it) }))
-      .sort((a,b) => a.r - b.r).slice(0, 8).map(x => x.kr);
-    const cvBox = el(`<div></div>`);
-    SORI_CONVERSATION.renderCard(cvBox, {
-      cfg: convCfg,
-      words: mastered.map(it => SEED_BY_ID[it.id].kr),
-      fragiles: frag,
-      speak: (txt)=>ttsSpeak(txt)
-    });
-    $screen.appendChild(cvBox);
+    const n = (ST.conv||[]).length;
+    const cvCard = el(`<div class="card"><h2>Conversation</h2>
+      <p class="dim">Parle coréen avec un partenaire IA — à ton niveau, avec tes mots. Scénarios (restaurant, taxi…) ou discussion libre.</p>
+      <div class="row" style="margin-top:8px"><button class="btn" id="goconv">Ouvrir${n ? " · " + n + " enregistrée" + (n>1?"s":"") : ""}</button></div></div>`);
+    cvCard.querySelector("#goconv").onclick = openConversation;
+    $screen.appendChild(cvCard);
   }
+}
+/* v89 : écran Conversation (module conversation.js) — prend tout l'écran, retour → Exercices.
+   Le contexte du modèle = SES mots maîtrisés (stage>=4) + ses 8 mots les plus fragiles
+   (récupérabilité FSRS la plus basse) que le modèle glisse dans la conversation.
+   Les conversations vivent dans ST.conv (→ sauvegarde cloud) : cap 12 conversations × 40
+   messages stockés (~30 Ko max — budget cloud v65 respecté). */
+const CONV_MAX = 12, CONV_MAX_MSGS = 40;
+function openConversation(){
+  const mastered = BASE_IDS
+    .filter(id => SEED_BY_ID[id].type === "word")
+    .map(id => eff(id))
+    .filter(it => !it.sus && it.stage >= 4);
+  const frag = mastered
+    .map(it => ({ kr: SEED_BY_ID[it.id].kr, r: cardRetrievability(it) }))
+    .sort((a,b) => a.r - b.r).slice(0, 8).map(x => x.kr);
+  $screen.innerHTML = "";
+  SORI_CONVERSATION.renderHome($screen, {
+    cfg: convCfg,
+    words: mastered.map(it => SEED_BY_ID[it.id].kr),
+    fragiles: frag,
+    speak: (txt)=>ttsSpeak(txt),
+    store: {
+      list: ()=> ST.conv || [],
+      create: (sc)=>{
+        ST.conv = ST.conv || [];
+        if(ST.conv.length >= CONV_MAX){
+          alert("Maximum " + CONV_MAX + " conversations — supprime-en une ancienne d'abord.");
+          return null;
+        }
+        const t = todayStr();
+        const conv = { id: "c" + Date.now().toString(36), t: "", d: t, u: t, sc: sc || null, h: [] };
+        ST.conv.push(conv); save();
+        return conv;
+      },
+      save: (conv)=>{
+        conv.u = todayStr();
+        if(conv.h && conv.h.length > CONV_MAX_MSGS) conv.h = conv.h.slice(-CONV_MAX_MSGS);
+        save();
+      },
+      remove: (id)=>{ ST.conv = (ST.conv||[]).filter(c => c.id !== id); save(); }
+    },
+    onExit: ()=>{ NAV = true; render(); NAV = false; }
+  });
 }
 
 /* ---------- mode Réviser ---------- */
@@ -2026,6 +2060,7 @@ function applyImportedState(state){
   s.strPos = s.strPos||0;                    // v62 : position persistée de l'exercice Structure
   s.errors = s.errors||[]; s.vlog = s.vlog||[];   // v65
   s.rep = s.rep||{d:"",m:{}};                     // v71
+  s.conv = s.conv||[];                            // v89 : conversations IA enregistrées
   s.v = s.v || 1;
   ST = s; save(); Q = null;
   NAV = true; render(); NAV = false;   // v73 : rendu d'ARRIVÉE — pas de coup de tampon post-restauration
