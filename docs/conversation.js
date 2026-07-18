@@ -212,12 +212,37 @@
        (voir ce que le micro a compris = retour sur la prononciation). */
     const SR = root.SpeechRecognition || root.webkitSpeechRecognition;
     let rec = null, listening = false;
+    /* v84 : « not-allowed » sans explication = impasse. Message ACTIONNABLE (chemin Android/Chrome)
+       + invite de permission forcée via getUserMedia — sur une PWA installée (WebAPK Android),
+       SpeechRecognition ne déclenche pas toujours l'invite lui-même. */
+    const MSG_DENIED = "Micro refusé pour Sori. Autorise-le : appui long sur l'icône Sori → Infos de l'appli → Autorisations → Micro. (Dans Chrome : cadenas à gauche de l'adresse → Autorisations → Micro.)";
+    const SR_ERRS = {
+      "no-speech": "Je n'ai rien entendu — réessaie.",
+      "not-allowed": MSG_DENIED,
+      "service-not-allowed": MSG_DENIED,
+      "audio-capture": "Aucun micro détecté sur cet appareil.",
+      "network": "Réseau indisponible pour la reconnaissance vocale — réessaie connecté."
+    };
     if(!SR){
       micBtn.disabled = true;
       micBtn.title = "Reconnaissance vocale indisponible dans ce navigateur — écris ta phrase.";
     } else {
-      micBtn.onclick = () => {
+      micBtn.onclick = async () => {
         if(listening){ try{ rec.stop(); }catch(e){} return; }
+        /* 1. refus déjà mémorisé ? → inutile de réessayer, guider vers les réglages */
+        try{
+          if(navigator.permissions && navigator.permissions.query){
+            const p = await navigator.permissions.query({ name: "microphone" }).catch(() => null);
+            if(p && p.state === "denied"){ status.textContent = MSG_DENIED; return; }
+          }
+        }catch(e){}
+        /* 2. forcer l'INVITE de permission (fiable même en WebAPK), puis relâcher le flux */
+        try{
+          if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            stream.getTracks().forEach(t => t.stop());   // on ne voulait que la permission
+          }
+        }catch(e){ status.textContent = MSG_DENIED; return; }
         rec = new SR();
         rec.lang = "ko-KR";
         rec.interimResults = true;
@@ -227,7 +252,7 @@
           for(let i = 0; i < ev.results.length; i++) t += ev.results[i][0].transcript;
           input.value = t;
         };
-        rec.onerror = ev => { status.textContent = ev.error === "no-speech" ? "Je n'ai rien entendu — réessaie." : "Micro : " + ev.error; };
+        rec.onerror = ev => { status.textContent = SR_ERRS[ev.error] || ("Micro : " + ev.error); };
         rec.onend = () => { listening = false; micBtn.classList.remove("rec"); input.focus(); };
         try{
           rec.start(); listening = true; micBtn.classList.add("rec"); status.textContent = "J'écoute… parle en coréen.";
