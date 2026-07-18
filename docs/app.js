@@ -1968,7 +1968,7 @@ function openVersionHistory(){
         const msg  = ((c.commit && c.commit.message) || "").split("\n")[0];
         const iso  = c.commit && c.commit.author && c.commit.author.date;
         const dstr = iso ? new Date(iso).toLocaleDateString("fr-FR", {day:"2-digit", month:"short", year:"numeric"}) : "";
-        const mv   = /^v(\d+)\s*[:\-–]\s*/.exec(msg);
+        const mv   = /^v(\d+)\s*[:\-–—]\s*/.exec(msg);   // v97 : accepte aussi le tiret cadratin — (commits ≥ v81)
         const tag  = mv ? `<span class="vh-tag">v${mv[1]}</span>` : `<span class="vh-tag" style="opacity:.45">·</span>`;
         const title= mv ? msg.slice(mv[0].length).trim() : msg;
         const sha  = (c.sha || "").slice(0,7);
