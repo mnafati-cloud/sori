@@ -142,6 +142,7 @@
   /* ================= rendu (navigateur seulement) ================= */
 
   const SVG_MIC = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg>';
+  const SVG_STOP = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>';
   const SVG_SEND = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14"/><path d="M13 6l6 6-6 6"/></svg>';
 
   let cssDone = false;
@@ -157,7 +158,10 @@
       ".conv-row{display:flex;gap:6px;align-items:center;margin-top:8px}",
       ".conv-row input{flex:1;min-width:0}",
       ".conv-mic{display:inline-flex;align-items:center;justify-content:center;width:40px;height:38px;flex:none}",
-      ".conv-mic.rec{color:var(--acc2);border-color:var(--acc2)}",
+      /* v91 : état d'écoute IMPOSSIBLE à rater — bouton plein vermillon qui pulse, icône carré STOP */
+      ".conv-mic.rec{background:var(--acc2);color:#fff;border-color:var(--acc2);animation:conv-pulse 1.2s ease-in-out infinite}",
+      "@keyframes conv-pulse{50%{box-shadow:0 0 0 6px color-mix(in srgb, var(--acc2) 30%, transparent)}}",
+      "@media (prefers-reduced-motion: reduce){.conv-mic.rec{animation:none}}",
       ".conv-status{min-height:1.2em;font-size:.85rem;margin-top:6px}",
       ".conv-head{display:flex;align-items:center;justify-content:space-between;gap:8px}",
       ".conv-head h2{margin:0}",
@@ -271,11 +275,14 @@
     const micBtn = box.querySelector(".conv-mic");
     const sendBtn = box.querySelector(".conv-send");
 
+    /* v91 : TOUTE sortie vocale coupe d'abord le micro — sinon la voix de synthèse est
+       transcrite dans le champ (l'user a vu l'app « écouter la réponse faite »). */
+    function say(t){ stopMic(); if(opts.speak) opts.speak(t); }
     function bubble(role, text){
       const b = document.createElement("div");
       b.className = "conv-b " + (role === "user" ? "u" : "a");
       b.textContent = text;
-      if(role === "assistant" && opts.speak) b.onclick = () => opts.speak(text);   // re-écouter au tap
+      if(role === "assistant") b.onclick = () => say(text);   // re-écouter au tap
       log.appendChild(b);
       log.scrollTop = log.scrollHeight;
     }
@@ -315,12 +322,14 @@
       conv.h.push({ r: "a", c: r.text });
       opts.store.save(conv);
       bubble("assistant", r.text);
-      if(opts.speak) opts.speak(r.text);
+      say(r.text);
       return true;
     }
     async function send(){
       const txt = input.value.trim();
       if(!txt || busy) return;
+      stopMic();          // v91 : l'ENVOI arrête TOUJOURS le micro (demande user) — et stopMic
+                          // débranche onresult : aucun résultat tardif ne re-remplira le champ
       input.value = "";
       bubble("user", txt);
       conv.h.push({ r: "u", c: txt });
@@ -348,7 +357,14 @@
        (voir ce que le micro a compris = retour sur la prononciation). */
     const SR = root.SpeechRecognition || root.webkitSpeechRecognition;
     let rec = null, listening = false;
-    function stopMic(){ listening = false; try{ if(rec) rec.stop(); }catch(e){} }   // au retour à la liste
+    /* v91 : arrêt NET — débranche les handlers (un résultat tardif ne réécrira pas le champ),
+       stoppe la reco, restaure l'icône micro. Appelé par : 2e tap, ENVOI, toute voix (say), retour liste. */
+    function stopMic(){
+      listening = false;
+      micBtn.classList.remove("rec");
+      micBtn.innerHTML = SVG_MIC;
+      if(rec){ try{ rec.onresult = null; rec.onend = null; rec.onerror = null; rec.stop(); }catch(e){} rec = null; }
+    }
     /* v84 : « not-allowed » sans explication = impasse. Invite de permission forcée via getUserMedia —
        sur une PWA installée (WebAPK Android), SpeechRecognition ne déclenche pas toujours l'invite lui-même.
        v85 (retour user réel) : dans l'app installée il n'y a NI cadenas NI barre d'adresse, et « Infos de
@@ -367,7 +383,12 @@
       micBtn.title = "Reconnaissance vocale indisponible dans ce navigateur — écris ta phrase.";
     } else {
       micBtn.onclick = async () => {
-        if(listening){ try{ rec.stop(); }catch(e){} return; }
+        if(listening){
+          stopMic();
+          if(input.value) status.textContent = "Vérifie la phrase, corrige si besoin, puis envoie.";
+          input.focus();
+          return;
+        }
         /* 1. refus déjà mémorisé ? → inutile de réessayer, guider vers les réglages */
         try{
           if(navigator.permissions && navigator.permissions.query){
@@ -404,12 +425,15 @@
             try{ rec.start(); return; }catch(e){ listening = false; }  // relance tant que l'user n'a pas retapé
           }
           micBtn.classList.remove("rec");
+          micBtn.innerHTML = SVG_MIC;
           if(input.value) status.textContent = "Vérifie la phrase, corrige si besoin, puis envoie.";
           input.focus();
         };
         try{
-          rec.start(); listening = true; micBtn.classList.add("rec");
-          status.textContent = "J'écoute… parle, prends ton temps — retouche le micro quand tu as fini.";
+          rec.start(); listening = true;
+          micBtn.classList.add("rec");
+          micBtn.innerHTML = SVG_STOP;    // v91 : l'état d'écoute se voit — carré STOP sur fond vermillon
+          status.textContent = "J'écoute… parle, prends ton temps. Touche le carré (ou envoie) pour arrêter.";
         }catch(e){ status.textContent = "Micro indisponible."; }
       };
     }
