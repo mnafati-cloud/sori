@@ -241,8 +241,11 @@
       ".conv-b{max-width:85%;padding:8px 12px;border-radius:10px;line-height:1.45;white-space:pre-wrap;word-break:break-word}",
       ".conv-b.u{align-self:flex-end;background:color-mix(in srgb, var(--acc2) 12%, transparent);border:1px solid color-mix(in srgb, var(--acc2) 30%, transparent)}",
       ".conv-b.a{align-self:flex-start;border:1px solid var(--line);font-family:var(--kr-display, inherit);font-size:1.05rem;cursor:pointer}",
-      ".conv-row{display:flex;gap:6px;align-items:center;margin-top:8px}",
-      ".conv-row input{flex:1;min-width:0}",
+      /* v95 : la saisie est une zone MULTI-LIGNES qui grandit avec le texte (retour user : un message
+         plus long que la ligne était invisible) — plafond ~5 lignes puis défilement interne */
+      ".conv-row{display:flex;gap:6px;align-items:flex-end;margin-top:8px}",
+      ".conv-row .conv-in{flex:1;min-width:0;font:inherit;line-height:1.45;color:inherit;background:none;",
+      "  border:1px solid var(--line);border-radius:10px;padding:9px 12px;resize:none;overflow-y:auto;max-height:7.6em}",
       ".conv-mic{display:inline-flex;align-items:center;justify-content:center;width:40px;height:38px;flex:none}",
       /* v91 : état d'écoute IMPOSSIBLE à rater — bouton plein vermillon qui pulse, icône carré STOP */
       ".conv-mic.rec{background:var(--acc2);color:#fff;border-color:var(--acc2);animation:conv-pulse 1.2s ease-in-out infinite}",
@@ -360,7 +363,7 @@
       '<div class="conv-status dim"></div>' +
       '<div class="conv-row">' +
         '<button class="btn ghost conv-mic" title="Parler (coréen)">' + SVG_MIC + '</button>' +
-        '<input type="text" class="conv-in" placeholder="한국어로 말해 보세요…" autocomplete="off">' +
+        '<textarea class="conv-in" rows="1" placeholder="한국어로 말해 보세요…" autocomplete="off"></textarea>' +
         '<button class="btn conv-send" title="Envoyer">' + SVG_SEND + '</button>' +
       '</div>';
     box.querySelector("h2").textContent = conv.t || "Conversation libre";
@@ -372,6 +375,9 @@
     const input = box.querySelector(".conv-in");
     const micBtn = box.querySelector(".conv-mic");
     const sendBtn = box.querySelector(".conv-send");
+    /* v95 : la zone grandit avec son contenu (à appeler aussi après tout remplissage par code) */
+    const autosize = () => { input.style.height = "auto"; input.style.height = Math.min(input.scrollHeight, 160) + "px"; };
+    input.addEventListener("input", autosize);
 
     /* v91 : TOUTE sortie vocale coupe d'abord le micro — sinon la voix de synthèse est
        transcrite dans le champ (l'user a vu l'app « écouter la réponse faite »). */
@@ -482,7 +488,7 @@
       if(!txt || busy) return;
       stopMic();          // v91 : l'ENVOI arrête TOUJOURS le micro (demande user) — et stopMic
                           // débranche onresult : aucun résultat tardif ne re-remplira le champ
-      input.value = "";
+      input.value = ""; autosize();
       bubble("user", txt);
       conv.h.push({ r: "u", c: txt });
       if(!conv.t) conv.t = txt.length > 24 ? txt.slice(0, 24) + "…" : txt;   // titre = 1re phrase (libre)
@@ -492,11 +498,11 @@
         conv.h.pop();                                    // l'échange n'a pas eu lieu — historique cohérent
         opts.store.save(conv);
         log.removeChild(log.lastChild);                  // retire la bulle user orpheline
-        input.value = txt;                               // la phrase n'est pas perdue
+        input.value = txt; autosize();                   // la phrase n'est pas perdue
       }
     }
     sendBtn.onclick = send;
-    input.onkeydown = e => { if(e.key === "Enter") send(); };
+    input.onkeydown = e => { if(e.key === "Enter" && !e.shiftKey){ e.preventDefault(); send(); } };   // Maj+Entrée = retour à la ligne
     /* scénario tout neuf : amorce CACHÉE (l'API veut un tour user en premier) → le modèle ouvre
        la conversation dans son rôle (le serveur accueille, le chauffeur demande la destination…) */
     if(sc && conv.h.length === 0){
@@ -560,6 +566,7 @@
         if(!r.text){ status.textContent = "Je n'ai rien reconnu — réessaie."; return; }
         status.textContent = "";
         input.value = (input.value.trim() + " " + r.text).trim();
+        autosize();
         input.focus();
       };
       mrec.start();
@@ -616,6 +623,7 @@
           const parts = [sessionBase];
           for(let i = 0; i < ev.results.length; i++) parts.push(ev.results[i][0].transcript);
           input.value = sttMerge(parts);
+          autosize();
         };
         rec.onerror = ev => {
           if(ev.error === "no-speech" && listening) return;           // silence → la relance auto s'en charge
