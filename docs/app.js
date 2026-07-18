@@ -1605,18 +1605,24 @@ function renderStats(){
 
   /* stats réelles (v28.1) : plus d'XP/niveau — gamification retirée. Mesures de PROGRÈS.
      Chaque tuile est cliquable → popin d'explication (demande utilisateur 🐞 v36). */
+  /* v99 : 6 tuiles (grille équilibrée 3×2, retour user) — la 6e = « ancrées », la métrique honnête
+     de v64 qui vivait enterrée dans une infobulle. Paires logiques côte à côte :
+     aujourd'hui|réussite · maîtrisées|ancrées · ennemies|deck. */
+  const anchored = baseItems.filter(it=>it.stage>=4 && it.itv>=14).length;
   const grid = el(`<div class="statgrid">
     <div class="stat"><div class="n">${l.n}</div><div class="l">réponses aujourd'hui</div></div>
     <div class="stat"><div class="n">${ret===null?"—":ret+" %"}</div><div class="l">réussite (7 j)</div></div>
-    <div class="stat"><div class="n">${beaten}/${enemies.length}</div><div class="l">ennemies vaincues</div></div>
     <div class="stat"><div class="n">${matures}</div><div class="l">cartes maîtrisées</div></div>
+    <div class="stat"><div class="n">${anchored}</div><div class="l">ancrées</div></div>
+    <div class="stat"><div class="n">${beaten}/${enemies.length}</div><div class="l">ennemies vaincues</div></div>
     <div class="stat"><div class="n">${seen} / ${baseItems.length}</div><div class="l">deck abordé</div></div>
   </div>`);
   const STAT_INFO = [
     ["Réponses aujourd'hui", "Le nombre de cartes que tu as répondues aujourd'hui, tous exercices confondus (QCM, rappel, écoute…)."],
     ["Réussite (7 jours)", "Ton taux de bonnes réponses sur les 7 derniers jours. On ne compte que la PREMIÈRE fois que tu vois chaque carte dans la journée — c'est le vrai test de mémoire, pas les re-essais."],
+    ["Cartes maîtrisées", "Les cartes arrivées HAUT dans l'échelle de maîtrise (niv ≥ 4). Attention : monter l'échelle ≠ ancré durablement — la tuile « ancrées » à côté compte celles qui ont fait leurs preuves ; l'écart entre les deux, c'est ce qui reste à consolider."],
+    ["Ancrées", "Les cartes maîtrisées dont l'intervalle a atteint 2 SEMAINES ou plus : tu les as retrouvées après de longs écarts sans les revoir — la vraie mémoire durable, la mesure la plus exigeante de cet écran. Elle grimpe naturellement avec le temps."],
     ["Ennemies vaincues", "Tes mots les plus ratés (les « ennemies ») que tu as réussi à ramener à un bon niveau (niv ≥ 4). Le premier chiffre = domptées, le second = total de tes ennemies."],
-    ["Cartes maîtrisées", `Les cartes arrivées HAUT dans l'échelle de maîtrise (niv ≥ 4). Attention : monter l'échelle ≠ ancré durablement — ${baseItems.filter(it=>it.stage>=4 && it.itv>=14).length} d'entre elles sont ANCRÉES (intervalle ≥ 2 semaines, une vraie preuve de mémoire longue). L'écart entre les deux, c'est ce qui reste à consolider.`],
     ["Deck abordé", "Combien de cartes du deck tu as déjà commencé à étudier (vues au moins une fois), sur le total disponible. Le reste attend d'être introduit (30 nouvelles/jour dans tes réglages)."]
   ];
   grid.querySelectorAll(".stat").forEach((tile,i)=>{
