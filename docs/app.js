@@ -1773,7 +1773,7 @@ function openSettings(){
       SORI_THEMES.list.map(th=>`<option value="${th.id}" ${SORI_THEMES.get()===th.id?"selected":""}>${esc(th.label)}</option>`).join("")
     }</select></label>` : ""}
     <div class="section-title" style="margin-top:14px">Conversation (IA)</div>
-    <p class="dim" style="margin-top:4px">Partenaire de conversation en coréen (onglet Exercices). La clé API reste sur CET appareil — jamais dans la sauvegarde cloud. Seul Anthropic autorise les appels directs depuis un navigateur (OpenAI les bloque : option gardée pour un futur proxy).</p>
+    <p class="dim" style="margin-top:4px">Partenaire de conversation en coréen (onglet Exercices). La clé arrive automatiquement depuis ton cloud privé (grâce au jeton GitHub ci-dessous) — rien à coller. Seul Anthropic autorise les appels directs depuis un navigateur (OpenAI les bloque : option gardée pour un futur proxy).</p>
     <label>Fournisseur <select id="cvprov">
       <option value="anthropic" ${convCfg().prov!=="openai"?"selected":""}>Anthropic (Claude Haiku 4.5)</option>
       <option value="openai" ${convCfg().prov==="openai"?"selected":""}>OpenAI (gpt-5-mini) — bloqué navigateur</option></select></label>
@@ -1955,6 +1955,26 @@ const GH_KEY = "sori-gh-token";
 const GH_REPO = "mnafati-cloud/sori-data";
 function ghToken(){ try{ return localStorage.getItem(GH_KEY)||""; }catch(e){ return ""; } }
 function setGhToken(t){ try{ t ? localStorage.setItem(GH_KEY, t.trim()) : localStorage.removeItem(GH_KEY); }catch(e){} }
+/* v86 : les clés API de la Conversation arrivent TOUTES SEULES depuis le dépôt PRIVÉ sori-data
+   (config/conv-cfg.json, déposé côté PC) — le localStorage ne circule pas entre appareils/contextes
+   et taper une clé de 108 caractères au téléphone est irréaliste. Le jeton GitHub déjà présent
+   (sauvegarde cloud) sert de porte. Ne remplit que ce qui MANQUE (jamais d'écrasement local). */
+async function fetchConvKeys(){
+  try{
+    const c = convCfg();
+    if((c.ak && c.ok) || !ghToken()) return;
+    const res = await fetch("https://api.github.com/repos/" + GH_REPO + "/contents/config/conv-cfg.json",
+      { headers: { "Authorization": "Bearer " + ghToken(), "Accept": "application/vnd.github.raw" } });
+    if(!res.ok) return;                       // 404 = pas de fichier déposé, silencieux
+    const cfg = await res.json().catch(() => null);
+    if(!cfg) return;
+    const patch = {};
+    if(cfg.ak && !c.ak) patch.ak = cfg.ak;
+    if(cfg.ok && !c.ok) patch.ok = cfg.ok;
+    if(Object.keys(patch).length) setConvCfg(patch);
+  }catch(e){}
+}
+fetchConvKeys();   // au boot, en arrière-plan — cfg est relu à chaque envoi, aucun re-render requis
 function exportPayload(){
   return JSON.stringify({app:"sori", v:1, exportedAt:new Date().toISOString(),
     seedVersion:SEED.meta.version, state:ST});
