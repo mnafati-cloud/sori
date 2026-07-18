@@ -107,30 +107,24 @@ test("toApi : mapping des rôles ; hid n'affecte que l'affichage, pas l'API", ()
 /* mock d'un SpeechRecognitionResult : liste [{transcript}] + drapeau isFinal */
 const srr = (t, fin) => Object.assign([{ transcript: t }], { isFinal: !!fin });
 
-test("sttFold : accumule les segments finaux HORS de la liste d'événements (bug Android)", () => {
+test("sttFold : reconstruction depuis la liste COMPLÈTE — les finals re-livrés ne se dupliquent pas (bug Android v88)", () => {
   const { sttFold } = CONV.pure;
-  // événement 1 : un interim
-  let s = sttFold("", [srr("안녕", false)], 0);
-  assert.equal(s.display, "안녕");
-  assert.equal(s.finalTxt, "");                       // pas encore final
-  // événement 2 : le segment devient final
-  s = sttFold(s.finalTxt, [srr("안녕하세요 ", true)], 0);
-  assert.equal(s.finalTxt, "안녕하세요 ");
-  // événement 3 (Android RÉINITIALISE la liste : seul le nouveau segment est présent) —
-  // sans accumulation externe, on ne garderait que « 오늘 » : LE bug rapporté
-  s = sttFold(s.finalTxt, [srr("오늘 날씨가 좋아요", false)], 0);
-  assert.equal(s.display, "안녕하세요 오늘 날씨가 좋아요");
-  s = sttFold(s.finalTxt, [srr("오늘 날씨가 좋아요", true)], 0);
-  assert.equal(s.finalTxt, "안녕하세요 오늘 날씨가 좋아요");
+  // événement 1 : un final
+  assert.equal(sttFold("", [srr("안녕하세요", true)]), "안녕하세요");
+  // événement 2 : Android RE-LIVRE le final déjà vu (resultIndex bugué à 0) + le nouvel interim —
+  // l'accumulation incrémentale v88 doublait « 안녕하세요 » ; la reconstruction, non
+  assert.equal(sttFold("", [srr("안녕하세요 ", true), srr("오늘 날씨가", false)]), "안녕하세요 오늘 날씨가");
+  // événement 3 : le 2e segment devient final à son tour, toujours dans la même liste
+  assert.equal(sttFold("", [srr("안녕하세요 ", true), srr("오늘 날씨가 좋아요", true)]), "안녕하세요 오늘 날씨가 좋아요");
 });
 
-test("sttFold : resultIndex saute les segments déjà traités ; espaces normalisés", () => {
+test("sttFold : la base (sessions précédentes / texte déjà tapé) est préservée ; espaces normalisés", () => {
   const { sttFold } = CONV.pure;
-  const results = [srr("이미 처리됨 ", true), srr("새 것", false)];
-  const s = sttFold("기존 ", results, 1);              // startIdx 1 : le 1er est déjà accumulé
-  assert.equal(s.display, "기존 새 것");
-  assert.ok(!s.display.includes("이미"));
-  assert.equal(sttFold("a  ", [srr("  b ", false)], 0).display, "a b");
+  // Android a coupé à une pause → relance auto : la nouvelle session repart avec une liste VIDE,
+  // le texte d'avant vit dans base
+  assert.equal(sttFold("첫 문장", [srr("둘째 문장", false)]), "첫 문장 둘째 문장");
+  assert.equal(sttFold("", []), "");
+  assert.equal(sttFold("a  ", [srr("  b ", false)]), "a b");
 });
 
 test("parseReply openai : texte, erreur API, contenu nul", () => {

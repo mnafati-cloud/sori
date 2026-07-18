@@ -55,17 +55,16 @@
     ].filter(Boolean).join("\n");
   }
 
-  /* v88 : accumulation STT robuste au bug Android — la liste ev.results est parfois RÉINITIALISÉE
-     entre les événements (il ne reste que le dernier segment) → les segments FINAUX vivent dans
-     finalTxt, HORS de la liste. startIdx = ev.resultIndex (ne retraite pas l'déjà-accumulé). */
-  function sttFold(finalTxt, results, startIdx){
-    let interim = "";
-    for(let i = startIdx || 0; i < results.length; i++){
-      const t = results[i][0].transcript;
-      if(results[i].isFinal) finalTxt += t;
-      else interim += t;
-    }
-    return { finalTxt, display: (finalTxt + interim).replace(/\s+/g, " ").trim() };
+  /* v90 (retour user : « ça écrit plusieurs fois le mot ») : sur Android, resultIndex est BUGUÉ
+     (souvent 0) et les segments finaux sont RE-LIVRÉS à chaque événement → l'accumulation
+     incrémentale v88 les ré-ajoutait. Le modèle correct : pendant UNE session d'écoute, la liste
+     ev.results est cumulative et fait AUTORITÉ → on RECONSTRUIT tout depuis l'indice 0 à chaque
+     événement (re-livraison = même résultat, zéro doublon). `base` = le texte d'AVANT la session
+     en cours (sessions précédentes après relance auto, ou texte déjà tapé/corrigé au champ). */
+  function sttFold(base, results){
+    let t = "";
+    for(let i = 0; i < results.length; i++) t += results[i][0].transcript;
+    return (String(base || "") + " " + t).replace(/\s+/g, " ").trim();
   }
 
   function trimHistory(h, max){
@@ -383,27 +382,27 @@
             stream.getTracks().forEach(t => t.stop());   // on ne voulait que la permission
           }
         }catch(e){ status.textContent = MSG_DENIED; return; }
-        /* v88 (retour user : « ça coupe, ça ne garde que le dernier mot ») :
-           - continuous = true + relance auto : Android coupe à la moindre pause — fatal pour un
-             apprenant qui parle lentement. C'est l'USER qui arrête (2e tap sur le micro) ;
-           - sttFold : les segments finaux s'accumulent HORS de ev.results (qu'Android réinitialise). */
-        let finalTxt = "";
+        /* v88/v90 : continuous = true + relance auto (Android coupe à la moindre pause — fatal pour
+           un apprenant qui parle lentement) : c'est l'USER qui arrête (2e tap sur le micro).
+           sttFold RECONSTRUIT le texte de la session depuis la liste complète (cf. commentaire de la
+           fonction — les finals re-livrés par Android ne se dupliquent plus) ; sessionBase = le texte
+           d'avant la session en cours (déjà tapé/corrigé, ou sessions d'avant la relance auto). */
+        let sessionBase = input.value.trim();
         rec = new SR();
         rec.lang = "ko-KR";
         rec.interimResults = true;
         rec.continuous = true;
-        rec.onresult = ev => {
-          const s = sttFold(finalTxt, ev.results, ev.resultIndex);
-          finalTxt = s.finalTxt;
-          input.value = s.display;
-        };
+        rec.onresult = ev => { input.value = sttFold(sessionBase, ev.results); };
         rec.onerror = ev => {
           if(ev.error === "no-speech" && listening) return;           // silence → la relance auto s'en charge
           if(ev.error === "not-allowed" || ev.error === "service-not-allowed" || ev.error === "audio-capture") listening = false;
           status.textContent = SR_ERRS[ev.error] || ("Micro : " + ev.error);
         };
         rec.onend = () => {
-          if(listening){ try{ rec.start(); return; }catch(e){ listening = false; } }   // relance tant que l'user n'a pas retapé
+          if(listening){
+            sessionBase = input.value.trim();                          // fige la session écoulée
+            try{ rec.start(); return; }catch(e){ listening = false; }  // relance tant que l'user n'a pas retapé
+          }
           micBtn.classList.remove("rec");
           if(input.value) status.textContent = "Vérifie la phrase, corrige si besoin, puis envoie.";
           input.focus();
