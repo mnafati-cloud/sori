@@ -72,6 +72,35 @@ test("parseReply anthropic : texte, erreur API, réponse vide", () => {
   assert.ok(parseReply("anthropic", null, 529).err.includes("529"));
 });
 
+/* mock d'un SpeechRecognitionResult : liste [{transcript}] + drapeau isFinal */
+const srr = (t, fin) => Object.assign([{ transcript: t }], { isFinal: !!fin });
+
+test("sttFold : accumule les segments finaux HORS de la liste d'événements (bug Android)", () => {
+  const { sttFold } = CONV.pure;
+  // événement 1 : un interim
+  let s = sttFold("", [srr("안녕", false)], 0);
+  assert.equal(s.display, "안녕");
+  assert.equal(s.finalTxt, "");                       // pas encore final
+  // événement 2 : le segment devient final
+  s = sttFold(s.finalTxt, [srr("안녕하세요 ", true)], 0);
+  assert.equal(s.finalTxt, "안녕하세요 ");
+  // événement 3 (Android RÉINITIALISE la liste : seul le nouveau segment est présent) —
+  // sans accumulation externe, on ne garderait que « 오늘 » : LE bug rapporté
+  s = sttFold(s.finalTxt, [srr("오늘 날씨가 좋아요", false)], 0);
+  assert.equal(s.display, "안녕하세요 오늘 날씨가 좋아요");
+  s = sttFold(s.finalTxt, [srr("오늘 날씨가 좋아요", true)], 0);
+  assert.equal(s.finalTxt, "안녕하세요 오늘 날씨가 좋아요");
+});
+
+test("sttFold : resultIndex saute les segments déjà traités ; espaces normalisés", () => {
+  const { sttFold } = CONV.pure;
+  const results = [srr("이미 처리됨 ", true), srr("새 것", false)];
+  const s = sttFold("기존 ", results, 1);              // startIdx 1 : le 1er est déjà accumulé
+  assert.equal(s.display, "기존 새 것");
+  assert.ok(!s.display.includes("이미"));
+  assert.equal(sttFold("a  ", [srr("  b ", false)], 0).display, "a b");
+});
+
 test("parseReply openai : texte, erreur API, contenu nul", () => {
   assert.deepEqual(parseReply("openai", { choices: [{ message: { content: " 좋아요. " } }] }), { text: "좋아요." });
   const e = parseReply("openai", { error: { message: "Incorrect API key provided" } }, 401);

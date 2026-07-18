@@ -34,6 +34,19 @@
     ].filter(Boolean).join("\n");
   }
 
+  /* v88 : accumulation STT robuste au bug Android — la liste ev.results est parfois RÉINITIALISÉE
+     entre les événements (il ne reste que le dernier segment) → les segments FINAUX vivent dans
+     finalTxt, HORS de la liste. startIdx = ev.resultIndex (ne retraite pas l'déjà-accumulé). */
+  function sttFold(finalTxt, results, startIdx){
+    let interim = "";
+    for(let i = startIdx || 0; i < results.length; i++){
+      const t = results[i][0].transcript;
+      if(results[i].isFinal) finalTxt += t;
+      else interim += t;
+    }
+    return { finalTxt, display: (finalTxt + interim).replace(/\s+/g, " ").trim() };
+  }
+
   function trimHistory(h, max){
     max = max || MAX_HISTORY;
     if(!Array.isArray(h) || h.length <= max) return h || [];
@@ -249,19 +262,34 @@
             stream.getTracks().forEach(t => t.stop());   // on ne voulait que la permission
           }
         }catch(e){ status.textContent = MSG_DENIED; return; }
+        /* v88 (retour user : « ça coupe, ça ne garde que le dernier mot ») :
+           - continuous = true + relance auto : Android coupe à la moindre pause — fatal pour un
+             apprenant qui parle lentement. C'est l'USER qui arrête (2e tap sur le micro) ;
+           - sttFold : les segments finaux s'accumulent HORS de ev.results (qu'Android réinitialise). */
+        let finalTxt = "";
         rec = new SR();
         rec.lang = "ko-KR";
         rec.interimResults = true;
-        rec.continuous = false;
+        rec.continuous = true;
         rec.onresult = ev => {
-          let t = "";
-          for(let i = 0; i < ev.results.length; i++) t += ev.results[i][0].transcript;
-          input.value = t;
+          const s = sttFold(finalTxt, ev.results, ev.resultIndex);
+          finalTxt = s.finalTxt;
+          input.value = s.display;
         };
-        rec.onerror = ev => { status.textContent = SR_ERRS[ev.error] || ("Micro : " + ev.error); };
-        rec.onend = () => { listening = false; micBtn.classList.remove("rec"); input.focus(); };
+        rec.onerror = ev => {
+          if(ev.error === "no-speech" && listening) return;           // silence → la relance auto s'en charge
+          if(ev.error === "not-allowed" || ev.error === "service-not-allowed" || ev.error === "audio-capture") listening = false;
+          status.textContent = SR_ERRS[ev.error] || ("Micro : " + ev.error);
+        };
+        rec.onend = () => {
+          if(listening){ try{ rec.start(); return; }catch(e){ listening = false; } }   // relance tant que l'user n'a pas retapé
+          micBtn.classList.remove("rec");
+          if(input.value) status.textContent = "Vérifie la phrase, corrige si besoin, puis envoie.";
+          input.focus();
+        };
         try{
-          rec.start(); listening = true; micBtn.classList.add("rec"); status.textContent = "J'écoute… parle en coréen.";
+          rec.start(); listening = true; micBtn.classList.add("rec");
+          status.textContent = "J'écoute… parle, prends ton temps — retouche le micro quand tu as fini.";
         }catch(e){ status.textContent = "Micro indisponible."; }
       };
     }
@@ -270,7 +298,7 @@
   const API = {
     renderCard,
     callLLM,
-    pure: { buildSystem, trimHistory, buildRequest, parseReply, MODELS, MAX_HISTORY }
+    pure: { buildSystem, trimHistory, buildRequest, parseReply, sttFold, MODELS, MAX_HISTORY }
   };
   if(typeof module !== "undefined" && module.exports) module.exports = API;
   else root.SORI_CONVERSATION = API;
