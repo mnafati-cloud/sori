@@ -45,9 +45,14 @@
     return m ? (+m[3]) + " " + FR_MONTHS[(+m[2]) - 1] : String(iso || "");
   }
 
+  /* v100 : prompt en DEUX blocs — { base, extra }.
+     base  = règles + VOCABULAIRE : STABLE, identique pour TOUTES les conversations du moment
+             (quel que soit le scénario) → UNE entrée de cache partagée, TTL réglable jusqu'à 1 h.
+     extra = fragiles du jour + scénario : VARIABLE, placé APRÈS le point de cache → le faire
+             bouger (révision, changement de scénario) n'invalide plus le gros préfixe. */
   function buildSystem(words, fragiles, scenarioSys){
     words = words || []; fragiles = fragiles || [];
-    return [
+    const base = [
       "Tu es un partenaire de conversation en coréen pour un apprenant français de niveau A2.",
       "",
       "RÈGLES STRICTES :",
@@ -57,11 +62,14 @@
       "- Termine chaque réponse par une question simple pour relancer la conversation.",
       "- S'il fait une erreur de coréen, commence ta réponse en reformulant sa phrase correctement (naturellement, sans commentaire), puis enchaîne.",
       "- S'il écrit en français ou demande de l'aide, explique BRIÈVEMENT en français, puis reviens au coréen.",
-      fragiles.length ? "- Quand c'est pertinent, glisse naturellement ces mots dans la conversation (il est en train de les oublier) : " + fragiles.join(", ") : "",
-      scenarioSys ? "\nSCÉNARIO : " + scenarioSys : "",
       "",
       "VOCABULAIRE CONNU : " + words.join(" ")
-    ].filter(Boolean).join("\n");
+    ].join("\n");
+    const extra = [
+      fragiles.length ? "Quand c'est pertinent, glisse naturellement ces mots dans la conversation (il est en train de les oublier) : " + fragiles.join(", ") : "",
+      scenarioSys ? "SCÉNARIO : " + scenarioSys : ""
+    ].filter(Boolean).join("\n\n");
+    return { base, extra };
   }
 
   /* v92 (lu dans SES transcriptions réelles : « 기분기분 좋아요 », « 한국어를 ×5 ») : sur Android,
@@ -142,9 +150,18 @@
     return cut;
   }
 
-  /* construit la requête HTTP (pur : aucun réseau) — la clé n'apparaît QUE dans les en-têtes */
-  function buildRequest(provider, key, system, history){
+  /* construit la requête HTTP (pur : aucun réseau) — la clé n'apparaît QUE dans les en-têtes.
+     system = chaîne (petits appels : glose) OU { base, extra } (conversation).
+     o.ttl1h : cache Anthropic d'UNE HEURE (écriture ×2, lectures ×0,1) au lieu de 5 min (×1,25) —
+     rentable dès qu'une 2e conversation/reprise/pause tombe dans l'heure (la base est partagée). */
+  function buildRequest(provider, key, system, history, o){
+    o = o || {};
+    const sys = (typeof system === "string") ? { base: system, extra: "" } : system;
     if(provider === "anthropic"){
+      const cc = { type: "ephemeral" };
+      if(o.ttl1h) cc.ttl = "1h";
+      const blocks = [{ type: "text", text: sys.base, cache_control: cc }];
+      if(sys.extra) blocks.push({ type: "text", text: sys.extra });   // APRÈS le point de cache
       return {
         url: "https://api.anthropic.com/v1/messages",
         headers: {
@@ -158,7 +175,7 @@
         body: {
           model: MODELS.anthropic,
           max_tokens: MAX_REPLY_TOKENS,
-          system: [{ type: "text", text: system, cache_control: { type: "ephemeral" } }],
+          system: blocks,
           messages: history
         }
       };
@@ -175,7 +192,7 @@
            par reasoning_effort — minimal = latence de conversation, pas de réflexion longue */
         max_completion_tokens: MAX_REPLY_TOKENS,
         reasoning_effort: "minimal",
-        messages: [{ role: "system", content: system }].concat(history)
+        messages: [{ role: "system", content: sys.extra ? sys.base + "\n\n" + sys.extra : sys.base }].concat(history)
       }
     };
   }
@@ -208,8 +225,8 @@
     return (e && e.name === "AbortError") ? "délai dépassé (25 s) — réseau lent ? réessaie"
                                           : "réseau indisponible (" + (e && e.message || e) + ")";
   }
-  async function callLLM(provider, key, system, history){
-    const r = buildRequest(provider, key, system, trimHistory(history));
+  async function callLLM(provider, key, system, history, o){
+    const r = buildRequest(provider, key, system, trimHistory(history), o);
     let res;
     try{
       res = await timedFetch(r.url, { method: "POST", headers: r.headers, body: JSON.stringify(r.body) });
@@ -507,7 +524,7 @@
       if(!key){ status.textContent = "Ajoute ta clé API (" + prov + ") dans Réglages → Conversation."; return false; }
       busy = true; sendBtn.disabled = true;
       showWait("Réponse");
-      const r = await callLLM(prov, key, system, toApi(conv.h));
+      const r = await callLLM(prov, key, system, toApi(conv.h), { ttl1h: c.ttl5 !== true });   // v100 : 1 h par défaut
       busy = false; sendBtn.disabled = false;
       if(r.err){
         status.textContent = "Erreur : " + r.err +

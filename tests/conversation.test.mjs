@@ -7,19 +7,25 @@ const require = createRequire(import.meta.url);
 const CONV = require("../docs/conversation.js");
 const { buildSystem, trimHistory, buildRequest, parseReply, MODELS, MAX_HISTORY } = CONV.pure;
 
-test("buildSystem : vocabulaire, fragiles et règles présents", () => {
-  const s = buildSystem(["학교", "친구"], ["오래"]);
-  assert.ok(s.includes("VOCABULAIRE CONNU : 학교 친구"));
-  assert.ok(s.includes("오래"));                      // mots fragiles à recycler
-  assert.ok(s.includes("A2"));
-  assert.ok(s.includes("coréen"));
-  assert.ok(s.includes("synthétiseur"));              // sortie pensée pour le TTS
+test("buildSystem v100 : base STABLE (règles+vocabulaire) / extra VARIABLE (fragiles+scénario)", () => {
+  const a = buildSystem(["학교", "친구"], ["오래"], null);
+  assert.ok(a.base.includes("VOCABULAIRE CONNU : 학교 친구"));
+  assert.ok(a.base.includes("A2"));
+  assert.ok(a.base.includes("synthétiseur"));         // sortie pensée pour le TTS
+  assert.ok(!a.base.includes("오래"));                 // les fragiles sont HORS de la base cachée
+  assert.ok(a.extra.includes("오래"));
+  /* LE point de l'architecture : la base est IDENTIQUE quels que soient scénario et fragiles
+     → une seule entrée de cache partagée par toutes les conversations du moment */
+  const b = buildSystem(["학교", "친구"], ["어제"], "Tu joues le SERVEUR.");
+  assert.equal(a.base, b.base);
+  assert.ok(b.extra.includes("SCÉNARIO : Tu joues le SERVEUR."));
+  assert.ok(b.extra.includes("어제"));
 });
 
 test("buildSystem : robuste aux listes vides", () => {
-  const s = buildSystem([], []);
-  assert.ok(s.includes("VOCABULAIRE CONNU"));
-  assert.ok(!s.includes("en train de les oublier"));  // pas de ligne fragiles sans fragiles
+  const s = buildSystem([], [], null);
+  assert.ok(s.base.includes("VOCABULAIRE CONNU"));
+  assert.equal(s.extra, "");                          // rien de variable → pas de bloc extra
 });
 
 test("trimHistory : borne l'historique et garde l'alternance depuis un user", () => {
@@ -94,11 +100,17 @@ test("SCENARIOS : ids uniques, rôle défini, libellés KR+FR", () => {
   assert.equal(scenarioById("inconnu"), null);
 });
 
-test("buildSystem : le scénario s'insère, absent sinon", () => {
-  const avec = buildSystem(["학교"], [], "Tu joues le SERVEUR.");
-  assert.ok(avec.includes("SCÉNARIO : Tu joues le SERVEUR."));
-  assert.ok(avec.indexOf("SCÉNARIO") < avec.indexOf("VOCABULAIRE CONNU : "));   // avant la ligne du lexique
-  assert.ok(!buildSystem(["학교"], []).includes("SCÉNARIO"));
+test("buildRequest anthropic v100 : ttl 1 h + bloc extra APRÈS le point de cache", () => {
+  const r = buildRequest("anthropic", "K", { base: "BASE", extra: "EXTRA" }, [{ role: "user", content: "x" }], { ttl1h: true });
+  assert.deepEqual(r.body.system[0].cache_control, { type: "ephemeral", ttl: "1h" });
+  assert.equal(r.body.system[0].text, "BASE");
+  assert.equal(r.body.system[1].text, "EXTRA");
+  assert.equal(r.body.system[1].cache_control, undefined);   // le variable n'est PAS caché
+  const r5 = buildRequest("anthropic", "K", { base: "BASE", extra: "" }, [], {});
+  assert.deepEqual(r5.body.system[0].cache_control, { type: "ephemeral" });     // 5 min = pas de ttl
+  assert.equal(r5.body.system.length, 1);                    // pas de bloc extra vide
+  const ro = buildRequest("openai", "K", { base: "B", extra: "E" }, []);
+  assert.equal(ro.body.messages[0].content, "B\n\nE");       // OpenAI : blocs fusionnés
 });
 
 test("toApi : mapping des rôles ; hid n'affecte que l'affichage, pas l'API", () => {
