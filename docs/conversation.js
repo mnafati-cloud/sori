@@ -256,6 +256,11 @@
   const SVG_SEND = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14"/><path d="M13 6l6 6-6 6"/></svg>';
   const SVG_SPK = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
 
+  /* v101 : dimensionnement de l'écran de discussion — la carte occupe tout l'espace entre sa
+     position et la barre d'onglets, recalculé au resize (clavier Android compris). */
+  let chatSizer = null;
+  function unbindChatSizer(){ if(chatSizer){ try{ root.removeEventListener("resize", chatSizer); }catch(e){} chatSizer = null; } }
+
   let cssDone = false;
   function injectCSS(){
     if(cssDone || typeof document === "undefined") return;
@@ -285,8 +290,12 @@
       ".conv-item .conv-t{font-size:.95rem}",
       ".conv-item .conv-s{font-size:.76rem}",
       ".conv-item .conv-del{flex:none}",
-      /* fil de discussion */
-      ".conv-log{display:flex;flex-direction:column;gap:10px;margin:10px 0;max-height:46vh;overflow-y:auto}",
+      /* fil de discussion — v101 : l'écran de discussion est une COLONNE PLEINE HAUTEUR (maquette) :
+         le fil grandit, la barre de saisie est ANCRÉE EN BAS de l'écran, au-dessus des onglets */
+      ".conv-chat{display:flex;flex-direction:column}",
+      ".conv-chat .conv-head{flex:none}",
+      ".conv-chat .conv-status,.conv-chat .conv-row{flex:none}",
+      ".conv-log{display:flex;flex-direction:column;gap:10px;margin:10px 0;flex:1;min-height:0;overflow-y:auto}",
       ".conv-b{max-width:85%;padding:10px 13px;border-radius:12px;line-height:1.5;white-space:pre-wrap;word-break:break-word}",
       ".conv-b.u{align-self:flex-end;background:color-mix(in srgb, var(--acc2) 10%, transparent);border:1px solid color-mix(in srgb, var(--acc2) 35%, transparent)}",
       ".conv-b.a{align-self:flex-start;border:1px solid var(--line);background:color-mix(in srgb, var(--line) 22%, transparent);font-family:var(--kr-display, inherit);font-size:1.08rem;cursor:pointer}",
@@ -329,6 +338,7 @@
      conv = { id, t (titre), d/u (dates), sc (id scénario|null), h: [{r:"u"|"a", c, hid?}] } */
   function renderHome(container, opts){
     injectCSS();
+    unbindChatSizer();
     opts = opts || {};
     container.innerHTML = "";
     const box = document.createElement("div");
@@ -399,7 +409,7 @@
 
     container.innerHTML = "";
     const box = document.createElement("div");
-    box.className = "card";
+    box.className = "card conv-chat";
     box.innerHTML =
       '<div class="conv-head"><button class="btn ghost conv-back">‹</button>' +
         '<span class="kr-big conv-anchor"></span><span class="lbl conv-sub"></span></div>' +
@@ -415,6 +425,21 @@
     box.querySelector(".conv-sub").textContent = sc ? sc.fr : (conv.t || "Conversation libre");
     container.appendChild(box);
     box.querySelector(".conv-back").onclick = () => { stopMic(); renderHome(container, opts); };
+    /* v101 : la carte remplit l'écran jusqu'aux onglets → la barre de saisie est EN BAS (maquette) ;
+       recalcul au resize (clavier Android) avec re-collage du fil en bas */
+    unbindChatSizer();
+    const sizeChat = () => {
+      if(!box.isConnected){ unbindChatSizer(); return; }
+      const top = box.getBoundingClientRect().top;
+      const tabs = document.getElementById("tabs");
+      const limit = tabs ? tabs.getBoundingClientRect().top : (root.innerHeight || 600);
+      box.style.height = Math.max(320, limit - top - 12) + "px";
+      const lg = box.querySelector(".conv-log");
+      if(lg) lg.scrollTop = lg.scrollHeight;
+    };
+    chatSizer = sizeChat;
+    root.addEventListener("resize", sizeChat);
+    sizeChat();
 
     const log = box.querySelector(".conv-log");
     const status = box.querySelector(".conv-status");
@@ -444,7 +469,12 @@
         const f = document.createElement("span"); f.className = "gf"; f.textContent = p[1];
         row.appendChild(k); row.appendChild(f); gl.appendChild(row);
       });
-      t.onclick = e => { e.stopPropagation(); gl.style.display = gl.style.display === "none" ? "" : "none"; };
+      t.onclick = e => {
+        e.stopPropagation();
+        gl.style.display = gl.style.display === "none" ? "" : "none";
+        /* v101 : le dépliage amène le contenu EN VUE (avant : ouvert hors-champ en bas du fil) */
+        if(gl.style.display !== "none") gl.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      };
       b.appendChild(t); b.appendChild(gl);
     }
     function bubble(role, text, pairs){
