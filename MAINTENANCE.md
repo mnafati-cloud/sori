@@ -44,6 +44,13 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **91 tests Node**, `CACHE` = `sori-v103`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v105 (Takbon — passe SPATIALE, retour user : « tu ne profites toujours pas de l'espace, les
+  Encore/Difficile/Bien/Facile devraient être centrés à l'écran, de toute évidence »)** :
+  composition d'affiche — `#screen > .card.center` prend TOUTE la hauteur restante (`flex:1`) et
+  centre son contenu verticalement (question/mot/creux/notes flottent dans le noir au lieu de
+  s'entasser en haut ; la carte grandit avec le contenu, pas de rognage) ; notes en étiquettes
+  CENTRÉES (Alegreya 1.6rem, intervalle dessous), plus d'air (gaps 4/10px, marges 26/18px).
+  CACHE `sori-v105`.
 - **v104 (Takbon RETRAVAILLÉ — retours user : « des barres partout, pas le côté brillant/pulsant,
   police française sans charme, l'espace inexploité »)** : refonte du bloc `.theme-takbon` —
   (1) **zéro filet** : plus de border sur QCM, notes, stats, listes, trivia, pills, tabs — l'espace
