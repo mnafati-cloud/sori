@@ -44,6 +44,17 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **91 tests Node**, `CACHE` = `sori-v103`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v108 (échelle du manuscrit + ETA « figée à 19 j » CORRIGÉE)** : (1) Caveat paraissait petite
+  (petite hauteur d'x) → racine du thème à **17px** (+6 % partout via rem) + relèvements ciblés
+  (dims 1.05, réglages 1.12, options 1.4, notes 1.7, onglets 1.2, bulles conv 1.08) ; correction
+  d'un oubli v107 (les options QCM référençaient encore l'Alegreya dormante). (2) Le graphe
+  « Temps pour valider chaque niveau » affichait ~19 j IMMOBILE (retour user, VÉRIFIÉ en rejouant
+  sa sauvegarde : 18-21 j sur 8 jours) — deux causes : fenêtre de vitesse 21 j dominée par la vague
+  de rattrapage de début juillet (le rythme décroît au même taux que le restant → ratio quasi
+  constant) ET aucun plancher d'introduction (611 cartes A2 pas encore vues à 10/j = 62 j
+  incompressibles, le « 19 j » était impossible). Fix : **fenêtre 7 j (repli 21) + plancher
+  d'intro** `max(restant÷rythme, à-introduire÷newPerDay)` — l'ETA honnête « finir A2 ≈ 62 j »
+  bougera d'~1/j. Sous-titre : rythme 7 j + nouvelles/j affichés. CACHE `sori-v108`.
 - **v107 (Takbon — le manuscrit PARTOUT + icônes apaisées)** : retours user (« des icônes qui
   détonnent » + « appliquer la police manuscrite partout ») — Caveat devient la voix latine de
   TOUT le thème (`--hand` sur body + form controls en inherit ; big-fr 2.3rem, boutons, réglages,

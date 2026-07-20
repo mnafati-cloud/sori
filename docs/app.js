@@ -1656,8 +1656,8 @@ function renderStats(){
   /* ===== NIVEAU & PROGRESSION — niveau actuel (d'après les acquis), % + ETA vers le suivant,
      et deux graphes quotidiens (maîtrise gagnée/jour, réussite/jour). Maîtrise = stade≥4. ===== */
   const BANDS = ["A1","A2","B1","B2","C1"];
-  const tot={A1:0,A2:0,B1:0,B2:0,C1:0}, mas={A1:0,A2:0,B1:0,B2:0,C1:0};
-  baseItems.forEach(it=>{ const c=(EXTRA[it.id]||{}).cefr; if(tot[c]!==undefined){ tot[c]++; if(it.stage>=4) mas[c]++; } });
+  const tot={A1:0,A2:0,B1:0,B2:0,C1:0}, mas={A1:0,A2:0,B1:0,B2:0,C1:0}, intro={A1:0,A2:0,B1:0,B2:0,C1:0};
+  baseItems.forEach(it=>{ const c=(EXTRA[it.id]||{}).cefr; if(tot[c]!==undefined){ tot[c]++; if(it.stage>=4) mas[c]++; if(it.stage>=1) intro[c]++; } });
   const pct = b => tot[b] ? Math.round(100*mas[b]/tot[b]) : 0;
   let working = null;
   for(const b of BANDS){ if(tot[b] && mas[b]/tot[b] < 0.8){ working = b; break; } }             // niveau en cours : 1re bande < 80%
@@ -1666,10 +1666,17 @@ function renderStats(){
   const need = working ? Math.max(0, Math.ceil(0.8*tot[working]) - mas[working]) : 0;             // cartes restantes vers le seuil du niveau suivant
 
   const dd=(a,b)=>Math.round((new Date(a+"T12:00:00")-new Date(b+"T12:00:00"))/86400000);
-  /* vitesse récente = cartes maîtrisées/jour sur ≤21 j d'historique (ST.lvlhist) */
-  const pts = Object.keys(ST.lvlhist||{}).sort().filter(d=>dd(t,d)<=21).map(d=>({d, tt:lvlTotal(ST.lvlhist[d])}));
-  let pace=null;
-  if(pts.length>=2){ const a=pts[0], b=pts[pts.length-1], span=dd(b.d,a.d); if(span>=1 && b.tt>a.tt) pace=(b.tt-a.tt)/span; }
+  /* v108 : vitesse récente = cartes maîtrisées/jour sur 7 j (repli 21 j si historique court).
+     La fenêtre de 21 j gardait la vague de rattrapage de début juillet au dénominateur : le
+     rythme affiché restait ~3× le régime réel et l'ETA semblait figée (retour user « toujours
+     19 jours, ça ne monte pas, ça ne descend pas »). */
+  const paceFrom = win => {
+    const p = Object.keys(ST.lvlhist||{}).sort().filter(d=>dd(t,d)<=win).map(d=>({d, tt:lvlTotal(ST.lvlhist[d])}));
+    if(p.length<2) return null;
+    const a=p[0], b=p[p.length-1], span=dd(b.d,a.d);
+    return (span>=1 && b.tt>a.tt) ? (b.tt-a.tt)/span : null;
+  };
+  const pace = paceFrom(7) != null ? paceFrom(7) : paceFrom(21);
   const paceTxt = pace!=null ? (Math.round(pace*10)/10) : null;
   const nextPct = working ? Math.min(100, Math.round(100*(mas[working]/(0.8*tot[working])))) : 100;   // % du chemin vers le palier suivant
   $screen.appendChild(el(`<div class="card"><h2>Ton niveau</h2>
@@ -1696,15 +1703,27 @@ function renderStats(){
       ? `<div class="bars">${pg.map(x=>`<div class="b"><div style="height:${x.p==null?2:Math.max(2,Math.round(70*x.p/mxp))}px${x.d===t?";background:var(--acc)":""}${x.p==null?";opacity:.25":""}"></div><span>${x.p==null?"·":(Math.round(x.p*10)/10)}</span></div>`).join("")}</div>`
       : `<p class="dim" style="font-size:.82rem">L'historique se construit — les barres apparaîtront au fil de tes jours de révision.</p>`) : ""}</div>`));
 
-  /* ⏳ temps estimé vers CHAQUE niveau à venir (cumulé) — cartes restantes ÷ vitesse récente */
+  /* ⏳ temps estimé vers CHAQUE niveau à venir (cumulé) — cartes restantes ÷ vitesse récente.
+     v108 : PLANCHER D'INTRODUCTION — finir un niveau exige d'abord d'INTRODUIRE ses cartes
+     pas encore vues (≤ newPerDay/jour) ; sans ce plancher l'ETA promettait de maîtriser des
+     cartes qui n'existaient pas encore dans la rotation (le « 19 j » impossible du retour user).
+     ETA = max(restantes-à-maîtriser ÷ rythme, restantes-à-introduire ÷ nouvelles/jour). */
   const wi = BANDS.indexOf(working);
   const upcoming = (wi>=0 ? BANDS.slice(wi) : []).filter(b=>tot[b] && mas[b]/tot[b] < 0.8);
-  let cum=0; const etas = upcoming.map(b=>{ cum += Math.max(0, Math.ceil(0.8*tot[b]) - mas[b]); return {b, days: pace ? Math.ceil(cum/pace) : null}; });
+  const npd = Math.max(0, ST.set.newPerDay||0);
+  let cum=0, cumIntro=0;
+  const etas = upcoming.map(b=>{
+    cum      += Math.max(0, Math.ceil(0.8*tot[b]) - mas[b]);
+    cumIntro += Math.max(0, Math.ceil(0.8*tot[b]) - intro[b]);
+    if(!pace) return {b, days:null};
+    const dInt = npd>0 ? Math.ceil(cumIntro/npd) : 0;
+    return {b, days: Math.max(Math.ceil(cum/pace), dInt)};
+  });
   const mxe = Math.max(1,...etas.map(x=>x.days||0));
   /* v79 : libellé clarifié (retour user) — le 1er barreau est le niveau EN COURS (le « niveau actuel »
      affiché plus haut) ; « X j » = temps pour l'AMENER à 80 % (le finir), pas pour « l'atteindre ». */
   $screen.appendChild(el(`<div class="card"><h2>Temps pour valider chaque niveau</h2>
-    <p class="dim" style="font-size:.82rem;margin-bottom:6px">Jours estimés pour amener chaque niveau à <b>80 % de maîtrise</b> (le seuil « acquis »)${paceTxt!=null?`, à ton rythme récent (~${paceTxt} carte${pace>=2?"s":""}/j)`:""}.</p>
+    <p class="dim" style="font-size:.82rem;margin-bottom:6px">Jours estimés pour amener chaque niveau à <b>80 % de maîtrise</b> (le seuil « acquis »)${paceTxt!=null?`, à ton rythme des 7 derniers jours (~${paceTxt} carte${pace>=2?"s":""}/j) et d'introduction (${npd} nouvelles/j)`:""}.</p>
     ${etas.length ? (pace
       ? `<div class="bars">${etas.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.days/mxe))}px"></div><span>${x.b===working?"finir "+x.b:x.b}<br>${x.days} j</span></div>`).join("")}</div>
          <p class="dim" style="font-size:.78rem;margin-top:6px">Estimation <b>optimiste</b> : basée sur ta vitesse des derniers jours, qui ralentit quand tu introduis moins de nouvelles cartes.</p>`

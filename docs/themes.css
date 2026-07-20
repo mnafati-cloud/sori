@@ -229,6 +229,10 @@
 }
 .theme-takbon{
   color-scheme:dark;
+  /* v108 : Caveat a une petite hauteur d'x — à taille égale elle paraît plus petite
+     (retour user). La racine passe à 17px : tout le thème s'agrandit de ~6 % d'un coup
+     (rem), + relèvements ciblés ci-dessous sur les petits corps. */
+  font-size:17px;
   --bg:#000000;
   --panel:#101010;            /* surfaces qui doivent rester lisibles : inputs, bulles, tuiles */
   --panel2:#191919;
@@ -336,13 +340,15 @@
 .theme-takbon body{font-family:var(--hand)}
 .theme-takbon button, .theme-takbon input, .theme-takbon select,
 .theme-takbon textarea{font-family:inherit}
-.theme-takbon .dim{font-size:.98rem}
-.theme-takbon h2{font-size:.88rem; letter-spacing:.1em}
-.theme-takbon .stat .l{font-size:.8rem}
-.theme-takbon .pill{font-size:.85rem}
-.theme-takbon .settings label{font-size:1.08rem}
-.theme-takbon .escbtn{font-size:.95rem}
-.theme-takbon .big-fr{font-family:var(--hand); font-weight:700; font-size:2.3rem;
+.theme-takbon .dim{font-size:1.05rem}
+.theme-takbon h2{font-size:.92rem; letter-spacing:.1em}
+.theme-takbon .stat .l{font-size:.85rem}
+.theme-takbon .pill{font-size:.9rem}
+.theme-takbon .settings label{font-size:1.12rem}
+.theme-takbon .escbtn{font-size:1rem}
+.theme-takbon .list .item .fr{font-size:.95rem}
+.theme-takbon .conv-b{font-size:1.08rem}
+.theme-takbon .big-fr{font-family:var(--hand); font-weight:700; font-size:2.4rem;
   line-height:1.2; text-shadow:0 0 18px rgba(255,255,255,.16)}
 .theme-takbon .btn{font-family:var(--hand)}
 
@@ -350,7 +356,7 @@
    masquées), icônes restantes affinées en traits de crayon */
 .theme-takbon #tabs button svg{display:none}
 .theme-takbon #tabs button{padding:10px 0 4px}
-.theme-takbon #tabs button span{font-family:var(--hand); font-size:1.15rem; letter-spacing:.02em}
+.theme-takbon #tabs button span{font-family:var(--hand); font-size:1.2rem; letter-spacing:.02em}
 .theme-takbon .iconbtn svg{stroke-width:1.2; opacity:.75}
 .theme-takbon .speak svg, .theme-takbon .exspeak svg{stroke-width:1.3}
 
@@ -358,7 +364,7 @@
    stats, J-x, pastilles de compte. La barre de progression de révision disparaît :
    le compteur en grand la remplace. */
 .theme-takbon .rev-top .progressbar{display:none}
-.theme-takbon .rev-count{font-family:var(--num-display); font-size:1.8rem; color:var(--txt);
+.theme-takbon .rev-count{font-family:var(--num-display); font-size:1.9rem; color:var(--txt);
   line-height:1; text-shadow:0 0 14px rgba(255,255,255,.22)}
 .theme-takbon .num, .theme-takbon #daycount, .theme-takbon .lvlpct{font-family:var(--num-display)}
 .theme-takbon #daycount{font-size:1.2rem}
@@ -389,7 +395,7 @@
 /* QCM : de la typographie nue qui s'étale — zéro filet, la bonne réponse s'allume */
 .theme-takbon .opts{gap:10px; margin:18px 0 0}
 .theme-takbon .opts button{background:none; border:none; border-radius:12px; padding:15px 12px;
-  font-family:var(--fr-display); font-size:1.3rem; font-weight:700; min-height:56px}
+  font-family:var(--hand); font-size:1.4rem; font-weight:700; min-height:56px}
 .theme-takbon .opts button.kr{font-family:var(--kr-display); font-size:1.6rem}
 .theme-takbon .opts button:active{background:rgba(255,255,255,.06)}
 .theme-takbon .opts button.good{background:none; border:none; color:var(--txt); text-shadow:var(--tk-glow)}
@@ -403,8 +409,8 @@
 .theme-takbon .btn.g4{display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:1px; background:none; border:none; border-radius:12px; color:var(--txt);
   padding:12px; text-align:center; min-height:66px}
-.theme-takbon .btn.g4 b{display:block; font-size:1.6rem; font-weight:700; letter-spacing:.01em}
-.theme-takbon .btn.g4 .ans-ivl{display:block; font-size:.85rem; margin:0}
+.theme-takbon .btn.g4 b{display:block; font-size:1.7rem; font-weight:700; letter-spacing:.01em}
+.theme-takbon .btn.g4 .ans-ivl{display:block; font-size:.9rem; margin:0}
 .theme-takbon .btn.g4:active{background:rgba(255,255,255,.06)}
 .theme-takbon .btn.g4.ko{background:none; border:none; color:var(--seal)}
 .theme-takbon .btn.g4.ok{background:none; border:none; color:var(--txt)}
@@ -414,7 +420,7 @@
 /* stats : des chiffres-affiches qui flottent — l'espace fait la grille */
 .theme-takbon .statgrid{gap:8px}
 .theme-takbon .stat{background:none; border:none; border-radius:0; padding:16px 10px 12px; text-align:center}
-.theme-takbon .stat .n{font-family:var(--num-display); font-size:2.4rem; font-weight:700}
+.theme-takbon .stat .n{font-family:var(--num-display); font-size:2.3rem; font-weight:700}   /* 2.3 : la tuile « 961 / 7997 » doit tenir avec la racine 17px */
 .theme-takbon .event-days{font-family:var(--num-display)}
 .theme-takbon .stat.tap::after{border:none; opacity:.5}
 .theme-takbon .stat.tap:hover{border-color:transparent}
