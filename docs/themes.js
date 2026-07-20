@@ -20,7 +20,8 @@
     {id:"seoul",      label:"Séoul nuit",     cls:"theme-seoul",      color:"#0a0a12"},
     {id:"nuit",       label:"Bleu nuit",      cls:"theme-nuit",       color:"#0f172a"},
     {id:"hanji",      label:"Hanji (clair)",  cls:"theme-hanji",      color:"#FFFDF6"},
-    {id:"dansaekhwa", label:"Dansaekhwa",     cls:"theme-dansaekhwa", color:"#0f0d0a"}
+    {id:"dansaekhwa", label:"Dansaekhwa",     cls:"theme-dansaekhwa", color:"#0f0d0a"},
+    {id:"takbon",     label:"Takbon (noir)",  cls:"theme-takbon",     color:"#000000"}
   ];
   /* v69 : migration UNE FOIS vers le nouveau défaut « Encre & sceau » (refonte validée user).
      Un thème choisi APRÈS la migration reste respecté (la clé -mig l'atteste). */

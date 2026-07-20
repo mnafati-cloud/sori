@@ -1306,6 +1306,11 @@ function gradeButtons(row, it, kind, capMax){
       wire(el(`<button class="btn ok g4"><b>Bien</b>${ivl(3)}</button>`),   true,  3));   // brute ; afterAnswer plafonne (canal S)
   }
 }
+/* v103 : le thème « Takbon » change le DÉCLENCHEUR de révélation — des creux à toucher
+   (.slots/.slot-wide/.slots-h, stylés dans themes.css) au lieu du bouton Montrer. Source de
+   vérité = la CLASSE réellement posée sur <html> (pas localStorage, qui peut désynchroniser
+   si un autre onglet change le thème — revue v103) ; le select de Réglages re-rend l'écran. */
+function isTakbon(){ try{ return document.documentElement.classList.contains("theme-takbon"); }catch(_){ return false; } }
 function exoRecall(it, hinted){
   /* indice (v76) : ENGINE.hintPlan choisit une position TOURNANTE (compteur ok+ko) et n'expose que
      l'attaque (jamo) quand révéler le bloc donnerait le mot (1 syll, radical d'un verbe 2 syll).
@@ -1324,14 +1329,28 @@ function exoRecall(it, hinted){
       :                  `<span class="hs"></span>`
     ).join("") + `</div>`;
   }
+  /* v103 Takbon : même handler #show, même flux (kind/capMax/notes inchangés) — seul le
+     déclencheur change. Avec indice, les tuiles d'indice DEVIENNENT le déclencheur ; sans,
+     des creux (un par syllabe via ENGINE.slotPlan, ou un creux large). */
+  const tk = isTakbon();
+  let trigger = "";
+  if(!tk){
+    trigger = `<button class="btn ghost" id="show">Montrer</button>`;
+  } else if(hinted){
+    hint = `<button class="slots-h" id="show" aria-label="révéler le mot">${hint}</button>`;
+  } else {
+    const sp = ENGINE.slotPlan(it.kr);
+    hint = sp.mode === "tiles"
+      ? `<button class="slots" id="show" aria-label="révéler le mot">${'<span class="sl"></span>'.repeat(sp.n)}</button>`
+      : `<button class="slot-wide" id="show" aria-label="révéler le mot"></button>`;
+  }
   const card = el(`<div class="card center">
     <div class="dim">${hinted?"Rappel avec indice":"Rappel"} — dis-le à voix haute</div>
     <div class="big-fr">${esc(it.fr)}</div>${hint}
     <div class="feedback"></div>
-    <div class="row" style="margin-top:12px">
-      <button class="btn ghost" id="show">Montrer</button>
-    </div></div>`);
+    <div class="row" style="margin-top:12px">${trigger}</div></div>`);
   card.querySelector("#show").onclick = ()=>{
+    if(tk) card.querySelector("#show").remove();   // les creux ont fait leur travail
     /* mot révélé + bouton 🔊 pour le réécouter pendant la notation */
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span> <button class="speak" title="écouter">${SVG_SPK}</button>`;
     card.querySelector(".feedback .speak").onclick = ()=>speak(it.kr, it.id);
@@ -1343,14 +1362,17 @@ function exoRecall(it, hinted){
 }
 /* stage 4-5 (variante) : rappel inversé — je vois le coréen, je donne le sens */
 function exoRecallRev(it){
+  const tk = isTakbon();   // v103 : creux large à toucher au lieu du bouton Montrer
   const card = el(`<div class="card center">
     <div class="dim">Rappel inversé — que veut dire…</div>
     <div class="big-kr ${it.type==="phrase"?"phrase":""}">${esc(it.kr)}</div>
     <button class="speak" title="écouter">${SVG_SPK}</button>
+    ${tk ? `<button class="slot-wide" id="show" aria-label="révéler le sens"></button>` : ""}
     <div class="feedback"></div>
-    <div class="row" style="margin-top:12px"><button class="btn ghost" id="show">Montrer</button></div></div>`);
+    <div class="row" style="margin-top:12px">${tk ? "" : `<button class="btn ghost" id="show">Montrer</button>`}</div></div>`);
   card.querySelector(".speak").onclick = ()=>speak(it.kr, it.id);
   card.querySelector("#show").onclick = ()=>{
+    if(tk) card.querySelector("#show").remove();
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.fr)}</span>`;
     showTrivia(card, it);
     gradeButtons(card.querySelector(".row"), it, "recrev");
@@ -1895,7 +1917,10 @@ function openSettings(){
   const vsel = set.querySelector("#voice");
   if(vsel) vsel.onchange = e=>{ ST.set.voice = e.target.value; save(); pickVoice(); ttsSpeak("안녕하세요"); };
   const tsel = set.querySelector("#theme");
-  if(tsel) tsel.onchange = e=>SORI_THEMES.set(e.target.value);
+  /* v103 : re-rendre l'écran derrière la modale — Takbon change le déclencheur de révélation
+     (creux vs bouton Montrer), la carte affichée doit suivre le thème immédiatement, sinon
+     des creux orphelins restent sans style dans les autres thèmes (revue v103). */
+  if(tsel) tsel.onchange = e=>{ SORI_THEMES.set(e.target.value); NAV = true; render(); NAV = false; };
   set.querySelector("#exp").onclick  = exportState;
   set.querySelector("#imp").onclick  = ()=>set.querySelector("#impfile").click();
   set.querySelector("#impfile").onchange = importState;

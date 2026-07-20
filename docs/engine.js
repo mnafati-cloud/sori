@@ -343,9 +343,22 @@
     return { tiles, meaningful: !revealIsPredictable, S, infoSylls, revealSyl };
   }
 
+  /* ===== creux de révélation (thème Takbon, v103) : combien de cases vides afficher =====
+     Le thème remplace le bouton « Montrer » par des creux à toucher (le mot se presse dedans).
+     Un creux par syllabe pour un MOT hangul court — maquette validée ; le compte de syllabes
+     est une micro-aide assumée. Dès que les cases seraient infidèles ou déborderaient (espace,
+     caractère non-hangul, plus de 4 syllabes — revue v103 : 5 creux de 62px dépassent les
+     ~332px utiles d'un écran Android), UN creux large qui ne révèle rien. PURE. */
+  function slotPlan(kr){
+    const chars = [...String(kr == null ? "" : kr).trim()];
+    const S = chars.filter(isHangulSyllable).length;
+    if(S === 0 || S > 4 || chars.some(c => !isHangulSyllable(c))) return { mode: "wide", n: 0 };
+    return { mode: "tiles", n: S };
+  }
+
   /* ================= export double environnement ================= */
   const ENGINE = { addDays, daysBetween, computeAnswer, computeAnswerLegacy, easeOf, isLeech,
-                   leadJamo, hintPlan,
+                   leadJamo, hintPlan, slotPlan,
                    prevReviewDate, retention7, selectDue, pickNew, computeStreak,
                    pickDistractors, shuffle, sample, DEF_SET, STEP,
                    fsrsSchedule, fsrsR, fsrsIntervalDays, fsrsNextInterval, fuzzInterval, fsrsInitS, fsrsInitD,

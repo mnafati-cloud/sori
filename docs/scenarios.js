@@ -51,7 +51,7 @@
 
     container.appendChild(el(`<div>
       <div class="progressbar"><div style="width:${Math.round(100*CUR.pos/sc.steps.length)}%"></div></div>
-      <div class="dim" style="margin-top:6px">${esc(sc.title)} — ${CUR.pos+1}/${sc.steps.length}
+      <div class="dim sc-head" style="margin-top:6px">${esc(sc.title)} — ${CUR.pos+1}/${sc.steps.length}
         <button class="btn small ghost" id="scquit" style="float:right">quitter</button></div></div>`));
     container.querySelector("#scquit").onclick = ()=>{ container.innerHTML=""; renderList(container, opts); };
 

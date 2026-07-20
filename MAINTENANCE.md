@@ -42,8 +42,23 @@
   Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
   PowerShell 5.1 sous Windows 11.
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
-  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **70 tests Node**, `CACHE` = `sori-v81`.
+  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **91 tests Node**, `CACHE` = `sori-v103`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v103 (Thème « Takbon » — noir estampage, maquette artifact 9e8c1c77)** : 6ᵉ thème `takbon`
+  (entrée themes.js + bloc `.theme-takbon` dans themes.css) : noir pur OLED, blanc épais à halo,
+  vermillon du sceau seul accent (le céladon devient blanc dans ce thème), PLEINE LARGEUR
+  (`#screen` sans marges latérales, cartes dé-boîtées, filets bord à bord, CTA en bande, retrait
+  14px pour les textes alignés à gauche) et apparitions « pressées » (`takbon-press`, mêmes courbes
+  que le tampon v73 ; `.conv-chat` exclue car sa hauteur est mesurée à l'append). Le thème change
+  aussi le DÉCLENCHEUR de révélation en rappel : des creux à toucher (`ENGINE.slotPlan(kr)` pur et
+  testé — un creux par syllabe jusqu'à 4, sinon creux large ; en rec4 les tuiles d'indice deviennent
+  le déclencheur) au lieu du bouton Montrer — kind/plafonds/notation strictement inchangés. Revue
+  adversariale (3 lentilles, 8 défauts confirmés corrigés AVANT push) : re-render de l'écran au
+  changement de thème (sinon creux orphelins sans style), `isTakbon()` lit la classe posée sur
+  `<html>` (pas localStorage), chatSizer faussé par l'animation, `:has()` séparé de son fallback
+  `.g4row` (une liste avec :has s'invalide en bloc), tampon 끝 à une seule animation (son recalé),
+  en-tête de scène `.sc-head` (petit-fils hors rattrapage), plafond 4 syllabes (5 creux = 350px,
+  déborde les ~332px utiles Android). CACHE `sori-v103`.
 - **v96 (Conversation : PASSE DE DESIGN — maquette validée, artifact 0d9f77c0)** : l'user a constaté
   que l'app ne ressemblait pas à la maquette (jamais implémentée, en attente de son verdict) et l'a
   validée (« j'aimais bien les maquettes »). Livré fidèle aux 4 panneaux : **accueil** = en-tête 대화
