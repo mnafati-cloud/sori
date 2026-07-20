@@ -27,13 +27,19 @@ chars = set()
 seed = loadjs(os.path.join(ROOT, "docs", "data.js"))
 for it in seed["items"]:
     chars.update(it.get("kr", ""))
+    # v102 : les GLOSES FRANÇAISES aussi — le prompt FR→KR s'affiche en myeongjo (.big-kr) ;
+    # sans elles, É/À/«/;/… manquaient du sous-ensemble → lettres dépareillées (rapport user 19/07)
+    chars.update(it.get("fr", "") or "")
 extra = loadjs(os.path.join(ROOT, "docs", "extra.js"))
 for v in extra.values():
     chars.update(v.get("ex", "") or "")
 
 # réserve d'interface : salutations de l'accueil, sceau, marque, ponctuation, latin, chiffres
-chars.update("소리좋은아침이에요오후예저녁끝하루수고했어완료 .,!?~·—-()[]0123456789"
-             "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZàâçéèêëîïôùûüœ'’ %/+×")
+# v102 : + MAJUSCULES accentuées, guillemets français, ponctuation des gloses (les GLOSS_FIX
+# d'app.js sont appliquées à l'exécution — leurs caractères ne sont pas dans data.js)
+chars.update("소리좋은아침이에요오후예저녁끝하루수고했어완료대화자유 .,!?~·—-()[]0123456789"
+             "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+             "àâäçéèêëîïôöùûüœæÀÂÄÇÉÈÊËÎÏÔÖÙÛÜŒÆ«»…;:'’  %/+×†‹›")
 chars.discard("\n"); chars.discard("\t")
 
 os.makedirs(OUT_DIR, exist_ok=True)

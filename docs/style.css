@@ -29,7 +29,10 @@
 }
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
 html,body{margin:0; padding:0; background:var(--bg); color:var(--txt);
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+  /* v102 : Roboto AVANT system-ui — sur Android, system-ui peut résoudre vers une police
+     personnalisée sans latin accentué complet (rapport user : é/à « différentes, en gras ») ;
+     Roboto est présent sur tout Android avec le latin complet. Sans effet ailleurs (absent → suite). */
+  font-family:Roboto,system-ui,-apple-system,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
   height:100%; overscroll-behavior:none}
 body{display:flex; flex-direction:column; min-height:100dvh}
 
