@@ -44,6 +44,14 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **91 tests Node**, `CACHE` = `sori-v103`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v107 (Takbon — le manuscrit PARTOUT + icônes apaisées)** : retours user (« des icônes qui
+  détonnent » + « appliquer la police manuscrite partout ») — Caveat devient la voix latine de
+  TOUT le thème (`--hand` sur body + form controls en inherit ; big-fr 2.3rem, boutons, réglages,
+  dims relevés en taille pour la lisibilité ; le hangul reste en myeongjo, repli Malgun pour le
+  coréen des textes courants) ; onglets en TEXTE manuscrit sans icônes SVG ; icônes restantes
+  (topbar, haut-parleurs) affinées en traits de crayon (stroke 1.2-1.3, opacité .75).
+  **Alegreya DORMANTE** (`--fr-display` plus consommée ; @font-face sans usage = pas de
+  téléchargement ; fichier + make_font_fr.py gardés pour revert). CACHE `sori-v107`.
 - **v106 (Takbon — compteur manuscrit + retrait « Je le sais »)** : en révision, la barre de
   progression disparaît (Takbon seulement, `.rev-top .progressbar{display:none}`) — remplacée par
   le compteur en grand (`.rev-count`, 1.8rem) ; TOUS les nombres du thème passent en **Caveat 700**

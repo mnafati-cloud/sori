@@ -244,8 +244,11 @@
   --glow:none;
   --grad:linear-gradient(90deg,#ffffff,#ffffff);
   --seal:#E4584A; --seal-ink:#1F0F0B; --cel:#ffffff; --cel-dim:rgba(255,255,255,.45);
-  --fr-display:"AlegreyaSub",Georgia,"Times New Roman",serif;
+  --fr-display:"AlegreyaSub",Georgia,"Times New Roman",serif;   /* dormante depuis v107 (manuscrit partout) */
   --num-display:"CaveatSub","Segoe Script","Comic Sans MS",cursive;
+  /* v107 : la MAIN écrit tout le latin du thème (hangul en myeongjo, inchangé).
+     Malgun/Apple SD en repli pour les caractères coréens des textes courants (bulles). */
+  --hand:"CaveatSub","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
   --tk-glow:0 0 12px rgba(255,255,255,.50), 0 0 36px rgba(255,255,255,.22);   /* halo au repos */
   --tk-glow2:0 0 16px rgba(255,255,255,.72), 0 0 54px rgba(255,255,255,.42);  /* halo au sommet du souffle */
   --tk-line2:rgba(255,255,255,.30);             /* pointillés des creux */
@@ -327,10 +330,29 @@
 .theme-takbon .brand{text-shadow:var(--tk-glow)}
 .theme-takbon .stat .n{text-shadow:var(--tk-glow)}
 
-/* le français d'affiche : Alegreya — du caractère, à côté de la myeongjo */
-.theme-takbon .big-fr{font-family:var(--fr-display); font-weight:700; font-size:2rem;
-  line-height:1.25; text-shadow:0 0 18px rgba(255,255,255,.16)}
-.theme-takbon .btn{font-family:var(--fr-display)}
+/* v107 : le manuscrit PARTOUT — Caveat écrit tout le latin du thème. Les contrôles de
+   formulaire (boutons, champs) héritent au lieu de la police système. Tailles relevées
+   là où la petite écriture perdrait en lisibilité. */
+.theme-takbon body{font-family:var(--hand)}
+.theme-takbon button, .theme-takbon input, .theme-takbon select,
+.theme-takbon textarea{font-family:inherit}
+.theme-takbon .dim{font-size:.98rem}
+.theme-takbon h2{font-size:.88rem; letter-spacing:.1em}
+.theme-takbon .stat .l{font-size:.8rem}
+.theme-takbon .pill{font-size:.85rem}
+.theme-takbon .settings label{font-size:1.08rem}
+.theme-takbon .escbtn{font-size:.95rem}
+.theme-takbon .big-fr{font-family:var(--hand); font-weight:700; font-size:2.3rem;
+  line-height:1.2; text-shadow:0 0 18px rgba(255,255,255,.16)}
+.theme-takbon .btn{font-family:var(--hand)}
+
+/* v107 : les icônes géométriques détonnaient — onglets en TEXTE manuscrit (icônes
+   masquées), icônes restantes affinées en traits de crayon */
+.theme-takbon #tabs button svg{display:none}
+.theme-takbon #tabs button{padding:10px 0 4px}
+.theme-takbon #tabs button span{font-family:var(--hand); font-size:1.15rem; letter-spacing:.02em}
+.theme-takbon .iconbtn svg{stroke-width:1.2; opacity:.75}
+.theme-takbon .speak svg, .theme-takbon .exspeak svg{stroke-width:1.3}
 
 /* v106 : les NOMBRES sont manuscrits (Caveat) — compteur de révision, intervalles,
    stats, J-x, pastilles de compte. La barre de progression de révision disparaît :
