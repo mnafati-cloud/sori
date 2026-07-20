@@ -294,8 +294,8 @@
 
 /* structure : plus de boîtes NI de filets — l'espace sépare, le noir respire.
    #screen sans marges latérales ; les textes alignés à gauche gardent 14px. */
-.theme-takbon #screen{padding:14px 0 20px}
-.theme-takbon .card{background:none; border:none; border-radius:0; padding:12px 14px}
+.theme-takbon #screen{padding:18px 0 28px; gap:24px}   /* v110 : plus d'air entre les blocs */
+.theme-takbon .card{background:none; border:none; border-radius:0; padding:14px}
 /* v105 : composition d'AFFICHE — la carte d'exercice occupe TOUTE la hauteur restante et
    son contenu se centre verticalement dans le noir (question/mot/notes ne s'entassent plus
    en haut). Le flex ne rogne pas : la carte grandit avec le contenu, #screen scrolle. */
@@ -305,7 +305,7 @@
 .theme-takbon #screen > h2, .theme-takbon #screen > p,
 .theme-takbon #screen .section-title, .theme-takbon #screen > .dim,
 .theme-takbon #screen .sc-head{padding-left:14px; padding-right:14px}   /* .sc-head : en-tête de scène (petit-fils, revue v103) */
-.theme-takbon .hero{padding:10px 14px 2px}
+.theme-takbon .hero{padding:14px 14px 4px}
 .theme-takbon .korea-line{padding:2px 14px}
 .theme-takbon .rev-head{padding:0 8px 0 14px}
 .theme-takbon #tabs{border-top-color:transparent}
@@ -431,11 +431,11 @@
   line-height:1.05; margin:4px 0 0; color:var(--txt); text-shadow:var(--tk-glow)}
 
 /* stats : des chiffres-affiches qui flottent — l'espace fait la grille */
-.theme-takbon .statgrid{gap:8px}
-.theme-takbon .stat{background:none; border:none; border-radius:0; padding:16px 10px 12px; text-align:center}
+.theme-takbon .statgrid{gap:18px 6px}                  /* v110 : les rangées respirent */
+.theme-takbon .stat{background:none; border:none; border-radius:0; padding:18px 10px 12px; text-align:center}
 .theme-takbon .stat .n{font-family:var(--num-display); font-size:2.3rem; font-weight:700}   /* 2.3 : la tuile « 961 / 7997 » doit tenir avec la racine 17px */
 .theme-takbon .event-days{font-family:var(--num-display)}
-.theme-takbon .stat.tap::after{border:none; opacity:.5}
+.theme-takbon .stat.tap::after{display:none}           /* v110 : les badges « i » gênaient (retour user) */
 .theme-takbon .stat.tap:hover{border-color:transparent}
 
 /* modales : elles gardent une boîte (illisibles sinon sur le voile) */
