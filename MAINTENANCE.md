@@ -44,6 +44,15 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **91 tests Node**, `CACHE` = `sori-v103`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v112 (re-frappe WebAPK forcée + 2e passe de tailles)** : l'icône v73 puis v110 n'est JAMAIS
+  arrivée sur le téléphone — remplacer les octets d'un PNG à URL constante ne re-déclenche pas la
+  re-frappe du WebAPK. Déclencheur fiable = CHANGER l'URL dans manifest.json → icônes renommées
+  **icon-192-v2.png / icon-512-v2.png** (manifest + index.html + sw.js + make_icons.py ; les
+  anciens fichiers restent pour les manifests en cache) + manifest background/theme_color → #000000
+  (splash noire Takbon). RÈGLE : toute évolution d'icône = incrémenter le suffixe partout.
+  Et nouvelle passe de tailles Takbon (« toujours trop petit, surtout en révision ») : dim 1.15,
+  note 1.1, trivia 1.05, intervalles 1.05, pills .95, boutons 1.1, feedback 1.15, conv 1.15.
+  CACHE `sori-v112`.
 - **v111 (légendes lisibles — fin des font-size INLINE)** : les légendes de graphes/notes
   (« Chaque barre = % du chemin… », version, lvlpct…) portaient leur taille EN INLINE dans
   app.js — aucune surcharge de thème possible (retour user : « je le vois à peine » en Caveat).

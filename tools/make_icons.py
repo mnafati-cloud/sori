@@ -8,7 +8,11 @@ Usage : python tools/make_icons.py [chemin/NanumMyeongjo-Bold.ttf]
   https://raw.githubusercontent.com/google/fonts/main/ofl/nanummyeongjo/NanumMyeongjo-Bold.ttf
   Repli sans argument : Batang (myeongjo système Windows, batang.ttc).
 Rendu en 4x puis réduction LANCZOS (bords nets). Zone sûre maskable : cercle 40 %.
-⚠️ L'icône WebAPK installée se met à jour avec un DÉLAI système Android (v73)."""
+⚠️ v112 : remplacer les OCTETS d'une icône à URL constante ne re-déclenche PAS la
+re-frappe du WebAPK (constaté : l'icône v73 n'est jamais arrivée chez l'user).
+Le déclencheur fiable = changer l'URL dans manifest.json → à CHAQUE évolution
+d'icône : incrémenter le suffixe (-v2 → -v3…) ICI et dans manifest.json,
+index.html (2 liens) et sw.js (ASSETS)."""
 import sys
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
@@ -59,5 +63,5 @@ def make(size, path):
     img.save(path)
     print("ok", path, size)
 
-make(192, r"C:\Users\33785\dev\sori\docs\icon-192.png")
-make(512, r"C:\Users\33785\dev\sori\docs\icon-512.png")
+make(192, r"C:\Users\33785\dev\sori\docs\icon-192-v2.png")
+make(512, r"C:\Users\33785\dev\sori\docs\icon-512-v2.png")
