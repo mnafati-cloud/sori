@@ -784,7 +784,17 @@ const TK_FITS = ["tk-fit1","tk-fit2","tk-fit3"];
 function takbonFit(){
   if(!isTakbon() || !$screen.querySelector(".card.center")){ $screen.classList.remove(...TK_FITS); return; }
   $screen.classList.remove(...TK_FITS);
-  const fits = () => $screen.scrollHeight <= $screen.clientHeight + 1;
+  /* mesure de LAYOUT (offsetTop/offsetHeight), PAS scrollHeight : le débordement scrollable
+     inclut les boîtes TRANSFORMÉES — au keyframe 0% la presse (scale 1.55) gonflait la mesure
+     de ~230px et surcotait les paliers (fit3 au lieu de fit1). offset* ignore les transforms →
+     décision juste dès la première frame, aucun ressaut visible. #screen est position:relative
+     (themes.css) pour que offsetTop soit relatif à lui. */
+  const padB = parseFloat(getComputedStyle($screen).paddingBottom) || 0;
+  const fits = () => {
+    let bottom = 0;
+    for(const ch of $screen.children) bottom = Math.max(bottom, ch.offsetTop + ch.offsetHeight);
+    return bottom + padB <= $screen.clientHeight + 1;
+  };
   for(let i = 0; !fits() && i < TK_FITS.length; i++) $screen.classList.add(TK_FITS[i]);
 }
 let TK_FIT_RAF = 0;

@@ -229,10 +229,10 @@
 }
 .theme-takbon{
   color-scheme:dark;
-  /* v108 : Caveat a une petite hauteur d'x — à taille égale elle paraît plus petite
-     (retour user). La racine passe à 17px : tout le thème s'agrandit de ~6 % d'un coup
-     (rem), + relèvements ciblés ci-dessous sur les petits corps. */
-  font-size:17px;
+  /* v108 : Caveat a une petite hauteur d'x — à taille égale elle paraît plus petite.
+     v114 : racine à 18px (retour user répété « le texte est trop petit ») — le contrôleur
+     de densité v113 garantit que tout tient, plus aucune raison d'être timide. */
+  font-size:18px;
   --bg:#000000;
   --panel:#101010;            /* surfaces qui doivent rester lisibles : inputs, bulles, tuiles */
   --panel2:#191919;
@@ -294,7 +294,7 @@
 
 /* structure : plus de boîtes NI de filets — l'espace sépare, le noir respire.
    #screen sans marges latérales ; les textes alignés à gauche gardent 14px. */
-.theme-takbon #screen{padding:18px 0 28px; gap:24px}   /* v110 : plus d'air entre les blocs */
+.theme-takbon #screen{padding:18px 0 28px; gap:24px; position:relative}   /* v110 : plus d'air ; relative = repère offsetTop pour takbonFit (v114) */
 .theme-takbon .card{background:none; border:none; border-radius:0; padding:14px}
 /* v105 : composition d'AFFICHE — la carte d'exercice occupe TOUTE la hauteur restante et
    son contenu se centre verticalement dans le noir (question/mot/notes ne s'entassent plus
@@ -340,24 +340,25 @@
 .theme-takbon body{font-family:var(--hand)}
 .theme-takbon button, .theme-takbon input, .theme-takbon select,
 .theme-takbon textarea{font-family:inherit}
-/* v112 : NOUVELLE passe de tailles (retour user : « toujours beaucoup trop petit, en
-   particulier durant les révisions ») — tous les petits corps relevés d'un cran de plus */
-.theme-takbon .dim{font-size:1.15rem}
-.theme-takbon .note{font-size:1.1rem}
-.theme-takbon .note-xs{font-size:.9rem}
-.theme-takbon .bars .b span{font-size:.85rem}
-.theme-takbon h2{font-size:.95rem; letter-spacing:.1em}
-.theme-takbon .stat .l{font-size:.9rem}
-.theme-takbon .pill{font-size:.95rem}
-.theme-takbon .settings label{font-size:1.15rem}
-.theme-takbon .escbtn{font-size:1.05rem}
-.theme-takbon .list .item .fr{font-size:1rem}
-.theme-takbon .conv-b{font-size:1.15rem}
-.theme-takbon .btn{font-size:1.1rem}
-.theme-takbon .feedback{font-size:1.15rem}
-.theme-takbon .trivia{font-size:1.05rem}
-.theme-takbon .trivia .tfr, .theme-takbon .trivia .tnote{font-size:1rem}
-.theme-takbon .wbg{font-size:1rem}
+/* v112→v114 : passes de tailles successives (retour user répété « trop petit ») —
+   base généreuse, le contrôleur de densité v113 fait tenir */
+.theme-takbon .dim{font-size:1.2rem}
+.theme-takbon .note{font-size:1.15rem}
+.theme-takbon .note-xs{font-size:.95rem}
+.theme-takbon .bars .b span{font-size:.9rem}
+.theme-takbon h2{font-size:1rem; letter-spacing:.1em}
+.theme-takbon .stat .l{font-size:.95rem}
+.theme-takbon .pill{font-size:1rem}
+.theme-takbon .settings label{font-size:1.2rem}
+.theme-takbon .escbtn{font-size:1.1rem}
+.theme-takbon .list .item .fr{font-size:1.05rem}
+.theme-takbon .conv-b{font-size:1.2rem}
+.theme-takbon .btn{font-size:1.15rem}
+.theme-takbon .feedback{font-size:1.2rem}
+.theme-takbon .trivia{font-size:1.15rem}
+.theme-takbon .trivia .tkr{font-size:1.3rem}
+.theme-takbon .trivia .tfr, .theme-takbon .trivia .tnote{font-size:1.05rem}
+.theme-takbon .wbg{font-size:1.05rem}
 .theme-takbon .big-fr{font-family:var(--hand); font-weight:700; font-size:2.5rem;
   line-height:1.2; text-shadow:0 0 18px rgba(255,255,255,.16)}
 .theme-takbon .btn{font-family:var(--hand)}
@@ -443,7 +444,7 @@
 /* stats : des chiffres-affiches qui flottent — l'espace fait la grille */
 .theme-takbon .statgrid{gap:18px 6px}                  /* v110 : les rangées respirent */
 .theme-takbon .stat{background:none; border:none; border-radius:0; padding:18px 10px 12px; text-align:center}
-.theme-takbon .stat .n{font-family:var(--num-display); font-size:2.3rem; font-weight:700}   /* 2.3 : la tuile « 961 / 7997 » doit tenir avec la racine 17px */
+.theme-takbon .stat .n{font-family:var(--num-display); font-size:2.2rem; font-weight:700}   /* 2.2 : la tuile « 961 / 7997 » doit tenir avec la racine 18px */
 .theme-takbon .event-days{font-family:var(--num-display)}
 .theme-takbon .stat.tap::after{display:none}           /* v110 : les badges « i » gênaient (retour user) */
 .theme-takbon .stat.tap:hover{border-color:transparent}
@@ -460,44 +461,57 @@
    à fit1, etc. — les règles plus bas gagnent à spécificité égale).
    Par défaut (aucune classe) : le texte est au plus GRAND.
    ============================================================ */
+/* v114 : les paliers compactent la MISE EN PAGE d'abord, l'écriture en dernier
+   (retour user « mais le texte est trop petit !! » — les anciens paliers réduisaient la
+   police, et les cartes réelles (mot+contexte+4 notes) y tombaient presque toujours).
+   fit1 = notes en GRILLE 2×2, espaces resserrés, écriture quasi intacte.
+   fit2 = notes en LIGNE de 4 (comme la maquette d'origine), écriture encore lisible.
+   fit3 = dernier recours seulement : tailles réduites + conjugaisons masquées. */
 .theme-takbon #screen.tk-fit1{gap:12px}
-.theme-takbon #screen.tk-fit1 .big-kr{font-size:3.2rem}
-.theme-takbon #screen.tk-fit1 .big-kr.phrase{font-size:1.9rem}
-.theme-takbon #screen.tk-fit1 .big-fr{font-size:1.9rem}
-.theme-takbon #screen.tk-fit1 .feedback .kr{font-size:2rem}
-.theme-takbon #screen.tk-fit1 .btn.g4{min-height:52px; padding:7px 12px}
-.theme-takbon #screen.tk-fit1 .btn.g4 b{font-size:1.4rem}
+.theme-takbon #screen.tk-fit1 .big-kr{font-size:3.4rem}
+.theme-takbon #screen.tk-fit1 .big-kr.phrase{font-size:2rem}
+.theme-takbon #screen.tk-fit1 .big-fr{font-size:2rem}
+.theme-takbon #screen.tk-fit1 .feedback .kr{font-size:2.1rem}
 .theme-takbon #screen.tk-fit1 .row.g4row,
-.theme-takbon #screen.tk-fit1 .row:has(> .btn.g4){margin-top:12px}
+.theme-takbon #screen.tk-fit1 .row:has(> .btn.g4){display:grid; grid-template-columns:1fr 1fr;
+  gap:2px 6px; margin-top:12px}
+.theme-takbon #screen.tk-fit1 .btn.g4{min-height:54px; padding:6px 10px}
+.theme-takbon #screen.tk-fit1 .btn.g4 b{font-size:1.45rem}
+.theme-takbon #screen.tk-fit1 .btn.g4 .ans-ivl{font-size:1rem}
 .theme-takbon #screen.tk-fit1 .slots .sl{width:54px; height:64px}
 .theme-takbon #screen.tk-fit1 .slot-wide{height:46px; margin-top:10px}
 .theme-takbon #screen.tk-fit1 .trivia{margin-top:10px}
 .theme-takbon #screen.tk-fit1 .opts{gap:4px; margin-top:10px}
-.theme-takbon #screen.tk-fit1 .opts button{padding:10px 12px; min-height:48px; font-size:1.25rem}
-.theme-takbon #screen.tk-fit1 .opts button.kr{font-size:1.45rem}
+.theme-takbon #screen.tk-fit1 .opts button{padding:9px 12px; min-height:48px; font-size:1.3rem}
+.theme-takbon #screen.tk-fit1 .opts button.kr{font-size:1.5rem}
 
 .theme-takbon #screen.tk-fit2{gap:8px}
-.theme-takbon #screen.tk-fit2 .big-kr{font-size:2.5rem}
-.theme-takbon #screen.tk-fit2 .big-kr.phrase{font-size:1.65rem}
-.theme-takbon #screen.tk-fit2 .big-fr{font-size:1.55rem}
-.theme-takbon #screen.tk-fit2 .feedback .kr{font-size:1.7rem}
-.theme-takbon #screen.tk-fit2 .dim{font-size:1rem}
-.theme-takbon #screen.tk-fit2 .btn.g4{min-height:44px; padding:4px 12px}
-.theme-takbon #screen.tk-fit2 .btn.g4 b{font-size:1.25rem}
-.theme-takbon #screen.tk-fit2 .btn.g4 .ans-ivl{font-size:.9rem}
-.theme-takbon #screen.tk-fit2 .trivia{font-size:.95rem}
+.theme-takbon #screen.tk-fit2 .big-kr{font-size:2.8rem}
+.theme-takbon #screen.tk-fit2 .big-kr.phrase{font-size:1.75rem}
+.theme-takbon #screen.tk-fit2 .big-fr{font-size:1.7rem}
+.theme-takbon #screen.tk-fit2 .feedback .kr{font-size:1.8rem}
+.theme-takbon #screen.tk-fit2 .dim{font-size:1.05rem}
+.theme-takbon #screen.tk-fit2 .row.g4row,
+.theme-takbon #screen.tk-fit2 .row:has(> .btn.g4){display:flex; flex-direction:row; gap:2px}
+.theme-takbon #screen.tk-fit2 .btn.g4{min-height:56px; padding:5px 2px}
+.theme-takbon #screen.tk-fit2 .btn.g4 b{font-size:1.15rem}
+.theme-takbon #screen.tk-fit2 .btn.g4 .ans-ivl{font-size:.85rem}
+.theme-takbon #screen.tk-fit2 .trivia{font-size:1rem}
+.theme-takbon #screen.tk-fit2 .trivia .tkr{font-size:1.15rem}
 .theme-takbon #screen.tk-fit2 .trivia .tfr,
-.theme-takbon #screen.tk-fit2 .trivia .tnote{font-size:.9rem}
-.theme-takbon #screen.tk-fit2 .opts button{padding:8px 10px; min-height:44px; font-size:1.15rem}
-.theme-takbon #screen.tk-fit2 .hint2 .hs{font-size:1.4rem}
+.theme-takbon #screen.tk-fit2 .trivia .tnote{font-size:.95rem}
+.theme-takbon #screen.tk-fit2 .opts button{padding:8px 10px; min-height:44px; font-size:1.2rem}
+.theme-takbon #screen.tk-fit2 .hint2 .hs{font-size:1.45rem}
 
 .theme-takbon #screen.tk-fit3{gap:6px}
-.theme-takbon #screen.tk-fit3 .big-kr{font-size:2rem}
-.theme-takbon #screen.tk-fit3 .big-kr.phrase{font-size:1.4rem}
-.theme-takbon #screen.tk-fit3 .big-fr{font-size:1.3rem}
-.theme-takbon #screen.tk-fit3 .feedback .kr{font-size:1.45rem}
-.theme-takbon #screen.tk-fit3 .btn.g4{min-height:38px; padding:2px 10px}
-.theme-takbon #screen.tk-fit3 .btn.g4 b{font-size:1.1rem}
-.theme-takbon #screen.tk-fit3 .trivia{font-size:.88rem}
+.theme-takbon #screen.tk-fit3 .big-kr{font-size:2.2rem}
+.theme-takbon #screen.tk-fit3 .big-kr.phrase{font-size:1.45rem}
+.theme-takbon #screen.tk-fit3 .big-fr{font-size:1.45rem}
+.theme-takbon #screen.tk-fit3 .feedback .kr{font-size:1.5rem}
+.theme-takbon #screen.tk-fit3 .dim{font-size:.95rem}
+.theme-takbon #screen.tk-fit3 .btn.g4{min-height:44px; padding:2px 2px}
+.theme-takbon #screen.tk-fit3 .btn.g4 b{font-size:1.05rem}
+.theme-takbon #screen.tk-fit3 .trivia{font-size:.92rem}
+.theme-takbon #screen.tk-fit3 .trivia .tkr{font-size:1.05rem}
 .theme-takbon #screen.tk-fit3 .trivia .tconj{display:none}   /* dernier recours : les conjugaisons sautent */
-.theme-takbon #screen.tk-fit3 .opts button{padding:6px 10px; min-height:40px; font-size:1.05rem}
+.theme-takbon #screen.tk-fit3 .opts button{padding:6px 10px; min-height:40px; font-size:1.1rem}

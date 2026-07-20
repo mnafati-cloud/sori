@@ -44,6 +44,16 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **91 tests Node**, `CACHE` = `sori-v103`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v114 (les paliers compactent la MISE EN PAGE, pas l'écriture + bug de mesure)** : retour
+  user véhément (« mais le texte est trop petit !! ») — les paliers v113 réduisaient la POLICE
+  et les cartes réelles y tombaient presque toujours. Refonte : fit1 = notes en GRILLE 2×2
+  (écriture quasi intacte 1.45rem), fit2 = notes en LIGNE de 4, fit3 seul réduit vraiment.
+  Racine 17→18px, tous les corps de base relevés (+ trivia .tkr 1.3rem). **BUG de mesure
+  trouvé : `scrollHeight` inclut le débordement des boîtes TRANSFORMÉES — au keyframe 0% la
+  presse (scale 1.55) gonflait la mesure de ~230px → paliers surcotés (fit3 au lieu de fit1).**
+  Fix : mesurer en layout pur (`offsetTop+offsetHeight`, transform-indépendant ; #screen
+  position:relative comme repère). Vérifié : pire cas (rappel + trivia riche + 4 notes) = fit1,
+  tout lisible en grand, zéro défilement. CACHE `sori-v114`.
 - **v113 (Takbon — UNE page, toujours : contrôleur de densité)** : retour user « tout doit tenir
   sur une page à tout moment » + « texte toujours trop petit » — réconciliés en rendant la taille
   ADAPTATIVE : par défaut le texte est GRAND (big-kr 4.3rem, notes 1.8rem) ; `takbonFit()` (app.js)
