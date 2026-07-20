@@ -44,6 +44,13 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **91 tests Node**, `CACHE` = `sori-v103`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v106 (Takbon — compteur manuscrit + retrait « Je le sais »)** : en révision, la barre de
+  progression disparaît (Takbon seulement, `.rev-top .progressbar{display:none}`) — remplacée par
+  le compteur en grand (`.rev-count`, 1.8rem) ; TOUS les nombres du thème passent en **Caveat 700**
+  manuscrit (`tools/make_font_num.py` → woff2 50 Ko, `--num-display`, chargée à l'usage) : compteur,
+  intervalles sous les notes, stats (2.4rem), #daycount, pastille CTA, J-x événement, lvlpct.
+  Bouton « Je le sais » RETIRÉ pour tous les thèmes (0 utilisation en 15 j de données — `markKnown`
+  reste défini, dormant). CACHE `sori-v106`.
 - **v105 (Takbon — passe SPATIALE, retour user : « tu ne profites toujours pas de l'espace, les
   Encore/Difficile/Bien/Facile devraient être centrés à l'écran, de toute évidence »)** :
   composition d'affiche — `#screen > .card.center` prend TOUTE la hauteur restante (`flex:1`) et

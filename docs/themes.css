@@ -220,6 +220,13 @@
   src:url("./fonts/alegreya-bold-sub.woff2") format("woff2");
   font-weight:700; font-style:normal; font-display:swap;
 }
+/* police manuscrite des NOMBRES (v106, tools/make_font_num.py, ~50 Ko) — Caveat,
+   écriture au stylo lisible (« manuscrit… pas trop poussé ») */
+@font-face{
+  font-family:"CaveatSub";
+  src:url("./fonts/caveat-bold-sub.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:swap;
+}
 .theme-takbon{
   color-scheme:dark;
   --bg:#000000;
@@ -238,6 +245,7 @@
   --grad:linear-gradient(90deg,#ffffff,#ffffff);
   --seal:#E4584A; --seal-ink:#1F0F0B; --cel:#ffffff; --cel-dim:rgba(255,255,255,.45);
   --fr-display:"AlegreyaSub",Georgia,"Times New Roman",serif;
+  --num-display:"CaveatSub","Segoe Script","Comic Sans MS",cursive;
   --tk-glow:0 0 12px rgba(255,255,255,.50), 0 0 36px rgba(255,255,255,.22);   /* halo au repos */
   --tk-glow2:0 0 16px rgba(255,255,255,.72), 0 0 54px rgba(255,255,255,.42);  /* halo au sommet du souffle */
   --tk-line2:rgba(255,255,255,.30);             /* pointillés des creux */
@@ -323,8 +331,19 @@
 .theme-takbon .big-fr{font-family:var(--fr-display); font-weight:700; font-size:2rem;
   line-height:1.25; text-shadow:0 0 18px rgba(255,255,255,.16)}
 .theme-takbon .btn{font-family:var(--fr-display)}
-.theme-takbon .cta .num, .theme-takbon .btn.g4 .ans-ivl{
-  font-family:Roboto,system-ui,sans-serif}   /* les chiffres restent en linéale tabulaire */
+
+/* v106 : les NOMBRES sont manuscrits (Caveat) — compteur de révision, intervalles,
+   stats, J-x, pastilles de compte. La barre de progression de révision disparaît :
+   le compteur en grand la remplace. */
+.theme-takbon .rev-top .progressbar{display:none}
+.theme-takbon .rev-count{font-family:var(--num-display); font-size:1.8rem; color:var(--txt);
+  line-height:1; text-shadow:0 0 14px rgba(255,255,255,.22)}
+.theme-takbon .num, .theme-takbon #daycount, .theme-takbon .lvlpct{font-family:var(--num-display)}
+.theme-takbon #daycount{font-size:1.2rem}
+.theme-takbon .cta .num{font-family:var(--num-display); font-size:1.15rem}
+.theme-takbon .korea-line b{font-size:1.1rem}
+.theme-takbon .lvlpct{font-size:1rem}
+.theme-takbon .btn.g4 .ans-ivl{font-family:var(--num-display); font-size:1.1rem}
 
 /* le sceau : CTA en bande pleine largeur, tampon et point d'onglet assortis */
 .theme-takbon .btn.cta{border-radius:0; box-shadow:0 8px 34px rgba(228,88,74,.38); font-size:1.15rem}
@@ -373,7 +392,8 @@
 /* stats : des chiffres-affiches qui flottent — l'espace fait la grille */
 .theme-takbon .statgrid{gap:8px}
 .theme-takbon .stat{background:none; border:none; border-radius:0; padding:16px 10px 12px; text-align:center}
-.theme-takbon .stat .n{font-size:2rem; font-weight:800}
+.theme-takbon .stat .n{font-family:var(--num-display); font-size:2.4rem; font-weight:700}
+.theme-takbon .event-days{font-family:var(--num-display)}
 .theme-takbon .stat.tap::after{border:none; opacity:.5}
 .theme-takbon .stat.tap:hover{border-color:transparent}
 

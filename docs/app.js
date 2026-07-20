@@ -964,24 +964,24 @@ function renderReview(){
   /* carte mise de côté (rangée par le nettoyage niveau) : on la saute, même si elle traîne
      encore dans une session sauvegardée. Garde l'effet du nettoyage sans aucune UI. */
   if(it.sus){ QPOS++; saveSess(); return renderReview(); }
-  const head = el(`<div>
+  /* v106 : bouton « Je le sais » retiré (jamais utilisé — 0 fois en 15 jours de données ;
+     markKnown reste défini, dormant). .rev-top/.rev-count : en Takbon la barre est masquée
+     et le compteur devient l'affichage principal (themes.css). */
+  const head = el(`<div class="rev-top">
     <div class="progressbar"><div style="width:${Math.round(100*QPOS/Q.length)}%"></div></div>
     <div class="rev-head">
-      <div class="dim">${QPOS+1} / ${Q.length}
+      <div class="dim"><span class="rev-count">${QPOS+1} / ${Q.length}</span>
         ${it.rev?'<span class="pill stage">production</span>':(ST.set.reverse!==false && it.type==="word"?'<span class="pill">compréhension</span>':"")}
         ${it.enemy?'<span class="pill enemy">ennemie</span>':""}
         ${REPRISE_IDS.has(it.id)?'<span class="pill">reprise</span>':""}
         <span class="pill stage">niv ${it.stage}</span>
         ${COMBO>=3?`<span class="pill stage">×${COMBO}</span>`:""}</div>
       <div class="rev-actions">
-        ${(it.itv||0) < 14 ? '<button class="escbtn" id="knowrev" title="Je connais déjà ce mot — l\'espacer fortement">Je le sais</button>' : ""}
         <button class="escbtn" id="quitrev" title="Quitter la révision (la progression est gardée)">Quitter</button>
       </div>
     </div></div>`);
   $screen.appendChild(head);
   head.querySelector("#quitrev").onclick = leaveReview;
-  const kr = head.querySelector("#knowrev");
-  if(kr) kr.onclick = ()=>{ markKnown(Q[QPOS]); QPOS++; saveSess(); render(); };   // fast-track + carte suivante
   EXO_T0 = Date.now();
   /* v78 : une PHRASE conjuguée (≥2 mots, PAS un bloc lexical en forme dictionnaire) passe par le
      chemin phrase — compréhension + construction par étiquettes (la grammaire est DONNÉE par les

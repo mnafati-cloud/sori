@@ -1,10 +1,11 @@
 /* Sori service worker — network-first (mises à jour auto), repli cache (hors-ligne) */
-const CACHE = "sori-v105";
+const CACHE = "sori-v106";
 const ASSETS = ["./", "./index.html", "./style.css", "./themes.css", "./themes.js",
                 "./engine.js", "./app.js", "./data.js", "./extra.js",
                 "./events-data.js", "./events.js", "./search.js", "./exam.js", "./quests.js", "./typing.js", "./numbers.js", "./structure.js", "./placement.js", "./conversation.js",
                 "./scenarios-data.js", "./scenarios.js", "./player.js",
                 "./fonts/nanum-myeongjo-bold-sub.woff2", "./fonts/alegreya-bold-sub.woff2",
+                "./fonts/caveat-bold-sub.woff2",
                 "./audio/index.js", "./manifest.json", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", e => {
