@@ -44,6 +44,13 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **91 tests Node**, `CACHE` = `sori-v103`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v111 (légendes lisibles — fin des font-size INLINE)** : les légendes de graphes/notes
+  (« Chaque barre = % du chemin… », version, lvlpct…) portaient leur taille EN INLINE dans
+  app.js — aucune surcharge de thème possible (retour user : « je le vois à peine » en Caveat).
+  12 sites migrés vers les classes **`.note`** (.82rem, style.css) et **`.note-xs`** (.72rem) —
+  tailles identiques dans les autres thèmes (.78/.8/.82 normalisés à .82) ; Takbon les relève
+  (1.02rem / .85rem) + étiquettes des barres de graphe .8rem. RÈGLE : plus jamais de
+  `font-size` inline dans le markup app.js — toujours une classe. CACHE `sori-v111`.
 - **v110 (respiration + icône Takbon + badges « i » retirés)** : plus d'air (gap #screen 24px,
   statgrid 18px vertical, paddings relevés) ; badges « i » des tuiles masqués en Takbon (gênants,
   retour user — les popins restent au tap) ; **icônes PWA régénérées au style Takbon**

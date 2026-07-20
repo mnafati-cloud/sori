@@ -65,6 +65,10 @@ body{display:flex; flex-direction:column; min-height:100dvh}
 h2{margin:0 0 8px; font-size:.72rem; font-weight:600; letter-spacing:.15em;
   text-transform:uppercase; color:var(--dim)}
 .dim{color:var(--dim); font-size:.85rem}
+/* v111 : tailles des légendes/notes en CLASSES (plus d'inline font-size dans app.js) —
+   un thème peut ainsi les relever (Takbon : la petite écriture manuscrite se lisait mal) */
+.note{font-size:.82rem}
+.note-xs{font-size:.72rem}
 .num, #daycount, .stat .n, .lvlpct, .ans-ivl{font-variant-numeric:tabular-nums}
 
 /* le hangul d'affiche : myeongjo, énorme, seul en scène */

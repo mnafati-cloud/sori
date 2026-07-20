@@ -341,6 +341,11 @@
 .theme-takbon button, .theme-takbon input, .theme-takbon select,
 .theme-takbon textarea{font-family:inherit}
 .theme-takbon .dim{font-size:1.05rem}
+/* v111 : les légendes/notes (ex-inline font-size, désormais .note/.note-xs) se lisaient
+   à peine en Caveat — relevées ; idem les étiquettes des barres de graphe */
+.theme-takbon .note{font-size:1.02rem}
+.theme-takbon .note-xs{font-size:.85rem}
+.theme-takbon .bars .b span{font-size:.8rem}
 .theme-takbon h2{font-size:.92rem; letter-spacing:.1em}
 .theme-takbon .stat .l{font-size:.85rem}
 .theme-takbon .pill{font-size:.9rem}

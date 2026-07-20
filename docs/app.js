@@ -913,7 +913,7 @@ function renderReview(){
         <button class="btn ghost" id="reviewmore">Réviser 10 de plus</button>
         <button class="btn ghost" id="learnmore">Apprendre 10 nouvelles</button>
       </div>
-      <p class="dim" style="margin-top:8px; font-size:.8rem">Autant de fois que tu veux — ces cartes comptent dans ta progression.</p></div>`));
+      <p class="dim note" style="margin-top:8px">Autant de fois que tu veux — ces cartes comptent dans ta progression.</p></div>`));
     /* récap : les mots ratés de la session, à réécouter d'un tap */
     if(SESSFAIL.length){
       const rec = el(`<div class="card"><h2>À retravailler (${SESSFAIL.length})</h2>
@@ -1680,13 +1680,13 @@ function renderStats(){
   const paceTxt = pace!=null ? (Math.round(pace*10)/10) : null;
   const nextPct = working ? Math.min(100, Math.round(100*(mas[working]/(0.8*tot[working])))) : 100;   // % du chemin vers le palier suivant
   $screen.appendChild(el(`<div class="card"><h2>Ton niveau</h2>
-    <p style="margin:2px 0 8px"><span class="dim" style="font-size:.82rem">Niveau actuel (d'après tes acquis)</span><br>
-      <b style="font-size:1.6rem;color:var(--acc)">${working||"tout acquis"}</b>${acquired.length?` <span class="dim" style="font-size:.8rem">· ${acquired.join(" · ")} acquis</span>`:""}${working&&nextBand?`<br><span class="dim" style="font-size:.82rem">Prochain palier : <b>${nextBand}</b> — ${nextPct}% du chemin</span>`:""}</p>
+    <p style="margin:2px 0 8px"><span class="dim note">Niveau actuel (d'après tes acquis)</span><br>
+      <b style="font-size:1.6rem;color:var(--acc)">${working||"tout acquis"}</b>${acquired.length?` <span class="dim note">· ${acquired.join(" · ")} acquis</span>`:""}${working&&nextBand?`<br><span class="dim note">Prochain palier : <b>${nextBand}</b> — ${nextPct}% du chemin</span>`:""}</p>
     <div class="levelbars">${BANDS.map(b=>`
       <div class="lvlrow">
         <span class="lvlname">${b}</span>
         <span class="lvltrack"><span class="lvlfill${b===working?" work":""}" style="width:${pct(b)}%"></span></span>
-        <span class="lvlpct">${pct(b)}% <span class="dim" style="font-size:.72rem">(${mas[b]}/${tot[b]})</span></span>
+        <span class="lvlpct">${pct(b)}% <span class="dim note-xs">(${mas[b]}/${tot[b]})</span></span>
       </div>`).join("")}</div></div>`));
 
   /* 🧗 gain quotidien vers le prochain niveau (%/jour) — Δ maîtrise du niveau en cours ÷ son seuil (80%), 14 j */
@@ -1698,10 +1698,10 @@ function renderStats(){
   const anyPg = pg.some(x=>x.p!=null && x.p>0);
   const mxp = Math.max(0.5,...pg.map(x=>x.p||0));
   $screen.appendChild(el(`<div class="card"><h2>Gain vers le niveau suivant — 14 j</h2>
-    <p class="dim" style="font-size:.82rem;margin-bottom:6px">${wb?`Chaque barre = <b>% du chemin</b> vers <b>${nextBand||"le niveau suivant"}</b> gagné ce jour-là (cartes solidifiées ÷ seuil du niveau).`:"Tous les niveaux du deck sont acquis."}</p>
+    <p class="dim note" style="margin-bottom:6px">${wb?`Chaque barre = <b>% du chemin</b> vers <b>${nextBand||"le niveau suivant"}</b> gagné ce jour-là (cartes solidifiées ÷ seuil du niveau).`:"Tous les niveaux du deck sont acquis."}</p>
     ${wb ? (anyPg
       ? `<div class="bars">${pg.map(x=>`<div class="b"><div style="height:${x.p==null?2:Math.max(2,Math.round(70*x.p/mxp))}px${x.d===t?";background:var(--acc)":""}${x.p==null?";opacity:.25":""}"></div><span>${x.p==null?"·":(Math.round(x.p*10)/10)}</span></div>`).join("")}</div>`
-      : `<p class="dim" style="font-size:.82rem">L'historique se construit — les barres apparaîtront au fil de tes jours de révision.</p>`) : ""}</div>`));
+      : `<p class="dim note">L'historique se construit — les barres apparaîtront au fil de tes jours de révision.</p>`) : ""}</div>`));
 
   /* ⏳ temps estimé vers CHAQUE niveau à venir (cumulé) — cartes restantes ÷ vitesse récente.
      v108 : PLANCHER D'INTRODUCTION — finir un niveau exige d'abord d'INTRODUIRE ses cartes
@@ -1723,11 +1723,11 @@ function renderStats(){
   /* v79 : libellé clarifié (retour user) — le 1er barreau est le niveau EN COURS (le « niveau actuel »
      affiché plus haut) ; « X j » = temps pour l'AMENER à 80 % (le finir), pas pour « l'atteindre ». */
   $screen.appendChild(el(`<div class="card"><h2>Temps pour valider chaque niveau</h2>
-    <p class="dim" style="font-size:.82rem;margin-bottom:6px">Jours estimés pour amener chaque niveau à <b>80 % de maîtrise</b> (le seuil « acquis »)${paceTxt!=null?`, à ton rythme des 7 derniers jours (~${paceTxt} carte${pace>=2?"s":""}/j) et d'introduction (${npd} nouvelles/j)`:""}.</p>
+    <p class="dim note" style="margin-bottom:6px">Jours estimés pour amener chaque niveau à <b>80 % de maîtrise</b> (le seuil « acquis »)${paceTxt!=null?`, à ton rythme des 7 derniers jours (~${paceTxt} carte${pace>=2?"s":""}/j) et d'introduction (${npd} nouvelles/j)`:""}.</p>
     ${etas.length ? (pace
       ? `<div class="bars">${etas.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.days/mxe))}px"></div><span>${x.b===working?"finir "+x.b:x.b}<br>${x.days} j</span></div>`).join("")}</div>
-         <p class="dim" style="font-size:.78rem;margin-top:6px">Estimation <b>optimiste</b> : basée sur ta vitesse des derniers jours, qui ralentit quand tu introduis moins de nouvelles cartes.</p>`
-      : `<p class="dim" style="font-size:.82rem">Estimation dispo dès quelques jours d'historique de maîtrise (ta vitesse récente est encore inconnue).</p>`)
+         <p class="dim note" style="margin-top:6px">Estimation <b>optimiste</b> : basée sur ta vitesse des derniers jours, qui ralentit quand tu introduis moins de nouvelles cartes.</p>`
+      : `<p class="dim note">Estimation dispo dès quelques jours d'historique de maîtrise (ta vitesse récente est encore inconnue).</p>`)
       : `<p class="dim">Tous les niveaux du deck sont acquis.</p>`}</div>`));
 
   /* 📈 réussite / jour (14 j) — % de bonnes réponses au 1er essai (compteurs propres ok1/ko1) */
@@ -1735,7 +1735,7 @@ function renderStats(){
   const sDays=sWin.filter(x=>x.p!=null);
   const sAvg = sDays.length ? Math.round(sDays.reduce((s,x)=>s+x.p,0)/sDays.length) : null;
   $screen.appendChild(el(`<div class="card"><h2>Réussite quotidienne — 14 jours</h2>
-    <p class="dim" style="font-size:.82rem;margin-bottom:6px">% de bonnes réponses au 1er essai chaque jour${sAvg!=null?` — moyenne ≈ <b>${sAvg}%</b>`:""}.</p>
+    <p class="dim note" style="margin-bottom:6px">% de bonnes réponses au 1er essai chaque jour${sAvg!=null?` — moyenne ≈ <b>${sAvg}%</b>`:""}.</p>
     <div class="bars">${sWin.map(x=>`<div class="b"><div style="height:${x.p==null?2:Math.max(2,Math.round(70*x.p/100))}px${x.d===t?";background:var(--acc)":""}${x.p==null?";opacity:.25":""}" title="${x.p==null?"pas de révision":x.p+'%'}"></div><span>${x.p==null?"·":x.p}</span></div>`).join("")}</div></div>`));
 
   if(leeches.length){
@@ -1821,7 +1821,7 @@ function renderStats(){
   const sum7 = days14.slice(7).reduce((s,x)=>s+x.n,0);
   const avg7 = Math.round(sum7/7*10)/10;
   $screen.appendChild(el(`<div class="card"><h2>Nouveaux mots — 14 jours</h2>
-    <p class="dim" style="font-size:.82rem;margin-bottom:6px">Ton rythme de découverte${avg7>0?` — ≈ <b>${avg7}</b> mots/jour cette semaine`:""}.</p>
+    <p class="dim note" style="margin-bottom:6px">Ton rythme de découverte${avg7>0?` — ≈ <b>${avg7}</b> mots/jour cette semaine`:""}.</p>
     <div class="bars">${days14.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.n/mxN))}px${x.d===t?";background:var(--acc)":""}"></div><span>${x.n}</span></div>`).join("")}</div></div>`));
 
 }
@@ -1889,7 +1889,7 @@ function openSettings(){
       </div>
       <input type="file" id="impfile" accept=".json,application/json">
     </details>
-    <p class="dim" style="margin-top:16px; text-align:center; font-size:.8rem">Sori — version <b id="appver">…</b></p>
+    <p class="dim note" style="margin-top:16px; text-align:center">Sori — version <b id="appver">…</b></p>
     <div class="row" style="margin-top:8px"><button class="btn ghost" id="setclose">Fermer</button></div></div>`);
   back.appendChild(set);
   /* version = le cache actif du service worker (source unique : ce qui tourne VRAIMENT
