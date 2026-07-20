@@ -44,6 +44,16 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **91 tests Node**, `CACHE` = `sori-v103`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v113 (Takbon — UNE page, toujours : contrôleur de densité)** : retour user « tout doit tenir
+  sur une page à tout moment » + « texte toujours trop petit » — réconciliés en rendant la taille
+  ADAPTATIVE : par défaut le texte est GRAND (big-kr 4.3rem, notes 1.8rem) ; `takbonFit()` (app.js)
+  mesure `#screen.scrollHeight` vs `clientHeight` et pose des paliers CUMULATIFS `tk-fit1→3`
+  (themes.css) jusqu'à ce que la carte tienne — re-mesuré à chaque mutation (MutationObserver
+  childList — les changements de classe ne re-déclenchent pas), au resize (clavier) et à
+  `document.fonts.ready`. Les transforms des animations ne changent pas la hauteur de layout
+  (mesure sûre pendant la presse). fit3 = dernier recours (conjugaisons masquées). Vérifié :
+  flux réel QCM+trivia+Continuer tient PLEINE taille ; pire cas (rappel + trivia riche) tient
+  à fit3 pile. CACHE `sori-v113`.
 - **v112 (re-frappe WebAPK forcée + 2e passe de tailles)** : l'icône v73 puis v110 n'est JAMAIS
   arrivée sur le téléphone — remplacer les octets d'un PNG à URL constante ne re-déclenche pas la
   re-frappe du WebAPK. Déclencheur fiable = CHANGER l'URL dans manifest.json → icônes renommées

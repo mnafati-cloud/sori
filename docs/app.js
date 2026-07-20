@@ -773,6 +773,26 @@ function armCooldown(){
   clearTimeout(COOLDOWN_T);
   COOLDOWN_T = setTimeout(()=>$screen.classList.remove("cooldown"), 450);
 }
+/* v113 : Takbon = UNE page, jamais de défilement en exercice (retour user « des fois je dois
+   faire défiler » + « le texte toujours trop petit » — les deux se réconcilient en rendant la
+   taille ADAPTATIVE). Par défaut le texte est GRAND ; si la carte (.card.center) déborde de
+   #screen, on descend par paliers cumulatifs tk-fit1→3 (styles themes.css) jusqu'à tenir.
+   Re-mesuré à chaque mutation du contenu (révélation, trivia, notes, Continuer), au resize
+   (clavier) et au chargement des polices. Les transforms des animations « pressées » ne
+   changent pas la hauteur de layout : mesurer pendant l'animation est sûr. */
+const TK_FITS = ["tk-fit1","tk-fit2","tk-fit3"];
+function takbonFit(){
+  if(!isTakbon() || !$screen.querySelector(".card.center")){ $screen.classList.remove(...TK_FITS); return; }
+  $screen.classList.remove(...TK_FITS);
+  const fits = () => $screen.scrollHeight <= $screen.clientHeight + 1;
+  for(let i = 0; !fits() && i < TK_FITS.length; i++) $screen.classList.add(TK_FITS[i]);
+}
+let TK_FIT_RAF = 0;
+function queueTakbonFit(){ cancelAnimationFrame(TK_FIT_RAF); TK_FIT_RAF = requestAnimationFrame(takbonFit); }
+/* childList seulement : les changements de classe de takbonFit ne re-déclenchent pas l'observer */
+new MutationObserver(queueTakbonFit).observe($screen, { childList:true, subtree:true });
+window.addEventListener("resize", queueTakbonFit);
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(queueTakbonFit);
 function render(){
   $screen.innerHTML="";
   if(TAB==="review"){ renderReview(); armCooldown(); }
