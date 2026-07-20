@@ -201,17 +201,25 @@
 .theme-dansaekhwa #daycount{background:none; border:1px solid var(--line)}
 
 /* ============================================================
-   THÈME « TAKBON » — v103 (maquette validée user)
-   L'estampage (탁본) : le papier est encré noir, la gravure reste
-   blanche. Noir pur OLED, écriture épaisse et lumineuse, le
-   vermillon du sceau pour seul accent — pas de céladon ici, la
-   réussite se dit en blanc. Plus de cartes-boîtes : pleine
-   largeur, les filets courent d'un bord à l'autre. Tout apparaît
-   « pressé » (mêmes courbes que le tampon 끝 de v73).
-   Il change aussi le DÉCLENCHEUR de révélation : app.js rend des
-   creux (.slots/.slot-wide/.slots-h) au lieu du bouton Montrer.
+   THÈME « TAKBON » — v103, RETRAVAILLÉ v104 (retours user :
+   « je vois encore des barres partout, pas le côté brillant/
+   pulsant, la police française sans charme, l'espace inexploité »)
+   L'estampage (탁본) : papier encré noir, gravure blanche.
+   v104 : PLUS DE FILETS — c'est l'ESPACE qui sépare. Le blanc
+   respire (halo double couche qui PULSE lentement). Le français
+   d'affiche passe en Alegreya Bold (serif humaniste à l'ADN
+   calligraphique — du charme, pas manuscrite). Les notes
+   s'étalent en COLONNE, en grand, dans le noir.
+   Déclencheur de révélation : creux à toucher (app.js).
    theme-color recommandé : #000000
    ============================================================ */
+/* police d'affiche FRANÇAISE (sous-ensemble latin, tools/make_font_fr.py, ~29 Ko) —
+   téléchargée seulement si le thème l'utilise (@font-face charge à l'usage) */
+@font-face{
+  font-family:"AlegreyaSub";
+  src:url("./fonts/alegreya-bold-sub.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:swap;
+}
 .theme-takbon{
   color-scheme:dark;
   --bg:#000000;
@@ -229,7 +237,9 @@
   --glow:none;
   --grad:linear-gradient(90deg,#ffffff,#ffffff);
   --seal:#E4584A; --seal-ink:#1F0F0B; --cel:#ffffff; --cel-dim:rgba(255,255,255,.45);
-  --tk-glow:0 0 22px rgba(255,255,255,.30);     /* halo du blanc frotté */
+  --fr-display:"AlegreyaSub",Georgia,"Times New Roman",serif;
+  --tk-glow:0 0 12px rgba(255,255,255,.50), 0 0 36px rgba(255,255,255,.22);   /* halo au repos */
+  --tk-glow2:0 0 16px rgba(255,255,255,.72), 0 0 54px rgba(255,255,255,.42);  /* halo au sommet du souffle */
   --tk-line2:rgba(255,255,255,.30);             /* pointillés des creux */
 }
 
@@ -240,6 +250,11 @@
   78%{transform:scale(1.01)}
   100%{opacity:1; transform:scale(1) rotate(0)}
 }
+/* le souffle — le blanc frotté pulse lentement (v104 : « brillant, pulsant ») */
+@keyframes takbon-breathe{
+  0%,100%{text-shadow:var(--tk-glow)}
+  50%{text-shadow:var(--tk-glow2)}
+}
 /* .conv-chat exclue : renderChat mesure sa hauteur (getBoundingClientRect) juste après
    l'append — le scale(1.55) du keyframe 0% fausserait la mesure (revue v103) */
 .theme-takbon #screen > :not(.conv-chat){animation:takbon-press .32s cubic-bezier(.25,.8,.35,1) both}
@@ -247,44 +262,73 @@
 .theme-takbon #screen > :nth-child(3){animation-delay:.12s}
 .theme-takbon #screen > :nth-child(4){animation-delay:.18s}
 .theme-takbon #screen > :nth-child(n+5){animation-delay:.24s}
-.theme-takbon .feedback > *,
+.theme-takbon .feedback > *{animation:takbon-press .32s cubic-bezier(.25,.8,.35,1) both}
 .theme-takbon .row > .btn.g4{animation:takbon-press .32s cubic-bezier(.25,.8,.35,1) both}
+.theme-takbon .row > .btn.g4:nth-child(2){animation-delay:.06s}
+.theme-takbon .row > .btn.g4:nth-child(3){animation-delay:.12s}
+.theme-takbon .row > .btn.g4:nth-child(4){animation-delay:.18s}
+.theme-takbon .hero-kr, .theme-takbon .big-kr,
+.theme-takbon .done-kr{animation:takbon-breathe 3.6s ease-in-out infinite}
+.theme-takbon .feedback > .kr{animation:takbon-press .32s cubic-bezier(.25,.8,.35,1) both,
+  takbon-breathe 3.6s ease-in-out .32s infinite}
 @media (prefers-reduced-motion: reduce){
-  .theme-takbon #screen > *, .theme-takbon .feedback > *,
-  .theme-takbon .row > .btn.g4{animation:none}
+  .theme-takbon #screen > *, .theme-takbon .feedback > *, .theme-takbon .feedback > .kr,
+  .theme-takbon .row > .btn.g4, .theme-takbon .hero-kr, .theme-takbon .big-kr,
+  .theme-takbon .done-kr{animation:none}
 }
 
-/* structure : plus de boîtes, pleine largeur (le #screen perd ses marges latérales,
-   les textes alignés à gauche gardent un retrait de 14px pour ne pas coller au bord) */
+/* structure : plus de boîtes NI de filets — l'espace sépare, le noir respire.
+   #screen sans marges latérales ; les textes alignés à gauche gardent 14px. */
 .theme-takbon #screen{padding:14px 0 20px}
 .theme-takbon .card{background:none; border:none; border-radius:0; padding:12px 14px}
 .theme-takbon .card[style*="border-color"]{border:1px solid var(--line); border-radius:12px}  /* cartes d'alerte : gardent leur liseré */
 .theme-takbon #screen > h2, .theme-takbon #screen > p,
 .theme-takbon #screen .section-title, .theme-takbon #screen > .dim,
 .theme-takbon #screen .sc-head{padding-left:14px; padding-right:14px}   /* .sc-head : en-tête de scène (petit-fils, revue v103) */
-.theme-takbon .hero{padding:6px 14px 2px}
+.theme-takbon .hero{padding:10px 14px 2px}
 .theme-takbon .korea-line{padding:2px 14px}
 .theme-takbon .rev-head{padding:0 8px 0 14px}
-.theme-takbon .list .item{padding:12px 14px}
+.theme-takbon #tabs{border-top-color:transparent}
+.theme-takbon .list{border-top:none}
+.theme-takbon .list .item{border-bottom:none; padding:13px 14px}
+.theme-takbon .settings label{border-bottom-color:rgba(255,255,255,.08)}
 .theme-takbon .progressbar{border-radius:0}
+.theme-takbon .escbtn{border-color:transparent}
+.theme-takbon .pill{border-color:transparent; padding:3px 5px}
+.theme-takbon .wbrow{border-bottom:none; padding:4px 0}
+.theme-takbon .trivia{background:none; border:none; border-radius:0; margin:18px 0 0; padding:0}
+.theme-takbon .trivia .tnote{border-top:none; padding-top:4px}
+.theme-takbon .verdict{border-color:transparent; border-left:2px solid var(--cel-dim); border-radius:0}
+.theme-takbon .verdict.ko{border-left-color:var(--seal)}
+.theme-takbon .npc{background:none; border:none}
+.theme-takbon .built{background:none; border:1.5px dashed var(--tk-line2); border-radius:12px}
+.theme-takbon .chip{background:none; border:1px solid var(--line)}
+.theme-takbon .chip.src{background:var(--panel)}
 
-/* le blanc frotté : épais, lumineux */
-.theme-takbon .hero-kr{font-size:2.7rem; text-shadow:var(--tk-glow)}
-.theme-takbon .big-kr{font-size:4rem; text-shadow:var(--tk-glow)}
+/* le blanc frotté : épais, LUMINEUX — halo double couche, souffle lent */
+.theme-takbon .hero-kr{font-size:2.9rem; text-shadow:var(--tk-glow)}
+.theme-takbon .big-kr{font-size:4.1rem; text-shadow:var(--tk-glow)}
 .theme-takbon .big-kr.phrase{font-size:2.1rem}
-.theme-takbon .big-fr{font-weight:800; font-size:1.7rem}
-.theme-takbon .feedback .kr{font-size:2.2rem; text-shadow:var(--tk-glow)}
+.theme-takbon .feedback .kr{font-size:2.4rem; text-shadow:var(--tk-glow)}
 .theme-takbon .done-kr{text-shadow:var(--tk-glow)}
 .theme-takbon .brand{text-shadow:var(--tk-glow)}
+.theme-takbon .stat .n{text-shadow:var(--tk-glow)}
+
+/* le français d'affiche : Alegreya — du caractère, à côté de la myeongjo */
+.theme-takbon .big-fr{font-family:var(--fr-display); font-weight:700; font-size:2rem;
+  line-height:1.25; text-shadow:0 0 18px rgba(255,255,255,.16)}
+.theme-takbon .btn{font-family:var(--fr-display)}
+.theme-takbon .cta .num, .theme-takbon .btn.g4 .ans-ivl{
+  font-family:Roboto,system-ui,sans-serif}   /* les chiffres restent en linéale tabulaire */
 
 /* le sceau : CTA en bande pleine largeur, tampon et point d'onglet assortis */
-.theme-takbon .btn.cta{border-radius:0; box-shadow:0 8px 34px rgba(228,88,74,.38)}
+.theme-takbon .btn.cta{border-radius:0; box-shadow:0 8px 34px rgba(228,88,74,.38); font-size:1.15rem}
 /* le tampon ne joue PAS sa propre stamp-in ici : sa carte joue déjà takbon-press (mêmes
    courbes) — les deux composées démarraient à ~2.5× et désynchronisaient le son (revue v103) */
 .theme-takbon .dojang{box-shadow:0 8px 34px rgba(228,88,74,.38); animation:none}
 .theme-takbon #tabs button.active::after{border-radius:1px; transform:rotate(-5deg)}
 .theme-takbon #daycount{border-color:transparent; background:none; font-weight:800}
-.theme-takbon .btn.ghost{background:none; border:1px solid var(--line)}
+.theme-takbon .btn.ghost{background:rgba(255,255,255,.05); border:none; border-radius:12px}
 
 /* creux de révélation (markup rendu par app.js quand ce thème est actif) */
 .theme-takbon .slots{display:flex; justify-content:center; gap:10px; margin:16px 0 4px;
@@ -296,46 +340,37 @@
 .theme-takbon .slot-wide:active{border-color:var(--dim)}
 .theme-takbon .slots-h{background:none; border:none; padding:0; width:100%; cursor:pointer}
 
-/* QCM : des lignes, pas des boutons-boîtes — la bonne réponse se presse en blanc */
-.theme-takbon .opts{gap:0; margin:8px -14px 0}
-.theme-takbon .opts button{background:none; border:none; border-top:1px solid var(--line);
-  border-radius:0; padding:16px 12px; font-weight:700; min-height:56px}
-.theme-takbon .opts button:last-child{border-bottom:1px solid var(--line)}
-.theme-takbon .opts button:active{background:rgba(255,255,255,.07)}
-.theme-takbon .opts button.good{background:none; border-color:var(--line); color:var(--txt);
-  font-weight:800; text-shadow:var(--tk-glow)}
-.theme-takbon .opts button.bad{background:none; border-color:var(--line); color:var(--seal)}
+/* QCM : de la typographie nue qui s'étale — zéro filet, la bonne réponse s'allume */
+.theme-takbon .opts{gap:4px; margin:14px 0 0}
+.theme-takbon .opts button{background:none; border:none; border-radius:12px; padding:15px 12px;
+  font-family:var(--fr-display); font-size:1.3rem; font-weight:700; min-height:56px}
+.theme-takbon .opts button.kr{font-family:var(--kr-display); font-size:1.6rem}
+.theme-takbon .opts button:active{background:rgba(255,255,255,.06)}
+.theme-takbon .opts button.good{background:none; border:none; color:var(--txt); text-shadow:var(--tk-glow)}
+.theme-takbon .opts button.bad{background:none; border:none; color:var(--seal)}
 
-/* auto-évaluation : typographie nue, filets verticaux, Encore au sceau.
-   Les règles :has() (paire binaire, sans classe g4row) sont SÉPARÉES de leur fallback :
-   dans une même liste, un UA sans :has invaliderait tout, fallback compris (revue v103). */
-.theme-takbon .row.g4row{gap:0; margin:12px -14px 0; border-top:1px solid var(--line)}
-.theme-takbon .row:has(> .btn.g4){gap:0; margin:12px -14px 0; border-top:1px solid var(--line)}
-.theme-takbon .btn.g4{background:none; border:none; border-left:1px solid var(--line);
-  border-radius:0; color:var(--txt); font-weight:800}
-.theme-takbon .row.g4row .btn.g4:first-child{border-left:none}
-.theme-takbon .row:has(> .btn.g4) .btn.g4:first-child{border-left:none}
-.theme-takbon .btn.g4.ko{background:none; border-color:var(--line); color:var(--seal)}
-.theme-takbon .btn.g4.ok{background:none; border-color:var(--line); color:var(--txt)}
+/* auto-évaluation : EN COLONNE, en grand — les notes occupent le noir.
+   Étiquette Alegreya à gauche, intervalle en linéale à droite. Encore au sceau.
+   :has() séparé de son fallback .g4row (une liste avec :has s'invalide en bloc, revue v103). */
+.theme-takbon .row.g4row{flex-direction:column; gap:2px; margin:18px 0 0; border:none}
+.theme-takbon .row:has(> .btn.g4){flex-direction:column; gap:2px; margin:18px 0 0; border:none}
+.theme-takbon .btn.g4{display:flex; align-items:baseline; justify-content:space-between;
+  background:none; border:none; border-radius:12px; color:var(--txt);
+  padding:13px 18px 12px; text-align:left; min-height:58px}
+.theme-takbon .btn.g4 b{display:inline; font-size:1.5rem; font-weight:700; letter-spacing:.01em}
+.theme-takbon .btn.g4 .ans-ivl{display:inline; font-size:.9rem; margin:0}
+.theme-takbon .btn.g4:active{background:rgba(255,255,255,.06)}
+.theme-takbon .btn.g4.ko{background:none; border:none; color:var(--seal)}
+.theme-takbon .btn.g4.ok{background:none; border:none; color:var(--txt)}
 .theme-takbon .btn.g4.ko .ans-ivl{color:var(--seal); opacity:.8}
 .theme-takbon .btn.g4.ok .ans-ivl{color:var(--dim)}
 
-/* tuiles de stats : chiffres-affiches sur grille de filets */
-.theme-takbon .statgrid{gap:0}
-.theme-takbon .stat{background:none; border:none; border-radius:0; border-top:1px solid var(--line);
-  padding:15px 12px 13px; text-align:center}
-.theme-takbon .statgrid .stat:nth-child(odd){border-right:1px solid var(--line)}
-.theme-takbon .stat .n{font-size:1.9rem; font-weight:800; text-shadow:var(--tk-glow)}
+/* stats : des chiffres-affiches qui flottent — l'espace fait la grille */
+.theme-takbon .statgrid{gap:8px}
+.theme-takbon .stat{background:none; border:none; border-radius:0; padding:16px 10px 12px; text-align:center}
+.theme-takbon .stat .n{font-size:2rem; font-weight:800}
 .theme-takbon .stat.tap::after{border:none; opacity:.5}
-.theme-takbon .stat.tap:hover{border-color:var(--line)}
-
-/* encarts : hairline pleine largeur plutôt que boîte */
-.theme-takbon .trivia{background:none; border:none; border-top:1px solid var(--line);
-  border-radius:0; margin:14px -14px 0; padding:12px 14px 0}
-.theme-takbon .built{background:none; border:1.5px dashed var(--tk-line2); border-radius:12px}
-.theme-takbon .chip{background:none; border:1px solid var(--line)}
-.theme-takbon .chip.src{background:var(--panel)}
-.theme-takbon .npc{background:none}
+.theme-takbon .stat.tap:hover{border-color:transparent}
 
 /* modales : elles gardent une boîte (illisibles sinon sur le voile) */
 .theme-takbon .modal-back{background:rgba(0,0,0,.85)}

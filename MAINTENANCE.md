@@ -44,6 +44,15 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **91 tests Node**, `CACHE` = `sori-v103`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v104 (Takbon RETRAVAILLÉ — retours user : « des barres partout, pas le côté brillant/pulsant,
+  police française sans charme, l'espace inexploité »)** : refonte du bloc `.theme-takbon` —
+  (1) **zéro filet** : plus de border sur QCM, notes, stats, listes, trivia, pills, tabs — l'espace
+  sépare ; (2) **halo double couche qui PULSE** (`takbon-breathe` 3,6 s sur hero/big-kr/réponse
+  révélée, `--tk-glow`/`--tk-glow2`, reduced-motion ok) ; (3) **Alegreya Bold** pour le français
+  d'affiche (`tools/make_font_fr.py` : variable épinglée wght 700 + sous-ensemble latin FR → woff2
+  29 Ko, `--fr-display`, chargée à l'usage seulement, précachée sw.js) sur big-fr/options/notes/
+  boutons ; (4) **notes en COLONNE en grand** (étiquette Alegreya 1.5rem à gauche, intervalle à
+  droite, presse en cascade). CACHE `sori-v104`.
 - **v103 (Thème « Takbon » — noir estampage, maquette artifact 9e8c1c77)** : 6ᵉ thème `takbon`
   (entrée themes.js + bloc `.theme-takbon` dans themes.css) : noir pur OLED, blanc épais à halo,
   vermillon du sceau seul accent (le céladon devient blanc dans ce thème), PLEINE LARGEUR
