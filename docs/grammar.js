@@ -96,6 +96,9 @@
      lexique on ne tranche pas (conservateur : zéro faux positif). */
   function isModN(w, lex){
     if(!lex || !w || NOT_MOD_N.has(w) || lex.has(w)) return false;
+    /* 말은, 일은, 친구는… : le mot SANS sa dernière syllabe est un nom du deck → c'est la
+       particule de thème, pas un modifieur verbal (revue v120). */
+    if(lex.has(w.slice(0, -1))) return false;
     const last = lastOf(w);
     if(last === "은" && w.length >= 2) return lex.has(w.slice(0, -1) + "다");
     if(last === "운" && w.length >= 2){
@@ -217,17 +220,23 @@
     "mot": (s, W) => W.includes("못") || s.includes("지 못") || /못[하해했할합]/.test(s),
     /* la négation longue admet une particule entre 지 et 않다 : 맵지는 않아요, 크지도 않아요. */
     "ji-anta":   s => /지(는|도|가|를)?\s*않/.test(s),
-    /* 마 porte souvent un batchim (지 말고, 지 말자) : comparer la syllabe SANS son batchim. */
+    /* 마 porte souvent un batchim (지 말고, 지 말자) : accepter 마 nu et 말 (ㄹ), mais SURTOUT
+       PAS 만 (ㄴ) — sinon tout 지만 « mais » deviendrait une interdiction (revue v120). */
     "ji-maseyo": s => {
       const a = [...s.replace(/\s+/g, "")];
-      return a.some((c, i) => c === "지" && a[i + 1] && withTail(a[i + 1], 0) === "마");
+      return a.some((c, i) => {
+        if(c !== "지" || !a[i + 1]) return false;
+        const t = tail(a[i + 1]);
+        return (t === 0 || t === 8) && withTail(a[i + 1], 0) === "마";
+      });
     },
     /* (으)ㄹ 때 : le ㄹ doit venir d'un verbe (발표할), pas de la finale d'un nom (일, 생일).
        때문 est une autre structure — ne pas la capturer ici. */
     "l-ttae": (s, W, lex) => W.some((w, i) => W[i + 1] && W[i + 1].startsWith("때")
       && !W[i + 1].startsWith("때문") && isModL(w, lex)),
     "mod-neun": (s, W, lex) => !!lex && W.some((w, i) => w.length >= 2 && w.endsWith("는")
-      && W[i + 1] && lex.has(w.slice(0, -1) + "다")),
+      && W[i + 1] && !lex.has(w.slice(0, -1))       /* 친구는 = thème, pas un modifieur */
+      && lex.has(w.slice(0, -1) + "다")),
     "mod-n": (s, W, lex) => W.some((w, i) => W[i + 1] && isModN(w, lex)),
   };
 

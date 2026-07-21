@@ -232,6 +232,18 @@ test("négations avec particule ou soudées : 지는 않다, 지 말고, 못하�
   has("맵지는 않아요", "ji-anta", LEX);
   has("가지 말고 여기 있어요", "ji-maseyo", LEX);
   has("수영을 못해요", "mot", LEX);              /* orthographe standard soudée */
+  /* RÉGRESSION (revue v120) : comparer 마 « sans son batchim » attrapait aussi 만 —
+     tout 지만 (« mais ») devenait une interdiction. Seuls 마 et 말 sont recevables. */
+  not("비싸지만 좋아요", "ji-maseyo", LEX);
+  not("미안하지만 못 가요", "ji-maseyo", LEX);
+});
+
+test("modifieurs : la particule de thème 은/는 sur un NOM du deck n'est pas un modifieur", () => {
+  /* RÉGRESSION (revue v120) : 말은 (« la parole », thème) devenait un modifieur de 말다. */
+  const lex = new Set(["말다", "말", "친구", "좋다", "크다"]);
+  not("말은 좋아요", "mod-n", lex);
+  not("친구는 커요", "mod-neun", lex);
+  has("좋은 사람이에요", "mod-n", lex);          /* le vrai modifieur reste détecté */
 });
 
 test("a-juda / a-boda : graphies soudées et formes moins courantes", () => {

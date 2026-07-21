@@ -43,11 +43,17 @@
   Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
   PowerShell 5.1 sous Windows 11.
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
-  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **124 tests Node**, `CACHE` = `sori-v119`.
+  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **139 tests Node**, `CACHE` = `sori-v120`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
-- **PROFIL GRAMMATICAL (fondation, non branchée à l'UI)** : `docs/grammar.js` + `docs/grammar-data.js`
-  + `tools/grammar_tag.mjs` + `tools/story_trial.mjs`. **Aucun de ces fichiers n'est chargé par
-  `index.html` ni listé dans `sw.js` — l'app en prod est strictement inchangée.** Voir §9.
+- **v120 (Histoire : le feuilleton généré, calibré sur l'état réel)** : nouvel écran depuis
+  l'onglet Exercices. Chaque chapitre n'emploie que les mots maîtrisés (stage>=4) et les
+  structures grammaticales ACQUISES — profil dérivé des cartes-phrases via FSRS (§9) — plus 1-2
+  structures « en cours » dosées et au plus 3 mots nouveaux déclarés. Lecture : tap sur un mot =
+  pont forme→lemme, « traduction », « écouter » (TTS ko-KR). Le LINT client contrôle les deux
+  plafonds et renvoie les phrases fautives en réparation (2 tours). Vérifié bout en bout dans le
+  navigateur : chapitre réel généré, 14 phrases, zéro violation résiduelle. Mesuré : ~5 min par
+  chapitre (délai porté à 10 min, attente annoncée). Chapitres stockés HORS de ST (clé
+  `sori-story-ch`) — le fil (résumé, cibles) reste dans `ST.story`. CACHE `sori-v120`.
 - **v114 (les paliers compactent la MISE EN PAGE, pas l'écriture + bug de mesure)** : retour
   user véhément (« mais le texte est trop petit !! ») — les paliers v113 réduisaient la POLICE
   et les cartes réelles y tombaient presque toujours. Refonte : fit1 = notes en GRILLE 2×2
@@ -2041,12 +2047,11 @@ par vagues — le mot ET son niveau sont fournis (autorité), l'IA ne produit qu
 
 ---
 
-## 9. Profil grammatical & histoire générée (fondation — pas encore branchée à l'UI)
+## 9. Profil grammatical & histoire générée
 
-> **État au 2026-07-22** : la fondation est posée et testée, mais **rien n'est câblé dans l'app**.
-> `docs/grammar.js` et `docs/grammar-data.js` ne sont chargés par AUCUN `<script>` d'`index.html`
-> et ne figurent pas dans `ASSETS` de `sw.js`. La prod est strictement inchangée. Avant de brancher
-> l'histoire à l'UI, il faudra les ajouter aux deux endroits ET bumper `CACHE`.
+> **État au 2026-07-22 (v120)** : **livré et branché**. Écran « Histoire » accessible depuis
+> l'onglet Exercices (carte-lanceur, comme Conversation). `grammar.js`, `grammar-data.js` et
+> `story.js` sont chargés par `index.html` (avant `app.js`) et listés dans `ASSETS` de `sw.js`.
 
 ### 9.1 L'idée
 
@@ -2063,8 +2068,23 @@ calibré sur ce que l'apprenant sait **exactement**, vocabulaire ET grammaire.
 |---|---|---|
 | `docs/grammar.js` | `STRUCTS` (inventaire fermé de 38 structures A1-B1), `tagStructures(kr, lex)`, `grammarProfile(list)` | oui — zéro DOM, zéro localStorage, double export `window`/CommonJS comme `engine.js` |
 | `docs/grammar-data.js` | `GRAMMAR_TAGS = { idCarte: [idsStructure] }` — **GÉNÉRÉ**, ne pas éditer à la main | donnée |
+| `docs/story.js` | l'écran : `renderHome` / `renderChapter`, l'appel modèle, et `pure = { pickTargets, buildSystem, lintChapter, trimStore }` | partie pure testée sous Node |
 | `tools/grammar_tag.mjs` | build-time : passe machine + **vérification LLM** → régénère `grammar-data.js` | outil Node |
-| `tools/story_trial.mjs` | preuve de concept : profil réel → chapitre généré → **lint** → réparation | outil Node |
+| `tools/story_trial.mjs` | preuve de concept hors app (a servi à valider la matière avant l'écran) | outil Node |
+
+**Câblage** (`docs/app.js`) : `openStory()` (miroir d'`openConversation`), `grammarProfileNow()`
+qui croise `BASE_IDS`/`eff(id)` avec `GRAMMAR_TAGS`, la carte-lanceur dans `renderExercices()`,
+et le stockage `storyChapters()`/`storySave()`.
+
+**Où vivent les données** — décision structurante, ne pas la défaire :
+
+| Donnée | Où | Pourquoi |
+|---|---|---|
+| Fil du feuilleton (`summary`, `lastTargets`) | `ST.story`, ~300 o | doit survivre à une restauration cloud, sinon l'histoire perd le fil |
+| Chapitres (~4 Ko pièce) | `localStorage["sori-story-ch"]`, **hors ST** | volumineux et **régénérables** ; les mettre dans ST ferait exploser l'export (piège v65, limite ~1 Mo) |
+
+Migration : `s.story` est initialisé dans `loadState` **et** dans `applyImportedState` (les deux,
+comme `s.conv` — sinon une vieille sauvegarde restaurée repart sans le conteneur).
 
 ### 9.3 Le taggeur travaille au niveau JAMO (non négociable)
 
@@ -2133,13 +2153,42 @@ Les plus instructifs, tous reproduits puis verrouillés par test :
 Nombres avant/après sur le deck : `go` 42→35, `a-juda` 44→56, `ji-maseyo` 5→18, `n-hue` 5→1,
 `mod-n` 59→48. Et le LLM corrige **106** phrases au lieu de 127 — le taggeur se trompe moins.
 
-### 9.8 Ce qui reste à faire pour livrer l'histoire
+### 9.8 L'écran, et ce que l'usage réel a appris
 
-1. Brancher un écran (chapitre = liste de phrases ; tap sur une phrase → traduction ; tap sur un mot
-   → pont forme→lemme ; haut-parleur → TTS ko-KR, mécanisme des bulles de Conversation).
-2. Persister l'état du feuilleton (résumé + personnages + n° de chapitre) — quelques Ko dans l'état ;
-   **garder les chapitres eux-mêmes hors export cloud** (régénérables, cf. le chantier « export < 1 Mo »).
-3. Ajouter `grammar.js`/`grammar-data.js` à `index.html` **et** `sw.js`, bumper `CACHE`.
-4. Génération depuis le navigateur : réutiliser `callLLM` de `conversation.js` (clé déjà distribuée
-   au téléphone via `config/conv-cfg.json`). Prévoir le hors-ligne : un chapitre déjà généré se lit
-   sans réseau, seule la génération demande la connexion.
+Lecture : une phrase par bloc ; **tap sur un mot** → le pont forme→lemme (`입었어요 ← 입다 passé
+poli`), **« traduction »** → la version française, **« écouter »** → TTS ko-KR (`ttsSpeak`, coupé si
+`ST.set.mute`). Les mots i+1 sont soulignés en pointillé et rappelés en bas de chapitre.
+
+Deux choses mesurées en conditions réelles, qui ont changé le code :
+
+1. **Un chapitre demande ~5 minutes** au modèle (plafond de 1200 mots + 14 phrases avec mot-à-mot
+   complet + thinking). Le délai d'appel est donc à **10 min** et l'attente est ANNONCÉE
+   (« quelques minutes ») — sans ça l'écran a l'air figé. Ne pas rabaisser le timeout sans mesurer.
+2. **L'apprenant peut quitter l'écran pendant ces 5 minutes.** Le chapitre est alors quand même
+   enregistré (il est écrit et payé) mais **n'est pas affiché** par-dessus l'écran courant :
+   `stillHere()` teste `document.body.contains(box)` avant tout rendu.
+
+### 9.9 Revue adversariale de l'écran (4 lentilles, 40 défauts confirmés)
+
+Corrigés avant le push. Les structurants, à ne pas défaire :
+
+| Défaut | Ce qui se passait | Correctif |
+|---|---|---|
+| **XSS par la réponse du modèle** | `Object.assign({n, d}, res.chapter)` laissait la réponse **écraser** `n`/`warn`, tous deux injectés en `innerHTML` sans `esc()`. La charge était persistée puis **rejouée à chaque ouverture**, dans le même `localStorage` que la clé API. | ordre inversé (`Object.assign({}, res.chapter, {n, d, warn})`) + `esc()` sur les deux. Ne jamais faire dépendre l'échappement client d'une garantie serveur (`additionalProperties:false`). |
+| **Deux générations concurrentes** | `go.disabled` vivait dans la vue : quitter l'écran et revenir redonnait un bouton actif → deux appels payés, **deux chapitres portant le même numéro**, un fil cassé. | drapeau `BUSY` au niveau du **module**, et la vue reconstruite l'affiche (« un chapitre est déjà en cours »). |
+| **Numérotation dérivée de `list.length`** | figée au-delà du cap de stockage, et **repartait à 1** après une restauration cloud (fil présent, chapitres absents). | `pure.nextNo(list, meta)` = max(numéros connus, `meta.lastN`) + 1 ; `lastN` persisté dans `ST.story`. |
+| **Plafond de vocabulaire déclaratif** | le lint ne comparait jamais `lemma` à `form` : le modèle pouvait écrire n'importe quoi et déclarer à côté un lemme autorisé. | `formMatchesLemma` — préfixe, ou à défaut même **consonne initiale**, ce qui reste juste avec les irréguliers (맵다→매워요, 듣다→들어요, 부르다→불러요, 하다→해요). |
+| **Quota localStorage** | chapitre perdu en silence, fil avancé quand même. | `storySave` renvoie `false` → message explicite, `ST.story` **non** avancé. |
+| **Cache de prompt inopérant** | le point de cache était posé sur le bloc qui change à chaque chapitre ; le vocabulaire (~1100 lemmes) était dans le message utilisateur. | deux blocs système : vocabulaire (caché 1 h) **puis** règles variables. |
+| **Réparation qui empire** | la dernière version était gardée même si elle violait plus de règles. | on ne remplace que si le nombre de violations **baisse**. |
+| Régressions du taggeur | `지만` (« mais ») tagué « interdiction 지 마세요 » ; `말은`/`친구는` (particule de thème) pris pour des modifieurs. | `ji-maseyo` n'accepte que 마/말 (jamais 만) ; `isModN`/`mod-neun` rejettent le mot dont le radical nu est un nom du deck. |
+
+Ajouté au passage : suppression d'un chapitre, reprise sur 429/5xx, journalisation des échecs
+dans `ST.errors`, et le résumé du chapitre précédent cité comme **donnée** (pas comme consigne).
+
+Le hors-ligne fonctionne par construction : un chapitre déjà écrit se lit sans réseau, seule la
+génération demande la connexion. La clé est celle de Conversation (`convCfg().ak`, distribuée
+automatiquement au téléphone via `config/conv-cfg.json` du dépôt privé) — aucune nouvelle clé.
+
+Coût : le plafond de vocabulaire est mis en **cache 1 h** (`cache_control` sur le bloc système),
+donc écrire plusieurs chapitres d'affilée ne repaie pas les ~1200 mots à chaque fois.

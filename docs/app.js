@@ -100,6 +100,7 @@ function loadState(){
         s.errors = s.errors||[]; s.vlog = s.vlog||[];   // v65 : exceptions capturées + journal de versions
         s.rep = s.rep||{d:"",m:{}};                     // v71 : derniers contacts des vues blanches (reprise)
         s.conv = s.conv||[];                            // v89 : conversations IA enregistrées (cap 12×40 msgs ≈ 30 Ko max)
+        s.story = s.story||{summary:"",lastTargets:[]}; // v120 : fil du feuilleton (les CHAPITRES sont hors ST)
         /* v52 : split recto/verso retiré (doublait le deck). Bascule UNE FOIS les utilisateurs
            qui l'avaient activé (v51) vers OFF ; le toggle Réglages reste libre ensuite. */
         if(s.reverseMig !== 1){ s.set.reverse = false; s.reverseMig = 1; }
@@ -844,6 +845,14 @@ function renderExercices(){
     cvCard.querySelector("#goconv").onclick = openConversation;
     $screen.appendChild(cvCard);
   }
+  /* Histoire : feuilleton généré chapitre par chapitre avec SON vocabulaire et SES structures. */
+  if(window.SORI_STORY && window.SORI_GRAMMAR){
+    const n = storyChapters().length;
+    const stCard = el(`<div class="card"><h2>Histoire</h2>
+      <div class="row" style="margin-top:8px"><button class="btn" id="gostory">Ouvrir${n ? " · " + n + " chapitre" + (n>1?"s":"") : ""}</button></div></div>`);
+    stCard.querySelector("#gostory").onclick = openStory;
+    $screen.appendChild(stCard);
+  }
 }
 /* v89 : écran Conversation (module conversation.js) — prend tout l'écran, retour → Exercices.
    Le contexte du modèle = SES mots maîtrisés (stage>=4) + ses 8 mots les plus fragiles
@@ -885,6 +894,69 @@ function openConversation(){
       },
       remove: (id)=>{ ST.conv = (ST.conv||[]).filter(c => c.id !== id); save(); }
     },
+    onExit: ()=>{ NAV = true; render(); NAV = false; }
+  });
+}
+
+/* ===== Histoire (module story.js) — feuilleton généré, calibré sur l'état RÉEL =====
+   Les CHAPITRES ne vivent PAS dans ST : ils sont volumineux (~4 Ko pièce) et régénérables,
+   donc une clé localStorage séparée qui NE PART PAS dans la sauvegarde cloud (chantier
+   « export < 1 Mo », piège v65). Seul l'état du feuilleton (résumé, dernières cibles) est
+   dans ST.story — quelques centaines d'octets — pour qu'une restauration garde le fil. */
+const STORY_KEY = "sori-story-ch";
+function storyChapters(){
+  try{
+    const a = JSON.parse(localStorage.getItem(STORY_KEY) || "[]");
+    if(Array.isArray(a)) return a;
+    logErr("story:load", "magasin de chapitres corrompu (pas un tableau)");
+    return [];
+  }catch(e){ logErr("story:load", e); return []; }
+}
+/* Renvoie false si l'appareil n'a plus de place : l'appelant doit le DIRE (le chapitre est
+   écrit et payé) au lieu de le perdre en silence et d'avancer quand même le fil. */
+function storySave(list){
+  try{ localStorage.setItem(STORY_KEY, JSON.stringify(SORI_STORY.pure.trimStore(list))); return true; }
+  catch(e){ logErr("story:save", e); return false; }
+}
+/* Le profil grammatical = état FSRS des cartes-PHRASES croisé avec leurs tags (grammar-data.js).
+   Rien de nouveau n'est appris : on relit autrement ce que la planification sait déjà. */
+function grammarProfileNow(){
+  const tags = window.GRAMMAR_TAGS || {};
+  const list = [];
+  for(const id of BASE_IDS){
+    const t = tags[id];
+    if(!t || !t.length) continue;
+    const it = eff(id);
+    if(it.sus) continue;
+    list.push({ tags: t, stage: it.stage });
+  }
+  return SORI_GRAMMAR.grammarProfile(list);
+}
+function openStory(){
+  const mastered = BASE_IDS
+    .filter(id => SEED_BY_ID[id].type === "word")
+    .map(id => eff(id))
+    .filter(it => !it.sus && it.stage >= 4)
+    .map(it => SEED_BY_ID[it.id].kr);
+  const lexAll = new Set(BASE_IDS.filter(id => SEED_BY_ID[id].type === "word").map(id => SEED_BY_ID[id].kr));
+  ST.story = ST.story || { summary: "", lastTargets: [] };
+  $screen.innerHTML = "";
+  SORI_STORY.renderHome($screen, {
+    profile: grammarProfileNow(),
+    structs: SORI_GRAMMAR.STRUCTS,
+    vocab: mastered,
+    known: new Set(mastered),
+    tag: (kr)=> SORI_GRAMMAR.tagStructures(kr, lexAll),
+    key: ()=> convCfg().ak || "",
+    speak: (txt)=>{ if(!ST.set.mute) ttsSpeak(txt); },
+    store: {
+      meta: ()=> ST.story,
+      setMeta: (m)=>{ ST.story = Object.assign({}, ST.story, m); save(); },
+      list: storyChapters,
+      add: (ch)=>{ const a = storyChapters(); a.push(ch); return storySave(a); },
+      remove: (n)=>{ storySave(storyChapters().filter(c => c.n !== n)); }
+    },
+    onError: (msg)=> logErr("story:gen", msg),
     onExit: ()=>{ NAV = true; render(); NAV = false; }
   });
 }
@@ -2168,6 +2240,7 @@ function applyImportedState(state){
   s.errors = s.errors||[]; s.vlog = s.vlog||[];   // v65
   s.rep = s.rep||{d:"",m:{}};                     // v71
   s.conv = s.conv||[];                            // v89 : conversations IA enregistrées
+  s.story = s.story||{summary:"",lastTargets:[]}; // v120 : fil du feuilleton
   s.v = s.v || 1;
   ST = s; save(); Q = null;
   NAV = true; render(); NAV = false;   // v73 : rendu d'ARRIVÉE — pas de coup de tampon post-restauration
