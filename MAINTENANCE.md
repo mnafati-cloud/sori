@@ -23,6 +23,7 @@
 6. [Pièges connus (vécus) (P1-P12)](#6-pièges-connus-vécus)
 7. [Checklist de non-régression avant tout push](#7-checklist-de-non-régression-avant-tout-push)
 8. [Glossaire](#8-glossaire)
+9. [Profil grammatical & histoire générée](#9-profil-grammatical--histoire-générée-fondation--pas-encore-branchée-à-lui)
 
 ---
 
@@ -42,8 +43,11 @@
   Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
   PowerShell 5.1 sous Windows 11.
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
-  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **91 tests Node**, `CACHE` = `sori-v103`.
+  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **124 tests Node**, `CACHE` = `sori-v119`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **PROFIL GRAMMATICAL (fondation, non branchée à l'UI)** : `docs/grammar.js` + `docs/grammar-data.js`
+  + `tools/grammar_tag.mjs` + `tools/story_trial.mjs`. **Aucun de ces fichiers n'est chargé par
+  `index.html` ni listé dans `sw.js` — l'app en prod est strictement inchangée.** Voir §9.
 - **v114 (les paliers compactent la MISE EN PAGE, pas l'écriture + bug de mesure)** : retour
   user véhément (« mais le texte est trop petit !! ») — les paliers v113 réduisaient la POLICE
   et les cartes réelles y tombaient presque toujours. Refonte : fit1 = notes en GRILLE 2×2
@@ -2034,3 +2038,108 @@ par vagues — le mot ET son niveau sont fournis (autorité), l'IA ne produit qu
 | **Streak** | Jours consécutifs avec au moins une réponse (🔥). Aujourd'hui pas encore joué ne casse pas la série. |
 | **Saisie hangul (typing)** | Module `typing.js` : au stage 5 (mots), taper la réponse à l'IME coréen au lieu de l'auto-évaluation. Opt-in `ST.set.typing`, 50 % du temps. Juge syllabique tolérant (NFC, Levenshtein ≤ 1, espacement), l'utilisateur tranche les fautes de frappe IME. Kind `type`. |
 | **Pages de test (`docs/design/`)** | Pages HTML autonomes par module (events-test, quests-test, exam-test, search-test, player-test, theme-test, typing-test, numbers-test) : vraies données + vrai moteur + checks automatiques. À enrichir à chaque évolution du module concerné. |
+
+---
+
+## 9. Profil grammatical & histoire générée (fondation — pas encore branchée à l'UI)
+
+> **État au 2026-07-22** : la fondation est posée et testée, mais **rien n'est câblé dans l'app**.
+> `docs/grammar.js` et `docs/grammar-data.js` ne sont chargés par AUCUN `<script>` d'`index.html`
+> et ne figurent pas dans `ASSETS` de `sw.js`. La prod est strictement inchangée. Avant de brancher
+> l'histoire à l'UI, il faudra les ajouter aux deux endroits ET bumper `CACHE`.
+
+### 9.1 L'idée
+
+Les 1050 cartes-**phrases** du deck passent par FSRS comme les mots. Maîtriser
+« 요즘 일이 많아서 너무 피곤해요 » est une **preuve datée** que l'apprenant comprend 아서. Personne
+n'exploitait ce signal. Le profil grammatical le consolide : on ne crée aucun exercice, aucune
+donnée d'apprentissage nouvelle — **on lit autrement l'état existant** (leçon v67 : ne plus
+construire d'exercice spéculatif). Le but : un narrateur LLM qui écrit un feuilleton coréen
+calibré sur ce que l'apprenant sait **exactement**, vocabulaire ET grammaire.
+
+### 9.2 Les trois pièces
+
+| Fichier | Rôle | Pur ? |
+|---|---|---|
+| `docs/grammar.js` | `STRUCTS` (inventaire fermé de 38 structures A1-B1), `tagStructures(kr, lex)`, `grammarProfile(list)` | oui — zéro DOM, zéro localStorage, double export `window`/CommonJS comme `engine.js` |
+| `docs/grammar-data.js` | `GRAMMAR_TAGS = { idCarte: [idsStructure] }` — **GÉNÉRÉ**, ne pas éditer à la main | donnée |
+| `tools/grammar_tag.mjs` | build-time : passe machine + **vérification LLM** → régénère `grammar-data.js` | outil Node |
+| `tools/story_trial.mjs` | preuve de concept : profil réel → chapitre généré → **lint** → réparation | outil Node |
+
+### 9.3 Le taggeur travaille au niveau JAMO (non négociable)
+
+Le passé contracté est **invisible en surface** : 했/왔/갔 ne contiennent aucun 었. Un taggeur
+par sous-chaînes trouve 29 phrases au passé dans le deck ; au niveau jamo (batchim ㅆ, index 20)
+il en trouve **231**. Toutes les règles fines suivent le même principe (batchim ㄴ=4, ㄹ=8, ㅂ=17 ;
+familles de voyelles pour 아/어 — **ㅙ incluse**, sans quoi la contraction 되어→돼 est invisible).
+
+**Le lexique tranche nom vs forme verbale.** C'est le mécanisme central des règles délicates :
+`친구하고` (particule « avec ») vs `공부하고` (connecteur) se distinguent parce que 공부하다 est au
+lexique et 친구하다 non ; `산 위에` (montagne) n'est pas un modifieur parce que 산 est au lexique ;
+idem 감기 때문에, 바지만, 친구나, 시간 후에, 일 때문에. **Sans lexique, ces règles se taisent**
+(conservateur) — les appelants réels le fournissent toujours.
+
+### 9.4 Deux passes, et pourquoi
+
+1. **Machine** (`tagStructures`) : rapide, déterministe, gratuite. ~575 phrases taggées.
+2. **LLM** (`claude-opus-4-8`, sortie structurée, lots de 25) : ne renvoie que des **corrections**
+   `{id, add, remove}` contre l'inventaire fermé. 106 corrections sur le dernier run.
+
+C'est de la **compilation, pas du runtime** — cohérent avec la méthode narrative. Le jeu livré ne
+fait qu'agréger des tags figés. Relancer l'outil après une vague de contenu.
+
+⚠️ **Un lot qui échoue ne détruit plus le run** (vécu : 1 lot sur 42) : les lots perdus sont listés
+en fin de course et gardent leurs tags machine. `--dry` n'écrase **jamais** `docs/grammar-data.js`
+(il écrit `grammar-data.machine.js` à côté) — sinon une passe machine effacerait la version vérifiée.
+
+### 9.5 Le profil, et le seuil qui piégeait
+
+`grammarProfile` agrège l'état FSRS des cartes taggées : **acquise** (≥3 cartes maîtrisées, stage≥4),
+**en cours**, **inconnue**. Piège corrigé : une structure que le deck ne porte que 2 fois ne pouvait
+JAMAIS atteindre 3 et restait « en cours » à vie — d'où la règle « toutes maîtrisées et ≥2 » .
+
+Sur l'état réel du 2026-07-21 : **20 structures acquises**, 10 en cours. Le narrateur reçoit les
+acquises (usage libre) + **1-2 « en cours » dosées exprès** (3-4 occurrences, surlignées) — même
+geste que Conversation qui recycle les 8 mots fragiles, appliqué à la grammaire.
+
+### 9.6 Le lint est la vraie garantie
+
+Un LLM à qui on donne 1144 mots autorisés **fuit** — toujours. La parade est côté client, pas dans
+le prompt : après génération, `story_trial.mjs` vérifie **chaque lemme** (∈ vocabulaire maîtrisé ∪
+i+1 déclarés ∪ noms propres ∪ mots-outils) et **chaque structure** détectée par le taggeur
+(∈ acquises ∪ cibles). Les violations repartent en réparation (2 tours max), le reliquat est
+annoncé honnêtement. Deux garde-fous appris en revue : le lint vérifie que le mot-à-mot **couvre**
+la phrase (sinon un mot omis du `words[]` échappe au contrôle), et un lemme non-hangul est
+**signalé** au lieu d'être exempté en silence.
+
+**C'est ici que la qualité du taggeur compte le plus** : en build, le LLM corrige derrière ;
+au lint, personne. Un faux positif = un rejet injuste, un faux négatif = une structure inconnue
+qui passe.
+
+### 9.7 Revue adversariale (4 lentilles, 52 défauts confirmés) — corrigés AVANT le premier commit
+
+Les plus instructifs, tous reproduits puis verrouillés par test :
+
+| Défaut | Cause | Fix |
+|---|---|---|
+| `한국에 가고 싶어요` taggé connecteur -고 | l'auxiliaire 고 싶다 absorbe le 고, comme 고 있다 (déjà exclu) | exclure 싶 suivant, et 말고 |
+| `공부하고 자요` → aucun tag | l'exclusion `endsWith("하고")` visait la particule comitative mais tuait **tous** les verbes en 하다 | le lexique tranche |
+| `갑니까?` taggé cause (으)니까 | 니까 est aussi la fin de toute question formelle | exiger que la syllabe d'avant ne soit ni 습 ni batchim ㅂ |
+| `오늘까지` taggé proposition (으)ㄹ까요 | 늘/일/울/말 portent un batchim ㄹ | exiger 까 **finale** (suivie de 요 ou rien) |
+| `다음에 또 만나요` taggé « après avoir fait » | test de sous-chaîne sans modifieur ㄴ devant | exiger un vrai modifieur (lexique) |
+| `가지 말고` non détecté | **말 n'est pas 마** en hangul précomposé | comparer la syllabe sans son batchim |
+| entrée NFD → zéro tag | aucune syllabe précomposée à matcher | `.normalize("NFC")` en entrée |
+
+Nombres avant/après sur le deck : `go` 42→35, `a-juda` 44→56, `ji-maseyo` 5→18, `n-hue` 5→1,
+`mod-n` 59→48. Et le LLM corrige **106** phrases au lieu de 127 — le taggeur se trompe moins.
+
+### 9.8 Ce qui reste à faire pour livrer l'histoire
+
+1. Brancher un écran (chapitre = liste de phrases ; tap sur une phrase → traduction ; tap sur un mot
+   → pont forme→lemme ; haut-parleur → TTS ko-KR, mécanisme des bulles de Conversation).
+2. Persister l'état du feuilleton (résumé + personnages + n° de chapitre) — quelques Ko dans l'état ;
+   **garder les chapitres eux-mêmes hors export cloud** (régénérables, cf. le chantier « export < 1 Mo »).
+3. Ajouter `grammar.js`/`grammar-data.js` à `index.html` **et** `sw.js`, bumper `CACHE`.
+4. Génération depuis le navigateur : réutiliser `callLLM` de `conversation.js` (clé déjà distribuée
+   au téléphone via `config/conv-cfg.json`). Prévoir le hors-ligne : un chapitre déjà généré se lit
+   sans réseau, seule la génération demande la connexion.
