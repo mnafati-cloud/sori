@@ -1247,12 +1247,12 @@ function afterAnswer(it, ok, sawTrivia, kind, grade, capMax){
 function exoQcmKr2Fr(it){
   const ds = distractors(it, 3, "fr");
   const opts = shuffle([it.id, ...ds]);
+  /* v116 (suite rapports 21/07) : QCM aligné sur les cartes Rappel — pas d'en-tête,
+     pas d'icône 🔊 : toucher le mot le prononce (ici pas de révélation, on choisit). */
   const card = el(`<div class="card center">
-    <div class="dim">Que veut dire…</div>
     <div class="big-kr ${it.type==="phrase"?"phrase":""}">${esc(it.kr)}</div>
-    <button class="speak" title="écouter">${SVG_SPK}</button>
     <div class="opts"></div></div>`);
-  card.querySelector(".speak").onclick = ()=>speak(it.kr, it.id);
+  card.querySelector(".big-kr").onclick = ()=>speak(it.kr, it.id);
   const box = card.querySelector(".opts");
   opts.forEach(id=>{
     const o = SEED_BY_ID[id];
@@ -1277,8 +1277,8 @@ function exoQcmKr2Fr(it){
 function exoQcmFr2Kr(it){
   const ds = distractors(it, 3, "kr");
   const opts = shuffle([it.id, ...ds]);
+  /* v116 : même épure que le QCM compréhension — le mot seul, les choix parlent d'eux-mêmes */
   const card = el(`<div class="card center">
-    <div class="dim">Comment dit-on…</div>
     <div class="big-fr">${esc(it.fr)}</div>
     <div class="opts"></div></div>`);
   const box = card.querySelector(".opts");
