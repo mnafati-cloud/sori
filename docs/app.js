@@ -1359,28 +1359,17 @@ function exoRecall(it, hinted){
       :                  `<span class="hs"></span>`
     ).join("") + `</div>`;
   }
-  /* v103 Takbon : même handler #show, même flux (kind/capMax/notes inchangés) — seul le
-     déclencheur change. Avec indice, les tuiles d'indice DEVIENNENT le déclencheur ; sans,
-     des creux (un par syllabe via ENGINE.slotPlan, ou un creux large). */
-  const tk = isTakbon();
-  let trigger = "";
-  if(!tk){
-    trigger = `<button class="btn ghost" id="show">Montrer</button>`;
-  } else if(hinted){
-    hint = `<button class="slots-h" id="show" aria-label="révéler le mot">${hint}</button>`;
-  } else {
-    const sp = ENGINE.slotPlan(it.kr);
-    hint = sp.mode === "tiles"
-      ? `<button class="slots" id="show" aria-label="révéler le mot">${'<span class="sl"></span>'.repeat(sp.n)}</button>`
-      : `<button class="slot-wide" id="show" aria-label="révéler le mot"></button>`;
-  }
+  /* v115 (rapports 🐞 21/07) : plus d'instruction au-dessus du mot, plus de zone encadrée à
+     cliquer (bouton Montrer / creux Takbon v103) — toucher la carte, mot compris, révèle.
+     Les tuiles d'indice redeviennent un AFFICHAGE pur. Flux inchangé (kind/capMax/notes). */
   const card = el(`<div class="card center">
-    <div class="dim">${hinted?"Rappel avec indice":"Rappel"} — dis-le à voix haute</div>
     <div class="big-fr">${esc(it.fr)}</div>${hint}
     <div class="feedback"></div>
-    <div class="row" style="margin-top:12px">${trigger}</div></div>`);
-  card.querySelector("#show").onclick = ()=>{
-    if(tk) card.querySelector("#show").remove();   // les creux ont fait leur travail
+    <div class="tapreveal">touche pour révéler</div>
+    <div class="row" style="margin-top:12px"></div></div>`);
+  card.onclick = ()=>{
+    card.onclick = null;                          // une seule révélation ; ensuite les taps vont aux notes
+    card.querySelector(".tapreveal").remove();
     /* mot révélé + bouton 🔊 pour le réécouter pendant la notation */
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span> <button class="speak" title="écouter">${SVG_SPK}</button>`;
     card.querySelector(".feedback .speak").onclick = ()=>speak(it.kr, it.id);
@@ -1392,18 +1381,18 @@ function exoRecall(it, hinted){
 }
 /* stage 4-5 (variante) : rappel inversé — je vois le coréen, je donne le sens */
 function exoRecallRev(it){
-  const tk = isTakbon();   // v103 : creux large à toucher au lieu du bouton Montrer
+  /* v115 (rapports 🐞 21/07) : plus d'instruction, plus d'icône 🔊 ni de zone à cliquer —
+     toucher la carte (le mot compris) révèle le sens ; après, toucher le mot le fait réécouter. */
   const card = el(`<div class="card center">
-    <div class="dim">Rappel inversé — que veut dire…</div>
     <div class="big-kr ${it.type==="phrase"?"phrase":""}">${esc(it.kr)}</div>
-    <button class="speak" title="écouter">${SVG_SPK}</button>
-    ${tk ? `<button class="slot-wide" id="show" aria-label="révéler le sens"></button>` : ""}
     <div class="feedback"></div>
-    <div class="row" style="margin-top:12px">${tk ? "" : `<button class="btn ghost" id="show">Montrer</button>`}</div></div>`);
-  card.querySelector(".speak").onclick = ()=>speak(it.kr, it.id);
-  card.querySelector("#show").onclick = ()=>{
-    if(tk) card.querySelector("#show").remove();
+    <div class="tapreveal">touche pour révéler</div>
+    <div class="row" style="margin-top:12px"></div></div>`);
+  card.onclick = ()=>{
+    card.onclick = null;
+    card.querySelector(".tapreveal").remove();
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.fr)}</span>`;
+    card.querySelector(".big-kr").onclick = ()=>speak(it.kr, it.id);   // réécoute au tap sur le mot
     showTrivia(card, it);
     gradeButtons(card.querySelector(".row"), it, "recrev");
   };
