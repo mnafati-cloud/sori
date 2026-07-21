@@ -939,14 +939,13 @@ function renderReview(){
       ${remaining>0
         ? `<div class="seal-wrap"><div class="done-kr">수고했어요</div></div><h2>Session terminée — il en reste</h2>`
         : `<div class="seal-wrap"><div class="dojang"><span>끝</span></div><div class="done-kr">오늘 끝.</div></div><h2>Tout est à jour</h2>`}
-      <p class="dim">${l.ok||0} bonnes réponses aujourd'hui${l.ko?`, ${l.ko} à retravailler`:""}.</p>
-      <p class="dim">${(m=>`${m.length} cartes maîtrisées, dont ${m.filter(it=>it.itv>=14).length} ancrées (intervalle ≥ 2 semaines)`)(BASE_IDS.map(eff).filter(it=>it.stage>=4))}.</p>
       <div class="row" style="margin-top:12px">
         ${more}
         <button class="btn ghost" id="reviewmore">Réviser 10 de plus</button>
         <button class="btn ghost" id="learnmore">Apprendre 10 nouvelles</button>
-      </div>
-      <p class="dim note" style="margin-top:8px">Autant de fois que tu veux — ces cartes comptent dans ta progression.</p></div>`));
+      </div></div>`));
+    /* v118 : compteurs du jour / cartes maîtrisées / phrase d'explication retirés (rapport 21/07 :
+       « trop de texte inutile ») — le sceau, les actions, et le récap des ratés suffisent. */
     /* récap : les mots ratés de la session, à réécouter d'un tap */
     if(SESSFAIL.length){
       const rec = el(`<div class="card"><h2>À retravailler (${SESSFAIL.length})</h2>

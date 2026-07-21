@@ -243,21 +243,17 @@
   /* Styles .num-* injectés une seule fois — uniquement les variables :root
      de style.css (compatibles avec les 4 thèmes sans rien faire). */
   var CSS = [
-    /* v72 : tuiles-tampon — coché = tamponné (carré vermillon incliné), plus de case native */
-    ".num-modes{display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:14px}",
-    ".num-mode{position:relative; text-align:left; background:none; font:inherit;",
-    "  border:1px solid var(--line); border-radius:13px; padding:11px 13px 10px;",
-    "  color:var(--dim); cursor:pointer;",
-    "  transition:border-color .12s, background-color .12s, color .12s}",
-    ".num-mode b{display:block; font-size:.85rem; font-weight:600}",
-    ".num-mode .mkr{display:block; font-family:var(--kr-display); font-size:1rem;",
-    "  margin-top:3px; opacity:.62; word-break:keep-all}",
-    ".num-mode .st{position:absolute; top:10px; right:11px; width:13px; height:13px;",
-    "  border-radius:4px; border:1px solid var(--line); transform:rotate(-4deg);",
-    "  transition:background-color .12s, border-color .12s}",
-    ".num-mode.on{background:var(--panel2); border-color:var(--dim); color:var(--txt)}",
+    /* v118 : modes en texte nu — terne éteint, surligné (trait sceau) quand choisi */
+    ".num-modes{display:flex; flex-wrap:wrap; justify-content:center; gap:2px 22px; margin-top:10px}",
+    ".num-mode{background:none; border:none; font:inherit; padding:7px 2px;",
+    "  color:var(--dim); opacity:.55; cursor:pointer; text-align:center;",
+    "  transition:color .12s, opacity .12s}",
+    ".num-mode b{display:block; font-size:.9rem; font-weight:600}",
+    ".num-mode .mkr{display:block; font-family:var(--kr-display); font-size:.95rem;",
+    "  margin-top:1px; opacity:.62; word-break:keep-all}",
+    ".num-mode.on{color:var(--txt); opacity:1}",
+    ".num-mode.on b{box-shadow:inset 0 -2px 0 var(--seal)}",
     ".num-mode.on .mkr{opacity:.85}",
-    ".num-mode.on .st{background:var(--seal); border-color:transparent}",
     ".num-mode:focus-visible{outline:2px solid var(--seal); outline-offset:2px}",
     ".num-go{display:flex; align-items:center; justify-content:space-between; width:100%; margin-top:12px}",
     ".num-go .n{background:rgba(0,0,0,.25); padding:2px 11px; border-radius:99px;",
@@ -295,14 +291,13 @@
     function paintConfig(lastScore){
       card.innerHTML = "";
       card.appendChild(el("<h2>Les nombres à l'oreille</h2>"));
-      card.appendChild(el('<p class="dim">Écoute un prix, une heure, une date ou une ' +
-        'quantité en coréen, puis choisis le bon nombre.</p>'));
+      /* v118 : phrase d'intro retirée + modes en TEXTE nu — terne quand éteint, surligné
+         quand choisi (rapport 21/07 : « pas des boîtes ni des cases à cocher ») */
       var box = el('<div class="num-modes"></div>');
       MODES.forEach(function(mo){
-        /* v72 : tuile-tampon (bouton), plus de case à cocher */
         var lab = el('<button type="button" class="num-mode' + (enabled[mo.id] ? " on" : "") +
           '" aria-pressed="' + (enabled[mo.id] ? "true" : "false") + '"><b>' + esc(mo.label) +
-          "</b><span class=\"mkr\">" + esc(mo.kr) + '</span><span class="st"></span></button>');
+          "</b><span class=\"mkr\">" + esc(mo.kr) + "</span></button>");
         lab.onclick = function(){
           enabled[mo.id] = !enabled[mo.id];
           lab.classList.toggle("on", enabled[mo.id]);
