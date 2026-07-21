@@ -243,16 +243,16 @@
   /* Styles .num-* injectés une seule fois — uniquement les variables :root
      de style.css (compatibles avec les 4 thèmes sans rien faire). */
   var CSS = [
-    /* v118 : modes en texte nu — terne éteint, surligné (trait sceau) quand choisi */
-    ".num-modes{display:flex; flex-wrap:wrap; justify-content:center; gap:2px 22px; margin-top:10px}",
+    /* v119 : modes en texte nu, grille 2×2 CONSERVÉE, aucun trait ni encadré —
+       terne quand éteint, texte plein quand choisi (rapport 21/07, à la lettre) */
+    ".num-modes{display:grid; grid-template-columns:1fr 1fr; gap:6px 14px; margin-top:10px}",
     ".num-mode{background:none; border:none; font:inherit; padding:7px 2px;",
-    "  color:var(--dim); opacity:.55; cursor:pointer; text-align:center;",
+    "  color:var(--dim); opacity:.5; cursor:pointer; text-align:center;",
     "  transition:color .12s, opacity .12s}",
     ".num-mode b{display:block; font-size:.9rem; font-weight:600}",
     ".num-mode .mkr{display:block; font-family:var(--kr-display); font-size:.95rem;",
     "  margin-top:1px; opacity:.62; word-break:keep-all}",
     ".num-mode.on{color:var(--txt); opacity:1}",
-    ".num-mode.on b{box-shadow:inset 0 -2px 0 var(--seal)}",
     ".num-mode.on .mkr{opacity:.85}",
     ".num-mode:focus-visible{outline:2px solid var(--seal); outline-offset:2px}",
     ".num-go{display:flex; align-items:center; justify-content:space-between; width:100%; margin-top:12px}",
