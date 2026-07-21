@@ -51,7 +51,10 @@ const GLOSS_FIX = {
   "나다":"Sortir, pousser (émaner de soi : bruit, odeur, fièvre, feuille)",
   "생기다":"Apparaître, se former (survenir : problème, occasion)",
   "정류장":"Arrêt de bus (le mot courant)",
-  "정거장":"Station, arrêt (terme large : train, métro)"
+  "정거장":"Station, arrêt (terme large : train, métro)",
+  /* v117 : rapport in-app 21/07 (« quelle différence avec 그날 ? ») — gloses jumelles */
+  "이날":"Ce jour-là (récit/presse : le jour qu'on vient de mentionner)",
+  "그날":"Ce jour-là (courant : jour déjà évoqué)"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 

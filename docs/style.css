@@ -15,6 +15,11 @@
   font-family:"NanumMyeongjoSub";
   src:url("./fonts/nanum-myeongjo-bold-sub.woff2") format("woff2");
   font-weight:700; font-style:normal; font-display:swap;
+  /* v117 : HANGUL SEULEMENT. Nanum Myeongjo n'a AUCUN glyphe latin accentué (vérifié dans la
+     source, 11 882 glyphes) : sans cette borne, « e » sort en myeongjo mais « é » retombe sur
+     Roboto → lettres dépareillées dans le FR (rapports 19+21/07). Borné au hangul, TOUT le
+     latin des éléments .kr retombe uniformément sur la même police de repli. */
+  unicode-range:U+1100-11FF,U+3130-318F,U+A960-A97F,U+AC00-D7A3,U+D7B0-D7FF;
 }
 
 :root{
@@ -25,7 +30,9 @@
   /* v72 : céladon REGLACÉ — moins saturé, plus vert (l'ancien #7CC7AC tirait au cyan sur l'encre).
      Doctrine : céladon = réussite/progression SEULEMENT ; une action se dit en hanji ou au sceau. */
   --seal:#E4584A; --seal-ink:#1F0F0B; --cel:#93BFA6; --cel-dim:#4F7561;
-  --kr-display:"NanumMyeongjoSub","Nanum Myeongjo","Gungsuh","Batang","AppleMyungjo","Noto Serif KR",serif;
+  /* v117 : Roboto avant serif — le latin (borné hors du sous-ensemble par unicode-range)
+     retombe sur la police du corps de l'app, jamais sur un serif système hasardeux (cf. v102) */
+  --kr-display:"NanumMyeongjoSub","Nanum Myeongjo","Gungsuh","Batang","AppleMyungjo","Noto Serif KR",Roboto,serif;
 }
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
 html,body{margin:0; padding:0; background:var(--bg); color:var(--txt);
