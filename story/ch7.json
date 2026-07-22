@@ -1,0 +1,271 @@
+{
+ "n": 7,
+ "target": "mod-n",
+ "names": ["민수", "은지", "태호", "프랑스"],
+ "title_kr": "키가 큰 남자",
+ "title_fr": "L'homme de grande taille",
+ "summary_fr": "Samedi après-midi, la vieille femme fait entrer Minsu et Eunji : dans une petite pièce, sur le bureau, une photo montre la grand-mère et une autre femme — Eunji reconnaît sa mère, partie en France et jamais revenue. Dans le bureau, Minsu trouve le passeport d'Eunji : ce n'est pas Eunji qui l'a laissé là, c'est un homme grand et taciturne qui l'a apporté l'an dernier, et la grand-mère sait très bien qu'il s'appelle Taeho. Eunji trouve aussi une lettre courte, la lit, ne la montre pas à Minsu et la met dans son sac avec le passeport : elle peut maintenant partir en France. La grand-mère regarde par la fenêtre et dit que Taeho est déjà venu ce matin et qu'il revient à cinq heures.",
+ "sentences": [
+  {
+   "kr": "할머니가 두 사람을 집 안으로 불렀어요. 집 안은 조용했어요.",
+   "fr": "La grand-mère a fait entrer les deux dans la maison. À l'intérieur, c'était calme.",
+   "words": [
+    {"form": "할머니가", "lemma": "할머니", "note": ""},
+    {"form": "두", "lemma": "두", "note": ""},
+    {"form": "사람을", "lemma": "사람", "note": ""},
+    {"form": "집", "lemma": "집", "note": ""},
+    {"form": "안으로", "lemma": "안", "note": "+ 으로 : vers"},
+    {"form": "불렀어요", "lemma": "부르다", "note": "passé poli"},
+    {"form": "집", "lemma": "집", "note": ""},
+    {"form": "안은", "lemma": "안", "note": ""},
+    {"form": "조용했어요", "lemma": "조용하다", "note": "passé poli"}
+   ]
+  },
+  {
+   "kr": "작은 방 안에 책상이 하나 있었어요. 책상 위에 사진이 하나 있었어요.",
+   "fr": "Dans une petite pièce, il y avait un bureau. Sur le bureau, il y avait une photo.",
+   "words": [
+    {"form": "작은", "lemma": "작다", "note": "petit + nom"},
+    {"form": "방", "lemma": "방", "note": ""},
+    {"form": "안에", "lemma": "안", "note": ""},
+    {"form": "책상이", "lemma": "책상", "note": ""},
+    {"form": "하나", "lemma": "하나", "note": ""},
+    {"form": "있었어요", "lemma": "있다", "note": "passé poli"},
+    {"form": "책상", "lemma": "책상", "note": ""},
+    {"form": "위에", "lemma": "위", "note": ""},
+    {"form": "사진이", "lemma": "사진", "note": ""},
+    {"form": "하나", "lemma": "하나", "note": ""},
+    {"form": "있었어요", "lemma": "있다", "note": "passé poli"}
+   ]
+  },
+  {
+   "kr": "사진 안에 여자가 두 명 있었어요. 한 사람은 할머니였어요.",
+   "fr": "Sur la photo, il y avait deux femmes. L'une était la grand-mère.",
+   "words": [
+    {"form": "사진", "lemma": "사진", "note": ""},
+    {"form": "안에", "lemma": "안", "note": ""},
+    {"form": "여자가", "lemma": "여자", "note": ""},
+    {"form": "두", "lemma": "두", "note": ""},
+    {"form": "명", "lemma": "두 명", "note": "compteur : personnes"},
+    {"form": "있었어요", "lemma": "있다", "note": "passé poli"},
+    {"form": "한", "lemma": "한", "note": ""},
+    {"form": "사람은", "lemma": "사람", "note": ""},
+    {"form": "할머니였어요", "lemma": "할머니", "note": "+ 였어요 : c'était"}
+   ]
+  },
+  {
+   "kr": "은지가 사진을 오래 봤어요. 그리고 말했어요. \"이 사람은 우리 어머니예요.\"",
+   "fr": "Eunji a longtemps regardé la photo. Puis elle a dit : \"Cette personne, c'est ma mère.\"",
+   "words": [
+    {"form": "은지가", "lemma": "은지", "note": ""},
+    {"form": "사진을", "lemma": "사진", "note": ""},
+    {"form": "오래", "lemma": "오래", "note": ""},
+    {"form": "봤어요", "lemma": "보다", "note": "passé poli"},
+    {"form": "그리고", "lemma": "그리고", "note": ""},
+    {"form": "말했어요", "lemma": "말하다", "note": "passé poli"},
+    {"form": "이", "lemma": "이", "note": ""},
+    {"form": "사람은", "lemma": "사람", "note": ""},
+    {"form": "우리", "lemma": "우리", "note": ""},
+    {"form": "어머니예요", "lemma": "어머니", "note": "+ 예요 : c'est"}
+   ]
+  },
+  {
+   "kr": "할머니가 대답했어요. \"제 딸이에요. 프랑스에 갔어요. 그리고 안 돌아왔어요.\"",
+   "fr": "La grand-mère a répondu : \"C'est ma fille. Elle est partie en France. Et elle n'est pas revenue.\"",
+   "words": [
+    {"form": "할머니가", "lemma": "할머니", "note": ""},
+    {"form": "대답했어요", "lemma": "대답하다", "note": "passé poli"},
+    {"form": "제", "lemma": "제", "note": ""},
+    {"form": "딸이에요", "lemma": "딸", "note": "+ 이에요 : c'est"},
+    {"form": "프랑스에", "lemma": "프랑스", "note": ""},
+    {"form": "갔어요", "lemma": "가다", "note": "passé poli"},
+    {"form": "그리고", "lemma": "그리고", "note": ""},
+    {"form": "안", "lemma": "안", "note": "négation"},
+    {"form": "돌아왔어요", "lemma": "돌아오다", "note": "passé poli"}
+   ]
+  },
+  {
+   "kr": "은지는 말이 없었어요. 민수도 말이 없었어요.",
+   "fr": "Eunji n'a rien dit. Minsu non plus.",
+   "words": [
+    {"form": "은지는", "lemma": "은지", "note": ""},
+    {"form": "말이", "lemma": "말이 없다", "note": ""},
+    {"form": "없었어요", "lemma": "말이 없다", "note": "passé poli"},
+    {"form": "민수도", "lemma": "민수", "note": "+ 도 : aussi"},
+    {"form": "말이", "lemma": "말이 없다", "note": ""},
+    {"form": "없었어요", "lemma": "말이 없다", "note": "passé poli"}
+   ]
+  },
+  {
+   "kr": "민수가 책상 안을 봤어요. 책상 안에 여권이 하나 있었어요.",
+   "fr": "Minsu a regardé dans le bureau. Dedans, il y avait un passeport.",
+   "words": [
+    {"form": "민수가", "lemma": "민수", "note": ""},
+    {"form": "책상", "lemma": "책상", "note": ""},
+    {"form": "안을", "lemma": "안", "note": ""},
+    {"form": "봤어요", "lemma": "보다", "note": "passé poli"},
+    {"form": "책상", "lemma": "책상", "note": ""},
+    {"form": "안에", "lemma": "안", "note": ""},
+    {"form": "여권이", "lemma": "여권", "note": ""},
+    {"form": "하나", "lemma": "하나", "note": ""},
+    {"form": "있었어요", "lemma": "있다", "note": "passé poli"}
+   ]
+  },
+  {
+   "kr": "은지가 그 여권을 열었어요. 그 여권은 은지 여권이었어요.",
+   "fr": "Eunji a ouvert ce passeport. C'était le sien.",
+   "words": [
+    {"form": "은지가", "lemma": "은지", "note": ""},
+    {"form": "그", "lemma": "그", "note": ""},
+    {"form": "여권을", "lemma": "여권", "note": ""},
+    {"form": "열었어요", "lemma": "열다", "note": "passé poli"},
+    {"form": "그", "lemma": "그", "note": ""},
+    {"form": "여권은", "lemma": "여권", "note": ""},
+    {"form": "은지", "lemma": "은지", "note": ""},
+    {"form": "여권이었어요", "lemma": "여권", "note": "+ 이었어요 : c'était"}
+   ]
+  },
+  {
+   "kr": "은지가 물어봤어요. \"할머니, 이 여권은 왜 여기에 있어요?\"",
+   "fr": "Eunji a demandé : \"Grand-mère, pourquoi ce passeport est ici ?\"",
+   "words": [
+    {"form": "은지가", "lemma": "은지", "note": ""},
+    {"form": "물어봤어요", "lemma": "물어보다", "note": "passé poli"},
+    {"form": "할머니", "lemma": "할머니", "note": ""},
+    {"form": "이", "lemma": "이", "note": ""},
+    {"form": "여권은", "lemma": "여권", "note": ""},
+    {"form": "왜", "lemma": "왜", "note": ""},
+    {"form": "여기에", "lemma": "여기", "note": ""},
+    {"form": "있어요", "lemma": "있다", "note": "présent poli"}
+   ]
+  },
+  {
+   "kr": "할머니가 대답했어요. \"작년에 남자가 한 명 왔어요. 그 남자가 이 여권을 줬어요.\"",
+   "fr": "La grand-mère a répondu : \"L'an dernier, un homme est venu. C'est lui qui m'a donné ce passeport.\"",
+   "words": [
+    {"form": "할머니가", "lemma": "할머니", "note": ""},
+    {"form": "대답했어요", "lemma": "대답하다", "note": "passé poli"},
+    {"form": "작년에", "lemma": "작년", "note": ""},
+    {"form": "남자가", "lemma": "남자", "note": ""},
+    {"form": "한", "lemma": "한", "note": ""},
+    {"form": "명", "lemma": "한 명", "note": "compteur : personnes"},
+    {"form": "왔어요", "lemma": "오다", "note": "passé poli"},
+    {"form": "그", "lemma": "그", "note": ""},
+    {"form": "남자가", "lemma": "남자", "note": ""},
+    {"form": "이", "lemma": "이", "note": ""},
+    {"form": "여권을", "lemma": "여권", "note": ""},
+    {"form": "줬어요", "lemma": "주다", "note": "passé poli"}
+   ]
+  },
+  {
+   "kr": "\"그 사람은 키가 큰 남자였어요. 말이 없었어요. 하지만 좋은 사람이었어요.\"",
+   "fr": "\"C'était un homme de grande taille. Il ne parlait pas. Mais c'était quelqu'un de bien.\"",
+   "words": [
+    {"form": "그", "lemma": "그", "note": ""},
+    {"form": "사람은", "lemma": "사람", "note": ""},
+    {"form": "키가", "lemma": "키가 크다", "note": ""},
+    {"form": "큰", "lemma": "키가 크다", "note": "grand + nom"},
+    {"form": "남자였어요", "lemma": "남자", "note": "+ 였어요 : c'était"},
+    {"form": "말이", "lemma": "말이 없다", "note": ""},
+    {"form": "없었어요", "lemma": "말이 없다", "note": "passé poli"},
+    {"form": "하지만", "lemma": "하지만", "note": ""},
+    {"form": "좋은", "lemma": "좋다", "note": "bon + nom"},
+    {"form": "사람이었어요", "lemma": "사람", "note": "+ 이었어요 : c'était"}
+   ]
+  },
+  {
+   "kr": "민수가 말했어요. \"그 사람은 우리 사장님이에요.\"",
+   "fr": "Minsu a dit : \"Cet homme, c'est notre patron.\"",
+   "words": [
+    {"form": "민수가", "lemma": "민수", "note": ""},
+    {"form": "말했어요", "lemma": "말하다", "note": "passé poli"},
+    {"form": "그", "lemma": "그", "note": ""},
+    {"form": "사람은", "lemma": "사람", "note": ""},
+    {"form": "우리", "lemma": "우리", "note": ""},
+    {"form": "사장님이에요", "lemma": "사장님", "note": "+ 이에요 : c'est"}
+   ]
+  },
+  {
+   "kr": "할머니가 웃었어요. \"그 사람 이름은 태호예요. 저도 알아요.\"",
+   "fr": "La grand-mère a ri. \"Cet homme s'appelle Taeho. Moi aussi je le sais.\"",
+   "words": [
+    {"form": "할머니가", "lemma": "할머니", "note": ""},
+    {"form": "웃었어요", "lemma": "웃다", "note": "passé poli"},
+    {"form": "그", "lemma": "그", "note": ""},
+    {"form": "사람", "lemma": "사람", "note": ""},
+    {"form": "이름은", "lemma": "이름", "note": ""},
+    {"form": "태호예요", "lemma": "태호", "note": "+ 예요 : c'est"},
+    {"form": "저도", "lemma": "저", "note": "+ 도 : aussi"},
+    {"form": "알아요", "lemma": "알아요", "note": ""}
+   ]
+  },
+  {
+   "kr": "책상 안에 짧은 편지도 있었어요. 은지가 그 편지를 읽었어요.",
+   "fr": "Dans le bureau, il y avait aussi une lettre courte. Eunji l'a lue.",
+   "words": [
+    {"form": "책상", "lemma": "책상", "note": ""},
+    {"form": "안에", "lemma": "안", "note": ""},
+    {"form": "짧은", "lemma": "짧다", "note": "court + nom"},
+    {"form": "편지도", "lemma": "편지", "note": "+ 도 : aussi"},
+    {"form": "있었어요", "lemma": "있다", "note": "passé poli"},
+    {"form": "은지가", "lemma": "은지", "note": ""},
+    {"form": "그", "lemma": "그", "note": ""},
+    {"form": "편지를", "lemma": "편지", "note": ""},
+    {"form": "읽었어요", "lemma": "읽다", "note": "passé poli"}
+   ]
+  },
+  {
+   "kr": "하지만 은지는 그 편지를 민수에게 안 줬어요. 가방 안에 넣었어요.",
+   "fr": "Mais Eunji n'a pas donné cette lettre à Minsu. Elle l'a mise dans son sac.",
+   "words": [
+    {"form": "하지만", "lemma": "하지만", "note": ""},
+    {"form": "은지는", "lemma": "은지", "note": ""},
+    {"form": "그", "lemma": "그", "note": ""},
+    {"form": "편지를", "lemma": "편지", "note": ""},
+    {"form": "민수에게", "lemma": "민수", "note": "+ 에게 : à"},
+    {"form": "안", "lemma": "안", "note": "négation"},
+    {"form": "줬어요", "lemma": "주다", "note": "passé poli"},
+    {"form": "가방", "lemma": "가방", "note": ""},
+    {"form": "안에", "lemma": "안", "note": ""},
+    {"form": "넣었어요", "lemma": "넣다", "note": "passé poli"}
+   ]
+  },
+  {
+   "kr": "은지가 여권도 가방 안에 넣었어요. \"이제 프랑스에 갈 수 있어요.\"",
+   "fr": "Eunji a mis le passeport aussi dans son sac. \"Maintenant je peux partir en France.\"",
+   "words": [
+    {"form": "은지가", "lemma": "은지", "note": ""},
+    {"form": "여권도", "lemma": "여권", "note": "+ 도 : aussi"},
+    {"form": "가방", "lemma": "가방", "note": ""},
+    {"form": "안에", "lemma": "안", "note": ""},
+    {"form": "넣었어요", "lemma": "넣다", "note": "passé poli"},
+    {"form": "이제", "lemma": "이제", "note": ""},
+    {"form": "프랑스에", "lemma": "프랑스", "note": ""},
+    {"form": "갈", "lemma": "가다", "note": "futur / capacité"},
+    {"form": "수", "lemma": "수", "note": ""},
+    {"form": "있어요", "lemma": "있다", "note": "présent poli"}
+   ]
+  },
+  {
+   "kr": "할머니가 창문 밖을 봤어요. \"태호 씨가 오늘 아침에도 여기에 왔어요. 다섯 시에 다시 와요.\"",
+   "fr": "La grand-mère a regardé par la fenêtre. \"Taeho est venu ici ce matin aussi. Il revient à cinq heures.\"",
+   "words": [
+    {"form": "할머니가", "lemma": "할머니", "note": ""},
+    {"form": "창문", "lemma": "창문", "note": ""},
+    {"form": "밖을", "lemma": "밖", "note": ""},
+    {"form": "봤어요", "lemma": "보다", "note": "passé poli"},
+    {"form": "태호", "lemma": "태호", "note": ""},
+    {"form": "씨가", "lemma": "씨", "note": ""},
+    {"form": "오늘", "lemma": "오늘", "note": ""},
+    {"form": "아침에도", "lemma": "아침", "note": "+ 에도 : aussi à"},
+    {"form": "여기에", "lemma": "여기", "note": ""},
+    {"form": "왔어요", "lemma": "오다", "note": "passé poli"},
+    {"form": "다섯", "lemma": "다섯", "note": ""},
+    {"form": "시에", "lemma": "시", "note": ""},
+    {"form": "다시", "lemma": "다시", "note": ""},
+    {"form": "와요", "lemma": "오다", "note": "présent poli"}
+   ]
+  }
+ ],
+ "new_words": []
+}

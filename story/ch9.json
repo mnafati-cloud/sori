@@ -1,0 +1,937 @@
+{
+ "n": 9,
+ "target": "myeonseo",
+ "names": [
+  "민수",
+  "은지",
+  "태호",
+  "현우",
+  "부산",
+  "프랑스",
+  "한국"
+ ],
+ "title_kr": "가방 안의 편지",
+ "title_fr": "Les lettres dans le sac",
+ "summary_fr": "Samedi soir chez la grand-mère à Busan : Taeho explique le billet d'avion. L'an dernier, il a promis à la mère d'Eunji que, si Eunji partait en France, il partirait avec elle ; il ne sait pas pourquoi la mère ne vient pas en Corée. La grand-mère sort alors son propre passeport du bureau et annonce qu'elle veut essayer l'avion, ce qui fait rire tout le monde sauf Minsu. Les trois rentrent par le train de nuit. Dimanche matin à sept heures, la lumière du café est déjà allumée : Hyunwoo, dehors, dit que quelqu'un est entré ce matin. À l'intérieur, une femme est assise à la table près de la fenêtre avec un très grand sac ; elle dit qu'elle est arrivée de France le matin même et qu'elle est la mère d'Eunji. Elle ouvre son sac : il est plein de lettres, et sur ces lettres il y a le nom de Taeho.",
+ "sentences": [
+  {
+   "kr": "토요일 저녁이었어요. 할머니가 웃으면서 밥을 줬어요.",
+   "fr": "C'était samedi soir. La grand-mère a servi le riz en souriant.",
+   "words": [
+    {
+     "form": "토요일",
+     "lemma": "토요일",
+     "note": ""
+    },
+    {
+     "form": "저녁이었어요",
+     "lemma": "저녁",
+     "note": "+ 이다 au passé : c'était le soir"
+    },
+    {
+     "form": "할머니가",
+     "lemma": "할머니",
+     "note": ""
+    },
+    {
+     "form": "웃으면서",
+     "lemma": "웃다",
+     "note": "(으)면서 : en riant / en souriant"
+    },
+    {
+     "form": "밥을",
+     "lemma": "밥",
+     "note": ""
+    },
+    {
+     "form": "줬어요",
+     "lemma": "주다",
+     "note": "passé poli"
+    }
+   ]
+  },
+  {
+   "kr": "태호는 식사하면서 아무 말도 안 했어요. 민수도 조용했어요.",
+   "fr": "Taeho a mangé sans rien dire du tout. Minsu aussi est resté silencieux.",
+   "words": [
+    {
+     "form": "태호는",
+     "lemma": "태호",
+     "note": ""
+    },
+    {
+     "form": "식사하면서",
+     "lemma": "식사하다",
+     "note": "(으)면서 : tout en mangeant"
+    },
+    {
+     "form": "아무",
+     "lemma": "아무",
+     "note": ""
+    },
+    {
+     "form": "말도",
+     "lemma": "말",
+     "note": "+ 도 : non plus"
+    },
+    {
+     "form": "안",
+     "lemma": "안",
+     "note": "négation"
+    },
+    {
+     "form": "했어요",
+     "lemma": "하다",
+     "note": "passé poli"
+    },
+    {
+     "form": "민수도",
+     "lemma": "민수",
+     "note": "+ 도 : aussi"
+    },
+    {
+     "form": "조용했어요",
+     "lemma": "조용하다",
+     "note": "passé poli"
+    }
+   ]
+  },
+  {
+   "kr": "은지가 비행기 표를 보면서 물어봤어요. \"이 표는 왜 샀어요?\"",
+   "fr": "Eunji a demandé en regardant le billet d'avion : \"Pourquoi avez-vous acheté ce billet ?\"",
+   "words": [
+    {
+     "form": "은지가",
+     "lemma": "은지",
+     "note": ""
+    },
+    {
+     "form": "비행기",
+     "lemma": "비행기",
+     "note": ""
+    },
+    {
+     "form": "표를",
+     "lemma": "표",
+     "note": ""
+    },
+    {
+     "form": "보면서",
+     "lemma": "보다",
+     "note": "(으)면서 : en regardant"
+    },
+    {
+     "form": "물어봤어요",
+     "lemma": "물어보다",
+     "note": "passé poli"
+    },
+    {
+     "form": "이",
+     "lemma": "이",
+     "note": ""
+    },
+    {
+     "form": "표는",
+     "lemma": "표",
+     "note": ""
+    },
+    {
+     "form": "왜",
+     "lemma": "왜",
+     "note": ""
+    },
+    {
+     "form": "샀어요",
+     "lemma": "사다",
+     "note": "passé poli"
+    }
+   ]
+  },
+  {
+   "kr": "태호가 대답했어요. \"작년에 은지 씨 어머니와 약속했어요.\"",
+   "fr": "Taeho a répondu : \"L'an dernier, j'ai fait une promesse à votre mère.\"",
+   "words": [
+    {
+     "form": "태호가",
+     "lemma": "태호",
+     "note": ""
+    },
+    {
+     "form": "대답했어요",
+     "lemma": "대답하다",
+     "note": "passé poli"
+    },
+    {
+     "form": "작년에",
+     "lemma": "작년",
+     "note": "+ 에 : l'an dernier"
+    },
+    {
+     "form": "은지",
+     "lemma": "은지",
+     "note": ""
+    },
+    {
+     "form": "씨",
+     "lemma": "씨",
+     "note": ""
+    },
+    {
+     "form": "어머니와",
+     "lemma": "어머니",
+     "note": "+ 와 : avec"
+    },
+    {
+     "form": "약속했어요",
+     "lemma": "약속",
+     "note": "약속하다 au passé poli"
+    }
+   ]
+  },
+  {
+   "kr": "\"은지 씨가 프랑스에 가면 저도 같이 갈 거예요. 어머니가 그렇게 말했어요.\"",
+   "fr": "\"Si vous partez en France, je pars avec vous. C'est votre mère qui l'a dit.\"",
+   "words": [
+    {
+     "form": "은지",
+     "lemma": "은지",
+     "note": ""
+    },
+    {
+     "form": "씨가",
+     "lemma": "씨",
+     "note": ""
+    },
+    {
+     "form": "프랑스에",
+     "lemma": "프랑스",
+     "note": "+ 에 : en France"
+    },
+    {
+     "form": "가면",
+     "lemma": "가다",
+     "note": "(으)면 : si (elle) part"
+    },
+    {
+     "form": "저도",
+     "lemma": "저",
+     "note": "+ 도 : moi aussi"
+    },
+    {
+     "form": "같이",
+     "lemma": "같이",
+     "note": ""
+    },
+    {
+     "form": "갈",
+     "lemma": "가다",
+     "note": "(으)ㄹ + 거예요 : futur"
+    },
+    {
+     "form": "거예요",
+     "lemma": "거",
+     "note": "futur"
+    },
+    {
+     "form": "어머니가",
+     "lemma": "어머니",
+     "note": ""
+    },
+    {
+     "form": "그렇게",
+     "lemma": "그렇다",
+     "note": "그렇게 : comme ça"
+    },
+    {
+     "form": "말했어요",
+     "lemma": "말하다",
+     "note": "passé poli"
+    }
+   ]
+  },
+  {
+   "kr": "은지가 물어봤어요. \"그럼 어머니는 왜 한국에 안 와요?\"",
+   "fr": "Eunji a demandé : \"Alors pourquoi ma mère ne vient pas en Corée ?\"",
+   "words": [
+    {
+     "form": "은지가",
+     "lemma": "은지",
+     "note": ""
+    },
+    {
+     "form": "물어봤어요",
+     "lemma": "물어보다",
+     "note": "passé poli"
+    },
+    {
+     "form": "그럼",
+     "lemma": "그럼",
+     "note": ""
+    },
+    {
+     "form": "어머니는",
+     "lemma": "어머니",
+     "note": ""
+    },
+    {
+     "form": "왜",
+     "lemma": "왜",
+     "note": ""
+    },
+    {
+     "form": "한국에",
+     "lemma": "한국",
+     "note": "+ 에 : en Corée"
+    },
+    {
+     "form": "안",
+     "lemma": "안",
+     "note": "négation"
+    },
+    {
+     "form": "와요",
+     "lemma": "오다",
+     "note": "présent poli"
+    }
+   ]
+  },
+  {
+   "kr": "태호가 창문 밖을 봤어요. \"저도 몰라요.\"",
+   "fr": "Taeho a regardé dehors par la fenêtre. \"Moi non plus, je ne sais pas.\"",
+   "words": [
+    {
+     "form": "태호가",
+     "lemma": "태호",
+     "note": ""
+    },
+    {
+     "form": "창문",
+     "lemma": "창문",
+     "note": ""
+    },
+    {
+     "form": "밖을",
+     "lemma": "밖",
+     "note": ""
+    },
+    {
+     "form": "봤어요",
+     "lemma": "보다",
+     "note": "passé poli"
+    },
+    {
+     "form": "저도",
+     "lemma": "저",
+     "note": "+ 도 : moi aussi"
+    },
+    {
+     "form": "몰라요",
+     "lemma": "모르다",
+     "note": "présent poli (irrégulier)"
+    }
+   ]
+  },
+  {
+   "kr": "할머니가 일어났어요. 그리고 책상을 열었어요.",
+   "fr": "La grand-mère s'est levée. Puis elle a ouvert le bureau.",
+   "words": [
+    {
+     "form": "할머니가",
+     "lemma": "할머니",
+     "note": ""
+    },
+    {
+     "form": "일어났어요",
+     "lemma": "일어나다",
+     "note": "passé poli"
+    },
+    {
+     "form": "그리고",
+     "lemma": "그리고",
+     "note": ""
+    },
+    {
+     "form": "책상을",
+     "lemma": "책상",
+     "note": ""
+    },
+    {
+     "form": "열었어요",
+     "lemma": "열다",
+     "note": "passé poli"
+    }
+   ]
+  },
+  {
+   "kr": "책상 안에 여권이 있었어요. 할머니 여권이었어요.",
+   "fr": "Dans le bureau, il y avait un passeport. C'était le passeport de la grand-mère.",
+   "words": [
+    {
+     "form": "책상",
+     "lemma": "책상",
+     "note": ""
+    },
+    {
+     "form": "안에",
+     "lemma": "안",
+     "note": "+ 에 : dedans"
+    },
+    {
+     "form": "여권이",
+     "lemma": "여권",
+     "note": ""
+    },
+    {
+     "form": "있었어요",
+     "lemma": "있다",
+     "note": "passé poli"
+    },
+    {
+     "form": "할머니",
+     "lemma": "할머니",
+     "note": ""
+    },
+    {
+     "form": "여권이었어요",
+     "lemma": "여권",
+     "note": "+ 이다 au passé"
+    }
+   ]
+  },
+  {
+   "kr": "할머니가 말했어요. \"나도 비행기를 타 보고 싶어요.\"",
+   "fr": "La grand-mère a dit : \"Moi aussi, je veux essayer l'avion.\"",
+   "words": [
+    {
+     "form": "할머니가",
+     "lemma": "할머니",
+     "note": ""
+    },
+    {
+     "form": "말했어요",
+     "lemma": "말하다",
+     "note": "passé poli"
+    },
+    {
+     "form": "나도",
+     "lemma": "나",
+     "note": "+ 도 : moi aussi"
+    },
+    {
+     "form": "비행기를",
+     "lemma": "비행기",
+     "note": ""
+    },
+    {
+     "form": "타",
+     "lemma": "타다",
+     "note": "아/어 + 보다 : essayer"
+    },
+    {
+     "form": "보고",
+     "lemma": "보다",
+     "note": "고 싶다 : vouloir"
+    },
+    {
+     "form": "싶어요",
+     "lemma": "싶다",
+     "note": "vouloir"
+    }
+   ]
+  },
+  {
+   "kr": "은지가 웃었어요. 민수는 안 웃었어요. 민수 여권은 집 책상 안에 있었어요.",
+   "fr": "Eunji a ri. Minsu n'a pas ri. Son passeport à lui était dans le bureau de chez lui.",
+   "words": [
+    {
+     "form": "은지가",
+     "lemma": "은지",
+     "note": ""
+    },
+    {
+     "form": "웃었어요",
+     "lemma": "웃다",
+     "note": "passé poli"
+    },
+    {
+     "form": "민수는",
+     "lemma": "민수",
+     "note": ""
+    },
+    {
+     "form": "안",
+     "lemma": "안",
+     "note": "négation"
+    },
+    {
+     "form": "웃었어요",
+     "lemma": "웃다",
+     "note": "passé poli"
+    },
+    {
+     "form": "민수",
+     "lemma": "민수",
+     "note": ""
+    },
+    {
+     "form": "여권은",
+     "lemma": "여권",
+     "note": ""
+    },
+    {
+     "form": "집",
+     "lemma": "집",
+     "note": ""
+    },
+    {
+     "form": "책상",
+     "lemma": "책상",
+     "note": ""
+    },
+    {
+     "form": "안에",
+     "lemma": "안",
+     "note": "+ 에 : dedans"
+    },
+    {
+     "form": "있었어요",
+     "lemma": "있다",
+     "note": "passé poli"
+    }
+   ]
+  },
+  {
+   "kr": "밤에 세 사람은 기차를 탔어요. 민수는 음악을 들으면서 잤어요.",
+   "fr": "Le soir, les trois ont pris le train. Minsu a dormi en écoutant de la musique.",
+   "words": [
+    {
+     "form": "밤에",
+     "lemma": "밤",
+     "note": "+ 에 : le soir"
+    },
+    {
+     "form": "세",
+     "lemma": "세",
+     "note": ""
+    },
+    {
+     "form": "사람은",
+     "lemma": "사람",
+     "note": ""
+    },
+    {
+     "form": "기차를",
+     "lemma": "기차",
+     "note": ""
+    },
+    {
+     "form": "탔어요",
+     "lemma": "타다",
+     "note": "passé poli"
+    },
+    {
+     "form": "민수는",
+     "lemma": "민수",
+     "note": ""
+    },
+    {
+     "form": "음악을",
+     "lemma": "음악",
+     "note": ""
+    },
+    {
+     "form": "들으면서",
+     "lemma": "듣다",
+     "note": "(으)면서 : en écoutant (irrégulier)"
+    },
+    {
+     "form": "잤어요",
+     "lemma": "자다",
+     "note": "passé poli"
+    }
+   ]
+  },
+  {
+   "kr": "일요일 아침 일곱 시에 민수가 카페에 도착했어요. 그런데 카페 불이 켜져 있었어요.",
+   "fr": "Dimanche matin à sept heures, Minsu est arrivé au café. Mais la lumière du café était allumée.",
+   "words": [
+    {
+     "form": "일요일",
+     "lemma": "일요일",
+     "note": ""
+    },
+    {
+     "form": "아침",
+     "lemma": "아침",
+     "note": ""
+    },
+    {
+     "form": "일곱",
+     "lemma": "일곱",
+     "note": ""
+    },
+    {
+     "form": "시에",
+     "lemma": "시",
+     "note": "+ 에 : à ... heures"
+    },
+    {
+     "form": "민수가",
+     "lemma": "민수",
+     "note": ""
+    },
+    {
+     "form": "카페에",
+     "lemma": "카페",
+     "note": ""
+    },
+    {
+     "form": "도착했어요",
+     "lemma": "도착하다",
+     "note": "passé poli"
+    },
+    {
+     "form": "그런데",
+     "lemma": "그런데",
+     "note": ""
+    },
+    {
+     "form": "카페",
+     "lemma": "카페",
+     "note": ""
+    },
+    {
+     "form": "불이",
+     "lemma": "불",
+     "note": ""
+    },
+    {
+     "form": "켜져",
+     "lemma": "켜다",
+     "note": "켜져 있다 : être allumé"
+    },
+    {
+     "form": "있었어요",
+     "lemma": "있다",
+     "note": "passé poli"
+    }
+   ]
+  },
+  {
+   "kr": "현우가 밖에 서 있었어요. \"오늘 아침에 누가 카페에 들어갔어요.\"",
+   "fr": "Hyunwoo se tenait dehors. \"Ce matin, quelqu'un est entré dans le café.\"",
+   "words": [
+    {
+     "form": "현우가",
+     "lemma": "현우",
+     "note": ""
+    },
+    {
+     "form": "밖에",
+     "lemma": "밖",
+     "note": "+ 에 : dehors"
+    },
+    {
+     "form": "서",
+     "lemma": "서다",
+     "note": "서 있다 : être debout"
+    },
+    {
+     "form": "있었어요",
+     "lemma": "있다",
+     "note": "passé poli"
+    },
+    {
+     "form": "오늘",
+     "lemma": "오늘",
+     "note": ""
+    },
+    {
+     "form": "아침에",
+     "lemma": "아침",
+     "note": "+ 에 : le matin"
+    },
+    {
+     "form": "누가",
+     "lemma": "누구",
+     "note": "누구 + 가 : quelqu'un"
+    },
+    {
+     "form": "카페에",
+     "lemma": "카페",
+     "note": ""
+    },
+    {
+     "form": "들어갔어요",
+     "lemma": "들어가다",
+     "note": "passé poli"
+    }
+   ]
+  },
+  {
+   "kr": "민수가 안으로 들어갔어요. 창문 옆 테이블에 여자 한 명이 앉아 있었어요. 여자 옆에 가방이 있었어요. 가방이 아주 컸어요.",
+   "fr": "Minsu est entré. À la table près de la fenêtre, une femme était assise. À côté d'elle, il y avait un sac. Le sac était très grand.",
+   "words": [
+    {
+     "form": "민수가",
+     "lemma": "민수",
+     "note": ""
+    },
+    {
+     "form": "안으로",
+     "lemma": "안",
+     "note": "+ 으로 : vers l'intérieur"
+    },
+    {
+     "form": "들어갔어요",
+     "lemma": "들어가다",
+     "note": "passé poli"
+    },
+    {
+     "form": "창문",
+     "lemma": "창문",
+     "note": ""
+    },
+    {
+     "form": "옆",
+     "lemma": "옆",
+     "note": ""
+    },
+    {
+     "form": "테이블에",
+     "lemma": "테이블",
+     "note": ""
+    },
+    {
+     "form": "여자",
+     "lemma": "여자",
+     "note": ""
+    },
+    {
+     "form": "한",
+     "lemma": "한",
+     "note": ""
+    },
+    {
+     "form": "명이",
+     "lemma": "명",
+     "note": ""
+    },
+    {
+     "form": "앉아",
+     "lemma": "앉다",
+     "note": "앉아 있다 : être assis"
+    },
+    {
+     "form": "있었어요",
+     "lemma": "있다",
+     "note": "passé poli"
+    },
+    {
+     "form": "여자",
+     "lemma": "여자",
+     "note": ""
+    },
+    {
+     "form": "옆에",
+     "lemma": "옆",
+     "note": "+ 에 : à côté"
+    },
+    {
+     "form": "가방이",
+     "lemma": "가방",
+     "note": ""
+    },
+    {
+     "form": "있었어요",
+     "lemma": "있다",
+     "note": "passé poli"
+    },
+    {
+     "form": "가방이",
+     "lemma": "가방",
+     "note": ""
+    },
+    {
+     "form": "아주",
+     "lemma": "아주",
+     "note": ""
+    },
+    {
+     "form": "컸어요",
+     "lemma": "크다",
+     "note": "passé poli"
+    }
+   ]
+  },
+  {
+   "kr": "민수가 인사했어요. \"실례합니다. 카페는 아직 문을 안 열었어요.\"",
+   "fr": "Minsu a salué. \"Excusez-moi. Le café n'est pas encore ouvert.\"",
+   "words": [
+    {
+     "form": "민수가",
+     "lemma": "민수",
+     "note": ""
+    },
+    {
+     "form": "인사했어요",
+     "lemma": "인사하다",
+     "note": "passé poli"
+    },
+    {
+     "form": "실례합니다",
+     "lemma": "실례합니다",
+     "note": "formel"
+    },
+    {
+     "form": "카페는",
+     "lemma": "카페",
+     "note": ""
+    },
+    {
+     "form": "아직",
+     "lemma": "아직",
+     "note": ""
+    },
+    {
+     "form": "문을",
+     "lemma": "문",
+     "note": ""
+    },
+    {
+     "form": "안",
+     "lemma": "안",
+     "note": "négation"
+    },
+    {
+     "form": "열었어요",
+     "lemma": "열다",
+     "note": "passé poli"
+    }
+   ]
+  },
+  {
+   "kr": "여자가 대답했어요. \"저는 오늘 아침에 프랑스에서 왔어요. 저는 은지 어머니예요.\"",
+   "fr": "La femme a répondu : \"Je suis arrivée de France ce matin. Je suis la mère d'Eunji.\"",
+   "words": [
+    {
+     "form": "여자가",
+     "lemma": "여자",
+     "note": ""
+    },
+    {
+     "form": "대답했어요",
+     "lemma": "대답하다",
+     "note": "passé poli"
+    },
+    {
+     "form": "저는",
+     "lemma": "저",
+     "note": ""
+    },
+    {
+     "form": "오늘",
+     "lemma": "오늘",
+     "note": ""
+    },
+    {
+     "form": "아침에",
+     "lemma": "아침",
+     "note": "+ 에 : le matin"
+    },
+    {
+     "form": "프랑스에서",
+     "lemma": "프랑스",
+     "note": "+ 에서 : de France"
+    },
+    {
+     "form": "왔어요",
+     "lemma": "오다",
+     "note": "passé poli"
+    },
+    {
+     "form": "저는",
+     "lemma": "저",
+     "note": ""
+    },
+    {
+     "form": "은지",
+     "lemma": "은지",
+     "note": ""
+    },
+    {
+     "form": "어머니예요",
+     "lemma": "어머니",
+     "note": "+ 이다 : je suis la mère"
+    }
+   ]
+  },
+  {
+   "kr": "여자가 가방을 열었어요. 안에 편지가 아주 많았어요. 편지에 태호 씨 이름이 있었어요.",
+   "fr": "La femme a ouvert le sac. Dedans, il y avait énormément de lettres. Sur les lettres, il y avait le nom de Taeho.",
+   "words": [
+    {
+     "form": "여자가",
+     "lemma": "여자",
+     "note": ""
+    },
+    {
+     "form": "가방을",
+     "lemma": "가방",
+     "note": ""
+    },
+    {
+     "form": "열었어요",
+     "lemma": "열다",
+     "note": "passé poli"
+    },
+    {
+     "form": "안에",
+     "lemma": "안",
+     "note": "+ 에 : dedans"
+    },
+    {
+     "form": "편지가",
+     "lemma": "편지",
+     "note": ""
+    },
+    {
+     "form": "아주",
+     "lemma": "아주",
+     "note": ""
+    },
+    {
+     "form": "많았어요",
+     "lemma": "많다",
+     "note": "passé poli"
+    },
+    {
+     "form": "편지에",
+     "lemma": "편지",
+     "note": ""
+    },
+    {
+     "form": "태호",
+     "lemma": "태호",
+     "note": ""
+    },
+    {
+     "form": "씨",
+     "lemma": "씨",
+     "note": ""
+    },
+    {
+     "form": "이름이",
+     "lemma": "이름",
+     "note": ""
+    },
+    {
+     "form": "있었어요",
+     "lemma": "있다",
+     "note": "passé poli"
+    }
+   ]
+  }
+ ],
+ "new_words": []
+}

@@ -1,0 +1,275 @@
+{
+  "n": 1,
+  "target": null,
+  "names": ["민수", "은지", "태호", "현우", "미소"],
+  "title_kr": "일곱 시의 카페",
+  "title_fr": "Le café à sept heures",
+  "summary_fr": "Lundi au café Miso : Minsu ouvre à sept heures, Taeho compte l'argent, Eunji fait les cafés, et Hyunwoo, le commerçant d'à côté, paie deux fois son café habituel — Eunji lui rend son argent. Le soir, en fermant, Eunji annonce qu'elle part travailler dans un restaurant en France, jeudi de la semaine prochaine, et que le billet d'avion est acheté depuis le mois dernier ; Taeho ne dit rien, pose son torchon et sort dans la rue. Minsu sort la poubelle et le trouve au téléphone devant la porte : Taeho raccroche aussitôt et affirme qu'il n'a appelé personne, et Minsu ne demande rien.",
+  "sentences": [
+    {
+      "kr": "월요일 아침 일곱 시에 민수가 카페 미소에 도착했어요. 카페 안은 어두웠어요.",
+      "fr": "Lundi matin, à sept heures, Minsu est arrivé au café Miso. L'intérieur du café était sombre.",
+      "words": [
+        {"form": "월요일", "lemma": "월요일", "note": ""},
+        {"form": "아침", "lemma": "아침", "note": ""},
+        {"form": "일곱", "lemma": "일곱", "note": ""},
+        {"form": "시에", "lemma": "시", "note": "+ 에 : à (telle heure)"},
+        {"form": "민수가", "lemma": "민수", "note": "sujet"},
+        {"form": "카페", "lemma": "카페", "note": ""},
+        {"form": "미소에", "lemma": "미소", "note": "+ 에 : à"},
+        {"form": "도착했어요", "lemma": "도착하다", "note": "passé poli"},
+        {"form": "카페", "lemma": "카페", "note": ""},
+        {"form": "안은", "lemma": "안", "note": "thème"},
+        {"form": "어두웠어요", "lemma": "어둡다", "note": "passé poli"}
+      ]
+    },
+    {
+      "kr": "민수가 불을 켰어요. 그리고 수건으로 테이블을 닦았어요.",
+      "fr": "Minsu a allumé la lumière. Puis il a essuyé les tables avec un torchon.",
+      "words": [
+        {"form": "민수가", "lemma": "민수", "note": "sujet"},
+        {"form": "불을", "lemma": "불", "note": "COD"},
+        {"form": "켰어요", "lemma": "켜다", "note": "passé poli"},
+        {"form": "그리고", "lemma": "그리고", "note": ""},
+        {"form": "수건으로", "lemma": "수건", "note": "+ 으로 : avec"},
+        {"form": "테이블을", "lemma": "테이블", "note": "COD"},
+        {"form": "닦았어요", "lemma": "닦다", "note": "passé poli"}
+      ]
+    },
+    {
+      "kr": "여덟 시에 태호 사장님이 왔어요. 태호 사장님은 카페 안에서 돈을 계산했어요.",
+      "fr": "À huit heures, le patron Taeho est arrivé. Il a compté l'argent à l'intérieur du café.",
+      "words": [
+        {"form": "여덟", "lemma": "여덟", "note": ""},
+        {"form": "시에", "lemma": "시", "note": "+ 에 : à (telle heure)"},
+        {"form": "태호", "lemma": "태호", "note": ""},
+        {"form": "사장님이", "lemma": "사장님", "note": "sujet"},
+        {"form": "왔어요", "lemma": "오다", "note": "passé poli"},
+        {"form": "태호", "lemma": "태호", "note": ""},
+        {"form": "사장님은", "lemma": "사장님", "note": "thème"},
+        {"form": "카페", "lemma": "카페", "note": ""},
+        {"form": "안에서", "lemma": "안", "note": "+ 에서 : à l'intérieur de"},
+        {"form": "돈을", "lemma": "돈", "note": "COD"},
+        {"form": "계산했어요", "lemma": "계산하다", "note": "passé poli"}
+      ]
+    },
+    {
+      "kr": "은지도 왔어요. 은지는 커피를 만들었어요.",
+      "fr": "Eunji est arrivée aussi. Elle a fait les cafés.",
+      "words": [
+        {"form": "은지도", "lemma": "은지", "note": "+ 도 : aussi"},
+        {"form": "왔어요", "lemma": "오다", "note": "passé poli"},
+        {"form": "은지는", "lemma": "은지", "note": "thème"},
+        {"form": "커피를", "lemma": "커피", "note": "COD"},
+        {"form": "만들었어요", "lemma": "만들다", "note": "passé poli"}
+      ]
+    },
+    {
+      "kr": "은지는 손님들 이름을 알아요.",
+      "fr": "Eunji connaît le nom des clients.",
+      "words": [
+        {"form": "은지는", "lemma": "은지", "note": "thème"},
+        {"form": "손님들", "lemma": "손님", "note": "pluriel"},
+        {"form": "이름을", "lemma": "이름", "note": "COD"},
+        {"form": "알아요", "lemma": "알다", "note": "présent poli"}
+      ]
+    },
+    {
+      "kr": "아홉 시에 현우 씨가 왔어요. 현우 씨는 옆집 가게 주인이에요.",
+      "fr": "À neuf heures, Hyunwoo est arrivé. Hyunwoo est le patron de la boutique d'à côté.",
+      "words": [
+        {"form": "아홉", "lemma": "아홉", "note": ""},
+        {"form": "시에", "lemma": "시", "note": "+ 에 : à (telle heure)"},
+        {"form": "현우", "lemma": "현우", "note": ""},
+        {"form": "씨가", "lemma": "씨", "note": "titre + sujet"},
+        {"form": "왔어요", "lemma": "오다", "note": "passé poli"},
+        {"form": "현우", "lemma": "현우", "note": ""},
+        {"form": "씨는", "lemma": "씨", "note": "titre + thème"},
+        {"form": "옆집", "lemma": "옆집", "note": ""},
+        {"form": "가게", "lemma": "가게", "note": ""},
+        {"form": "주인이에요", "lemma": "주인", "note": "+ 이에요 : c'est"}
+      ]
+    },
+    {
+      "kr": "현우 씨는 매일 아침 커피를 한 잔 사요. \"오늘도 커피 한 잔 주세요.\" 현우 씨가 돈을 줬어요.",
+      "fr": "Hyunwoo achète un café tous les matins. \"Un café aujourd'hui aussi, s'il vous plaît.\" Il a donné l'argent.",
+      "words": [
+        {"form": "현우", "lemma": "현우", "note": ""},
+        {"form": "씨는", "lemma": "씨", "note": "titre + thème"},
+        {"form": "매일", "lemma": "매일", "note": ""},
+        {"form": "아침", "lemma": "아침", "note": ""},
+        {"form": "커피를", "lemma": "커피", "note": "COD"},
+        {"form": "한", "lemma": "한", "note": "un(e)"},
+        {"form": "잔", "lemma": "잔", "note": "verre, tasse"},
+        {"form": "사요", "lemma": "사다", "note": "présent poli"},
+        {"form": "오늘도", "lemma": "오늘", "note": "+ 도 : aussi"},
+        {"form": "커피", "lemma": "커피", "note": ""},
+        {"form": "한", "lemma": "한", "note": "un(e)"},
+        {"form": "잔", "lemma": "잔", "note": "verre, tasse"},
+        {"form": "주세요", "lemma": "주다", "note": "demande polie"},
+        {"form": "현우", "lemma": "현우", "note": ""},
+        {"form": "씨가", "lemma": "씨", "note": "titre + sujet"},
+        {"form": "돈을", "lemma": "돈", "note": "COD"},
+        {"form": "줬어요", "lemma": "주다", "note": "passé poli contracté"}
+      ]
+    },
+    {
+      "kr": "현우 씨는 커피를 마셨어요. 그런데 현우 씨가 돈을 또 냈어요.",
+      "fr": "Hyunwoo a bu son café. Mais il a payé une deuxième fois.",
+      "words": [
+        {"form": "현우", "lemma": "현우", "note": ""},
+        {"form": "씨는", "lemma": "씨", "note": "titre + thème"},
+        {"form": "커피를", "lemma": "커피", "note": "COD"},
+        {"form": "마셨어요", "lemma": "마시다", "note": "passé poli"},
+        {"form": "그런데", "lemma": "그런데", "note": ""},
+        {"form": "현우", "lemma": "현우", "note": ""},
+        {"form": "씨가", "lemma": "씨", "note": "titre + sujet"},
+        {"form": "돈을", "lemma": "돈", "note": "COD"},
+        {"form": "또", "lemma": "또", "note": ""},
+        {"form": "냈어요", "lemma": "내다", "note": "passé poli"}
+      ]
+    },
+    {
+      "kr": "\"현우 씨, 두 번 계산했어요.\" 은지가 말했어요.",
+      "fr": "\"Hyunwoo, vous avez payé deux fois.\" a dit Eunji.",
+      "words": [
+        {"form": "현우", "lemma": "현우", "note": ""},
+        {"form": "씨", "lemma": "씨", "note": "titre"},
+        {"form": "두", "lemma": "두", "note": "deux"},
+        {"form": "번", "lemma": "번", "note": "fois"},
+        {"form": "계산했어요", "lemma": "계산하다", "note": "passé poli"},
+        {"form": "은지가", "lemma": "은지", "note": "sujet"},
+        {"form": "말했어요", "lemma": "말하다", "note": "passé poli"}
+      ]
+    },
+    {
+      "kr": "은지가 돈을 다시 줬어요. 현우 씨는 웃었어요.",
+      "fr": "Eunji lui a rendu son argent. Hyunwoo a ri.",
+      "words": [
+        {"form": "은지가", "lemma": "은지", "note": "sujet"},
+        {"form": "돈을", "lemma": "돈", "note": "COD"},
+        {"form": "다시", "lemma": "다시", "note": ""},
+        {"form": "줬어요", "lemma": "주다", "note": "passé poli contracté"},
+        {"form": "현우", "lemma": "현우", "note": ""},
+        {"form": "씨는", "lemma": "씨", "note": "titre + thème"},
+        {"form": "웃었어요", "lemma": "웃다", "note": "passé poli"}
+      ]
+    },
+    {
+      "kr": "저녁 아홉 시에 민수가 카페 문을 닫았어요. 그리고 은지가 말했어요.",
+      "fr": "Le soir, à neuf heures, Minsu a fermé la porte du café. Puis Eunji a parlé.",
+      "words": [
+        {"form": "저녁", "lemma": "저녁", "note": ""},
+        {"form": "아홉", "lemma": "아홉", "note": ""},
+        {"form": "시에", "lemma": "시", "note": "+ 에 : à (telle heure)"},
+        {"form": "민수가", "lemma": "민수", "note": "sujet"},
+        {"form": "카페", "lemma": "카페", "note": ""},
+        {"form": "문을", "lemma": "문", "note": "COD"},
+        {"form": "닫았어요", "lemma": "닫다", "note": "passé poli"},
+        {"form": "그리고", "lemma": "그리고", "note": ""},
+        {"form": "은지가", "lemma": "은지", "note": "sujet"},
+        {"form": "말했어요", "lemma": "말하다", "note": "passé poli"}
+      ]
+    },
+    {
+      "kr": "\"저는 프랑스에 갈 거예요. 프랑스 식당에서 일할 거예요.\"",
+      "fr": "\"Je pars en France. Je vais travailler dans un restaurant en France.\"",
+      "words": [
+        {"form": "저는", "lemma": "저", "note": "thème"},
+        {"form": "프랑스에", "lemma": "프랑스", "note": "+ 에 : en"},
+        {"form": "갈", "lemma": "가다", "note": "futur"},
+        {"form": "거예요", "lemma": "거", "note": "futur : je vais"},
+        {"form": "프랑스", "lemma": "프랑스", "note": ""},
+        {"form": "식당에서", "lemma": "식당", "note": "+ 에서 : dans"},
+        {"form": "일할", "lemma": "일하다", "note": "futur"},
+        {"form": "거예요", "lemma": "거", "note": "futur : je vais"}
+      ]
+    },
+    {
+      "kr": "\"다음 주 목요일에 출발해요. 비행기 표는 지난달에 벌써 샀어요.\"",
+      "fr": "\"Je pars jeudi de la semaine prochaine. Le billet d'avion, je l'ai déjà acheté le mois dernier.\"",
+      "words": [
+        {"form": "다음", "lemma": "다음", "note": ""},
+        {"form": "주", "lemma": "주", "note": "semaine"},
+        {"form": "목요일에", "lemma": "목요일", "note": "+ 에 : le (jour)"},
+        {"form": "출발해요", "lemma": "출발하다", "note": "présent poli"},
+        {"form": "비행기", "lemma": "비행기", "note": ""},
+        {"form": "표는", "lemma": "표", "note": "thème"},
+        {"form": "지난달에", "lemma": "지난달", "note": "+ 에 : le mois dernier"},
+        {"form": "벌써", "lemma": "벌써", "note": ""},
+        {"form": "샀어요", "lemma": "사다", "note": "passé poli"}
+      ]
+    },
+    {
+      "kr": "민수는 놀랐어요. 태호 사장님은 아무 말도 안 했어요.",
+      "fr": "Minsu a été surpris. Le patron Taeho n'a rien dit.",
+      "words": [
+        {"form": "민수는", "lemma": "민수", "note": "thème"},
+        {"form": "놀랐어요", "lemma": "놀라다", "note": "passé poli"},
+        {"form": "태호", "lemma": "태호", "note": ""},
+        {"form": "사장님은", "lemma": "사장님", "note": "thème"},
+        {"form": "아무", "lemma": "아무", "note": "aucun"},
+        {"form": "말도", "lemma": "말", "note": "+ 도 : non plus"},
+        {"form": "안", "lemma": "안", "note": "négation"},
+        {"form": "했어요", "lemma": "하다", "note": "passé poli"}
+      ]
+    },
+    {
+      "kr": "태호 사장님이 수건을 놓았어요. 그리고 밖으로 나갔어요.",
+      "fr": "Le patron Taeho a posé son torchon. Puis il est sorti dans la rue.",
+      "words": [
+        {"form": "태호", "lemma": "태호", "note": ""},
+        {"form": "사장님이", "lemma": "사장님", "note": "sujet"},
+        {"form": "수건을", "lemma": "수건", "note": "COD"},
+        {"form": "놓았어요", "lemma": "놓다", "note": "passé poli"},
+        {"form": "그리고", "lemma": "그리고", "note": ""},
+        {"form": "밖으로", "lemma": "밖", "note": "+ 으로 : vers l'extérieur"},
+        {"form": "나갔어요", "lemma": "나가다", "note": "passé poli"}
+      ]
+    },
+    {
+      "kr": "민수가 쓰레기통을 밖에 가져갔어요. 태호 사장님이 문 앞에서 전화를 하고 있었어요.",
+      "fr": "Minsu a sorti la poubelle. Le patron Taeho était au téléphone devant la porte.",
+      "words": [
+        {"form": "민수가", "lemma": "민수", "note": "sujet"},
+        {"form": "쓰레기통을", "lemma": "쓰레기통", "note": "COD"},
+        {"form": "밖에", "lemma": "밖", "note": "+ 에 : dehors"},
+        {"form": "가져갔어요", "lemma": "가져가다", "note": "passé poli"},
+        {"form": "태호", "lemma": "태호", "note": ""},
+        {"form": "사장님이", "lemma": "사장님", "note": "sujet"},
+        {"form": "문", "lemma": "문", "note": ""},
+        {"form": "앞에서", "lemma": "앞", "note": "+ 에서 : devant"},
+        {"form": "전화를", "lemma": "전화", "note": "COD"},
+        {"form": "하고", "lemma": "하다", "note": "en train de"},
+        {"form": "있었어요", "lemma": "있다", "note": "passé poli"}
+      ]
+    },
+    {
+      "kr": "태호 사장님이 전화를 바로 끝냈어요. \"저는 아무한테도 전화를 안 했어요.\"",
+      "fr": "Le patron Taeho a raccroché aussitôt. \"Je n'ai appelé personne.\"",
+      "words": [
+        {"form": "태호", "lemma": "태호", "note": ""},
+        {"form": "사장님이", "lemma": "사장님", "note": "sujet"},
+        {"form": "전화를", "lemma": "전화", "note": "COD"},
+        {"form": "바로", "lemma": "바로", "note": ""},
+        {"form": "끝냈어요", "lemma": "끝내다", "note": "passé poli"},
+        {"form": "저는", "lemma": "저", "note": "thème"},
+        {"form": "아무한테도", "lemma": "아무", "note": "+ 한테도 : à personne"},
+        {"form": "전화를", "lemma": "전화", "note": "COD"},
+        {"form": "안", "lemma": "안", "note": "négation"},
+        {"form": "했어요", "lemma": "하다", "note": "passé poli"}
+      ]
+    },
+    {
+      "kr": "민수는 아무것도 안 물어봤어요.",
+      "fr": "Minsu n'a rien demandé.",
+      "words": [
+        {"form": "민수는", "lemma": "민수", "note": "thème"},
+        {"form": "아무것도", "lemma": "아무", "note": "+ 것도 : rien"},
+        {"form": "안", "lemma": "안", "note": "négation"},
+        {"form": "물어봤어요", "lemma": "물어보다", "note": "passé poli"}
+      ]
+    }
+  ],
+  "new_words": []
+}

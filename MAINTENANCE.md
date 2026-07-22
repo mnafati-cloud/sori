@@ -2213,7 +2213,33 @@ Deux choses mesurées en conditions réelles, qui ont changé le code :
    enregistré (il est écrit et payé) mais **n'est pas affiché** par-dessus l'écran courant :
    `stillHere()` teste `document.body.contains(box)` avant tout rendu.
 
-### 9.9 Revue adversariale de l'écran (4 lentilles, 40 défauts confirmés)
+### 9.9 Recette — corriger un chapitre ou écrire une saison 2
+
+Les **sources** des chapitres sont versionnées dans `story/ch1.json … ch10.json` (format lisible,
+un objet par chapitre). `docs/story-data.js` en est le produit compacté : **ne jamais l'éditer**.
+
+1. **Régénérer le profil** (il n'est PAS versionné : c'est une donnée personnelle) — cloner
+   `sori-data`, lire `exports/latest.json`, et écrire un `profil.json` de la forme
+   `{ known:[{kr,fr}], acquired:[ids], inProgress:[ids] }` :
+   croiser `state.items[id].s >= 4` avec le seed pour `known`, et
+   `GRAMMAR_TAGS` × l'état FSRS via `SORI_GRAMMAR.grammarProfile` pour `acquired`/`inProgress`.
+   **Supprimer `latest.json` après usage.**
+2. **Éditer** le ou les `story/chN.json`.
+3. **Vérifier** : `node tools/story_lint.mjs story/chN.json <profil.json>` — boucler jusqu'au
+   code retour 0. Réécrire soi-même les phrases fautives ; ne jamais assouplir le lint.
+4. **Assembler** : `node tools/story_build.mjs story/ch*.json --profil <profil.json>`.
+   L'outil REFUSE d'écrire si un seul chapitre déborde, ou si sa structure cible n'est pas
+   employée au moins 2 fois. C'est la garantie que rien de non vérifié n'atteint l'apprenant.
+5. Bumper `CACHE` dans `sw.js`, committer `docs/story-data.js` **et** les sources modifiées.
+
+⚠️ **Le lint AUTORISE la cible, il ne l'impose pas** — c'est `story_build.mjs` qui exige les
+2 emplois. Toute réécriture d'un chapitre doit repasser par le build, pas seulement par le lint.
+
+Pour une **saison 2** : choisir les cibles parmi les structures encore `inconnue`/`en-cours` du
+profil du moment (les 9 de la saison 1 seront acquises d'ici là), et laisser `pure.availability`
+faire le déblocage — c'est là qu'il prendra tout son sens.
+
+### 9.10 Revue adversariale de l'écran (4 lentilles, 40 défauts confirmés)
 
 Corrigés avant le push. Les structurants, à ne pas défaire :
 
