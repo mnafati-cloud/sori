@@ -47,6 +47,31 @@
     return (fresh.length ? fresh : inProgress).slice(0, n || 2);
   }
 
+  /* CORPUS ÉCRIT — quel chapitre est lisible aujourd'hui.
+     Le contenu est figé (écrit et vérifié au build) ; ce qui reste vivant, c'est la SÉLECTION :
+     chaque chapitre cible une structure, et il s'ouvre quand l'apprenant l'a au moins croisée.
+     La lecture reste séquentielle : une histoire ne se lit pas dans le désordre. */
+  function availability(corpus, profile, labelOf){
+    const out = [];
+    let blocked = 0;
+    for(const ch of (corpus || [])){
+      const t = ch.target;
+      const st = t && profile && profile[t] ? profile[t].status : (t ? "inconnue" : "acquise");
+      let status = "ok", reason = "";
+      if(blocked){
+        status = "locked";
+        reason = `à lire après le chapitre ${blocked}`;
+      }else if(t && st === "inconnue"){
+        const nom = labelOf ? labelOf(t) : t;
+        status = "locked";
+        reason = `s'ouvrira quand vous aurez croisé « ${nom} » dans vos révisions`;
+      }
+      if(status === "locked" && !blocked) blocked = ch.n;
+      out.push({ n: ch.n, status, reason });
+    }
+    return out;
+  }
+
   function structLines(list){ return (list || []).map(s => `- ${s.fr} (ex: ${s.ex})`).join("\n"); }
 
   function buildSystem(ctx){
@@ -125,29 +150,18 @@ SORTIE (JSON strict) :
     return max + 1;
   }
 
-  /* Où en est l'histoire. La LISTE fait foi quand elle existe — le fil mémorisé dans l'état
-     n'est qu'un filet pour le cas « restauration cloud » (le fil revient, les chapitres non).
-     Sans ça, supprimer son seul chapitre proposait quand même « le chapitre 2 » et continuait
-     une histoire disparue (défaut vécu, v121). */
-  function thread(list, meta){
+  /* Où en est l'histoire : LA LISTE DES CHAPITRES FAIT FOI, point.
+     La v120 mémorisait aussi le dernier numéro dans l'état, comme filet pour une restauration
+     cloud (le fil revient, les chapitres non — ils sont trop volumineux pour la sauvegarde).
+     Ce filet a produit exactement ce qu'un utilisateur ne pardonne pas : chapitre supprimé,
+     et l'app propose quand même « le chapitre 2 » d'une histoire disparue. Il est retiré.
+     Ce que le numéro affiche correspond TOUJOURS à ce qui est réellement lisible ; une
+     restauration sans chapitres repart proprement d'une nouvelle histoire. */
+  function thread(list){
     const a = (list || []).filter(Boolean).slice().sort((x, y) => (x.n || 0) - (y.n || 0));
-    const m = meta || {};
-    if(a.length){
-      const last = a[a.length - 1];
-      return { no: (last.n || 0) + 1, summary: last.summary_fr || m.summary || "" };
-    }
-    return { no: (m.lastN || 0) + 1, summary: m.summary || "" };
-  }
-
-  /* Après une suppression : recale le fil sur ce qui reste réellement. Supprimer le dernier
-     chapitre doit rembobiner ; supprimer un chapitre du milieu ne change rien. */
-  function rewind(list, meta){
-    const m = Object.assign({}, meta);
-    const a = (list || []).filter(Boolean).slice().sort((x, y) => (x.n || 0) - (y.n || 0));
-    const last = a.length ? a[a.length - 1] : null;
-    if(!last){ m.lastN = 0; m.summary = ""; return m; }
-    if((m.lastN || 0) > last.n){ m.lastN = last.n; m.summary = last.summary_fr || ""; }
-    return m;
+    if(!a.length) return { no: 1, summary: "" };
+    const last = a[a.length - 1];
+    return { no: (last.n || 0) + 1, summary: last.summary_fr || "" };
   }
 
   /* Le contrôle des deux plafonds. ctx = { known:Set, names:[], allowed:Set, tag:fn, labelOf:fn } */
@@ -379,7 +393,7 @@ SORTIE (JSON strict) :
 
     const status = box.querySelector(".st-status");
     const go = box.querySelector(".st-go");
-    const fil = thread(chapters, meta);
+    const fil = thread(chapters);
     const no = fil.no;
     go.textContent = no > 1 ? "Écrire le chapitre " + no : "Écrire le premier chapitre";
     if(BUSY){
@@ -434,7 +448,9 @@ SORTIE (JSON strict) :
           { n: no, d: new Date().toISOString().slice(0, 10), warn: res.problems.length || 0 });
         /* on enregistre TOUJOURS (le chapitre est écrit et payé), on n'affiche que si on est resté */
         const stored = opts.store.add(ch);
-        if(stored !== false) opts.store.setMeta({ summary: res.chapter.summary_fr || "", lastTargets: targets, lastN: no });
+        /* le fil se déduit des chapitres : on ne mémorise que les dernières cibles, pour ne pas
+           réexercer deux fois de suite la même structure */
+        if(stored !== false) opts.store.setMeta({ lastTargets: targets });
         if(stillHere()){
           if(stored === false){
             status.className = "st-status";
@@ -506,7 +522,8 @@ SORTIE (JSON strict) :
   }
 
   const API = { renderHome, renderChapter, generate,
-                pure: { pickTargets, buildSystem, lintChapter, trimStore, nextNo, thread, rewind, formMatchesLemma } };
+                pure: { pickTargets, buildSystem, lintChapter, trimStore, nextNo, thread,
+                        formMatchesLemma, availability } };
   if (typeof module !== "undefined" && module.exports) module.exports = API;
   else root.SORI_STORY = API;
 })(typeof self !== "undefined" ? self : this);

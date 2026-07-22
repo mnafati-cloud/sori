@@ -43,8 +43,17 @@
   Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
   PowerShell 5.1 sous Windows 11.
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
-  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **141 tests Node**, `CACHE` = `sori-v121`.
+  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **143 tests Node**, `CACHE` = `sori-v122`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v122 (le numéro affiché correspond TOUJOURS à ce qui est lisible)** : la v121 ne corrigeait
+  que les suppressions futures — l'utilisateur avait supprimé son chapitre SOUS la v120, donc son
+  `ST.story.lastN` valait encore 1 et l'app lui proposait toujours « le chapitre 2 ». Plutôt que
+  d'ajouter une migration, **le filet est retiré** : `pure.thread(list)` ne lit plus que la liste
+  des chapitres. Liste vide = chapitre 1, fil vide, quoi qu'il traîne dans l'état. On perd le cas
+  « restauration cloud qui continue l'histoire » — assumé : les chapitres ne partant pas dans la
+  sauvegarde, il n'y avait de toute façon rien à relire. LEÇON : un filet qui ne peut pas
+  distinguer deux causes (suppression volontaire vs restauration) traite mal la plus fréquente.
+  Vérifié dans le navigateur AVEC un `lastN` pollué. CACHE `sori-v122`.
 - **v121 (supprimer un chapitre rembobine le fil)** : retour user immédiat — il supprime son
   unique chapitre et l'app propose quand même « le chapitre 2 », en continuant une histoire
   effacée. CAUSE : `ST.story.lastN` avait été ajouté comme filet pour qu'une restauration cloud

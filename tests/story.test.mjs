@@ -118,29 +118,17 @@ test("lintChapter : les irréguliers coréens restent acceptés (ㅂ, ㄷ, 르, 
   ok("예요", "이다");
 });
 
-/* ---------- le fil : la LISTE fait foi ---------- */
-test("thread : la liste est la source de vérité ; le fil mémorisé n'est qu'un filet", () => {
-  /* cas normal : le résumé vient du DERNIER chapitre réellement présent, pas d'un cache */
-  assert.deepEqual(
-    P.thread([{ n: 1, summary_fr: "A" }, { n: 2, summary_fr: "B" }], { summary: "périmé", lastN: 2 }),
-    { no: 3, summary: "B" });
-  /* tout supprimé ET fil rembobiné (ce que fait l'app) : on repart vraiment du début */
-  assert.deepEqual(P.thread([], { summary: "", lastN: 0 }), { no: 1, summary: "" });
-  /* restauration cloud : chapitres absents mais fil présent → on continue l'histoire */
-  assert.deepEqual(P.thread([], { summary: "A", lastN: 12 }), { no: 13, summary: "A" });
-  assert.deepEqual(P.thread(null, null), { no: 1, summary: "" });
-});
-
-test("rewind : supprimer un chapitre recale le fil sur ce qui reste", () => {
-  /* l'apprenant supprime son unique chapitre : il doit pouvoir réécrire LE chapitre 1 */
-  assert.deepEqual(P.rewind([], { summary: "A", lastTargets: ["go"], lastN: 1 }),
-    { summary: "", lastTargets: ["go"], lastN: 0 });
-  /* il supprime le dernier de trois : le fil revient au chapitre 2 */
-  assert.deepEqual(P.rewind([{ n: 1, summary_fr: "A" }, { n: 2, summary_fr: "B" }], { summary: "C", lastTargets: [], lastN: 3 }),
-    { summary: "B", lastTargets: [], lastN: 2 });
-  /* il supprime un chapitre du milieu : le fil ne bouge pas */
-  assert.deepEqual(P.rewind([{ n: 1, summary_fr: "A" }, { n: 3, summary_fr: "C" }], { summary: "C", lastTargets: [], lastN: 3 }),
-    { summary: "C", lastTargets: [], lastN: 3 });
+/* ---------- le fil : SEULE la liste fait foi ---------- */
+test("thread : le numéro et le résumé viennent des chapitres réellement présents", () => {
+  assert.deepEqual(P.thread([{ n: 1, summary_fr: "A" }, { n: 2, summary_fr: "B" }]), { no: 3, summary: "B" });
+  /* plus aucun chapitre → on repart du premier, quoi qu'il traîne dans l'état.
+     C'est LE cas vécu : chapitre supprimé, et l'app proposait encore « le chapitre 2 ». */
+  assert.deepEqual(P.thread([]), { no: 1, summary: "" });
+  assert.deepEqual(P.thread(null), { no: 1, summary: "" });
+  /* un état hérité (v120 mémorisait un dernier numéro) ne doit RIEN changer */
+  assert.deepEqual(P.thread([], { summary: "vieux", lastN: 12 }), { no: 1, summary: "" });
+  /* le cap de stockage a mangé les premiers chapitres : on continue après le dernier présent */
+  assert.deepEqual(P.thread([{ n: 49, summary_fr: "X" }, { n: 50, summary_fr: "Y" }]), { no: 51, summary: "Y" });
 });
 
 /* ---------- numérotation ---------- */
@@ -160,6 +148,45 @@ test("trimStore : garde les N derniers chapitres, dans l'ordre", () => {
   assert.deepEqual(P.trimStore(list, 3).map(c => c.n), [3, 4, 5]);
   assert.deepEqual(P.trimStore(list, 9).map(c => c.n), [1, 2, 3, 4, 5]);
   assert.deepEqual(P.trimStore(null, 3), []);
+});
+
+/* ---------- corpus écrit : quel chapitre est lisible aujourd'hui ---------- */
+const CORPUS = [
+  { n: 1, target: null,       title_fr: "La rencontre" },
+  { n: 2, target: "mot",      title_fr: "L'empêchement" },
+  { n: 3, target: "go",       title_fr: "Et puis" },
+  { n: 4, target: "mod-neun", title_fr: "Celui qui vient" },
+];
+
+test("availability : un chapitre s'ouvre quand sa structure cible est au moins EN COURS", () => {
+  const profile = {
+    mot: { status: "acquise" },
+    go:  { status: "en-cours" },
+    "mod-neun": { status: "inconnue" },
+  };
+  /* labelOf est injecté par l'app (elle a l'inventaire) : la raison doit être LISIBLE,
+     pas un identifiant technique */
+  const label = id => ({ "mod-neun": "modifieur 는 + nom", mot: "impossibilité 못" }[id] || id);
+  const a = P.availability(CORPUS, profile, label);
+  assert.equal(a[0].status, "ok");        /* pas de cible : toujours lisible */
+  assert.equal(a[1].status, "ok");        /* acquise */
+  assert.equal(a[2].status, "ok");        /* en cours : c'est justement le moment de la voir */
+  assert.equal(a[3].status, "locked");    /* jamais croisée : le chapitre attend */
+  assert.ok(/modifieur/.test(a[3].reason), a[3].reason);
+});
+
+test("availability : la lecture reste séquentielle — un chapitre ne saute pas son prédécesseur", () => {
+  const profile = { mot: { status: "inconnue" }, go: { status: "acquise" } };
+  const a = P.availability(CORPUS, profile);
+  assert.equal(a[1].status, "locked");    /* 못 pas encore croisé */
+  assert.equal(a[2].status, "locked");    /* même si 고 est acquise : le 2 bloque le 3 */
+  assert.ok(/chapitre 2/.test(a[2].reason));
+});
+
+test("availability : profil vide ou corpus vide — pas d'exception", () => {
+  assert.deepEqual(P.availability([], {}), []);
+  assert.equal(P.availability(CORPUS, null)[0].status, "ok");
+  assert.equal(P.availability(CORPUS, null)[1].status, "locked");
 });
 
 /* ---------- le prompt ---------- */

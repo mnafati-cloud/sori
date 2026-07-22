@@ -954,14 +954,8 @@ function openStory(){
       setMeta: (m)=>{ ST.story = Object.assign({}, ST.story, m); save(); },
       list: storyChapters,
       add: (ch)=>{ const a = storyChapters(); a.push(ch); return storySave(a); },
-      /* supprimer le DERNIER chapitre doit rembobiner le fil : sinon l'app propose encore le
-         chapitre suivant et continue une histoire que l'apprenant vient d'effacer (v121) */
-      remove: (n)=>{
-        const reste = storyChapters().filter(c => c.n !== n);
-        storySave(reste);
-        ST.story = SORI_STORY.pure.rewind(reste, ST.story);
-        save();
-      }
+      /* le fil se déduit des chapitres présents (v122) : supprimer n'a rien d'autre à recaler */
+      remove: (n)=>{ storySave(storyChapters().filter(c => c.n !== n)); }
     },
     onError: (msg)=> logErr("story:gen", msg),
     onExit: ()=>{ NAV = true; render(); NAV = false; }
