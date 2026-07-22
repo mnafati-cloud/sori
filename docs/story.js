@@ -125,6 +125,31 @@ SORTIE (JSON strict) :
     return max + 1;
   }
 
+  /* Où en est l'histoire. La LISTE fait foi quand elle existe — le fil mémorisé dans l'état
+     n'est qu'un filet pour le cas « restauration cloud » (le fil revient, les chapitres non).
+     Sans ça, supprimer son seul chapitre proposait quand même « le chapitre 2 » et continuait
+     une histoire disparue (défaut vécu, v121). */
+  function thread(list, meta){
+    const a = (list || []).filter(Boolean).slice().sort((x, y) => (x.n || 0) - (y.n || 0));
+    const m = meta || {};
+    if(a.length){
+      const last = a[a.length - 1];
+      return { no: (last.n || 0) + 1, summary: last.summary_fr || m.summary || "" };
+    }
+    return { no: (m.lastN || 0) + 1, summary: m.summary || "" };
+  }
+
+  /* Après une suppression : recale le fil sur ce qui reste réellement. Supprimer le dernier
+     chapitre doit rembobiner ; supprimer un chapitre du milieu ne change rien. */
+  function rewind(list, meta){
+    const m = Object.assign({}, meta);
+    const a = (list || []).filter(Boolean).slice().sort((x, y) => (x.n || 0) - (y.n || 0));
+    const last = a.length ? a[a.length - 1] : null;
+    if(!last){ m.lastN = 0; m.summary = ""; return m; }
+    if((m.lastN || 0) > last.n){ m.lastN = last.n; m.summary = last.summary_fr || ""; }
+    return m;
+  }
+
   /* Le contrôle des deux plafonds. ctx = { known:Set, names:[], allowed:Set, tag:fn, labelOf:fn } */
   function lintChapter(ch, ctx){
     const out = [];
@@ -354,8 +379,9 @@ SORTIE (JSON strict) :
 
     const status = box.querySelector(".st-status");
     const go = box.querySelector(".st-go");
-    const no = nextNo(chapters, meta);
-    go.textContent = chapters.length || meta.lastN ? "Écrire le chapitre " + no : "Écrire le premier chapitre";
+    const fil = thread(chapters, meta);
+    const no = fil.no;
+    go.textContent = no > 1 ? "Écrire le chapitre " + no : "Écrire le premier chapitre";
     if(BUSY){
       go.disabled = true;
       status.className = "st-status st-wait";
@@ -371,7 +397,7 @@ SORTIE (JSON strict) :
       it.onclick = () => renderChapter(container, opts, ch);
       it.querySelector(".st-del").onclick = e => {
         e.stopPropagation();
-        if(typeof confirm === "function" && !confirm("Supprimer le chapitre " + ch.n + " ? L'histoire, elle, garde son fil.")) return;
+        if(typeof confirm === "function" && !confirm("Supprimer le chapitre " + ch.n + " ?")) return;
         opts.store.remove(ch.n);
         renderHome(container, opts);
       };
@@ -397,7 +423,7 @@ SORTIE (JSON strict) :
         const allowed = new Set(acquired.map(s => s.id).concat(targets));
         const res = await generate({
           chapterNo: no,
-          summary: meta.summary || "",
+          summary: fil.summary,
           acquired, targets: targets.map(id => byId[id]).filter(Boolean),
           vocab: opts.vocab, key,
           lint: { known: opts.known, allowed, tag: opts.tag, labelOf: id => (byId[id] && byId[id].fr) || id },
@@ -480,7 +506,7 @@ SORTIE (JSON strict) :
   }
 
   const API = { renderHome, renderChapter, generate,
-                pure: { pickTargets, buildSystem, lintChapter, trimStore, nextNo, formMatchesLemma } };
+                pure: { pickTargets, buildSystem, lintChapter, trimStore, nextNo, thread, rewind, formMatchesLemma } };
   if (typeof module !== "undefined" && module.exports) module.exports = API;
   else root.SORI_STORY = API;
 })(typeof self !== "undefined" ? self : this);

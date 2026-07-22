@@ -43,8 +43,17 @@
   Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
   PowerShell 5.1 sous Windows 11.
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
-  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **139 tests Node**, `CACHE` = `sori-v120`.
+  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **141 tests Node**, `CACHE` = `sori-v121`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v121 (supprimer un chapitre rembobine le fil)** : retour user immédiat — il supprime son
+  unique chapitre et l'app propose quand même « le chapitre 2 », en continuant une histoire
+  effacée. CAUSE : `ST.story.lastN` avait été ajouté comme filet pour qu'une restauration cloud
+  (fil présent, chapitres absents) ne reparte pas à 1 — mais ce filet se déclenchait aussi sur une
+  suppression volontaire, cas bien plus fréquent. FIX : la **liste fait foi** quand elle existe
+  (`pure.thread`) et la suppression **recale** le fil sur ce qui reste (`pure.rewind` : supprimer le
+  dernier rembobine, supprimer un chapitre du milieu ne change rien). Le filet cloud ne joue plus
+  que quand la liste est réellement vide ET le fil non rembobiné. Vérifié dans le navigateur sur le
+  scénario exact. CACHE `sori-v121`.
 - **v120 (Histoire : le feuilleton généré, calibré sur l'état réel)** : nouvel écran depuis
   l'onglet Exercices. Chaque chapitre n'emploie que les mots maîtrisés (stage>=4) et les
   structures grammaticales ACQUISES — profil dérivé des cartes-phrases via FSRS (§9) — plus 1-2

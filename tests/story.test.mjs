@@ -118,6 +118,31 @@ test("lintChapter : les irréguliers coréens restent acceptés (ㅂ, ㄷ, 르, 
   ok("예요", "이다");
 });
 
+/* ---------- le fil : la LISTE fait foi ---------- */
+test("thread : la liste est la source de vérité ; le fil mémorisé n'est qu'un filet", () => {
+  /* cas normal : le résumé vient du DERNIER chapitre réellement présent, pas d'un cache */
+  assert.deepEqual(
+    P.thread([{ n: 1, summary_fr: "A" }, { n: 2, summary_fr: "B" }], { summary: "périmé", lastN: 2 }),
+    { no: 3, summary: "B" });
+  /* tout supprimé ET fil rembobiné (ce que fait l'app) : on repart vraiment du début */
+  assert.deepEqual(P.thread([], { summary: "", lastN: 0 }), { no: 1, summary: "" });
+  /* restauration cloud : chapitres absents mais fil présent → on continue l'histoire */
+  assert.deepEqual(P.thread([], { summary: "A", lastN: 12 }), { no: 13, summary: "A" });
+  assert.deepEqual(P.thread(null, null), { no: 1, summary: "" });
+});
+
+test("rewind : supprimer un chapitre recale le fil sur ce qui reste", () => {
+  /* l'apprenant supprime son unique chapitre : il doit pouvoir réécrire LE chapitre 1 */
+  assert.deepEqual(P.rewind([], { summary: "A", lastTargets: ["go"], lastN: 1 }),
+    { summary: "", lastTargets: ["go"], lastN: 0 });
+  /* il supprime le dernier de trois : le fil revient au chapitre 2 */
+  assert.deepEqual(P.rewind([{ n: 1, summary_fr: "A" }, { n: 2, summary_fr: "B" }], { summary: "C", lastTargets: [], lastN: 3 }),
+    { summary: "B", lastTargets: [], lastN: 2 });
+  /* il supprime un chapitre du milieu : le fil ne bouge pas */
+  assert.deepEqual(P.rewind([{ n: 1, summary_fr: "A" }, { n: 3, summary_fr: "C" }], { summary: "C", lastTargets: [], lastN: 3 }),
+    { summary: "C", lastTargets: [], lastN: 3 });
+});
+
 /* ---------- numérotation ---------- */
 test("nextNo : continue après le cap de stockage et après une restauration cloud", () => {
   assert.equal(P.nextNo([], {}), 1);
