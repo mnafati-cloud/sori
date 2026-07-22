@@ -39,7 +39,7 @@ function ouvre(nch){
 function MAQ(nch, unite, mode){
   var sc = ouvre(nch), suiv = sc.querySelector(".suiv");
   for(var i = 0; i <= unite; i++) suiv.click();
-  if(mode === "phrase") sc.querySelector(".st-haut").click();
+  if(mode === "phrase") sc.querySelector(".st-oeil").click();
   if(mode && mode.indexOf("mot") === 0){
     var k = parseInt(mode.slice(3), 10) || 0;
     var ws = sc.querySelectorAll(".st-kr .st-w");
@@ -47,9 +47,22 @@ function MAQ(nch, unite, mode){
   }
 }
 
-/* ---- audit : aucune boîte ne doit en recouvrir une autre, rien ne doit être tronqué ---- */
-function rect(sc, sel){ var e = sc.querySelector(sel); return (e && e.offsetParent !== null) || (e && e.getClientRects().length) ? e.getBoundingClientRect() : null; }
+/* ---- audit : aucune boîte ne doit en recouvrir une autre, rien ne doit être tronqué ----
+   Modèle v128 : une seule boîte de révélation (.st-reveal) montre soit un mot, soit toute la
+   phrase (l'œil). On vérifie les deux chemins : la révélation ne doit ni recouvrir les gestes/le
+   pied, ni être tronquée, à chaque unité et pour chaque mot. */
+function rect(sc, sel){ var e = sc.querySelector(sel); return e && e.getClientRects().length ? e.getBoundingClientRect() : null; }
 function chevauche(a, b){ return a && b && a.top < b.bottom - 1 && b.top < a.bottom - 1; }
+function verifs(sc, id, pbs){
+  var rev = rect(sc, ".st-reveal"), gestes = rect(sc, ".st-gestes"), pied = rect(sc, ".st-pied");
+  var revEl = sc.querySelector(".st-reveal");
+  if(rev && chevauche(rev, gestes)) pbs.push(id + " : la révélation recouvre les gestes"
+    + " [rev " + Math.round(rev.top) + "-" + Math.round(rev.bottom)
+    + " gestes " + Math.round(gestes.top) + "-" + Math.round(gestes.bottom) + "]");
+  if(rev && chevauche(rev, pied)) pbs.push(id + " : la révélation recouvre le pied");
+  if(revEl && !revEl.hidden && revEl.scrollHeight > revEl.clientHeight + 2)
+    pbs.push(id + " : révélation tronquée (" + revEl.scrollHeight + ">" + revEl.clientHeight + ")");
+}
 function AUDIT(){
   var data = window.STORY_DATA, pbs = [], nUnites = 0, nDefile = 0;
   data.chapitres.forEach(function(ch){
@@ -57,35 +70,28 @@ function AUDIT(){
     suiv.click();                                   /* affiche -> unité 0 */
     ch.sentences.forEach(function(s, i){
       var ws = sc.querySelectorAll(".st-kr .st-w");
+      var oeil = sc.querySelector(".st-oeil");
+      var id = "ch" + ch.n + " u" + (i + 1);
       nUnites++;
-      if(ws.length){
-        ws[0].click();
-        var h0 = sc.querySelector(".st-haut");
-        if(h0.scrollHeight > h0.clientHeight + 4) nDefile++;
-        ws[0].click();
-      }
+      /* le hangul ne doit jamais se couper dans sa moitié haute */
+      var krEl = sc.querySelector(".st-kr");
+      if(krEl && krEl.scrollHeight > krEl.clientHeight + 2) pbs.push(id + " : texte coréen tronqué");
+      /* chemin œil : toute la phrase */
+      oeil.click();
+      var revEl = sc.querySelector(".st-reveal");
+      if(revEl && !revEl.hidden && revEl.scrollHeight > revEl.clientHeight + 2) nDefile++;
+      verifs(sc, id + " oeil", pbs);
+      oeil.click();                                 /* referme */
+      /* chemin mot : chaque mot, un à la fois */
       for(var k = 0; k < ws.length; k++){
-        ws[k].click();                              /* touche un mot : notes + pont */
-        var haut = rect(sc, ".st-haut"), notesEl = sc.querySelector(".st-notes");
-        var pont = rect(sc, ".st-pont"), son = rect(sc, ".st-son"), pied = rect(sc, ".st-pied");
-        var krEl = sc.querySelector(".st-kr");
-        var id = "ch" + ch.n + " u" + (i + 1) + " mot" + k;
-        if(chevauche(pont, haut)) pbs.push(id + " : le pont recouvre la moitié haute"
-          + " [haut " + Math.round(haut.top) + "-" + Math.round(haut.bottom)
-          + " pont " + Math.round(pont.top) + "-" + Math.round(pont.bottom)
-          + " son " + (son ? Math.round(son.top) + "-" + Math.round(son.bottom) : "?")
-          + " pied " + (pied ? Math.round(pied.top) : "?") + "]");
-        if(chevauche(pont, son)) pbs.push(id + " : le pont recouvre l'écoute");
-        if(chevauche(pont, pied)) pbs.push(id + " : le pont recouvre le pied");
-        if(notesEl && notesEl.scrollHeight > notesEl.clientHeight + 2) pbs.push(id + " : mot-à-mot tronqué (" + notesEl.scrollHeight + ">" + notesEl.clientHeight + ")");
-        if(krEl && krEl.scrollHeight > krEl.clientHeight + 2) pbs.push(id + " : texte coréen tronqué");
-        if(haut && pied && haut.bottom > pied.top + 1) pbs.push(id + " : la moitié haute déborde sur le pied");
-        ws[k].click();                              /* referme le pont */
+        ws[k].click();
+        verifs(sc, id + " mot" + k, pbs);
+        ws[k].click();                              /* referme */
       }
       suiv.click();
     });
   });
-  return { pbs: pbs, info: "defile : " + nDefile + "/" + nUnites + " unites" };
+  return { pbs: pbs, info: "phrase qui defile : " + nDefile + "/" + nUnites + " unites" };
 }
 (function(){
   var q = new URLSearchParams(location.search);
@@ -93,7 +99,8 @@ function AUDIT(){
   if(q.get("h")) document.body.style.height = q.get("h") + "px";
   if(q.get("audit")){
     var r = AUDIT(), pbs = r.pbs;
-    var uniq = {}; pbs.forEach(function(p){ uniq[p.replace(/^ch\d+ u\d+ mot\d+ : /, "")] = (uniq[p.replace(/^ch\d+ u\d+ mot\d+ : /, "")] || 0) + 1; });
+    var norm = function(p){ return p.replace(/^ch\d+ u\d+ (oeil|mot\d+) : /, ""); };
+    var uniq = {}; pbs.forEach(function(p){ uniq[norm(p)] = (uniq[norm(p)] || 0) + 1; });
     var res = "AUDIT " + document.body.offsetWidth + "x" + document.body.offsetHeight + " : "
       + pbs.length + " defauts — " + r.info + "\n"
       + Object.keys(uniq).map(function(k){ return "  " + uniq[k] + " x " + k; }).join("\n")
@@ -101,13 +108,35 @@ function AUDIT(){
     document.body.innerHTML = "<pre id=rapport>" + res.replace(/[<&]/g, "?") + "</pre>";
     return;
   }
+  if(q.get("stale")){
+    /* la révélation ne doit PAS persister d'une page à l'autre (retour user v127) */
+    var sc = ouvre(1), suiv = sc.querySelector(".suiv"), out = [];
+    suiv.click();                                     /* -> unité 1 */
+    sc.querySelector(".st-kr .st-w").click();         /* touche un mot : révélation ouverte */
+    var revOuv = !sc.querySelector(".st-reveal").hidden;
+    suiv.click();                                     /* page suivante */
+    var revFerme = sc.querySelector(".st-reveal").hidden;
+    var motAllume = !!sc.querySelector(".st-w.on");
+    sc.querySelector(".st-oeil").click();             /* œil : phrase */
+    var phraseOuv = !sc.querySelector(".st-reveal").hidden;
+    suiv.click();
+    var phraseFerme = sc.querySelector(".st-reveal").hidden && !sc.querySelector(".st-oeil").classList.contains("on");
+    out.push("mot ouvre la revelation : " + revOuv);
+    out.push("changer de page la referme : " + revFerme);
+    out.push("aucun mot reste allume : " + !motAllume);
+    out.push("oeil ouvre la phrase : " + phraseOuv);
+    out.push("changer de page ferme la phrase + eteint l'oeil : " + phraseFerme);
+    out.push("VERDICT : " + (revOuv && revFerme && !motAllume && phraseOuv && phraseFerme ? "OK" : "ECHEC"));
+    document.body.innerHTML = "<pre id=rapport>" + out.join("\n") + "</pre>";
+    return;
+  }
   if(!q.get("ch")) return;
   MAQ(parseInt(q.get("ch"), 10), parseInt(q.get("u") || "0", 10), q.get("mode") || "");
   if(q.get("probe")){
     var sc = document.getElementById("screen"), out = [];
     [["screen", sc], ["st-c", sc.querySelector(".st-c")], ["haut", sc.querySelector(".st-haut")],
-     ["notes", sc.querySelector(".st-notes")], ["bas", sc.querySelector(".st-bas")],
-     ["pont", sc.querySelector(".st-pont")], ["son", sc.querySelector(".st-son")],
+     ["bas", sc.querySelector(".st-bas")], ["reveal", sc.querySelector(".st-reveal")],
+     ["gestes", sc.querySelector(".st-gestes")], ["son", sc.querySelector(".st-son")],
      ["pied", sc.querySelector(".st-pied")]].forEach(function(p){
       var e = p[1]; if(!e){ out.push(p[0] + " : absent"); return; }
       var r = e.getBoundingClientRect(), cs = getComputedStyle(e);

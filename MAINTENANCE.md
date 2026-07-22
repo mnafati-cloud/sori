@@ -2377,3 +2377,36 @@ compactage) ; 145/181 sur un vieux 360×640, où l'écran est simplement trop co
 - l'**animation d'entrée du thème** (`takbon-press`, `animation … both`) reste figée sur sa première
   keyframe faute de frames rendues : tous les rectangles sortaient multipliés par 1,55 et l'audit
   signalait 1710 chevauchements imaginaires. La page de test neutralise `#screen > *{animation:none}`.
+
+### 9.13 v128 — l'œil et le mot : une seule révélation, plus de liste (retour user)
+
+Retour user sur v127 : « le mot-à-mot reste quand on change de page. Et finalement ce n'était pas une
+bonne idée ; il eut été plus simple d'avoir un bouton d'œil pour révéler la phrase, et alors soit on
+a cliqué sur un mot et ça traduit le mot, soit on a cliqué sur l'œil et ça montre toute la phrase.
+Ça évitera les soucis de défilement en plus. » Il a raison sur les deux points, et le second **retire
+la cause racine du premier**.
+
+Le modèle de v125-127 montrait, au toucher du texte, la traduction **plus** la liste mot-à-mot
+complète (jusqu'à 21 mots). C'est cette liste qui débordait, qu'il fallait faire défiler, et dont un
+résidu d'état pouvait rester. **Elle est supprimée.** À la place, une seule boîte de révélation
+(`.st-reveal`) dans la moitié basse, au-dessus des gestes, qui montre **un seul contenu à la fois** :
+
+- **l'œil** (nouveau bouton, à gauche de l'écoute) → la traduction de TOUTE la phrase ;
+- **toucher un mot** → la fiche de ce mot seul (forme → lemme, sens, nuance) ;
+- les deux sont **exclusifs** : montrer l'un efface l'autre. Re-toucher le même mot, ou re-cliquer
+  l'œil, referme. Changer de page (`montre()` → `fermer()`) remet tout à zéro — **d'où la fin du
+  bug « le mot-à-mot reste »**, vérifié par le harnais (`?stale=1`).
+
+Comme un seul petit contenu s'affiche (jamais 21 lignes), **le défilement disparaît** : 0/181 unité
+demande de défiler sur toutes les tailles modernes (375×812, 393×852, 412×732, 412×915). La
+traduction rétrécit d'un cran (`ajusteReveal`, paliers 1,2 → 0,72 rem, hauteur bornée à la place
+libre) plutôt que de défiler ; il ne reste que 5/181 sur un très vieux 360×640, où elle défile alors
+en dernier recours (l'écran est trop court pour une longue phrase à taille lisible). L'écoute
+redevient fixe à 88 px (plus de rétrécissement conditionnel). L'œil s'allume (blanc + halo) quand la
+phrase est montrée. Icône œil dessinée en SVG, comme les autres (la police du thème ne l'a pas).
+
+**Le harnais a suivi le modèle** : il teste maintenant les **deux chemins** (œil et chaque mot),
+vérifie que `.st-reveal` ne recouvre ni les gestes ni le pied et n'est pas tronquée, et ajoute
+`?stale=1` qui prouve qu'aucune révélation ne survit à un changement de page. `getBoundingClientRect`
+sur `.st-w` en headless : la boîte existe même quand un parent a un `transform`, mais rester sur le
+piège §9.12 (neutraliser l'animation d'entrée).

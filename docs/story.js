@@ -227,55 +227,24 @@
       /* ---------- lecture ---------- */
       ".st-haut{flex:0 0 52%;display:flex;flex-direction:column;justify-content:center;"
         + "padding:6px 20px;cursor:pointer;overflow:hidden;text-align:center}",
-      /* notes ouvertes : la moitié haute prend l'espace que le bas n'utilise pas, part du haut,
-         et DÉFILE quand l'unité est longue — le mot-à-mot n'est plus coupé net */
-      ".st-c.notes .st-haut{flex:0 1 auto;min-height:0;overflow-y:auto;justify-content:flex-start;"
-        + "padding-top:12px}",
-      ".st-c.notes .st-haut.deborde{-webkit-mask-image:linear-gradient(to bottom,#000 88%,transparent);"
-        + "mask-image:linear-gradient(to bottom,#000 88%,transparent)}",
       ".st-kr{flex:0 0 auto;margin:0;font-family:var(--kr-display,inherit);font-size:2.05rem;"
         + "font-weight:700;line-height:1.6;word-break:keep-all;text-shadow:var(--tk-glow,none)}",
-      ".st-notes{flex:none;width:100%}",
-      ".st-fr{margin:18px 0 0;font-family:var(--hand,inherit);font-size:1.2rem;line-height:1.4;"
-        + "color:var(--dim);text-align:left}",
-      ".st-mots{margin:14px 0 0;line-height:1.72;text-align:left}",
-      ".st-mm{display:inline-block;white-space:nowrap;margin:0 13px 0 0}",
-      ".st-mm b{font-family:var(--kr-display,inherit);font-weight:400;font-size:1.05rem;"
-        + "color:var(--txt);opacity:.85}",
-      ".st-mm i{font-family:var(--hand,inherit);font-style:normal;font-size:1rem;color:var(--dim);margin-left:5px}",
       /* les mots : du texte, pas des boutons — celui qu'on touche s'ALLUME */
       ".st-w{font:inherit;color:inherit;background:none;border:none;padding:0;margin:0;cursor:pointer;"
         + "text-shadow:inherit}",
       ".st-w.on{color:#fff;text-shadow:var(--tk-glow2,none);text-decoration:underline;"
         + "text-decoration-color:var(--seal);text-underline-offset:6px}",
 
-      /* le bas : la fiche du mot puis l'écoute, EN FLUX l'une au-dessus de l'autre.
-         (v127 : la fiche était en position:absolute au-dessus du haut-parleur — elle recouvrait
-         l'écoute et, dès que l'écran raccourcissait, le mot-à-mot de la moitié haute.) */
-      ".st-bas{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}",
-      /* notes ouvertes : le bas rend aux notes tout ce dont il n'a pas besoin, mais il garde
-         « flex:1 » — sinon, sur une unité courte, il ne remplit plus le vide et le pied
-         (flèches, compteur) remonte au milieu de l'écran. */
-      ".st-c.notes .st-bas{gap:8px;padding:2px 0 0}",
-      ".st-c.notes .st-son{width:76px;height:76px}",
-      ".st-c.notes .st-son svg{width:42px;height:42px}",
-      /* l'écoute : le geste qu'on répète, donc grande, au centre, et immobile */
-      /* pas de cercle coloré autour : c'est violent pour rien. Le signe est simplement GRAND,
-         posé dans le vide, et lumineux là où le thème le permet. */
-      ".st-son{background:none;border:none;padding:0;width:92px;height:92px;display:flex;"
-        + "align-items:center;justify-content:center;cursor:pointer;color:var(--txt)}",
-      ".st-son svg{width:48px;height:48px;stroke:currentColor;stroke-width:1.4;fill:none;"
-        + "stroke-linecap:round;stroke-linejoin:round;display:block;"
-        + "filter:drop-shadow(0 0 11px rgba(255,255,255,.38))}",
-      ".st-son:active svg{filter:drop-shadow(0 0 18px rgba(255,255,255,.72))}",
-      ".st-c.affiche .st-son,.st-c.finie .st-son,.st-c.affiche .st-cpt{visibility:hidden}",
-      ".st-c.affiche .st-haut,.st-c.finie .st-haut{flex:1 1 auto}",
-      ".st-c.affiche .st-bas,.st-c.finie .st-bas{flex:0 0 0;min-height:0}",
-      /* le pont d'un mot : au-dessus de l'écoute, dans le vide de la moitié basse.
-         min-height : la fiche d'un mot à nuance et celle d'un mot sans nuance occupent la même
-         place, donc le haut-parleur ne sautille pas d'un mot à l'autre. */
-      ".st-pont{flex:none;width:100%;min-height:74px;padding:0 20px;display:flex;"
-        + "flex-direction:column;justify-content:center;text-align:center;line-height:1.35}",
+      /* le bas : la révélation posée dans le vide, puis les deux gestes.
+         Un mot OU toute la phrase — jamais les deux : une seule boîte, un seul contenu à la fois,
+         donc rien à faire défiler et rien qui se superpose (v128, sur retour user). */
+      ".st-bas{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;"
+        + "gap:18px;min-height:0}",
+      ".st-reveal{width:100%;padding:0 20px;text-align:center;line-height:1.35;overflow-y:auto}",
+      ".st-tr{margin:0;font-family:var(--hand,inherit);font-size:1.2rem;line-height:1.45;color:var(--txt)}",
+      ".st-nl{margin:12px 0 0;font-family:var(--hand,inherit);font-size:1.02rem;color:var(--dim);line-height:1.5}",
+      ".st-nl b{font-family:var(--kr-display,inherit);color:var(--txt);font-weight:700}",
+      /* la fiche d'un mot : forme → lemme, sens, nuance */
       ".st-ph{display:flex;align-items:center;justify-content:center}",
       ".st-pf{font-family:var(--kr-display,inherit);font-weight:700;font-size:1.45rem;"
         + "text-shadow:var(--tk-glow,none)}",
@@ -284,6 +253,24 @@
       ".st-pn{display:block;font-family:var(--hand,inherit);font-size:1.05rem;color:var(--dim)}",
       ".st-fl{flex:none;width:26px;height:12px;stroke:var(--dim);stroke-width:1.4;fill:none;"
         + "stroke-linecap:round;stroke-linejoin:round;margin:0 9px}",
+      /* les deux gestes, côte à côte : l'œil MONTRE la phrase (discret), l'écoute la DIT (grande) */
+      ".st-gestes{flex:none;display:flex;align-items:center;justify-content:center;gap:30px}",
+      ".st-oeil{background:none;border:none;padding:0;width:56px;height:56px;display:flex;"
+        + "align-items:center;justify-content:center;cursor:pointer;color:var(--dim)}",
+      ".st-oeil svg{width:34px;height:34px;stroke:currentColor;stroke-width:1.5;fill:none;"
+        + "stroke-linecap:round;stroke-linejoin:round;display:block}",
+      ".st-oeil.on{color:var(--txt)}",
+      ".st-oeil.on svg{filter:drop-shadow(0 0 8px rgba(255,255,255,.42))}",
+      /* l'écoute : le geste qu'on répète, donc grande et lumineuse. Pas de cercle (violent). */
+      ".st-son{background:none;border:none;padding:0;width:88px;height:88px;display:flex;"
+        + "align-items:center;justify-content:center;cursor:pointer;color:var(--txt)}",
+      ".st-son svg{width:46px;height:46px;stroke:currentColor;stroke-width:1.4;fill:none;"
+        + "stroke-linecap:round;stroke-linejoin:round;display:block;"
+        + "filter:drop-shadow(0 0 11px rgba(255,255,255,.38))}",
+      ".st-son:active svg{filter:drop-shadow(0 0 18px rgba(255,255,255,.72))}",
+      ".st-c.affiche .st-cpt,.st-c.finie .st-cpt{visibility:hidden}",
+      ".st-c.affiche .st-haut,.st-c.finie .st-haut{flex:1 1 auto}",
+      ".st-c.affiche .st-bas,.st-c.finie .st-bas{display:none}",
       /* le pied : avancer, reculer, savoir où l'on est */
       ".st-pied{flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 12px 6px}",
       ".st-nav{background:none;border:none;padding:14px 20px;cursor:pointer;color:var(--dim)}",
@@ -308,23 +295,23 @@
       ".st-dojang span{font-family:var(--kr-display,inherit);font-size:1.9rem;font-weight:700;line-height:1}",
       ".st-c .st-suite{background:none;border:none;color:var(--txt);padding:14px 18px;"
         + "cursor:pointer;font-family:var(--hand,inherit);font-size:1.3rem}",
-      ".st-nl{font-family:var(--hand,inherit);font-size:1.05rem;color:var(--dim);line-height:1.6;"
-        + "margin-top:14px;text-align:left}",
-      ".st-nl b{font-family:var(--kr-display,inherit);color:var(--txt);font-weight:700}",
     ].join("\n");
     document.head.appendChild(s);
   }
 
   const HP = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/>'
     + '<path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>';
+  /* l'œil : montrer la traduction de toute la phrase */
+  const EYE = '<svg viewBox="0 0 24 24" aria-hidden="true">'
+    + '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/>'
+    + '<circle cx="12" cy="12" r="3"/></svg>';
   /* les flèches du pied et celle du pont sont DESSINÉES : « ← » n'existe ni dans la police
      hangul (bornée au hangul) ni dans la main du thème, il retomberait sur une police
      système — une troisième écriture dans la page (défaut vécu sur les accents, v102/v117) */
   const FLECHE = '<svg class="st-fl" viewBox="0 0 26 12" aria-hidden="true"><path d="M24 6H3M9 1.5 3 6l6 4.5"/></svg>';
   const CHEV = d => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
-  /* paliers : l'unité tient dans sa moitié. Les deux derniers ne servent qu'aux notes ouvertes,
-     où le texte est déjà lu et cède la place au mot-à-mot — il reste touchable, jamais coupé. */
-  const TAILLES = [2.05, 1.85, 1.65, 1.45, 1.3, 1.18, 1.06];
+  /* paliers : le hangul tient dans sa moitié haute sans jamais se couper */
+  const TAILLES = [2.05, 1.85, 1.65, 1.45, 1.3];
 
   function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, c =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
@@ -379,10 +366,10 @@
     box.appendChild(sortie);
   }
 
-  /* La lecture : une unité par écran. Le texte occupe la moitié haute, l'écoute est posée au
-     milieu de la moitié basse — toujours au même endroit, c'est le geste qu'on répète —, les
-     flèches sont tout en bas. Toucher le texte donne la traduction et le mot-à-mot ; toucher
-     un mot donne sa forme de dictionnaire, son sens et sa nuance grammaticale. */
+  /* La lecture : une unité par écran. Le texte occupe la moitié haute ; en bas, l'œil MONTRE la
+     traduction de TOUTE la phrase et l'écoute la DIT — le geste qu'on répète. Toucher un MOT
+     donne sa forme de dictionnaire, son sens et sa nuance. Œil et mot partagent la même boîte de
+     révélation : un seul contenu à la fois, donc rien à faire défiler ni à empiler (v128). */
   function renderChapter(container, opts, ch){
     injectCSS();
     container.innerHTML = "";
@@ -391,14 +378,13 @@
     const N = (ch.sentences || []).length;
 
     const vue = el(`<div class="st-c">
-      <div class="st-haut">
-        <p class="st-kr"></p>
-        <div class="st-notes"><p class="st-fr" hidden></p><p class="st-mots" hidden></p>
-          <p class="st-nl" hidden></p></div>
-      </div>
+      <div class="st-haut"><p class="st-kr"></p></div>
       <div class="st-bas">
-        <div class="st-pont" hidden></div>
-        <button class="st-son" aria-label="écouter">${HP}</button>
+        <div class="st-reveal" hidden></div>
+        <div class="st-gestes">
+          <button class="st-oeil" aria-label="voir la traduction">${EYE}</button>
+          <button class="st-son" aria-label="écouter">${HP}</button>
+        </div>
       </div>
       <div class="st-pied">
         <button class="st-nav prec" aria-label="précédent">${CHEV("M15 5 8 12l7 7")}</button>
@@ -410,54 +396,69 @@
 
     const haut = vue.querySelector(".st-haut");
     const kr = vue.querySelector(".st-kr");
-    const fr = vue.querySelector(".st-fr");
-    const mots = vue.querySelector(".st-mots");
-    const nl = vue.querySelector(".st-nl");
-    const pont = vue.querySelector(".st-pont");
+    const bas = vue.querySelector(".st-bas");
+    const reveal = vue.querySelector(".st-reveal");
+    const oeil = vue.querySelector(".st-oeil");
     const cpt = vue.querySelector(".st-cpt b");
     let n = -1;                                   /* -1 = l'affiche, N = le tampon de fin */
-    let ouvert = false;                           /* traduction et mot-à-mot montrés */
+    let cur = null;                               /* la phrase courante */
+    let vu = null;                                /* la révélation : null | "fr" | bouton-mot */
 
     const nw = (ch.new_words || []).map(w => Array.isArray(w) ? { kr: w[0], fr: w[1] } : w);
 
-    function fermerPont(){
-      pont.hidden = true;
-      const on = vue.querySelector(".st-w.on");
-      if(on) on.classList.remove("on");
+    /* la révélation vit dans une SEULE boîte : un mot OU toute la phrase, jamais les deux.
+       On efface avant de montrer autre chose — rien ne s'empile, rien ne persiste d'une page
+       à l'autre (montre() appelle fermer()). */
+    function fermer(){
+      vu = null;
+      reveal.hidden = true; reveal.innerHTML = "";
+      oeil.classList.remove("on");
+      const on = vue.querySelector(".st-w.on"); if(on) on.classList.remove("on");
     }
-    function ouvrirNotes(v){
-      if(ouvert === v) return;
-      ouvert = v;
-      fr.hidden = !v; mots.hidden = !v; nl.hidden = !v || !nw.length;
-      vue.classList.toggle("notes", v);      /* le bas se compacte, le haut prend la place */
-      if(!v) haut.scrollTop = 0;
-      ajuste();
+    function poser(html){ reveal.innerHTML = html; reveal.hidden = false; ajusteReveal(); }
+    function montrerPhrase(){
+      const on = vue.querySelector(".st-w.on"); if(on) on.classList.remove("on");
+      vu = "fr"; oeil.classList.add("on");
+      poser(`<p class="st-tr">${esc((cur && cur.fr) || "")}</p>`
+        + (nw.length ? `<p class="st-nl">Mots nouveaux : `
+            + nw.map(w => `<b>${esc(w.kr)}</b> ${esc(w.fr)}`).join(" · ") + `</p>` : ""));
     }
-    /* le fondu ne s'affiche que s'il reste vraiment du texte plus bas */
-    function marqueFin(){
-      haut.classList.toggle("deborde",
-        ouvert && haut.scrollHeight - haut.scrollTop - haut.clientHeight > 4);
+    function montrerMot(b, m){
+      oeil.classList.remove("on");
+      const on = vue.querySelector(".st-w.on"); if(on && on !== b) on.classList.remove("on");
+      vu = b; b.classList.add("on");
+      const sens = SENS[m.lemma] || "";
+      poser(`<span class="st-ph"><span class="st-pf">${esc(m.form)}</span>`
+        + (m.lemma && m.lemma !== m.form ? `${FLECHE}<span class="st-pl">${esc(m.lemma)}</span>` : "")
+        + `</span>`
+        + (sens ? `<span class="st-ps">${esc(sens)}</span>` : "")
+        + (m.note ? `<span class="st-pn">${esc(m.note)}</span>` : ""));
     }
     function ajuste(){
-      /* notes ouvertes : le texte cède la place, mais ne se coupe jamais */
-      const dispo = haut.clientHeight * (ouvert ? .38 : 1) - 16;
-      for(const t of TAILLES){
-        kr.style.fontSize = t + "rem";
-        if(kr.scrollHeight <= dispo) break;
-      }
-      marqueFin();
+      const dispo = haut.clientHeight - 16;
+      for(const t of TAILLES){ kr.style.fontSize = t + "rem"; if(kr.scrollHeight <= dispo) break; }
     }
-    haut.addEventListener("scroll", marqueFin);
+    /* la révélation ne déborde jamais du bas : on borne sa hauteur à la place libre au-dessus des
+       gestes, et la traduction rétrécit d'un cran plutôt que d'imposer un défilement */
+    function ajusteReveal(){
+      reveal.style.maxHeight = "";
+      const g = vue.querySelector(".st-gestes");
+      reveal.style.maxHeight = Math.max(64, bas.clientHeight - (g ? g.offsetHeight : 0) - 18) + "px";
+      const tr = reveal.querySelector(".st-tr");
+      if(tr) for(const t of [1.2, 1.1, 1.0, 0.92, 0.85, 0.78, 0.72]){
+        tr.style.fontSize = t + "rem";
+        if(reveal.scrollHeight <= reveal.clientHeight + 2) break;
+      }
+    }
 
     function montre(k, parle){
       n = Math.max(-1, Math.min(N, k));
-      fermerPont();
-      ouvert = false; fr.hidden = true; mots.hidden = true; nl.hidden = true;
-      vue.classList.remove("notes"); haut.classList.remove("deborde"); haut.scrollTop = 0;
+      fermer();
       vue.classList.toggle("affiche", n < 0);
       vue.classList.toggle("finie", n >= N);
       kr.style.fontSize = "";
       kr.innerHTML = "";
+      cur = null;
 
       if(n < 0){
         const aff = el(`<span class="st-ouv"><span class="n">${esc(ch.n)}</span>
@@ -488,46 +489,32 @@
       }
 
       const s = ch.sentences[n];
-      const liste = [];
+      cur = s;
       for(const bout of decouper(s)){
         if(!bout.m){ kr.appendChild(document.createTextNode(bout.t)); continue; }
         const b = el(`<button class="st-w">${esc(bout.t)}</button>`);
         b.onclick = (ev) => {
           ev.stopPropagation();
-          /* toucher un mot révèle AUSSI la traduction de la phrase entière : on cherche un mot
-             quand on bute sur la phrase, et le sens de la phrase est ce qu'on veut d'abord */
-          ouvrirNotes(true);
-          const dejaLa = b.classList.contains("on");
-          fermerPont();
-          if(dejaLa) return;
-          b.classList.add("on");
-          const m = bout.m, sens = SENS[m.lemma] || "";
-          pont.innerHTML = `<span class="st-ph"><span class="st-pf">${esc(m.form)}</span>`
-            + (m.lemma && m.lemma !== m.form ? `${FLECHE}<span class="st-pl">${esc(m.lemma)}</span>` : "")
-            + `</span>`
-            + (sens ? `<span class="st-ps">${esc(sens)}</span>` : "")
-            + (m.note ? `<span class="st-pn">${esc(m.note)}</span>` : "");
-          pont.hidden = false;
+          if(vu === b) fermer();            /* re-toucher le même mot le referme */
+          else montrerMot(b, bout.m);
         };
         kr.appendChild(b);
-        liste.push(bout.m);
       }
-      fr.textContent = s.fr || "";
-      mots.innerHTML = liste.map(m => `<span class="st-mm"><b>${esc(m.form)}</b>`
-        + `<i>${esc(SENS[m.lemma] || m.lemma)}</i></span>`).join("");
-      if(nw.length) nl.innerHTML = "Mots nouveaux : "
-        + nw.map(w => `<b>${esc(w.kr)}</b> ${esc(w.fr)}`).join(" · ");
       cpt.textContent = String(n + 1);
       ajuste();
       /* on avance, ça se dit : la lecture à voix haute suit le fil sans qu'on la redemande */
       if(parle && opts.speak) opts.speak(s.kr);
     }
 
+    /* toucher le fond du texte referme la révélation ; les mots, eux, arrêtent la propagation */
     haut.onclick = () => {
       if(n < 0){ montre(0, true); return; }
-      if(n >= N) return;
-      ouvrirNotes(!ouvert);
-      if(!ouvert) fermerPont();
+      if(vu) fermer();
+    };
+    /* l'œil montre — ou cache — la traduction de toute la phrase */
+    oeil.onclick = () => {
+      if(n < 0 || n >= N) return;
+      if(vu === "fr") fermer(); else montrerPhrase();
     };
     vue.querySelector(".st-son").onclick = () => {
       if(n >= 0 && n < N && opts.speak) opts.speak(ch.sentences[n].kr);
