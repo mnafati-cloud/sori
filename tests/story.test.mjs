@@ -1,52 +1,58 @@
-/* Verrouille la partie PURE de SORI_STORY (l'histoire générée chapitre par chapitre).
-   Trois fonctions décident de tout, et aucune ne touche au DOM ni au réseau :
-   - pickTargets  : quelles structures « en cours » le chapitre doit exercer
-   - lintChapter  : les deux plafonds (vocabulaire, grammaire) contrôlés CHEZ NOUS — un LLM
-                    à qui on donne 1144 mots autorisés déborde toujours, le prompt ne suffit pas
-   - trimStore    : le cap de stockage (les chapitres vivent hors sauvegarde cloud)
+/* Verrouille la partie PURE de SORI_STORY — le LECTEUR du feuilleton et son lint de build.
+   - availability   : quel chapitre est ouvert aujourd'hui (contenu figé, sélection vivante)
+   - lintChapter    : les deux plafonds (vocabulaire, grammaire) + la forme du chapitre.
+                      C'est l'outil de l'auteur : il tourne au BUILD, jamais sur l'appareil.
+   - formMatchesLemma / normLemma : le lemme déclaré doit correspondre à la forme écrite,
+                      sinon le plafond de vocabulaire n'est qu'une déclaration.
    Lancer : node --test tests/story.test.mjs */
 import test from "node:test";
 import assert from "node:assert/strict";
 import STORY from "../docs/story.js";
+import GRAMMAR from "../docs/grammar.js";
 
 const P = STORY.pure;
 
-/* ---------- choix des structures cibles ---------- */
-test("pickTargets : les « en cours » les plus vues, jamais une acquise ni une inconnue", () => {
-  const profile = {
-    past:   { status: "acquise",  seen: 40, mastered: 30 },
-    nikka:  { status: "en-cours", seen: 9,  mastered: 1 },
-    ryeogo: { status: "en-cours", seen: 3,  mastered: 0 },
-    janha:  { status: "inconnue", seen: 0,  mastered: 0 },
-  };
-  assert.deepEqual(P.pickTargets(profile, 2), ["nikka", "ryeogo"]);
-  assert.deepEqual(P.pickTargets(profile, 1), ["nikka"]);
+/* ---------- sélection : quel chapitre est lisible ---------- */
+const CORPUS = [
+  { n: 1, target: null,       title_fr: "La rencontre" },
+  { n: 2, target: "mot",      title_fr: "L'empêchement" },
+  { n: 3, target: "go",       title_fr: "Et puis" },
+  { n: 4, target: "mod-neun", title_fr: "Celui qui vient" },
+];
+const label = id => ({ "mod-neun": "modifieur 는 + nom", mot: "impossibilité 못" }[id] || id);
+
+test("availability : un chapitre s'ouvre quand sa structure cible est au moins EN COURS", () => {
+  const profile = { mot: { status: "acquise" }, go: { status: "en-cours" }, "mod-neun": { status: "inconnue" } };
+  const a = P.availability(CORPUS, profile, label);
+  assert.equal(a[0].status, "ok");        /* pas de cible : toujours lisible */
+  assert.equal(a[1].status, "ok");        /* acquise */
+  assert.equal(a[2].status, "ok");        /* en cours : c'est justement le moment de la voir */
+  assert.equal(a[3].status, "locked");    /* jamais croisée : le chapitre attend */
+  assert.ok(/modifieur/.test(a[3].reason), a[3].reason);
 });
 
-test("pickTargets : aucune structure en cours → tableau vide (le chapitre reste sur l'acquis)", () => {
-  assert.deepEqual(P.pickTargets({ past: { status: "acquise", seen: 5, mastered: 5 } }, 2), []);
-  assert.deepEqual(P.pickTargets(null, 2), []);
+test("availability : la lecture reste séquentielle — un chapitre ne saute pas son prédécesseur", () => {
+  const profile = { mot: { status: "inconnue" }, go: { status: "acquise" } };
+  const a = P.availability(CORPUS, profile, label);
+  assert.equal(a[1].status, "locked");
+  assert.equal(a[2].status, "locked");    /* même si 고 est acquise : le 2 bloque le 3 */
+  assert.ok(/chapitre 2/.test(a[2].reason));
 });
 
-test("pickTargets : évite de répéter les cibles du chapitre précédent", () => {
-  const profile = {
-    a: { status: "en-cours", seen: 9, mastered: 1 },
-    b: { status: "en-cours", seen: 8, mastered: 1 },
-    c: { status: "en-cours", seen: 7, mastered: 0 },
-  };
-  assert.deepEqual(P.pickTargets(profile, 2, ["a"]), ["b", "c"]);
-  /* si tout a déjà servi, on recycle plutôt que de ne rien exercer */
-  assert.deepEqual(P.pickTargets(profile, 2, ["a", "b", "c"]), ["a", "b"]);
+test("availability : profil vide ou corpus vide — pas d'exception", () => {
+  assert.deepEqual(P.availability([], {}), []);
+  assert.equal(P.availability(CORPUS, null)[0].status, "ok");
+  assert.equal(P.availability(CORPUS, null)[1].status, "locked");
 });
 
-/* ---------- le lint : la vraie garantie des plafonds ---------- */
-const ctx = () => ({
-  known: new Set(["카페", "일하다", "커피", "마시다", "사람"]),
+/* ---------- le lint : les deux plafonds ---------- */
+const ctx = extra => Object.assign({
+  known: new Set(["카페", "일하다", "커피", "마시다", "사람", "손을씻다"]),
   names: ["민지", "준호"],
   allowed: new Set(["past", "seyo"]),
-  tag: kr => (kr.includes("니까") ? ["nikka"] : ["past"]),   /* taggeur injecté */
-  labelOf: id => id,
-});
+  tag: kr => (kr.includes("니까") ? ["nikka"] : ["past"]),
+  labelOf: x => x,
+}, extra || {});
 const chap = sentences => ({ sentences, new_words: [] });
 const w = (form, lemma, note = "") => ({ form, lemma, note });
 
@@ -60,7 +66,7 @@ test("lintChapter : un lemme hors vocabulaire est signalé", () => {
   const ch = chap([{ kr: "민지는 신문을 읽었어요", fr: "…",
     words: [w("민지는", "민지"), w("신문을", "신문"), w("읽었어요", "읽다")] }]);
   const v = P.lintChapter(ch, ctx());
-  assert.equal(v.length, 2);                       /* 신문 ET 읽다 sont hors liste */
+  assert.equal(v.length, 2);
   assert.ok(v[0].includes("신문"));
 });
 
@@ -80,10 +86,15 @@ test("lintChapter : une structure non autorisée est signalée", () => {
 });
 
 test("lintChapter : un mot-à-mot qui ne couvre pas la phrase est signalé", () => {
-  /* sans ce contrôle, il suffirait d'omettre un mot du mot-à-mot pour échapper au plafond */
   const ch = chap([{ kr: "민지는 커피를 마셨어요", fr: "…",
     words: [w("민지는", "민지"), w("마셨어요", "마시다")] }]);
   assert.ok(P.lintChapter(ch, ctx()).some(x => x.includes("couvre")));
+});
+
+test("lintChapter : traduction française manquante signalée", () => {
+  const ch = chap([{ kr: "민지는 커피를 마셨어요", fr: "",
+    words: [w("민지는", "민지"), w("커피를", "커피"), w("마셨어요", "마시다")] }]);
+  assert.ok(P.lintChapter(ch, ctx()).some(x => /traduction/.test(x)));
 });
 
 test("lintChapter : chapitre vide ou malformé — aucune exception, une violation", () => {
@@ -92,10 +103,19 @@ test("lintChapter : chapitre vide ou malformé — aucune exception, une violati
   assert.ok(P.lintChapter(null, ctx()).length >= 1);
 });
 
-/* ---------- le lint doit vérifier que le lemme correspond VRAIMENT à la forme ---------- */
+test("lintChapter : la FORME du chapitre est contrôlée (43 phrases au lieu de 14 doit se voir)", () => {
+  const une = { kr: "민지는 커피를 마셨어요", fr: "x",
+    words: [w("민지는", "민지"), w("커피를", "커피"), w("마셨어요", "마시다")] };
+  const court = chap([une, une]);
+  const long = chap(Array.from({ length: 30 }, () => une));
+  const bornes = { minSentences: 10, maxSentences: 20 };
+  assert.ok(P.lintChapter(court, ctx(bornes)).some(x => /trop court/.test(x)));
+  assert.ok(P.lintChapter(long, ctx(bornes)).some(x => /trop long/.test(x)));
+  assert.deepEqual(P.lintChapter(chap(Array.from({ length: 12 }, () => une)), ctx(bornes)), []);
+});
+
+/* ---------- lemme déclaré vs forme écrite ---------- */
 test("lintChapter : un lemme qui ne correspond pas à la forme est rejeté", () => {
-  /* sans ce contrôle le plafond est purement déclaratif : le modèle écrit ce qu'il veut
-     et déclare à côté un lemme autorisé (revue v120). */
   const ch = chap([{ kr: "신문을 읽었어요", fr: "…",
     words: [w("신문을", "커피"), w("읽었어요", "마시다")] }]);
   const v = P.lintChapter(ch, ctx());
@@ -103,105 +123,38 @@ test("lintChapter : un lemme qui ne correspond pas à la forme est rejeté", () 
   assert.ok(v.every(x => /ne correspond pas/.test(x)));
 });
 
-test("lintChapter : les irréguliers coréens restent acceptés (ㅂ, ㄷ, 르, contractions)", () => {
-  const c = ctx();
-  ["맵다", "듣다", "부르다", "하다", "오다", "이다"].forEach(l => c.known.add(l));
-  const ok = (form, lemma) => {
-    const ch = chap([{ kr: form, fr: "…", words: [w(form, lemma)] }]);
-    assert.deepEqual(P.lintChapter(ch, c), [], `${form} ← ${lemma} devrait passer`);
-  };
-  ok("매워요", "맵다");      /* ㅂ-irrégulier */
-  ok("들어요", "듣다");      /* ㄷ-irrégulier */
-  ok("불러요", "부르다");    /* 르-irrégulier */
-  ok("해요", "하다");        /* contraction */
+test("formMatchesLemma : les irréguliers coréens et les entrées multi-mots passent", () => {
+  const ok = (form, lemma) => assert.ok(P.formMatchesLemma(form, lemma), `${form} ← ${lemma}`);
+  ok("매워요", "맵다");        /* ㅂ-irrégulier */
+  ok("들어요", "듣다");        /* ㄷ-irrégulier */
+  ok("불러요", "부르다");      /* 르-irrégulier */
+  ok("해요", "하다");          /* contraction */
   ok("왔어요", "오다");
   ok("예요", "이다");
+  ok("씻었어요", "손을 씻다"); /* entrée multi-mots du deck (107 cas) */
+  assert.ok(!P.formMatchesLemma("신문을", "커피"));
 });
 
-/* ---------- le fil : SEULE la liste fait foi ---------- */
-test("thread : le numéro et le résumé viennent des chapitres réellement présents", () => {
-  assert.deepEqual(P.thread([{ n: 1, summary_fr: "A" }, { n: 2, summary_fr: "B" }]), { no: 3, summary: "B" });
-  /* plus aucun chapitre → on repart du premier, quoi qu'il traîne dans l'état.
-     C'est LE cas vécu : chapitre supprimé, et l'app proposait encore « le chapitre 2 ». */
-  assert.deepEqual(P.thread([]), { no: 1, summary: "" });
-  assert.deepEqual(P.thread(null), { no: 1, summary: "" });
-  /* un état hérité (v120 mémorisait un dernier numéro) ne doit RIEN changer */
-  assert.deepEqual(P.thread([], { summary: "vieux", lastN: 12 }), { no: 1, summary: "" });
-  /* le cap de stockage a mangé les premiers chapitres : on continue après le dernier présent */
-  assert.deepEqual(P.thread([{ n: 49, summary_fr: "X" }, { n: 50, summary_fr: "Y" }]), { no: 51, summary: "Y" });
+test("normLemma : une entrée multi-mots du deck est reconnue malgré l'espace", () => {
+  /* le deck contient « 손을 씻다 » ; sans normalisation commune, ce lemme serait toujours rejeté */
+  const ch = chap([{ kr: "손을 씻었어요", fr: "…",
+    words: [w("손을", "손을 씻다"), w("씻었어요", "손을 씻다", "passé")] }]);
+  assert.deepEqual(P.lintChapter(ch, ctx()), []);
 });
 
-/* ---------- numérotation ---------- */
-test("nextNo : continue après le cap de stockage et après une restauration cloud", () => {
-  assert.equal(P.nextNo([], {}), 1);
-  assert.equal(P.nextNo([{ n: 1 }, { n: 2 }], {}), 3);
-  /* le cap a supprimé les premiers : on repart du dernier connu, pas de list.length */
-  assert.equal(P.nextNo([{ n: 19 }, { n: 20 }], {}), 21);
-  /* liste locale vide mais fil restauré depuis le cloud : on ne recommence PAS à 1 */
-  assert.equal(P.nextNo([], { lastN: 12 }), 13);
-  assert.equal(P.nextNo([{ n: 3 }], { lastN: 12 }), 13);
-});
-
-/* ---------- cap de stockage ---------- */
-test("trimStore : garde les N derniers chapitres, dans l'ordre", () => {
-  const list = [1, 2, 3, 4, 5].map(n => ({ n, sentences: [] }));
-  assert.deepEqual(P.trimStore(list, 3).map(c => c.n), [3, 4, 5]);
-  assert.deepEqual(P.trimStore(list, 9).map(c => c.n), [1, 2, 3, 4, 5]);
-  assert.deepEqual(P.trimStore(null, 3), []);
-});
-
-/* ---------- corpus écrit : quel chapitre est lisible aujourd'hui ---------- */
-const CORPUS = [
-  { n: 1, target: null,       title_fr: "La rencontre" },
-  { n: 2, target: "mot",      title_fr: "L'empêchement" },
-  { n: 3, target: "go",       title_fr: "Et puis" },
-  { n: 4, target: "mod-neun", title_fr: "Celui qui vient" },
-];
-
-test("availability : un chapitre s'ouvre quand sa structure cible est au moins EN COURS", () => {
-  const profile = {
-    mot: { status: "acquise" },
-    go:  { status: "en-cours" },
-    "mod-neun": { status: "inconnue" },
-  };
-  /* labelOf est injecté par l'app (elle a l'inventaire) : la raison doit être LISIBLE,
-     pas un identifiant technique */
-  const label = id => ({ "mod-neun": "modifieur 는 + nom", mot: "impossibilité 못" }[id] || id);
-  const a = P.availability(CORPUS, profile, label);
-  assert.equal(a[0].status, "ok");        /* pas de cible : toujours lisible */
-  assert.equal(a[1].status, "ok");        /* acquise */
-  assert.equal(a[2].status, "ok");        /* en cours : c'est justement le moment de la voir */
-  assert.equal(a[3].status, "locked");    /* jamais croisée : le chapitre attend */
-  assert.ok(/modifieur/.test(a[3].reason), a[3].reason);
-});
-
-test("availability : la lecture reste séquentielle — un chapitre ne saute pas son prédécesseur", () => {
-  const profile = { mot: { status: "inconnue" }, go: { status: "acquise" } };
-  const a = P.availability(CORPUS, profile);
-  assert.equal(a[1].status, "locked");    /* 못 pas encore croisé */
-  assert.equal(a[2].status, "locked");    /* même si 고 est acquise : le 2 bloque le 3 */
-  assert.ok(/chapitre 2/.test(a[2].reason));
-});
-
-test("availability : profil vide ou corpus vide — pas d'exception", () => {
-  assert.deepEqual(P.availability([], {}), []);
-  assert.equal(P.availability(CORPUS, null)[0].status, "ok");
-  assert.equal(P.availability(CORPUS, null)[1].status, "locked");
-});
-
-/* ---------- le prompt ---------- */
-test("buildSystem : énonce les structures autorisées et les cibles, et le plafond de mots", () => {
-  const sys = P.buildSystem({
-    acquired: [{ id: "past", fr: "passé 았/었/했", ex: "어제 밥을 먹었어요" }],
-    targets:  [{ id: "nikka", fr: "(으)니까 — cause", ex: "위험하니까 조심하세요" }],
-    names: ["민지"],
-    chapterNo: 2,
-    summary: "Minji a trouvé une lettre.",
-  });
-  assert.ok(sys.includes("passé 았/었/했"));
-  assert.ok(sys.includes("위험하니까 조심하세요"));
-  assert.ok(sys.includes("Minji a trouvé une lettre."));
-  assert.ok(/chapitre\s*2/i.test(sys));
-  /* la contrainte de prose plate est explicite : c'est une exigence du lecteur */
-  assert.ok(/plate/i.test(sys));
+/* ---------- intégration : le lint et le VRAI taggeur ---------- */
+test("lint + grammar.js réels : une structure hors plafond est bien attrapée", () => {
+  /* la revue avait signalé que les tests injectaient un faux taggeur — ici c'est le vrai */
+  const lex = new Set(["듣다", "공부하다", "마시다", "커피"]);
+  const tag = kr => GRAMMAR.tagStructures(kr, lex);
+  const byId = Object.fromEntries(GRAMMAR.STRUCTS.map(s => [s.id, s]));
+  const c = ctx({ known: new Set(["커피", "마시다", "공부하다", "듣다"]), tag,
+    allowed: new Set(["past"]), labelOf: id => (byId[id] && byId[id].fr) || id });
+  const ch = chap([{ kr: "음악을 들으면서 공부했어요", fr: "…",
+    words: [w("음악을", "음악"), w("들으면서", "듣다", "en même temps"), w("공부했어요", "공부하다", "passé")] }]);
+  const v = P.lintChapter(ch, c);
+  assert.ok(v.some(x => /면서/.test(x)), v.join(" | "));
+  /* et une phrase conforme au plafond ne déclenche rien côté grammaire */
+  const ok = chap([{ kr: "커피를 마셨어요", fr: "…", words: [w("커피를", "커피"), w("마셨어요", "마시다", "passé")] }]);
+  assert.deepEqual(P.lintChapter(ok, c), []);
 });

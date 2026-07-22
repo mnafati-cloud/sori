@@ -30,13 +30,19 @@ const seed = loadSeed();
 const lexAll = new Set(seed.filter(i => i.type === "word").map(i => i.kr));
 
 const prof = profPath ? JSON.parse(fs.readFileSync(profPath, "utf8")) : null;
-const known = new Set(prof ? prof.known.map(w => w.kr)
-  : seed.filter(i => i.type === "word" && (i.stage || 0) >= 4).map(i => i.kr));
+/* normalisation COMMUNE avec les lemmes : sans elle, les 107 entrees multi-mots du deck
+   (« 손을 씻다 ») ne seraient jamais reconnues */
+const N = STORY.pure.normLemma;
+const known = new Set((prof ? prof.known.map(w => w.kr)
+  : seed.filter(i => i.type === "word" && (i.stage || 0) >= 4).map(i => i.kr)).map(N));
 const acquired = prof ? prof.acquired : [];
 
 const chap = JSON.parse(fs.readFileSync(chapPath, "utf8"));
 const chapters = Array.isArray(chap) ? chap : [chap];
 const byId = Object.fromEntries(GRAMMAR.STRUCTS.map(s => [s.id, s]));
+/* Forme attendue d'un chapitre : ni expedie, ni interminable. Le tout premier essai en
+   comptait 43 alors que la consigne disait 10-14, et rien ne l'avait vu. */
+const MIN_S = 10, MAX_S = 22;
 
 let total = 0;
 for(const ch of chapters){
@@ -47,6 +53,7 @@ for(const ch of chapters){
     names: ch.names || [],
     tag: kr => GRAMMAR.tagStructures(kr, lexAll),
     labelOf: id => (byId[id] && byId[id].fr) || id,
+    minSentences: MIN_S, maxSentences: MAX_S,
   });
   const label = ch.n ? `chapitre ${ch.n}` : path.basename(chapPath);
   if(problems.length){

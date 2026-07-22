@@ -43,8 +43,25 @@
   Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
   PowerShell 5.1 sous Windows 11.
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
-  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **143 tests Node**, `CACHE` = `sori-v122`.
+  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **140 tests Node**, `CACHE` = `sori-v123`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v123 (l'Histoire devient un CORPUS ÉCRIT — la génération sur l'appareil est retirée)** :
+  décision de l'utilisateur, et elle rétablit sa propre doctrine (« LLM = compilation only »,
+  cf. la méthode narrative). Générer un chapitre en direct coûtait 5 minutes d'attente, un appel
+  payant par lecture, une clé, du réseau — et surtout **c'est de là que venait la majorité des
+  défauts** : contenu non vérifié affiché à l'apprenant, XSS possible, double génération, plafond
+  déclaratif. Les 250 lignes de génération (`callModel`, `generate`, `buildSystem`, `pickTargets`,
+  `thread`, `nextNo`, `trimStore`, le magasin `sori-story-ch`, `ST.story`) sont **supprimées**.
+  `story.js` est désormais un LECTEUR : il affiche `docs/story-data.js`, corpus écrit à la main et
+  vérifié au build. Ce qui reste vivant est la SÉLECTION — `pure.availability` ouvre un chapitre
+  quand sa structure cible est au moins « en cours » dans le profil, et la lecture reste
+  séquentielle. Corpus vide ⇒ la carte Histoire **n'apparaît pas** (pas de porte vers un écran vide).
+  Corrigés au passage, defauts de la revue restés en plan : la **forme du chapitre** n'était jamais
+  contrôlée (le premier essai faisait 43 phrases pour 14 demandées — `minSentences`/`maxSentences`),
+  les **107 entrées multi-mots du deck** (« 손을 씻다 ») étaient inlintables (normalisation commune
+  `pure.normLemma` + `formMatchesLemma` qui teste chaque élément), la traduction française manquante
+  passait, et les tests injectaient un faux taggeur (désormais un test d'intégration avec le vrai
+  `grammar.js`). CACHE `sori-v123`.
 - **v122 (le numéro affiché correspond TOUJOURS à ce qui est lisible)** : la v121 ne corrigeait
   que les suppressions futures — l'utilisateur avait supprimé son chapitre SOUS la v120, donc son
   `ST.story.lastN` valait encore 1 et l'app lui proposait toujours « le chapitre 2 ». Plutôt que
