@@ -43,8 +43,18 @@
   Python 3.12 (scripts `tools/`), Node 20 (`node --test`, `node --check`), Git Bash et
   PowerShell 5.1 sous Windows 11.
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
-  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **140 tests Node**, `CACHE` = `sori-v123`.
+  **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **140 tests Node**, `CACHE` = `sori-v124`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v124 (la saison 1 est livrée : 10 chapitres écrits, vérifiés, calibrés)** : « 일곱 시의 카페 »
+  — le café Miso, le départ d'Eunji pour la France, et ce que le patron cachait. 181 phrases,
+  17 à 21 par chapitre. **Chaque chapitre cible une des 9 structures que l'apprenant est en train
+  d'acquérir** (ch.2 못, ch.3 -고, ch.4 (으)ㄹ 때, ch.5 modifieur 는, ch.6 (으)러 가다, ch.7 modifieur
+  ㄴ/은, ch.8 겠, ch.9 (으)면서, ch.10 잖아요) : l'histoire monte l'escalier de ses capacités réelles.
+  Vérifié par `story_build.mjs`, qui refuse de livrer : chaque lemme dans les 1144 mots maîtrisés,
+  chaque structure dans l'acquis + la cible, forme du chapitre, ET la cible réellement exercée
+  (2 emplois minimum — elle l'est 2 à 5 fois selon les chapitres). Zéro mot nouveau au final.
+  `docs/story-data.js` = 95 Ko, servi statiquement et mis en cache par le SW (n'entre pas dans
+  l'export cloud). CACHE `sori-v124`.
 - **v123 (l'Histoire devient un CORPUS ÉCRIT — la génération sur l'appareil est retirée)** :
   décision de l'utilisateur, et elle rétablit sa propre doctrine (« LLM = compilation only »,
   cf. la méthode narrative). Générer un chapitre en direct coûtait 5 minutes d'attente, un appel
