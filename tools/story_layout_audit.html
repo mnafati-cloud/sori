@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>audit de mise en page — l’écran Histoire</title>
+<link rel="stylesheet" href="../docs/style.css">
+<link rel="stylesheet" href="../docs/themes.css">
+<style>
+  html,body{margin:0;padding:0}
+  /* la fenêtre Chrome n'est pas le viewport (zoom système, largeur mini) : on fige ici */
+  body{width:375px;height:812px;min-height:0;overflow:hidden}
+  #topbar,#tabs{flex:none}
+  #topbar{height:50px}
+  #tabs{height:52px}
+  /* en headless l'animation d'entrée du thème reste figée sur sa 1re keyframe (scale 1.55) et
+     fausse tous les rectangles : on la neutralise, elle n'a rien à voir avec la mise en page */
+  #screen > *{animation:none !important}
+</style>
+</head>
+<body class="theme-takbon">
+<div id="topbar"><div class="brand">소리 <span>Sori</span></div></div>
+<div id="screen"></div>
+<div id="tabs"><button class="active"><span>histoire</span></button></div>
+<script src="../docs/story-data.js"></script>
+<script src="../docs/story-sens.js"></script>
+<script src="../docs/story.js"></script>
+<script>
+function ouvre(nch){
+  var data = window.STORY_DATA, corpus = data.chapitres;
+  var ch = corpus.filter(function(c){ return c.n === nch; })[0];
+  var sc = document.getElementById("screen");
+  SORI_STORY.renderChapter(sc, {
+    corpus: corpus, profile: {}, labelOf: function(){ return ""; },
+    sens: window.STORY_SENS || {}, lus: [], ouverts: corpus.map(function(c){ return c.n; }),
+    speak: function(){}, saison: { kr: data.titre_kr, fr: data.titre_fr }
+  }, ch);
+  return sc;
+}
+function MAQ(nch, unite, mode){
+  var sc = ouvre(nch), suiv = sc.querySelector(".suiv");
+  for(var i = 0; i <= unite; i++) suiv.click();
+  if(mode === "phrase") sc.querySelector(".st-haut").click();
+  if(mode && mode.indexOf("mot") === 0){
+    var k = parseInt(mode.slice(3), 10) || 0;
+    var ws = sc.querySelectorAll(".st-kr .st-w");
+    ws[Math.min(k, ws.length - 1)].click();
+  }
+}
+
+/* ---- audit : aucune boîte ne doit en recouvrir une autre, rien ne doit être tronqué ---- */
+function rect(sc, sel){ var e = sc.querySelector(sel); return (e && e.offsetParent !== null) || (e && e.getClientRects().length) ? e.getBoundingClientRect() : null; }
+function chevauche(a, b){ return a && b && a.top < b.bottom - 1 && b.top < a.bottom - 1; }
+function AUDIT(){
+  var data = window.STORY_DATA, pbs = [], nUnites = 0, nDefile = 0;
+  data.chapitres.forEach(function(ch){
+    var sc = ouvre(ch.n), suiv = sc.querySelector(".suiv");
+    suiv.click();                                   /* affiche -> unité 0 */
+    ch.sentences.forEach(function(s, i){
+      var ws = sc.querySelectorAll(".st-kr .st-w");
+      nUnites++;
+      if(ws.length){
+        ws[0].click();
+        var h0 = sc.querySelector(".st-haut");
+        if(h0.scrollHeight > h0.clientHeight + 4) nDefile++;
+        ws[0].click();
+      }
+      for(var k = 0; k < ws.length; k++){
+        ws[k].click();                              /* touche un mot : notes + pont */
+        var haut = rect(sc, ".st-haut"), notesEl = sc.querySelector(".st-notes");
+        var pont = rect(sc, ".st-pont"), son = rect(sc, ".st-son"), pied = rect(sc, ".st-pied");
+        var krEl = sc.querySelector(".st-kr");
+        var id = "ch" + ch.n + " u" + (i + 1) + " mot" + k;
+        if(chevauche(pont, haut)) pbs.push(id + " : le pont recouvre la moitié haute"
+          + " [haut " + Math.round(haut.top) + "-" + Math.round(haut.bottom)
+          + " pont " + Math.round(pont.top) + "-" + Math.round(pont.bottom)
+          + " son " + (son ? Math.round(son.top) + "-" + Math.round(son.bottom) : "?")
+          + " pied " + (pied ? Math.round(pied.top) : "?") + "]");
+        if(chevauche(pont, son)) pbs.push(id + " : le pont recouvre l'écoute");
+        if(chevauche(pont, pied)) pbs.push(id + " : le pont recouvre le pied");
+        if(notesEl && notesEl.scrollHeight > notesEl.clientHeight + 2) pbs.push(id + " : mot-à-mot tronqué (" + notesEl.scrollHeight + ">" + notesEl.clientHeight + ")");
+        if(krEl && krEl.scrollHeight > krEl.clientHeight + 2) pbs.push(id + " : texte coréen tronqué");
+        if(haut && pied && haut.bottom > pied.top + 1) pbs.push(id + " : la moitié haute déborde sur le pied");
+        ws[k].click();                              /* referme le pont */
+      }
+      suiv.click();
+    });
+  });
+  return { pbs: pbs, info: "defile : " + nDefile + "/" + nUnites + " unites" };
+}
+(function(){
+  var q = new URLSearchParams(location.search);
+  if(q.get("w")) document.body.style.width = q.get("w") + "px";
+  if(q.get("h")) document.body.style.height = q.get("h") + "px";
+  if(q.get("audit")){
+    var r = AUDIT(), pbs = r.pbs;
+    var uniq = {}; pbs.forEach(function(p){ uniq[p.replace(/^ch\d+ u\d+ mot\d+ : /, "")] = (uniq[p.replace(/^ch\d+ u\d+ mot\d+ : /, "")] || 0) + 1; });
+    var res = "AUDIT " + document.body.offsetWidth + "x" + document.body.offsetHeight + " : "
+      + pbs.length + " defauts — " + r.info + "\n"
+      + Object.keys(uniq).map(function(k){ return "  " + uniq[k] + " x " + k; }).join("\n")
+      + "\n" + pbs.slice(0, 6).join("\n");
+    document.body.innerHTML = "<pre id=rapport>" + res.replace(/[<&]/g, "?") + "</pre>";
+    return;
+  }
+  if(!q.get("ch")) return;
+  MAQ(parseInt(q.get("ch"), 10), parseInt(q.get("u") || "0", 10), q.get("mode") || "");
+  if(q.get("probe")){
+    var sc = document.getElementById("screen"), out = [];
+    [["screen", sc], ["st-c", sc.querySelector(".st-c")], ["haut", sc.querySelector(".st-haut")],
+     ["notes", sc.querySelector(".st-notes")], ["bas", sc.querySelector(".st-bas")],
+     ["pont", sc.querySelector(".st-pont")], ["son", sc.querySelector(".st-son")],
+     ["pied", sc.querySelector(".st-pied")]].forEach(function(p){
+      var e = p[1]; if(!e){ out.push(p[0] + " : absent"); return; }
+      var r = e.getBoundingClientRect(), cs = getComputedStyle(e);
+      out.push(p[0] + " top=" + Math.round(r.top) + " h=" + Math.round(r.height)
+        + " scrollH=" + e.scrollHeight + " client=" + e.clientHeight
+        + " flex=" + cs.flex + " transform=" + cs.transform + " overflow=" + cs.overflowY);
+    });
+    out.push("classes st-c : " + sc.querySelector(".st-c").className);
+    var pre = document.createElement("pre"); pre.id = "probe"; pre.textContent = out.join("\n");
+    document.body.appendChild(pre);
+  }
+})();
+</script>
+</body>
+</html>

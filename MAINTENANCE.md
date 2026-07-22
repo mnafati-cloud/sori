@@ -2328,3 +2328,52 @@ règle `.st-suite{font-family:…}` perd contre lui et le mot sort en myeongjo, 
 coréen. Préfixer par le conteneur (`.st-c .st-suite`) pour passer devant. Vérifié aussi : `‹` et
 `›` existent dans le sous-ensemble Caveat, **`←` et `✕` non** — ils retomberaient sur une police
 système, d'où la flèche du pont dessinée en SVG.
+
+### 9.12 v127 — la fiche d'un mot revient dans le flux (et l'audit qui l'a prouvé)
+
+Retour user sur v126 : « tu as bien ajouté la phrase entière, mais tu as mal géré les espaces, on a
+des superpositions entre la phrase entière et le mot-à-mot ». Deux causes, la seconde née de v126 :
+
+1. **La fiche d'un mot était en `position:absolute`** (`bottom:calc(50% + 52px)` dans la moitié
+   basse). Rien ne lui réservait de place : dès que l'écran raccourcissait, elle remontait sur le
+   mot-à-mot de la moitié haute. Elle est maintenant **dans le flux**, au-dessus de l'écoute, dans
+   une colonne — une boîte en flux ne peut recouvrir personne. Son `min-height` fixe fait que la
+   fiche d'un mot à nuance et celle d'un mot sans nuance occupent la même place : le haut-parleur
+   ne sautille pas d'un mot à l'autre.
+2. **Le mot-à-mot était tronqué**, sous un fondu, alors que la moitié basse était vide. La moitié
+   haute était figée à 52 % de l'écran, quel que soit son contenu. Elle prend désormais, notes
+   ouvertes, tout ce dont le bas n'a pas besoin (`.st-c.notes`), et **défile** si l'unité est très
+   longue — le fondu ne s'affiche que s'il reste vraiment du texte plus bas (mis à jour au scroll).
+
+⚠️ Le bas garde **`flex:1` même notes ouvertes**. En lui donnant `flex:0 1 auto` j'ai cassé la page
+en une capture : sur une unité courte, plus rien ne remplissait le vide et le pied (flèches,
+compteur) remontait au milieu de l'écran.
+
+Compactage, pour que les notes tiennent sans défiler : interligne du mot-à-mot 1,95 → 1,72, marges
+resserrées, l'écoute passe de 92 à 76 px **quand les notes sont ouvertes seulement**, et deux
+paliers de taille en plus pour le coréen (1,18 et 1,06 rem) qui ne servent que là — le texte est
+déjà lu, il cède la place, mais reste entier et touchable. **Ne PAS raccourcir les gloses** pour
+gagner de la place : les parenthèses sont ses discriminants de collision (« Café (le lieu) »).
+
+**L'outil : `tools/story_layout_audit.html`.** Il ouvre les 10 chapitres, va sur chaque unité,
+touche chaque mot, et vérifie par `getBoundingClientRect` qu'aucune boîte n'en recouvre une autre et
+que rien n'est tronqué — 1710 combinaisons, à la taille d'écran passée en query. Il compte aussi les
+unités qui demandent un défilement.
+
+```sh
+"/c/Program Files/Google/Chrome/Application/chrome.exe" --headless=new --disable-gpu \
+  --allow-file-access-from-files --force-device-scale-factor=1 --window-size=900,1000 \
+  --hide-scrollbars --virtual-time-budget=25000 --dump-dom \
+  "file:///C:/Users/33785/dev/sori/tools/story_layout_audit.html?audit=1&w=412&h=915"
+```
+
+Mesures : v126 = **1484 défauts** ; v127 = **0** sur 375×812, 412×915, 412×732, 393×852, 360×640.
+Défilement : 3/181 unités sur 412×915, 16/181 sur 393×852, 35/181 sur 375×812 (contre 90 avant
+compactage) ; 145/181 sur un vieux 360×640, où l'écran est simplement trop court.
+
+⚠️ **Deux pièges du harnais headless**, qui donnent des chiffres faux et crédibles :
+- la fenêtre Chrome n'est **pas** le viewport (zoom système, largeur minimale de fenêtre : `375`
+  donnait `innerWidth` 500) → figer `width`/`height` sur `body` dans la page, pas par `--window-size` ;
+- l'**animation d'entrée du thème** (`takbon-press`, `animation … both`) reste figée sur sa première
+  keyframe faute de frames rendues : tous les rectangles sortaient multipliés par 1,55 et l'audit
+  signalait 1710 chevauchements imaginaires. La page de test neutralise `#screen > *{animation:none}`.

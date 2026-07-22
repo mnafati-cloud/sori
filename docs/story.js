@@ -227,16 +227,19 @@
       /* ---------- lecture ---------- */
       ".st-haut{flex:0 0 52%;display:flex;flex-direction:column;justify-content:center;"
         + "padding:6px 20px;cursor:pointer;overflow:hidden;text-align:center}",
+      /* notes ouvertes : la moitié haute prend l'espace que le bas n'utilise pas, part du haut,
+         et DÉFILE quand l'unité est longue — le mot-à-mot n'est plus coupé net */
+      ".st-c.notes .st-haut{flex:0 1 auto;min-height:0;overflow-y:auto;justify-content:flex-start;"
+        + "padding-top:12px}",
+      ".st-c.notes .st-haut.deborde{-webkit-mask-image:linear-gradient(to bottom,#000 88%,transparent);"
+        + "mask-image:linear-gradient(to bottom,#000 88%,transparent)}",
       ".st-kr{flex:0 0 auto;margin:0;font-family:var(--kr-display,inherit);font-size:2.05rem;"
         + "font-weight:700;line-height:1.6;word-break:keep-all;text-shadow:var(--tk-glow,none)}",
-      /* les notes cèdent avant le texte : elles défilent, lui reste entier */
-      ".st-notes{flex:0 1 auto;min-height:0;overflow-y:auto;width:100%}",
-      ".st-notes.deborde{-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent);"
-        + "mask-image:linear-gradient(to bottom,#000 84%,transparent)}",
-      ".st-fr{margin:22px 0 0;font-family:var(--hand,inherit);font-size:1.2rem;line-height:1.45;"
+      ".st-notes{flex:none;width:100%}",
+      ".st-fr{margin:18px 0 0;font-family:var(--hand,inherit);font-size:1.2rem;line-height:1.4;"
         + "color:var(--dim);text-align:left}",
-      ".st-mots{margin:16px 0 0;line-height:1.95;text-align:left}",
-      ".st-mm{display:inline-block;white-space:nowrap;margin:0 14px 0 0}",
+      ".st-mots{margin:14px 0 0;line-height:1.72;text-align:left}",
+      ".st-mm{display:inline-block;white-space:nowrap;margin:0 13px 0 0}",
       ".st-mm b{font-family:var(--kr-display,inherit);font-weight:400;font-size:1.05rem;"
         + "color:var(--txt);opacity:.85}",
       ".st-mm i{font-family:var(--hand,inherit);font-style:normal;font-size:1rem;color:var(--dim);margin-left:5px}",
@@ -246,7 +249,16 @@
       ".st-w.on{color:#fff;text-shadow:var(--tk-glow2,none);text-decoration:underline;"
         + "text-decoration-color:var(--seal);text-underline-offset:6px}",
 
-      ".st-bas{flex:1;position:relative;display:flex;align-items:center;justify-content:center}",
+      /* le bas : la fiche du mot puis l'écoute, EN FLUX l'une au-dessus de l'autre.
+         (v127 : la fiche était en position:absolute au-dessus du haut-parleur — elle recouvrait
+         l'écoute et, dès que l'écran raccourcissait, le mot-à-mot de la moitié haute.) */
+      ".st-bas{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}",
+      /* notes ouvertes : le bas rend aux notes tout ce dont il n'a pas besoin, mais il garde
+         « flex:1 » — sinon, sur une unité courte, il ne remplit plus le vide et le pied
+         (flèches, compteur) remonte au milieu de l'écran. */
+      ".st-c.notes .st-bas{gap:8px;padding:2px 0 0}",
+      ".st-c.notes .st-son{width:76px;height:76px}",
+      ".st-c.notes .st-son svg{width:42px;height:42px}",
       /* l'écoute : le geste qu'on répète, donc grande, au centre, et immobile */
       /* pas de cercle coloré autour : c'est violent pour rien. Le signe est simplement GRAND,
          posé dans le vide, et lumineux là où le thème le permet. */
@@ -258,10 +270,12 @@
       ".st-son:active svg{filter:drop-shadow(0 0 18px rgba(255,255,255,.72))}",
       ".st-c.affiche .st-son,.st-c.finie .st-son,.st-c.affiche .st-cpt{visibility:hidden}",
       ".st-c.affiche .st-haut,.st-c.finie .st-haut{flex:1 1 auto}",
-      ".st-c.affiche .st-bas,.st-c.finie .st-bas{flex:0 0 0}",
-      /* le pont d'un mot : dans le vide de la moitié basse, au-dessus de l'écoute */
-      ".st-pont{position:absolute;left:0;right:0;bottom:calc(50% + 52px);padding:0 20px;"
-        + "text-align:center;line-height:1.35}",
+      ".st-c.affiche .st-bas,.st-c.finie .st-bas{flex:0 0 0;min-height:0}",
+      /* le pont d'un mot : au-dessus de l'écoute, dans le vide de la moitié basse.
+         min-height : la fiche d'un mot à nuance et celle d'un mot sans nuance occupent la même
+         place, donc le haut-parleur ne sautille pas d'un mot à l'autre. */
+      ".st-pont{flex:none;width:100%;min-height:74px;padding:0 20px;display:flex;"
+        + "flex-direction:column;justify-content:center;text-align:center;line-height:1.35}",
       ".st-ph{display:flex;align-items:center;justify-content:center}",
       ".st-pf{font-family:var(--kr-display,inherit);font-weight:700;font-size:1.45rem;"
         + "text-shadow:var(--tk-glow,none)}",
@@ -308,7 +322,9 @@
      système — une troisième écriture dans la page (défaut vécu sur les accents, v102/v117) */
   const FLECHE = '<svg class="st-fl" viewBox="0 0 26 12" aria-hidden="true"><path d="M24 6H3M9 1.5 3 6l6 4.5"/></svg>';
   const CHEV = d => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
-  const TAILLES = [2.05, 1.85, 1.65, 1.45, 1.3];      /* paliers : l'unité tient dans sa moitié */
+  /* paliers : l'unité tient dans sa moitié. Les deux derniers ne servent qu'aux notes ouvertes,
+     où le texte est déjà lu et cède la place au mot-à-mot — il reste touchable, jamais coupé. */
+  const TAILLES = [2.05, 1.85, 1.65, 1.45, 1.3, 1.18, 1.06];
 
   function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, c =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
@@ -397,7 +413,6 @@
     const fr = vue.querySelector(".st-fr");
     const mots = vue.querySelector(".st-mots");
     const nl = vue.querySelector(".st-nl");
-    const notes = vue.querySelector(".st-notes");
     const pont = vue.querySelector(".st-pont");
     const cpt = vue.querySelector(".st-cpt b");
     let n = -1;                                   /* -1 = l'affiche, N = le tampon de fin */
@@ -414,22 +429,31 @@
       if(ouvert === v) return;
       ouvert = v;
       fr.hidden = !v; mots.hidden = !v; nl.hidden = !v || !nw.length;
+      vue.classList.toggle("notes", v);      /* le bas se compacte, le haut prend la place */
+      if(!v) haut.scrollTop = 0;
       ajuste();
+    }
+    /* le fondu ne s'affiche que s'il reste vraiment du texte plus bas */
+    function marqueFin(){
+      haut.classList.toggle("deborde",
+        ouvert && haut.scrollHeight - haut.scrollTop - haut.clientHeight > 4);
     }
     function ajuste(){
       /* notes ouvertes : le texte cède la place, mais ne se coupe jamais */
-      const dispo = haut.clientHeight * (ouvert ? .42 : 1) - 16;
+      const dispo = haut.clientHeight * (ouvert ? .38 : 1) - 16;
       for(const t of TAILLES){
         kr.style.fontSize = t + "rem";
         if(kr.scrollHeight <= dispo) break;
       }
-      notes.classList.toggle("deborde", notes.scrollHeight > notes.clientHeight + 2);
+      marqueFin();
     }
+    haut.addEventListener("scroll", marqueFin);
 
     function montre(k, parle){
       n = Math.max(-1, Math.min(N, k));
       fermerPont();
       ouvert = false; fr.hidden = true; mots.hidden = true; nl.hidden = true;
+      vue.classList.remove("notes"); haut.classList.remove("deborde"); haut.scrollTop = 0;
       vue.classList.toggle("affiche", n < 0);
       vue.classList.toggle("finie", n >= N);
       kr.style.fontSize = "";
