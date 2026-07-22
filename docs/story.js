@@ -248,12 +248,14 @@
 
       ".st-bas{flex:1;position:relative;display:flex;align-items:center;justify-content:center}",
       /* l'écoute : le geste qu'on répète, donc grande, au centre, et immobile */
-      ".st-son{background:none;border:1.5px solid var(--seal);border-radius:50%;width:78px;height:78px;"
-        + "display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--txt);"
-        + "box-shadow:0 0 26px color-mix(in srgb, var(--seal) 22%, transparent)}",
-      ".st-son svg{width:38px;height:38px;stroke:currentColor;stroke-width:1.5;fill:none;"
-        + "stroke-linecap:round;stroke-linejoin:round;display:block}",
-      ".st-son:active{background:color-mix(in srgb, var(--seal) 12%, transparent)}",
+      /* pas de cercle coloré autour : c'est violent pour rien. Le signe est simplement GRAND,
+         posé dans le vide, et lumineux là où le thème le permet. */
+      ".st-son{background:none;border:none;padding:0;width:92px;height:92px;display:flex;"
+        + "align-items:center;justify-content:center;cursor:pointer;color:var(--txt)}",
+      ".st-son svg{width:48px;height:48px;stroke:currentColor;stroke-width:1.4;fill:none;"
+        + "stroke-linecap:round;stroke-linejoin:round;display:block;"
+        + "filter:drop-shadow(0 0 11px rgba(255,255,255,.38))}",
+      ".st-son:active svg{filter:drop-shadow(0 0 18px rgba(255,255,255,.72))}",
       ".st-c.affiche .st-son,.st-c.finie .st-son,.st-c.affiche .st-cpt{visibility:hidden}",
       ".st-c.affiche .st-haut,.st-c.finie .st-haut{flex:1 1 auto}",
       ".st-c.affiche .st-bas,.st-c.finie .st-bas{flex:0 0 0}",
@@ -408,6 +410,12 @@
       const on = vue.querySelector(".st-w.on");
       if(on) on.classList.remove("on");
     }
+    function ouvrirNotes(v){
+      if(ouvert === v) return;
+      ouvert = v;
+      fr.hidden = !v; mots.hidden = !v; nl.hidden = !v || !nw.length;
+      ajuste();
+    }
     function ajuste(){
       /* notes ouvertes : le texte cède la place, mais ne se coupe jamais */
       const dispo = haut.clientHeight * (ouvert ? .42 : 1) - 16;
@@ -462,6 +470,9 @@
         const b = el(`<button class="st-w">${esc(bout.t)}</button>`);
         b.onclick = (ev) => {
           ev.stopPropagation();
+          /* toucher un mot révèle AUSSI la traduction de la phrase entière : on cherche un mot
+             quand on bute sur la phrase, et le sens de la phrase est ce qu'on veut d'abord */
+          ouvrirNotes(true);
           const dejaLa = b.classList.contains("on");
           fermerPont();
           if(dejaLa) return;
@@ -491,10 +502,8 @@
     haut.onclick = () => {
       if(n < 0){ montre(0, true); return; }
       if(n >= N) return;
-      ouvert = !ouvert;
-      fr.hidden = !ouvert; mots.hidden = !ouvert; nl.hidden = !ouvert || !nw.length;
+      ouvrirNotes(!ouvert);
       if(!ouvert) fermerPont();
-      ajuste();
     };
     vue.querySelector(".st-son").onclick = () => {
       if(n >= 0 && n < N && opts.speak) opts.speak(ch.sentences[n].kr);

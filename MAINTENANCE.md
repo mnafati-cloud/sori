@@ -2287,7 +2287,10 @@ puis il a dicté la disposition ; c'est elle qui est en place.
 | tout en **bas** | flèches ‹ › et compteur `3/18` | avancer déclenche la lecture à voix haute ; le bouton rond sert à réentendre |
 
 Zéro filet, zéro bouton répété, deux écritures seulement. Reculer avant la première unité renvoie
-au sommaire. Le sommaire lui-même est un registre sans traits, titre de saison en tête, et le
+au sommaire. **v126, sur retour user** : toucher un MOT révèle aussi la traduction de la phrase
+entière (on cherche un mot quand on bute sur la phrase — le sens de la phrase est ce qu'on veut
+d'abord), et le bouton d'écoute a perdu son cercle vermillon (« c'est violent inutilement ») : il
+n'est plus qu'un signe grand et lumineux posé dans le vide. Le sommaire lui-même est un registre sans traits, titre de saison en tête, et le
 **numéro d'un chapitre lu passe au vermillon** (`ST.story.lus`, affichage seul).
 
 **Le mot-à-mot a besoin du sens français** : `tools/story_sens.mjs` fabrique `docs/story-sens.js`
