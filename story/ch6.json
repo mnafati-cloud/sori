@@ -266,5 +266,8 @@
    ]
   }
  ],
- "new_words": []
+ "new_words": [
+   {"kr": "이상하다", "fr": "Être étrange"},
+   {"kr": "기억하다", "fr": "Se souvenir"}
+  ]
 }

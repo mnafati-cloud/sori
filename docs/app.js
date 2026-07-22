@@ -100,6 +100,7 @@ function loadState(){
         s.errors = s.errors||[]; s.vlog = s.vlog||[];   // v65 : exceptions capturées + journal de versions
         s.rep = s.rep||{d:"",m:{}};                     // v71 : derniers contacts des vues blanches (reprise)
         s.conv = s.conv||[];                            // v89 : conversations IA enregistrées (cap 12×40 msgs ≈ 30 Ko max)
+        s.story = s.story||{}; s.story.lus = s.story.lus||[]; s.story.ouverts = s.story.ouverts||[];  // v125 : chapitres lus / une fois ouverts, ouverts pour de bon
         /* v52 : split recto/verso retiré (doublait le deck). Bascule UNE FOIS les utilisateurs
            qui l'avaient activé (v51) vers OFF ; le toggle Réglages reste libre ensuite. */
         if(s.reverseMig !== 1){ s.set.reverse = false; s.reverseMig = 1; }
@@ -110,7 +111,8 @@ function loadState(){
       }
     }
   }catch(e){}
-  return { v:1, items:{}, log:{}, intro:{}, rlog:[], xp:0, set: Object.assign({}, DEF_SET) };
+  return { v:1, items:{}, log:{}, intro:{}, rlog:[], xp:0, story:{lus:[],ouverts:[]},
+           set: Object.assign({}, DEF_SET) };
 }
 /* niveaux façon échelle coréenne (급) — plancher, jamais un plafond */
 const XP_LEVELS = [[0,"9급"],[1000,"8급"],[2500,"7급"],[5000,"6급"],[8000,"5급"],
@@ -849,10 +851,7 @@ function renderExercices(){
   if(window.SORI_STORY && window.SORI_GRAMMAR && window.STORY_DATA
      && (window.STORY_DATA.chapitres || []).length){
     const corpus = window.STORY_DATA.chapitres;
-    const byId = {};
-    for(const s of SORI_GRAMMAR.STRUCTS) byId[s.id] = s;
-    const ouverts = SORI_STORY.pure.availability(corpus, grammarProfileNow(),
-      id => (byId[id] && byId[id].fr) || id).filter(d => d.status === "ok").length;
+    const ouverts = storyOuverts().length;
     const stCard = el(`<div class="card"><h2>Histoire</h2>
       <div class="row" style="margin-top:8px"><button class="btn" id="gostory">Lire · ${ouverts}/${corpus.length} chapitre${corpus.length>1?"s":""}</button></div></div>`);
     stCard.querySelector("#gostory").onclick = openStory;
@@ -924,15 +923,39 @@ function grammarProfileNow(){
   }
   return SORI_GRAMMAR.grammarProfile(list);
 }
+/* Les chapitres lisibles aujourd'hui, ET la mémoire de ceux qui l'ont été un jour : le profil
+   grammatical bouge à chaque révision, une carte ratée ne doit pas refermer un chapitre déjà
+   ouvert. On note donc les ouvertures au passage — l'ouverture est définitive. */
+function storyOuverts(){
+  const corpus = (window.STORY_DATA && window.STORY_DATA.chapitres) || [];
+  const byId = {};
+  for(const s of SORI_GRAMMAR.STRUCTS) byId[s.id] = s;
+  const ok = SORI_STORY.pure.availability(corpus, grammarProfileNow(),
+    id => (byId[id] && byId[id].fr) || id, ST.story.ouverts)
+    .filter(d => d.status === "ok").map(d => d.n);
+  let neuf = false;
+  for(const n of ok) if(ST.story.ouverts.indexOf(n) < 0){ ST.story.ouverts.push(n); neuf = true; }
+  if(neuf) save();
+  return ok;
+}
 function openStory(){
   const byId = {};
   for(const s of SORI_GRAMMAR.STRUCTS) byId[s.id] = s;
+  storyOuverts();                      /* fige les ouvertures du jour avant d'afficher */
+  const D = window.STORY_DATA || {};
   $screen.innerHTML = "";
   SORI_STORY.renderHome($screen, {
-    corpus: (window.STORY_DATA && window.STORY_DATA.chapitres) || [],
+    corpus: D.chapitres || [],
+    saison: { kr: D.titre_kr || "", fr: D.titre_fr || "" },
     profile: grammarProfileNow(),
     labelOf: (id)=> (byId[id] && byId[id].fr) || id,
+    /* le sens français de chaque lemme, pour le mot-à-mot (tools/story_sens.mjs) */
+    sens: window.STORY_SENS || {},
     speak: (txt)=>{ if(!ST.set.mute) ttsSpeak(txt); },
+    lus: ST.story.lus,
+    ouverts: ST.story.ouverts,
+    /* marque d'avancement, purement d'affichage : le numéro d'un chapitre lu passe au sceau */
+    onLu: (n)=>{ if(ST.story.lus.indexOf(n) < 0){ ST.story.lus.push(n); save(); } },
     onExit: ()=>{ NAV = true; render(); NAV = false; }
   });
 }
@@ -2219,6 +2242,7 @@ function applyImportedState(state){
   s.errors = s.errors||[]; s.vlog = s.vlog||[];   // v65
   s.rep = s.rep||{d:"",m:{}};                     // v71
   s.conv = s.conv||[];                            // v89 : conversations IA enregistrées
+  s.story = s.story||{}; s.story.lus = s.story.lus||[]; s.story.ouverts = s.story.ouverts||[];  // v125
   s.v = s.v || 1;
   ST = s; save(); Q = null;
   NAV = true; render(); NAV = false;   // v73 : rendu d'ARRIVÉE — pas de coup de tampon post-restauration

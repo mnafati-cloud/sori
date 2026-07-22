@@ -252,5 +252,7 @@
       ]
     }
   ],
-  "new_words": []
+  "new_words": [
+    {"kr": "기억하다", "fr": "Se souvenir"}
+  ]
 }

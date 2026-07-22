@@ -2263,3 +2263,65 @@ automatiquement au téléphone via `config/conv-cfg.json` du dépôt privé) —
 
 Coût : le plafond de vocabulaire est mis en **cache 1 h** (`cache_control` sur le bloc système),
 donc écrire plusieurs chapitres d'affilée ne repaie pas les ~1200 mots à chaque fois.
+
+> ⚠️ Les deux derniers paragraphes ci-dessus décrivent la **génération en direct**, supprimée en
+> v123 : ils valent comme histoire des défauts, pas comme description du code. Rien n'appelle plus
+> de modèle depuis l'appareil, et le hors-ligne est total.
+
+### 9.11 v125 — la stèle : l'écran de lecture refait
+
+Retour user sur v124 : « j'aime l'histoire, par contre je n'aime pas la présentation, c'est vilain
+là ». Le rendu d'alors était une pile de 18 blocs identiques, un **filet** sous chacun (ce qu'il a
+déjà refusé deux fois), 36 minuscules boutons « traduction · écouter », et le hangul en texte de
+corps **sans le halo** que porte tout le reste de l'app. Une maquette jouable a servi à trancher,
+puis il a dicté la disposition ; c'est elle qui est en place.
+
+**La forme** — une unité par écran :
+
+| Zone | Contenu | Pourquoi |
+|---|---|---|
+| moitié **haute** | le coréen, en 2,05 rem, halo du thème, centré | c'est l'affiche : le texte occupe la composition |
+| sous le texte | traduction puis mot-à-mot, **au toucher du texte** | les notes défilent, le coréen ne bouge ni ne rétrécit sous elles |
+| milieu de la moitié **basse** | l'**écoute**, cercle au sceau, 78 px | « l'écoute est préférable, donc le bouton de répétition doit être très visible » — et il ne bouge JAMAIS, c'est un geste qu'on répète |
+| au-dessus de l'écoute | le pont d'un mot touché (forme ← lemme, sens, nuance) | il occupe le vide au lieu d'un bandeau collé en bas |
+| tout en **bas** | flèches ‹ › et compteur `3/18` | avancer déclenche la lecture à voix haute ; le bouton rond sert à réentendre |
+
+Zéro filet, zéro bouton répété, deux écritures seulement. Reculer avant la première unité renvoie
+au sommaire. Le sommaire lui-même est un registre sans traits, titre de saison en tête, et le
+**numéro d'un chapitre lu passe au vermillon** (`ST.story.lus`, affichage seul).
+
+**Le mot-à-mot a besoin du sens français** : `tools/story_sens.mjs` fabrique `docs/story-sens.js`
+depuis le deck (+ les discriminants de `GLOSS_FIX`). **22 gloses ont dû être corrigées** : ce sont
+des homographes dont l'histoire emploie l'autre sens — 시 l'heure et non la ville, 개 le compteur
+et non le chien, 씨 le titre et non la graine, 쓰다 écrire et non « être amer », 이 « ce » et non
+« deux », 일 le travail et non « un ». Sans elles le mot-à-mot enseignait des contresens.
+Relancer l'outil après toute vague de contenu ; il **sort en erreur** si un lemme n'a pas de sens.
+
+**Trois défauts de fond corrigés au passage :**
+
+1. **La ponctuation était perdue.** Le rendu recollait les formes avec des espaces : les points et
+   les guillemets disparaissaient, deux phrases se lisaient d'affilée. `pure.decouper` reconstruit
+   l'unité exactement, et **colle la ponctuation au mot** (fermante avec celui qu'elle ferme,
+   ouvrante avec celui qu'elle ouvre) — sinon la ligne peut se couper juste avant et le point se
+   retrouve seul en tête de la ligne suivante. Attention : deux mots peuvent se toucher **sans
+   espace** (« 2년 », « 백세 개 ») ; n'absorber que de la ponctuation, jamais le mot suivant.
+2. **Un chapitre ouvert pouvait se refermer.** Le profil grammatical bouge à chaque révision : deux
+   structures cibles sont passées de « en cours » à « inconnue » en une nuit, ce qui reverrouillait
+   des chapitres déjà lisibles. `availability` prend désormais la liste des chapitres **déjà
+   ouverts** (`ST.story.ouverts`, alimentée à chaque affichage) et ne les referme jamais. Le
+   calibrage sert à ouvrir, pas à fermer.
+3. **Deux mots « connus » ne l'étaient pas.** 기억하다 et 이상하다 sont **mis de côté** (`sus`) au
+   stade 0 depuis des semaines : ils n'auraient jamais dû passer le lint de v124. Le profil de
+   validation doit lire le stade dans **l'état**, jamais celui du seed, et exclure les cartes `sus`.
+   Ils sont maintenant déclarés en `new_words` (le mécanisme prévu : au plus 3 par chapitre, listés
+   à l'apprenant).
+
+**Le profil de validation d'un corpus DÉJÀ écrit** est l'union « maîtrisé aujourd'hui **ou** le jour
+de l'écriture » : une rechute ordinaire (주인 est passé de 5 à 3 le matin même) ne réécrit pas une
+histoire. Le profil d'**écriture** d'une saison future, lui, reste celui du jour.
+
+⚠️ **Le thème Takbon impose `font-family:inherit` à tout `button`** (`.theme-takbon button`). Une
+règle `.st-suite{font-family:…}` perd contre lui et le mot sort en myeongjo, au milieu du texte
+coréen. Préfixer par le conteneur (`.st-c .st-suite`) pour passer devant. Vérifié aussi : `‹` et
+`›` existent dans le sous-ensemble Caveat, **`←` et `✕` non** — ils retomberaient sur une police
+système, d'où la flèche du pont dessinée en SVG.

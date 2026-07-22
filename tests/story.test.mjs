@@ -158,3 +158,54 @@ test("lint + grammar.js réels : une structure hors plafond est bien attrapée",
   const ok = chap([{ kr: "커피를 마셨어요", fr: "…", words: [w("커피를", "커피"), w("마셨어요", "마시다", "passé")] }]);
   assert.deepEqual(P.lintChapter(ok, c), []);
 });
+
+/* ---------- v125 : l'ouverture est définitive ---------- */
+
+test("availability : un chapitre déjà ouvert le reste, même si sa structure retombe", () => {
+  /* vécu : deux structures cibles sont passées de « en cours » à « inconnue » du jour au
+     lendemain (une carte ratée suffit). Sans mémoire des ouvertures, l'app reprenait des
+     chapitres déjà lisibles. Le calibrage ouvre, il ne referme pas. */
+  const profile = { mot: { status: "inconnue" }, go: { status: "inconnue" },
+                    "mod-neun": { status: "inconnue" } };
+  const sansMemoire = P.availability(CORPUS, profile, label);
+  assert.deepEqual(sansMemoire.map(a => a.status), ["ok", "locked", "locked", "locked"]);
+
+  const avec = P.availability(CORPUS, profile, label, [2, 3]);
+  assert.deepEqual(avec.map(a => a.status), ["ok", "ok", "ok", "locked"]);
+  assert.equal(avec[3].reason, "s'ouvrira quand vous aurez croisé « modifieur 는 + nom » dans vos révisions");
+});
+
+test("availability : une liste d'ouvertures vide ou absente ne change rien", () => {
+  const profile = { mot: { status: "acquise" } };
+  const a = P.availability(CORPUS, profile, label);
+  const b = P.availability(CORPUS, profile, label, []);
+  assert.deepEqual(a.map(x => x.status), b.map(x => x.status));
+});
+
+/* ---------- v125 : le découpage d'une unité pour l'affichage ---------- */
+
+test("decouper : la ponctuation est rendue, et collée au mot qui la précède", () => {
+  const u = { kr: '민수가 왔어요. "네."',
+              words: [w("민수가", "민수"), w("왔어요", "오다"), w("네", "네")] };
+  const d = P.decouper(u);
+  assert.equal(d.map(x => x.t).join(""), u.kr);          /* reconstruction exacte */
+  assert.equal(d[0].t, "민수가");
+  assert.equal(d[2].t, "왔어요.");                        /* le point voyage AVEC le mot :
+                                                            sinon la ligne peut se couper avant */
+  assert.equal(d[4].t, '"네."');            /* le guillemet ouvrant part avec son mot */
+  assert.equal(d.filter(x => x.m).length, 3);            /* trois mots touchables */
+});
+
+test("decouper : deux mots collés sans espace ne se mangent pas", () => {
+  /* « 2년 » et « 백세 개 » existent dans la saison 1 : un jeton porte deux mots du deck */
+  const u = { kr: "2년 동안", words: [w("2", "2"), w("년", "년"), w("동안", "동안")] };
+  const d = P.decouper(u);
+  assert.equal(d.map(x => x.t).join(""), u.kr);
+  assert.deepEqual(d.filter(x => x.m).map(x => x.t), ["2", "년", "동안"]);
+});
+
+test("decouper : des données incohérentes rendent la phrase brute plutôt que du charabia", () => {
+  const u = { kr: "민수가 왔어요", words: [w("없는말", "없다")] };
+  const d = P.decouper(u);
+  assert.deepEqual(d, [{ t: "민수가 왔어요" }]);
+});

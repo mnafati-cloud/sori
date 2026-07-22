@@ -75,6 +75,8 @@ if(bad){ console.error(`\n${bad} chapitre(s) non conforme(s) — RIEN n'a été 
 const out = chapters.map(ch => ({
   n: ch.n, target: ch.target || null,
   title_kr: ch.title_kr, title_fr: ch.title_fr, summary_fr: ch.summary_fr || "",
+  /* la distribution : l'écran d'ouverture l'affiche, c'est de quoi savoir qui va parler */
+  names: ch.names || [],
   sentences: (ch.sentences || []).map(s => ({
     kr: s.kr, fr: s.fr,
     words: (s.words || []).map(w => w.note ? [w.form, w.lemma, w.note] : [w.form, w.lemma]),
@@ -88,7 +90,8 @@ const js = `/* Sori — story-data.js : le feuilleton « 이야기 », saison 1.
    ${out.length} chapitres. Les mots sont compactés en [forme, lemme, note?]. */
 (function(root){
   "use strict";
-  const STORY_DATA = ${JSON.stringify({ saison: 1, chapitres: out })};
+  const STORY_DATA = ${JSON.stringify({ saison: 1, titre_kr: "미소 카페",
+    titre_fr: "Le café Miso", chapitres: out })};
   if (typeof module !== "undefined" && module.exports) module.exports = STORY_DATA;
   else root.STORY_DATA = STORY_DATA;
 })(typeof self !== "undefined" ? self : this);
