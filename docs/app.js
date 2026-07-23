@@ -1284,7 +1284,7 @@ function nextCard(){
   ov.onclick = fin;
   document.body.appendChild(ov);
   sfxStamp();
-  setTimeout(fin, 1050);
+  setTimeout(fin, 700);   // v131 : un tiers plus court (retour user)
 }
 function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto){
   LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞
