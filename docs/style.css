@@ -342,6 +342,28 @@ input[type=checkbox]:focus-visible{outline:2px solid var(--seal); outline-offset
 .dojang{animation:stamp-in .32s cubic-bezier(.25,.8,.35,1) both}
 @media (prefers-reduced-motion: reduce){ .dojang{animation:none} }
 
+/* ===== v129 : la révision respire — entrées animées, tampon en surimpression, boutons vivants ===== */
+@keyframes card-in{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+@keyframes word-in{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
+#screen>.card.center{animation:card-in .2s ease-out both}
+.card.center .big-kr,.card.center .big-fr{animation:word-in .26s ease-out both}
+/* boutons « un poil vivants » : enfoncement au toucher + pop bref sur la note choisie */
+.btn:active,.opts button:active,.escbtn:active,.num-mode:active{transform:scale(.96)}
+@keyframes pick-pop{0%{transform:scale(1)}45%{transform:scale(1.06)}100%{transform:scale(1)}}
+.btn.g4.picked{animation:pick-pop .18s ease-out}
+/* tampon en surimpression : une carte vient de devenir maîtrisée / ancrée */
+.stamp-over{position:fixed; inset:0; z-index:60; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:16px; background:color-mix(in srgb, var(--bg) 62%, transparent);
+  animation:card-in .16s ease-out both}
+.stamp-over .dojang{width:112px; height:112px; border-radius:22px}
+.stamp-over .dojang span{font-size:2.3rem}
+.stamp-over .stamp-lbl{color:var(--txt); font-weight:600; font-size:.8rem; letter-spacing:.16em;
+  text-transform:uppercase; opacity:.85}
+.stamp-over.out{opacity:0; transition:opacity .18s}
+@media (prefers-reduced-motion: reduce){
+  #screen>.card.center,.card.center .big-kr,.card.center .big-fr,.btn.g4.picked,.stamp-over{animation:none}
+}
+
 /* haut-parleurs SVG (remplacent l'émoji dans les exercices) */
 .speak svg{width:24px;height:24px;stroke:currentColor;stroke-width:1.6;fill:none;
   stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:middle}

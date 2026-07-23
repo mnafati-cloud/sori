@@ -1080,10 +1080,12 @@ function renderReview(){
         <span class="pill stage">niv ${it.stage}</span>
         ${COMBO>=3?`<span class="pill stage">×${COMBO}</span>`:""}</div>
       <div class="rev-actions">
+        ${UNDO?'<button class="escbtn" id="undorev" title="annuler la réponse précédente">↶</button>':""}
         <button class="escbtn" id="quitrev" title="Quitter la révision (la progression est gardée)">Quitter</button>
       </div>
     </div></div>`);
   $screen.appendChild(head);
+  const ub = head.querySelector("#undorev"); if(ub) ub.onclick = undoLast;   // v129 : l'undo suit l'avance auto
   head.querySelector("#quitrev").onclick = leaveReview;
   EXO_T0 = Date.now();
   /* v78 : une PHRASE conjuguée (≥2 mots, PAS un bloc lexical en forme dictionnaire) passe par le
@@ -1265,9 +1267,29 @@ function maxGradeFor(it, kind){
      dans les stats du jour, mais AUCUNE replanification/stage) ; une vue blanche RATÉE redevient
      un échec réel. Les vraies nouveautés (1re exposition réussie) reçoivent une vue à +8-12. */
 let FAILPOS = new Map(), CONSOL = new Set(), REPRISE_IDS = new Set();   // v71 : pill « reprise » (sous-ensemble de CONSOL)
-function afterAnswer(it, ok, sawTrivia, kind, grade, capMax){
+/* ===== v129 : enchaînement vivant entre deux cartes =====
+   nextCard() = LE chemin unique vers la carte suivante : tampon en surimpression si la
+   réponse vient de faire franchir un seuil (maîtrisée = stade≥4 ; ancrée = stade≥4 et
+   intervalle≥14 j), ~1 s (tap = passer), puis MICRO-POSE À VIDE (~180 ms) avant la carte
+   suivante (entrée animée via CSS card-in/word-in). */
+let STAMP_NEXT = null;   // {kr,label} posé par afterAnswer quand un seuil est franchi
+function nextCard(){
+  const s = STAMP_NEXT; STAMP_NEXT = null;
+  const go = ()=>{ $screen.innerHTML = ""; setTimeout(render, 180); };
+  if(!s) return go();
+  const ov = el(`<div class="stamp-over"><div class="dojang"><span>${s.kr}</span></div>
+    <div class="stamp-lbl">${s.label}</div></div>`);
+  let done = false;
+  const fin = ()=>{ if(done) return; done = true; ov.classList.add("out"); setTimeout(()=>{ ov.remove(); go(); }, 180); };
+  ov.onclick = fin;
+  document.body.appendChild(ov);
+  sfxStamp();
+  setTimeout(fin, 1050);
+}
+function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto){
   LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞
   armUndo();                                // photo AVANT toute mutation (annulation possible)
+  const wasM = it.stage >= 4, wasA = it.stage >= 4 && (it.itv||0) >= 14;   // v129 : état AVANT (seuils du tampon)
   const maxG = (capMax !== undefined) ? capMax : maxGradeFor(it, kind);   // v76 : override de plafond (indice 다) sans toucher `kind` (stats/lp/quêtes)
   const Graw = ok ? (grade || 3) : 1;                    // la note réellement CHOISIE (Bien par défaut)
   const G = ok ? Math.min(Graw, maxG) : 1;               // note plafonnée par l'aide (canal stabilité)
@@ -1293,6 +1315,12 @@ function afterAnswer(it, ok, sawTrivia, kind, grade, capMax){
   }
   const r = (BONUS || blanc) ? null : applyAnswer(it, ok, G, Graw, kind, rt);
   logAnswer(ok, kind || "review", r, rt);
+  /* v129 : franchissement de seuil → tampon en surimpression au passage à la suite */
+  if(r && ok){
+    const isM = r.s >= 4, isA = r.s >= 4 && (r.i||0) >= 14;
+    if(isA && !wasA)      STAMP_NEXT = { kr:"각인", label:"ancrée" };
+    else if(isM && !wasM) STAMP_NEXT = { kr:"습득", label:"maîtrisée" };
+  }
   /* combo & XP (plancher motivant, jamais bloquant) */
   if(ok) COMBO++; else { COMBO = 0; if(!SESSFAIL.includes(it.id)) SESSFAIL.push(it.id); }
   if(!BONUS){
@@ -1307,11 +1335,19 @@ function afterAnswer(it, ok, sawTrivia, kind, grade, capMax){
   }
   QPOS++;
   saveSess();
-  /* TOUJOURS au clic (cohérent, fini les avances-surprises) + annulation à portée de pouce */
+  /* v129 : les NOTES (Bien/Encore…) avancent toutes seules — le Continuer était superflu après
+     un choix explicite (rapport 22/07 ; le trivia des cartes Rappel se lit AVANT de noter).
+     L'annulation reste à portée : ↶ dans l'en-tête de la carte suivante tant qu'UNDO est armé.
+     Les exercices où la réponse ne passe pas par une note (QCM, construction, saisie) gardent
+     leur Continuer : le trivia y apparaît À la réponse, il faut le temps de le lire. */
+  if(auto){
+    setTimeout(nextCard, 180);                 // le temps de voir la note « pressée » (pick-pop)
+    return;
+  }
   const row = el(`<div class="row" style="margin-top:12px">
     <button class="btn ghost" id="undo" title="annuler cette réponse" style="flex:0 0 25%">↶</button>
     <button class="btn ghost" id="cont">Continuer</button></div>`);
-  row.querySelector("#cont").onclick = ()=>{ UNDO = null; render(); };
+  row.querySelector("#cont").onclick = nextCard;
   row.querySelector("#undo").onclick = undoLast;
   ($screen.querySelector(".card:last-of-type") || $screen).appendChild(row);
   row.scrollIntoView({block:"nearest", behavior:"smooth"});
@@ -1379,7 +1415,9 @@ function exoQcmFr2Kr(it){
 function gradeButtons(row, it, kind, capMax){
   row.innerHTML = "";
   const maxG = (capMax !== undefined) ? capMax : maxGradeFor(it, kind);   // capMax : override v76 (indice 다 = plafond levé, `kind` reste rec4)
-  const wire = (b, ok, g) => { b.onclick = ()=>{ [...row.children].forEach(x=>x.disabled=true); afterAnswer(it, ok, false, kind, g, maxG); }; return b; };
+  const wire = (b, ok, g) => { b.onclick = ()=>{ [...row.children].forEach(x=>x.disabled=true);
+    b.classList.add("picked");                                    // v129 : pop bref sur la note choisie
+    afterAnswer(it, ok, false, kind, g, maxG, true); }; return b; };   // auto : avance sans Continuer
   /* v69 : l'INTERVALLE résultant s'affiche sous chaque note — la conséquence du choix devient
      visible. Prévisualisation EXACTE : mêmes options que applyAnswer (plafond, gradeD, fuzz). */
   const ivl = g => {
