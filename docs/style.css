@@ -71,11 +71,11 @@ body{display:flex; flex-direction:column; min-height:100dvh}
 .center{text-align:center}
 h2{margin:0 0 8px; font-size:.72rem; font-weight:600; letter-spacing:.15em;
   text-transform:uppercase; color:var(--dim)}
-.dim{color:var(--dim); font-size:.85rem}
+.dim{color:var(--dim); font-size:.92rem}
 /* v111 : tailles des légendes/notes en CLASSES (plus d'inline font-size dans app.js) —
    un thème peut ainsi les relever (Takbon : la petite écriture manuscrite se lisait mal) */
-.note{font-size:.82rem}
-.note-xs{font-size:.72rem}
+.note{font-size:.9rem}
+.note-xs{font-size:.8rem}
 .num, #daycount, .stat .n, .lvlpct, .ans-ivl{font-variant-numeric:tabular-nums}
 
 /* le hangul d'affiche : myeongjo, énorme, seul en scène */
@@ -110,7 +110,7 @@ h2{margin:0 0 8px; font-size:.72rem; font-weight:600; letter-spacing:.15em;
 .row.g4row{display:flex;gap:7px}
 .btn.g4{flex:1;min-width:0;padding:11px 2px 9px;font-size:.88rem;font-weight:600;
   background:var(--panel);border:1px solid var(--line);color:var(--txt);box-shadow:none}
-.btn.g4 .ans-ivl{display:block;font-size:.66rem;font-weight:500;color:var(--dim);margin-top:3px}
+.btn.g4 .ans-ivl{display:block;font-size:.74rem;font-weight:500;color:var(--dim);margin-top:3px}
 .btn.g4.ko{background:none;border-color:var(--seal);
   border-color:color-mix(in srgb, var(--seal) 45%, transparent);color:var(--seal)}
 .btn.g4.ko .ans-ivl{color:var(--seal);color:color-mix(in srgb, var(--seal) 70%, var(--dim))}
@@ -123,7 +123,7 @@ h2{margin:0 0 8px; font-size:.72rem; font-weight:600; letter-spacing:.15em;
 .wbrow{display:flex;gap:12px;align-items:baseline;padding:5px 0;border-bottom:1px solid var(--line)}
 .wbrow:last-child{border-bottom:0}
 .wbk{flex:0 0 40%;font-family:var(--kr-display);font-weight:700;font-size:1.05rem;word-break:break-word}
-.wbg{flex:1;font-size:.85rem;color:var(--dim)}
+.wbg{flex:1;font-size:.95rem;color:var(--dim)}
 
 /* barres de maîtrise par niveau — fines, céladon, niveau en cours éclairé */
 .levelbars{display:flex;flex-direction:column;gap:11px;margin-top:12px}
@@ -184,14 +184,14 @@ h2{margin:0 0 8px; font-size:.72rem; font-weight:600; letter-spacing:.15em;
 
 /* encart trivia : rangé, pas décoré */
 .trivia{margin-top:14px; padding:13px 15px; background:var(--panel2);
-  border:1px solid var(--line); border-radius:13px; text-align:left; font-size:.92rem}
-.trivia .tkr{font-family:var(--kr-display); font-size:1.08rem; font-weight:700; line-height:1.5}
-.trivia .tfr{color:var(--dim); margin-top:3px; font-size:.85rem}
+  border:1px solid var(--line); border-radius:13px; text-align:left; font-size:1rem}
+.trivia .tkr{font-family:var(--kr-display); font-size:1.15rem; font-weight:700; line-height:1.5}
+.trivia .tfr{color:var(--dim); margin-top:3px; font-size:.95rem}
 .trivia .tnote{color:var(--dim); margin-top:10px; padding-top:10px; border-top:1px solid var(--line);
-  font-size:.85rem; line-height:1.5}
+  font-size:.95rem; line-height:1.5}
 .trivia .tnote::before{content:"≠"; color:var(--seal); font-weight:700; margin-right:7px}
 .trivia .tnote.tbuild::before{content:none}
-.trivia .tconj{color:var(--cel); margin-top:6px; font-size:.9rem}
+.trivia .tconj{color:var(--cel); margin-top:6px; font-size:.98rem}
 .trivia .exspeak{background:none; border:none; cursor:pointer; font-size:.95rem;
   padding:0 4px; line-height:1; vertical-align:baseline; opacity:.7}
 .trivia .exspeak:hover{opacity:1}
@@ -199,7 +199,7 @@ h2{margin:0 0 8px; font-size:.72rem; font-weight:600; letter-spacing:.15em;
 .trivia .tkr .w:hover{background:var(--panel); background:color-mix(in srgb, var(--cel) 22%, transparent)}
 .trivia .tkr .w.on{background:var(--cel); color:var(--bg)}
 .trivia .glossbar{margin-top:7px; padding:6px 9px; border-radius:7px;
-  background:var(--panel); background:color-mix(in srgb, var(--cel) 13%, transparent); font-size:.88rem}
+  background:var(--panel); background:color-mix(in srgb, var(--cel) 13%, transparent); font-size:.95rem}
 .trivia .glossbar b{font-weight:700}
 
 /* construction de phrase */
@@ -217,7 +217,7 @@ h2{margin:0 0 8px; font-size:.72rem; font-weight:600; letter-spacing:.15em;
 .npc{position:relative; background:var(--panel2); border:1px solid var(--line);
   border-radius:var(--r); padding:12px 44px 12px 14px}
 .npc .npc-kr{font-family:var(--kr-display); font-size:1.35rem; font-weight:700; line-height:1.4; word-break:keep-all}
-.npc .npc-fr{color:var(--dim); font-size:.86rem; margin-top:4px}
+.npc .npc-fr{color:var(--dim); font-size:.92rem; margin-top:4px}
 .npc .speak{position:absolute; right:4px; top:8px; font-size:1.25rem}
 
 .pill{display:inline-block; background:none; border:1px solid var(--line); border-radius:999px;
@@ -271,12 +271,12 @@ h2{margin:0 0 8px; font-size:.72rem; font-weight:600; letter-spacing:.15em;
   padding:12px 4px; display:flex; align-items:center; gap:12px; cursor:pointer}
 .list .item .txt{flex:1; min-width:0}
 .list .item .kr{font-family:var(--kr-display); font-size:1.2rem; font-weight:600; word-break:keep-all}
-.list .item .fr{font-size:.85rem; color:var(--dim); margin-top:1px}
+.list .item .fr{font-size:.92rem; color:var(--dim); margin-top:1px}
 /* registre des scènes (scenarios.js) : mot-lieu en poteau, record en points, parfaite au sceau */
 .list .item .place{flex:none; width:56px; font-family:var(--kr-display); font-size:1.2rem;
   font-weight:700; line-height:1.3; word-break:keep-all}
 .list .item .t{font-size:.92rem; font-weight:600}
-.list .item .s{font-size:.78rem; color:var(--dim); margin-top:2px}
+.list .item .s{font-size:.85rem; color:var(--dim); margin-top:2px}
 .rec{display:flex; gap:4px; flex:none}
 .rec i{width:6px; height:6px; border-radius:50%; background:var(--line)}
 .rec i.on{background:var(--cel-dim)}
