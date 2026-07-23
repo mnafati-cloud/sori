@@ -100,9 +100,6 @@ h2{margin:0 0 8px; font-size:.72rem; font-weight:600; letter-spacing:.15em;
 .cooldown .card{pointer-events:none}   /* v115 : la révélation au tap (cartes Rappel) doit aussi attendre */
 .cooldown .escbtn{pointer-events:auto}
 
-/* v115 : cartes Rappel — l'invite discrète qui remplace bouton Montrer / creux Takbon */
-.tapreveal{color:var(--dim); font-size:.82rem; margin-top:14px; user-select:none; opacity:.75}
-
 /* en-tête de révision : compteur discret, actions texte sobres */
 .rev-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px}
 .rev-head .dim{font-size:.8rem}

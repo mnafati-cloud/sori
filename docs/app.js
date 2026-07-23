@@ -1476,11 +1476,9 @@ function exoRecall(it, hinted){
   const card = el(`<div class="card center">
     <div class="big-fr">${esc(it.fr)}</div>${hint}
     <div class="feedback"></div>
-    <div class="tapreveal">touche pour révéler</div>
     <div class="row" style="margin-top:12px"></div></div>`);
   card.onclick = ()=>{
     card.onclick = null;                          // une seule révélation ; ensuite les taps vont aux notes
-    card.querySelector(".tapreveal").remove();
     /* mot révélé + bouton 🔊 pour le réécouter pendant la notation */
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span> <button class="speak" title="écouter">${SVG_SPK}</button>`;
     card.querySelector(".feedback .speak").onclick = ()=>speak(it.kr, it.id);
@@ -1497,11 +1495,9 @@ function exoRecallRev(it){
   const card = el(`<div class="card center">
     <div class="big-kr ${it.type==="phrase"?"phrase":""}">${esc(it.kr)}</div>
     <div class="feedback"></div>
-    <div class="tapreveal">touche pour révéler</div>
     <div class="row" style="margin-top:12px"></div></div>`);
   card.onclick = ()=>{
     card.onclick = null;
-    card.querySelector(".tapreveal").remove();
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.fr)}</span>`;
     card.querySelector(".big-kr").onclick = ()=>speak(it.kr, it.id);   // réécoute au tap sur le mot
     showTrivia(card, it);
