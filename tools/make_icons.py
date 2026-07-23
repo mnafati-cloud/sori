@@ -1,22 +1,25 @@
 # -*- coding: utf-8 -*-
-"""Icônes PWA « Takbon » (v110, évolution demandée user) : fond NOIR pur pleine
-surface (maskable), 소리 en myeongjo BLANC avec halo lumineux (l'estampage),
-carré-sceau vermillon incliné en signature.
+"""Icônes PWA « dojang » (v133, choix user 22/07 sur planche de 4 propositions) :
+fond NOIR pur pleine surface (maskable), grand carré-sceau VERMILLON incliné (-4°)
+plein cadre, 소리 gravé en encre (myeongjo) dedans. Remplace le design v110
+(소리 blanc + petit sceau sous le ㅣ — « le point rouge » que l'user n'aimait pas).
 
 Usage : python tools/make_icons.py [chemin/NanumMyeongjo-Bold.ttf]
   Le TTF n'est PAS versionné (3 Mo) — source OFL :
   https://raw.githubusercontent.com/google/fonts/main/ofl/nanummyeongjo/NanumMyeongjo-Bold.ttf
   Repli sans argument : Batang (myeongjo système Windows, batang.ttc).
-Rendu en 4x puis réduction LANCZOS (bords nets). Zone sûre maskable : cercle 40 %.
+Rendu en 4x puis réduction LANCZOS (bords nets).
+Zone sûre maskable (cercle 40 % — spec W3C) : carré 0.60·S à coins 16 % → coin le plus
+lointain à ~0.385·S du centre, dedans avec marge.
 ⚠️ v112 : remplacer les OCTETS d'une icône à URL constante ne re-déclenche PAS la
-re-frappe du WebAPK (constaté : l'icône v73 n'est jamais arrivée chez l'user).
-Le déclencheur fiable = changer l'URL dans manifest.json → à CHAQUE évolution
-d'icône : incrémenter le suffixe (-v2 → -v3…) ICI et dans manifest.json,
-index.html (2 liens) et sw.js (ASSETS)."""
-import sys
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+re-frappe du WebAPK. Le déclencheur fiable = changer l'URL dans manifest.json → à
+CHAQUE évolution d'icône : incrémenter le suffixe (-v3 → -v4…) ICI et dans
+manifest.json, index.html (2 liens) et sw.js (ASSETS)."""
+import os, sys
+from PIL import Image, ImageDraw, ImageFont
 
-INK, HANJI, SEAL = (0, 0, 0, 255), (255, 255, 255, 255), (228, 88, 74, 255)
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+INK, SEAL, SEAL_INK = (0, 0, 0, 255), (228, 88, 74, 255), (31, 15, 11, 255)
 
 def load_font(px):
     if len(sys.argv) > 1:
@@ -26,42 +29,24 @@ def load_font(px):
 def make(size, path):
     S = size * 4                                   # supersampling 4x
     img = Image.new("RGBA", (S, S), INK)           # fond PLEIN (requis pour maskable)
-    d = ImageDraw.Draw(img)
-    font = load_font(int(S * 0.335))
+    sq = int(S * 0.60)                             # côté du sceau
+    pad = int(sq * 0.20)                           # marge de rotation (canvas ≤ S)
+    canvas = Image.new("RGBA", (sq + 2 * pad, sq + 2 * pad), (0, 0, 0, 0))
+    ds = ImageDraw.Draw(canvas)
+    ds.rounded_rectangle([pad, pad, pad + sq, pad + sq],
+                         radius=int(sq * 0.16), fill=SEAL)
+    font = load_font(int(sq * 0.44))
     text = "소리"
-    bbox = d.textbbox((0, 0), text, font=font)
-    w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
-    tx, ty = (S - w) / 2 - bbox[0], (S - h) / 2 - bbox[1] - S * 0.045
-    # halo « takbon » : le texte blanc flouté sous le texte net — le blanc frotté respire
-    halo = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-    ImageDraw.Draw(halo).text((tx, ty), text, font=font, fill=(255, 255, 255, 150))
-    halo = halo.filter(ImageFilter.GaussianBlur(radius=S * 0.022))
-    img.alpha_composite(halo)
-    d.text((tx, ty), text, font=font, fill=HANJI)
-    # carré-sceau incliné (-4°), posé en signature sous la fin du mot — dans la zone sûre
-    sq = int(S * 0.105)
-    seal = Image.new("RGBA", (sq * 2, sq * 2), (0, 0, 0, 0))
-    ds = ImageDraw.Draw(seal)
-    ds.rounded_rectangle([sq // 2, sq // 2, sq // 2 + sq, sq // 2 + sq],
-                         radius=int(sq * 0.22), fill=SEAL)
-    seal = seal.rotate(4, resample=Image.BICUBIC)  # PIL : sens anti-horaire → visuel -4°
-    px = int(tx + w - sq * 0.55)                   # sous le coin droit du texte
-    py = int(ty + h + S * 0.035)
-    # zone sûre maskable = CERCLE de rayon 0.40·S (spec W3C), pas le carré des 80 % :
-    # ramener radialement le CENTRE du sceau pour que son coin le plus lointain reste dedans
-    import math
-    cx, cy = px + sq / 2, py + sq / 2
-    half_diag = sq * 0.75                          # demi-diagonale (coins arrondis, marge incluse)
-    r_max = 0.40 * S - half_diag
-    dx, dy = cx - S / 2, cy - S / 2
-    r = math.hypot(dx, dy)
-    if r > r_max:
-        k = r_max / r
-        px, py = int(S / 2 + dx * k - sq / 2), int(S / 2 + dy * k - sq / 2)
-    img.alpha_composite(seal, (px - sq // 2, py - sq // 2))
-    img = img.resize((size, size), Image.LANCZOS)
+    b = ds.textbbox((0, 0), text, font=font)
+    w, h = b[2] - b[0], b[3] - b[1]
+    ds.text((pad + (sq - w) / 2 - b[0], pad + (sq - h) / 2 - b[1] - sq * 0.02),
+            text, font=font, fill=SEAL_INK)
+    canvas = canvas.rotate(4, resample=Image.BICUBIC, expand=False,
+                           center=(canvas.width / 2, canvas.height / 2))
+    img.alpha_composite(canvas, ((S - canvas.width) // 2, (S - canvas.height) // 2))
+    img = img.resize((size, size), Image.LANCZOS).convert("RGB")
     img.save(path)
     print("ok", path, size)
 
-make(192, r"C:\Users\33785\dev\sori\docs\icon-192-v2.png")
-make(512, r"C:\Users\33785\dev\sori\docs\icon-512-v2.png")
+make(192, os.path.join(ROOT, "docs", "icon-192-v3.png"))
+make(512, os.path.join(ROOT, "docs", "icon-512-v3.png"))
