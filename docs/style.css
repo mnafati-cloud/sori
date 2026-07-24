@@ -352,18 +352,20 @@ input[type=checkbox]:focus-visible{outline:2px solid var(--seal); outline-offset
    gradué par la difficulté FSRS (aura1 subtile → aura3 franche), maximal et plus rapide
    pour les ennemies. Les deux couches d'ombre gardent la même structure → interpolation propre. */
 @keyframes aura-pulse{
-  0%,100%{text-shadow:0 0 10px var(--au1), 0 0 26px var(--au2)}
-  50%    {text-shadow:0 0 18px var(--au1s), 0 0 46px var(--au2s)}
+  0%,100%{text-shadow:0 0 6px var(--au1), 0 0 22px var(--au1), 0 0 48px var(--au2)}
+  50%    {text-shadow:0 0 10px var(--au1s), 0 0 34px var(--au1s), 0 0 80px var(--au2s)}
 }
 /* v135 : préfixe #screen OBLIGATOIRE — sans lui, .card.center .big-kr (3 classes) gagnait la
    cascade sur .aura1 (1 classe) et la pulsation ne démarrait jamais (retour user : « rien »). */
 #screen .aura1,#screen .aura2,#screen .aura3{animation:word-in .26s ease-out both, aura-pulse 2.6s ease-in-out .3s infinite}
-.aura1{--au1:color-mix(in srgb, var(--seal) 22%, transparent); --au2:color-mix(in srgb, var(--seal) 10%, transparent);
-       --au1s:color-mix(in srgb, var(--seal) 34%, transparent); --au2s:color-mix(in srgb, var(--seal) 16%, transparent)}
-.aura2{--au1:color-mix(in srgb, var(--seal) 34%, transparent); --au2:color-mix(in srgb, var(--seal) 16%, transparent);
-       --au1s:color-mix(in srgb, var(--seal) 52%, transparent); --au2s:color-mix(in srgb, var(--seal) 26%, transparent)}
-.aura3{--au1:color-mix(in srgb, var(--seal) 46%, transparent); --au2:color-mix(in srgb, var(--seal) 24%, transparent);
-       --au1s:color-mix(in srgb, var(--seal) 72%, transparent); --au2s:color-mix(in srgb, var(--seal) 40%, transparent)}
+/* v136 : intensités MUSCLÉES — un halo à ~50% derrière de grandes lettres blanches se lisait
+   blanc chaud (vérif Chromium/Takbon : la mécanique tournait, l'œil ne voyait rien) */
+.aura1{--au1:color-mix(in srgb, var(--seal) 55%, transparent); --au2:color-mix(in srgb, var(--seal) 25%, transparent);
+       --au1s:color-mix(in srgb, var(--seal) 75%, transparent); --au2s:color-mix(in srgb, var(--seal) 38%, transparent)}
+.aura2{--au1:color-mix(in srgb, var(--seal) 75%, transparent); --au2:color-mix(in srgb, var(--seal) 36%, transparent);
+       --au1s:var(--seal); --au2s:color-mix(in srgb, var(--seal) 55%, transparent)}
+.aura3{--au1:var(--seal); --au2:color-mix(in srgb, var(--seal) 50%, transparent);
+       --au1s:var(--seal); --au2s:color-mix(in srgb, var(--seal) 75%, transparent)}
 #screen .aura-enemy{animation-duration:.26s, 1.5s}   /* word-in inchangé, pulsation plus pressante */
 @media (prefers-reduced-motion: reduce){
   #screen .aura1,#screen .aura2,#screen .aura3{animation:none; text-shadow:0 0 14px var(--au1), 0 0 34px var(--au2)}

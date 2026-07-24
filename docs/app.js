@@ -1147,6 +1147,11 @@ function renderReview(){
 /* v134 : intensité de l'aura selon la DIFFICULTÉ FSRS D (1 facile → 10 dur ; repli : ease
    legacy convertie via easeToD). Les ennemies pulsent au maximum, et plus vite. */
 function auraClass(it){
+  /* v136 : réglage ST.set.aura — "never" (jamais), "always" (sur tous les mots, pour voir/tester),
+     "auto" (défaut : adaptée à la difficulté, la plupart des cartes restent calmes) */
+  const mode = ST.set.aura || "auto";
+  if(mode === "never") return "";
+  if(mode === "always") return it.enemy ? "aura3 aura-enemy" : "aura2";
   if(it.enemy) return "aura3 aura-enemy";
   const D = (typeof it.D === "number") ? it.D : ENGINE.easeToD(ENGINE.easeOf(it));
   if(D >= 8.3) return "aura3";
@@ -1980,6 +1985,8 @@ function openSettings(){
     <label>Taille max de session <input type="number" id="smax" min="20" max="500" step="10" value="${ST.set.sessionMax||120}"></label>
     <label>Prioriser le kit voyage <input type="checkbox" id="kf" ${ST.set.kitFirst?"checked":""}></label>
     <label>Prononcer automatiquement <input type="checkbox" id="ap" ${ST.set.autoplay?"checked":""}></label>
+    <label title="Halo vermillon pulsant autour du mot en révision. Adaptée = gradué par la difficulté FSRS (la plupart des cartes restent calmes, les ennemies brûlent). Toujours = sur tous les mots.">Aura de difficulté
+      <select id="aura"><option value="auto" ${(ST.set.aura||"auto")==="auto"?"selected":""}>Adaptée</option><option value="always" ${ST.set.aura==="always"?"selected":""}>Toujours</option><option value="never" ${ST.set.aura==="never"?"selected":""}>Jamais</option></select></label>
     <label title="FSRS = algorithme moderne (modèle mémoire stabilité/difficulté par carte, ~25% de révisions en moins). Classique = échelle de stades historique.">Algorithme de répétition
       <select id="sched"><option value="fsrs" ${ST.set.scheduler!=="legacy"?"selected":""}>FSRS (moderne)</option><option value="legacy" ${ST.set.scheduler==="legacy"?"selected":""}>Classique</option></select></label>
     <label title="Rétention cible FSRS : proba de te souvenir au moment de la révision. Plus haut = plus de révisions, meilleure mémoire. Défaut 0.90.">Rétention cible (FSRS) <input type="number" id="fsrsret" min="0.7" max="0.97" step="0.01" value="${ST.set.fsrsRetention||0.9}"></label>
@@ -2056,6 +2063,7 @@ function openSettings(){
   set.querySelector("#ap").onchange  = e=>{ ST.set.autoplay=e.target.checked; save(); };
   set.querySelector("#adap").onchange= e=>{ ST.set.adaptive=e.target.checked; save(); };
   set.querySelector("#sched").onchange = e=>{ ST.set.scheduler=e.target.value; save(); };
+  set.querySelector("#aura").onchange = e=>{ ST.set.aura=e.target.value; save(); };
   set.querySelector("#fsrsret").onchange = e=>{ ST.set.fsrsRetention=Math.min(0.97, Math.max(0.7, +e.target.value||0.9)); save(); };
   set.querySelector("#fsrsperso").onchange = e=>{ ST.set.fsrsPersonal=e.target.checked; save(); };
   set.querySelector("#g4").onchange = e=>{ ST.set.grade4=e.target.checked; save(); };
