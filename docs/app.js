@@ -1137,6 +1137,22 @@ function renderReview(){
       exoRecall(it, false);                      // production sans aide
     }
   }
+  /* v134 : aura de difficulté — halo vermillon pulsant autour du mot de l'exercice */
+  const ac = auraClass(it);
+  if(ac){
+    const bw = $screen.querySelector(".card.center .big-kr, .card.center .big-fr");
+    if(bw) bw.classList.add(...ac.split(" "));
+  }
+}
+/* v134 : intensité de l'aura selon la DIFFICULTÉ FSRS D (1 facile → 10 dur ; repli : ease
+   legacy convertie via easeToD). Les ennemies pulsent au maximum, et plus vite. */
+function auraClass(it){
+  if(it.enemy) return "aura3 aura-enemy";
+  const D = (typeof it.D === "number") ? it.D : ENGINE.easeToD(ENGINE.easeOf(it));
+  if(D >= 8.3) return "aura3";
+  if(D >= 6.8) return "aura2";
+  if(D >= 5.3) return "aura1";
+  return "";
 }
 /* apprendre plus de nouvelles cartes À LA DEMANDE (au-delà du plafond quotidien),
    avec VRAIE progression (ça compte dans la planification). Répond au besoin
