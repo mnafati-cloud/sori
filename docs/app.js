@@ -124,7 +124,16 @@ const EXTRA = (typeof window!=="undefined" && window.EXTRA) || {};
    préservées (ST.qdone, ST.exams intacts). Repasser à true pour réafficher tel quel. */
 const SHOW_QUESTS = false;   // quêtes du jour + badges (quests.js)
 const SHOW_EXAM   = false;   // bilan de niveau périodique (exam.js)
-function save(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(ST)); }catch(e){} }
+/* v138 : save() COALESCÉ — l'état fait ~520 Ko (rlog 8000 entrées) et chaque réponse
+   déclenchait PLUSIEURS sérialisations+écritures synchrones complètes (mesuré : ~1 Mo et
+   ~320 ms bloquantes par carte, CPU bridé ×6 — « l'app rame »). Toutes les demandes d'un
+   même geste fusionnent en UNE écriture (microtâche, donc avant tout événement suivant) ;
+   écriture immédiate quand l'app passe en arrière-plan (kill Android sans perte). */
+let SAVE_PENDING = false;
+function saveNow(){ SAVE_PENDING = false; try{ localStorage.setItem(LS_KEY, JSON.stringify(ST)); }catch(e){} }
+function save(){ if(SAVE_PENDING) return; SAVE_PENDING = true; Promise.resolve().then(()=>{ if(SAVE_PENDING) saveNow(); }); }
+addEventListener("pagehide", ()=>{ if(SAVE_PENDING) saveNow(); });
+document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState === "hidden" && SAVE_PENDING) saveNow(); });
 
 /* ===== v65 : capture d'EXCEPTIONS — avant, les catch silencieux et les erreurs globales
    laissaient l'app muette en cas de casse sur le téléphone (zéro visibilité à l'analyse).
@@ -327,10 +336,13 @@ document.addEventListener("change", e=>{
 
 /* ===== annulation de la dernière réponse (clic accidentel) — 1 niveau ===== */
 let UNDO = null;
-function armUndo(){
+function armUndo(itemId){
   const t = todayStr();
   UNDO = {
-    items: JSON.parse(JSON.stringify(ST.items)),
+    /* v138 : photo de la SEULE carte répondue (une réponse ne mute que ST.items[itemId]) —
+       la copie profonde des ~1600 items à chaque tap coûtait ~130 Ko de JSON par réponse */
+    itemId,
+    itemSnap: ST.items[itemId] ? JSON.parse(JSON.stringify(ST.items[itemId])) : undefined,
     log: ST.log[t] ? JSON.parse(JSON.stringify(ST.log[t])) : null,
     xp: ST.xp||0, combo: COMBO, sessfail: [...SESSFAIL],
     q: [...Q], qpos: QPOS,
@@ -343,7 +355,10 @@ function armUndo(){
 function undoLast(){
   if(!UNDO) return;
   const t = todayStr();
-  ST.items = UNDO.items;
+  if(UNDO.itemId !== undefined){                                             // v138 : restauration ciblée
+    if(UNDO.itemSnap === undefined) delete ST.items[UNDO.itemId];
+    else ST.items[UNDO.itemId] = UNDO.itemSnap;
+  }
   if(UNDO.log === null) delete ST.log[t]; else ST.log[t] = UNDO.log;
   ST.xp = UNDO.xp; COMBO = UNDO.combo; SESSFAIL = UNDO.sessfail;
   Q = UNDO.q; QPOS = UNDO.qpos;
@@ -1313,7 +1328,7 @@ function nextCard(){
 }
 function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto){
   LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞
-  armUndo();                                // photo AVANT toute mutation (annulation possible)
+  armUndo(it.id);                           // photo AVANT toute mutation (annulation possible)
   const wasM = it.stage >= 4, wasA = it.stage >= 4 && (it.itv||0) >= 14;   // v129 : état AVANT (seuils du tampon)
   const maxG = (capMax !== undefined) ? capMax : maxGradeFor(it, kind);   // v76 : override de plafond (indice 다) sans toucher `kind` (stats/lp/quêtes)
   const Graw = ok ? (grade || 3) : 1;                    // la note réellement CHOISIE (Bien par défaut)
