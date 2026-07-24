@@ -1154,9 +1154,13 @@ function auraClass(it){
   if(mode === "always") return it.enemy ? "aura3 aura-enemy" : "aura2";
   if(it.enemy) return "aura3 aura-enemy";
   const D = (typeof it.D === "number") ? it.D : ENGINE.easeToD(ENGINE.easeOf(it));
-  if(D >= 8.3) return "aura3";
-  if(D >= 6.8) return "aura2";
-  if(D >= 5.3) return "aura1";
+  /* v137 : seuils RECALIBRÉS sur les quantiles réels de l'utilisateur (médiane D=5.25 !) —
+     l'ancien plancher 5.3 tombait pile sur la médiane → ~47% du deck avait une aura.
+     La notation binaire de l'user (jamais Facile) tasse D vers le haut : toute carte ratée
+     garde une D élevée. Nouveaux seuils ≈ p80/p88/p94 → aura sur ~20% du deck seulement. */
+  if(D >= 9.0) return "aura3";
+  if(D >= 8.3) return "aura2";
+  if(D >= 7.5) return "aura1";
   return "";
 }
 /* apprendre plus de nouvelles cartes À LA DEMANDE (au-delà du plafond quotidien),
