@@ -46,7 +46,7 @@ const GLOSS_FIX = {
   "이분":"Cette personne-ci (près de moi)", "그분":"Cette personne-là (près de toi / dont on parle)", "저분":"Cette personne là-bas (loin de nous deux)",
   "이것":"Ceci (près de moi)", "그것":"Ça (près de toi / dont on parle)", "저것":"Ça là-bas (loin de nous deux)",
   "무슨":"Quel type de… (quelle sorte de)", "어느":"Lequel (choix parmi un ensemble connu)",
-  "위":"Estomac (l'organe) — 위 signifie aussi « au-dessus / le haut »",
+  "위":"Estomac (l'organe) — homonyme de « au-dessus / le haut »",   /* v139 : sans citer 위 (fuite de réponse) */
   /* v92 : rapports in-app 18/07 (« Pas 나다 ? » sur 생기다 ; « différence avec 정류장 ? » sur 정거장) */
   "나다":"Sortir, pousser (émaner de soi : bruit, odeur, fièvre, feuille)",
   "생기다":"Apparaître, se former (survenir : problème, occasion)",
@@ -54,7 +54,10 @@ const GLOSS_FIX = {
   "정거장":"Station, arrêt (terme large : train, métro)",
   /* v117 : rapport in-app 21/07 (« quelle différence avec 그날 ? ») — gloses jumelles */
   "이날":"Ce jour-là (récit/presse : le jour qu'on vient de mentionner)",
-  "그날":"Ce jour-là (courant : jour déjà évoqué)"
+  "그날":"Ce jour-là (courant : jour déjà évoqué)",
+  /* v139 : rapports 23-25/07 « la réponse est dans la question » — romanisations retirées */
+  "회":"Poisson cru (sashimi coréen)",
+  "만화":"Bande dessinée (BD coréenne)"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 
@@ -1392,6 +1395,10 @@ function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto){
   ($screen.querySelector(".card:last-of-type") || $screen).appendChild(row);
   row.scrollIntoView({block:"nearest", behavior:"smooth"});
 }
+/* v139 : jamais la réponse dans la question — en PRODUCTION (FR→KR), si la glose contient
+   le hangul du mot à produire (ex. « (눈에 띄다) » sur la carte 띄다), il est masqué à
+   l'AFFICHAGE seulement (rapports 23-25/07 « la réponse est dans la question »). */
+function maskAnswer(fr, kr){ return kr && fr && fr.includes(kr) ? fr.split(kr).join("◌") : fr; }
 /* stage 1-2 : QCM coréen -> français */
 function exoQcmKr2Fr(it){
   const ds = distractors(it, 3, "fr");
@@ -1428,7 +1435,7 @@ function exoQcmFr2Kr(it){
   const opts = shuffle([it.id, ...ds]);
   /* v116 : même épure que le QCM compréhension — le mot seul, les choix parlent d'eux-mêmes */
   const card = el(`<div class="card center">
-    <div class="big-fr">${esc(it.fr)}</div>
+    <div class="big-fr">${esc(maskAnswer(it.fr, it.kr))}</div>
     <div class="opts"></div></div>`);
   const box = card.querySelector(".opts");
   opts.forEach(id=>{
@@ -1514,7 +1521,7 @@ function exoRecall(it, hinted){
      cliquer (bouton Montrer / creux Takbon v103) — toucher la carte, mot compris, révèle.
      Les tuiles d'indice redeviennent un AFFICHAGE pur. Flux inchangé (kind/capMax/notes). */
   const card = el(`<div class="card center">
-    <div class="big-fr">${esc(it.fr)}</div>${hint}
+    <div class="big-fr">${esc(maskAnswer(it.fr, it.kr))}</div>${hint}
     <div class="feedback"></div>
     <div class="row" style="margin-top:12px"></div></div>`);
   card.onclick = ()=>{
@@ -1554,7 +1561,7 @@ function exoBuild(it){
   const built = [];
   const card = el(`<div class="card center">
     <div class="dim">Construis la phrase</div>
-    <div class="big-fr">${esc(it.fr)}</div>
+    <div class="big-fr">${esc(maskAnswer(it.fr, it.kr))}</div>
     <div class="built"></div>
     <div class="pool"></div>
     <div class="feedback"></div></div>`);
