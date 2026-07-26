@@ -1526,6 +1526,8 @@ function exoRecall(it, hinted){
     <div class="row" style="margin-top:12px"></div></div>`);
   card.onclick = ()=>{
     card.onclick = null;                          // une seule révélation ; ensuite les taps vont aux notes
+    armCooldown();                                // v140 : les notes apparaissent SOUS le doigt → gel 450 ms
+                                                  // (undo passés de 1-6 à 10-13/j après l'avance auto v129)
     /* mot révélé + bouton 🔊 pour le réécouter pendant la notation */
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span> <button class="speak" title="écouter">${SVG_SPK}</button>`;
     card.querySelector(".feedback .speak").onclick = ()=>speak(it.kr, it.id);
@@ -1545,6 +1547,7 @@ function exoRecallRev(it){
     <div class="row" style="margin-top:12px"></div></div>`);
   card.onclick = ()=>{
     card.onclick = null;
+    armCooldown();                                // v140 : même gel post-révélation (cf. exoRecall)
     card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.fr)}</span>`;
     card.querySelector(".big-kr").onclick = ()=>speak(it.kr, it.id);   // réécoute au tap sur le mot
     showTrivia(card, it);
