@@ -57,7 +57,13 @@ const GLOSS_FIX = {
   "그날":"Ce jour-là (courant : jour déjà évoqué)",
   /* v139 : rapports 23-25/07 « la réponse est dans la question » — romanisations retirées */
   "회":"Poisson cru (sashimi coréen)",
-  "만화":"Bande dessinée (BD coréenne)"
+  "만화":"Bande dessinée (BD coréenne)",
+  /* v142 : rapports 27/07 — romanisation 한복 retirée ; trio « aider » discriminé
+     (gloses 100 % FR : jamais de hangul ni de romanisation, la carte est en production) */
+  "한복":"Costume traditionnel coréen",
+  "돕다":"Aider (verbe de base, formel/écrit)",
+  "도와주다":"Aider quelqu'un, rendre service (le plus courant à l'oral)",
+  "거들다":"Donner un coup de main (seconder, aider ponctuellement)"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 
