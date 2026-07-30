@@ -1346,7 +1346,15 @@ function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto){
   const wasM = it.stage >= 4, wasA = it.stage >= 4 && (it.itv||0) >= 14;   // v129 : état AVANT (seuils du tampon)
   const maxG = (capMax !== undefined) ? capMax : maxGradeFor(it, kind);   // v76 : override de plafond (indice 다) sans toucher `kind` (stats/lp/quêtes)
   const Graw = ok ? (grade || 3) : 1;                    // la note réellement CHOISIE (Bien par défaut)
-  const G = ok ? Math.min(Graw, maxG) : 1;               // note plafonnée par l'aide (canal stabilité)
+  /* v144 : la SAISIE ne compte jamais « raté » pour la planification — 98 % des échecs de frappe
+     sont des fautes d'orthographe sur des mots connus à l'oral (mesure 30/07 : 248/254 réussis à
+     la rencontre orale suivante) ; chaque faute créditait une FAUSSE RECHUTE FSRS (stabilité
+     écrasée → files gonflées). Échec type → Difficile(2) : la stabilité encaisse la pénalité
+     douce w15, la DIFFICULTÉ prend l'échec entier via le canal gradeD (Graw reste 1). Tout le
+     reste traite l'échec comme un échec : stats ko, re-pose en session, combo, XP, lp forcé.
+     Legacy (rollback) : inchangé — computeAnswer ne lit que `ok`. */
+  const G = ok ? Math.min(Graw, maxG)                    // note plafonnée par l'aide (canal stabilité)
+             : (kind === "type" ? 2 : 1);
   const rt = EXO_T0 ? Date.now() - EXO_T0 : 0;           // temps de réponse (ms) — agrégats ET journal (v65)
   let blanc = false;
   if(!BONUS && CONSOL.has(it.id)){ CONSOL.delete(it.id); REPRISE_IDS.delete(it.id); if(ok) blanc = true; }   // consolidation réussie = blanche ; ratée = échec réel
