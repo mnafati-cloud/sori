@@ -29,6 +29,14 @@ INDEX_JS = AUDIO_DIR / "index.js"
 
 VOICE = "ko-KR-SunHiNeural"
 RATE = "-15%"
+
+# Overrides de PRONONCIATION (mots seuls) : la synthese lit parfois mal un mot isole
+# (liaison ratee, pause interne). Cle = kr NETTOYE (sortie de clean_kr), valeur = orthographe
+# PHONETIQUE donnee au TTS a la place. Le nom de fichier reste base sur l'id : seul le texte
+# lu change. Pour regenerer un mot corrige : supprimer docs/audio/<id>.mp3 puis relancer.
+PRONOUNCE = {
+    "날아다니다": "나라다니다",  # rapport in-app 28/07 : liaison ㄹ+ㅇ mal rendue sur le mot isole
+}
 MIN_SIZE = 1024  # octets — en dessous, fichier considere invalide
 CONCURRENCY = 4
 MAX_ROUNDS = 3  # tentatives globales sur les fichiers manques
@@ -59,6 +67,7 @@ def select_word_targets(items):
     out = []
     for it in items:
         text = clean_kr(it.get("kr", ""))
+        text = PRONOUNCE.get(text, text)
         if text:
             out.append((str(it["id"]), text, AUDIO_DIR / f"{it['id']}.mp3"))
     return out
