@@ -63,7 +63,12 @@ const GLOSS_FIX = {
   "한복":"Costume traditionnel coréen",
   "돕다":"Aider (verbe de base, formel/écrit)",
   "도와주다":"Aider quelqu'un, rendre service (le plus courant à l'oral)",
-  "거들다":"Donner un coup de main (seconder, aider ponctuellement)"
+  "거들다":"Donner un coup de main (seconder, aider ponctuellement)",
+  /* v143 : rapports 28/07 — « pas de différence avec 의미 ? » et « deux réponses possibles » (couleur verte) */
+  "뜻":"Sens, signification (mot pur coréen — aussi : intention, volonté)",
+  "의미":"Sens, signification (sino-coréen : plus formel, abstrait)",
+  "초록색":"Vert (le mot de tous les jours)",
+  "녹색":"Vert (plus formel/technique : feu vert, écologie)"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 
