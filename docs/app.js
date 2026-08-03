@@ -68,7 +68,12 @@ const GLOSS_FIX = {
   "뜻":"Sens, signification (mot pur coréen — aussi : intention, volonté)",
   "의미":"Sens, signification (sino-coréen : plus formel, abstrait)",
   "초록색":"Vert (le mot de tous les jours)",
-  "녹색":"Vert (plus formel/technique : feu vert, écologie)"
+  "녹색":"Vert (plus formel/technique : feu vert, écologie)",
+  /* v145 : rapports 31/07-02/08 — intérieur (espace vs fond des choses) et taille (objet vs stature ;
+     le jumeau « stature d'une personne » est déjà marqué dans le seed) */
+  "안":"Intérieur, dedans (espace délimité — contraire de dehors)",
+  "속":"Intérieur, dedans (le fond des choses : ventre, cœur, contenu)",
+  "크기":"Taille, dimension (grandeur d'un objet)"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 
