@@ -25,6 +25,8 @@ Couche 1  docs/engine.js       moteur pur (planification legacy GELÉE + adaptat
                                distracteurs, ease) — testé sous Node, contractuel
 Couche 1b MODULES autonomes    themes.js · events.js · search.js · exam.js · quests.js ·
                                player.js · scenarios.js · typing.js · numbers.js ·
+                               gramex.js (exercice de grammaire : conjugaison jamo + phrases
+                               à trou + repérage, testé par tests/gramex.test.mjs) ·
                                placement.js (test de niveau adaptatif) — voir pattern
 Couche 2  docs/app.js          UI + exercices + audio + import/export + cloud backup/restore +
                                son (WebAudio) + annulation + rapports 🐞 + Réglages en surcouche

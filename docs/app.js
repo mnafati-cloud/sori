@@ -857,6 +857,21 @@ function renderExercices(){
       onAnswer: (ok)=>logAnswer(ok, "nombres")
     });
   }
+  /* ✏️ Grammaire (gramex.js, v146) : conjugaison (pièges jamo réels), phrases à trou
+     (connecteur masqué, alternatives de la même famille morphologique), repérage de
+     structure. Corpus = phrases du deck taguées (grammar-data.js) + inventaire STRUCTS ;
+     le profil FSRS cible les structures non acquises. Séance libre : n'écrit RIEN dans
+     le planning — journalisée en "grammaire" (stats du jour seulement). */
+  if(window.SORI_GRAMEX && window.SORI_GRAMMAR){
+    SORI_GRAMEX.renderCard($screen, {
+      structs: SORI_GRAMMAR.STRUCTS,
+      profile: (window.GRAMMAR_TAGS ? grammarProfileNow() : null),
+      sentences: gramexCorpus(),
+      lex: gramexLex(),
+      speak: (txt)=>{ if(!ST.set.mute) ttsSpeak(txt); },
+      onAnswer: (ok)=>logAnswer(ok, "grammaire")
+    });
+  }
   /* 🧩 Structure de phrase : RETIRÉ de l'onglet en v67 (user : « je n'en vois pas l'intérêt »).
      structure.js reste chargé mais DORMANT (comme placement.js) ; le contenu EXTRA[id].base
      (981 phrases) et ST.strPos restent — réactivable en recâblant ce bloc (cf. MAINTENANCE v59/v62). */
@@ -891,6 +906,23 @@ function renderExercices(){
     stCard.querySelector("#gostory").onclick = openStory;
     $screen.appendChild(stCard);
   }
+}
+/* corpus de l'exercice de grammaire — construit UNE fois (le seed ne change pas en session) :
+   phrases du deck croisées avec leurs tags (grammar-data.js) + lexique des lemmes (mots du
+   deck) pour la vérification de radical des phrases à trou (conservateur, cf. gramex.js) */
+let GRAMEX_CORPUS = null, GRAMEX_LEX = null;
+function gramexCorpus(){
+  if(GRAMEX_CORPUS) return GRAMEX_CORPUS;
+  const tags = window.GRAMMAR_TAGS || {};
+  GRAMEX_CORPUS = SEED.items
+    .filter(it => it.type === "phrase" && tags[it.id] && tags[it.id].length)
+    .map(it => ({ id: it.id, kr: it.kr, fr: it.fr, tags: tags[it.id] }));
+  return GRAMEX_CORPUS;
+}
+function gramexLex(){
+  if(GRAMEX_LEX) return GRAMEX_LEX;
+  GRAMEX_LEX = new Set(SEED.items.filter(it => it.type === "word").map(it => it.kr));
+  return GRAMEX_LEX;
 }
 /* v89 : écran Conversation (module conversation.js) — prend tout l'écran, retour → Exercices.
    Le contexte du modèle = SES mots maîtrisés (stage>=4) + ses 8 mots les plus fragiles
