@@ -849,43 +849,72 @@ function render(){
   else renderStats();   // "progres" (accueil)
   updateDayCount();
 }
-/* onglet Exercices : les entraînements annexes (nombres à l'oreille + simulations) */
+/* onglet Exercices : des LANCEURS — chaque exercice s'ouvre en PLEINE PAGE (v147, retour
+   user : « les exercices devraient faire changer de page, comme quand on commence une
+   révision » — la série ne se joue plus coincée au milieu de la liste). */
 function renderExercices(){
-  if(window.SORI_NUMBERS){
-    SORI_NUMBERS.renderCard($screen, {
-      speak: (txt)=>ttsSpeak(txt),
-      onAnswer: (ok)=>logAnswer(ok, "nombres")
-    });
-  }
-  /* ✏️ Grammaire (gramex.js, v146) : conjugaison (pièges jamo réels), phrases à trou
-     (connecteur masqué, alternatives de la même famille morphologique), repérage de
-     structure. Corpus = phrases du deck taguées (grammar-data.js) + inventaire STRUCTS ;
-     le profil FSRS cible les structures non acquises. Séance libre : n'écrit RIEN dans
-     le planning — journalisée en "grammaire" (stats du jour seulement). */
-  if(window.SORI_GRAMEX && window.SORI_GRAMMAR){
-    SORI_GRAMEX.renderCard($screen, {
-      structs: SORI_GRAMMAR.STRUCTS,
-      profile: (window.GRAMMAR_TAGS ? grammarProfileNow() : null),
-      sentences: gramexCorpus(),
-      lex: gramexLex(),
-      speak: (txt)=>{ if(!ST.set.mute) ttsSpeak(txt); },
-      onAnswer: (ok)=>logAnswer(ok, "grammaire")
-    });
-  }
+  const launch = (titre, sub, go)=>{
+    const c = el(`<div class="card"><h2>${titre}</h2>
+      <div class="row" style="margin-top:8px"><button class="btn">Ouvrir${sub ? " · " + esc(sub) : ""}</button></div></div>`);
+    c.querySelector("button").onclick = go;
+    $screen.appendChild(c);
+  };
+  if(window.SORI_NUMBERS) launch("Les nombres à l'oreille", "", openNumbers);
+  if(window.SORI_GRAMEX && window.SORI_GRAMMAR) launch("Grammaire", "", openGramex);
   /* 🧩 Structure de phrase : RETIRÉ de l'onglet en v67 (user : « je n'en vois pas l'intérêt »).
      structure.js reste chargé mais DORMANT (comme placement.js) ; le contenu EXTRA[id].base
      (981 phrases) et ST.strPos restent — réactivable en recâblant ce bloc (cf. MAINTENANCE v59/v62). */
-  if(window.SORI_SCENARIOS && window.SCENARIOS){
-    ST.scen = ST.scen || {};
+  if(window.SORI_SCENARIOS && window.SCENARIOS)
+    launch("Les scènes — joue ta réplique", window.SCENARIOS.length + " scènes", openScenes);
+  renderExercicesSuite();
+}
+/* page dédiée d'un exercice : en-tête retour + le module seul sur l'écran */
+function exoPage(mount){
+  $screen.innerHTML = "";
+  const back = el(`<div class="row" style="margin-bottom:4px">
+    <button class="btn ghost" style="flex:0 0 auto">← Exercices</button></div>`);
+  back.querySelector("button").onclick = ()=>{ NAV = true; render(); NAV = false; };
+  $screen.appendChild(back);
+  mount($screen);
+}
+function openNumbers(){
+  exoPage(box => SORI_NUMBERS.renderCard(box, {
+    speak: (txt)=>ttsSpeak(txt),
+    onAnswer: (ok)=>logAnswer(ok, "nombres")
+  }));
+}
+/* ✏️ Grammaire (gramex.js, v146) : conjugaison (pièges jamo réels), phrases à trou
+   (connecteur masqué, alternatives de la même famille morphologique), repérage de
+   structure. Corpus = phrases du deck taguées (grammar-data.js) + inventaire STRUCTS ;
+   le profil FSRS cible les structures non acquises. Séance libre : n'écrit RIEN dans
+   le planning — journalisée en "grammaire" (stats du jour seulement). */
+function openGramex(){
+  exoPage(box => SORI_GRAMEX.renderCard(box, {
+    structs: SORI_GRAMMAR.STRUCTS,
+    profile: (window.GRAMMAR_TAGS ? grammarProfileNow() : null),
+    sentences: gramexCorpus(),
+    lex: gramexLex(),
+    speak: (txt)=>{ if(!ST.set.mute) ttsSpeak(txt); },
+    onAnswer: (ok)=>logAnswer(ok, "grammaire")
+  }));
+}
+function openScenes(){
+  ST.scen = ST.scen || {};
+  exoPage(box => {
     const scBox = el(`<div></div>`);
-    SORI_SCENARIOS.renderList(scBox, {
-      speak: (txt)=>ttsSpeak(txt),
-      onAnswer: (ok)=>logAnswer(ok, "scenario"),
-      getBest: (id)=>ST.scen[id],
-      setBest: (id, v)=>{ ST.scen[id]=v; save(); }
-    });
-    $screen.appendChild(scBox);
-  }
+    SORI_SCENARIOS.renderList(scBox, scenesOpts());
+    box.appendChild(scBox);
+  });
+}
+function scenesOpts(){
+  return {
+    speak: (txt)=>ttsSpeak(txt),
+    onAnswer: (ok)=>logAnswer(ok, "scenario"),
+    getBest: (id)=>ST.scen[id],
+    setBest: (id, v)=>{ ST.scen[id]=v; save(); }
+  };
+}
+function renderExercicesSuite(){
   /* v83→v89 : Conversation IA — désormais un ÉCRAN dédié (liste des conversations enregistrées,
      reprise, suppression, nouvelle avec ou sans scénario). Ici : juste la carte-lanceur. */
   if(window.SORI_CONVERSATION){
