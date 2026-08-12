@@ -242,6 +242,7 @@ function eff(id){
     e: d.e,                       // ease adaptative (undefined -> seed paresseux via easeOf)
     S: d.S, D: d.D,               // FSRS : stabilité (jours) & difficulté (1-10) — undefined = amorcé au 1er passage
     lp: d.lp || 0,                // v68 : rattrapage post-lapse restant (production forcée)
+    sk: d.sk || 0,                // v148 : réussites consécutives au 1er essai à itv<=1 (rescousse)
     sus: !!d.sus,                 // "mise de côté" : exclue de toute file tant que vrai (réversible)
     rev: !!seed.rev,              // carte verso (production FR→KR) vs recto (compréhension KR→FR)
   };
@@ -604,9 +605,16 @@ function applyAnswer(it, ok, grade, gradeRaw, kind, rt){
   else if(ok && (kind === "rec5" || kind === "type") && (it.lp|0) > 0) lpNext = it.lp - 1;
   if(ST.set.scheduler !== "legacy"){
     const t = todayStr();
+    /* v148 : série de réussites au 1er essai à intervalle 1 (it.sk) → rescousse de rechute
+       (engine.rescueS) : 3 jours parfaits d'affilée = plancher de stabilité progressif.
+       La série ne compte QUE tant que la carte revient quotidiennement (itv<=1) ; un échec
+       la remet à zéro ; les re-vus de session (non comptés) la laissent intacte. */
+    const skPrior = ((it.itv || 0) <= 1) ? (it.sk | 0) : 0;
     const r = ENGINE.fsrsSchedule(it, G, t, { w: fsrsW(), retention: ST.set.fsrsRetention || 0.9, gradeD: GD,
+                                              streak: skPrior,
                                               fuzz: it.id + "|" + t });   // v68 : désynchronise les cohortes
     const patch = { s:r.stage, i:r.i, d:r.d, S:r.S, D:r.D, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) };
+    patch.sk = !ok ? 0 : (r.counted ? skPrior + 1 : (it.sk | 0));
     if(lpNext !== undefined) patch.lp = lpNext;
     setItem(it.id, patch);
     logReview(it.id, G, r.elapsed, kind, rt);   // journal (fit hors-ligne des poids) — toutes les révisions
@@ -1219,8 +1227,11 @@ function renderReview(){
        L'inversé est ainsi un exercice ALTERNATIF dès le niveau 3, testé au même titre que le sens normal. */
     if(it.stage<=2){
       exoRecall(it, true);                       // production + 1re syllabe
-    } else if(it.lp > 0){
-      exoRecall(it, false);                      // v68 : rattrapage post-lapse — production forcée (2 révisions)
+    } else if(it.lp > 0 || cardTrapped(it)){
+      /* v68 : rattrapage post-lapse — production forcée (2 révisions)
+         v148 : idem pour les cartes PIÉGÉES (S écrasée + D au plafond) — le tirage recrev
+         plafonné à Difficile les condamnait à des semaines de retours quotidiens */
+      exoRecall(it, false);
     } else if(typingTop && it.type==="word" && Math.random()<0.5){
       typingExo();
     } else if(((it.ok + it.ko) % 2) === 0){
@@ -1238,6 +1249,13 @@ function renderReview(){
     const bw = $screen.querySelector(".card.center .big-kr, .card.center .big-fr");
     if(bw) bw.classList.add(...ac.split(" "));
   }
+}
+/* v148 : carte PIÉGÉE — stabilité écrasée par des rechutes passées + difficulté au plafond :
+   le facteur FSRS (11-D) étrangle la récupération et la carte revient chaque jour malgré des
+   réponses justes (mesuré 06/08 : 134 cartes, 19-32 révisions quotidiennes pour s'évader).
+   → production forcée (non plafonnée) + rescousse par série (engine.rescueS via it.sk). */
+function cardTrapped(it){
+  return typeof it.S === "number" && it.S < 1.5 && (it.D || 0) >= 8.5;
 }
 /* v134 : intensité de l'aura selon la DIFFICULTÉ FSRS D (1 facile → 10 dur ; repli : ease
    legacy convertie via easeToD). Les ennemies pulsent au maximum, et plus vite. */

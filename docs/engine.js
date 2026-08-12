@@ -301,9 +301,23 @@
       const S2 = fsrsFailS(D, S, R, w);
       return { S: round3(S2), D: round3(D2), i:0, d: today, stage, elapsed, counted:true };  // échec = re-vu en session (comme legacy)
     }
-    const S2 = fsrsSuccS(D, S, R, G, w);
+    const S2 = rescueS(fsrsSuccS(D, S, R, G, w), (opts.streak | 0) + 1);
     const i = fuzzInterval(fsrsNextInterval(S2, Rd, maxItv), opts.fuzz, maxItv);
     return { S: round3(S2), D: round3(D2), i, d: addDays(today, i), stage, elapsed, counted:true };
+  }
+
+  /* v148 — RESCOUSSE de rechute : après des échecs, une carte à difficulté écrasante (D≈9+)
+     voit sa stabilité étranglée par le facteur (11-D) et peut rester des SEMAINES à revenir
+     chaque jour malgré des réponses justes (mesuré : 134 cartes chez l'user, 19-32 révisions
+     quotidiennes pour atteindre 2 jours d'intervalle). Or K réussites au 1er essai sur K jours
+     consécutifs à intervalle 1 sont une preuve directe que R(1j) ≈ 100 % — la vraie stabilité
+     dépasse largement 1 jour. `streak` = nombre de réussites consécutives de ce type, révision
+     du jour INCLUSE (l'appelant suit la série, cf. ST.items[].sk dans app.js) : plancher
+     progressif 3→1,5 j · 4→3 j · 5→6 j · 6→12 j · ≥7→21 j (plafonné — au-delà, FSRS reprend).
+     streak absent ou <3 → identité : comportement historique inchangé. */
+  function rescueS(S, streak){
+    if(!(streak >= 3)) return S;
+    return Math.max(S, Math.min(21, 1.5 * Math.pow(2, streak - 3)));
   }
 
   /* ===== indice de rappel (rec4) : QUELLE partie du mot montrer, et COMBIEN elle aide =====
@@ -362,7 +376,7 @@
                    prevReviewDate, retention7, selectDue, pickNew, computeStreak,
                    pickDistractors, shuffle, sample, DEF_SET, STEP,
                    fsrsSchedule, fsrsR, fsrsIntervalDays, fsrsNextInterval, fuzzInterval, fsrsInitS, fsrsInitD,
-                   fsrsNextD, fsrsSuccS, fsrsFailS, easeToD,
+                   fsrsNextD, fsrsSuccS, fsrsFailS, easeToD, rescueS,
                    FSRS: { W: FSRS_W, W_PERSONAL: FSRS_W_PERSONAL, DECAY: FSRS_DECAY, FACTOR: FSRS_FACTOR, S_MIN: FSRS_S_MIN, S_MAX: FSRS_S_MAX, DR: FSRS_DR },
                    EASE: { EASE_START, EASE_MIN, EASE_MAX, SEED_MIN, SEED_MAX, TARGET_RETENTION,
                            EASE_GAIN, EASE_LOSS, EARLY_RATIO, LATE_CREDIT_CAP, MAX_ITV, S5_FLOOR, LEECH_KO } };
