@@ -348,33 +348,25 @@ input[type=checkbox]:focus-visible{outline:2px solid var(--seal); outline-offset
 .btn:active,.opts button:active,.escbtn:active,.num-mode:active{transform:scale(.96)}
 @keyframes pick-pop{0%{transform:scale(1)}45%{transform:scale(1.06)}100%{transform:scale(1)}}
 .btn.g4.picked{animation:pick-pop .18s ease-out}
-/* v134 : aura de difficulté — halo vermillon diffus et pulsant autour du mot en révision,
-   gradué par la difficulté FSRS (aura1 subtile → aura3 franche), maximal et plus rapide
-   pour les ennemies. Les deux couches d'ombre gardent la même structure → interpolation propre. */
-@keyframes aura-pulse{
-  0%,100%{text-shadow:0 0 6px var(--au1), 0 0 18px var(--au1), 0 0 36px var(--au2)}
-  50%    {text-shadow:0 0 9px var(--au1s), 0 0 28px var(--au1s), 0 0 56px var(--au2s)}
-}
-/* v135 : préfixe #screen OBLIGATOIRE — sans lui, .card.center .big-kr (3 classes) gagnait la
-   cascade sur .aura1 (1 classe) et la pulsation ne démarrait jamais (retour user : « rien »). */
-/* v141 : la pulsation S'ARRÊTE après 3 cycles (5 rapides pour les ennemies) puis l'aura reste
-   en halo STATIQUE — un text-shadow animé repeint à chaque frame, et sur téléphone ça ramait
-   pendant la saisie hangul (clavier ouvert + carte stade 5 difficile = aura active en continu). */
+/* v134 : aura de difficulté — halo vermillon diffus autour du mot en révision, gradué par la
+   difficulté FSRS (aura1 subtile → aura3 franche), plus chaud pour les ennemies.
+   v135 : préfixe #screen OBLIGATOIRE — sans lui, .card.center .big-kr (3 classes) gagnait la
+   cascade sur .aura1 (1 classe) et l'aura ne s'appliquait pas (retour user : « rien »).
+   v149 : la PULSATION EST RETIRÉE. Animer text-shadow repeint le mot à CHAQUE frame (3 couches
+   de flou jusqu'à 56 px sur de grandes lettres) : sur le téléphone ça ramait. v141 avait déjà
+   limité la pulsation à 3 cycles — insuffisant (retour user 17/08). Le halo est maintenant
+   STRICTEMENT STATIQUE : peint une fois au rendu de la carte, zéro coût par frame. Les valeurs
+   reprennent l'état de repos de v141 — l'aura garde donc l'aspect que tu voyais en régime établi.
+   Ne réintroduis pas d'animation ici : c'est la 2e fois que ce halo animé fait ramer l'app. */
 #screen .aura1,#screen .aura2,#screen .aura3{
-  text-shadow:0 0 6px var(--au1), 0 0 18px var(--au1), 0 0 36px var(--au2);   /* état de repos, peint UNE fois */
-  animation:word-in .26s ease-out both, aura-pulse 2.6s ease-in-out .3s 3}
+  text-shadow:0 0 6px var(--au1), 0 0 18px var(--au1), 0 0 36px var(--au2)}
 /* v136 : intensités MUSCLÉES — un halo à ~50% derrière de grandes lettres blanches se lisait
    blanc chaud (vérif Chromium/Takbon : la mécanique tournait, l'œil ne voyait rien) */
-.aura1{--au1:color-mix(in srgb, var(--seal) 55%, transparent); --au2:color-mix(in srgb, var(--seal) 25%, transparent);
-       --au1s:color-mix(in srgb, var(--seal) 75%, transparent); --au2s:color-mix(in srgb, var(--seal) 38%, transparent)}
-.aura2{--au1:color-mix(in srgb, var(--seal) 75%, transparent); --au2:color-mix(in srgb, var(--seal) 36%, transparent);
-       --au1s:var(--seal); --au2s:color-mix(in srgb, var(--seal) 55%, transparent)}
-.aura3{--au1:var(--seal); --au2:color-mix(in srgb, var(--seal) 50%, transparent);
-       --au1s:var(--seal); --au2s:color-mix(in srgb, var(--seal) 75%, transparent)}
-#screen .aura-enemy{animation-duration:.26s, 1.5s; animation-iteration-count:1, 5}   /* pulsation pressante, puis repos */
-@media (prefers-reduced-motion: reduce){
-  #screen .aura1,#screen .aura2,#screen .aura3{animation:none; text-shadow:0 0 14px var(--au1), 0 0 34px var(--au2)}
-}
+.aura1{--au1:color-mix(in srgb, var(--seal) 55%, transparent); --au2:color-mix(in srgb, var(--seal) 25%, transparent)}
+.aura2{--au1:color-mix(in srgb, var(--seal) 75%, transparent); --au2:color-mix(in srgb, var(--seal) 36%, transparent)}
+.aura3{--au1:var(--seal); --au2:color-mix(in srgb, var(--seal) 50%, transparent)}
+/* ennemie : même halo, poussé au maximum — la distinction visuelle survit sans animation */
+#screen .aura-enemy{--au1:var(--seal); --au2:color-mix(in srgb, var(--seal) 75%, transparent)}
 
 /* tampon en surimpression : une carte vient de devenir maîtrisée / ancrée */
 .stamp-over{position:fixed; inset:0; z-index:60; display:flex; flex-direction:column; align-items:center;

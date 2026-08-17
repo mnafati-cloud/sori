@@ -1254,8 +1254,13 @@ function renderReview(){
    le facteur FSRS (11-D) étrangle la récupération et la carte revient chaque jour malgré des
    réponses justes (mesuré 06/08 : 134 cartes, 19-32 révisions quotidiennes pour s'évader).
    → production forcée (non plafonnée) + rescousse par série (engine.rescueS via it.sk). */
+/* v149 (option A) : SORTIE ANTICIPÉE — dès la PREMIÈRE réussite comptée (it.sk >= 1) la carte
+   rend la main à l'alternance normale. Mesuré sur les 4 jours de v148 : la production forcée en
+   continu tenait la cohorte à 74,4 % de réussite (82,5 % avant v148) sans faire décoller le noyau
+   dur (44 cartes restées piégées : D +0,02, S +0,04). Un échec remet sk à 0 → la production forcée
+   revient d'elle-même à la révision suivante. L'évasion reste portée par engine.rescueS. */
 function cardTrapped(it){
-  return typeof it.S === "number" && it.S < 1.5 && (it.D || 0) >= 8.5;
+  return typeof it.S === "number" && it.S < 1.5 && (it.D || 0) >= 8.5 && (it.sk | 0) === 0;
 }
 /* v134 : intensité de l'aura selon la DIFFICULTÉ FSRS D (1 facile → 10 dur ; repli : ease
    legacy convertie via easeToD). Les ennemies pulsent au maximum, et plus vite. */
