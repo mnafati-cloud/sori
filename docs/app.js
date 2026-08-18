@@ -16,7 +16,7 @@ const GLOSS_FIX = {
   "오래":"Longtemps (durée)", "오래간만":"Ça fait longtemps (qu'on s'est vus)",
   "혼자":"Seul (sans personne autour)", "외롭다":"Se sentir seul (solitude)",
   "떠나다":"Partir (quitter un lieu)", "출발하다":"Partir (se mettre en route)",
-  "얘기":"Histoire (récit, ce qu'on raconte)", "이야기":"Histoire (récit, ce qu'on raconte)", "역사":"Histoire (la discipline, le passé)",
+  "역사":"Histoire (la discipline, le passé)",   /* 이야기 / 얘기 : discriminés plus bas (v150) */
   "계획":"Plan (projet, intention)", "지도":"Plan (carte géographique)",
   "임차하다":"Louer (prendre en location — locataire)", "임대하다":"Louer (donner en location — propriétaire)",
   "경험":"Expérience (vécu personnel)", "경력":"Expérience (professionnelle)",
@@ -38,7 +38,6 @@ const GLOSS_FIX = {
   "카페":"Café (le lieu)", "생선":"Poisson (à manger)",
   "이제":"Désormais / à partir de maintenant", "지금":"Maintenant (à l'instant présent)",
   "같이":"Ensemble (courant)", "함께":"Ensemble (soutenu)",
-  "좋아하다":"Aimer bien / apprécier",
   /* v82 : rapports in-app 16-17/07. Séries démonstratives 이/그/저 (le FR ne distingue pas ci/là/là-bas)
      pour personnes ET choses ; verbe directionnel 나가다 (calque de 들어가다) ; interrogatifs 무슨/어느 ;
      + note de polysémie sur l'HOMOGRAPHE 위 (estomac ↔ au-dessus — le coréen est ambigu, pas le français). */
@@ -73,7 +72,50 @@ const GLOSS_FIX = {
      le jumeau « stature d'une personne » est déjà marqué dans le seed) */
   "안":"Intérieur, dedans (espace délimité — contraire de dehors)",
   "속":"Intérieur, dedans (le fond des choses : ventre, cœur, contenu)",
-  "크기":"Taille, dimension (grandeur d'un objet)"
+  "크기":"Taille, dimension (grandeur d'un objet)",
+  /* v150 : rapports 07/08 (« quelle différence avec 밑 »), 10/08 (« il faut mieux distinguer,
+     l'autre était juste aussi » — DEUX réponses réellement correctes) et 17/08 (paire
+     adjectif / verbe en -아·어하다). Gloses 100 % françaises : ni hangul ni romanisation, ces
+     textes servent d'ÉNONCÉ en production FR→KR. */
+  "아래":"Le bas, en dessous (position plus basse sur un axe : étage, rang, ligne)",
+  "밑":"Le dessous, la face inférieure (juste sous un objet, le fond)",
+  "아래에":"En dessous, plus bas (situé à un niveau inférieur)",
+  "밑에":"Sous, juste en dessous de (au contact ou directement sous)",
+  "또":"Encore (une fois de plus — la même chose se reproduit)",
+  "다시":"De nouveau (en recommençant, en reprenant depuis le début)",
+  "또다시":"Encore une fois de plus (insistance sur la répétition)",
+  /* famille adjectif d'émotion (état ressenti, décrit aussi une chose) / verbe d'action en
+     -아·어하다 (manifester l'émotion, prend un complément, sert pour la 3e personne) : les six
+     paires du deck reçoivent le même discriminant, la confusion est systématique. */
+  "슬프다":"Être triste (état ressenti ; décrit aussi une chose : un film triste)",
+  "슬퍼하다":"S'attrister, manifester du chagrin (verbe d'action — le chagrin d'autrui)",
+  "기쁘다":"Être content, joyeux (état ressenti)",
+  "기뻐하다":"Se réjouir, manifester sa joie (verbe d'action — la joie d'autrui)",
+  "무섭다":"Faire peur, être effrayant (ou : avoir peur — état ressenti)",
+  "무서워하다":"Redouter, avoir peur de (verbe d'action, avec un complément)",
+  "좋다":"Être bon, plaire (état : c'est bien, ça me plaît)",
+  "좋아하다":"Aimer, apprécier (verbe d'action, avec un complément)",
+  "싫다":"Déplaire, être pénible (état : ça me déplaît)",
+  "싫어하다":"Détester, ne pas aimer (verbe d'action, avec un complément)",
+  "부럽다":"Être enviable, faire envie (état : ça me fait envie)",
+  "부러워하다":"Envier, jalouser (verbe d'action — l'envie d'autrui)",
+  /* v150 : collisions ACTIVES restantes — gloses françaises strictement identiques sur des
+     cartes déjà étudiées (scan du seed après application de cette table). En production, deux
+     cartes portant le même énoncé rendent une des deux réponses injustement fausse. */
+  "이야기":"Histoire, récit (forme pleine)",
+  "얘기":"Histoire, récit (forme contractée, à l'oral)",
+  "자다":"Dormir (le verbe courant)",
+  "잠자다":"Dormir d'un sommeil (tournure imagée, plus littéraire)",
+  "식당":"Restaurant, salle à manger (le mot de tous les jours ; aussi la cantine)",
+  "음식점":"Établissement de restauration (terme général des enseignes)",
+  "색깔":"Couleur (le mot courant, la teinte concrète)",
+  "색":"Couleur (forme brève, qui sert à composer les noms de couleurs)",
+  "핸드폰":"Téléphone portable (registre familier, à l'oral)",
+  "휴대폰":"Téléphone portable (mot standard, écrit et officiel)",
+  "요리법":"Méthode de cuisine, façon de préparer un plat",
+  "레시피":"Recette de cuisine (la fiche : ingrédients et étapes)",
+  "많다":"Être nombreux, y en avoir beaucoup (verbe d'état)",
+  "많이":"Beaucoup (adverbe : modifie un verbe)"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 
