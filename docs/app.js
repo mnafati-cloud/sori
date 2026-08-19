@@ -115,7 +115,11 @@ const GLOSS_FIX = {
   "요리법":"Méthode de cuisine, façon de préparer un plat",
   "레시피":"Recette de cuisine (la fiche : ingrédients et étapes)",
   "많다":"Être nombreux, y en avoir beaucoup (verbe d'état)",
-  "많이":"Beaucoup (adverbe : modifie un verbe)"
+  "많이":"Beaucoup (adverbe : modifie un verbe)",
+  /* v151 : rapport 19/08 — adverbe de FRÉQUENCE confondu avec un adverbe de DEGRÉ ; le
+     premier collisionnait en plus avec les deux autres « toujours » déjà discriminés. */
+  "늘":"Toujours, sans arrêt (fréquence : jour après jour, sans interruption)",
+  "완전히":"Complètement, entièrement (degré : à 100 %, pas à moitié)"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 
@@ -944,6 +948,7 @@ function openGramex(){
     profile: (window.GRAMMAR_TAGS ? grammarProfileNow() : null),
     sentences: gramexCorpus(),
     lex: gramexLex(),
+    knownWords: knownWordSet(),
     speak: (txt)=>{ if(!ST.set.mute) ttsSpeak(txt); },
     onAnswer: (ok)=>logAnswer(ok, "grammaire")
   }));
@@ -990,13 +995,28 @@ function renderExercicesSuite(){
    phrases du deck croisées avec leurs tags (grammar-data.js) + lexique des lemmes (mots du
    deck) pour la vérification de radical des phrases à trou (conservateur, cf. gramex.js) */
 let GRAMEX_CORPUS = null, GRAMEX_LEX = null;
+/* v151 : le corpus est restreint aux phrases DÉJÀ ÉTUDIÉES (rapport 18/08 : « je trouve la
+   grammaire super dur car je ne comprends souvent même pas les mots »). Mesure du 19/08 : sur
+   les 580 phrases taguées, 182 seulement étaient dans le deck vu — donc 2 exercices sur 3
+   tombaient sur du vocabulaire jamais rencontré. Repli sur le corpus entier tant que le deck
+   vu est trop maigre (sinon l'exercice n'aurait pas assez de matière). Non mémoïsé : le stock
+   de phrases vues grandit en cours de session. */
 function gramexCorpus(){
-  if(GRAMEX_CORPUS) return GRAMEX_CORPUS;
   const tags = window.GRAMMAR_TAGS || {};
-  GRAMEX_CORPUS = SEED.items
-    .filter(it => it.type === "phrase" && tags[it.id] && tags[it.id].length)
-    .map(it => ({ id: it.id, kr: it.kr, fr: it.fr, tags: tags[it.id] }));
-  return GRAMEX_CORPUS;
+  if(!GRAMEX_CORPUS){
+    GRAMEX_CORPUS = SEED.items
+      .filter(it => it.type === "phrase" && tags[it.id] && tags[it.id].length)
+      .map(it => ({ id: it.id, kr: it.kr, fr: it.fr, tags: tags[it.id] }));
+  }
+  const vues = GRAMEX_CORPUS.filter(s => { const d = ST.items[s.id]; return d && d.d; });
+  return vues.length >= 40 ? vues : GRAMEX_CORPUS;
+}
+/* mots du deck que l'utilisateur a déjà rencontrés — sert à gramex pour ne conjuguer que
+   des verbes connus (le module retombe sur son répertoire complet si le filtre est trop dur) */
+function knownWordSet(){
+  const s = new Set();
+  SEED.items.forEach(it => { const d = ST.items[it.id]; if(it.type === "word" && d && d.d) s.add(it.kr); });
+  return s;
 }
 function gramexLex(){
   if(GRAMEX_LEX) return GRAMEX_LEX;

@@ -102,6 +102,30 @@ test("makeConj : 4 options uniques, exactement une bonne, adjectifs exclus de �
   }
 });
 
+test("makeConj : le filtre de verbes connus s'applique, et se désarme s'il est trop dur (v151)", () => {
+  /* verbes connus assez nombreux (>= 8) -> on ne doit tirer QUE ceux-là */
+  const connus = P.VERBS.slice(0, 14).map(v => v.b);
+  const set = new Set(connus);
+  const rng = lcg(7);
+  for(let k = 0; k < 200; k++){
+    const q = P.makeConj(rng, null, set);
+    assert.ok(set.has(q.base), `${q.base} n'est pas dans les verbes connus`);
+  }
+  /* filtre trop restrictif (< 8 rescapés) -> repli sur le répertoire complet, jamais d'échec */
+  const maigre = new Set(P.VERBS.slice(0, 3).map(v => v.b));
+  const rng2 = lcg(9);
+  let horsFiltre = 0;
+  for(let k = 0; k < 120; k++){
+    const q = P.makeConj(rng2, null, maigre);
+    assert.ok(q && q.options.length === 4);
+    if(!maigre.has(q.base)) horsFiltre++;
+  }
+  assert.ok(horsFiltre > 0, "le repli doit rouvrir le répertoire complet");
+  /* absence de filtre = comportement historique, à l'identique */
+  assert.deepEqual(P.makeConj(lcg(5)), P.makeConj(lcg(5), null, null));
+  assert.deepEqual(P.makeConj(lcg(5)), P.makeConj(lcg(5), null, undefined));
+});
+
 /* ===== à trou ===== */
 const LEX = new Set(["가다", "있다", "먹다", "자다", "살다", "바쁘다", "비싸다", "돌다"]);
 const SENTS = [

@@ -239,7 +239,7 @@
 
   /* makeConj(rng[, profile]) → question de conjugaison. Cible en priorité les formes dont la
      structure liée n'est pas « acquise » dans le profil (poids ×3). */
-  function makeConj(rng, profile){
+  function makeConj(rng, profile, knownVerbs){
     rng = rng || Math.random;
     var pool = [];
     FORMS.forEach(function(f){
@@ -249,6 +249,13 @@
     });
     var form = pool[Math.floor(rng() * pool.length)];
     var verbs = form.verbsOnly ? VERBS.filter(function(v){ return !v.adj; }) : VERBS;
+    /* v151 : ne conjuguer que des verbes DÉJÀ ÉTUDIÉS quand l'appelant sait lesquels
+       (rapport 18/08 : « je ne comprends souvent même pas les mots »). Repli sur la liste
+       complète si le filtre laisse trop peu de matière : un exercice pauvre serait pire. */
+    if(knownVerbs && typeof knownVerbs.has === "function"){
+      var kept = verbs.filter(function(v){ return knownVerbs.has(v.b); });
+      if(kept.length >= 8) verbs = kept;
+    }
     var v = verbs[Math.floor(rng() * verbs.length)];
     var correct = conj(v.b, v.cls, form.id);
     var wrongs = wrongForms(v.b, v.cls, form.id, correct);   /* ≥3 garanti (repli cross-forme, testé) */
@@ -443,6 +450,16 @@
     ".gramex-ask{color:var(--txt); font-size:.98rem; margin:10px 0 0}",
     ".gramex-ask b{font-family:var(--kr-display)}",
     ".gramex-note{color:var(--dim); font-size:.9rem; margin:10px 0 0; line-height:1.45}",
+    ".gramex-note b{font-family:var(--kr-display); color:var(--txt)}",
+    /* v151 : bloc de correction — reste affiché jusqu'au clic sur « Continuer » */
+    ".gramex-fb{margin-top:14px; padding-top:12px; border-top:1px solid var(--line); text-align:left}",
+    ".gramex-verdict{color:var(--dim); font-size:.95rem; margin:0}",
+    ".gramex-verdict b{font-family:var(--kr-display); font-size:1.12rem}",
+    ".gramex-verdict.vok b{color:var(--ok)}",
+    ".gramex-verdict.vko b{color:var(--ko)}",
+    ".gramex-sent{font-family:var(--kr-display); font-size:1.1rem; color:var(--txt);",
+    "  margin:10px 0 0; word-break:keep-all; line-height:1.5}",
+    ".gramex-next{margin-top:16px; width:100%}",
     ".gramex-warn{color:var(--warn); font-size:.85rem; margin-top:8px}",
     ".gramex-last{color:var(--dim); font-size:.9rem; margin:12px 0 0}"
   ].join("\n");
@@ -462,13 +479,18 @@
     var profile  = opts.profile || null;
     var structs  = opts.structs || [];
     var clozePool = prepCloze(opts.sentences || [], opts.lex || null);
+    /* v151 : mots que l'utilisateur a déjà étudiés (fourni par app.js) — sert à ne tirer que
+       des verbes connus. Absent → comportement d'avant, tout le répertoire. */
+    var known = (opts.knownWords && typeof opts.knownWords.has === "function") ? opts.knownWords : null;
+    var STRUCT_BY = {};
+    structs.forEach(function(st){ STRUCT_BY[st.id] = st; });
     injectStyles();
     var card = el('<div class="card center gramex-card"></div>');
     var N = 10;
     var enabled = { conj: true, cloze: clozePool.length > 0, spot: true };
 
     function make(type){
-      if(type === "conj")  return makeConj(rng, profile);
+      if(type === "conj")  return makeConj(rng, profile, known);
       if(type === "cloze") return makeCloze(clozePool, rng, profile);
       return makeSpot(opts.sentences || [], structs, rng, profile);
     }
@@ -542,20 +564,47 @@
             box.querySelectorAll("button").forEach(function(x){ x.disabled = true; });
             b.classList.add(o.ok ? "good" : "bad");
             if(!o.ok && goodBtn) goodBtn.classList.add("good");
-            if(q.type === "conj" && q.note)
-              card.appendChild(el('<p class="gramex-note">' + esc(q.note) + "</p>"));
-            if(q.type === "spot" && q.ex)
-              card.appendChild(el('<p class="gramex-note">Exemple : <b>' + esc(q.ex) + "</b></p>"));
             /* entendre la bonne réponse (mot conjugué ou phrase complète) */
             speak(q.type === "conj" ? q.answer : q.kr);
             if(o.ok) score++;
             onAnswer(!!o.ok);
             pos++;
-            setTimeout(next, o.ok ? 1300 : 2600);
+            paintFeedback(q, !!o.ok);
           };
           box.appendChild(b);
         });
         card.appendChild(box);
+      }
+
+      /* v151 : la correction RESTE à l'écran jusqu'au clic sur « Continuer ». L'avance
+         automatique (1,3 s si juste, 2,6 s si faux) ne laissait le temps ni de lire la bonne
+         réponse ni de comprendre pourquoi — rapport in-app du 18/08. Les trois modes
+         expliquent désormais : règle de conjugaison, phrase complète reconstituée, sens de
+         la structure. Le mode « à trou » n'affichait AUCUNE explication auparavant. */
+      function paintFeedback(q, ok){
+        var fb = el('<div class="gramex-fb"></div>');
+        fb.appendChild(el('<p class="gramex-verdict ' + (ok ? "vok" : "vko") + '">' +
+          (ok ? "Juste" : "Faux") + ' — <b>' + esc(q.answer) + "</b></p>"));
+        if(q.type === "conj"){
+          fb.appendChild(el('<p class="gramex-note">' + esc(q.formLabel) + " de « " +
+            esc(q.base) + " » — " + esc(q.fr) + "</p>"));
+          if(q.note) fb.appendChild(el('<p class="gramex-note">' + esc(q.note) + "</p>"));
+        } else if(q.type === "cloze"){
+          fb.appendChild(el('<p class="gramex-sent">' + esc(q.kr) + "</p>"));
+          fb.appendChild(el('<p class="gramex-note">' + esc(q.fr) + "</p>"));
+          var sc = STRUCT_BY[q.structId];
+          if(sc) fb.appendChild(el('<p class="gramex-note">Structure : <b>' + esc(sc.fr) + "</b>" +
+            (sc.ex ? " — exemple : <b>" + esc(sc.ex) + "</b>" : "") + "</p>"));
+        } else {
+          var ss = STRUCT_BY[q.structId];
+          var ex = (ss && ss.ex) || q.ex || "";
+          if(ex) fb.appendChild(el('<p class="gramex-note">Exemple : <b>' + esc(ex) + "</b></p>"));
+        }
+        var go = el('<button class="btn gramex-next">' +
+          (pos >= N ? "Voir le score" : "Continuer") + "</button>");
+        go.onclick = next;
+        fb.appendChild(go);
+        card.appendChild(fb);
       }
 
       function paintEnd(){
