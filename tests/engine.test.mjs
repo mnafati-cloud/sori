@@ -166,6 +166,36 @@ function item(id, patch) {
 }
 const OPTS = () => ({ random: rng(42) });
 
+test("distracteurs : deux leurres ne portent JAMAIS le même texte affiché (v152)", () => {
+  /* f1 « riz » et f4 « riz » : le jumeau de la RÉPONSE était déjà écarté. Ici la question est
+     « eau », donc f1 et f4 sont tous deux des leurres légitimes — mais afficher deux fois
+     « riz » donne visiblement deux réponses identiques (rapport 20/08). Un seul doit passer. */
+  for (let seed = 1; seed <= 40; seed++) {
+    const out = pickDistractors(item("f2"), 3, "fr", SEED_BY_ID, ALL_IDS, { random: rng(seed) });
+    const labels = out.map(id => SEED_BY_ID[id].fr);
+    assert.equal(new Set(labels).size, labels.length, `texte affiché en double : ${labels}`);
+    assert.ok(!labels.includes("eau"), "la réponse ne figure jamais parmi les leurres");
+  }
+});
+
+test("distracteurs : la comparaison des textes ignore casse et ponctuation (v152)", () => {
+  /* cas réel du 20/08 : « Homme (sexe masculin) » et « Homme, sexe masculin » proposés
+     ensemble — l'utilisateur coche l'un, l'app compte faux. Textes distincts, sens identique. */
+  const BY = {}, IDS = [];
+  [ { id:"a", fr:"Homme (sexe masculin)", kr:"남자", type:"word", theme:"p" },
+    { id:"b", fr:"Homme, sexe masculin",  kr:"남성", type:"word", theme:"p" },
+    { id:"c", fr:"Femme",                 kr:"여자", type:"word", theme:"p" },
+    { id:"d", fr:"Enfant",                kr:"아이", type:"word", theme:"p" },
+    { id:"e", fr:"Chien",                 kr:"개",   type:"word", theme:"p" },
+  ].forEach(o => { BY[o.id] = o; IDS.push(o.id); });
+  const cible = Object.assign({}, BY.c, { stage: 3, conf: [] });
+  for (let seed = 1; seed <= 40; seed++) {
+    const out = new Set(pickDistractors(cible, 3, "fr", BY, IDS, { random: rng(seed) }));
+    assert.ok(!(out.has("a") && out.has("b")),
+      "« Homme (sexe masculin) » et « Homme, sexe masculin » ne peuvent pas coexister");
+  }
+});
+
 test("distracteurs : jamais l'item lui-même, jamais deux fois le même id", () => {
   for (let seed = 1; seed <= 20; seed++) {
     const out = pickDistractors(item("f1"), 3, "fr", SEED_BY_ID, ALL_IDS, { random: rng(seed) });

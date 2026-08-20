@@ -390,7 +390,7 @@
   }
 
   /* ================= repérage ================= */
-  function makeSpot(sentences, structs, rng, profile){
+  function makeSpot(sentences, structs, rng, profile, detect){
     rng = rng || Math.random;
     var tagged = (sentences || []).filter(function(s){ return s && s.tags && s.tags.length && s.kr && s.fr; });
     if(!tagged.length || !structs || !structs.length) return null;
@@ -401,7 +401,19 @@
     var target = (hot.length ? hot : inS)[Math.floor(rng() * (hot.length ? hot.length : inS.length))];
     var byId = {}; structs.forEach(function(st){ byId[st.id] = st; });
     if(!byId[target]) return null;
-    var others = structs.filter(function(st){ return inS.indexOf(st.id) < 0; });
+    /* v152 : les leurres sont les structures ABSENTES de la phrase — mais « absente » se
+       jugeait sur les seuls tags figés, forcément incomplets. Une structure réellement écrite
+       dans la phrase pouvait donc être proposée comme leurre, et l'utilisateur qui la lisait
+       était compté faux (rapport 20/08 : « je ne comprends pas, je vois bien 려면 »). On
+       ajoute ici les structures DÉTECTÉES dans le texte. Sens sûr : un faux positif retire un
+       leurre, il n'en fabrique jamais un mauvais. La cible, elle, reste issue des tags. */
+    var present = inS.slice();
+    if(typeof detect === "function"){
+      try{
+        (detect(s.kr) || []).forEach(function(t){ if(present.indexOf(t) < 0) present.push(t); });
+      }catch(e){ /* détection indisponible : on retombe sur les tags seuls */ }
+    }
+    var others = structs.filter(function(st){ return present.indexOf(st.id) < 0; });
     shuffle(others, rng);
     var options = [{ label: byId[target].fr, ok: true }];
     for(var i = 0; i < others.length && options.length < 4; i++)
@@ -492,7 +504,7 @@
     function make(type){
       if(type === "conj")  return makeConj(rng, profile, known);
       if(type === "cloze") return makeCloze(clozePool, rng, profile);
-      return makeSpot(opts.sentences || [], structs, rng, profile);
+      return makeSpot(opts.sentences || [], structs, rng, profile, opts.detect);
     }
 
     function paintConfig(lastScore){

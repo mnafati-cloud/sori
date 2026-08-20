@@ -126,6 +126,37 @@ test("makeConj : le filtre de verbes connus s'applique, et se désarme s'il est 
   assert.deepEqual(P.makeConj(lcg(5)), P.makeConj(lcg(5), null, undefined));
 });
 
+test("makeSpot : une structure PRÉSENTE dans la phrase n'est jamais un leurre (v152)", () => {
+  const STRUCTS = [
+    { id:"myeon",  fr:"(으)면 — si",            ex:"시간이 있으면 오세요" },
+    { id:"ryeomyeon", fr:"(으)려면 — pour",      ex:"가려면 지금 나가세요" },
+    { id:"jiman",  fr:"-지만 — mais",            ex:"비싸지만 좋아요" },
+    { id:"go",     fr:"-고 — et/puis",           ex:"밥을 먹고 자요" },
+    { id:"aseo",   fr:"아서/어서 — cause",       ex:"바빠서 못 갔어요" }
+  ];
+  /* la phrase CONTIENT 려면, mais ses tags figés l'ont oublié : sans détection, la structure
+     « (으)려면 » pouvait être proposée comme leurre alors qu'elle est sous les yeux. */
+  const SENTS = [{ id:"x1", kr:"한국에 가려면 비자가 필요하지만 어렵지 않아요.",
+                   fr:"Pour aller en Corée il faut un visa, mais ce n'est pas difficile.",
+                   tags:["jiman"] }];
+  const detect = () => ["jiman", "ryeomyeon"];
+  const rng = lcg(3);
+  for(let k = 0; k < 60; k++){
+    const q = P.makeSpot(SENTS, STRUCTS, rng, null, detect);
+    assert.ok(q, "une question doit être produite");
+    assert.ok(!q.options.some(o => !o.ok && o.label === "(으)려면 — pour"),
+      "une structure présente dans la phrase ne peut pas être un leurre");
+    assert.equal(q.options.filter(o => o.ok).length, 1);
+  }
+  /* sans détecteur : comportement historique inchangé (les tags seuls font foi) */
+  const q0 = P.makeSpot(SENTS, STRUCTS, lcg(3), null);
+  const q1 = P.makeSpot(SENTS, STRUCTS, lcg(3), null, undefined);
+  assert.deepEqual(q0, q1);
+  /* un détecteur qui explose ne casse pas l'exercice */
+  const boom = () => { throw new Error("indisponible"); };
+  assert.ok(P.makeSpot(SENTS, STRUCTS, lcg(3), null, boom));
+});
+
 /* ===== à trou ===== */
 const LEX = new Set(["가다", "있다", "먹다", "자다", "살다", "바쁘다", "비싸다", "돌다"]);
 const SENTS = [

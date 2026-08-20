@@ -119,7 +119,16 @@ const GLOSS_FIX = {
   /* v151 : rapport 19/08 — adverbe de FRÉQUENCE confondu avec un adverbe de DEGRÉ ; le
      premier collisionnait en plus avec les deux autres « toujours » déjà discriminés. */
   "늘":"Toujours, sans arrêt (fréquence : jour après jour, sans interruption)",
-  "완전히":"Complètement, entièrement (degré : à 100 %, pas à moitié)"
+  "완전히":"Complètement, entièrement (degré : à 100 %, pas à moitié)",
+  /* v152 : rapports du 20/08. Les deux premières paires portaient des gloses que l'utilisateur
+     lisait — à raison — comme identiques ; le garde-fou de pickDistractors les empêche
+     désormais de se retrouver dans le même QCM, ces gloses les séparent pour de bon. */
+  "남자":"Homme (l'individu : un homme, un type)",
+  "남성":"Le masculin, le sexe masculin (catégorie, registre formel)",
+  "자판기":"Distributeur automatique (le mot courant, forme brève)",
+  "자동판매기":"Distributeur automatique (appellation complète, officielle)",
+  "변하다":"Changer de nature, se transformer (la chose elle-même devient autre)",
+  "바뀌다":"Être remplacé, permuté (une chose cède la place à une autre)"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 
@@ -949,6 +958,9 @@ function openGramex(){
     sentences: gramexCorpus(),
     lex: gramexLex(),
     knownWords: knownWordSet(),
+    /* v152 : détection réelle des structures d'une phrase — empêche de proposer comme leurre
+       une structure qui y figure bel et bien (les tags figés sont incomplets) */
+    detect: (kr)=>{ try{ return SORI_GRAMMAR.tagStructures(kr, gramexLex()); }catch(_){ return []; } },
     speak: (txt)=>{ if(!ST.set.mute) ttsSpeak(txt); },
     onAnswer: (ok)=>logAnswer(ok, "grammaire")
   }));

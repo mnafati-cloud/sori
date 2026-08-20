@@ -177,10 +177,24 @@
      Cascade : confusions (dès stage 2) -> même thème/type -> même type.
      Jamais l'item lui-même, jamais un id deux fois, jamais la même valeur
      de champ que l'item. opts.random : RNG injectable (tests). */
+  /* v152 : deux options d'un QCM ne doivent jamais AFFICHER le même texte. Le filtre ne
+     comparait chaque candidat qu'à la bonne réponse, jamais aux leurres déjà retenus : deux
+     mots de glose identique passaient tous les deux (rapport 20/08 : « je vois 2 fois
+     distributeur automatique »). La comparaison porte sur une forme normalisée — minuscules,
+     ponctuation ignorée — pour attraper aussi « Homme (sexe masculin) » vs « Homme, sexe
+     masculin », que l'utilisateur lit à juste titre comme deux bonnes réponses. */
+  function sameLabel(s){
+    return String(s == null ? "" : s).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+  }
   function pickDistractors(it, n, field, seedById, allIds, opts){
     const rnd = (opts && opts.random) || Math.random;
     const out=[], seen=new Set([it.id]);
-    const push = id => { const o=seedById[id]; if(o && !seen.has(id) && o[field]!==it[field==="fr"?"fr":"kr"]){ out.push(id); seen.add(id);} };
+    const used=new Set([sameLabel(it[field==="fr"?"fr":"kr"])]);
+    const push = id => { const o=seedById[id]; if(!o || seen.has(id)) return;
+      seen.add(id);                                   // candidat examiné : ne pas le re-tirer
+      const lab = sameLabel(o[field]);
+      if(!lab || used.has(lab)) return;               // même texte qu'une option déjà retenue
+      out.push(id); used.add(lab); };
     if(it.stage>=2) (it.conf||[]).forEach(id=>{ if(out.length<n) push(id); });
     if(out.length<n){
       const theme = allIds.filter(id=>{ const o=seedById[id]; return o.theme===it.theme && o.type===it.type; });
