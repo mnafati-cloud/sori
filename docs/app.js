@@ -506,14 +506,6 @@ function wireReport(){
 /* bouton muet global (l'app reste 100% utilisable sans audio) */
 /* v69 : haut-parleur en SVG (fini l'émoji 🔊 dans le chrome) */
 const SVG_SPK = '<svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/></svg>';
-const SVG_SPK_OFF = '<svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M17 9.5l5 5M22 9.5l-5 5"/></svg>';
-function wireMute(){
-  const b = document.getElementById("mute");
-  if(!b) return;
-  const paint = ()=>{ b.innerHTML = ST.set.mute ? SVG_SPK_OFF : SVG_SPK; b.title = ST.set.mute ? "Réactiver le son" : "Couper le son"; };
-  b.onclick = ()=>{ ST.set.mute = !ST.set.mute; if(ST.set.mute) try{speechSynthesis.cancel();}catch(e){} save(); paint(); };
-  paint();
-}
 /* roue ⚙️ du header : ouvre les Réglages en surcouche depuis n'importe quel onglet */
 function wireSettings(){
   const b = document.getElementById("settings");
@@ -862,6 +854,10 @@ let TAB = "progres";   // accueil = Progrès (lanceur : bouton Réviser + niveau
 let NAV = false;
 document.getElementById("tabs").addEventListener("click", e=>{
   const b = e.target.closest("button"); if(!b) return;
+  /* v153 : « Quitter » a disparu de l'écran de révision — c'est l'onglet qui fait sortir.
+     On persiste donc la session ici (ce que faisait leaveReview), pour que « ▶ Réviser »
+     reprenne exactement où on s'était arrêté, même sans avoir répondu à une seule carte. */
+  if(TAB === "review" && b.dataset.tab !== "review" && typeof Q !== "undefined" && Q) saveSess();
   TAB = b.dataset.tab;
   document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x===b));
   NAV = true; render(); NAV = false;
@@ -907,6 +903,11 @@ window.addEventListener("resize", queueTakbonFit);
 if(document.fonts && document.fonts.ready) document.fonts.ready.then(queueTakbonFit);
 function render(){
   $screen.innerHTML="";
+  /* v153 : le chrome du haut disparaît PENDANT une carte de révision (rapports du 20/08 :
+     marque, son, niveau, multiplicateur et « Quitter » jugés inutiles là). renderReview()
+     repose la classe sur le seul chemin « une carte est affichée » — le lanceur de l'onglet
+     Réviser garde donc sa barre, et avec elle l'accès aux Réglages et au dictionnaire. */
+  document.body.classList.remove("in-review");
   if(TAB==="review"){ renderReview(); armCooldown(); }
   else if(TAB==="exercices") renderExercices();
   else renderStats();   // "progres" (accueil)
@@ -1145,14 +1146,6 @@ function saveSess(){
     fp:[...FAILPOS], co:[...CONSOL], rp:[...REPRISE_IDS] };   // v68/v71 : sinon un kill transforme les vues blanches en révisions réelles
   save();
 }
-/* quitter la révision en cours → retour à l'accueil. La session est CONSERVÉE
-   (saveSess), donc « ▶ Réviser » reprend exactement où on s'était arrêté. */
-function leaveReview(){
-  saveSess();
-  TAB = "progres";
-  document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x.dataset.tab==="progres"));
-  NAV = true; render(); NAV = false;
-}
 function renderReview(){
   if(!Q){
     const s = ST.sess;
@@ -1253,17 +1246,16 @@ function renderReview(){
       <div class="dim"><span class="rev-count">${QPOS+1} / ${Q.length}</span>
         ${it.rev?'<span class="pill stage">production</span>':(ST.set.reverse!==false && it.type==="word"?'<span class="pill">compréhension</span>':"")}
         ${it.enemy?'<span class="pill enemy">ennemie</span>':""}
-        ${REPRISE_IDS.has(it.id)?'<span class="pill">reprise</span>':""}
-        <span class="pill stage">niv ${it.stage}</span>
-        ${COMBO>=3?`<span class="pill stage">×${COMBO}</span>`:""}</div>
+        ${REPRISE_IDS.has(it.id)?'<span class="pill">reprise</span>':""}</div>
       <div class="rev-actions">
         ${UNDO?'<button class="escbtn" id="undorev" title="annuler la réponse précédente">↶</button>':""}
-        <button class="escbtn" id="quitrev" title="Quitter la révision (la progression est gardée)">Quitter</button>
+        ${ST.set.report===true?'<button class="escbtn ic" id="reprev" title="Signaler un problème"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16.5v.01"/></svg></button>':""}
       </div>
     </div></div>`);
   $screen.appendChild(head);
+  document.body.classList.add("in-review");   // v153 : une carte est à l'écran → chrome masqué
   const ub = head.querySelector("#undorev"); if(ub) ub.onclick = undoLast;   // v129 : l'undo suit l'avance auto
-  head.querySelector("#quitrev").onclick = leaveReview;
+  const rb = head.querySelector("#reprev"); if(rb) rb.onclick = openReportModal;
   EXO_T0 = Date.now();
   /* v78 : une PHRASE conjuguée (≥2 mots, PAS un bloc lexical en forme dictionnaire) passe par le
      chemin phrase — compréhension + construction par étiquettes (la grammaire est DONNÉE par les
@@ -2196,6 +2188,7 @@ function openSettings(){
     <label>Taille max de session <input type="number" id="smax" min="20" max="500" step="10" value="${ST.set.sessionMax||120}"></label>
     <label>Prioriser le kit voyage <input type="checkbox" id="kf" ${ST.set.kitFirst?"checked":""}></label>
     <label>Prononcer automatiquement <input type="checkbox" id="ap" ${ST.set.autoplay?"checked":""}></label>
+    <label title="Coupe toute la synthèse vocale et les sons de l'app. v153 : le bouton du bandeau a été retiré, le réglage vit ici.">Couper le son <input type="checkbox" id="mutechk" ${ST.set.mute?"checked":""}></label>
     <label title="Halo vermillon pulsant autour du mot en révision. Adaptée = gradué par la difficulté FSRS (la plupart des cartes restent calmes, les ennemies brûlent). Toujours = sur tous les mots.">Aura de difficulté
       <select id="aura"><option value="auto" ${(ST.set.aura||"auto")==="auto"?"selected":""}>Adaptée</option><option value="always" ${ST.set.aura==="always"?"selected":""}>Toujours</option><option value="never" ${ST.set.aura==="never"?"selected":""}>Jamais</option></select></label>
     <label title="FSRS = algorithme moderne (modèle mémoire stabilité/difficulté par carte, ~25% de révisions en moins). Classique = échelle de stades historique.">Algorithme de répétition
@@ -2272,6 +2265,8 @@ function openSettings(){
   set.querySelector("#smax").onchange= e=>{ ST.set.sessionMax=Math.max(20,+e.target.value||120); save(); };
   set.querySelector("#kf").onchange  = e=>{ ST.set.kitFirst=e.target.checked; save(); };
   set.querySelector("#ap").onchange  = e=>{ ST.set.autoplay=e.target.checked; save(); };
+  set.querySelector("#mutechk").onchange = e=>{ ST.set.mute=e.target.checked;
+    if(ST.set.mute) try{ speechSynthesis.cancel(); }catch(_){ } save(); };
   set.querySelector("#adap").onchange= e=>{ ST.set.adaptive=e.target.checked; save(); };
   set.querySelector("#sched").onchange = e=>{ ST.set.scheduler=e.target.value; save(); };
   set.querySelector("#aura").onchange = e=>{ ST.set.aura=e.target.value; save(); };
@@ -2598,7 +2593,6 @@ function importState(e){
 function esc(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
 /* go */
-wireMute();
 wireReport();
 wireSettings();
 wireDico();

@@ -181,6 +181,12 @@ h2{margin:0 0 8px; font-size:.72rem; font-weight:600; letter-spacing:.15em;
 .iconbtn svg{width:19px; height:19px; stroke:currentColor; stroke-width:1.6; fill:none;
   stroke-linecap:round; stroke-linejoin:round; display:block}
 .iconbtn:hover{color:var(--txt)}
+/* v153 : pendant une carte de révision, le chrome du haut s'efface — il ne reste que la
+   ligne « 63 / 321 · ↶ · signaler » posée par renderReview (rapports du 20/08). */
+body.in-review #topbar{display:none}
+.escbtn.ic{padding:4px 8px; line-height:0}
+.escbtn.ic svg{width:16px; height:16px; stroke:currentColor; stroke-width:1.6; fill:none;
+  stroke-linecap:round; stroke-linejoin:round; display:block}
 
 /* encart trivia : rangé, pas décoré */
 .trivia{margin-top:14px; padding:13px 15px; background:var(--panel2);
