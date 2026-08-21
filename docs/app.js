@@ -1248,6 +1248,7 @@ function renderReview(){
         ${it.enemy?'<span class="pill enemy">ennemie</span>':""}
         ${REPRISE_IDS.has(it.id)?'<span class="pill">reprise</span>':""}</div>
       <div class="rev-actions">
+        ${window.SORI_SEARCH?'<button class="escbtn ic" id="dicorev" title="Dictionnaire"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>':""}
         ${UNDO?'<button class="escbtn" id="undorev" title="annuler la réponse précédente">↶</button>':""}
         ${ST.set.report===true?'<button class="escbtn ic" id="reprev" title="Signaler un problème"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16.5v.01"/></svg></button>':""}
       </div>
@@ -1256,6 +1257,10 @@ function renderReview(){
   document.body.classList.add("in-review");   // v153 : une carte est à l'écran → chrome masqué
   const ub = head.querySelector("#undorev"); if(ub) ub.onclick = undoLast;   // v129 : l'undo suit l'avance auto
   const rb = head.querySelector("#reprev"); if(rb) rb.onclick = openReportModal;
+  /* v155 : la loupe accompagne la ligne de révision — masquer tout le bandeau (v153) rendait
+     le dictionnaire inatteignable pendant une carte, alors que c'est là qu'on en a besoin
+     (lever un doute sur un mot sans quitter la file). */
+  const db = head.querySelector("#dicorev"); if(db) db.onclick = openDico;
   EXO_T0 = Date.now();
   /* v78 : une PHRASE conjuguée (≥2 mots, PAS un bloc lexical en forme dictionnaire) passe par le
      chemin phrase — compréhension + construction par étiquettes (la grammaire est DONNÉE par les
