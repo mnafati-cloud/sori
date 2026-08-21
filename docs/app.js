@@ -1249,6 +1249,7 @@ function renderReview(){
         ${REPRISE_IDS.has(it.id)?'<span class="pill">reprise</span>':""}</div>
       <div class="rev-actions">
         ${window.SORI_SEARCH?'<button class="escbtn ic" id="dicorev" title="Dictionnaire"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>':""}
+        <button class="escbtn ic" id="setrev" title="Réglages"><svg viewBox="0 0 24 24"><path d="M4 8h10M4 16h7"/><circle cx="17" cy="8" r="2.4"/><circle cx="14" cy="16" r="2.4"/></svg></button>
         ${UNDO?'<button class="escbtn" id="undorev" title="annuler la réponse précédente">↶</button>':""}
         ${ST.set.report===true?'<button class="escbtn ic" id="reprev" title="Signaler un problème"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16.5v.01"/></svg></button>':""}
       </div>
@@ -1261,6 +1262,7 @@ function renderReview(){
      le dictionnaire inatteignable pendant une carte, alors que c'est là qu'on en a besoin
      (lever un doute sur un mot sans quitter la file). */
   const db = head.querySelector("#dicorev"); if(db) db.onclick = openDico;
+  const sb = head.querySelector("#setrev");  if(sb) sb.onclick = openSettings;   // v156
   EXO_T0 = Date.now();
   /* v78 : une PHRASE conjuguée (≥2 mots, PAS un bloc lexical en forme dictionnaire) passe par le
      chemin phrase — compréhension + construction par étiquettes (la grammaire est DONNÉE par les
