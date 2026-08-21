@@ -332,8 +332,9 @@
 
       function paintExercise(ex){
         card.innerHTML = "";
-        card.appendChild(el('<div class="dim">Nombre ' + (pos + 1) + " / " + N +
-          " — " + esc(MODE_LABEL[ex.mode]) + "</div>"));
+        /* v154 : « Nombre » retiré — même forme qu'en révision (« 3 / 10 · Dates ») */
+        card.appendChild(el('<div class="dim">' + (pos + 1) + " / " + N +
+          " · " + esc(MODE_LABEL[ex.mode]) + "</div>"));
         var hear = el('<button class="num-speak" title="réécouter"><svg viewBox="0 0 24 24" style="width:34px;height:34px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/></svg></button>');
         hear.onclick = function(){ speak(ex.hangul); };
         card.appendChild(hear);

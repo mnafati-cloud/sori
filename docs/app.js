@@ -1736,8 +1736,9 @@ function exoBuild(it){
   const tokens = answer.split(" ");
   const pool = shuffle(tokens.map((w,i)=>({w, k:i})));
   const built = [];
+  /* v154 : consigne « Construis la phrase » retirée — les mots à assembler et la zone en
+     pointillés disent déjà tout (les QCM et les Rappel étaient nus depuis v115/v116). */
   const card = el(`<div class="card center">
-    <div class="dim">Construis la phrase</div>
     <div class="big-fr">${esc(maskAnswer(it.fr, it.kr))}</div>
     <div class="built"></div>
     <div class="pool"></div>
@@ -1745,7 +1746,7 @@ function exoBuild(it){
   const $built = card.querySelector(".built");
   const $pool  = card.querySelector(".pool");
   function paint(){
-    $built.innerHTML = built.length ? "" : `<span class="dim">touche les mots dans l'ordre…</span>`;
+    $built.innerHTML = "";   // v154 : zone vide assumée — le cadre pointillé suffit
     built.forEach((t,idx)=>{
       const b = el(`<button class="chip">${esc(t.w)}</button>`);
       b.onclick = ()=>{ built.splice(idx,1); pool.push(t); paint(); };

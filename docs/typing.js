@@ -153,8 +153,9 @@
     var onResult = typeof opts.onResult === "function" ? opts.onResult : function(){};
     injectStyles();
 
+    /* v154 : consigne « Écris-le en coréen » retirée — le champ porte déjà « 한국어로… » en
+       filigrane, et l'utilisateur ne veut plus qu'on lui dise quoi faire à chaque carte. */
     var card = el('<div class="card center typing-card">' +
-      '<div class="dim">Écris-le en coréen</div>' +
       '<div class="big-fr">' + esc(it.fr == null ? "" : it.fr) + '</div>' +
       '<input class="typing-input" type="text" lang="ko" enterkeyhint="done"' +
       ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"' +

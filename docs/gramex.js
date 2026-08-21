@@ -553,8 +553,9 @@
 
       function paintQuestion(q){
         card.innerHTML = "";
-        card.appendChild(el('<div class="dim">Question ' + (pos + 1) + " / " + N +
-          " — " + esc(MODE_LABEL[q.type]) + "</div>"));
+        /* v154 : « Question » retiré — la progression se lit comme en révision (« 3 / 10 ») */
+        card.appendChild(el('<div class="dim">' + (pos + 1) + " / " + N +
+          " · " + esc(MODE_LABEL[q.type]) + "</div>"));
         if(q.type === "conj"){
           card.appendChild(el('<div class="gramex-q">' + esc(q.base) + "</div>"));
           card.appendChild(el('<p class="gramex-fr">' + esc(q.fr) + "</p>"));
@@ -565,7 +566,8 @@
         } else {
           card.appendChild(el('<div class="gramex-q">' + esc(q.kr) + "</div>"));
           card.appendChild(el('<p class="gramex-fr">' + esc(q.fr) + "</p>"));
-          card.appendChild(el('<p class="gramex-ask">Quelle structure contient cette phrase ?</p>'));
+          /* v154 : consigne retirée — le mode « Repérage » est déjà annoncé en tête et les
+             options sont des noms de structures : la question ne s'énonce pas deux fois. */
         }
         var box = el('<div class="opts"></div>');
         var goodBtn = null;
