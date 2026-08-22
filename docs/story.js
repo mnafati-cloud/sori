@@ -232,7 +232,7 @@
       /* les mots : du texte, pas des boutons — celui qu'on touche s'ALLUME */
       ".st-w{font:inherit;color:inherit;background:none;border:none;padding:0;margin:0;cursor:pointer;"
         + "text-shadow:inherit}",
-      ".st-w.on{color:#fff;text-shadow:var(--tk-glow2,none);text-decoration:underline;"
+      ".st-w.on{color:var(--txt);text-shadow:var(--tk-glow2,none);text-decoration:underline;"   /* v157 : #fff illisible sur thème clair */
         + "text-decoration-color:var(--seal);text-underline-offset:6px}",
 
       /* le bas : la révélation posée dans le vide, puis les deux gestes.

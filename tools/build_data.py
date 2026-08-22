@@ -229,6 +229,15 @@ meta = {
 }
 # ---------- GARDE-FOU: aucun id existant ne doit disparaître (règle d'or n°2) ----------
 new_ids = {it["id"] for it in items}
+# v157 : COLLISION d'ids — pack-/kit- tronquent sha1 à 8 hex (32 bits) : une collision serait
+# silencieuse et irréversible (deux mots fusionnés sous un même id). Improbable, mais l'assert
+# est gratuit et transforme le silence en abandon propre.
+if len(new_ids) != len(items):
+    seen, dup = set(), []
+    for it in items:
+        if it["id"] in seen: dup.append((it["id"], it["kr"]))
+        seen.add(it["id"])
+    raise SystemExit("ABANDON: collision d'ids (sha1[:8]) ! %s" % dup[:5])
 if os.path.exists(OUT):
     raw_prev = io.open(OUT, encoding="utf-8").read()
     prev = json.loads(raw_prev[raw_prev.index("{"):raw_prev.rindex(";")])

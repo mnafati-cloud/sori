@@ -374,6 +374,16 @@ input[type=checkbox]:focus-visible{outline:2px solid var(--seal); outline-offset
 /* ennemie : même halo, poussé au maximum — la distinction visuelle survit sans animation */
 #screen .aura-enemy{--au1:var(--seal); --au2:color-mix(in srgb, var(--seal) 75%, transparent)}
 
+/* v157 : bannière d'alerte persistance (échec d'écriture locale, état illisible) —
+   fixe en bas au-dessus des onglets, fermable, une seule à la fois (posée par warnBanner) */
+#warnbar{position:fixed; left:10px; right:10px; bottom:calc(74px + env(safe-area-inset-bottom));
+  z-index:70; display:flex; align-items:flex-start; gap:10px;
+  background:var(--panel2); border:1px solid var(--ko); border-radius:13px;
+  padding:12px 14px; color:var(--txt); font-size:.92rem; line-height:1.45;
+  box-shadow:0 6px 24px rgba(0,0,0,.35)}
+#warnbar button{background:none; border:none; color:var(--dim); font-size:1.25rem;
+  line-height:1; cursor:pointer; padding:0 2px; flex-shrink:0}
+
 /* tampon en surimpression : une carte vient de devenir maîtrisée / ancrée */
 .stamp-over{position:fixed; inset:0; z-index:60; display:flex; flex-direction:column; align-items:center;
   justify-content:center; gap:16px; background:color-mix(in srgb, var(--bg) 62%, transparent);

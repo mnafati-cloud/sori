@@ -158,12 +158,23 @@ function todayStr(){ const d=new Date(); return d.getFullYear()+"-"+String(d.get
 const addDays = ENGINE.addDays;
 
 const DEF_SET = ENGINE.DEF_SET;
+/* v157 : les réglages NUMÉRIQUES d'un état importé/restauré sont interpolés dans le HTML des
+   Réglages — on les force au bon type ici (un export forgé ne peut plus injecter de balisage,
+   et un réglage corrompu retombe sur son défaut au lieu de casser l'affichage). */
+function sanitizeSet(t){
+  ["newPerDay","rate","listenN","sessionMax","fsrsRetention"].forEach(k=>{
+    if(typeof t[k] !== "number" || !isFinite(t[k])) t[k] = DEF_SET[k];
+  });
+  return t;
+}
+let CORRUPT_BAK = false;   // v157 : état brut illisible copié dans sori-state-v1-bak au boot
 let ST = loadState();
 function loadState(){
   /* Migration douce : champs inconnus préservés, nouveaux réglages -> défauts.
      Une mise à jour de l'app ne perd JAMAIS la progression. */
+  let raw = null;
   try{
-    const raw = localStorage.getItem(LS_KEY);
+    raw = localStorage.getItem(LS_KEY);
     if(raw){
       const s = JSON.parse(raw);
       if(s && s.v>=1){
@@ -181,10 +192,18 @@ function loadState(){
         /* v68 : adaptive n'est lu qu'en mode legacy — le laisser à true minerait un futur rollback
            (planif adaptative silencieuse au lieu du legacy gelé). Désamorcé une fois. */
         if(s.adapMig !== 1){ if(s.set.scheduler !== "legacy") s.set.adaptive = false; s.adapMig = 1; }
+        sanitizeSet(s.set);
         return s;
       }
     }
   }catch(e){}
+  /* v157 : un état PRÉSENT mais illisible (écriture interrompue, WebView) n'est plus jeté en
+     silence — un save() partait au boot et écrasait la donnée brute, potentiellement réparable.
+     Copie dans une clé de secours + signalement (bannière + ST.errors une fois ST posé). */
+  if(raw){
+    try{ localStorage.setItem(LS_KEY + "-bak", raw); }catch(e){}
+    CORRUPT_BAK = true;
+  }
   return { v:1, items:{}, log:{}, intro:{}, rlog:[], xp:0, story:{lus:[],ouverts:[]},
            set: Object.assign({}, DEF_SET) };
 }
@@ -204,7 +223,21 @@ const SHOW_EXAM   = false;   // bilan de niveau périodique (exam.js)
    même geste fusionnent en UNE écriture (microtâche, donc avant tout événement suivant) ;
    écriture immédiate quand l'app passe en arrière-plan (kill Android sans perte). */
 let SAVE_PENDING = false;
-function saveNow(){ SAVE_PENDING = false; try{ localStorage.setItem(LS_KEY, JSON.stringify(ST)); }catch(e){} }
+/* v157 : un échec d'écriture n'est plus avalé — c'est l'UNIQUE écrivain de sori-state-v1 ;
+   s'il échoue en boucle (quota, stockage bloqué), l'utilisateur révisait pour rien jusqu'au
+   prochain kill Android. logErr est inopérant ici (même canal en panne) -> bannière directe. */
+function saveNow(){ SAVE_PENDING = false;
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(ST)); }
+  catch(e){ warnBanner("Sauvegarde locale en échec — ta progression ne s'enregistre plus sur cet appareil. Fais tout de suite une sauvegarde cloud ou un export fichier (Réglages)."); }
+}
+/* bannière d'alerte persistante, une seule à la fois, fermable — texte statique uniquement */
+function warnBanner(msg){
+  if(document.getElementById("warnbar")) return;
+  const b = el(`<div id="warnbar"><span></span><button title="fermer">×</button></div>`);
+  b.querySelector("span").textContent = msg;
+  b.querySelector("button").onclick = ()=>b.remove();
+  document.body.appendChild(b);
+}
 function save(){ if(SAVE_PENDING) return; SAVE_PENDING = true; Promise.resolve().then(()=>{ if(SAVE_PENDING) saveNow(); }); }
 addEventListener("pagehide", ()=>{ if(SAVE_PENDING) saveNow(); });
 document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState === "hidden" && SAVE_PENDING) saveNow(); });
@@ -309,7 +342,8 @@ function setItem(id, patch){
 }
 /* recto seul, ou recto + verso si le mode production est actif (réglage `reverse`).
    Tout le moteur (buildQueue/selectDue/pickNew) itère ALL_IDS → gère les cartes verso sans réécriture. */
-const ALL_IDS = (ST.set.reverse !== false) ? BASE_IDS.concat(REV_IDS) : BASE_IDS.slice();
+const REV_BOOT = ST.set.reverse !== false;   // v157 : figé au boot — ALL_IDS en dépend
+const ALL_IDS = REV_BOOT ? BASE_IDS.concat(REV_IDS) : BASE_IDS.slice();
 
 /* ================= journal & stats (télémétrie additive) =================
    Par jour : compteurs globaux ok/ko/n + par TYPE d'exercice (k), temps de
@@ -614,6 +648,8 @@ function speakEx(id, text){
   ttsSpeak(text);
 }
 function ttsSpeak(text){
+  if(ST && ST.set && ST.set.mute) return;   /* v157 : le réglage « Couper le son » coupe TOUT —
+     Nombres, Scènes et Conversation passaient par ici sans la garde que speak()/speakEx() ont */
   if(!("speechSynthesis" in window)) return;
   try{
     if(!KOVOICE) pickVoice();            // les voix chargent en asynchrone sur Android
@@ -901,13 +937,45 @@ function queueTakbonFit(){ cancelAnimationFrame(TK_FIT_RAF); TK_FIT_RAF = reques
 new MutationObserver(queueTakbonFit).observe($screen, { childList:true, subtree:true });
 window.addEventListener("resize", queueTakbonFit);
 if(document.fonts && document.fonts.ready) document.fonts.ready.then(queueTakbonFit);
+/* v157 : PORTE ÉTAT-VIERGE — le 21/08, une éviction de stockage Android a effacé la
+   progression ; l'app est repartie sur un deck vide SANS RIEN DIRE et a laissé réviser des
+   heures pour rien. Désormais, un état sans aucune trace de progression bloque l'écran sur
+   un choix explicite : restaurer (cloud ou fichier) ou repartir de zéro en connaissance de
+   cause. Ne se déclenche qu'une fois : la moindre progression (ou le choix « zéro ») l'éteint. */
+function freshGate(){
+  if(ST.freshOk === 1 || ST.xp || (ST.rlog || []).length || Object.keys(ST.items).length) return false;
+  const card = el(`<div class="card" style="border-color:var(--warn)">
+    <h2>Aucune progression sur cet appareil</h2>
+    <p class="dim" style="margin-top:8px">Si tu as déjà utilisé Sori, ta progression a probablement
+    été effacée par le téléphone (stockage) — <b>ne révise pas encore</b> : restaure d'abord ta
+    sauvegarde (cloud avec ton jeton, ou fichier exporté) depuis les Réglages.</p>
+    <div class="row" style="margin-top:14px">
+      <button class="btn" id="fg-restore">Restaurer une sauvegarde</button>
+      <button class="btn ghost" id="fg-zero">Commencer de zéro</button>
+    </div></div>`);
+  card.querySelector("#fg-restore").onclick = openSettings;
+  card.querySelector("#fg-zero").onclick = ()=>{
+    if(confirm("Vraiment repartir de zéro ? S'il existe une sauvegarde, elle restera restaurable dans les Réglages.")){
+      ST.freshOk = 1; save(); NAV = true; render(); NAV = false;
+    }
+  };
+  $screen.appendChild(card);
+  return true;
+}
 function render(){
   $screen.innerHTML="";
+  /* v157 : TEARDOWN des modules plein écran — sortir par la barre d'onglets ne passait par
+     aucun chemin interne des modules : le micro de la Conversation restait actif (voyant
+     Android allumé, audio streamé) et la classe st-on de l'Histoire fuyait sur tous les
+     onglets. Un render() est LE point de passage obligé de toute navigation. */
+  try{ if(window.SORI_CONVERSATION && SORI_CONVERSATION.stop) SORI_CONVERSATION.stop(); }catch(e){}
+  $screen.classList.remove("st-on");
   /* v153 : le chrome du haut disparaît PENDANT une carte de révision (rapports du 20/08 :
      marque, son, niveau, multiplicateur et « Quitter » jugés inutiles là). renderReview()
      repose la classe sur le seul chemin « une carte est affichée » — le lanceur de l'onglet
      Réviser garde donc sa barre, et avec elle l'accès aux Réglages et au dictionnaire. */
   document.body.classList.remove("in-review");
+  if(freshGate()) return;   /* v157 : état vierge -> proposer la restauration AVANT de réviser */
   if(TAB==="review"){ renderReview(); armCooldown(); }
   else if(TAB==="exercices") renderExercices();
   else renderStats();   // "progres" (accueil)
@@ -2003,7 +2071,7 @@ function renderStats(){
     ["Cartes maîtrisées", "Les cartes arrivées HAUT dans l'échelle de maîtrise (niv ≥ 4). Attention : monter l'échelle ≠ ancré durablement — la tuile « ancrées » à côté compte celles qui ont fait leurs preuves ; l'écart entre les deux, c'est ce qui reste à consolider."],
     ["Ancrées", "Les cartes maîtrisées dont l'intervalle a atteint 2 SEMAINES ou plus : tu les as retrouvées après de longs écarts sans les revoir — la vraie mémoire durable, la mesure la plus exigeante de cet écran. Elle grimpe naturellement avec le temps."],
     ["Ennemies vaincues", "Tes mots les plus ratés (les « ennemies ») que tu as réussi à ramener à un bon niveau (niv ≥ 4). Le premier chiffre = domptées, le second = total de tes ennemies."],
-    ["Deck abordé", "Combien de cartes du deck tu as déjà commencé à étudier (vues au moins une fois), sur le total disponible. Le reste attend d'être introduit (30 nouvelles/jour dans tes réglages)."]
+    ["Deck abordé", "Combien de cartes du deck tu as déjà commencé à étudier (vues au moins une fois), sur le total disponible. Le reste attend d'être introduit (" + (ST.set.newPerDay||0) + " nouvelles/jour dans tes réglages)."]
   ];
   grid.querySelectorAll(".stat").forEach((tile,i)=>{
     tile.classList.add("tap");
@@ -2144,7 +2212,7 @@ function renderStats(){
       <p class="dim">Ton appareil lit le coréen avec une voix française. Pour corriger sur Android :
       <b>Paramètres → Gestion générale (ou Système) → Synthèse vocale → moteur "Synthèse vocale Google"
       → ⚙️ → Installer les données de voix → 한국어 (coréen)</b>, puis redémarre l'app.
-      Les phrases du kit voyage ont aussi leur audio natif intégré (indépendant du téléphone).</p></div>`));
+      Tous les mots et phrases d'exemple ont leur audio natif intégré (indépendant du téléphone).</p></div>`));
   }
   /* rappel de sauvegarde : la progression ne vit que sur cet appareil.
      Tu (le cloud est le canal principal) : on ne prévient QUE si aucune sauvegarde cloud récente. */
@@ -2516,7 +2584,12 @@ function applyImportedState(state){
   s.conv = s.conv||[];                            // v89 : conversations IA enregistrées
   s.story = s.story||{}; s.story.lus = s.story.lus||[]; s.story.ouverts = s.story.ouverts||[];  // v125
   s.v = s.v || 1;
+  sanitizeSet(s.set);                  // v157 : types des réglages numériques (interpolés dans les Réglages)
   ST = s; save(); Q = null;
+  /* v157 : ALL_IDS est figé au chargement selon set.reverse — le toggle des Réglages recharge
+     pour ça, mais pas ce chemin (import fichier / restauration cloud). Sans rechargement, la
+     première session post-restauration tournait avec la mauvaise moitié du deck. */
+  if((s.set.reverse !== false) !== REV_BOOT){ location.reload(); return; }
   NAV = true; render(); NAV = false;   // v73 : rendu d'ARRIVÉE — pas de coup de tampon post-restauration
 }
 /* confirmation à MINUTEUR pour une action irréversible : le bouton Confirmer reste grisé
@@ -2600,9 +2673,47 @@ function importState(e){
 /* ================= util ================= */
 function esc(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
+/* v157 : nettoyage ONE-SHOT du store audio hors-ligne — l'ancien repli du service worker
+   pouvait y stocker du HTML sous des URLs de .mp3 (téléchargement coupé) ; ces entrées
+   passaient pour du succès et n'étaient jamais réparées. Idempotent : le drapeau additif
+   ST.audioCleanMig n'est posé qu'après une passe complète (un kill en cours -> on refera). */
+async function cleanAudioStore(){
+  if(ST.audioCleanMig === 1) return;
+  try{
+    if(typeof caches === "undefined" || !(await caches.has("sori-audio-store"))){
+      ST.audioCleanMig = 1; save(); return;
+    }
+    const c = await caches.open("sori-audio-store");
+    const keys = await c.keys();
+    let bad = 0;
+    for(const req of keys){
+      const res = await c.match(req);
+      const ct = (res && res.headers.get("content-type")) || "";
+      if(res && ct && !/audio|octet-stream|mpeg/i.test(ct)){ await c.delete(req); bad++; }
+    }
+    ST.audioCleanMig = 1;
+    if(bad) logErr("audio", "nettoyage audio hors-ligne : " + bad + " entrée(s) HTML supprimée(s) sous des URLs .mp3 — retélécharger l'audio depuis les Réglages", "");
+    save();
+  }catch(e){}
+}
+
 /* go */
 wireReport();
 wireSettings();
 wireDico();
+/* v157 : STOCKAGE PERSISTANT — sans lui, toute l'origine (progression + jeton + 254 Mo
+   d'audio) restait évincable en bloc par Android sous pression de stockage : c'est le
+   scénario qui a effacé la progression le 21/08. Silencieux ; refus loggué une fois. */
+(async ()=>{ try{
+  if(navigator.storage && navigator.storage.persist && !(await navigator.storage.persisted())){
+    if(!(await navigator.storage.persist()))
+      logErr("storage", "stockage persistant REFUSÉ — la progression reste évincable par l'OS (garder la PWA installée et revenir souvent aide)", "");
+  }
+}catch(e){} })();
+if(CORRUPT_BAK){
+  logErr("state", "état local illisible au boot — copie brute conservée dans sori-state-v1-bak", "");
+  warnBanner("L'état local était illisible : une copie de secours a été gardée (sori-state-v1-bak). Restaure ta sauvegarde cloud dans les Réglages avant de réviser.");
+}
+setTimeout(cleanAudioStore, 4000);   // hors du chemin de démarrage
 document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x.dataset.tab===TAB));
 NAV = true; render(); NAV = false;   // ouverture de l'app sur l'onglet TAB : pas de son auto (arrivée)

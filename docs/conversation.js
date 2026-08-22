@@ -616,6 +616,9 @@
       if(mrec){ try{ mrec.ondataavailable = null; mrec.onstop = null; mrec.stop(); }catch(e){} mrec = null; }
       if(mstream){ try{ mstream.getTracks().forEach(t => t.stop()); }catch(e){} mstream = null; }
     }
+    ACTIVE_STOP = stopMic;   /* v157 : exposé via API.stop() — le routeur d'onglets d'app.js
+      coupe le micro quand on sort du chat par la barre d'onglets (avant : la reco continuous
+      survivait dans sa fermeture et se relançait en boucle, voyant micro allumé). */
     /* v84 : « not-allowed » sans explication = impasse. Invite de permission forcée via getUserMedia —
        sur une PWA installée (WebAPK Android), SpeechRecognition ne déclenche pas toujours l'invite lui-même.
        v85 (retour user réel) : dans l'app installée il n'y a NI cadenas NI barre d'adresse, et « Infos de
@@ -738,8 +741,12 @@
     }
   }
 
+  /* v157 : teardown appelable de l'extérieur — pointeur vers le stopMic du chat actif */
+  let ACTIVE_STOP = null;
+  function stop(){ try{ if(ACTIVE_STOP) ACTIVE_STOP(); }catch(e){} ACTIVE_STOP = null; }
+
   const API = {
-    renderHome, renderChat,
+    renderHome, renderChat, stop,
     callLLM, callStt, callGloss,
     pure: { buildSystem, trimHistory, buildRequest, parseReply, sttMerge, toApi, scenarioById, frDate,
             buildSttRequest, parseSttReply, glossPrompt, parseGloss,

@@ -11,11 +11,11 @@ Manuel complet (contrats de données, recettes pas-à-pas, pièges vécus) : **`
 1. **Ne jamais casser le schéma localStorage `sori-state-v1`.** Ne renomme jamais la clé. Ne change jamais la sémantique de `s`/`i`/`d`/`e`/`ok`/`ko`. Additif seulement : un nouveau réglage = une nouvelle clé dans `DEF_SET` (engine.js) **ET la mise à jour du test contractuel `tests/engine.test.mjs` (assert.deepEqual sur DEF_SET) dans le MÊME commit** — la migration douce de `loadState()` fait le reste. `DEF_SET` actuel = `{newPerDay:12, kitFirst:true, rate:0.9, listenN:10, sessionMax:120, mute:false, autoplay:true, adaptive:false, typing:false, report:false, exaudio:false, wordgloss:false, reverse:false, scheduler:"fsrs", fsrsRetention:0.9, grade4:true, fsrsPersonal:true, aura:"auto"}` (`fsrsPersonal` = poids FSRS ajustés aux données de l'utilisateur, cf. MAINTENANCE v81 ; toggle rollback vers les génériques. `aura` = halo de difficulté en révision : "auto"/"always"/"never", v136).
 2. **Un id est ÉTERNEL — tous les ids.** Items du seed (`docs/data.js`), événements (`events-data.js`, clés de `ST.evDismiss`), quêtes et badges (`quests.js`, clés de `ST.qdone`), scénarios (`scenarios-data.js`, clés de `ST.scen`) : ne jamais changer, réutiliser ni supprimer un id existant. La progression du téléphone ne référence le contenu que par id.
 3. **Ne jamais pousser `tools/snapshot.anki2` ni `sori-export-*.json`.** Données personnelles, repo PUBLIC. Ils sont dans `.gitignore` — ne l'affaiblis jamais. Les exports lus depuis le cloud `sori-data` (recette R15) ne doivent JAMAIS finir dans un repo.
-4. **`node --test tests/` doit être 100 % vert avant chaque push** (37 tests minimum : 20 engine + 17 adaptive). En plus : `node --check` sur chaque JS de `docs/` modifié (la CI le fait sur tous). Un test rouge = tu ne pousses pas, point.
+4. **`node --test tests/*.mjs` doit être 100 % vert avant chaque push** (163 tests dans 12 fichiers au 22/08/2026 — engine, adaptive, fsrs, rescue, gramex, grammar, story, conversation, hint, placement, slot, structure ; la forme `node --test tests/` casse sous Node 22). En plus : `node --check` sur chaque JS de `docs/` modifié (la CI le fait sur tous). Un test rouge = tu ne pousses pas, point.
 5. **Bump `CACHE` dans `docs/sw.js`** (+1, ex. `sori-v18` → `sori-v19`) à chaque release qui touche `docs/`. Fichier JS/CSS ajouté dans `docs/` = aussi l'ajouter à `ASSETS` dans sw.js. Ne JAMAIS retirer l'exclusion du cache `"sori-audio-store"` dans `activate` (c'est l'audio hors-ligne téléchargé par l'utilisateur).
 6. **`docs/engine.js` = logique pure, contractuelle.** Aucun accès DOM, `window`, ou localStorage dedans. `computeAnswerLegacy` est **GELÉ À VIE** (référence phase 1 + shadow — ne le modifie sous aucun prétexte). Le reste se modifie uniquement via la recette R6 de MAINTENANCE.md (tests d'abord).
 7. **Ne jamais éditer à la main les fichiers générés** : `docs/data.js` (par `tools/build_data.py`), `docs/audio/index.js` + les `.mp3` (par `tools/make_audio.py`), `docs/extra.js` (par `merge_extra.py`/`merge_pack.py` ou la recette R2). Nouveau contenu → packs `tools/packs/*.json` (recettes R1/R11).
-8. **Toujours tester en local avant de pousser** : serveur local + une carte de chaque onglet (Réviser, Écoute, Voyage, Stats) + les modules touchés (checklist §7 de MAINTENANCE.md).
+8. **Toujours tester en local avant de pousser** : serveur local + une carte de chaque onglet (Réviser, Exercices, Progrès) + les modules touchés (checklist §7 de MAINTENANCE.md).
 9. **Ne jamais conseiller ni déclencher « Effacer les données du site »** sur le téléphone : cela détruit le localStorage, donc toute la progression.
 10. **Dans le doute : ne pousse pas.** Demande, ou fais moins.
 
@@ -33,7 +33,7 @@ Couche 2  docs/app.js          UI + exercices + audio + import/export + cloud ba
                                (⚙️ header → openSettings) — SEUL fichier qui lit/écrit
                                localStorage "sori-state-v1". Gamification en veille : drapeaux
                                SHOW_QUESTS/SHOW_EXAM en tête (quêtes/bilan masqués, modules gardés)
-Couche 3  contenu généré       data.js (SEED ~2154 items) · extra.js (EXTRA : trivia ex/exFr/
+Couche 3  contenu généré       data.js (SEED ~7997 items) · extra.js (EXTRA : trivia ex/exFr/
                                conj/note + gloses mot-à-mot `gl`) · audio/*.mp3 (mot `<id>.mp3`
                                + phrase `<id>-ex.mp3`) + audio/index.js (AUDIO + AUDIO_EX) ·
                                + données éditées :
@@ -51,7 +51,7 @@ Couche 4  état                 localStorage téléphone : "sori-state-v1" (prog
 
 **Ordre de chargement (docs/index.html, NE PAS le changer)** :
 `<head>` : style.css → themes.css → **themes.js** (avant le rendu : zéro flash de thème) ;
-fin de `<body>` : `data.js → extra.js → audio/index.js → player.js → engine.js → events-data.js → events.js → search.js → exam.js → scenarios-data.js → scenarios.js → quests.js → typing.js → numbers.js → app.js` → enregistrement du service worker.
+fin de `<body>` : `data.js → extra.js → audio/index.js → player.js → engine.js → events-data.js → events.js → search.js → exam.js → scenarios-data.js → scenarios.js → quests.js → typing.js → numbers.js → structure.js → grammar-data.js → grammar.js → gramex.js → story-data.js → story-sens.js → story.js → conversation.js → placement.js → app.js` → enregistrement du service worker.
 Règle : les `*-data.js` avant leur moteur, tous les modules avant `app.js`, `engine.js` avant `app.js`.
 
 ## Carte du repo
@@ -71,7 +71,12 @@ docs/                 l'app servie telle quelle par GitHub Pages
   quests.js           quêtes du jour + badges            player.js  écoute passive MediaSession
   scenarios-data.js + scenarios.js  simulations dialoguées
   typing.js           saisie hangul (production tapée, stage 5, opt-in ST.set.typing)
-  numbers.js          entraîneur de nombres à l'oreille (prix/heures/dates/quantités, onglet Écoute)
+  numbers.js          entraîneur de nombres à l'oreille (prix/heures/dates/quantités, onglet Exercices)
+  grammar-data.js + grammar.js   inventaire de ~34 structures A1-B1 + taggeur jamo + profil grammatical
+  gramex.js           exercice de grammaire (conjugaison à pièges jamo, phrases à trou, repérage)
+  story-data.js + story-sens.js + story.js   Histoire « 미소 카페 » (feuilleton, chapitres ouverts par le profil)
+  structure.js        exercice Structure de phrase — chargé mais DORMANT (lanceur décâblé v67)
+  fonts/              polices sous-ensemble embarquées (myeongjo hangul, alegreya, caveat)
   conversation.js     conversation IA en coréen (STT navigateur → LLM Anthropic/OpenAI → TTS) ;
                       clés API dans localStorage "sori-conv-cfg" (JAMAIS dans ST/export cloud)
   placement.js        test de niveau ADAPTATIF (escalier par bande cefr → estimation CEFR/TOPIK)
@@ -92,7 +97,9 @@ tools/                scripts de build Python :
   packs-staged/       RÉSERVE : packs prêts mais non activés (actuellement vidée — voir README)
 tools/snapshot.anki2  collection Anki figée, GITIGNORÉE — n'existe que sur cette machine.
                       Sans elle, build_data.py ne tourne pas. Ne jamais la supprimer.
-tests/                engine.test.mjs (20, verrouille le legacy) + adaptive.test.mjs (17, ease)
+tests/                12 fichiers *.test.mjs, 163 tests (engine verrouille le legacy · adaptive ·
+                      fsrs · rescue · gramex · grammar · story · conversation · hint · placement ·
+                      slot · structure) — lancer avec `node --test tests/*.mjs`
 .github/workflows/ci.yml   CI : node --test + node --check sur tous les JS de l'app
 ALGORITHM.md          spec complète de l'ease adaptatif (constantes, phases, critères §7)
 MAINTENANCE.md        LE manuel : contrats de données, recettes R1-R22, pièges P1-P12, checklist
@@ -105,8 +112,8 @@ PROPOSITIONS.md       backlog historique d'évolutions
 # Serveur local (puis ouvrir http://localhost:8123)
 python -m http.server 8123 --directory docs
 
-# Tests du moteur (OBLIGATOIRE avant push) — 37 tests
-node --test tests/
+# Tests (OBLIGATOIRE avant push) — 163 tests, 12 fichiers
+node --test tests/*.mjs
 
 # Syntaxe de tous les JS de l'app (ce que fait la CI)
 for f in docs/*.js docs/audio/index.js; do node --check "$f" || break; done
@@ -147,7 +154,7 @@ Le token vient du Git Credential Manager déjà configuré (`credential.helper=m
 afficher `$TOKEN` dans un log, ne jamais l'écrire dans un fichier du repo.
 
 ## Processus de release en 7 étapes
-1. `node --test tests/` → 37 tests, tout vert. Sinon STOP.
+1. `node --test tests/*.mjs` → tout vert (163 tests). Sinon STOP.
 2. `node --check` sur chaque JS de `docs/` modifié (la CI le refera sur tous — autant l'attraper ici).
 3. Si data.js / extra.js / audio / packs touchés : le garde-fou d'ids a tourné dans le build ; valider extra.js (recette R2.2), compter les items (`meta.counts`).
 4. Bump `CACHE` dans `docs/sw.js` (+1) ; `ASSETS` à jour si fichier JS/CSS ajouté dans `docs/`.

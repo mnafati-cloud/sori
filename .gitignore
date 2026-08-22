@@ -5,3 +5,6 @@ tools/snapshot.anki2*
 *.anki2-shm
 sori-export-*.json
 __pycache__/
+# v157 : fichiers lus/préparés depuis le cloud privé sori-data — jamais dans CE repo (public)
+latest.json
+conv-cfg.json
