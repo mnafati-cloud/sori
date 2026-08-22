@@ -955,7 +955,7 @@ function freshGate(){
     </div></div>`);
   card.querySelector("#fg-restore").onclick = openSettings;
   card.querySelector("#fg-zero").onclick = ()=>{
-    if(confirm("Vraiment repartir de zéro ? S'il existe une sauvegarde, elle restera restaurable dans les Réglages.")){
+    if(confirm("Vraiment repartir de zéro ? Une sauvegarde cloud existante reste protégée : l'app refuse d'écraser une sauvegarde nettement plus grosse que l'état local (sauf accord explicite dans les Réglages).")){
       ST.freshOk = 1; save(); NAV = true; render(); NAV = false;
     }
   };
@@ -2402,7 +2402,11 @@ function openSettings(){
   set.querySelector("#cloud").onclick = async ()=>{
     const st = set.querySelector("#cloudstatus");
     st.textContent = "Envoi en cours…";
-    const r = await cloudBackup();
+    let r = await cloudBackup();
+    if(r.guard && confirm("ATTENTION — " + r.msg + ".\n\nÉcraser quand même la sauvegarde cloud par l'état de CET appareil ?")){
+      st.textContent = "Envoi en cours…";
+      r = await cloudBackup(true);
+    }
     st.textContent = r.ok ? "Sauvegardé dans le cloud ("+todayStr()+")." : "Échec : "+r.msg;
   };
   set.querySelector("#cloudrestore").onclick = async ()=>{
@@ -2543,7 +2547,7 @@ async function ghPut(path, content, H){
   const r = await fetch(url, {method:"PUT", headers:H, body: JSON.stringify(body)});
   return r.ok;
 }
-async function cloudBackup(){
+async function cloudBackup(force){
   const tok = ghToken();
   if(!tok) return {ok:false, msg:"aucun jeton configuré"};
   const b64 = btoa(unescape(encodeURIComponent(exportPayload())));
@@ -2558,6 +2562,26 @@ async function cloudBackup(){
   }
   const H = { "Authorization": "Bearer "+tok, "Accept": "application/vnd.github+json" };
   try{
+    /* v157 (relecture adversariale) : GARDE ANTI-ÉCRASEMENT — un état local NETTEMENT plus
+       petit que latest.json (progression effacée, « Commencer de zéro », mauvais appareil)
+       n'écrase JAMAIS la sauvegarde en silence. L'état ne rétrécit pas de moitié en usage
+       légitime (rlog plafonné, items en croissance) : le seuil est sans faux positif.
+       Manuel : l'utilisateur peut forcer après un confirm ; auto : refus + trace. */
+    if(!force){
+      try{
+        const g = await fetch("https://api.github.com/repos/"+GH_REPO+"/contents/exports/latest.json",
+                              { headers: H, cache: "no-store" });
+        if(g.ok){
+          const prev = (await g.json()).size || 0;
+          if(prev > 100*1024 && bytes < prev/2){
+            const msg = "la sauvegarde cloud ("+Math.round(prev/1024)+" Ko) est bien plus grosse que l'état local ("
+                        +Math.round(bytes/1024)+" Ko) — restaure-la d'abord (↓ Restaurer)";
+            logErr("cloud", "sauvegarde REFUSÉE : "+msg, "");
+            return {ok:false, guard:true, msg};
+          }
+        }
+      }catch(e){}
+    }
     const ok1 = await ghPut("exports/latest.json", b64, H);
     const ok2 = ok1 && await ghPut("exports/sori-export-"+todayStr()+".json", b64, H);
     if(ok1 && ok2){ ST.lastCloud = todayStr(); ST.lastExport = todayStr(); save(); return {ok:true}; }
