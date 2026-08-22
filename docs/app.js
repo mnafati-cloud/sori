@@ -128,7 +128,14 @@ const GLOSS_FIX = {
   "자판기":"Distributeur automatique (le mot courant, forme brève)",
   "자동판매기":"Distributeur automatique (appellation complète, officielle)",
   "변하다":"Changer de nature, se transformer (la chose elle-même devient autre)",
-  "바뀌다":"Être remplacé, permuté (une chose cède la place à une autre)"
+  "바뀌다":"Être remplacé, permuté (une chose cède la place à une autre)",
+  /* v158 : rapports 21-22/08 — épais/fin se dit DIFFÉREMMENT selon la forme de l'objet :
+     plat (livre, tissu, couche) ou allongé (bras, fil, trait). Les quatre mots du carré
+     reçoivent le même discriminant. */
+  "두껍다":"Épais (objet plat : livre, vêtement, couche)",
+  "얇다":"Fin, peu épais (objet plat : papier, tissu, tranche)",
+  "굵다":"Gros, épais (objet allongé : bras, fil, trait — le diamètre)",
+  "가늘다":"Fin, mince (objet allongé : fil, doigt, voix fluette — le diamètre)"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 
@@ -1777,9 +1784,13 @@ function exoRecall(it, hinted){
     card.onclick = null;                          // une seule révélation ; ensuite les taps vont aux notes
     armCooldown(200);                             // v141 : gel court post-révélation — tue le double-tap
                                                   // fantôme (~100 ms) sans avaler les notes rapides
-    /* mot révélé + bouton 🔊 pour le réécouter pendant la notation */
-    card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span> <button class="speak" title="écouter">${SVG_SPK}</button>`;
-    card.querySelector(".feedback .speak").onclick = ()=>speak(it.kr, it.id);
+    /* v158 (rapport 22/08) : la réponse REMPLACE le texte à trou — les tuiles d'indice
+       disparaissent, le mot complet prend leur place. Plus de bouton haut-parleur :
+       toucher le mot le fait réécouter (même geste que le sens inversé, v115). */
+    const h2 = card.querySelector(".hint2");
+    if(h2) h2.remove();
+    card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span>`;
+    card.querySelector(".feedback .kr").onclick = ev=>{ ev.stopPropagation(); speak(it.kr, it.id); };
     speak(it.kr, it.id);
     showTrivia(card, it);        // lisible pendant l'auto-évaluation
     gradeButtons(card.querySelector(".row"), it, recKind, recCap);
