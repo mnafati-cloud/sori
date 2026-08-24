@@ -1544,7 +1544,17 @@ function showTrivia(card, it){
 /* v64 (retour user) : le rappel INDICÉ (1re syllabe = indice énorme) et le sens INVERSÉ (KR→FR,
    direction facile) ne créditent plus que Difficile(2) — la stabilité ne grimpe vite que sur une
    preuve de PRODUCTION sans aide (rec5/type). build reste à 3 : seule vraie « production » des phrases. */
-const KIND_MAXGRADE = { qcm1:2, qcm2:2, qcm3:2, build:3, rec4:2, recrev:2, rec5:4, type:4 };
+/* v160 : recrev passe de Difficile(2) à Bien(3). Mesuré sur 6144 réponses comptées (24/08) :
+   les 1843 réussites recrev étaient TOUTES plafonnées à « difficile » par le format — soit une
+   révision réussie sur deux (alternance stricte) subissant la pénalité w15 de FSRS, alors que la
+   rétention mesurée à 8-30 j (93,1 % / 90,8 %) DÉPASSE la cible 0,90 : le planificateur freinait
+   une mémoire qui va plus vite que lui (336 cartes à i<=3 j = 61 % de la charge quotidienne).
+   Le rappel du sens est un vrai rappel libre auto-évalué, pas un exercice aidé — le mode
+   Production séparée lui accordait d'ailleurs déjà Bien (cf. maxGradeFor). Simulation appariée
+   30 j sur l'état réel : -3,4 % de revues (-6,7 % en semaine 4, effet composé), pool i<=3 j
+   107 -> 92. Suivi : rétention 8-30 j dans les sauvegardes ; retour à 2 si elle passe sous 0,88.
+   Les QCM (vraie reconnaissance assistée) restent à Difficile. */
+const KIND_MAXGRADE = { qcm1:2, qcm2:2, qcm3:2, build:3, rec4:2, recrev:3, rec5:4, type:4 };
 function maxGradeFor(it, kind){
   /* en mode « Production séparée » (reverse ON), le rappel inversé est l'exercice CANONIQUE de la
      carte recto (la production vit sur sa carte verso) → pas un exercice « aidé », plafond normal.
