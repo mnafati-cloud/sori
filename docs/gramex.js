@@ -469,6 +469,10 @@
     ".gramex-verdict b{font-family:var(--kr-display); font-size:1.12rem}",
     ".gramex-verdict.vok b{color:var(--ok)}",
     ".gramex-verdict.vko b{color:var(--ko)}",
+    ".gramex-w.on{color:var(--cel)}",
+    ".gramex-gbar{margin-top:7px; padding:6px 9px; border-radius:7px; text-align:left;",
+    "  background:color-mix(in srgb, var(--cel) 13%, transparent); font-size:.95rem; color:var(--txt)}",
+    ".gramex-gbar b{font-weight:700; font-family:var(--kr-display)}",
     ".gramex-sent{font-family:var(--kr-display); font-size:1.1rem; color:var(--txt);",
     "  margin:10px 0 0; word-break:keep-all; line-height:1.5}",
     ".gramex-next{margin-top:16px; width:100%}",
@@ -494,6 +498,38 @@
     /* v151 : mots que l'utilisateur a déjà étudiés (fourni par app.js) — sert à ne tirer que
        des verbes connus. Absent → comportement d'avant, tout le répertoire. */
     var known = (opts.knownWords && typeof opts.knownWords.has === "function") ? opts.knownWords : null;
+    /* v159 : décomposition mot-à-mot fournie par l'appelant (rapport 23/08 : « la traduction
+       du mot qui apparaît si on clique dessus » manquait aux exercices). Optionnel : sans
+       opts.words, les phrases restent du texte simple. */
+    var wordsOf = (typeof opts.words === "function") ? opts.words : function(){ return null; };
+    /* phrase dont chaque mot ALIGNABLE est touchable -> sa traduction s'affiche dessous.
+       Alignement conservateur token↔fragment (mesuré 97 % sur le corpus réel) ; un token
+       sans correspondance (dont le trou ＿) reste inerte. */
+    function sentEl(txt, pairs, cls){
+      var box = el('<div class="' + cls + '"></div>');
+      if(!pairs || !pairs.length){ box.textContent = txt; return box; }
+      var bar = el('<div class="gramex-gbar" hidden></div>');
+      txt.split(/(\s+)/).forEach(function(tk){
+        if(!tk.trim()){ box.appendChild(document.createTextNode(tk)); return; }
+        var base = stripPunct(tk), hit = null;
+        for(var i = 0; i < pairs.length && !hit; i++){
+          var f = String(pairs[i][0] || "");
+          if(f && (base === f || base.indexOf(f) === 0 || f.indexOf(base) === 0)) hit = pairs[i];
+        }
+        var w = el('<span class="gramex-w">' + esc(tk) + '</span>');
+        if(hit) w.addEventListener("click", function(ev){
+          ev.stopPropagation();
+          box.querySelectorAll(".gramex-w.on").forEach(function(o){ o.classList.remove("on"); });
+          w.classList.add("on");
+          bar.hidden = false;
+          bar.innerHTML = "<b>" + esc(hit[0]) + "</b> — " + esc(hit[1] || "?");
+        });
+        box.appendChild(w);
+      });
+      var wrap = el('<div></div>');
+      wrap.appendChild(box); wrap.appendChild(bar);
+      return wrap;
+    }
     var STRUCT_BY = {};
     structs.forEach(function(st){ STRUCT_BY[st.id] = st; });
     injectStyles();
@@ -561,10 +597,10 @@
           card.appendChild(el('<p class="gramex-fr">' + esc(q.fr) + "</p>"));
           card.appendChild(el('<p class="gramex-ask">' + esc(q.formLabel) + " — <b>" + esc(q.mark) + "</b></p>"));
         } else if(q.type === "cloze"){
-          card.appendChild(el('<div class="gramex-q">' + esc(q.masked) + "</div>"));
+          card.appendChild(sentEl(q.masked, wordsOf(q.id), "gramex-q"));
           card.appendChild(el('<p class="gramex-fr">' + esc(q.fr) + "</p>"));
         } else {
-          card.appendChild(el('<div class="gramex-q">' + esc(q.kr) + "</div>"));
+          card.appendChild(sentEl(q.kr, wordsOf(q.id), "gramex-q"));
           card.appendChild(el('<p class="gramex-fr">' + esc(q.fr) + "</p>"));
           /* v154 : consigne retirée — le mode « Repérage » est déjà annoncé en tête et les
              options sont des noms de structures : la question ne s'énonce pas deux fois. */
@@ -604,7 +640,7 @@
             esc(q.base) + " » — " + esc(q.fr) + "</p>"));
           if(q.note) fb.appendChild(el('<p class="gramex-note">' + esc(q.note) + "</p>"));
         } else if(q.type === "cloze"){
-          fb.appendChild(el('<p class="gramex-sent">' + esc(q.kr) + "</p>"));
+          fb.appendChild(sentEl(q.kr, wordsOf(q.id), "gramex-sent"));
           fb.appendChild(el('<p class="gramex-note">' + esc(q.fr) + "</p>"));
           var sc = STRUCT_BY[q.structId];
           if(sc) fb.appendChild(el('<p class="gramex-note">Structure : <b>' + esc(sc.fr) + "</b>" +

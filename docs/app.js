@@ -1034,6 +1034,10 @@ function openGramex(){
     sentences: gramexCorpus(),
     lex: gramexLex(),
     knownWords: knownWordSet(),
+    /* v159 (rapport 23/08) : traduction d'un mot au toucher DANS l'exercice, comme en révision —
+       même réglage (wordgloss), données = décomposition mot-à-mot des phrases (EXTRA.words) */
+    words: ST.set.wordgloss===true ? (id)=>{ const x=EXTRA[id];
+      return (x && Array.isArray(x.words) && x.words.length) ? x.words : null; } : null,
     /* v152 : détection réelle des structures d'une phrase — empêche de proposer comme leurre
        une structure qui y figure bel et bien (les tags figés sont incomplets) */
     detect: (kr)=>{ try{ return SORI_GRAMMAR.tagStructures(kr, gramexLex()); }catch(_){ return []; } },
@@ -2018,8 +2022,6 @@ function renderStats(){
   const items = ALL_IDS.map(eff);              // recto + verso (pour le compteur du lanceur)
   const baseItems = items.filter(it=>!it.rev); // deck de compréhension : les métriques affichées comptent le vocabulaire, pas ×2
   captureLevelSnapshot(baseItems);             // journalise la maîtrise du jour (1×/jour)
-  const stages=[0,0,0,0,0,0];
-  baseItems.forEach(it=>stages[it.stage]++);
   const enemies = baseItems.filter(it=>it.enemy);
   const beaten = enemies.filter(it=>it.stage>=4).length;
   const matures = baseItems.filter(it=>it.stage>=4).length;   // cartes solides (niv ≥ 4)
@@ -2135,7 +2137,7 @@ function renderStats(){
   const anyPg = pg.some(x=>x.p!=null && x.p>0);
   const mxp = Math.max(0.5,...pg.map(x=>x.p||0));
   $screen.appendChild(el(`<div class="card"><h2>Gain vers le niveau suivant — 14 j</h2>
-    <p class="dim note" style="margin-bottom:6px">${wb?`Chaque barre = <b>% du chemin</b> vers <b>${nextBand||"le niveau suivant"}</b> gagné ce jour-là (cartes solidifiées ÷ seuil du niveau).`:"Tous les niveaux du deck sont acquis."}</p>
+    <p class="dim note" style="margin-bottom:6px">${wb?`<b>% du chemin</b> vers <b>${nextBand||"le niveau suivant"}</b> gagné chaque jour.`:"Tous les niveaux du deck sont acquis."}</p>
     ${wb ? (anyPg
       ? `<div class="bars">${pg.map(x=>`<div class="b"><div style="height:${x.p==null?2:Math.max(2,Math.round(70*x.p/mxp))}px${x.d===t?";background:var(--acc)":""}${x.p==null?";opacity:.25":""}"></div><span>${x.p==null?"·":(Math.round(x.p*10)/10)}</span></div>`).join("")}</div>`
       : `<p class="dim note">L'historique se construit — les barres apparaîtront au fil de tes jours de révision.</p>`) : ""}</div>`));
@@ -2160,10 +2162,9 @@ function renderStats(){
   /* v79 : libellé clarifié (retour user) — le 1er barreau est le niveau EN COURS (le « niveau actuel »
      affiché plus haut) ; « X j » = temps pour l'AMENER à 80 % (le finir), pas pour « l'atteindre ». */
   $screen.appendChild(el(`<div class="card"><h2>Temps pour valider chaque niveau</h2>
-    <p class="dim note" style="margin-bottom:6px">Jours estimés pour amener chaque niveau à <b>80 % de maîtrise</b> (le seuil « acquis »)${paceTxt!=null?`, à ton rythme des 7 derniers jours (~${paceTxt} carte${pace>=2?"s":""}/j) et d'introduction (${npd} nouvelles/j)`:""}.</p>
+    <p class="dim note" style="margin-bottom:6px">Jours pour amener chaque niveau à <b>80 %</b>${paceTxt!=null?` — rythme actuel ~${paceTxt} carte${pace>=2?"s":""}/j, estimation optimiste`:""}.</p>
     ${etas.length ? (pace
-      ? `<div class="bars">${etas.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.days/mxe))}px"></div><span>${x.b===working?"finir "+x.b:x.b}<br>${x.days} j</span></div>`).join("")}</div>
-         <p class="dim note" style="margin-top:6px">Estimation <b>optimiste</b> : basée sur ta vitesse des derniers jours, qui ralentit quand tu introduis moins de nouvelles cartes.</p>`
+      ? `<div class="bars">${etas.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.days/mxe))}px"></div><span>${x.b===working?"finir "+x.b:x.b}<br>${x.days} j</span></div>`).join("")}</div>`
       : `<p class="dim note">Estimation dispo dès quelques jours d'historique de maîtrise (ta vitesse récente est encore inconnue).</p>`)
       : `<p class="dim">Tous les niveaux du deck sont acquis.</p>`}</div>`));
 
@@ -2171,9 +2172,14 @@ function renderStats(){
   const sWin=[]; for(let i=13;i>=0;i--){ const d=addDays(t,-i); const L=ST.log[d]||{}; const o=(L.ok1!=null?L.ok1:L.ok)||0, k=(L.ko1!=null?L.ko1:L.ko)||0, n=o+k; sWin.push({d,p:n?Math.round(100*o/n):null}); }
   const sDays=sWin.filter(x=>x.p!=null);
   const sAvg = sDays.length ? Math.round(sDays.reduce((s,x)=>s+x.p,0)/sDays.length) : null;
+  /* v159 : échelle FENÊTRÉE sur la plage réelle (rapport 24/08 « revoir les graphiques ») —
+     sur 0-100, des jours à 77 % et 90 % donnaient des barres visuellement identiques ;
+     la fenêtre [min-3, max] rend la variation lisible (les valeurs restent affichées). */
+  const sLo = sDays.length ? Math.max(0, Math.min(...sDays.map(x=>x.p)) - 3) : 0;
+  const sHi = sDays.length ? Math.max(Math.max(...sDays.map(x=>x.p)), sLo + 5) : 100;
   $screen.appendChild(el(`<div class="card"><h2>Réussite quotidienne — 14 jours</h2>
-    <p class="dim note" style="margin-bottom:6px">% de bonnes réponses au 1er essai chaque jour${sAvg!=null?` — moyenne ≈ <b>${sAvg}%</b>`:""}.</p>
-    <div class="bars">${sWin.map(x=>`<div class="b"><div style="height:${x.p==null?2:Math.max(2,Math.round(70*x.p/100))}px${x.d===t?";background:var(--acc)":""}${x.p==null?";opacity:.25":""}" title="${x.p==null?"pas de révision":x.p+'%'}"></div><span>${x.p==null?"·":x.p}</span></div>`).join("")}</div></div>`));
+    <p class="dim note" style="margin-bottom:6px">1er essai${sAvg!=null?` — moyenne ≈ <b>${sAvg}%</b>`:""}.</p>
+    <div class="bars">${sWin.map(x=>`<div class="b"><div style="height:${x.p==null?2:Math.max(4,Math.round(70*(x.p-sLo)/(sHi-sLo)))}px${x.d===t?";background:var(--acc)":""}${x.p==null?";opacity:.25":""}" title="${x.p==null?"pas de révision":x.p+'%'}"></div><span>${x.p==null?"·":x.p}</span></div>`).join("")}</div></div>`));
 
   if(leeches.length){
     $screen.appendChild(el(`<div class="card">
@@ -2235,12 +2241,8 @@ function renderStats(){
       ta progression ne vit que sur cet appareil. Ouvre <b>Réglages</b> pour la sauvegarder dans le cloud (ou exporter un fichier).</p></div>`));
   }
 
-  const mx = Math.max(...stages,1);
-  const labels=["nouv.","QCM","QCM+","FR→KR","indice","rappel"];
-  const bars = el(`<div class="card"><h2>Échelle de maîtrise</h2><div class="bars">${
-    stages.map((n,i)=>`<div class="b"><div style="height:${Math.round(80*n/mx)}px"></div><span>${labels[i]}<br>${n}</span></div>`).join("")
-  }</div></div>`);
-  $screen.appendChild(bars);
+  /* v159 : « Échelle de maîtrise » SUPPRIMÉE (rapport 24/08 : « inutile ») — la barre
+     « nouveaux » (≈6000 cartes pas encore vues) écrasait les cinq autres, illisibles. */
 
   /* activité des 7 derniers jours (aujourd'hui en accent) */
   const week = [];
@@ -2258,7 +2260,7 @@ function renderStats(){
   const sum7 = days14.slice(7).reduce((s,x)=>s+x.n,0);
   const avg7 = Math.round(sum7/7*10)/10;
   $screen.appendChild(el(`<div class="card"><h2>Nouveaux mots — 14 jours</h2>
-    <p class="dim note" style="margin-bottom:6px">Ton rythme de découverte${avg7>0?` — ≈ <b>${avg7}</b> mots/jour cette semaine`:""}.</p>
+    <p class="dim note" style="margin-bottom:6px">${avg7>0?`≈ <b>${avg7}</b> nouveaux mots/jour cette semaine.`:"Rythme de découverte."}</p>
     <div class="bars">${days14.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.n/mxN))}px${x.d===t?";background:var(--acc)":""}"></div><span>${x.n}</span></div>`).join("")}</div></div>`));
 
 }
