@@ -248,6 +248,16 @@ function warnBanner(msg){
 function save(){ if(SAVE_PENDING) return; SAVE_PENDING = true; Promise.resolve().then(()=>{ if(SAVE_PENDING) saveNow(); }); }
 addEventListener("pagehide", ()=>{ if(SAVE_PENDING) saveNow(); });
 document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState === "hidden" && SAVE_PENDING) saveNow(); });
+/* v161 : la sauvegarde CLOUD ne partait qu'en fin de file — sortir en cours de session par un
+   onglet (chemin naturel depuis v153) laissait des journées entières sans sauvegarde (constaté
+   dans le dépôt : 29 et 30/08 absents malgré 99 et 241 révisions). Passage en arrière-plan =
+   sauvegarde, bridée à une fois par 30 min (la fin de file garde son throttle de 5 min).
+   Best-effort : Android laisse en général quelques secondes de réseau après la mise en fond. */
+document.addEventListener("visibilitychange", ()=>{
+  if(document.visibilityState !== "hidden") return;
+  if(Date.now() - (ST.lastCloudTs||0) < 30*60*1000) return;
+  autoCloudBackup();
+});
 
 /* ===== v65 : capture d'EXCEPTIONS — avant, les catch silencieux et les erreurs globales
    laissaient l'app muette en cas de casse sur le téléphone (zéro visibilité à l'analyse).
@@ -906,11 +916,28 @@ document.getElementById("tabs").addEventListener("click", e=>{
   NAV = true; render(); NAV = false;
 });
 function el(html){ const t=document.createElement("template"); t.innerHTML=html.trim(); return t.content.firstChild; }
+/* v161 : FILET ANTI-MOT-INVISIBLE — rapport 27/08 (« l'affichage des mots plante et
+   disparaît »). Les mots arrivent par une animation d'entrée (word-in / takbon-press) dont
+   l'image 0 % est opacity:0 avec fill both : si l'animation gèle au départ (comportement
+   Android intermittent, non reproduit), le mot reste transparent. Le filet force l'état
+   final quand un mot est encore invisible bien après la fin normale (~320 ms), et TRACE
+   chaque occurrence (ST.errors, dédupliqué) pour mesurer la fréquence réelle. */
+function healInvisibleWords(){
+  try{
+    $screen.querySelectorAll(".big-kr,.big-fr,.feedback .kr").forEach(e=>{
+      if(getComputedStyle(e).opacity === "0"){
+        e.style.animation = "none"; e.style.opacity = "1"; e.style.transform = "none";
+        logErr("ui", "mot invisible réparé (animation d'entrée gelée à 0%)", "");
+      }
+    });
+  }catch(e){}
+}
 let COOLDOWN_T = null;
 function armCooldown(ms){
   /* anti-misclick : blocage des boutons quand une nouvelle carte apparaît (450 ms) ou après
      la révélation (200 ms — v141 : 450 avalait les notes rapides, « clics pas pris en compte ») */
   $screen.classList.add("cooldown");
+  setTimeout(healInvisibleWords, 700);   // v161 : bien après la fin d'animation (~320 ms)
   clearTimeout(COOLDOWN_T);
   COOLDOWN_T = setTimeout(()=>$screen.classList.remove("cooldown"), ms || 450);
 }
