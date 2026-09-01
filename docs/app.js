@@ -924,11 +924,33 @@ function el(html){ const t=document.createElement("template"); t.innerHTML=html.
    chaque occurrence (ST.errors, dédupliqué) pour mesurer la fréquence réelle. */
 function healInvisibleWords(){
   try{
+    if(document.querySelector(".modal-back")) return;   // surcouche légitime (réglages, rapport)
     $screen.querySelectorAll(".big-kr,.big-fr,.feedback .kr").forEach(e=>{
-      if(getComputedStyle(e).opacity === "0"){
-        e.style.animation = "none"; e.style.opacity = "1"; e.style.transform = "none";
-        logErr("ui", "mot invisible réparé (animation d'entrée gelée à 0%)", "");
+      const why = [];
+      const r = e.getBoundingClientRect();
+      if(!r.width || !r.height) why.push("taille0");
+      else if(r.bottom < 0) why.push("hors-ecran");
+      const tag = n => String(n.id || n.className || n.tagName).replace(/\s+/g,".").slice(0,28);
+      /* v162 : la CHAÎNE d'ancêtres — en Takbon l'animation d'entrée est sur la carte
+         (#screen > *), pas sur le mot : une carte gelée à 0 % rend le mot invisible alors que
+         SON opacité calculée reste 1 (le filet v161 ne pouvait rien voir : zéro trace). */
+      for(let n = e; n && n !== document.body; n = n.parentElement){
+        const cs = getComputedStyle(n);
+        if(cs.opacity === "0")           why.push("opacity0:" + tag(n));
+        if(cs.visibility === "hidden")   why.push("hidden:" + tag(n));
+        if(cs.display === "none")        why.push("display-none:" + tag(n));
       }
+      /* recouvrement : un tampon 습득/각인 (fixed, plein écran) qui ne se retirerait pas */
+      if(!why.length){
+        const hit = document.elementFromPoint(r.left + r.width/2, Math.min(r.top + r.height/2, innerHeight - 1));
+        if(hit && hit !== e && !e.contains(hit) && !hit.contains(e)) why.push("couvert:" + tag(hit));
+      }
+      if(!why.length) return;
+      for(let n = e; n && n !== $screen; n = n.parentElement){
+        n.style.animation = "none"; n.style.opacity = "1"; n.style.transform = "none"; n.style.visibility = "visible";
+      }
+      document.querySelectorAll(".stamp-over").forEach(x=>x.remove());
+      logErr("ui", "mot invisible [" + why.join(",") + "] — réparé", "");
     });
   }catch(e){}
 }
