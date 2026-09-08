@@ -253,6 +253,11 @@ document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState 
    dans le dépôt : 29 et 30/08 absents malgré 99 et 241 révisions). Passage en arrière-plan =
    sauvegarde, bridée à une fois par 30 min (la fin de file garde son throttle de 5 min).
    Best-effort : Android laisse en général quelques secondes de réseau après la mise en fond. */
+/* v163 : au RETOUR au premier plan, re-vérifier l'affichage — c'est précisément la mise en
+   arrière-plan qui gèle l'horloge des animations sur Android. */
+document.addEventListener("visibilitychange", ()=>{
+  if(document.visibilityState === "visible"){ setTimeout(healInvisibleWords, 150); return; }
+});
 document.addEventListener("visibilitychange", ()=>{
   if(document.visibilityState !== "hidden") return;
   if(Date.now() - (ST.lastCloudTs||0) < 30*60*1000) return;
@@ -925,6 +930,8 @@ function el(html){ const t=document.createElement("template"); t.innerHTML=html.
 function healInvisibleWords(){
   try{
     if(document.querySelector(".modal-back")) return;   // surcouche légitime (réglages, rapport)
+    /* v163 : une animation FIGÉE (horloge du compositeur arrêtée) est le suspect n°1 — on ne
+       répare que ce qui est réellement invisible, mais on note si des animations traînent. */
     $screen.querySelectorAll(".big-kr,.big-fr,.feedback .kr").forEach(e=>{
       const why = [];
       const r = e.getBoundingClientRect();
@@ -959,7 +966,12 @@ function armCooldown(ms){
   /* anti-misclick : blocage des boutons quand une nouvelle carte apparaît (450 ms) ou après
      la révélation (200 ms — v141 : 450 avalait les notes rapides, « clics pas pris en compte ») */
   $screen.classList.add("cooldown");
-  setTimeout(healInvisibleWords, 700);   // v161 : bien après la fin d'animation (~320 ms)
+  /* v163 : DEUX passages au lieu d'un. Le mot figé restait invisible 700 ms — assez pour être
+     vu et rapporté. 120 ms couvre le cas « l'animation n'a jamais démarré » (elle dure 320 ms,
+     donc un mot encore à 0 à 120 ms est déjà anormal si aucune animation ne progresse) ;
+     700 ms reste le filet de sûreté après la fin normale. */
+  setTimeout(healInvisibleWords, 120);
+  setTimeout(healInvisibleWords, 700);
   clearTimeout(COOLDOWN_T);
   COOLDOWN_T = setTimeout(()=>$screen.classList.remove("cooldown"), ms || 450);
 }

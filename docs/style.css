@@ -349,8 +349,16 @@ input[type=checkbox]:focus-visible{outline:2px solid var(--seal); outline-offset
 /* ===== v129 : la révision respire — entrées animées, tampon en surimpression, boutons vivants ===== */
 @keyframes card-in{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
 @keyframes word-in{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
-#screen>.card.center{animation:card-in .2s ease-out both}
-.card.center .big-kr,.card.center .big-fr{animation:word-in .26s ease-out both}
+/* v163 : fill-mode « forwards », PAS « both ». Le mode `backwards` de `both` applique
+   l'image 0 % (opacity:0) AVANT le démarrage — si l'animation ne démarre jamais (compositeur
+   Android bridé : appli en fond, onglet gelé, mémoire tendue), l'élément reste invisible POUR
+   TOUJOURS. C'est la cause du « mot qui disparaît » (rapports 27/08 + 01/09, confirmée le
+   03/09 par la trace du détecteur : « opacity0:kr »). Avec `forwards`, une animation qui ne
+   démarre pas laisse l'élément à son état CSS naturel — visible. Aucun de ces sélecteurs n'a
+   d'animation-delay, donc `backwards` n'y servait à rien : zéro changement visuel.
+   ⚠️ N'utiliser `both` QUE sur un élément qui a un animation-delay (entrées échelonnées). */
+#screen>.card.center{animation:card-in .2s ease-out forwards}
+.card.center .big-kr,.card.center .big-fr{animation:word-in .26s ease-out forwards}
 /* boutons « un poil vivants » : enfoncement au toucher + pop bref sur la note choisie */
 .btn:active,.opts button:active,.escbtn:active,.num-mode:active{transform:scale(.96)}
 @keyframes pick-pop{0%{transform:scale(1)}45%{transform:scale(1.06)}100%{transform:scale(1)}}
@@ -388,7 +396,7 @@ input[type=checkbox]:focus-visible{outline:2px solid var(--seal); outline-offset
 /* tampon en surimpression : une carte vient de devenir maîtrisée / ancrée */
 .stamp-over{position:fixed; inset:0; z-index:60; display:flex; flex-direction:column; align-items:center;
   justify-content:center; gap:16px; background:color-mix(in srgb, var(--bg) 62%, transparent);
-  animation:card-in .16s ease-out both}
+  animation:card-in .16s ease-out forwards}   /* v163 : jamais `both` sans delay (cf. §animations) */
 .stamp-over .dojang{width:112px; height:112px; border-radius:22px}
 .stamp-over .dojang span{font-size:2.3rem}
 .stamp-over .stamp-lbl{color:var(--txt); font-weight:600; font-size:.8rem; letter-spacing:.16em;

@@ -272,19 +272,23 @@
 }
 /* .conv-chat exclue : renderChat mesure sa hauteur (getBoundingClientRect) juste après
    l'append — le scale(1.55) du keyframe 0% fausserait la mesure (revue v103) */
-.theme-takbon #screen > :not(.conv-chat){animation:takbon-press .32s cubic-bezier(.25,.8,.35,1) both}
-.theme-takbon #screen > :nth-child(2){animation-delay:.06s}
-.theme-takbon #screen > :nth-child(3){animation-delay:.12s}
-.theme-takbon #screen > :nth-child(4){animation-delay:.18s}
-.theme-takbon #screen > :nth-child(n+5){animation-delay:.24s}
-.theme-takbon .feedback > *{animation:takbon-press .32s cubic-bezier(.25,.8,.35,1) both}
-.theme-takbon .row > .btn.g4{animation:takbon-press .32s cubic-bezier(.25,.8,.35,1) both}
-.theme-takbon .row > .btn.g4:nth-child(2){animation-delay:.06s}
-.theme-takbon .row > .btn.g4:nth-child(3){animation-delay:.12s}
-.theme-takbon .row > .btn.g4:nth-child(4){animation-delay:.18s}
+/* v163 : `forwards` par défaut (cf. style.css §animations : `both` fige à opacity 0 quand
+   l'animation ne démarre pas — cause du mot invisible). Les enfants ÉCHELONNÉS gardent `both`
+   ci-dessous : eux ont un animation-delay, où `backwards` est indispensable. */
+.theme-takbon #screen > :not(.conv-chat){animation:takbon-press .32s cubic-bezier(.25,.8,.35,1) forwards}
+.theme-takbon #screen > :nth-child(2){animation-delay:.06s; animation-fill-mode:both}
+.theme-takbon #screen > :nth-child(3){animation-delay:.12s; animation-fill-mode:both}
+.theme-takbon #screen > :nth-child(4){animation-delay:.18s; animation-fill-mode:both}
+.theme-takbon #screen > :nth-child(n+5){animation-delay:.24s; animation-fill-mode:both}
+.theme-takbon .feedback > *{animation:takbon-press .32s cubic-bezier(.25,.8,.35,1) forwards}
+.theme-takbon .row > .btn.g4{animation:takbon-press .32s cubic-bezier(.25,.8,.35,1) forwards}
+.theme-takbon .row > .btn.g4:nth-child(2){animation-delay:.06s; animation-fill-mode:both}
+.theme-takbon .row > .btn.g4:nth-child(3){animation-delay:.12s; animation-fill-mode:both}
+.theme-takbon .row > .btn.g4:nth-child(4){animation-delay:.18s; animation-fill-mode:both}
 .theme-takbon .hero-kr, .theme-takbon .big-kr,
 .theme-takbon .done-kr{animation:takbon-breathe 3.6s ease-in-out infinite}
-.theme-takbon .feedback > .kr{animation:takbon-press .32s cubic-bezier(.25,.8,.35,1) both,
+/* v163 : LE cas capturé le 03/09 (« opacity0:kr ») — le mot révélé lui-même, figé invisible. */
+.theme-takbon .feedback > .kr{animation:takbon-press .32s cubic-bezier(.25,.8,.35,1) forwards,
   takbon-breathe 3.6s ease-in-out .32s infinite}
 @media (prefers-reduced-motion: reduce){
   .theme-takbon #screen > *, .theme-takbon .feedback > *, .theme-takbon .feedback > .kr,
