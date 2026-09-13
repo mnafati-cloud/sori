@@ -347,8 +347,16 @@ input[type=checkbox]:focus-visible{outline:2px solid var(--seal); outline-offset
 @media (prefers-reduced-motion: reduce){ .dojang{animation:none} }
 
 /* ===== v129 : la révision respire — entrées animées, tampon en surimpression, boutons vivants ===== */
-@keyframes card-in{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
-@keyframes word-in{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
+/* v164 : les animations d'entrée du CONTENU n'animent plus l'OPACITÉ — seulement le mouvement.
+   Mesuré sur 30 traces du détecteur (03-11/09, jusqu'à 7 occurrences d'affilée) : la carte
+   (.card.center) et le mot (.big-kr/.big-fr) se figeaient à opacity:0, en Takbon comme en
+   Encre, sous v162 ET v163 — l'horloge d'animation d'Android s'arrête (appli en fond, mémoire
+   tendue) et l'élément reste bloqué sur son image de départ, qui était invisible. Jouer sur le
+   fill-mode (v163) ne pouvait pas suffire : un clock gelé à t=0 fige le 0 % quel qu'il soit.
+   RÈGLE : la visibilité d'un contenu ne doit JAMAIS dépendre de l'horloge d'animation.
+   Un gel laisse désormais l'élément lisible, juste décalé de quelques pixels. */
+@keyframes card-in{from{transform:translateY(8px)} to{transform:none}}
+@keyframes word-in{from{transform:translateY(10px)} to{transform:none}}
 /* v163 : fill-mode « forwards », PAS « both ». Le mode `backwards` de `both` applique
    l'image 0 % (opacity:0) AVANT le démarrage — si l'animation ne démarre jamais (compositeur
    Android bridé : appli en fond, onglet gelé, mémoire tendue), l'élément reste invisible POUR

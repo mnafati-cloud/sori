@@ -259,11 +259,14 @@
 }
 
 /* l'apparition pressée — l'ADN du tampon appliqué aux écrans */
+/* v164 : plus d'opacité animée ici non plus (cf. style.css §card-in) — la presse garde tout
+   son geste (échelle + rotation), mais une horloge d'animation gelée ne peut plus effacer une
+   carte ni un mot. C'était la cause des 30 « mot invisible » tracés entre le 03 et le 11/09. */
 @keyframes takbon-press{
-  0%{opacity:0; transform:scale(1.55) rotate(-2deg)}
-  55%{opacity:1; transform:scale(.96)}
+  0%{transform:scale(1.55) rotate(-2deg)}
+  55%{transform:scale(.96)}
   78%{transform:scale(1.01)}
-  100%{opacity:1; transform:scale(1) rotate(0)}
+  100%{transform:scale(1) rotate(0)}
 }
 /* le souffle — le blanc frotté pulse lentement (v104 : « brillant, pulsant ») */
 @keyframes takbon-breathe{
