@@ -34,7 +34,7 @@ const server = http.createServer((req,res)=>{
     res.writeHead(200,{"Content-Type":mime[path.extname(file)] || "application/octet-stream"});res.end(bytes);
   });
 });
-let browser;
+let browser, testPage;
 (async()=>{
   await new Promise(resolve=>server.listen(0,"127.0.0.1",resolve));
   const url="http://127.0.0.1:"+server.address().port+"/";
@@ -58,7 +58,7 @@ let browser;
     }
     return route.fulfill({status:404,contentType:"application/json",body:"{}"});
   });
-  const page=await context.newPage();page.on("pageerror",e=>errors.push(e.message));
+  const page=await context.newPage();testPage=page;page.on("pageerror",e=>errors.push(e.message));
   await page.goto(url);
   await page.locator("#settings").waitFor();
   await page.waitForFunction(()=>document.querySelector("#screen").textContent.length>0);
@@ -111,16 +111,19 @@ let browser;
   const download=await downloadEvent, file=await download.path();
   const manual=JSON.parse(fs.readFileSync(file,"utf8"));assert.equal(manual.v,1);assert.ok(!manual.encoding);
   assert.deepEqual(manual.state.items,beforeBackup.items);assert.deepEqual(manual.state.rlog,beforeBackup.rlog);
+  const imported=JSON.parse(JSON.stringify(manual));imported.state.futureImport="v1-roundtrip";
   page.once("dialog",dialog=>dialog.accept());
-  await page.locator("#impfile").setInputFiles({name:"synthetic-v1.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(manual))});
-  await page.waitForFunction(()=>document.querySelector("#cloud")===null);
-  assert.deepEqual(await page.evaluate(()=>JSON.parse(JSON.stringify(ST))),manual.state);
+  await page.locator("#impfile").setInputFiles({name:"synthetic-v1.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(imported))});
+  await page.waitForFunction(()=>ST.futureImport==="v1-roundtrip");
+  assert.deepEqual(await page.evaluate(()=>JSON.parse(JSON.stringify(ST))),imported.state);
+  await page.locator("#setclose").click(); // l'import fichier conserve la surcouche Réglages
   // Un état remis à zéro ne peut pas écraser le cloud v2 plus riche (Annuler le forçage).
   await page.locator("#settings").click();await page.locator("summary").filter({hasText:"Sauvegarde fichier"}).click();
   const empty={app:"sori",v:1,state:{v:1,items:{},rlog:[],xp:0,set:{...E.DEF_SET,reverse:false}}};
   page.once("dialog",dialog=>dialog.accept());
   await page.locator("#impfile").setInputFiles({name:"synthetic-empty.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(empty))});
-  await page.waitForFunction(()=>document.querySelector("#cloud")===null);
+  await page.waitForFunction(()=>ST.xp===0 && Object.keys(ST.items).length===0 && ST.rlog.length===0);
+  await page.locator("#setclose").click();
   await page.locator("#settings").click();page.once("dialog",dialog=>dialog.dismiss());
   await page.locator("#cloud").click();
   await page.waitForFunction(()=>document.querySelector("#cloudstatus").textContent.startsWith("Échec"));
@@ -131,6 +134,10 @@ let browser;
     roundTrip:true,cloudPuts:2,dailySnapshot:true,restoreCountdown:true,manualV1:true,overwriteGuard:true,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,"summary.json"),JSON.stringify(summary,null,2));
   console.log(JSON.stringify(summary));
-})().catch(error=>{console.error(error);process.exitCode=1;}).finally(async()=>{
+})().catch(async error=>{
+  console.error(error);process.exitCode=1;
+  fs.writeFileSync(path.join(artifacts,"failure.txt"),String(error.stack || error));
+  if(testPage) await testPage.screenshot({path:path.join(artifacts,"failure.png")}).catch(()=>{});
+}).finally(async()=>{
   if(browser) await browser.close();await new Promise(resolve=>server.close(resolve));
 });

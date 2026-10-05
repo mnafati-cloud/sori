@@ -1179,6 +1179,14 @@ le cloud compact. Le localStorage n'a pas migré et reste lisible après rollbac
 égalité des **1 623 séquences FSRS**, des ease et des régimes de notation du fitter.
 L'export personnel de référence n'est pas commité ; les fixtures des tests sont synthétiques.
 
+**Contrôle PWA reproductible.** La CI exécute `tools/backup_smoke.cjs` avec Chromium,
+une fenêtre mobile 412×915 et le fuseau Asia/Seoul. Le serveur/navigateur tournent dans le
+runner isolé ; état synthétique (8 000 entrées), jeton factice, API GitHub simulée : aucun
+accès au vrai dépôt sori-data. Le test couvre réponses juste/fausse, rechargement, écrans
+exposés, les deux PUT et le snapshot du jour, restauration avec le vrai minuteur, export
+manuel v1 puis import FileReader, et refus d'écrasement après remise à zéro. Les captures
+et `summary.json` sont joints à l'artefact Actions `sori-backup-browser`.
+
 - **Sauvegarde cloud** (Stats → ☁️, + auto en fin de bloc, throttle 5 min) : le payload compact, poussé
   via l'API GitHub dans le repo **privé** `mnafati-cloud/sori-data` : `exports/latest.json`
   (écrasé) + `exports/sori-export-AAAA-MM-JJ.json` (un par jour). Jeton fine-grained (dépôt
@@ -1516,6 +1524,11 @@ déguisée. Si on te le demande, la réponse est : on ajuste le chemin ADAPTATIF
       - **Stats** : quêtes + badges affichés, carte « Bilan de niveau » présente, événement
         actif visible (s'il y en a un aujourd'hui), Réglages OK, un Export part.
       Aucune erreur dans la console (F12).
+      **Sauvegarde : environnement local sans navigateur.** Pour un changement limité à la
+      sauvegarde, utiliser une branche de validation distincte de `main` et attendre le job
+      CI « PWA Chromium (sauvegarde et restauration) » vert ; relire ses captures et son
+      résumé. Cette branche de test peut être poussée avant le contrôle visuel. Aucun merge
+      sur `main` ni déploiement avant la réussite de ce contrôle et des tests/syntaxe.
 - [ ] 5. Contrôle du staging : `git status`, relu ligne par ligne. INTERDITS : `*.anki2`,
       `sori-export-*.json`, fichiers hors sujet. Puis `git add <fichiers précis>` (jamais
       `git add -A` sans avoir lu le status), `git commit -m "..."` (quoi + pourquoi + effet
