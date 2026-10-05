@@ -12,6 +12,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dépendance du fit FSRS (test v1/v2)
+        run: python -m pip install numpy==2.3.5
       - name: Tests du moteur (docs/engine.js)
         run: node --test tests/*.mjs   # forme explicite : node --test tests/ casse sous Node 22
       - name: Syntaxe de tous les JS de l'app (node --check)
@@ -19,3 +24,26 @@ jobs:
           for f in docs/*.js docs/audio/index.js; do
             node --check "$f" || exit 1
           done
+
+  browser:
+    name: PWA Chromium (sauvegarde et restauration)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Installer Playwright et Chromium dans le runner isolé
+        run: |
+          npm install --prefix "$RUNNER_TEMP/sori-browser" playwright@1.63.0
+          node "$RUNNER_TEMP/sori-browser/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Tester la PWA avec des données synthétiques et une API cloud simulée
+        run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/backup_smoke.cjs
+      - name: Captures et preuve de validation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sori-backup-browser
+          path: browser-results/
+          if-no-files-found: ignore

@@ -1,7 +1,7 @@
 /* Sori service worker — network-first (mises à jour auto), repli cache (hors-ligne) */
-const CACHE = "sori-v164";
+const CACHE = "sori-v165";
 const ASSETS = ["./", "./index.html", "./style.css", "./themes.css", "./themes.js",
-                "./engine.js", "./app.js", "./data.js", "./extra.js",
+                "./engine.js", "./backup.js", "./app.js", "./data.js", "./extra.js",
                 "./events-data.js", "./events.js", "./search.js", "./exam.js", "./quests.js", "./typing.js", "./numbers.js", "./structure.js", "./placement.js", "./conversation.js",
                 "./grammar.js", "./grammar-data.js", "./gramex.js", "./story.js", "./story-data.js", "./story-sens.js",
                 "./scenarios-data.js", "./scenarios.js", "./player.js",

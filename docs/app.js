@@ -737,11 +737,10 @@ function applyAnswer(it, ok, grade, gradeRaw, kind, rt){
    minuteDuJour]. Les vieilles entrées à 4 (≤v63) ou 5 (v64) champs restent valides — le fit
    segmente par longueur. Le kind distingue un 2 CHOISI d'un 2 IMPOSÉ par le plafond ; rt et
    l'heure permettent hésitation & patterns circadiens. */
-/* Plafond FIFO : BUDGET CLOUD. rlog au cap = 8000 × ~55 o ≈ 440 Ko. ⚠️ Le poste DOMINANT de
-   l'état est AILLEURS : ST.items ≈ 84 o × cartes touchées (≈ 673 Ko à deck complet, 7997) —
-   le budget total dépassera la limite API ~1 Mo à l'automne 2026 au rythme d'intro actuel.
-   Garde de taille dans cloudBackup (alerte > 700 Ko) ; correctif de fond planifié (journal dans
-   un fichier cloud séparé, cf. MAINTENANCE v65). NE PAS remonter ce cap sans refaire le calcul.
+/* Plafond FIFO : 8000 entrées, inchangé. v165 compacte le transport cloud sans supprimer
+   le journal : dictionnaire date/id/kind + tuples des items (docs/backup.js).
+   État local et export fichier restent historiques ; garde cloud > 700 Ko UTF-8.
+   NE PAS remonter ce cap sans refaire le calcul.
    Pour le fit Phase B : l'historique COMPLET (au-delà du FIFO) se reconstruit en unionnant les
    snapshots quotidiens datés de sori-data (exports/sori-export-AAAA-MM-JJ.json). */
 const RLOG_CAP = 8000;
@@ -2618,14 +2617,20 @@ fetchConvKeys();   // au boot, en arrière-plan — cfg est relu à chaque envoi
 /* v123 : les chapitres GÉNÉRÉS sur l'appareil (v120-v122) n'ont plus de lecteur — l'histoire est
    désormais un corpus écrit d'avance. On libère la clé orpheline plutôt que de la laisser traîner. */
 try{ localStorage.removeItem("sori-story-ch"); }catch(e){}
-function exportPayload(){
-  return JSON.stringify({app:"sori", v:1, exportedAt:new Date().toISOString(),
-    seedVersion:SEED.meta.version, state:ST});
+function exportData(){
+  return {app:"sori", v:1, exportedAt:new Date().toISOString(),
+    seedVersion:SEED.meta.version, state:ST};
 }
-async function ghPut(path, content, H){
+function exportPayload(compact = true, space){
+  const data = exportData();
+  return JSON.stringify(compact ? SORI_BACKUP.pack(data) : data, null, space);
+}
+async function ghPut(path, content, H, knownSha){
   const url = "https://api.github.com/repos/"+GH_REPO+"/contents/"+path;
-  let sha;
-  try{ const g = await fetch(url, {headers:H}); if(g.ok) sha = (await g.json()).sha; }catch(e){}
+  let sha = knownSha;
+  if(knownSha === undefined){
+    try{ const g = await fetch(url, {headers:H}); if(g.ok) sha = (await g.json()).sha; }catch(e){}
+  }
   const body = { message: "backup "+todayStr(), content };
   if(sha) body.sha = sha;
   const r = await fetch(url, {method:"PUT", headers:H, body: JSON.stringify(body)});
@@ -2634,39 +2639,47 @@ async function ghPut(path, content, H){
 async function cloudBackup(force){
   const tok = ghToken();
   if(!tok) return {ok:false, msg:"aucun jeton configuré"};
-  const b64 = btoa(unescape(encodeURIComponent(exportPayload())));
-  /* v65 (revue) : GARDE DE TAILLE — l'API Contents plafonne ~1 Mo/fichier ; au-delà, sauvegarde
-     ET restauration cassent avec des messages trompeurs (« refus API », « introuvable »). Le poste
-     DOMINANT est ST.items (~84 o × cartes touchées → ~673 Ko à deck complet), pas le rlog. On
-     alerte AVANT le mur ; le vrai correctif (journal dans un fichier cloud séparé / compaction
-     des items) est planifié — cf. MAINTENANCE v65. */
-  const bytes = Math.floor(b64.length * 3 / 4);
+  const data = exportData();
+  let payload;
+  try{ payload = JSON.stringify(SORI_BACKUP.pack(data)); }
+  catch(e){ return {ok:false, msg:"état local invalide — conserve un export fichier avant de restaurer"}; }
+  const local = SORI_BACKUP.bytes(data); // taille de CE snapshot, avant toute révision pendant l'await
+  const b64 = btoa(unescape(encodeURIComponent(payload)));
+  /* v165 : garde sur les octets UTF-8 réellement envoyés (hors enveloppe base64).
+     La compaction est sans perte ; la limite documentée en v65 reste surveillée. */
+  const bytes = new TextEncoder().encode(payload).length;
   if(bytes > 700 * 1024){
-    logErr("cloud", "export " + Math.round(bytes/1024) + " Ko — approche la limite API ~1 Mo : sortir le rlog du fichier restaurable / compacter items (plan MAINTENANCE v65)", "");
+    logErr("cloud", "export compact " + Math.round(bytes/1024) + " Ko — approche la limite API ~1 Mo : revoir le budget de sauvegarde", "");
   }
   const H = { "Authorization": "Bearer "+tok, "Accept": "application/vnd.github+json" };
   try{
-    /* v157 (relecture adversariale) : GARDE ANTI-ÉCRASEMENT — un état local NETTEMENT plus
-       petit que latest.json (progression effacée, « Commencer de zéro », mauvais appareil)
-       n'écrase JAMAIS la sauvegarde en silence. L'état ne rétrécit pas de moitié en usage
-       légitime (rlog plafonné, items en croissance) : le seuil est sans faux positif.
-       Manuel : l'utilisateur peut forcer après un confirm ; auto : refus + trace. */
+    /* v165 : même garde v157, comparée en format DÉCODÉ pour accepter la migration v1→v2
+       sans confondre compression et perte de progression. La SHA lue ici est celle du PUT :
+       une mise à jour concurrente donne un conflit, jamais un écrasement non vérifié.
+       Une sauvegarde illisible ou un contrôle indisponible n'autorise pas le PUT automatique. */
+    let latestSha;
     if(!force){
-      try{
-        const g = await fetch("https://api.github.com/repos/"+GH_REPO+"/contents/exports/latest.json",
-                              { headers: H, cache: "no-store" });
-        if(g.ok){
-          const prev = (await g.json()).size || 0;
-          if(prev > 100*1024 && bytes < prev/2){
-            const msg = "la sauvegarde cloud ("+Math.round(prev/1024)+" Ko) est bien plus grosse que l'état local ("
-                        +Math.round(bytes/1024)+" Ko) — restaure-la d'abord (↓ Restaurer)";
-            logErr("cloud", "sauvegarde REFUSÉE : "+msg, "");
-            return {ok:false, guard:true, msg};
-          }
+      const g = await fetch("https://api.github.com/repos/"+GH_REPO+"/contents/exports/latest.json",
+                            { headers: H, cache: "no-store" });
+      if(g.ok){
+        const previous = await g.json();
+        let prevData;
+        try{
+          prevData = SORI_BACKUP.unpack(JSON.parse(decodeURIComponent(escape(atob(previous.content.replace(/\n/g,""))))));
+        }catch(e){ return {ok:false, msg:"sauvegarde cloud illisible — contrôle anti-écrasement impossible"}; }
+        const prev = SORI_BACKUP.bytes(prevData);
+        latestSha = previous.sha;
+        if(!latestSha) return {ok:false, msg:"SHA cloud absente — contrôle anti-écrasement impossible"};
+        if(prev > 100*1024 && local < prev/2){
+          const msg = "la sauvegarde cloud ("+Math.round(prev/1024)+" Ko) est bien plus grosse que l'état local ("
+                      +Math.round(local/1024)+" Ko) en format décompacté — restaure-la d'abord (↓ Restaurer)";
+          logErr("cloud", "sauvegarde REFUSÉE : "+msg, "");
+          return {ok:false, guard:true, msg};
         }
-      }catch(e){}
+      }else if(g.status === 404){ latestSha = null; }
+      else return {ok:false, msg:"contrôle anti-écrasement indisponible (API)"};
     }
-    const ok1 = await ghPut("exports/latest.json", b64, H);
+    const ok1 = await ghPut("exports/latest.json", b64, H, latestSha);
     const ok2 = ok1 && await ghPut("exports/sori-export-"+todayStr()+".json", b64, H);
     if(ok1 && ok2){ ST.lastCloud = todayStr(); ST.lastExport = todayStr(); save(); return {ok:true}; }
     return {ok:false, msg:"refus API (jeton invalide/expiré ?)"};
@@ -2737,8 +2750,9 @@ async function cloudRestore(){
       { headers:{ "Authorization":"Bearer "+tok, "Accept":"application/vnd.github+json" }, cache:"no-store" });
     if(!r.ok) return {ok:false, msg:"introuvable dans le cloud"};
     const j = await r.json();
-    const data = JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,"")))));
-    if(data.app!=="sori" || !data.state) return {ok:false, msg:"contenu invalide"};
+    let data;
+    try{ data = SORI_BACKUP.unpack(JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,"")))))); }
+    catch(e){ return {ok:false, msg:"contenu invalide ou format non pris en charge"}; }
     const when = (data.exportedAt||"").slice(0,16).replace("T"," ");
     const todayN = (ST.log[todayStr()]||{}).n || 0;
     const loss = `${ST.xp||0} XP · ${levelName(ST.xp||0)} · ${todayN} révision(s) aujourd'hui`;
@@ -2752,8 +2766,7 @@ async function cloudRestore(){
 
 async function exportState(){
   ST.lastExport = todayStr(); save();
-  const payload = JSON.stringify({app:"sori", v:1, exportedAt:new Date().toISOString(),
-    seedVersion:SEED.meta.version, state:ST}, null, 1);
+  const payload = exportPayload(false, 1);   // v1 lisible par les anciennes versions (rollback)
   const name = "sori-export-"+todayStr()+".json";
   const file = new File([payload], name, {type:"application/json"});
   if(navigator.canShare && navigator.canShare({files:[file]})){
@@ -2768,8 +2781,7 @@ function importState(e){
   const r=new FileReader();
   r.onload=()=>{
     try{
-      const data=JSON.parse(r.result);
-      if(data.app!=="sori"||!data.state) throw 0;
+      const data=SORI_BACKUP.unpack(JSON.parse(r.result));
       if(confirm("Remplacer la progression locale par ce fichier ?")){
         applyImportedState(data.state);   // même migration douce qu'au chargement
       }

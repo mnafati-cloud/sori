@@ -21,6 +21,7 @@ Le fichier d'export est PERSONNEL — jamais commité (il est passé en argument
 """
 import sys, json, io, argparse, os
 import numpy as np
+from backup_codec import unpack
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
@@ -106,7 +107,7 @@ def reconstruct_gradeD(note, kind):
     return 3 if note >= 2 else 1     # exercice aidé/plafonné : brute = Bien si succès
 
 def extract_sequences(export_path):
-    d = json.load(open(export_path, encoding="utf-8"))
+    d = unpack(json.load(open(export_path, encoding="utf-8")))
     st = d["state"]
     rlog = st.get("rlog", [])
     items = st.get("items", {}) or {}

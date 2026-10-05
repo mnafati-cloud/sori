@@ -8,3 +8,4 @@ __pycache__/
 # v157 : fichiers lus/préparés depuis le cloud privé sori-data — jamais dans CE repo (public)
 latest.json
 conv-cfg.json
+browser-results/
