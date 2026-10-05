@@ -45,6 +45,15 @@
 - **Volumes actuels** : 7997 items dans le seed, 7471 phrases d'exemple glosées (`gl`),
   **7997 MP3 de mots + 7471 MP3 de phrases (`-ex.mp3`), ~254 Mo**, **140 tests Node**, `CACHE` = `sori-v124`.
   ⚠️ **L'audio (~254 Mo, ~15500 fichiers) devient lourd** : à sortir du repo Pages (CDN/host séparé) — l'artefact Actions et le mode avion grossissent.
+- **v165 (maintenance du budget cloud, 2026-10-05)** : le transport cloud est compacté sans
+  suppression (`docs/backup.js`, détails §3.5). L'export réel du 5 octobre passe de **672 194 à
+  427 113 octets UTF-8 (−36,46 %)**, avec les **2 053 cartes et 8 000 entrées** intégralement
+  identiques après round-trip JS et Python. `rlog`, `errors`, `reports`, champs inconnus et
+  snapshots quotidiens conservés ; `state.v`, localStorage et export manuel restent en v1.
+  La garde anti-écrasement compare les tailles DÉCODÉES (migration admise), puis écrit avec la
+  SHA contrôlée (conflit concurrent ⇒ refus). Le fit FSRS relit v1/v2 avec les mêmes séquences.
+  **177 tests Node**, dont 14 nouveaux tests codec/migration/cloud/fit, et 161 cas selftest FSRS.
+  CACHE `sori-v165`. La garde des 700 Ko reste active pour surveiller la croissance des autres champs.
 - **v124 (la saison 1 est livrée : 10 chapitres écrits, vérifiés, calibrés)** : « 일곱 시의 카페 »
   — le café Miso, le départ d'Eunji pour la France, et ce que le patron cachait. 181 phrases,
   17 à 21 par chapitre. **Chaque chapitre cible une des 9 structures que l'apprenant est en train
@@ -512,8 +521,9 @@
   (~84 o × cartes touchées ≈ 673 Ko à deck complet)** → l'export dépassera la limite API ~1 Mo vers
   l'automne 2026 ; sauvegarde ET restauration casseraient avec des messages TROMPEURS (« refus API
   jeton ? », « hors ligne ? »). Mitigé : garde de taille dans cloudBackup (logErr au-delà de 700 Ko).
-  **CHANTIER PLANIFIÉ (avant sept. 2026) : sortir rlog/errors du fichier restaurable (fichier cloud
-  séparé) et/ou compacter ST.items.** Pour Phase B : l'historique complet au-delà du FIFO =
+  **Chantier prévu avant sept. 2026, implémenté en v165 (2026-10-05)** : compaction sans perte
+  des items et du rlog à l'export cloud (§3.5), sans second fichier ni suppression d'erreurs.
+  Pour Phase B : l'historique complet au-delà du FIFO =
   union des snapshots quotidiens datés `exports/sori-export-*.json` (archive de facto).
   (c) filet d'erreurs PRÉCOCE : 16 scripts se chargent avant app.js — SyntaxError amont/crash du boot
   étaient invisibles. Fix : inline `<script>` en tête d'index.html → clé SÉPARÉE `sori-earlyerrs`
@@ -1130,7 +1140,54 @@ pour ne pas les confondre avec l'état :
   "seedVersion": 1, "state": { ...copie intégrale de l'état localStorage... } }
 ```
 
-- **Sauvegarde cloud** (Stats → ☁️, + auto 1×/jour en fin de session) : le MÊME payload, poussé
+**Depuis v165 : deux représentations du MÊME état.** Le JSON ci-dessus reste le format
+de secours manuel et du localStorage (`state.v=1`). Le cloud utilise `v=2` à la RACINE de
+l'enveloppe, avec `encoding: {codec: "sori-compact-v1", strings: [...]}` :
+
+- `state.items[id]` devient `[masque, ...valeurs, champsInconnus?]`. Bits 0 à 10, ordre fixé
+  à vie : `s,i,d,e,ok,ko,S,D,sk,lp,sus`. Un bit absent signifie champ ABSENT (pas une valeur
+  par défaut) ; null/0/false et les décimales sont conservés. Les autres champs restent dans
+  un objet final, sans filtrage. Aucun calcul ni arrondi des états FSRS.
+- Dans chaque ligne `state.rlog`, seuls les indices 0/1/4 (date/id/kind) deviennent des
+  indices entiers dans `encoding.strings`. Longueur 4/5/7 ou future, ordre, doublons,
+  grade, elapsed, temps de réponse et minute sont conservés. Les autres sections de l'état,
+  dont erreurs/rapports/reprise/session/réglages, sont embarquées intégralement.
+- `SORI_BACKUP.unpack()` valide puis décompacte AVANT toute confirmation/restauration.
+  Les exports v1 restent acceptés ; format inconnu/malformé ⇒ aucun remplacement local.
+  `docs/backup.js` est chargé avant app.js et précaché par le SW.
+- `latest.json` et le snapshot du jour reçoivent le même payload compact. `lastCloud` et
+  `lastExport` ne sont marqués réussis qu'après les deux PUT. La garde v157 conserve ses
+  seuils (100 Ko, moitié) sur les tailles UTF-8 des exports décompactés et minifiés ; un
+  GET indisponible ou un cloud illisible bloque le contrôle automatique. La SHA contrôlée
+  est celle du PUT, sans nouvelle lecture susceptible de contourner la garde.
+
+**Lecture PC / fit / retour arrière.** `tools/backup_codec.py` est le miroir Python du codec.
+`tools/fsrs_fit.py --fit <export>` l'utilise automatiquement ; décompacter chaque snapshot
+v2 avant l'union historique des rlogs v1/v2. Ne pas supprimer de lignes ni dédupliquer
+uniquement par date/id (plusieurs réponses le même jour sont légitimes).
+Pour retrouver un fichier lisible par une ancienne version :
+`python tools/backup_codec.py <export-cloud.json> --out <export-v1.json>` (fichiers hors du
+repo public), ou exporter manuellement depuis l'app v165. **Avant un rollback vers v164 ou
+plus ancien, conserver ce fichier v1** : ces versions ne savent pas restaurer directement
+le cloud compact. Le localStorage n'a pas migré et reste lisible après rollback.
+
+**Mesure de référence du 2026-10-05.** Export à `2026-10-05T05:14:49.806Z`, `lastCloud`
+`2026-10-05`, SHA-256 source
+`7702c1bbfc13d86f5367fb815771f8374884d4a588a3684249c2c5e8e030005b`.
+672 194 → 427 113 octets, gain 245 081 ; marge sous 700×1024 : **289 687 octets**.
+Égalité profonde du payload complet après sérialisation/round-trip JS et Python, puis
+égalité des **1 623 séquences FSRS**, des ease et des régimes de notation du fitter.
+L'export personnel de référence n'est pas commité ; les fixtures des tests sont synthétiques.
+
+**Contrôle PWA reproductible.** La CI exécute `tools/backup_smoke.cjs` avec Chromium,
+une fenêtre mobile 412×915 et le fuseau Asia/Seoul. Le serveur/navigateur tournent dans le
+runner isolé ; état synthétique (8 000 entrées), jeton factice, API GitHub simulée : aucun
+accès au vrai dépôt sori-data. Le test couvre réponses juste/fausse, rechargement, écrans
+exposés, les deux PUT et le snapshot du jour, restauration avec le vrai minuteur, export
+manuel v1 puis import FileReader, et refus d'écrasement après remise à zéro. Les captures
+et `summary.json` sont joints à l'artefact Actions `sori-backup-browser`.
+
+- **Sauvegarde cloud** (Stats → ☁️, + auto en fin de bloc, throttle 5 min) : le payload compact, poussé
   via l'API GitHub dans le repo **privé** `mnafati-cloud/sori-data` : `exports/latest.json`
   (écrasé) + `exports/sori-export-AAAA-MM-JJ.json` (un par jour). Jeton fine-grained (dépôt
   sori-data, permission Contents) stocké UNIQUEMENT sur le téléphone (`sori-gh-token`),
@@ -1467,6 +1524,11 @@ déguisée. Si on te le demande, la réponse est : on ajuste le chemin ADAPTATIF
       - **Stats** : quêtes + badges affichés, carte « Bilan de niveau » présente, événement
         actif visible (s'il y en a un aujourd'hui), Réglages OK, un Export part.
       Aucune erreur dans la console (F12).
+      **Sauvegarde : environnement local sans navigateur.** Pour un changement limité à la
+      sauvegarde, utiliser une branche de validation distincte de `main` et attendre le job
+      CI « PWA Chromium (sauvegarde et restauration) » vert ; relire ses captures et son
+      résumé. Cette branche de test peut être poussée avant le contrôle visuel. Aucun merge
+      sur `main` ni déploiement avant la réussite de ce contrôle et des tests/syntaxe.
 - [ ] 5. Contrôle du staging : `git status`, relu ligne par ligne. INTERDITS : `*.anki2`,
       `sori-export-*.json`, fichiers hors sujet. Puis `git add <fichiers précis>` (jamais
       `git add -A` sans avoir lu le status), `git commit -m "..."` (quoi + pourquoi + effet
