@@ -481,6 +481,7 @@ function armUndo(itemId){
     failpos: new Map(FAILPOS), consol: new Set(CONSOL), pending: PENDING,   // v68 : transitoires de session (sinon l'undo les désynchronise)
     repIds: new Set(REPRISE_IDS),
     rep: ST.rep ? { d: ST.rep.d, m: Object.assign({}, ST.rep.m) } : null,     // v71
+    productionSince: ST.production?.day?.d===t ? ST.production.day.since : null,
   };
 }
 function undoLast(){
@@ -492,6 +493,7 @@ function undoLast(){
   }
   if(UNDO.log === null) delete ST.log[t]; else ST.log[t] = UNDO.log;
   ST.xp = UNDO.xp; COMBO = UNDO.combo; SESSFAIL = UNDO.sessfail;
+  if(UNDO.productionSince!==null && ST.production?.day?.d===t) ST.production.day.since=UNDO.productionSince;
   Q = UNDO.q; QPOS = UNDO.qpos;
   FAILPOS = UNDO.failpos || new Map(); CONSOL = UNDO.consol || new Set();   // v68
   REPRISE_IDS = UNDO.repIds || new Set();
@@ -862,7 +864,7 @@ function buildQueue(){
   const t = todayStr();
   const effAll = ALL_IDS.map(eff).filter(it=>!it.sus);   // les cartes mises de côté sont exclues de tout
   let due = ENGINE.selectDue(effAll, t);
-  const cap = ST.set.sessionMax || 120;
+  const cap = Math.max(1,(ST.set.sessionMax || 120)-productionRemaining());
   /* v68 : les nouvelles n'entrent que s'il RESTE de la place sous le plafond (comportement Anki) —
      avant, elles concurrençaient les échues à égalité dans la coupe, et le budget d'intro était
      consommé même pour une carte coupée jamais montrée. */
@@ -1285,6 +1287,37 @@ function saveSess(){
     fp:[...FAILPOS], co:[...CONSOL], rp:[...REPRISE_IDS] };   // v68/v71 : sinon un kill transforme les vues blanches en révisions réelles
   save();
 }
+/* Production : état additif, aucune fausse carte ni note FSRS. */
+function productionModule(){
+  return window.SORI_PRODUCTION?.ready ? window.SORI_PRODUCTION : null;
+}
+function productionWords(){
+  return new Set(BASE_IDS.map(eff).filter(it=>it.type==="word" && it.stage>=4 && !it.sus).map(it=>it.kr));
+}
+function productionRemaining(){
+  const module=productionModule();
+  return module && ST.set.production!==false ? module.pure.remaining(ST.production,todayStr(),productionWords()) : 0;
+}
+let PRODUCTION_FORCE=false;
+function renderProductionReview(){
+  const module=productionModule();
+  if(!module || ST.set.production===false || BONUS) return false;
+  const p=module.pure, t=todayStr();
+  const next=p.begin(ST.production,t,productionWords(),{end:QPOS>=Q.length,force:PRODUCTION_FORCE});
+  PRODUCTION_FORCE=false;
+  if(!next?.active) return false;
+  UNDO=null;
+  ST.production=next; saveNow();
+  return module.renderCard($screen,{state:ST.production,today:t,onAction:(action,text)=>{
+    const transition=p[action];
+    if(!["submit","reveal","skip","undo","advance"].includes(action)) return;
+    ST.production=transition(ST.production,todayStr(),text); saveNow();
+    render();
+    // Garder la saisie pour la corriger, sans la mettre dans les sauvegardes.
+    const input=$screen.querySelector(".production-input");
+    if(input && action==="submit") {input.value=text;input.focus({preventScroll:true});}
+  }});
+}
 function renderReview(){
   if(!Q){
     const s = ST.sess;
@@ -1301,6 +1334,7 @@ function renderReview(){
       saveSess();
     }
   }
+  if(renderProductionReview()) return;
   if(QPOS >= Q.length){
     ST.sess = null; save();
     autoCloudBackup();                       // sauvegarde cloud silencieuse (1x/jour max)
@@ -1707,6 +1741,10 @@ function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto){
     Q.splice(pos, 0, it.id);
   }
   QPOS++;
+  if(!BONUS && ST.set.production!==false && productionModule()){
+    const next=productionModule().pure.tick(ST.production,todayStr());
+    if(next) ST.production=next;
+  }
   saveSess();
   /* v129 : les NOTES (Bien/Encore…) avancent toutes seules — le Continuer était superflu après
      un choix explicite (rapport 22/07 ; le trivia des cartes Rappel se lit AVANT de noter).
@@ -2105,6 +2143,7 @@ function renderStats(){
   const stage0all = items.filter(it=>it.stage===0 && !it.sus).length;   // introduisibles (recto + verso)
   const newLeft = Math.min(Math.max(0, (ST.set.newPerDay||0) - (ST.intro[t]||0)), stage0all);
   const todo = dueN + newLeft;
+  const productionTodo=productionRemaining();
   /* v74 : HÉROS d'accueil — salut selon l'heure + CTA. Série de jours (streak + points) RETIRÉE
      sur retour user (« je ne vois pas l'intérêt »). streak() reste pour events/quests. */
   const hour = new Date().getHours();
@@ -2112,7 +2151,7 @@ function renderStats(){
   $screen.appendChild(el(`<div class="hero">
     <div class="hero-kr">${greet}</div>
   </div>`));
-  const launch = el(`<button class="btn cta" id="goreview">Réviser<span class="num">${todo>0?`${todo} carte${todo>1?"s":""}`:"tout est à jour"}</span></button>`);
+  const launch = el(`<button class="btn cta" id="goreview">Réviser<span class="num">${todo>0||productionTodo>0?`${todo} carte${todo>1?"s":""}${productionTodo?` · ${productionTodo} phrase${productionTodo>1?"s":""}`:""}`:"tout est à jour"}</span></button>`);
   launch.onclick = ()=>{
     TAB="review";
     document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("active", x.dataset.tab==="review"));
@@ -2121,6 +2160,10 @@ function renderStats(){
   /* test de niveau one-shot retiré (v49) : les barres « maîtrise par niveau » sont plus
      fiables et toujours à jour. placement.js reste chargé mais dormant (réactivable). */
   $screen.appendChild(launch);
+  if(productionModule()) productionModule().renderProgress($screen,{
+    state:ST.production,today:t,known:productionWords(),enabled:ST.set.production!==false,
+    onReview:()=>{if(BONUS){Q=null;BONUS=false;}PRODUCTION_FORCE=true;launch.click();}
+  });
   const jx = Math.round((new Date("2026-10-01T12:00:00") - new Date(t+"T12:00:00"))/864e5);
   const evSeoul = window.SORI_EVENTS && !((ST.evDismiss||{})["seoul-2026"]);   // la carte événement affiche déjà le compte à rebours
   if(jx > 0 && !evSeoul) $screen.appendChild(el(`<div class="korea-line"><span>Départ pour la Corée</span><b class="num">J − ${jx}</b></div>`));
@@ -2359,6 +2402,7 @@ function openSettings(){
       Planification adaptative (mode Classique) <input type="checkbox" id="adap" ${ST.set.adaptive?"checked":""}></label>
     <label title="Chaque mot devient DEUX cartes à maîtrise séparée : comprendre (KR→FR) et produire (FR→KR). Recommandé, mais double la charge de révision.">Production séparée (recto/verso) <input type="checkbox" id="rev" ${ST.set.reverse!==false?"checked":""}></label>
     <label>Saisie au clavier coréen (niv 5) <input type="checkbox" id="typ" ${ST.set.typing?"checked":""}></label>
+    <label title="Jusqu’à quatre phrases par jour dans Réviser. Production libre, sans mots proposés, avec le vocabulaire déjà solide.">Construire des phrases sans aide <input type="checkbox" id="productionchk" ${ST.set.production!==false?"checked":""}></label>
     <label>Bouton rapport de problème <input type="checkbox" id="rpt" ${ST.set.report?"checked":""}></label>
     <label>Audio de la phrase d'exemple <input type="checkbox" id="exau" ${ST.set.exaudio?"checked":""}></label>
     <label title="Dans l'encart d'exemple, taper un mot affiche sa traduction française.">Traduction d'un mot au clic <input type="checkbox" id="wgl" ${ST.set.wordgloss?"checked":""}></label>
@@ -2433,6 +2477,7 @@ function openSettings(){
   set.querySelector("#fsrsperso").onchange = e=>{ ST.set.fsrsPersonal=e.target.checked; save(); };
   set.querySelector("#g4").onchange = e=>{ ST.set.grade4=e.target.checked; save(); };
   set.querySelector("#typ").onchange = e=>{ ST.set.typing=e.target.checked; save(); };
+  set.querySelector("#productionchk").onchange = e=>{ ST.set.production=e.target.checked; save(); render(); };
   set.querySelector("#rev").onchange = e=>{ ST.set.reverse=e.target.checked; save(); location.reload(); };  // ALL_IDS fixé au chargement → recharger
   set.querySelector("#rpt").onchange = e=>{ ST.set.report=e.target.checked; save(); wireReport(); };
   set.querySelector("#cvprov").onchange = e=>{ setConvCfg({prov: e.target.value}); };

@@ -23,7 +23,8 @@ Manuel complet (contrats de données, recettes pas-à-pas, pièges vécus) : **`
 ```
 Couche 1  docs/engine.js       moteur pur (planification legacy GELÉE + adaptative, file,
                                distracteurs, ease) — testé sous Node, contractuel
-Couche 1b MODULES autonomes    themes.js · events.js · search.js · exam.js · quests.js ·
+Couche 1b MODULES autonomes    production.js + production-data.js (phrases sans aide, PRODUCTION.md) ·
+                               themes.js · events.js · search.js · exam.js · quests.js ·
                                player.js · scenarios.js · typing.js · numbers.js ·
                                gramex.js (exercice de grammaire : conjugaison jamo + phrases
                                à trou + repérage, testé par tests/gramex.test.mjs) ·

@@ -40,6 +40,8 @@ jobs:
           node "$RUNNER_TEMP/sori-browser/node_modules/playwright/cli.js" install --with-deps chromium
       - name: Tester la PWA avec des données synthétiques et une API cloud simulée
         run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/backup_smoke.cjs
+      - name: Production de phrases, IME, reprise et mode avion
+        run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/production_smoke.cjs
       - name: Captures et preuve de validation
         if: always()
         uses: actions/upload-artifact@v4

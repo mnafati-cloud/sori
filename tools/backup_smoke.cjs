@@ -19,10 +19,13 @@ const yesterday = E.addDays(today,-1);
 const state = {v:1, xp:50, freshOk:1, reverseMig:1, adapMig:1,
   items:Object.fromEntries(cards.map(it=>[it.id,{s:1,i:1,d:today,e:2.31,ok:7,ko:1,S:1.234,D:6.789,sk:0,future:{keep:true}}])),
   log:{}, intro:{}, rlog:Array.from({length:8000},(_,i)=>[yesterday,cards[i%3].id,3,1,"rec5",76,811]),
-  set:{...E.DEF_SET,reverse:false,newPerDay:0,kitFirst:false,mute:true,autoplay:false},
+  set:{...E.DEF_SET,production:false,reverse:false,newPerDay:0,kitFirst:false,mute:true,autoplay:false},
   errors:[], reports:[{d:today+"T00:00:00Z",txt:"fixture synthétique"}], vlog:[],
   sess:{d:today,q:cards.map(it=>it.id),p:0,pen:0}, rep:{d:today,m:{}}, conv:[], story:{lus:[],ouverts:[]},
-  audioCleanMig:1, futureRoot:["préservé",null,false]};
+  audioCleanMig:1, futureRoot:["préservé",null,false],
+  production:{v:1,seq:1,skills:{place:{n:2,ok:1,ko:1,step:1,due:today,forms:["에서"],contexts:["place-home"]}},
+    day:{d:today,n:1,done:["restriction"],since:0},recent:[],
+    active:{id:1,item:"restriction-home",day:today,phase:"retry",tries:1,first:"incorrect",code:0}}};
 const original = {app:"sori",v:1,exportedAt:today+"T00:00:00Z",seedVersion:1,state};
 const mime = {".html":"text/html",".js":"text/javascript",".css":"text/css",".json":"application/json",".woff2":"font/woff2",".png":"image/png",".mp3":"audio/mpeg"};
 const server = http.createServer((req,res)=>{
