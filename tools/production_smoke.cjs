@@ -74,12 +74,18 @@ let browser,page;
   assert.equal(await page.evaluate(()=>ST.production.skills.recipient.ko),1);
   await page.screenshot({path:path.join(artifacts,"corrected-after-help.png")});
   await page.getByRole("button",{name:"Continuer",exact:true}).click();
-  // Hors corpus : pas de faux échec, même après la révélation.
+  // Hors corpus : réponse et explication immédiates, aucun clic de révélation.
   await page.locator(".production-input").fill("집에서도 일을 하고 있어요");
   await page.getByRole("button",{name:"Vérifier",exact:true}).click();
-  await page.getByText(/Je ne sais pas évaluer cette formulation/).waitFor();
-  await page.getByRole("button",{name:"Voir un exemple",exact:true}).click();
+  await page.locator(".production-answer").waitFor();
+  assert.equal(await page.locator(".production-answer").textContent(),"집에서도 일해요");
+  assert.ok((await page.locator(".production-card").textContent()).includes(D.items.find(x=>x.id==="addition-home").explanation));
+  assert.equal(await page.locator(".production-input").count(),0);
+  assert.equal(await page.getByRole("button",{name:"Voir un exemple",exact:true}).count(),0);
+  assert.equal(await page.getByText(/Je ne sais pas évaluer cette formulation/).count(),0);
   assert.equal(await page.evaluate(()=>ST.production.skills.addition.ko),0);
+  assert.equal(await page.evaluate(()=>ST.production.skills.addition.ok),0);
+  await page.screenshot({path:path.join(artifacts,"unrecognized-answer.png")});
   await page.getByRole("button",{name:"Continuer",exact:true}).click();
   // Le service worker fournit le corpus et le correcteur sans aucun réseau.
   await page.evaluate(()=>navigator.serviceWorker.ready);
@@ -134,6 +140,14 @@ let browser,page;
     ST.items[id]=previous;return {weak,suspended};
   });
   assert.deepEqual(eligibility,{weak:false,suspended:false});
+  // Une tentative v166 déjà sauvegardée passe elle aussi directement à la réponse.
+  await page.evaluate(()=>{
+    Object.assign(ST.production.active,{phase:"unverified",first:"unverified",tries:1});saveNow();
+  });
+  await page.reload();await page.locator('#tabs [data-tab="review"]').click();
+  await page.locator(".production-answer").waitFor();
+  assert.equal(await page.locator(".production-answer").textContent(),"집에서 공부해요");
+  assert.equal(await page.evaluate(()=>ST.production.skills.place.ko),0);
   // Module absent : révision classique toujours disponible et état conservé.
   const saved=await page.evaluate(()=>JSON.stringify(ST.production));
   await page.evaluate(()=>{window.SORI_PRODUCTION=null;render();});

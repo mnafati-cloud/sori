@@ -1,4 +1,4 @@
-# Production de phrases — v166
+# Production de phrases — v167
 
 Dans **Réviser**, l’utilisateur écrit une phrase entière en coréen à partir d’une
 consigne française, sans mots proposés ni structure révélée. Le module est actif
@@ -22,9 +22,11 @@ répétés, virgules et ponctuation déclarative finale sont normalisés.
   ordres de compléments et constructions équivalentes sont admis.
 - Confusion reconnue : retour ciblé sur la portée ou la relation exprimée.
   Une seconde tentative est possible ; après deux essais erronés, exemple expliqué.
-- Toute autre réponse : **sans note**, jamais déclarée fausse. On peut reformuler,
-  passer ou consulter l’exemple. Une faute de vocabulaire non répertoriée suit
-  aussi ce chemin. Il n’y a aucun appel réseau ou LLM pour évaluer la phrase.
+- Toute autre réponse : la réponse proposée et son explication s’affichent
+  **immédiatement**, sans clic supplémentaire et **sans note**, jamais déclarée
+  fausse. Une faute de vocabulaire non répertoriée suit aussi ce chemin. Les essais
+  sauvegardés sur l’ancien écran « non reconnue » affichent aussi la réponse à la
+  reprise. Il n’y a aucun appel réseau ou LLM pour évaluer la phrase.
 
 Le premier verdict est conservé avant d’afficher le retour. Une correction après
 aide ou après une réponse non évaluée ne devient pas un succès autonome.

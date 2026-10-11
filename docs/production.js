@@ -73,7 +73,10 @@
     return active+Math.min(Math.max(0,LIMIT-s.day.n),candidates(s,today,known).length);
   }
   function begin(raw,today,known,{end=false,force=false}={}){
-    const s=state(raw,today); if(!s || s.active) return s;
+    const s=state(raw,today); if(!s) return s;
+    // v167 : reprendre aussi les essais laissés sur l'ancien écran « non reconnue ».
+    if(s.active?.phase==="unverified") return finish(s,today,"unverified");
+    if(s.active) return s;
     if(s.day.n>=LIMIT || (!end && !force && s.day.since<GAP)) return s;
     const item=candidates(s,today,known)[0]; if(!item) return s;
     s.seq++;
@@ -128,8 +131,9 @@
       if(a.first==="correct") a.form=g.form;
       return finish(s,today,"correct");
     }
-    a.phase=g.status==="incorrect"?"retry":"unverified";
-    if(g.status==="incorrect" && a.tries>=2) return finish(s,today,"solution");
+    if(g.status==="unverified") return finish(s,today,"unverified");
+    a.phase="retry";
+    if(a.tries>=2) return finish(s,today,"solution");
     return s;
   }
   function reveal(raw,today){
@@ -183,7 +187,7 @@
     const s=state(raw,today), a=s?.active, item=items.get(a?.item); if(!item) return false;
     css();
     const card=document.createElement("section"); card.className="production-card";
-    const done=a.phase==="done", retry=a.phase==="retry", unknown=a.phase==="unverified";
+    const done=a.phase==="done", retry=a.phase==="retry";
     const feedback=retry?item.wrong[a.code]?.feedback:"";
     let result="";
     if(done){
@@ -200,8 +204,7 @@
         <textarea id="production-answer" class="production-input" lang="ko" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="500" aria-describedby="production-help"></textarea>
         <div id="production-help" class="production-note">Sans mots proposés. Tu peux employer une autre formulation.</div>
         ${retry?`<div class="production-feedback" role="status">${esc(feedback)} Tu peux corriger ta phrase.</div>`:""}
-        ${unknown?'<div class="production-feedback" role="status">Je ne sais pas évaluer cette formulation. Elle n’est pas comptée comme une erreur. Tu peux reformuler ou consulter un exemple sans note.</div>':""}
-        <div class="production-actions"><button class="btn" type="submit">Vérifier</button><button class="btn ghost" type="button" data-action="reveal">${retry||unknown?"Voir un exemple":"Je ne sais pas"}</button></div>
+        <div class="production-actions"><button class="btn" type="submit">Vérifier</button><button class="btn ghost" type="button" data-action="reveal">${retry?"Voir un exemple":"Je ne sais pas"}</button></div>
         <div class="production-actions"><button class="btn ghost" type="button" data-action="skip">${a.first==="incorrect"?"Arrêter cet essai":"Passer sans note"}</button></div></form>`}`;
     container.appendChild(card);
     let busy=false, composing=false;

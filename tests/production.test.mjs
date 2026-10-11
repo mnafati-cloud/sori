@@ -74,14 +74,34 @@ test("premier essai sauvegardé, correction puis recharge : un seul échec, aucu
   assert.deepEqual(P.submit(s,day,"집에서만 일해요"),s,"double validation ignorée");
   assert.deepEqual(P.reveal(s,day),s);
 });
-test("réponse inconnue : correction et exemple sans note, texte jamais persisté",()=>{
-  let s=P.submit(active("restriction-home"),day,"Cette formulation doit rester privée");
-  assert.equal(s.active.phase,"unverified");assert.ok(!JSON.stringify(s).includes("privée"));
-  s=P.submit(roundtrip(s),day,"집에서만 일해요");
+test("réponse inconnue : solution immédiate sans note, texte jamais persisté",()=>{
+  const s=P.submit(active("restriction-home"),day,"Cette formulation doit rester privée");
+  assert.equal(s.active.phase,"done");assert.equal(s.active.result,"unverified");
+  assert.equal(s.active.first,"unverified");assert.ok(!JSON.stringify(s).includes("privée"));
+  assert.deepEqual(P.submit(roundtrip(s),day,"집에서만 일해요"),s,"aucun succès après avoir vu la solution");
+  assert.deepEqual(P.begin(roundtrip(s),day,all),s,"recharge sans double comptage");
   assert.equal(s.skills.restriction.ok,0);assert.equal(s.skills.restriction.ko,0);
   assert.equal(s.skills.restriction.due,undefined);
   assert.equal(P.reveal(P.submit(active("place-home"),day,"모르겠습니다"),day).active.outcome,"unverified");
   assert.equal(P.skip(active("place-home"),day).active.outcome,"unverified");
+});
+test("ancienne tentative non reconnue : solution à la reprise et premier verdict conservé",()=>{
+  for(const first of ["unverified","incorrect"]){
+    const old=active("restriction-home");
+    Object.assign(old.active,{phase:"unverified",first,tries:1});
+    const s=P.begin(roundtrip(old),day,all);
+    assert.equal(s.active.phase,"done");assert.equal(s.active.result,"unverified");
+    assert.equal(s.active.first,first);assert.equal(s.skills.restriction.ok,0);
+    assert.equal(s.skills.restriction.ko,first==="incorrect"?1:0);
+    assert.deepEqual(P.begin(roundtrip(s),day,all),s);
+    assert.equal(old.active.phase,"unverified","entrée non mutée");
+  }
+});
+test("formulation inconnue après erreur : solution immédiate sans changer le premier verdict",()=>{
+  const retry=P.submit(active("restriction-home"),day,"집에서 일만 해요");
+  const s=P.submit(retry,day,"저는 집에서만 일을 하고 있어요");
+  assert.equal(s.active.phase,"done");assert.equal(s.active.result,"unverified");
+  assert.equal(s.skills.restriction.ko,1);assert.equal(s.skills.restriction.ok,0);
 });
 test("abandon, révélation, annulation : pas de contournement du premier essai",()=>{
   let s=P.reveal(active("restriction-home"),day);
