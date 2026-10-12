@@ -135,7 +135,11 @@ const GLOSS_FIX = {
   "두껍다":"Épais (objet plat : livre, vêtement, couche)",
   "얇다":"Fin, peu épais (objet plat : papier, tissu, tranche)",
   "굵다":"Gros, épais (objet allongé : bras, fil, trait — le diamètre)",
-  "가늘다":"Fin, mince (objet allongé : fil, doigt, voix fluette — le diamètre)"
+  "가늘다":"Fin, mince (objet allongé : fil, doigt, voix fluette — le diamètre)",
+  /* v169 : totalité — préciser l'emploi demandé, sans prétendre que les sens sont exclusifs. */
+  "전체":"L'ensemble considéré comme un tout (par opposition à une partie)",
+  "전부":"Tout, sans rien laisser ; en totalité (nom ou adverbe)",
+  "전":"Tout le… / le… entier (déterminant placé devant un nom)"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 
@@ -518,6 +522,16 @@ let LASTANS = null;   // dernière réponse notée {id, kr, ok} (posée par afte
 function reportCtx(){
   const c = { tab: TAB };
   try{
+    // Une situation visible remplace la carte de vocabulaire en attente dans Q.
+    const a = ST.production?.active;
+    const item = TAB==="review" && $screen.querySelector(".production-card") &&
+      window.SORI_PRODUCTION_DATA?.items.find(x=>x.id===a?.item);
+    if(item){
+      c.production = { id:item.id, prompt:item.prompt, goal:item.goal, attempt:a.id,
+        phase:a.phase, tries:a.tries, first:a.first, result:a.result || null,
+        outcome:a.outcome || null, cancelled:!!a.cancelled };
+      return c;
+    }
     if(TAB==="review" && Q && QPOS < Q.length){
       const it = eff(Q[QPOS]);
       c.carte = { id: it.id, kr: it.kr, stage: it.stage };
@@ -532,7 +546,7 @@ function openReportModal(){
   const back = el(`<div class="modal-back">
     <div class="card modal">
       <h2>Signaler un problème</h2>
-      <p class="dim">${ctx.carte ? "Carte : "+esc(ctx.carte.kr)+" ("+esc(ctx.pos||"")+")" : "Onglet : "+esc(ctx.tab)}
+      <p class="dim">${ctx.production ? "Phrase : "+esc(ctx.production.prompt) : ctx.carte ? "Carte : "+esc(ctx.carte.kr)+" ("+esc(ctx.pos||"")+")" : "Onglet : "+esc(ctx.tab)}
         — le contexte et l'heure sont joints automatiquement.</p>
       <textarea id="rpttxt" rows="5" placeholder="Décris le souci ou la remarque…"></textarea>
       <div class="row" style="margin-top:10px">
@@ -928,12 +942,18 @@ function el(html){ const t=document.createElement("template"); t.innerHTML=html.
    Android intermittent, non reproduit), le mot reste transparent. Le filet force l'état
    final quand un mot est encore invisible bien après la fin normale (~320 ms), et TRACE
    chaque occurrence (ST.errors, dédupliqué) pour mesurer la fréquence réelle. */
+const STAMP_HOLD_MS = 700, STAMP_FADE_MS = 180, STAMP_GRACE_MS = 250;
+const STAMP_TRANSITIONS = new WeakMap();   // DOM uniquement, jamais dans les sauvegardes
 function healInvisibleWords(){
   try{
     if(document.querySelector(".modal-back")) return;   // surcouche légitime (réglages, rapport)
+    // Le tampon masque volontairement le mot jusqu'à la fin de sa transition.
+    const stamps = [...document.querySelectorAll(".stamp-over")];
+    if(stamps.some(x=>(STAMP_TRANSITIONS.get(x)?.until || 0)>performance.now())) return;
     /* v163 : une animation FIGÉE (horloge du compositeur arrêtée) est le suspect n°1 — on ne
        répare que ce qui est réellement invisible, mais on note si des animations traînent. */
     $screen.querySelectorAll(".big-kr,.big-fr,.feedback .kr").forEach(e=>{
+      if(!e.isConnected) return;   // une transition réparée a pu avancer la carte
       const why = [];
       const r = e.getBoundingClientRect();
       if(!r.width || !r.height) why.push("taille0");
@@ -957,7 +977,10 @@ function healInvisibleWords(){
       for(let n = e; n && n !== $screen; n = n.parentElement){
         n.style.animation = "none"; n.style.opacity = "1"; n.style.transform = "none"; n.style.visibility = "visible";
       }
-      document.querySelectorAll(".stamp-over").forEach(x=>x.remove());
+      stamps.forEach(x=>{
+        const transition = STAMP_TRANSITIONS.get(x);
+        if(transition) transition.complete(); else x.remove();
+      });
       logErr("ui", "mot invisible [" + why.join(",") + "] — réparé", "");
     });
   }catch(e){}
@@ -1678,12 +1701,17 @@ function nextCard(){
   if(!s) return go();
   const ov = el(`<div class="stamp-over"><div class="dojang"><span>${s.kr}</span></div>
     <div class="stamp-lbl">${s.label}</div></div>`);
-  let done = false;
-  const fin = ()=>{ if(done) return; done = true; ov.classList.add("out"); setTimeout(()=>{ ov.remove(); go(); }, 180); };
+  let done = false, completed = false;
+  const complete = ()=>{ if(completed) return; completed = true; ov.remove(); go(); };
+  const fin = ()=>{ if(done || completed) return; done = true; ov.classList.add("out"); setTimeout(complete, STAMP_FADE_MS); };
+  const lifetime = STAMP_HOLD_MS + STAMP_FADE_MS + STAMP_GRACE_MS;
+  STAMP_TRANSITIONS.set(ov, {until:performance.now()+lifetime, complete});
   ov.onclick = fin;
   document.body.appendChild(ov);
   sfxStamp();
-  setTimeout(fin, 700);   // v131 : un tiers plus court (retour user)
+  setTimeout(fin, STAMP_HOLD_MS);   // v131 : un tiers plus court (retour user)
+  // Le filet conserve sa capacité à débloquer un tampon dont la fin n'a pas été exécutée.
+  setTimeout(()=>{ if(ov.isConnected) healInvisibleWords(); }, lifetime);
 }
 function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto){
   LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞

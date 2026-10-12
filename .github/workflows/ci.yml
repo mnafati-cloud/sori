@@ -42,6 +42,8 @@ jobs:
         run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/backup_smoke.cjs
       - name: Production de phrases, IME, reprise et mode avion
         run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/production_smoke.cjs
+      - name: Signalements, distinctions lexicales et récupération des animations
+        run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/ui_repairs_smoke.cjs
       - name: Captures et preuve de validation
         if: always()
         uses: actions/upload-artifact@v4
