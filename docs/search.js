@@ -210,7 +210,7 @@
     return p[p.length - 1] || theme;
   }
 
-  function hitRow(e, onSpeak){
+  function hitRow(e, onSpeak, onExpand){
     var pills = '<span class="pill">' + esc(themeShort(e.theme)) + '</span>' +
       (e.stage != null ? '<span class="pill stage">niv ' + esc(e.stage) + '</span>' : "");
     var row = el('<div class="item search-hit"><div class="txt">' +
@@ -230,14 +230,16 @@
         (e.exFr ? '<div class="tfr">' + esc(e.exFr) + '</div>' : ""));
       if(e.conj) bits.push('<div class="tconj">활용 ' + esc(e.conj) + '</div>');
       if(e.note) bits.push('<div class="tnote">' + esc(e.note) + '</div>');
-      if(!bits.length) return;
-      row.querySelector(".txt").appendChild(el('<div class="trivia">' + bits.join("") + '</div>'));
+      if(!bits.length && !onExpand) return;
+      const detail=el('<div class="trivia">' + bits.join("") + '</div>');
+      row.querySelector(".txt").appendChild(detail);
+      if(onExpand)onExpand(detail,e.id);
     };
     return row;
   }
 
   var MAX_SHOWN = 30;
-  function paintResults($count, $list, res, q, onSpeak){
+  function paintResults($count, $list, res, q, onSpeak, onExpand){
     $list.innerHTML = ""; $count.textContent = "";
     if(res === null){   /* requête vide / trop courte : invite discrète */
       $count.textContent = q.trim()
@@ -250,7 +252,7 @@
       return;
     }
     $count.textContent = res.length + (res.length > 1 ? " résultats" : " résultat");
-    res.slice(0, MAX_SHOWN).forEach(function(r){ $list.appendChild(hitRow(r.e, onSpeak)); });
+    res.slice(0, MAX_SHOWN).forEach(function(r){ $list.appendChild(hitRow(r.e, onSpeak, onExpand)); });
     if(res.length > MAX_SHOWN){
       $list.appendChild(el('<div class="search-more">… ' + (res.length - MAX_SHOWN) +
         ' de plus — affine ta recherche</div>'));
@@ -283,7 +285,7 @@
       var q = $input.value;
       LASTQ = q;
       $clear.hidden = !q;
-      paintResults($count, $list, search(INDEX, q), q, opts.onSpeak);
+      paintResults($count, $list, search(INDEX, q), q, opts.onSpeak, opts.onExpand);
     }
     $input.addEventListener("input", function(){
       if(timer) clearTimeout(timer);

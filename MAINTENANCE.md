@@ -15,6 +15,14 @@
 
 ## Sommaire
 
+**v170 — images générées et rappel visuel : [IMAGES.md](IMAGES.md).** Ce document
+décrit la pipeline Git complète, le style approuvé, l'inventaire, les prompts,
+la génération manuelle bornée, les validations et la publication. Le kind
+`image` utilise les notes du rappel libre ; un oubli vaut Encore. Les images
+sont optionnelles : absence/échec de chargement → exercice textuel, sans note.
+Le cache `sori-image-store` doit être préservé à l'activation du worker, comme
+`sori-audio-store`. Ne jamais embarquer les images dans l'état ou les exports.
+
 1. [Vue d'ensemble](#1-vue-densemble)
 2. [Architecture détaillée](#2-architecture-détaillée)
 3. [Contrats de données](#3-contrats-de-données)

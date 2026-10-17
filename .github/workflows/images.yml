@@ -1,0 +1,44 @@
+name: Generate image candidates
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: 'Inventory ids separated by commas (1–10); paid API generation'
+        required: true
+        type: string
+      limit:
+        description: 'Maximum number of images billed in this run (1–10)'
+        default: '3'
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: sori-image-generation
+  cancel-in-progress: false
+jobs:
+  candidates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --prefix tools/images --ignore-scripts
+      - name: Generate requested candidates (never commit or deploy automatically)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          IMAGE_IDS: ${{ inputs.ids }}
+          IMAGE_LIMIT: ${{ inputs.limit }}
+        run: python tools/images/generate.py --ids "$IMAGE_IDS" --limit "$IMAGE_LIMIT" --execute
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: image-candidates
+          path: tools/images/candidates/
+          retention-days: 30
+          if-no-files-found: ignore

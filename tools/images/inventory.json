@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "style": "pinceau-blanc-v1",
+  "items": [
+    {
+      "id": "pack-c3c6d557",
+      "kr": "우산",
+      "sense": "Parapluie",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "우산"
+      ],
+      "alternatives": [
+        "양산"
+      ],
+      "subject": "One open rain umbrella, seen at a three-quarter angle, with clearly visible canopy ribs, a long thin shaft and curved J-shaped vermilion handle. A rain umbrella, not a sun parasol. No rain, person, stand or extra object.",
+      "asset": "pack-c3c6d557-a8510baf66c1.webp",
+      "sha256": "a8510baf66c1709feed29f7de8bbf7c9ba9e036041151f597ce2ba96b1984bfc"
+    },
+    {
+      "id": "1780695436436",
+      "kr": "사과",
+      "sense": "Pomme",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "사과"
+      ],
+      "alternatives": [],
+      "subject": "One whole apple with the typical rounded apple silhouette, shallow dimple at the top, a short stem and one small leaf. A tiny vermilion brush accent near the stem is allowed. Clearly an apple, not a pear, peach or tomato. No sliced fruit, plate, basket or other object.",
+      "asset": "1780695436436-db5c553ac04e.webp",
+      "sha256": "db5c553ac04ed80ae2f76eaf832a9b3d545f3a59c0fa49fe67dc7767199a6dea"
+    },
+    {
+      "id": "1780695436426",
+      "kr": "고양이",
+      "sense": "Chat",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "고양이"
+      ],
+      "alternatives": [
+        "냥이",
+        "새끼 고양이"
+      ],
+      "subject": "One adult domestic cat sitting upright in three-quarter view, with two triangular ears, feline whiskers, four anatomically correct legs and one long curved tail. Complete head, paws and tail visible. Quiet natural posture, no collar, accessories or environment. Clearly a domestic cat, not a tiger or dog.",
+      "asset": "1780695436426-d1e004478882.webp",
+      "sha256": "d1e00447888249c090364144d7a697e42ab7fc33f8c20331790093e28b0e9c0b"
+    },
+    {
+      "id": "1763266607347",
+      "kr": "운동화",
+      "sense": "Chaussure de sport",
+      "status": "queued",
+      "usage": "support",
+      "accepted": [],
+      "alternatives": [],
+      "subject": "One low-top athletic sneaker, side view, with laces, rounded toe and flexible rubber sports sole. No brand or logo. No foot, pair, box or setting. Generic athletic shoe, not a leather dress shoe."
+    },
+    {
+      "id": "1779706066059",
+      "kr": "밥",
+      "sense": "Riz cuit / repas",
+      "status": "queued",
+      "usage": "support",
+      "accepted": [],
+      "alternatives": [],
+      "subject": "A small plain Korean bowl containing only freshly steamed short-grain white rice. Clearly cooked rice with soft plump grains, not raw grains or a whole meal. No chopsticks, side dishes or text."
+    },
+    {
+      "id": "pack-f2d0a0dc",
+      "kr": "컵",
+      "sense": "Tasse / gobelet",
+      "status": "queued",
+      "usage": "support",
+      "accepted": [],
+      "alternatives": [],
+      "subject": "One plain drinking cup, empty, with a clearly visible rim and handle. No plate, drink, decoration or text. Support only: the illustration also permits the Korean word 잔."
+    },
+    {
+      "id": "pack-c5013621",
+      "kr": "주전자",
+      "sense": "Bouilloire / théière",
+      "status": "queued",
+      "usage": "support",
+      "accepted": [],
+      "alternatives": [],
+      "subject": "One traditional kettle with a rounded body, spout, lid and arched handle. All parts clearly visible. No stove, fire, cup or steam scene."
+    }
+  ]
+}

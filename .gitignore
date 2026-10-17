@@ -9,3 +9,5 @@ __pycache__/
 latest.json
 conv-cfg.json
 browser-results/
+tools/images/node_modules/
+tools/images/candidates/

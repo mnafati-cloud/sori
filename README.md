@@ -8,6 +8,7 @@ PWA personnelle de révision de coréen (remplaçant d'Anki), FR ⇄ KR.
 - 100 % hors-ligne (service worker), progression en localStorage, export/import JSON.
 
 L'app vit dans [`docs/`](docs/) (servie par GitHub Pages).
+La bibliothèque d'illustrations générées, le rappel visuel et la pipeline Git sont documentés dans **[IMAGES.md](IMAGES.md)**.
 `tools/build_data.py` régénère `docs/data.js` depuis un snapshot de collection Anki (snapshot exclu du repo).
 
 ⚠️ La progression n'est PAS dans le repo : elle reste sur l'appareil. Faire des exports réguliers (onglet Stats → Exporter).

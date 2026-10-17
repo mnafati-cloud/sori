@@ -19,6 +19,12 @@ jobs:
         run: python -m pip install numpy==2.3.5
       - name: Tests du moteur (docs/engine.js)
         run: node --test tests/*.mjs   # forme explicite : node --test tests/ casse sous Node 22
+      - name: Vérifier les illustrations publiées, leurs validations et le manifeste
+        run: |
+          npm ci --prefix tools/images --ignore-scripts
+          node tools/images/pipeline.mjs check
+          python -m py_compile tools/images/generate.py
+          python -m unittest discover -s tools/images -p 'test_*.py'
       - name: Syntaxe de tous les JS de l'app (node --check)
         run: |
           for f in docs/*.js docs/audio/index.js; do
@@ -44,6 +50,8 @@ jobs:
         run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/production_smoke.cjs
       - name: Signalements, distinctions lexicales et récupération des animations
         run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/ui_repairs_smoke.cjs
+      - name: Images, absence de fichier, notation, IME et cache hors connexion
+        run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/images_smoke.cjs
       - name: Captures et preuve de validation
         if: always()
         uses: actions/upload-artifact@v4

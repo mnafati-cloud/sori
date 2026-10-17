@@ -97,7 +97,7 @@ def selftest(ref_path):
 # kind d'exercice PLAFONNÉ à 4 (rappel sans aide) : la note journalisée EST la note brute → gradeD = note.
 # Tout autre kind est plafonné (≤ Difficile) : la note stockée est plafonnée, la note BRUTE d'un succès
 # était Bien(3) (bouton positif binaire) → gradeD = 3 (succès) / 1 (échec). Miroir de la dissociation v64.
-GRADE4_KINDS = {"rec5", "type"}
+GRADE4_KINDS = {"rec5", "type", "image"}
 
 def reconstruct_gradeD(note, kind):
     if kind is None:                 # entrée 4 champs (≤ v63) : pas de dissociation, D suivait la note stockée

@@ -486,6 +486,7 @@ function armUndo(itemId){
     repIds: new Set(REPRISE_IDS),
     rep: ST.rep ? { d: ST.rep.d, m: Object.assign({}, ST.rep.m) } : null,     // v71
     productionSince: ST.production?.day?.d===t ? ST.production.day.since : null,
+    imageReview: ST.imageReview ? {...ST.imageReview} : null,
   };
 }
 function undoLast(){
@@ -499,6 +500,7 @@ function undoLast(){
   ST.xp = UNDO.xp; COMBO = UNDO.combo; SESSFAIL = UNDO.sessfail;
   if(UNDO.productionSince!==null && ST.production?.day?.d===t) ST.production.day.since=UNDO.productionSince;
   Q = UNDO.q; QPOS = UNDO.qpos;
+  if(UNDO.imageReview) ST.imageReview=UNDO.imageReview; else delete ST.imageReview;
   FAILPOS = UNDO.failpos || new Map(); CONSOL = UNDO.consol || new Set();   // v68
   REPRISE_IDS = UNDO.repIds || new Set();
   if(UNDO.rep !== undefined && UNDO.rep !== null) ST.rep = UNDO.rep;          // v71
@@ -536,6 +538,7 @@ function reportCtx(){
       const it = eff(Q[QPOS]);
       c.carte = { id: it.id, kr: it.kr, stage: it.stage };
       c.pos = (QPOS+1) + "/" + Q.length;
+      if($screen.querySelector(".images-card") && ST.imageReview) c.image={...ST.imageReview};
     }
     if(LASTANS) c.derniereReponse = LASTANS;
   }catch(e){}
@@ -598,6 +601,7 @@ function openDico(){
   SORI_SEARCH.renderPanel(box.querySelector(".dico-body"), {
     items: BASE_IDS.map(eff),        // dictionnaire = vocabulaire de base (pas de doublon recto/verso)
     extra: EXTRA,
+    onExpand:(container,id)=>window.SORI_IMAGES?.support(container,id),
     onSpeak: (kr, id)=>speak(kr, id)
   });
   box.querySelector("#dicoclose").onclick = ()=>back.remove();
@@ -723,7 +727,7 @@ function applyAnswer(it, ok, grade, gradeRaw, kind, rt){
   const canProd = it.type === "word" && !((ST.set.reverse !== false) && !it.rev);
   const prevS = (typeof it.S === "number") ? it.S : (it.itv || 0);
   if(!ok && prevS >= 7 && canProd) lpNext = 2;
-  else if(ok && (kind === "rec5" || kind === "type") && (it.lp|0) > 0) lpNext = it.lp - 1;
+  else if(ok && (kind === "rec5" || kind === "type" || kind === "image") && (it.lp|0) > 0) lpNext = it.lp - 1;
   if(ST.set.scheduler !== "legacy"){
     const t = todayStr();
     /* v148 : série de réussites au 1er essai à intervalle 1 (it.sk) → rescousse de rechute
@@ -1310,6 +1314,39 @@ function saveSess(){
     fp:[...FAILPOS], co:[...CONSOL], rp:[...REPRISE_IDS] };   // v68/v71 : sinon un kill transforme les vues blanches en révisions réelles
   save();
 }
+/* One bounded attempt, tied to the existing card/queue occurrence. No image bytes or
+   free-form answers in saves. Result phases survive reload and one-level undo. */
+function imageAttempt(it){
+  return window.SORI_IMAGES?.pure.resume(ST.imageReview,it,QPOS,todayStr()) || null;
+}
+function exoImage(it,fallback,force=false){
+  const mod=window.SORI_IMAGES, previous=imageAttempt(it);
+  if(!mod || (!previous && ST.set.images===false))return false;
+  const entry=mod.asset(baseId(it.id));
+  if(previous?.phase==="text")return false;
+  if(!previous && (!force && !mod.pure.eligible(it,ST.set.reverse!==false,entry)))return false;
+  if(!previous && !entry)return false;
+  const attempt=previous || {d:todayStr(),id:it.id,p:QPOS,n:it.ok+it.ko,asset:entry.src,phase:"input"};
+  ST.imageReview=attempt;save();
+  mod.render($screen,{
+    item:it,entry,phase:attempt.phase,
+    onText:()=>{attempt.phase="text";ST.imageReview=attempt;save();EXO_T0=Date.now();fallback();},
+    onPhase:phase=>{attempt.phase=phase;ST.imageReview=attempt;save();},
+    onReady:()=>{EXO_T0=Date.now();armCooldown();},
+    speak:()=>speak(it.kr,it.id),
+    trivia:card=>showTrivia(card,it),
+    grades:(row,choose)=>gradeButtons(row,it,"image",undefined,choose),
+    onGrade:g=>afterAnswer(it,g>1,false,"image",g,4,true),
+    onNeutral:()=>{
+      armUndo(it.id);
+      const log=ST.log[todayStr()]||(ST.log[todayStr()]={ok:0,ko:0,n:0,listen:0});
+      log.imageNeutral=(log.imageNeutral||0)+1;
+      LASTANS={id:it.id,kr:it.kr,kind:"image",neutral:true,asset:attempt.asset};
+      delete ST.imageReview;QPOS++;saveSess();nextCard();
+    }
+  });
+  return true;
+}
 /* Production : état additif, aucune fausse carte ni note FSRS. */
 function productionModule(){
   return window.SORI_PRODUCTION?.ready ? window.SORI_PRODUCTION : null;
@@ -1471,14 +1508,21 @@ function renderReview(){
   const revMode = ST.set.reverse !== false;
   const typingTop = it.stage===5 && ST.set.typing===true && window.SORI_TYPING && Math.random()<0.5;
   function typingExo(){
+    if(exoImage(it,()=>exoRecall(it,false)))return;
     SORI_TYPING.render($screen, { item: it, speak:(kr,id)=>speak(kr,id), onResult: ok=>afterAnswer(it, ok, false, "type") });
   }
-  if(it.rev){
+  function recall(hinted){
+    if(!hinted && exoImage(it,()=>exoRecall(it,false)))return;
+    exoRecall(it,hinted);
+  }
+  if(imageAttempt(it) && imageAttempt(it).phase!=="text" && exoImage(it,()=>exoRecall(it,false),true)){
+    // Resume before routing: a displayed solution never becomes a fresh attempt.
+  } else if(it.rev){
     /* ===== carte VERSO — PRODUCTION FR→KR (mots) : QCM(1) → rappel+syllabe(2-3) → sans aide(4+) → hangul(5) ===== */
     if(it.stage<=1) exoQcmFr2Kr(it);
     else if(it.stage<=3) exoRecall(it, true);
     else if(typingTop) typingExo();
-    else exoRecall(it, false);
+    else recall(false);
   } else if(isPhrase){
     /* ===== PHRASES (recto unique) : QCM(1) → construction(2+) + parfois rappel du sens ===== */
     if(it.stage<=1) exoQcmKr2Fr(it);
@@ -1500,7 +1544,7 @@ function renderReview(){
       /* v68 : rattrapage post-lapse — production forcée (2 révisions)
          v148 : idem pour les cartes PIÉGÉES (S écrasée + D au plafond) — le tirage recrev
          plafonné à Difficile les condamnait à des semaines de retours quotidiens */
-      exoRecall(it, false);
+      recall(false);
     } else if(typingTop && it.type==="word" && Math.random()<0.5){
       typingExo();
     } else if(((it.ok + it.ko) % 2) === 0){
@@ -1509,7 +1553,7 @@ function renderReview(){
          entre les extrêmes), et quitter/rouvrir re-tirait l'exercice. */
       exoRecallRev(it);                          // sens inversé (compréhension) — alternative à parité
     } else {
-      exoRecall(it, false);                      // production sans aide
+      recall(false);                             // production sans aide, image si disponible
     }
   }
   /* v134 : aura de difficulté — halo vermillon pulsant autour du mot de l'exercice */
@@ -1610,6 +1654,7 @@ function exTokens(ex){ return String(ex==null?"":ex).trim().split(/\s+/).filter(
      • ST.set.wordgloss→ chaque mot cliquable affiche sa traduction (EXTRA[id].gl) */
 function showTrivia(card, it){
   const bid = baseId(it.id);          // trivia/glose/cefr indexés par l'id de base (partagés recto/verso)
+  if(!card.closest(".images-card")) window.SORI_IMAGES?.support(card,bid);
   const x = EXTRA[bid];
   if(!x) return false;
   const toks = x.ex ? exTokens(x.ex) : [];
@@ -1671,7 +1716,7 @@ function showTrivia(card, it){
    30 j sur l'état réel : -3,4 % de revues (-6,7 % en semaine 4, effet composé), pool i<=3 j
    107 -> 92. Suivi : rétention 8-30 j dans les sauvegardes ; retour à 2 si elle passe sous 0,88.
    Les QCM (vraie reconnaissance assistée) restent à Difficile. */
-const KIND_MAXGRADE = { qcm1:2, qcm2:2, qcm3:2, build:3, rec4:2, recrev:3, rec5:4, type:4 };
+const KIND_MAXGRADE = { qcm1:2, qcm2:2, qcm3:2, build:3, rec4:2, recrev:3, rec5:4, type:4, image:4 };
 function maxGradeFor(it, kind){
   /* en mode « Production séparée » (reverse ON), le rappel inversé est l'exercice CANONIQUE de la
      carte recto (la production vit sur sa carte verso) → pas un exercice « aidé », plafond normal.
@@ -1716,6 +1761,14 @@ function nextCard(){
 function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto){
   LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞
   armUndo(it.id);                           // photo AVANT toute mutation (annulation possible)
+  if(kind==="image" && ST.imageReview){
+    LASTANS.image={asset:ST.imageReview.asset,phase:ST.imageReview.phase};
+    if(ST.imageReview.phase==="typo"){
+      const log=ST.log[todayStr()]||(ST.log[todayStr()]={ok:0,ko:0,n:0,listen:0});
+      log.imageTypo=(log.imageTypo||0)+1;
+    }
+  }
+  delete ST.imageReview;
   const wasM = it.stage >= 4, wasA = it.stage >= 4 && (it.itv||0) >= 14;   // v129 : état AVANT (seuils du tampon)
   const maxG = (capMax !== undefined) ? capMax : maxGradeFor(it, kind);   // v76 : override de plafond (indice 다) sans toucher `kind` (stats/lp/quêtes)
   const Graw = ok ? (grade || 3) : 1;                    // la note réellement CHOISIE (Bien par défaut)
@@ -1855,12 +1908,12 @@ function exoQcmFr2Kr(it){
 /* boutons d'auto-évaluation après « Montrer » : 4 notes FSRS (Encore/Difficile/Bien/Facile)
    si ST.set.grade4, sinon binaire (Encore/Bien). La note (1-4) affine la planification FSRS
    (Difficile = pénalité w15, Facile = bonus w16). ok = note ≥ 2 (pour combo/rétention). */
-function gradeButtons(row, it, kind, capMax){
+function gradeButtons(row, it, kind, capMax, onGrade){
   row.innerHTML = "";
   const maxG = (capMax !== undefined) ? capMax : maxGradeFor(it, kind);   // capMax : override v76 (indice 다 = plafond levé, `kind` reste rec4)
   const wire = (b, ok, g) => { b.onclick = ()=>{ [...row.children].forEach(x=>x.disabled=true);
     b.classList.add("picked");                                    // v129 : pop bref sur la note choisie
-    afterAnswer(it, ok, false, kind, g, maxG, true); }; return b; };   // auto : avance sans Continuer
+    if(onGrade) onGrade(g); else afterAnswer(it, ok, false, kind, g, maxG, true); }; return b; };   // auto : avance sans Continuer
   /* v69 : l'INTERVALLE résultant s'affiche sous chaque note — la conséquence du choix devient
      visible. Prévisualisation EXACTE : mêmes options que applyAnswer (plafond, gradeD, fuzz). */
   const ivl = g => {
@@ -2087,6 +2140,7 @@ function renderTrip(){
     SORI_SEARCH.renderPanel($screen, {
       items: BASE_IDS.map(eff),        // pas de doublon recto/verso
       extra: EXTRA,
+      onExpand:(container,id)=>window.SORI_IMAGES?.support(container,id),
       onSpeak: (kr, id)=>speak(kr, id)
     });
   }
@@ -2430,6 +2484,7 @@ function openSettings(){
       Planification adaptative (mode Classique) <input type="checkbox" id="adap" ${ST.set.adaptive?"checked":""}></label>
     <label title="Chaque mot devient DEUX cartes à maîtrise séparée : comprendre (KR→FR) et produire (FR→KR). Recommandé, mais double la charge de révision.">Production séparée (recto/verso) <input type="checkbox" id="rev" ${ST.set.reverse!==false?"checked":""}></label>
     <label>Saisie au clavier coréen (niv 5) <input type="checkbox" id="typ" ${ST.set.typing?"checked":""}></label>
+    <label title="Nommer une illustration sans traduction, en alternance avec les questions habituelles. Seules les images disponibles et validées sont utilisées.">Questions avec image <input type="checkbox" id="imageschk" ${ST.set.images!==false?"checked":""}></label>
     <label title="Jusqu’à quatre phrases par jour dans Réviser. Production libre, sans mots proposés, avec le vocabulaire déjà solide.">Construire des phrases sans aide <input type="checkbox" id="productionchk" ${ST.set.production!==false?"checked":""}></label>
     <label>Bouton rapport de problème <input type="checkbox" id="rpt" ${ST.set.report?"checked":""}></label>
     <label>Audio de la phrase d'exemple <input type="checkbox" id="exau" ${ST.set.exaudio?"checked":""}></label>
@@ -2454,6 +2509,7 @@ function openSettings(){
     <div class="section-title" style="margin-top:14px">Mode avion</div>
     <div class="row" style="margin-top:6px"><button class="btn ghost" id="dlaudio">Télécharger tout l'audio (${AUDIO_IDS.size + AUDIO_EX_IDS.size} fichiers)</button></div>
     <p class="dim" id="dlstatus" style="margin-top:6px">Mots + phrases d'exemple, disponibles hors connexion (avion, métro coréen).</p>
+    ${window.SORI_IMAGES?'<div class="row"><button class="btn ghost" id="dlimages">Télécharger les illustrations</button></div><p class="dim" id="dlimgstatus" aria-live="polite">Sans image disponible, les questions habituelles prennent le relais.</p>':""}
     <div class="section-title" style="margin-top:14px">Sauvegarde cloud (le canal principal)</div>
     <p class="dim" style="margin-top:4px">Ta progression part toute seule dans le cloud (à chaque fin de bloc) — c'est ta sauvegarde ET ce que Claude lit. Rien d'autre à faire.</p>
     <label>Jeton d'accès <input type="password" id="ghtok" placeholder="${ghToken()?"•••• configuré ••••":"github_pat_…"}" autocomplete="off"></label>
@@ -2505,6 +2561,7 @@ function openSettings(){
   set.querySelector("#fsrsperso").onchange = e=>{ ST.set.fsrsPersonal=e.target.checked; save(); };
   set.querySelector("#g4").onchange = e=>{ ST.set.grade4=e.target.checked; save(); };
   set.querySelector("#typ").onchange = e=>{ ST.set.typing=e.target.checked; save(); };
+  set.querySelector("#imageschk").onchange = e=>{ ST.set.images=e.target.checked; save(); render(); };
   set.querySelector("#productionchk").onchange = e=>{ ST.set.production=e.target.checked; save(); render(); };
   set.querySelector("#rev").onchange = e=>{ ST.set.reverse=e.target.checked; save(); location.reload(); };  // ALL_IDS fixé au chargement → recharger
   set.querySelector("#rpt").onchange = e=>{ ST.set.report=e.target.checked; save(); wireReport(); };
@@ -2531,6 +2588,16 @@ function openSettings(){
   set.querySelector("#exp").onclick  = exportState;
   set.querySelector("#imp").onclick  = ()=>set.querySelector("#impfile").click();
   set.querySelector("#impfile").onchange = importState;
+  const dlimg=set.querySelector("#dlimages");
+  if(dlimg)dlimg.onclick=async()=>{
+    dlimg.disabled=true;
+    const status=set.querySelector("#dlimgstatus");
+    try{
+      const progress=({ok,failed,total})=>{status.textContent=`${ok} / ${total} illustrations disponibles hors connexion${failed?` · ${failed} indisponible(s)`:""}`;};
+      progress(await SORI_IMAGES.download(progress));
+    }catch(e){status.textContent=e.message||"Téléchargement indisponible. Les questions textuelles restent disponibles.";}
+    finally{dlimg.disabled=false;}
+  };
   set.querySelector("#dlaudio").onclick = async ()=>{
     const st = set.querySelector("#dlstatus");
     const btn = set.querySelector("#dlaudio"); btn.disabled = true;
