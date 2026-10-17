@@ -1,14 +1,19 @@
-# Illustrations et rappel visuel — v171
+# Illustrations et rappel visuel — v172
 
 Ce fichier et `tools/images/` sont le point de reprise du projet : aucune
 information de la conversation n'est nécessaire pour continuer la bibliothèque.
 Style approuvé : **2, trait au pinceau**, blanc chaud et lavis gris sur fond noir,
 accent vermillon discret. Toutes les illustrations sont générées, jamais prises
-sur le Web. La bibliothèque contient **103 images publiées** : les 3 premières
-(우산, 사과, 고양이), puis **100 nouveaux mots, 71 A1 et 29 A2**. Ce nouveau lot
-comprend 86 questions image → coréen et 14 illustrations d'aide après réponse.
-Les 100 WebP ajoutés pèsent **2,95 Mo** ; bibliothèque complète : **3,05 Mo**.
-Elle ne couvre pas tout le deck.
+sur le Web. La bibliothèque contient **203 images publiées** : les 3 premières
+(우산, 사과, 고양이), puis deux lots de 100 mots distincts.
+
+| Lot | A1 | A2 | Questions image → coréen | Aides après réponse | Poids WebP |
+| --- | --- | --- | --- | --- | --- |
+| `a-2026-10-17` (v171) | 71 | 29 | 86 | 14 | 2,95 Mo |
+| `a-2026-10-17-02` (v172) | 34 | 66 | 78 | 22 | 2,98 Mo |
+
+La bibliothèque complète pèse **6,02 Mo** (6 020 582 octets). Elle ne couvre pas
+tout le deck ; les images sont chargées à la demande.
 
 ## Comportement dans l'app
 
@@ -150,7 +155,7 @@ node tools/images/pipeline.mjs import 1763266607347 /chemin/image-generee.png co
 L'import refuse les planches non carrées, les petites images et les fichiers
 invalides. Il effectue seulement une réduction à 512 et un encodage WebP qualité
 82, sans recadrage ou retouche du dessin. Cible 20–60 Ko, plafond strict 80 Kio.
-Les 103 fichiers actuels ont été générés avec l'outil Codex puis importés
+Les 203 fichiers actuels ont été générés avec l'outil Codex puis importés
 de cette manière. L'API payante n'est pas nécessaire pour tester/publier une
 image déjà générée. Son accès réel exige la clé et l'autorisation réseau vers
 `api.openai.com` ; ne pas contourner une restriction réseau.
@@ -166,6 +171,8 @@ Une autre session/une autre personne peut faire cette revue à partir du dépôt
 ```bash
 node tools/images/review.mjs a-2026-10-17
 # Ouvrir tools/images/candidates/review-a-2026-10-17.html dans un navigateur.
+node tools/images/review.mjs a-2026-10-17-02
+# Même revue pour le deuxième lot, avec son propre fichier HTML.
 node tools/images/pipeline.mjs approve ID tools/images/candidates/ID-HASH NOM_RELECTEUR 'Constats visuels et décision pédagogique'
 node tools/images/pipeline.mjs check
 ```
@@ -184,6 +191,17 @@ explicitement le blanc chaud et le gris, sans changer le prompt global déjà va
 Les 14 usages `support` comprennent notamment les agrumes, le riz/repas, le kimchi,
 les ramyeon, le kimbap, le dentifrice et le chiot : le dessin seul ne suffit pas à
 imposer un lexème précis. Les autres lectures plausibles sont des réponses neutres.
+
+Le deuxième lot `a-2026-10-17-02` est terminé et ne réutilise aucun id du premier.
+Il poursuit les objets A1/A2 : aliments, vêtements, mobilier, appareils, transports,
+corps et nature. Chaque source a été examinée, puis chaque WebP à 96 et 160 px
+sur fond sombre. Les 22 aides comprennent les boissons, la laitue, les aliments
+ambigus en monochrome et certains détails du corps. Les autres réponses
+plausibles (바지 pour 청바지, 기차 pour 지하철, 베개 pour 쿠션…) sont neutres.
+Le cadrage de 다리 a été régénéré ; le hash rejeté et le motif sont conservés.
+La génération de 어깨 a été refusée par le fournisseur sans livrer d'image :
+la sélection a été remplacée par 달력. L'entrée rejetée et ce remplacement sont
+documentés dans le lot, sans compter comme images publiées.
 
 L'approbation copie le WebP sous un nom immuable avec hash, écrit une revue dans
 `reviews/`, met à jour l'inventaire et reconstruit le manifeste. Pour retirer
@@ -232,8 +250,9 @@ six thèmes, deux tailles mobiles, téléchargement, mise à jour réelle du wor
 préservation du cache audio et mode avion. Les captures sont dans le dossier
 ignoré `browser-results/images/`.
 
-Validation v171 : 195 tests Node, 3 tests Python et les quatre suites navigateur
-passent ; les 103 images sont décodées et leur téléchargement hors ligne est testé.
+Validation v172 : **196 tests Node**, 3 tests Python et les quatre suites navigateur
+passent ; les **203 images** sont décodées et leur téléchargement hors ligne est
+testé, ainsi que le repli textuel et la préservation des caches lors de la mise à jour.
 
 L'extension du catalogue se poursuit avec l'entrée `queued` restante (주전자),
 puis un inventaire explicite des autres objets. Les estimations antérieures de 800–1 200

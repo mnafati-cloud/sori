@@ -15,10 +15,11 @@
 
 ## Sommaire
 
-**v171 — 103 images générées et rappel visuel : [IMAGES.md](IMAGES.md).** Ajout de
-100 illustrations (71 A1, 29 A2), dont 86 questions et 14 aides, pour 2,95 Mo.
+**v172 — 203 images générées et rappel visuel : [IMAGES.md](IMAGES.md).** Ajout de
+100 illustrations supplémentaires (34 A1, 66 A2), dont 78 questions et 22 aides,
+pour 2,98 Mo ; bibliothèque complète de 6,02 Mo.
 Sélection, prompts et revues dans `tools/images/`, planche de contrôle relançable
-avec `node tools/images/review.mjs a-2026-10-17`. Ce document
+avec `node tools/images/review.mjs a-2026-10-17-02`. Ce document
 décrit la pipeline Git complète, le style approuvé, l'inventaire, les prompts,
 la génération manuelle bornée, les validations et la publication. Le kind
 `image` utilise les notes du rappel libre ; un oubli vaut Encore. Les images

@@ -8,8 +8,8 @@ const require=createRequire(import.meta.url);
 const I=require('../docs/images.js').pure,D=require('../docs/images-data.js'),B=require('../docs/backup.js');
 const a=D.items['pack-c3c6d557'];
 const it={id:'pack-c3c6d557',kr:'우산',type:'word',stage:3,ok:1,ko:0};
-test('the first expansion contains exactly 100 new senses, all actually A1/A2 in the catalogue',()=>{
-  const batch=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/a-2026-10-17.json',import.meta.url)));
+for(const name of ['a-2026-10-17','a-2026-10-17-02'])test(name+' contains 100 distinct new A1/A2 senses from the catalogue',()=>{
+  const batch=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/'+name+'.json',import.meta.url)));
   const inventory=JSON.parse(fs.readFileSync(new URL('../tools/images/inventory.json',import.meta.url)));
   const ctx={window:{}};
   for(const file of ['data','extra'])vm.runInNewContext(fs.readFileSync(new URL('../docs/'+file+'.js',import.meta.url),'utf8'),ctx);
@@ -18,10 +18,19 @@ test('the first expansion contains exactly 100 new senses, all actually A1/A2 in
     const seed=ctx.window.SEED.items.find(x=>x.id===b.id),entry=inventory.items.find(x=>x.id===b.id);
     assert.equal(seed.kr,b.kr);assert.equal(seed.fr,b.sense);assert.equal(ctx.window.EXTRA[b.id].cefr,b.cefr);
     assert.ok(['A1','A2'].includes(b.cefr));assert.equal(entry.batch,batch.id);
+    assert.equal(entry.status,'approved');assert.equal(entry.usage,b.usage);
+    assert.equal(D.items[b.id]?.src,'./images/'+entry.asset,'each selected image is published');
   }
-  assert.equal(batch.items.find(x=>x.kr==='배').id,'1780695436442','pear, not belly');
-  assert.equal(batch.items.find(x=>x.kr==='말').id,'1780695436429','horse, not speech');
-  assert.equal(batch.items.find(x=>x.kr==='이').id,'1780695436493','tooth, not the number two');
+  if(name==='a-2026-10-17'){
+    assert.equal(batch.items.find(x=>x.kr==='배').id,'1780695436442','pear, not belly');
+    assert.equal(batch.items.find(x=>x.kr==='말').id,'1780695436429','horse, not speech');
+    assert.equal(batch.items.find(x=>x.kr==='이').id,'1780695436493','tooth, not the number two');
+  }else{
+    assert.equal(batch.items.find(x=>x.kr==='팔').id,'1780695436486','arm, not the number eight');
+    const previous=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/a-2026-10-17.json',import.meta.url)));
+    const previousIds=new Set(previous.items.map(x=>x.id));
+    assert.ok(batch.items.every(x=>!previousIds.has(x.id)),'the second batch adds new cards');
+  }
 });
 test('image questions: only reviewed assets, production slots, every other production',()=>{
   assert.deepEqual(Array.from({length:8},(_,ok)=>I.eligible({...it,ok},false,a)),[false,true,false,false,false,true,false,false]);
