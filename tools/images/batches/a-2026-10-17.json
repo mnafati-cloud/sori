@@ -1,0 +1,1837 @@
+{
+  "id": "a-2026-10-17",
+  "requested": 100,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/extra.js: cefr; docs/data.js: permanent card id and sense",
+  "items": [
+    {
+      "id": "1780695436437",
+      "kr": "바나나",
+      "sense": "Banane",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 1
+    },
+    {
+      "id": "1780695436438",
+      "kr": "딸기",
+      "sense": "Fraise",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 2
+    },
+    {
+      "id": "1780695436439",
+      "kr": "포도",
+      "sense": "Raisin",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 3
+    },
+    {
+      "id": "1780695436440",
+      "kr": "수박",
+      "sense": "Pastèque",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 4
+    },
+    {
+      "id": "1780695436441",
+      "kr": "오렌지",
+      "sense": "Orange (fruit)",
+      "cefr": "A1",
+      "usage": "support",
+      "rank": 5
+    },
+    {
+      "id": "1780695436442",
+      "kr": "배",
+      "sense": "Poire (fruit)",
+      "cefr": "A1",
+      "usage": "support",
+      "rank": 6
+    },
+    {
+      "id": "1763266805543",
+      "kr": "아이스크림",
+      "sense": "Glace",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 7
+    },
+    {
+      "id": "1763266838131",
+      "kr": "초콜릿",
+      "sense": "Chocolat",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 8
+    },
+    {
+      "id": "1763265850560",
+      "kr": "과자",
+      "sense": "Biscuit",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 9
+    },
+    {
+      "id": "1779706066068",
+      "kr": "빵",
+      "sense": "Pain",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 10
+    },
+    {
+      "id": "1779706066069",
+      "kr": "계란",
+      "sense": "Œuf",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 11
+    },
+    {
+      "id": "1779706066059",
+      "kr": "밥",
+      "sense": "Riz / repas",
+      "cefr": "A1",
+      "usage": "support",
+      "rank": 12
+    },
+    {
+      "id": "pack-a6476857",
+      "kr": "김밥",
+      "sense": "Kimbap (rouleau de riz aux algues)",
+      "cefr": "A1",
+      "usage": "support",
+      "rank": 13
+    },
+    {
+      "id": "pack-b933922e",
+      "kr": "김치",
+      "sense": "Kimchi",
+      "cefr": "A1",
+      "usage": "support",
+      "rank": 14
+    },
+    {
+      "id": "pack-4b917d2e",
+      "kr": "라면",
+      "sense": "Ramyeon (nouilles instantanées)",
+      "cefr": "A1",
+      "usage": "support",
+      "rank": 15
+    },
+    {
+      "id": "pack-6af496ba",
+      "kr": "떡",
+      "sense": "Tteok, gateau de riz",
+      "cefr": "A1",
+      "usage": "support",
+      "rank": 16
+    },
+    {
+      "id": "pack-62cc8ca8",
+      "kr": "책",
+      "sense": "Livre",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 24
+    },
+    {
+      "id": "pack-8675bc9c",
+      "kr": "공책",
+      "sense": "Cahier",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 25
+    },
+    {
+      "id": "pack-440de224",
+      "kr": "연필",
+      "sense": "Crayon (à papier)",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 26
+    },
+    {
+      "id": "pack-a5fbb846",
+      "kr": "볼펜",
+      "sense": "Stylo (à bille)",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 27
+    },
+    {
+      "id": "pack-116bd28b",
+      "kr": "지우개",
+      "sense": "Gomme",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 28
+    },
+    {
+      "id": "pack-5aa3faba",
+      "kr": "칼",
+      "sense": "Couteau (de cuisine)",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 30
+    },
+    {
+      "id": "pack-8db47c51",
+      "kr": "숟가락",
+      "sense": "Cuillère",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 31
+    },
+    {
+      "id": "pack-870d7d96",
+      "kr": "젓가락",
+      "sense": "Baguettes (pour manger)",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 32
+    },
+    {
+      "id": "pack-f2d0a0dc",
+      "kr": "컵",
+      "sense": "Tasse / gobelet",
+      "cefr": "A1",
+      "usage": "support",
+      "rank": 34
+    },
+    {
+      "id": "pack-a48898e6",
+      "kr": "그릇",
+      "sense": "Bol / récipient",
+      "cefr": "A1",
+      "usage": "support",
+      "rank": 35
+    },
+    {
+      "id": "pack-142a3028",
+      "kr": "가방",
+      "sense": "Sac",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 38
+    },
+    {
+      "id": "1779706066050",
+      "kr": "지갑",
+      "sense": "Portefeuille",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 39
+    },
+    {
+      "id": "1779706066085",
+      "kr": "열쇠",
+      "sense": "Clé",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 40
+    },
+    {
+      "id": "1780695436376",
+      "kr": "안경",
+      "sense": "Lunettes",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 42
+    },
+    {
+      "id": "1780695436375",
+      "kr": "신발",
+      "sense": "Chaussures",
+      "cefr": "A1",
+      "usage": "support",
+      "rank": 43
+    },
+    {
+      "id": "1763266607347",
+      "kr": "운동화",
+      "sense": "Baskets",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 44
+    },
+    {
+      "id": "pack-236592fd",
+      "kr": "구두",
+      "sense": "Chaussures habillées",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 45
+    },
+    {
+      "id": "1780695436374",
+      "kr": "양말",
+      "sense": "Chaussettes",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 46
+    },
+    {
+      "id": "1780695436367",
+      "kr": "바지",
+      "sense": "Pantalon",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 48
+    },
+    {
+      "id": "1780695436368",
+      "kr": "치마",
+      "sense": "Jupe",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 49
+    },
+    {
+      "id": "1779706066078",
+      "kr": "의자",
+      "sense": "Chaise",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 55
+    },
+    {
+      "id": "1763265318628",
+      "kr": "책상",
+      "sense": "Bureau (meuble)",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 56
+    },
+    {
+      "id": "1779706066077",
+      "kr": "침대",
+      "sense": "Lit",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 57
+    },
+    {
+      "id": "pack-df9183dd",
+      "kr": "소파",
+      "sense": "un canapé, un sofa",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 58
+    },
+    {
+      "id": "1763265830119",
+      "kr": "창문",
+      "sense": "Fenêtre",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 60
+    },
+    {
+      "id": "pack-9406c46b",
+      "kr": "텔레비전",
+      "sense": "Télévision",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 61
+    },
+    {
+      "id": "1763265002926",
+      "kr": "냉장고",
+      "sense": "Réfrigérateur",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 62
+    },
+    {
+      "id": "pack-14b73293",
+      "kr": "세탁기",
+      "sense": "machine à laver",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 63
+    },
+    {
+      "id": "pack-38a8e915",
+      "kr": "컴퓨터",
+      "sense": "Ordinateur",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 64
+    },
+    {
+      "id": "pack-e0d8b86a",
+      "kr": "카메라",
+      "sense": "Appareil photo",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 67
+    },
+    {
+      "id": "pack-e5c93b42",
+      "kr": "거울",
+      "sense": "un miroir",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 68
+    },
+    {
+      "id": "pack-1b53e275",
+      "kr": "비누",
+      "sense": "le savon",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 69
+    },
+    {
+      "id": "1763265540310",
+      "kr": "수건",
+      "sense": "Serviette",
+      "cefr": "A1",
+      "usage": "support",
+      "rank": 70
+    },
+    {
+      "id": "pack-17553d46",
+      "kr": "칫솔",
+      "sense": "la brosse à dents",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 71
+    },
+    {
+      "id": "pack-3286d2f5",
+      "kr": "치약",
+      "sense": "le dentifrice",
+      "cefr": "A1",
+      "usage": "support",
+      "rank": 72
+    },
+    {
+      "id": "pack-909ec77e",
+      "kr": "휴지",
+      "sense": "Papier hygiénique, mouchoir en papier",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 73
+    },
+    {
+      "id": "pack-9c52d809",
+      "kr": "선물",
+      "sense": "Cadeau",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 74
+    },
+    {
+      "id": "1779706066036",
+      "kr": "자전거",
+      "sense": "Vélo",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 76
+    },
+    {
+      "id": "1779706066037",
+      "kr": "자동차",
+      "sense": "Voiture",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 77
+    },
+    {
+      "id": "1779706066032",
+      "kr": "버스",
+      "sense": "Bus",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 78
+    },
+    {
+      "id": "1779706066034",
+      "kr": "기차",
+      "sense": "Train",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 79
+    },
+    {
+      "id": "1779706066035",
+      "kr": "비행기",
+      "sense": "Avion",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 80
+    },
+    {
+      "id": "1780695436425",
+      "kr": "개",
+      "sense": "Chien",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 81
+    },
+    {
+      "id": "1780695436429",
+      "kr": "말",
+      "sense": "Cheval",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 85
+    },
+    {
+      "id": "1780695436431",
+      "kr": "돼지",
+      "sense": "Cochon",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 87
+    },
+    {
+      "id": "1780695436432",
+      "kr": "닭",
+      "sense": "Poule / poulet (animal)",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 88
+    },
+    {
+      "id": "1763266756138",
+      "kr": "꽃",
+      "sense": "Fleur",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 92
+    },
+    {
+      "id": "1781435310387",
+      "kr": "나무",
+      "sense": "Arbre",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 93
+    },
+    {
+      "id": "pack-de8e9b50",
+      "kr": "잎",
+      "sense": "Feuille (d'arbre, de plante)",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 94
+    },
+    {
+      "id": "1781435310382",
+      "kr": "달",
+      "sense": "Lune",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 95
+    },
+    {
+      "id": "pack-38fd921c",
+      "kr": "구름",
+      "sense": "Nuage",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 96
+    },
+    {
+      "id": "1779706066096",
+      "kr": "손",
+      "sense": "Main",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 97
+    },
+    {
+      "id": "1779706066097",
+      "kr": "발",
+      "sense": "Pied",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 98
+    },
+    {
+      "id": "1779706066095",
+      "kr": "귀",
+      "sense": "Oreille",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 99
+    },
+    {
+      "id": "1780695436493",
+      "kr": "이",
+      "sense": "Dent",
+      "cefr": "A1",
+      "usage": "question",
+      "rank": 100
+    },
+    {
+      "id": "pack-3dc90322",
+      "kr": "감",
+      "sense": "Kaki (fruit)",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 17
+    },
+    {
+      "id": "pack-2dd72928",
+      "kr": "귤",
+      "sense": "Mandarine",
+      "cefr": "A2",
+      "usage": "support",
+      "rank": 18
+    },
+    {
+      "id": "1780695436448",
+      "kr": "토마토",
+      "sense": "Tomate",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 19
+    },
+    {
+      "id": "1780695436446",
+      "kr": "감자",
+      "sense": "Pomme de terre",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 20
+    },
+    {
+      "id": "1780695436449",
+      "kr": "오이",
+      "sense": "Concombre",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 21
+    },
+    {
+      "id": "pack-ed49c868",
+      "kr": "배추",
+      "sense": "Chou chinois (chou napa)",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 22
+    },
+    {
+      "id": "pack-56c5af5b",
+      "kr": "무",
+      "sense": "Radis blanc (legume)",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 23
+    },
+    {
+      "id": "pack-7cfb75e5",
+      "kr": "가위",
+      "sense": "Ciseaux",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 29
+    },
+    {
+      "id": "pack-ecf2432d",
+      "kr": "접시",
+      "sense": "Assiette",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 33
+    },
+    {
+      "id": "pack-e3053d7c",
+      "kr": "냄비",
+      "sense": "Casserole / marmite",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 36
+    },
+    {
+      "id": "pack-327ba0ef",
+      "kr": "프라이팬",
+      "sense": "Poêle (à frire)",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 37
+    },
+    {
+      "id": "pack-8fcd1645",
+      "kr": "시계",
+      "sense": "Montre / horloge",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 41
+    },
+    {
+      "id": "1780695436377",
+      "kr": "장갑",
+      "sense": "Gants",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 47
+    },
+    {
+      "id": "1780695436369",
+      "kr": "티셔츠",
+      "sense": "Tee-shirt",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 50
+    },
+    {
+      "id": "1780695436378",
+      "kr": "목도리",
+      "sense": "Écharpe",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 51
+    },
+    {
+      "id": "pack-f8435cd1",
+      "kr": "반지",
+      "sense": "Bague",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 52
+    },
+    {
+      "id": "pack-5a60c868",
+      "kr": "목걸이",
+      "sense": "Collier",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 53
+    },
+    {
+      "id": "pack-9c0ec68d",
+      "kr": "귀걸이",
+      "sense": "Boucles d'oreilles",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 54
+    },
+    {
+      "id": "1779706066080",
+      "kr": "문",
+      "sense": "Porte",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 59
+    },
+    {
+      "id": "pack-f006b697",
+      "kr": "전화기",
+      "sense": "Appareil telephonique, poste telephonique",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 65
+    },
+    {
+      "id": "pack-5cd06196",
+      "kr": "휴대폰",
+      "sense": "Téléphone portable",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 66
+    },
+    {
+      "id": "1779561613981",
+      "kr": "인형",
+      "sense": "Poupée",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 75
+    },
+    {
+      "id": "1763265674186",
+      "kr": "강아지",
+      "sense": "Chiot",
+      "cefr": "A2",
+      "usage": "support",
+      "rank": 82
+    },
+    {
+      "id": "1780695436433",
+      "kr": "토끼",
+      "sense": "Lapin",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 83
+    },
+    {
+      "id": "1780695436428",
+      "kr": "물고기",
+      "sense": "Poisson (animal vivant)",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 84
+    },
+    {
+      "id": "1780695436430",
+      "kr": "소",
+      "sense": "Vache",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 86
+    },
+    {
+      "id": "1780695436435",
+      "kr": "호랑이",
+      "sense": "Tigre",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 89
+    },
+    {
+      "id": "1779641064974",
+      "kr": "코끼리",
+      "sense": "Éléphant",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 90
+    },
+    {
+      "id": "pack-520cce7e",
+      "kr": "뱀",
+      "sense": "Serpent",
+      "cefr": "A2",
+      "usage": "question",
+      "rank": 91
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "1763265850560",
+      "sourceSha256": "0ee42cd87be11a12e692353045a6f6bb8fd2e55c5528d5a08bf5b85cc094f384",
+      "reason": "Couleurs naturelles trop présentes ; reprendre en blanc et gris selon le style validé."
+    },
+    {
+      "id": "1763266838131",
+      "sourceSha256": "ab52f23e21d46323d0950fc2e748d759518dca28c1ae5eb45e5e2eb973c99656",
+      "reason": "Couleurs naturelles trop présentes ; reprendre en blanc et gris selon le style validé."
+    },
+    {
+      "id": "1779706066068",
+      "sourceSha256": "c9d4755c9d97b5bdf93b34a833adb0ae56fd3f5f6e699a9e07144559e3fc38a2",
+      "reason": "Couleurs naturelles trop présentes ; reprendre en blanc et gris selon le style validé."
+    },
+    {
+      "id": "1780695436438",
+      "sourceSha256": "fe3eb14d5fb59e27387633ef7926b0db809ba8f09fba890ad0b11e3f7f072588",
+      "reason": "Couleurs naturelles trop présentes ; reprendre en blanc et gris selon le style validé."
+    },
+    {
+      "id": "1780695436441",
+      "sourceSha256": "576217d607e3c0d6be8beab39c88e2a9bfa6d345c51d3b30a9516f4165230863",
+      "reason": "Couleurs naturelles trop présentes ; reprendre en blanc et gris selon le style validé."
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "1780695436437",
+      "reviewer": "Codex",
+      "note": "Banane pelée complète, trois pans de peau et courbure identifiables ; blanc dominant, aucun texte.",
+      "sourceSha256": "0406e1342dc820167a96b0c53e3514952c7c29142911bbdddad5e5816626552c",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436439",
+      "reviewer": "Codex",
+      "note": "Grappe de raisin et feuille de vigne lisibles ; petits grains séparés et silhouette entière, aucun texte.",
+      "sourceSha256": "a81d8ab3f2502fcd0d9ece9363b6bad67cca6d8963c6c8b47fbfd6c0ddf65387",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436440",
+      "reviewer": "Codex",
+      "note": "Quartier de pastèque avec pépins et écorce épaisse reconnaissable sans sa couleur ; cadrage complet, aucun texte.",
+      "sourceSha256": "2e60a60b6057dfee98558e604655beb24a59fc1c7a7e1c99c82062596fece32a",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436442",
+      "reviewer": "Codex",
+      "note": "Poire asiatique ronde et ponctuée, coupe claire ; usage support conservé car sa silhouette peut rappeler une pomme.",
+      "sourceSha256": "d5a8659fdc0d9f7ca6e1f6b6df0966191b071d654220270482cc82e0b24e14b3",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1763266805543",
+      "reviewer": "Codex",
+      "note": "Cornet gaufré et deux boules de glace immédiatement reconnaissables ; blanc/gris dominant, aucun texte.",
+      "sourceSha256": "c5c3c5bb0870a2479bfdc8787582030f3233ecb4f21c26eec65d82bcf200f84c",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066069",
+      "reviewer": "Codex",
+      "note": "Œuf entier et moitié avec jaune bien distinct ; forme complète, blanc/gris, aucun texte.",
+      "sourceSha256": "c04a2b09e99168537034b8dda8f7a75581dbea676198eddd2750524b96972eb3",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066059",
+      "reviewer": "Codex",
+      "note": "Bol de riz cuit avec grains visibles ; support conservé pour éviter de confondre riz et repas.",
+      "sourceSha256": "b260f0ed019e474ac54872a55378bd3b3da33af38340fa65a99fe4ecfe645957",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-a6476857",
+      "reviewer": "Codex",
+      "note": "Rouleau d’algue et tranches garnies de riz ; support retenu car le dessin monochrome peut évoquer un maki.",
+      "sourceSha256": "fc825cd1f495f9433ab99807743bccb2a7f9b4a1b7ee622c359dc53b474ef49f",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-b933922e",
+      "reviewer": "Codex",
+      "note": "Feuilles de chou assaisonnées reconnaissables ; support conservé car la fermentation ne peut pas se déduire du dessin.",
+      "sourceSha256": "2428933dccf78d2a6274e6b18bf01c9be4fdc16641a9b619382a940ac0b2d7cd",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-4b917d2e",
+      "reviewer": "Codex",
+      "note": "Bol de nouilles ondulées ; support conservé car le caractère instantané ne peut pas être déduit du dessin.",
+      "sourceSha256": "4fe6ec4ec53dd46d674f639d249115578f1c1c24690670fe9cf75753d22195b2",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-6af496ba",
+      "reviewer": "Codex",
+      "note": "Trois gâteaux de riz cylindriques ; support conservé pour cette forme spécifique de tteok.",
+      "sourceSha256": "33f8120dbe0478bab6404da08bf91a083a2cb15d8e959219442207683fc90f9f",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-62cc8ca8",
+      "reviewer": "Codex",
+      "note": "Livre ouvert entier, pages vierges ; reliure et épaisseur lisibles sans texte.",
+      "sourceSha256": "5362cffc5b2bf7c8fe4bad7e9f48f0ec89ac8b2ea76957e196fcfa55917f1921",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-8675bc9c",
+      "reviewer": "Codex",
+      "note": "Cahier à spirale complet, couverture vierge ; anneaux distincts du livre, aucun texte.",
+      "sourceSha256": "42759755722cbb61542da3245414e961cbc6960ec156c9c489fde00a5487b315",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-440de224",
+      "reviewer": "Codex",
+      "note": "Crayon entier avec pointe de graphite et corps identifiable ; aucun marquage.",
+      "sourceSha256": "8af182721e4a9862b24b59de77d2759c32a1c8c5369711d1cf03cf5f03982c4a",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-a5fbb846",
+      "reviewer": "Codex",
+      "note": "Stylo à bouton-poussoir avec clip et pointe à bille visible ; silhouette entière sans texte.",
+      "sourceSha256": "ffc84bf5cbd11df94703691ba29ee4fc90e68e5615b7f7729bb7a97f605f892e",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436441",
+      "reviewer": "Codex",
+      "sourceSha256": "85f3e0538e1dc41dec06db0a3d2205bbdbabfd8bb5e7ce48a8509afa11c612dc",
+      "note": "Demi-agrume avec quartiers et peau granuleuse ; palette corrigée. Support retenu car sans couleur ni échelle il peut évoquer un pamplemousse.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-116bd28b",
+      "reviewer": "Codex",
+      "sourceSha256": "c79582a25935df820d2ccba6e7799baec67207e17c9e3732631c0354e3134dff",
+      "note": "Gomme rectangulaire avec fourreau vierge, bouts arrondis ; objet entier et sans texte.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-5aa3faba",
+      "reviewer": "Codex",
+      "sourceSha256": "e197ddc2406ca8f164e4382e6cc2d7c680d93d9ca9ae9efa018cddfe89f07d56",
+      "note": "Couteau de cuisine complet, lame large et manche riveté nettement séparés ; aucune marque.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-8db47c51",
+      "reviewer": "Codex",
+      "sourceSha256": "90bb473f364ccbe426d9837625453acb80fa7081f438a504ce55ee70d6dc8ecc",
+      "note": "Cuillère entière, cuilleron ovale creux et manche distinct ; blanc et gris sans texte.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-870d7d96",
+      "reviewer": "Codex",
+      "sourceSha256": "0621c28d0bc2fa9450fff6b2274f7fdfca538e2eec4a5ea3e026f7c16eff3f7c",
+      "note": "Deux baguettes métalliques séparées, extrémités fines bien visibles ; aucun élément coupé.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-f2d0a0dc",
+      "reviewer": "Codex",
+      "sourceSha256": "e50e880930aadd00ea490cb253de7c33ba6a32dfd74d19d7df4113ea1565e209",
+      "note": "Tasse entière avec anse lisible ; support conservé car 컵 et 잔 peuvent tous deux convenir.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-a48898e6",
+      "reviewer": "Codex",
+      "sourceSha256": "6261f77448db4e0f9a84e2b6932bac43bc54368c485efc3596c6f9ea750bd44f",
+      "note": "Bol vide entier avec rebord et pied visibles ; support conservé pour ce terme générique de récipient.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-142a3028",
+      "reviewer": "Codex",
+      "sourceSha256": "02cc4769cf177b2d4d29580e4a7a759edd9eb9d706a429d1330a64fce54cca6e",
+      "note": "Sac souple avec deux anses, sans motif ni logo ; forme entière et facilement identifiable.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066050",
+      "reviewer": "Codex",
+      "sourceSha256": "97f76d9c314722b0dd9939a20a44099f0c349ed03caf1e9a52aa8a75d656ec88",
+      "note": "Portefeuille ouvert avec plis et fentes à cartes ; aucun billet, chiffre ou texte parasite.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066085",
+      "reviewer": "Codex",
+      "sourceSha256": "428b8e28743610768dbc5ef81a3e746c5ea48eb8d346a2ed2c3224e438d42758",
+      "note": "Clé unique complète, tête percée et dents visibles ; contraste suffisant sans texte.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436376",
+      "reviewer": "Codex",
+      "sourceSha256": "26424e457b50d5cd937cf2992a28ccc39e7599003a156d9083117731018b5fee",
+      "note": "Paire de lunettes entière avec deux branches et reflets ; 선글라스 reste une alternative neutre car les verres sont sur fond noir.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1763266838131",
+      "reviewer": "Codex",
+      "sourceSha256": "3b50c4f12a1e1e6f4e0c68f32f07ea7fbb97ffc9762a1562c8200bbcb0ea3d68",
+      "note": "Tablette à carrés moulés avec morceau détaché ; palette corrigée, aucun emballage ni marque.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1763265850560",
+      "reviewer": "Codex",
+      "sourceSha256": "6fc8f42441145d76739201287dd7a7e03766208245e62763eb728ac0320a08fa",
+      "note": "Deux biscuits aux pépites, dont un croqué ; formes nettes et palette corrigée, aucune inscription.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066068",
+      "reviewer": "Codex",
+      "sourceSha256": "00ad5b8791bd91f65d80fbcf9a7640f451822ad9326329ead644d3938d5640a3",
+      "note": "Pain incisé et tranche avec mie alvéolée ; palette corrigée, silhouette entière.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436368",
+      "reviewer": "Codex",
+      "sourceSha256": "955b963091db3cec32929cd2918c6610ff8cf08a9ecf605f6d7cc9ebaf1f2a03",
+      "note": "Jupe plissée complète, ceinture et ourlet bien visibles ; aucun mannequin ni autre vêtement.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066078",
+      "reviewer": "Codex",
+      "sourceSha256": "73eccf2c63471eccb22dbe4e3ea0d5cea8dab20fd97bf160154c331403806f0f",
+      "note": "Chaise à dossier, assise et quatre pieds cohérents ; silhouette entière et aucune décoration parasite.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066077",
+      "reviewer": "Codex",
+      "sourceSha256": "870f831b91ab19d2beb74ec166b592283b28eb827a6b0bc7a2f3c2fef863ec53",
+      "note": "Lit individuel avec matelas, oreiller et tête de lit ; structure entière et dessin sans personne.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436438",
+      "reviewer": "Codex",
+      "sourceSha256": "c777dda8e8c3b891adc73109e1d5ffe3067f056ad95eb04f23ebe1d09f618cf6",
+      "note": "Fraise entière avec graines extérieures et calice distincts ; palette corrigée, silhouette lisible sans la couleur rouge.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436375",
+      "reviewer": "Codex",
+      "sourceSha256": "9813bb8d5bf95c5419b878b88907cef891bcd81976614a076927519dbcadd202",
+      "note": "Paire de chaussures basses à lacets ; support conservé car le mot générique recouvre plusieurs types de chaussures.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1763266607347",
+      "reviewer": "Codex",
+      "sourceSha256": "7f94701b7a8e41147dafd5ea7ed4d74aed05de45fe5390f3e8c9d30972057160",
+      "note": "Basket de sport à lacets, maille et semelle épaisse ; aucune marque ni texte.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-df9183dd",
+      "reviewer": "Codex",
+      "sourceSha256": "f6e92164e04e5eed25e59c638f51160c3c88d7020810cfcc512d206cffc8cafc",
+      "note": "Canapé à deux places avec deux assises, dossier et accoudoirs ; forme complète sans accessoires.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1763265830119",
+      "reviewer": "Codex",
+      "sourceSha256": "1f88e1086cb97e9986cfda6fe515a14c3a903e5e15844ad32492942e785aa5ff",
+      "note": "Fenêtre à deux battants dont un ouvert, vitrage et poignée visibles ; cadre complet.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-9406c46b",
+      "reviewer": "Codex",
+      "sourceSha256": "5f576f745054d3283b978b59c75559411efbaba3cbde3bb160339e8715c6b216",
+      "note": "Téléviseur à écran large avec deux pieds, sans contenu ni logo ; moniteur conservé comme alternative neutre.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1763265002926",
+      "reviewer": "Codex",
+      "sourceSha256": "37730696eaa3d2bfbeb144db168659cf1797c0fd77334c4f1b67762275b859de",
+      "note": "Réfrigérateur vertical avec deux compartiments et deux poignées ; silhouette complète et aucune marque.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-14b73293",
+      "reviewer": "Codex",
+      "sourceSha256": "d9916a15019a8031bcd9ac773c976e92ce563261e1905df73cef8b60ad6b759f",
+      "note": "Machine à laver à hublot et tiroir à lessive ; silhouette complète, sèche-linge enregistré comme autre lecture plausible.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436374",
+      "reviewer": "Codex",
+      "sourceSha256": "959c6927172ca305c65b93c554ae0c974950f182b42ac5ea1f319ae446d09876",
+      "note": "Deux chaussettes complètes, talons, pointes et bords côtelés visibles ; aucune inscription.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436367",
+      "reviewer": "Codex",
+      "sourceSha256": "0e82b29e9a861cb351de52a8a9798260625021304834cd75cedb77f6b8152981",
+      "note": "Pantalon entier avec deux jambes, bouton et poches ; silhouette simple sans personne.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-38a8e915",
+      "reviewer": "Codex",
+      "sourceSha256": "96e027a0375275f80b8be2fb5b1c97912b1363729a85e3de099f2cf5ab35fb03",
+      "note": "Ordinateur de bureau avec écran, clavier et souris ; touches vierges, ensemble distinct d’un téléviseur.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-e0d8b86a",
+      "reviewer": "Codex",
+      "sourceSha256": "7a03e8dcee08b7ee226fba1f437abe24c08c933f8603589df7930c3fd1fddc23",
+      "note": "Appareil photo avec grand objectif, viseur et déclencheur ; aucun logo ni texte.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-e5c93b42",
+      "reviewer": "Codex",
+      "sourceSha256": "fcb2c2b1292ed4f67aa5ea94705017f83929d58a49e6a39c9a8948549e239c04",
+      "note": "Miroir ovale sur pied avec reflets, cadre et pivots visibles ; aucun visage ni image à interpréter.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-1b53e275",
+      "reviewer": "Codex",
+      "sourceSha256": "3dd3615513551e23d1eddda68d4b22ea54d818f9bf3c0598eb37af245a0df0d8",
+      "note": "Savon ovale entier avec mousse et bulles ; aucune gravure, la mousse le distingue d’un simple galet.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-9c52d809",
+      "reviewer": "Codex",
+      "sourceSha256": "7d32fa80495b7dfa94b5af684c47e30136bd19750e5e01eb8101e685d5b57569",
+      "note": "Boîte cadeau fermée avec ruban et nœud ; aucun message ni décoration portant du texte.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066036",
+      "reviewer": "Codex",
+      "sourceSha256": "d8379f687ec9b74a6bfc231cb54fd3c5b2d02e730e80885ec75b0c4304a6f906",
+      "note": "Vélo entier avec deux roues, selle, guidon, pédalier et chaîne ; silhouette claire et pas de cycliste.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1763265540310",
+      "reviewer": "Codex",
+      "sourceSha256": "5982b5e9270d11f0456450e1a3e1255a8b6afad2cf7b17b434672f730c23011e",
+      "note": "Serviette enroulée, bouclettes et ourlet visibles ; support conservé car sa taille réelle n’est pas déductible.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-17553d46",
+      "reviewer": "Codex",
+      "sourceSha256": "480f1a37a946d807d61a51500ab3704647aa2fe89757a32490c2a76be2d8eab4",
+      "note": "Brosse à dents entière avec touffes de poils et manche ; proportions lisibles, aucun texte.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-3286d2f5",
+      "reviewer": "Codex",
+      "sourceSha256": "dc2d63e168048a658a2e969e5319f3f2e00d215a02e454bda1872eaad72e4f6e",
+      "note": "Tube ouvert avec pâte et bouchon ; support retenu car sans étiquette il pourrait aussi représenter une crème.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-909ec77e",
+      "reviewer": "Codex",
+      "sourceSha256": "e0d31b19e373aae51f21ad494f315a1563e623e30067cabf7d48cc35314b3eda",
+      "note": "Rouleau de papier toilette avec mandrin et feuille perforée déroulée ; silhouette entière sans texte.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066037",
+      "reviewer": "Codex",
+      "sourceSha256": "f5f2d9fd9c0f5c99b39bf5c491f04e3c460b114f49e1c281189beb9a9e29ed5d",
+      "note": "Voiture compacte entière, roues et carrosserie cohérentes ; aucune plaque lisible ni logo.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066032",
+      "reviewer": "Codex",
+      "sourceSha256": "c2f4506f5eab69d2786ea275dfe8d9bc223e79d73991fe8b82d34d176b270357",
+      "note": "Bus urbain complet avec portes et rangée de fenêtres ; afficheur et carrosserie sans inscriptions.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066034",
+      "reviewer": "Codex",
+      "sourceSha256": "2e9efd6889985888461a6e2edb20f3c669e51c6bf0de6c072bc62dd83b97f3ea",
+      "note": "Locomotive à vapeur et voiture voyageurs entière ; roues et attelage lisibles, aucun numéro.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066035",
+      "reviewer": "Codex",
+      "sourceSha256": "0a3b3a98f67bcb959f5a27c5060042486dbc44dfe7912a9df4a2f81f68908637",
+      "note": "Avion de ligne entier avec deux ailes, empennage et réacteurs ; aucun nom de compagnie.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436425",
+      "reviewer": "Codex",
+      "sourceSha256": "f531f6803b079efebd4453f269ad3902a57e160d647a586aeb9c63b3721e8e74",
+      "note": "Chien adulte entier, quatre pattes, museau et queue cohérents ; aucune scène ni accessoire parasite.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436429",
+      "reviewer": "Codex",
+      "sourceSha256": "7ce531bdf4f56beac9d0b4a8aee60a7f4c854eecdfd57ff0a0677e057a16a9b8",
+      "note": "Cheval entier, quatre jambes et sabots cohérents, crinière et queue visibles ; association au sens animal vérifiée par id.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-236592fd",
+      "reviewer": "Codex",
+      "sourceSha256": "69c50c425c41898588b8830abf1234f009ebdc0e4c24c67409fcd7fc4c579f51",
+      "note": "Chaussure de ville à lacets, semelle fine et talon bas ; aucun logo, forme distincte d’une basket.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1763265318628",
+      "reviewer": "Codex",
+      "sourceSha256": "5b410b7d6677c97a99f4c39aa86544658c9f712e21c138d413acc1472b9b46c5",
+      "note": "Bureau avec tiroir et espace pour les jambes ; silhouette complète, table générique traitée comme alternative neutre.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436431",
+      "reviewer": "Codex",
+      "sourceSha256": "c10fb6e9189f28a9a802f66663a4d4e4ec823bd791c3ad5a41d5e18d2c1d8ef2",
+      "note": "Cochon entier avec groin, oreilles, quatre pattes et queue en tire-bouchon ; silhouette reconnaissable sans couleur.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436432",
+      "reviewer": "Codex",
+      "sourceSha256": "b38d4b05d0735981f8676918cfbdc25e1c48a38cc9bf6ef9eab9ac28cd35223c",
+      "note": "Coq entier avec crête, bec, deux pattes et queue ; 닭 convient à l’espèce et 수탉 reste une alternative neutre.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1763266756138",
+      "reviewer": "Codex",
+      "sourceSha256": "f869af2703d2c85e735a307cd651886f855a75063e2e51e9752170858dadbafc",
+      "note": "Fleur simple à cinq pétales, étamines, tige et deux feuilles ; aucun pot ni texte.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1781435310387",
+      "reviewer": "Codex",
+      "sourceSha256": "f9f9c10f040bfa278a33dd57986b430ebcfff4de7aa8c6a02b936d6a17d6b0c0",
+      "note": "Arbre feuillu entier avec tronc, branches et racines ; aucune scène ni objet concurrent.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-de8e9b50",
+      "reviewer": "Codex",
+      "sourceSha256": "53ce9d4567cd4fc3c43798d399e804f1c37618646e0b717da4cf9ad964d6acc0",
+      "note": "Feuille unique avec pétiole, nervure centrale et nervures secondaires ; silhouette entière et aucun texte.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1781435310382",
+      "reviewer": "Codex",
+      "sourceSha256": "60428e09205499442fdfd1d5fb7468c89967158d93af26265ef0159ac6099c3e",
+      "note": "Croissant de lune avec cratères ; forme isolée, sans étoile ni visage qui modifierait le sens.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-38fd921c",
+      "reviewer": "Codex",
+      "sourceSha256": "1917ea34681ce6f1ee4da657d87ff160ccf587b5102331db783d94814ce68bad",
+      "note": "Nuage isolé à contours arrondis et base diffuse ; aucun pictogramme de pluie ni scène.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066096",
+      "reviewer": "Codex",
+      "sourceSha256": "ebcb791f745d62b59354287ca9acb8b3896386b8068e9745a7e1b3de44c8a55b",
+      "note": "Main ouverte avec exactement cinq doigts dont un pouce, paume et poignet ; anatomie cohérente sans accessoire.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066097",
+      "reviewer": "Codex",
+      "sourceSha256": "94e4367757de3f2fa0df25ed9dccc20a272c57f890fe8e3f189fe69a4c7c98b5",
+      "note": "Pied nu avec cinq orteils, ongles, talon et cheville ; proportions et nombre de doigts vérifiés.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066095",
+      "reviewer": "Codex",
+      "sourceSha256": "a843900f08b85db8db2c359a2664fae1f2c1c40a55d5bf24f740545f1d2059cc",
+      "note": "Oreille humaine isolée avec pavillon, conque et lobe ; sans boucle ni visage parasite.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436493",
+      "reviewer": "Codex",
+      "sourceSha256": "c122a86de6352dcefdc7f0560fee8dc3b0ab5258acc1d1023150bcbd51979a83",
+      "note": "Dent isolée avec couronne de molaire et deux racines ; dessin non médical, association au sens dent vérifiée par id.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-2dd72928",
+      "reviewer": "Codex",
+      "sourceSha256": "7008aa5cf03a90afc23b5bca474a5d5015613845b1e873f9822c851003a9a5d4",
+      "note": "Mandarine partiellement pelée, quartiers et peau séparés ; support conservé pour éviter une distinction arbitraire entre agrumes.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-3dc90322",
+      "reviewer": "Codex",
+      "sourceSha256": "92781d85f315498a226e5bfccaf62a0170e093232cec4d28104163a24ce61518",
+      "note": "Kaki entier aplati avec calice large à quatre lobes ; silhouette distincte de la tomate aux sépales fins, aucune couleur naturelle.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436448",
+      "reviewer": "Codex",
+      "sourceSha256": "e51762c8cb04f8a0cfff324702af50ddee1d934b2870c0420cb9bcf0beaa4195",
+      "note": "Tomate ronde avec calice aux sépales fins et pointus ; fruit entier. Kaki conservé comme alternative neutre en monochrome.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436446",
+      "reviewer": "Codex",
+      "sourceSha256": "7fe221685341e67b187b97ab9f5a72ef457cdf53ae89c8665f1992fe00938b62",
+      "note": "Deux pommes de terre à forme irrégulière avec yeux creusés ; aucune feuille ni élément concurrent.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436449",
+      "reviewer": "Codex",
+      "sourceSha256": "76b03b3558ce246d4dbfaf5162aa606b6c769f0ff74950ff03365310a4d8ffb8",
+      "note": "Concombre allongé à peau bosselée et rondelle aux graines visibles ; contraste sans couleur naturelle.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-ed49c868",
+      "reviewer": "Codex",
+      "sourceSha256": "413f021cb1e5eac10fd29a57a3b8859d112126e256ab28d2c74f8282874d6c6a",
+      "note": "Chou chinois allongé, grandes côtes et feuilles fripées ; silhouette entière et anatomie végétale cohérente.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-56c5af5b",
+      "reviewer": "Codex",
+      "sourceSha256": "8b8620c5c467a024dfcdeb5f6f33565e4fb1f3045c2b02371c7281e9623410bf",
+      "note": "Radis coréen trapu avec collet, feuilles et racine fine ; entier et identifiable par sa forme.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-7cfb75e5",
+      "reviewer": "Codex",
+      "sourceSha256": "0839c94a76870fa4f82c6e44051a0f0a32848a361386525df99a95263519105a",
+      "note": "Ciseaux ouverts avec deux lames, pivot et deux anneaux cohérents ; aucune extrémité coupée.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-ecf2432d",
+      "reviewer": "Codex",
+      "sourceSha256": "928986768bf04d074b7ae82e3026fe1e5696c99f9642fe00db66ce8a6842e0de",
+      "note": "Assiette plate vide avec rebord et profondeur faible ; silhouette entière sans motif ni texte.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-e3053d7c",
+      "reviewer": "Codex",
+      "sourceSha256": "16d975fd81c61e8ff46a35c36bcfff8f975588b4e382f06c00b300091217a123",
+      "note": "Marmite à deux anses avec couvercle soulevé ; volume profond et poignées distincts d’une poêle.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-327ba0ef",
+      "reviewer": "Codex",
+      "sourceSha256": "656fe0501b4720676ecedfcd842f7704b22b79010e7eb454ec99b678c1864b38",
+      "note": "Poêle peu profonde avec un long manche ; vue entière et intérieur vide, sans marque.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-8fcd1645",
+      "reviewer": "Codex",
+      "sourceSha256": "28d4baa7d3b19c220910142bf75dcc996596bd55a877b00dfe22f92d0e042c8b",
+      "note": "Horloge ronde avec douze repères et deux aiguilles ; aucun chiffre ni marque, cadran entier.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436378",
+      "reviewer": "Codex",
+      "sourceSha256": "031e18c5b0ba9aa0340c4ed9b601e0c479c2c241eb6442671e1a67d336abfd34",
+      "note": "Écharpe en maille formant une boucle avec deux pans à franges ; objet entier sans personne.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-f8435cd1",
+      "reviewer": "Codex",
+      "sourceSha256": "8d32b10314442a569139b99209a001258b9cef3c3c886a5c6831136616ead507",
+      "note": "Bague avec anneau fermé et pierre sertie ; dessin entier, aucun logo ni gravure.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436377",
+      "reviewer": "Codex",
+      "sourceSha256": "dae585d733652e102b50337a87c4e2ff4373cc76a66fce0a675dce2a48f694bf",
+      "note": "Paire de gants en maille avec cinq doigts par gant et poignets côtelés ; formes complètes.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436369",
+      "reviewer": "Codex",
+      "sourceSha256": "90fd58cc6cba7a42059d4ca553cd7882f52046205154ff6bf9318d93fb3fa496",
+      "note": "T-shirt entier à manches courtes et col rond ; aucun motif, logo, texte ou mannequin.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-5a60c868",
+      "reviewer": "Codex",
+      "sourceSha256": "75f6b3a6b4bc113f216168a13ef406f76dd6e620235f2cc4b791e30fd252277a",
+      "note": "Collier entier avec chaîne, fermoir et pendentif ; aucun visage ni inscription.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-9c0ec68d",
+      "reviewer": "Codex",
+      "sourceSha256": "c232553b5cc03f12afec48a108ca95d2f4a8b3df8aa5445e2faf0057e26152b9",
+      "note": "Paire de boucles d’oreilles en anneau avec attaches visibles ; silhouettes entières, aucune marque.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779706066080",
+      "reviewer": "Codex",
+      "sourceSha256": "1598c22b90917421965855d66fe732ab48c956d185855f753a2a161e38247e32",
+      "note": "Porte entrouverte entière avec cadre, charnières et poignée ; aucun numéro ni pièce en arrière-plan.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-f006b697",
+      "reviewer": "Codex",
+      "sourceSha256": "de0c6aeff7485a713559e6d66e516b0a12422da41615e953274f56fde6e7451d",
+      "note": "Téléphone fixe avec combiné, fil spiralé et douze touches vierges ; aucune inscription.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-5cd06196",
+      "reviewer": "Codex",
+      "sourceSha256": "59852e121679103a1b9d6cecda92f1b95d9460560b69e3006ca0a2e9da52eb76",
+      "note": "Téléphone mobile entier avec écran vierge, caméra et boutons latéraux ; aucune interface ni marque.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779561613981",
+      "reviewer": "Codex",
+      "sourceSha256": "e2cde2a009d1a906e141999e8894014fc03982ef1e0d2ae6472803b25cf5b76f",
+      "note": "Poupée de chiffon entière, coutures, yeux cousus et cheveux de laine ; aucun personnage sous licence.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1763265674186",
+      "reviewer": "Codex",
+      "sourceSha256": "b4b1c8416f16b2da87e5b9ad8dee8c42bb46940913c8f359d48127aaaf3c4b1f",
+      "note": "Chiot assis entier à grandes pattes et tête juvénile ; support conservé pour ne pas imposer la distinction avec 개.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436433",
+      "reviewer": "Codex",
+      "sourceSha256": "dc47c16ffacb1fca8e9fa82d1c4b995dc7101b8fc7c9eabe08ba2b1f8d14dba8",
+      "note": "Lapin assis entier avec longues oreilles, pattes et queue courte ; anatomie cohérente sans accessoire.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436428",
+      "reviewer": "Codex",
+      "sourceSha256": "4d169c206b4c5fabfa331a0f93bfda03e8bef0d9f5cd8209dd82d5b655d222b2",
+      "note": "Poisson entier vu de profil, nageoires, écailles et queue cohérentes ; aucun plat ni scène de pêche.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436430",
+      "reviewer": "Codex",
+      "sourceSha256": "603c70658c5d1e28cb6cadac106b195fe77fddae23ace393f467ef33af0fc2ef",
+      "note": "Bovin entier avec cornes, museau large, quatre pattes et sabots fendus ; aucun accessoire ni texte.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1780695436435",
+      "reviewer": "Codex",
+      "sourceSha256": "28f342fe72d283a69063577ee492331b2ca6a269abed5dd04d9dd0e9123a1db7",
+      "note": "Tigre entier avec rayures nettes, quatre pattes et queue ; espèce identifiable sans couleur orange.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "1779641064974",
+      "reviewer": "Codex",
+      "sourceSha256": "bd44a19978c1200f61a805ec874401784d24115c799473fd550a3e734fb40046",
+      "note": "Éléphant entier avec quatre pattes, grandes oreilles, trompe, deux défenses et queue ; anatomie cohérente et silhouette complète.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    },
+    {
+      "id": "pack-520cce7e",
+      "reviewer": "Codex",
+      "sourceSha256": "592f104b70d8a6452db3e805d58ac9cb1af81f102330db3adb4885fffa3788a8",
+      "note": "Serpent enroulé, corps continu avec une tête et une queue fine ; silhouette entière, aucun autre animal.",
+      "displaySizes": [
+        96,
+        160
+      ]
+    }
+  ]
+}

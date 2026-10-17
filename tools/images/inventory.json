@@ -52,32 +52,48 @@
     {
       "id": "1763266607347",
       "kr": "운동화",
-      "sense": "Chaussure de sport",
-      "status": "queued",
-      "usage": "support",
-      "accepted": [],
-      "alternatives": [],
-      "subject": "One low-top athletic sneaker, side view, with laces, rounded toe and flexible rubber sports sole. No brand or logo. No foot, pair, box or setting. Generic athletic shoe, not a leather dress shoe."
+      "sense": "Baskets",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "운동화"
+      ],
+      "alternatives": [
+        "스니커즈"
+      ],
+      "subject": "One low-top athletic sneaker, side view, with laces, rounded toe and flexible rubber sports sole. No brand or logo. No foot, pair, box or setting. Generic athletic shoe, not a leather dress shoe. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1763266607347-aedc109d45a1.webp",
+      "sha256": "aedc109d45a15d8b06249f3576deef70e60dd15156076840bc0b980e0498450d"
     },
     {
       "id": "1779706066059",
       "kr": "밥",
-      "sense": "Riz cuit / repas",
-      "status": "queued",
+      "sense": "Riz / repas",
+      "status": "approved",
       "usage": "support",
       "accepted": [],
       "alternatives": [],
-      "subject": "A small plain Korean bowl containing only freshly steamed short-grain white rice. Clearly cooked rice with soft plump grains, not raw grains or a whole meal. No chopsticks, side dishes or text."
+      "subject": "A small plain Korean bowl containing only freshly steamed short-grain white rice. Clearly cooked rice with soft plump grains, not raw grains or a whole meal. No chopsticks, side dishes or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066059-df24cca9c99d.webp",
+      "sha256": "df24cca9c99dfc281b876392e6805c371cfdf26227a407b399ee8e521a680310"
     },
     {
       "id": "pack-f2d0a0dc",
       "kr": "컵",
       "sense": "Tasse / gobelet",
-      "status": "queued",
+      "status": "approved",
       "usage": "support",
       "accepted": [],
       "alternatives": [],
-      "subject": "One plain drinking cup, empty, with a clearly visible rim and handle. No plate, drink, decoration or text. Support only: the illustration also permits the Korean word 잔."
+      "subject": "One plain drinking cup, empty, with a clearly visible rim and handle. No plate, drink, decoration or text. Support only: the illustration also permits the Korean word 잔. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-f2d0a0dc-cad7c13ccd6b.webp",
+      "sha256": "cad7c13ccd6bede45dec53588c9501f2fbafe707bbb75baff27f249d367d02a1"
     },
     {
       "id": "pack-c5013621",
@@ -88,6 +104,1598 @@
       "accepted": [],
       "alternatives": [],
       "subject": "One traditional kettle with a rounded body, spout, lid and arched handle. All parts clearly visible. No stove, fire, cup or steam scene."
+    },
+    {
+      "id": "1780695436437",
+      "kr": "바나나",
+      "sense": "Banane",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "바나나"
+      ],
+      "alternatives": [],
+      "subject": "One peeled-back single banana with a long curved fruit and three relaxed peel strips, clearly recognizable without color. No bunch or other fruit.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436437-51b56ac030a5.webp",
+      "sha256": "51b56ac030a5c249cfba7cdfac2d3baee636adbeacc456af131d35e39cfc4b66"
+    },
+    {
+      "id": "1780695436438",
+      "kr": "딸기",
+      "sense": "Fraise",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "딸기"
+      ],
+      "alternatives": [],
+      "subject": "One whole strawberry with a pointed heart-shaped body, tiny visible surface seeds and a leafy calyx. No bowl, slices or other berries. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436438-22ce99506fd6.webp",
+      "sha256": "22ce99506fd64de61995cd15ea187f622ffa99399e924bf82b54ee72006cd159"
+    },
+    {
+      "id": "1780695436439",
+      "kr": "포도",
+      "sense": "Raisin",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "포도"
+      ],
+      "alternatives": [],
+      "subject": "One hanging bunch of round grapes on a branching stem with one vine leaf. Clearly grapes, not berries in a bowl.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436439-ecfa39be1407.webp",
+      "sha256": "ecfa39be14079478964f79a2d331cb6522dd8d3ba051c7fd6b4b6dd9c9c4c94d"
+    },
+    {
+      "id": "1780695436440",
+      "kr": "수박",
+      "sense": "Pastèque",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "수박"
+      ],
+      "alternatives": [],
+      "subject": "One triangular wedge of watermelon with thick curved rind and distinctive dark seeds, accompanied by no other fruit. Its silhouette and rind must identify it without relying on color.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436440-e6b22360ba56.webp",
+      "sha256": "e6b22360ba5667b228bdb450f20f0f49bfe33a9094a582b669f403d424278864"
+    },
+    {
+      "id": "1780695436441",
+      "kr": "오렌지",
+      "sense": "Orange (fruit)",
+      "status": "approved",
+      "usage": "support",
+      "accepted": [
+        "오렌지"
+      ],
+      "alternatives": [],
+      "subject": "One orange cut into a half, facing the viewer, with unmistakable radial citrus segments and a thick round rind. No second fruit or juice glass. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436441-58f2ea53ff7e.webp",
+      "sha256": "58f2ea53ff7e942468364ecc94bee1128ab40167503f00f122613e581014564e"
+    },
+    {
+      "id": "1780695436442",
+      "kr": "배",
+      "sense": "Poire (fruit)",
+      "status": "approved",
+      "usage": "support",
+      "accepted": [],
+      "alternatives": [],
+      "subject": "One Korean Asian pear, round with speckled skin, a short stem and a small leaf, beside one slice showing pale flesh and core. It must be culturally accurate, not an elongated European pear. No label or other fruit.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436442-25a09ba0e038.webp",
+      "sha256": "25a09ba0e03816ae09cca78b096c4862a642bdea43d7473d01d6f26f70ba5858"
+    },
+    {
+      "id": "1763266805543",
+      "kr": "아이스크림",
+      "sense": "Glace",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "아이스크림"
+      ],
+      "alternatives": [],
+      "subject": "One classic ice cream cone with two rounded scoops and a clear waffle cone texture, isolated and upright. No cup, hand or brand.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1763266805543-d96d9bf7f3cc.webp",
+      "sha256": "d96d9bf7f3ccf2474e3991bb61c71f0e8c3a272de8feb0f9b7e42c990c881362"
+    },
+    {
+      "id": "1763266838131",
+      "kr": "초콜릿",
+      "sense": "Chocolat",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "초콜릿"
+      ],
+      "alternatives": [],
+      "subject": "One unwrapped chocolate bar divided into raised rectangular segments, with one snapped-off segment showing its solid interior. No letters, wrapper or packaging. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1763266838131-b02c763a79fa.webp",
+      "sha256": "b02c763a79fa741073fb85c0886cddee0dd6c6f664d81831c33b9c01b7384008"
+    },
+    {
+      "id": "1763265850560",
+      "kr": "과자",
+      "sense": "Biscuit",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "과자"
+      ],
+      "alternatives": [
+        "쿠키"
+      ],
+      "subject": "Two round crisp biscuits, one whole and one with a small bite missing, with simple baked surface texture and a few dark chocolate chips. No packaging or plate. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1763265850560-88ae3b5c9728.webp",
+      "sha256": "88ae3b5c97286cdf3a6f5c8c6c4659019d04bde324082135f317d4cc099f6b45"
+    },
+    {
+      "id": "1779706066068",
+      "kr": "빵",
+      "sense": "Pain",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "빵"
+      ],
+      "alternatives": [],
+      "subject": "One crusty oblong loaf of bread with three diagonal scoring marks and one slice resting beside it showing an airy crumb. No plate or bread basket. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066068-9365da0a04bd.webp",
+      "sha256": "9365da0a04bdf85e30878d887699d591fe41f6732408c46d8b2db9f0e6b96c3f"
+    },
+    {
+      "id": "1779706066069",
+      "kr": "계란",
+      "sense": "Œuf",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "계란"
+      ],
+      "alternatives": [
+        "달걀"
+      ],
+      "subject": "One whole smooth hen egg beside one half of a hard-boiled egg exposing its round yolk. No nest, chicken, egg carton or plate. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066069-e1fc661a7129.webp",
+      "sha256": "e1fc661a7129135da8050cce88461e78012a217835df59962cfa0f486752cdae"
+    },
+    {
+      "id": "pack-a6476857",
+      "kr": "김밥",
+      "sense": "Kimbap (rouleau de riz aux algues)",
+      "status": "approved",
+      "usage": "support",
+      "accepted": [
+        "김밥"
+      ],
+      "alternatives": [],
+      "subject": "One Korean gimbap roll, with two thick slices in front showing a dark seaweed outside, packed rice and several thin vegetable fillings. No raw fish, sashimi, plate or chopsticks. Not Japanese nigiri sushi. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-a6476857-f60d56a365f0.webp",
+      "sha256": "f60d56a365f05f6339b893c94b66639447ef0ccea67ae5b355d2e4192ce74174"
+    },
+    {
+      "id": "pack-b933922e",
+      "kr": "김치",
+      "sense": "Kimchi",
+      "status": "approved",
+      "usage": "support",
+      "accepted": [],
+      "alternatives": [],
+      "subject": "A small plain Korean side-dish plate with folded pieces of napa cabbage kimchi, showing layered cabbage leaves and restrained vermilion chili seasoning. No other dishes, rice or utensils. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-b933922e-a9679e3899aa.webp",
+      "sha256": "a9679e3899aad66b5ac1801de295c674dfc1af5ee8064704ac97fb9872c01ea3"
+    },
+    {
+      "id": "pack-4b917d2e",
+      "kr": "라면",
+      "sense": "Ramyeon (nouilles instantanées)",
+      "status": "approved",
+      "usage": "support",
+      "accepted": [],
+      "alternatives": [],
+      "subject": "One small plain bowl of Korean instant ramen with clearly curly noodles and a faint wisp of steam. No chopsticks, meat, eggs, labels or side dishes. Not long straight spaghetti. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-4b917d2e-ea18889bca5b.webp",
+      "sha256": "ea18889bca5bdb73de691f8f9afdfbcd1716d8f22160afb9b243f96b5bb0b3d4"
+    },
+    {
+      "id": "pack-6af496ba",
+      "kr": "떡",
+      "sense": "Tteok, gateau de riz",
+      "status": "approved",
+      "usage": "support",
+      "accepted": [],
+      "alternatives": [],
+      "subject": "Three short white Korean rice-cake cylinders with softly rounded ends, one cut to reveal a dense smooth interior. No sauce, skewer, dish or other food. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-6af496ba-138237fe5108.webp",
+      "sha256": "138237fe510813d36a3b747dac3d0c566b3fef255caf7ed03669cedea644482d"
+    },
+    {
+      "id": "pack-3dc90322",
+      "kr": "감",
+      "sense": "Kaki (fruit)",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "감"
+      ],
+      "alternatives": [
+        "토마토"
+      ],
+      "subject": "One whole persimmon fruit, squat and rounded with a very distinctive large four-lobed leafy calyx lying flat on top. No leaves on a branch or other fruits. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-3dc90322-74aa529b33d4.webp",
+      "sha256": "74aa529b33d4703e671fb005ddb38e5caefbf9181ea8a0ff4595269fb91b3b9e"
+    },
+    {
+      "id": "pack-2dd72928",
+      "kr": "귤",
+      "sense": "Mandarine",
+      "status": "approved",
+      "usage": "support",
+      "accepted": [],
+      "alternatives": [],
+      "subject": "One small mandarin with its peel partly opened to reveal separate rounded citrus segments. No label or other fruit. Smaller and flatter than an orange. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-2dd72928-f41410d54027.webp",
+      "sha256": "f41410d5402780f54ff2120f3e2223bb3472823b59d4990d4b318476257e6507"
+    },
+    {
+      "id": "1780695436448",
+      "kr": "토마토",
+      "sense": "Tomate",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "토마토"
+      ],
+      "alternatives": [
+        "감"
+      ],
+      "subject": "One whole ripe tomato with the unmistakable five-pointed star-shaped green calyx rendered in grey-white brushwork. A tiny vermilion accent is allowed. No long stem, leaf or other fruit. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436448-71f6a1759f7c.webp",
+      "sha256": "71f6a1759f7cd7f84d58ac78bc195133d2cd63b27f86d023d92fb4f8f1b417ab"
+    },
+    {
+      "id": "1780695436446",
+      "kr": "감자",
+      "sense": "Pomme de terre",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "감자"
+      ],
+      "alternatives": [],
+      "subject": "Two unpeeled potatoes, irregular oval shapes with small shallow eyes and earthy surface texture, one smaller beside the other. No sprouts, basket, plate or other vegetables. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436446-130bbd2cfac9.webp",
+      "sha256": "130bbd2cfac977ae13266e630ba55ebf19b858257ac67601ad4dba82a1a65a4a"
+    },
+    {
+      "id": "1780695436449",
+      "kr": "오이",
+      "sense": "Concombre",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "오이"
+      ],
+      "alternatives": [],
+      "subject": "One long cucumber with characteristic bumpy skin and one cut round slice showing a pale seed pattern. No zucchini, pickle jar or plate. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436449-80836c5acce9.webp",
+      "sha256": "80836c5acce922f1e1504b73fed8f20827cf1908084b5e38aa2d448fb1cdf563"
+    },
+    {
+      "id": "pack-ed49c868",
+      "kr": "배추",
+      "sense": "Chou chinois (chou napa)",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "배추"
+      ],
+      "alternatives": [],
+      "subject": "One whole Korean napa cabbage, upright and slightly open, with long oval crinkled leaves, thick pale ribs and a compact base. Not a round Western cabbage or lettuce. No dish or other vegetables. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-ed49c868-9d22ca286dba.webp",
+      "sha256": "9d22ca286dba709ddc7f768ba79a7b57432d27e3a614b6b5204adede9970664f"
+    },
+    {
+      "id": "pack-56c5af5b",
+      "kr": "무",
+      "sense": "Radis blanc (legume)",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "무"
+      ],
+      "alternatives": [],
+      "subject": "One Korean white radish, thick and short with rounded shoulders, tapering root and a small cluster of leaves at the top. Render white body and grey shoulder, no text, no carrot or long skinny daikon. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-56c5af5b-1ba134d89a20.webp",
+      "sha256": "1ba134d89a20896af24f507c156ad5027daaef703e81a5bd59320a2e04867527"
+    },
+    {
+      "id": "pack-62cc8ca8",
+      "kr": "책",
+      "sense": "Livre",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "책"
+      ],
+      "alternatives": [],
+      "subject": "One open bound book viewed from above at a slight angle, with a visible spine, cover and several blank pages. No writing, letter shapes, decorative symbols, pen or bookmark. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-62cc8ca8-a1c517f76443.webp",
+      "sha256": "a1c517f76443faf5170c893299398f371607833a316f2746e97e9973b77ced52"
+    },
+    {
+      "id": "pack-8675bc9c",
+      "kr": "공책",
+      "sense": "Cahier",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "공책"
+      ],
+      "alternatives": [
+        "노트"
+      ],
+      "subject": "One spiral-bound school notebook, closed, with a plain cover and clearly visible wire spiral along its left edge. No words, ruled writing, pen or other stationery. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-8675bc9c-50e2205faeea.webp",
+      "sha256": "50e2205faeea5754b18084ce5dfbc25536c0ded520e9e76bd0d150eeab7a6209"
+    },
+    {
+      "id": "pack-440de224",
+      "kr": "연필",
+      "sense": "Crayon (à papier)",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "연필"
+      ],
+      "alternatives": [],
+      "subject": "One wooden graphite pencil, sharpened tip clearly showing exposed wood and dark graphite, with a small plain eraser at the other end. Full object visible diagonally; no markings or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-440de224-76ed75f73625.webp",
+      "sha256": "76ed75f73625ad1269b8f7175a723455e72c52c34369817ab1646e4e4838843b"
+    },
+    {
+      "id": "pack-a5fbb846",
+      "kr": "볼펜",
+      "sense": "Stylo (à bille)",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "볼펜"
+      ],
+      "alternatives": [
+        "펜"
+      ],
+      "subject": "One retractable ballpoint pen with a visible ballpoint writing tip, pocket clip and push button, shown diagonally full length. Plain unbranded barrel, no letters, ink stroke or paper. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-a5fbb846-c35a04f37f25.webp",
+      "sha256": "c35a04f37f2538e991a70dc19defa723186cc5e11250f79316315e3c5a5eeb3f"
+    },
+    {
+      "id": "pack-116bd28b",
+      "kr": "지우개",
+      "sense": "Gomme",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "지우개"
+      ],
+      "alternatives": [],
+      "subject": "One small rectangular school eraser with softly worn corners and a simple blank paper sleeve around its center. No letters, logo, pencil or eraser crumbs. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-116bd28b-876b50bebca6.webp",
+      "sha256": "876b50bebca65d7ae9a6583a098ab42cca93b170c5a9e72aac55e1b0b8b629af"
+    },
+    {
+      "id": "pack-7cfb75e5",
+      "kr": "가위",
+      "sense": "Ciseaux",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "가위"
+      ],
+      "alternatives": [],
+      "subject": "One pair of scissors with two distinct finger loops, a central pivot and two slightly open metal blades. Complete symmetrical tool, no hand, paper or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-7cfb75e5-b656a43ade35.webp",
+      "sha256": "b656a43ade35b897aa36410d68e6b345bd05c3d70d958ca34d9bfdc6c23a50e9"
+    },
+    {
+      "id": "pack-5aa3faba",
+      "kr": "칼",
+      "sense": "Couteau (de cuisine)",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "칼"
+      ],
+      "alternatives": [],
+      "subject": "One ordinary kitchen chef's knife with one broad blade, a safe rounded handle and clearly visible edge silhouette. Show the entire utensil diagonally, no food, hand or cutting board. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-5aa3faba-9b208e6834e2.webp",
+      "sha256": "9b208e6834e26d934e409a8a867cf946c45e5cb09b387146024661af8740d72e"
+    },
+    {
+      "id": "pack-8db47c51",
+      "kr": "숟가락",
+      "sense": "Cuillère",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "숟가락"
+      ],
+      "alternatives": [],
+      "subject": "One Korean metal eating spoon, with a long slender handle and rounded oval bowl seen from a three-quarter top angle. No food, hand or other cutlery. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-8db47c51-34e9057b5bef.webp",
+      "sha256": "34e9057b5befe44e263e6e21bcd91a03b956a82d315e16a37ed2d22f8d667b05"
+    },
+    {
+      "id": "pack-870d7d96",
+      "kr": "젓가락",
+      "sense": "Baguettes (pour manger)",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "젓가락"
+      ],
+      "alternatives": [],
+      "subject": "One pair of Korean flat metal chopsticks, laid side by side with their tapered tips visible. Two distinct complete sticks, no food, holder, bowl or hand. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-870d7d96-eb928edc0a4d.webp",
+      "sha256": "eb928edc0a4d6f6719e27ecb8aae306eefba5bbdb45fcf8a5987a7c7878d81a2"
+    },
+    {
+      "id": "pack-ecf2432d",
+      "kr": "접시",
+      "sense": "Assiette",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "접시"
+      ],
+      "alternatives": [],
+      "subject": "One empty round dinner plate viewed at a slight angle, clearly flat and shallow with a raised narrow rim. Not a deep bowl; no food, decoration, cutlery or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-ecf2432d-912f25631eab.webp",
+      "sha256": "912f25631eabde94b2aecd785e290fd549c68f56838eeba6a3b6f9a54139351c"
+    },
+    {
+      "id": "pack-a48898e6",
+      "kr": "그릇",
+      "sense": "Bol / récipient",
+      "status": "approved",
+      "usage": "support",
+      "accepted": [],
+      "alternatives": [],
+      "subject": "One plain empty ceramic rice bowl, viewed three-quarter from above with a round opening and deep curved sides on a small foot. No handle, plate, food, utensils or decoration. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-a48898e6-5449b6d5f338.webp",
+      "sha256": "5449b6d5f3387ba7604021743ee273af0d0c5a8b176e9c921f8c5f857f45daca"
+    },
+    {
+      "id": "pack-e3053d7c",
+      "kr": "냄비",
+      "sense": "Casserole / marmite",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "냄비"
+      ],
+      "alternatives": [],
+      "subject": "One cooking pot with a deep cylindrical body, two short side handles and a matching lid tilted slightly above the rim. Clearly a pot, not a kettle; no spout, stove, food or hands. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-e3053d7c-17df1f1dbc1d.webp",
+      "sha256": "17df1f1dbc1d3e6bfdd390569af68c2afb3c18e07cf9183f8b2e7e5000f49979"
+    },
+    {
+      "id": "pack-327ba0ef",
+      "kr": "프라이팬",
+      "sense": "Poêle (à frire)",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "프라이팬"
+      ],
+      "alternatives": [
+        "팬"
+      ],
+      "subject": "One shallow frying pan seen at a three-quarter top angle, round cooking surface and one long handle. No lid, food, spatula, stove or branding. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-327ba0ef-ee28561a042e.webp",
+      "sha256": "ee28561a042e9d27c8e2adeb649ba14e64c4df2905ec92719e4f682702daf08b"
+    },
+    {
+      "id": "pack-142a3028",
+      "kr": "가방",
+      "sense": "Sac",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "가방"
+      ],
+      "alternatives": [
+        "핸드백",
+        "토트백"
+      ],
+      "subject": "One plain tote bag with a roomy rectangular fabric body, two loop handles and a simple opening. Full bag alone; no person, contents, logo or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-142a3028-4b2242e25f10.webp",
+      "sha256": "4b2242e25f10f4caddc7e1c249487150991a408aae2de72b0fe93dc14214a06f"
+    },
+    {
+      "id": "1779706066050",
+      "kr": "지갑",
+      "sense": "Portefeuille",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "지갑"
+      ],
+      "alternatives": [],
+      "subject": "One open folding wallet with clear card slots and a banknote compartment, all empty. Plain leather-like brush texture, no money, cards, letters or branding. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066050-88d14720f0a6.webp",
+      "sha256": "88d14720f0a671dbcf2a3df3556d7556c9d99ea1abfda71566cdfbc9b991fd8e"
+    },
+    {
+      "id": "1779706066085",
+      "kr": "열쇠",
+      "sense": "Clé",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "열쇠"
+      ],
+      "alternatives": [],
+      "subject": "One single metal door key with a round bow, straight shaft and distinctive toothed blade. No keyring, lock, labels or other objects. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066085-d55c72aa1016.webp",
+      "sha256": "d55c72aa101661a8c876be3fc7671500175f2ea02121338c9b04339be43594e3"
+    },
+    {
+      "id": "pack-8fcd1645",
+      "kr": "시계",
+      "sense": "Montre / horloge",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "시계"
+      ],
+      "alternatives": [
+        "벽시계"
+      ],
+      "subject": "One round analog wall clock with two clear hands and twelve short tick marks, absolutely no numerals or letters. No decorative scene, stand or alarm bells. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-8fcd1645-95d9ec028051.webp",
+      "sha256": "95d9ec0280515956c1f5d799531d09a52f017a3096bf4f6634b405b2e5442370"
+    },
+    {
+      "id": "1780695436376",
+      "kr": "안경",
+      "sense": "Lunettes",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "안경"
+      ],
+      "alternatives": [
+        "선글라스"
+      ],
+      "subject": "One pair of everyday eyeglasses with two round-rectangular lenses, nose bridge and both curved temple arms visible. Clear lenses, not sunglasses. No face, case or logo. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436376-c27077cc5f54.webp",
+      "sha256": "c27077cc5f5418a8f419bdf4185b0421bca4fb2d534a6e4d12b8116877d5e16e"
+    },
+    {
+      "id": "1780695436375",
+      "kr": "신발",
+      "sense": "Chaussures",
+      "status": "approved",
+      "usage": "support",
+      "accepted": [],
+      "alternatives": [],
+      "subject": "A pair of plain low closed everyday shoes shown together at a three-quarter angle, clearly two separate shoes with rounded toes and modest soles. No feet, brands, boxes or extra objects. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436375-b150b13caf09.webp",
+      "sha256": "b150b13caf09158c0727ea06193814395065c3d23e8b68a25a0d92617e1a79c1"
+    },
+    {
+      "id": "pack-236592fd",
+      "kr": "구두",
+      "sense": "Chaussures habillées",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "구두"
+      ],
+      "alternatives": [
+        "신발"
+      ],
+      "subject": "One polished formal leather lace-up dress shoe, full side profile with low heel, narrow sole and smooth pointed-rounded toe. Not a sneaker or boot. No foot, box or logo. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-236592fd-e7a2e07d9165.webp",
+      "sha256": "e7a2e07d91659e34a9021a9b14332cdc8ac54070dac589f33ed23c06fc71d37f"
+    },
+    {
+      "id": "1780695436374",
+      "kr": "양말",
+      "sense": "Chaussettes",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "양말"
+      ],
+      "alternatives": [],
+      "subject": "A pair of ankle-length socks, one slightly overlapping the other, with clear heel and toe shapes and ribbed cuffs. No feet, shoes, patterns or branding. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436374-4f1d49b6813d.webp",
+      "sha256": "4f1d49b6813d46b7f219bfe29ed99ff78da4cfe734f6380829653c630471aef8"
+    },
+    {
+      "id": "1780695436377",
+      "kr": "장갑",
+      "sense": "Gants",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "장갑"
+      ],
+      "alternatives": [],
+      "subject": "A pair of ordinary five-finger winter gloves, palms upward, all five fingers on each glove anatomically clear. No hands inside, mittens, patterns or logo. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436377-1d7b9483d628.webp",
+      "sha256": "1d7b9483d62822316fe1cda3fa932f5e3eb3e77cfed6fa8ce41a157171fddae2"
+    },
+    {
+      "id": "1780695436367",
+      "kr": "바지",
+      "sense": "Pantalon",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "바지"
+      ],
+      "alternatives": [],
+      "subject": "One pair of full-length trousers displayed flat and upright with a waistband, two distinct legs and cuffs. No person, hanger, belt, text or decoration. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436367-aed7fcfe157a.webp",
+      "sha256": "aed7fcfe157a8cc7772b7fd9e91eb8d49cbb629406b7b34e13e40aa7174d82a8"
+    },
+    {
+      "id": "1780695436368",
+      "kr": "치마",
+      "sense": "Jupe",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "치마"
+      ],
+      "alternatives": [],
+      "subject": "One simple knee-length pleated skirt, displayed upright with clear waistband and gently flared hem. No person, legs, hanger or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436368-1f8119bc88b4.webp",
+      "sha256": "1f8119bc88b4893ef59edb8e50b8fa5b1ad184107f1cc1cff334f8951b61cbbe"
+    },
+    {
+      "id": "1780695436369",
+      "kr": "티셔츠",
+      "sense": "Tee-shirt",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "티셔츠"
+      ],
+      "alternatives": [],
+      "subject": "One short-sleeved crew-neck T-shirt displayed flat, front view, with a simple clear T silhouette. Plain fabric, no writing, picture, logo, person or hanger. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436369-ae8f5d27a081.webp",
+      "sha256": "ae8f5d27a08175a63ba47c43be23cec52ccdcc1b0c9ae0a4483f7f26bd4c0e4f"
+    },
+    {
+      "id": "1780695436378",
+      "kr": "목도리",
+      "sense": "Écharpe",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "목도리"
+      ],
+      "alternatives": [
+        "스카프"
+      ],
+      "subject": "One long knitted winter scarf loosely folded into a soft loop with two visible hanging ends and short fringes. No neck, face, coat or logo. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436378-440ade1ddd7e.webp",
+      "sha256": "440ade1ddd7ea18d1df2a634c9d56d938f7aaef0982d59287814b58819b2e3f4"
+    },
+    {
+      "id": "pack-f8435cd1",
+      "kr": "반지",
+      "sense": "Bague",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "반지"
+      ],
+      "alternatives": [],
+      "subject": "One simple finger ring with a smooth circular band and one small faceted stone setting. Three-quarter angle makes the hollow band clear. No hand, box, text or other jewelry. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-f8435cd1-ca6ee4b262fe.webp",
+      "sha256": "ca6ee4b262fe88f2d38fa928ffb0eff8185e5b71bb360c7247887a70ddbfaef4"
+    },
+    {
+      "id": "pack-5a60c868",
+      "kr": "목걸이",
+      "sense": "Collier",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "목걸이"
+      ],
+      "alternatives": [],
+      "subject": "One fine necklace chain arranged in an open oval with one small simple pendant hanging at its lowest point. Entire chain and clasp visible; no neck, box, text or other jewelry. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-5a60c868-4bed00e03797.webp",
+      "sha256": "4bed00e03797fea5230bcd84e651650a39907de6ca5fd8cba37320416d83932a"
+    },
+    {
+      "id": "pack-9c0ec68d",
+      "kr": "귀걸이",
+      "sense": "Boucles d'oreilles",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "귀걸이"
+      ],
+      "alternatives": [],
+      "subject": "One pair of small hoop earrings, two distinct matching hoops with simple clasp details, isolated side by side. No ears, face, gemstones, box or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-9c0ec68d-30534d1f0d01.webp",
+      "sha256": "30534d1f0d019dbc1f267ae10a21bbcdcdf8749bb65a7809d4693b673ae25b8b"
+    },
+    {
+      "id": "1779706066078",
+      "kr": "의자",
+      "sense": "Chaise",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "의자"
+      ],
+      "alternatives": [],
+      "subject": "One plain wooden chair with a clear backrest, seat and four legs, three-quarter view. No cushion, person, desk, floor scene or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066078-e43afd17fbfc.webp",
+      "sha256": "e43afd17fbfc97b2c2f9fdf918a398182a8d5b1336f24e99dcd3b1e65f7c2511"
+    },
+    {
+      "id": "1763265318628",
+      "kr": "책상",
+      "sense": "Bureau (meuble)",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "책상"
+      ],
+      "alternatives": [
+        "탁자",
+        "테이블"
+      ],
+      "subject": "One simple study desk with a flat rectangular worktop, four legs and a small drawer on one side. Three-quarter view, no chair, computer, books or setting. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1763265318628-222ae9367813.webp",
+      "sha256": "222ae936781321fd4467b7c1130c9dd4e9cf0d3feea296cbb2dfa18c5fc365d1"
+    },
+    {
+      "id": "1779706066077",
+      "kr": "침대",
+      "sense": "Lit",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "침대"
+      ],
+      "alternatives": [],
+      "subject": "One single bed with a plain headboard, mattress, folded blanket and one pillow, viewed three-quarter. No person, bedside furniture, room or decoration. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066077-5225222f9fe5.webp",
+      "sha256": "5225222f9fe53e06201666eaecaf4da2fc015ff9208c040073c0f4132c5aca4c"
+    },
+    {
+      "id": "pack-df9183dd",
+      "kr": "소파",
+      "sense": "un canapé, un sofa",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "소파"
+      ],
+      "alternatives": [],
+      "subject": "One compact two-seat sofa with two seat cushions, backrest, rounded armrests and short visible feet. No people, throw pillows, table or room. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-df9183dd-96aaa2dc78fa.webp",
+      "sha256": "96aaa2dc78fa0b3cf1ac988b6d5f347b07308227825483cececdfdb07ff0f207"
+    },
+    {
+      "id": "1779706066080",
+      "kr": "문",
+      "sense": "Porte",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "문"
+      ],
+      "alternatives": [],
+      "subject": "One plain household door in its frame, slightly ajar, with a simple handle and clearly visible hinges. Isolated architectural object with black void behind; no surrounding room, sign or person. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066080-e08da43788ed.webp",
+      "sha256": "e08da43788ed49f6e07b93ba81aaa5d880b0bb214ca8de92481874f867c8115d"
+    },
+    {
+      "id": "1763265830119",
+      "kr": "창문",
+      "sense": "Fenêtre",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "창문"
+      ],
+      "alternatives": [],
+      "subject": "One simple rectangular window frame with two hinged glass panes, one partly open. Four clear frame corners; no landscape, curtains, wall, text or person. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1763265830119-daf968bf3d3d.webp",
+      "sha256": "daf968bf3d3d6e32996c5b3390027b07cbcedd9db6957fa16748feb55cb2d84a"
+    },
+    {
+      "id": "pack-9406c46b",
+      "kr": "텔레비전",
+      "sense": "Télévision",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "텔레비전"
+      ],
+      "alternatives": [
+        "모니터"
+      ],
+      "subject": "One modern flat-screen television on two short feet with a completely blank dark screen and a thin frame. No keyboard, remote, brand, program or letters. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-9406c46b-7903cb2d3631.webp",
+      "sha256": "7903cb2d363117a947acdb47bc536bee58095ac04c777d848e8cd05c009f5afa"
+    },
+    {
+      "id": "1763265002926",
+      "kr": "냉장고",
+      "sense": "Réfrigérateur",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "냉장고"
+      ],
+      "alternatives": [],
+      "subject": "One upright refrigerator with two separate doors, smaller freezer above and large fridge below, each with a plain handle. Full appliance, closed doors, no magnets, food, labels or setting. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1763265002926-8552712932c5.webp",
+      "sha256": "8552712932c5c97fbbd31b2ebbd8195ec146e753c22ddb31045c0f5869ac8767"
+    },
+    {
+      "id": "pack-14b73293",
+      "kr": "세탁기",
+      "sense": "machine à laver",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "세탁기"
+      ],
+      "alternatives": [
+        "건조기"
+      ],
+      "subject": "One front-loading washing machine with a large circular glass door and a small blank control strip. Full appliance, no printed controls, numbers, laundry, water or setting. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-14b73293-4b99dee3fe01.webp",
+      "sha256": "4b99dee3fe012ddafcd095f85a0704a47266944ee9398e96c61f99831877f6fd"
+    },
+    {
+      "id": "pack-38a8e915",
+      "kr": "컴퓨터",
+      "sense": "Ordinateur",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "컴퓨터"
+      ],
+      "alternatives": [
+        "데스크톱"
+      ],
+      "subject": "One desktop computer set: blank-screen monitor, plain keyboard with unmarked keys and a small mouse, grouped as one compact subject. No letters, brand, cables, desk or screen content. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-38a8e915-13fdbbe43bdc.webp",
+      "sha256": "13fdbbe43bdc7432ac6ec9b7a1406094dd3b13e384461a3208b6aa61b82fe2be"
+    },
+    {
+      "id": "pack-f006b697",
+      "kr": "전화기",
+      "sense": "Appareil telephonique, poste telephonique",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "전화기"
+      ],
+      "alternatives": [
+        "전화"
+      ],
+      "subject": "One classic corded landline telephone with the handset resting on its cradle, a curled cord and a keypad of completely blank buttons. No numbers, letters, labels or table. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-f006b697-d0ac021eadea.webp",
+      "sha256": "d0ac021eadeac5296c80e396e8fd8d55ed8df22fd01cfa5be3b198f1dc9486f8"
+    },
+    {
+      "id": "pack-5cd06196",
+      "kr": "휴대폰",
+      "sense": "Téléphone portable",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "휴대폰"
+      ],
+      "alternatives": [
+        "휴대전화",
+        "핸드폰",
+        "스마트폰"
+      ],
+      "subject": "One modern smartphone tilted slightly, with a plain dark glass screen, thin frame and small camera dot. No letters, numbers, icons, logo, hand or second phone. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-5cd06196-04b95bb903b1.webp",
+      "sha256": "04b95bb903b188f532f0d7f24c446cf33ab4d7cc5319b86b38a0c2a1cc7fd15d"
+    },
+    {
+      "id": "pack-e0d8b86a",
+      "kr": "카메라",
+      "sense": "Appareil photo",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "카메라"
+      ],
+      "alternatives": [],
+      "subject": "One compact digital camera with a large round lens, shutter button and viewfinder, seen three-quarter from the front. No strap, text, brand, photo or hand. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-e0d8b86a-51f5de3813e3.webp",
+      "sha256": "51f5de3813e35805b17e34f6e05d86693f11324a541c5430be0b2d5eeb564670"
+    },
+    {
+      "id": "pack-e5c93b42",
+      "kr": "거울",
+      "sense": "un miroir",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "거울"
+      ],
+      "alternatives": [],
+      "subject": "One small standing oval mirror with a visible rim, short support and base; a restrained diagonal white reflection stroke on its otherwise empty reflective surface. No face or room reflection. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-e5c93b42-a559ff24b400.webp",
+      "sha256": "a559ff24b4004d8ec3a4c1b6dd6c73008410d490630f222ab82b734360041e55"
+    },
+    {
+      "id": "pack-1b53e275",
+      "kr": "비누",
+      "sense": "le savon",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "비누"
+      ],
+      "alternatives": [],
+      "subject": "One oval bar of soap with smooth rounded corners and a few tiny foam bubbles beside it. No words embossed in the soap, packaging, hands, dish or bottle. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-1b53e275-17f7d66d0927.webp",
+      "sha256": "17f7d66d09272a808bb6468d2c992c82ca06842728125b0c8d74c1b4c678e2ef"
+    },
+    {
+      "id": "1763265540310",
+      "kr": "수건",
+      "sense": "Serviette",
+      "status": "approved",
+      "usage": "support",
+      "accepted": [],
+      "alternatives": [],
+      "subject": "One thick terry-cloth towel loosely rolled with one folded end extending out, showing its looped fabric texture and hem. No hand, body, shelf, bathroom or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1763265540310-970f440435fa.webp",
+      "sha256": "970f440435fa1c05755c52896f7aa2d93cf7cc45634e32f5da2c8e9299758560"
+    },
+    {
+      "id": "pack-17553d46",
+      "kr": "칫솔",
+      "sense": "la brosse à dents",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "칫솔"
+      ],
+      "alternatives": [],
+      "subject": "One manual toothbrush with a long curved handle and a small rectangular head of short upright bristles, shown full length diagonally. No toothpaste, hand, teeth, packaging or label. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-17553d46-e16b8c58c97a.webp",
+      "sha256": "e16b8c58c97a6892aa6971ff2d5a010c90754ea17ca01d1f478d1fb4634a8478"
+    },
+    {
+      "id": "pack-3286d2f5",
+      "kr": "치약",
+      "sense": "le dentifrice",
+      "status": "approved",
+      "usage": "support",
+      "accepted": [
+        "치약"
+      ],
+      "alternatives": [],
+      "subject": "One plain toothpaste tube with a small screw cap removed beside it and a small curl of paste at the nozzle. Completely unmarked tube, no letters, toothbrush, hand or packaging. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-3286d2f5-29860cef3dd9.webp",
+      "sha256": "29860cef3dd9c0466a83828bc9787b4569cc6e39171b29cd7284e535eaaa16f7"
+    },
+    {
+      "id": "pack-909ec77e",
+      "kr": "휴지",
+      "sense": "Papier hygiénique, mouchoir en papier",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "휴지"
+      ],
+      "alternatives": [
+        "화장지"
+      ],
+      "subject": "One roll of toilet paper with a clearly visible hollow cardboard core and a short loose perforated sheet unrolling toward the viewer. No bathroom scene, holder or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-909ec77e-d26c338b5d71.webp",
+      "sha256": "d26c338b5d71531baf6b514b02bb07b2c4f86e7a955453c066acf807b938d614"
+    },
+    {
+      "id": "pack-9c52d809",
+      "kr": "선물",
+      "sense": "Cadeau",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "선물"
+      ],
+      "alternatives": [],
+      "subject": "One small square gift box wrapped in plain paper with a ribbon crossing over the lid and a single bow on top. A small vermilion ribbon accent is allowed. No tag, writing or person. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-9c52d809-a714681633db.webp",
+      "sha256": "a714681633dbdae40b9322bf151bdcb062713b2ebe95443a404d5ff481d9e501"
+    },
+    {
+      "id": "1779561613981",
+      "kr": "인형",
+      "sense": "Poupée",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "인형"
+      ],
+      "alternatives": [],
+      "subject": "One simple cloth doll with a round head, two arms, two legs and a plain little dress, sitting upright. Soft stitched features, no realistic human skin, scary expression, text or extra toy. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1779561613981-3ff406a08b1e.webp",
+      "sha256": "3ff406a08b1ef4f16312e6cb7fc939cd4d06958f3f95263e8d828fb310518721"
+    },
+    {
+      "id": "1779706066036",
+      "kr": "자전거",
+      "sense": "Vélo",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "자전거"
+      ],
+      "alternatives": [],
+      "subject": "One everyday city bicycle seen in full side profile, exactly two wheels, a clear frame triangle, handlebars, saddle, pedals and chain. No rider, basket, brand, scenery or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066036-0a5b40d37faf.webp",
+      "sha256": "0a5b40d37faf7672316a0a8722dd9be43ab6603b29359dcc87fe73bf4d9d32f2"
+    },
+    {
+      "id": "1779706066037",
+      "kr": "자동차",
+      "sense": "Voiture",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "자동차"
+      ],
+      "alternatives": [
+        "차",
+        "승용차"
+      ],
+      "subject": "One small ordinary passenger car in three-quarter view, four-wheel proportions, clear windows, headlights and doors. No logo, license plate text, driver, road or surrounding scene. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066037-a8cc6662203a.webp",
+      "sha256": "a8cc6662203aef0c51f2d2e4461d2736a8b2705712fc8f9111f5dd399d814d99"
+    },
+    {
+      "id": "1779706066032",
+      "kr": "버스",
+      "sense": "Bus",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "버스"
+      ],
+      "alternatives": [],
+      "subject": "One full-size city bus in side three-quarter view, long rectangular body, multiple passenger windows and a double entry door. Completely blank route display, no letters, numbers, passengers or road. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066032-21d5f42e9749.webp",
+      "sha256": "21d5f42e974904ce5eb05c00c2374a968a534249bc23d94648183593bb5d35de"
+    },
+    {
+      "id": "1779706066034",
+      "kr": "기차",
+      "sense": "Train",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "기차"
+      ],
+      "alternatives": [],
+      "subject": "One passenger railway locomotive with one short connected carriage, seen in three-quarter side view. Clearly visible train wheels and coupling. No rail scene, smoke, logos, numbers or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066034-7f5e9c0cfea4.webp",
+      "sha256": "7f5e9c0cfea4abde7f0d7ef63a600203338da515782cec0ef48fb517cffeccc3"
+    },
+    {
+      "id": "1779706066035",
+      "kr": "비행기",
+      "sense": "Avion",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "비행기"
+      ],
+      "alternatives": [],
+      "subject": "One commercial passenger airplane seen in three-quarter view from slightly above, complete fuselage, two wings, two underwing engines and tail. No airline logo, letters, contrails, runway or clouds. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066035-8a269facb1b9.webp",
+      "sha256": "8a269facb1b97615ce09afcc545631902be108d2a58527952980650f6735acb9"
+    },
+    {
+      "id": "1780695436425",
+      "kr": "개",
+      "sense": "Chien",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "개"
+      ],
+      "alternatives": [
+        "강아지"
+      ],
+      "subject": "One adult domestic dog standing naturally in three-quarter view, clear muzzle, floppy ears, four anatomically correct legs and one tail. Medium-sized ordinary dog, no collar, person, toy or scene. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436425-ca43125269d6.webp",
+      "sha256": "ca43125269d6b90e99114f5275fc80a5796003c2346d6692e85b0df8735dd9f4"
+    },
+    {
+      "id": "1763265674186",
+      "kr": "강아지",
+      "sense": "Chiot",
+      "status": "approved",
+      "usage": "support",
+      "accepted": [],
+      "alternatives": [],
+      "subject": "One young domestic puppy sitting, with a proportionally large head, soft floppy ears, short legs and small paws. Anatomically coherent, no collar, toy, person or scene. Clearly juvenile, but no label. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1763265674186-2e48f22d789a.webp",
+      "sha256": "2e48f22d789a9ebb15ed14c0338c49afcbb852d5251cef9768c3b9a01acb4f0c"
+    },
+    {
+      "id": "1780695436433",
+      "kr": "토끼",
+      "sense": "Lapin",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "토끼"
+      ],
+      "alternatives": [],
+      "subject": "One rabbit sitting naturally, with two long upright ears, short front paws, rounded hindquarters and a small round tail. Complete body, no carrot, cage or scene. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436433-5b88b95959d7.webp",
+      "sha256": "5b88b95959d73733a93d8384e12b1a14da8499ad165b723796ba2d9bf459ba82"
+    },
+    {
+      "id": "1780695436428",
+      "kr": "물고기",
+      "sense": "Poisson (animal vivant)",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "물고기"
+      ],
+      "alternatives": [
+        "생선"
+      ],
+      "subject": "One living freshwater fish in side view, with one eye, clear gills, scales, dorsal fin, lower fins and a complete tail. No plate, hook, cooked food, water scene or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436428-b2106a911c4f.webp",
+      "sha256": "b2106a911c4fdf1465b7425017922b742596ba6d30c0f5d4eb143c5ac7483e03"
+    },
+    {
+      "id": "1780695436429",
+      "kr": "말",
+      "sense": "Cheval",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "말"
+      ],
+      "alternatives": [],
+      "subject": "One horse standing in full side-three-quarter view with a long mane, four anatomically correct legs with hooves and a flowing tail. No rider, saddle, reins, fence or scene. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436429-d4bcfa2be945.webp",
+      "sha256": "d4bcfa2be945c261acaa92069d8624223ccb12c2089c96255b1eda64827a8a45"
+    },
+    {
+      "id": "1780695436430",
+      "kr": "소",
+      "sense": "Vache",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "소"
+      ],
+      "alternatives": [
+        "젖소"
+      ],
+      "subject": "One adult cow standing in three-quarter view with a broad bovine muzzle, two short horns, four legs with cloven hooves and one tail. Gentle domestic cattle proportions, no bell, farmer, calf or field. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436430-a24f560903e8.webp",
+      "sha256": "a24f560903e815a59e63856b2a200a3c187b7eef06accf523d784c6a3812d223"
+    },
+    {
+      "id": "1780695436431",
+      "kr": "돼지",
+      "sense": "Cochon",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "돼지"
+      ],
+      "alternatives": [],
+      "subject": "One domestic pig in side-three-quarter view with a rounded body, clear snout, four short legs and one small curly tail. No farm, mud, trough, person or food. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436431-ea4492c15792.webp",
+      "sha256": "ea4492c157925d28be36797b90e00258b8bcfac183cd7081f7122a72d293880d"
+    },
+    {
+      "id": "1780695436432",
+      "kr": "닭",
+      "sense": "Poule / poulet (animal)",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "닭"
+      ],
+      "alternatives": [
+        "수탉",
+        "암탉"
+      ],
+      "subject": "One standing rooster with a small vermilion comb, clear beak, two legs and a curved tail. Complete anatomically coherent domestic chicken, no eggs, nest, farm or person. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436432-0f4e6a0cbd89.webp",
+      "sha256": "0f4e6a0cbd89e46cc6caac3f4004b257b907ae5ce745bd4d13164febe7d50f2d"
+    },
+    {
+      "id": "1780695436435",
+      "kr": "호랑이",
+      "sense": "Tigre",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "호랑이"
+      ],
+      "alternatives": [],
+      "subject": "One adult tiger standing in three-quarter view, muscular feline body, unmistakable dark stripes left as black negative space, four paws and one long tail. No cub, jungle, pedestal or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436435-041dda26ebff.webp",
+      "sha256": "041dda26ebff6c7bf038331beeecb6ce4c14240bd638812ad73fcff29a0786f9"
+    },
+    {
+      "id": "1779641064974",
+      "kr": "코끼리",
+      "sense": "Éléphant",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "코끼리"
+      ],
+      "alternatives": [],
+      "subject": "One elephant standing in three-quarter view, large ears, long curved trunk, four thick legs and a small tail, with modest tusks. Complete animal, no rider, decorations, trees or scene. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "1779641064974-0afd28d4061b.webp",
+      "sha256": "0afd28d4061b7fa8696e160ee21ed17215a8b9f80ed23215b5f31b6852d7000d"
+    },
+    {
+      "id": "pack-520cce7e",
+      "kr": "뱀",
+      "sense": "Serpent",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "뱀"
+      ],
+      "alternatives": [],
+      "subject": "One snake loosely coiled with its head gently raised and a clearly continuous tapering body ending in a single tail. No fangs, prey, foliage, text or threatening pose. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A2",
+      "batch": "a-2026-10-17",
+      "asset": "pack-520cce7e-643f178b1ddd.webp",
+      "sha256": "643f178b1dddbd5e97f09ce7cefd8cdfb98b0fa5011b08017bd84a655ef9f59c"
+    },
+    {
+      "id": "1763266756138",
+      "kr": "꽃",
+      "sense": "Fleur",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "꽃"
+      ],
+      "alternatives": [],
+      "subject": "One simple flower on one short stem with two leaves, five or six distinct rounded petals and a visible circular center. No pot, vase, bouquet, garden or writing. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1763266756138-32894a576569.webp",
+      "sha256": "32894a57656983b037e7261ee338a30eb8f3d19f6ec9f7e60de68196bfda58b4"
+    },
+    {
+      "id": "1781435310387",
+      "kr": "나무",
+      "sense": "Arbre",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "나무"
+      ],
+      "alternatives": [],
+      "subject": "One leafy deciduous tree with a clear trunk, branching structure and rounded canopy, isolated with no ground scene. Complete roots base and crown, no person, building, fruit or labels. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1781435310387-910ea39e2d9a.webp",
+      "sha256": "910ea39e2d9a20669f56800c85bd60ccd15e8fda2e186408a3413f90bda031f0"
+    },
+    {
+      "id": "pack-de8e9b50",
+      "kr": "잎",
+      "sense": "Feuille (d'arbre, de plante)",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "잎"
+      ],
+      "alternatives": [
+        "나뭇잎"
+      ],
+      "subject": "One single broad tree leaf with a short petiole, clear midrib and branching veins. Natural serrated outline, no branch, flower, insect or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-de8e9b50-a322c145fb38.webp",
+      "sha256": "a322c145fb38f0ba4735c6eb654e33362757fce6897df255afb2581f7cd2cac4"
+    },
+    {
+      "id": "1781435310382",
+      "kr": "달",
+      "sense": "Lune",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "달"
+      ],
+      "alternatives": [],
+      "subject": "One crescent moon with a fine softly illuminated edge and a few subtle crater marks. Single isolated lunar crescent, no stars, face, clouds, landscape or text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1781435310382-d425936a25ca.webp",
+      "sha256": "d425936a25cac34499fb137304b6fb5eac288d480008cbd8a362543d62abca9c"
+    },
+    {
+      "id": "pack-38fd921c",
+      "kr": "구름",
+      "sense": "Nuage",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "구름"
+      ],
+      "alternatives": [],
+      "subject": "One soft cumulus cloud silhouette with several rounded billowing lobes and a flatter lower edge. White-grey brush washes against pure black, no rain, sun, lightning, landscape or face. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "pack-38fd921c-76bd89aea9c5.webp",
+      "sha256": "76bd89aea9c5ab11196bcad081fb3c5d0d3a728e7df90622b6d294c2a8b8d66e"
+    },
+    {
+      "id": "1779706066096",
+      "kr": "손",
+      "sense": "Main",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "손"
+      ],
+      "alternatives": [],
+      "subject": "One anatomically correct open human hand viewed palm-forward, exactly five fingers including one opposed thumb, wrist ending softly in brush marks. Neutral educational illustration, no jewelry, object or injury. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066096-d5d065cc9f5b.webp",
+      "sha256": "d5d065cc9f5bba024599584c29e88fb5d02626256293a46133856a39676b45cf"
+    },
+    {
+      "id": "1779706066097",
+      "kr": "발",
+      "sense": "Pied",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "발"
+      ],
+      "alternatives": [],
+      "subject": "One anatomically correct bare human foot in three-quarter view, exactly five toes, clear heel and arch, ankle ending softly in brush marks. Neutral educational illustration, no shoe, injury or setting. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066097-f67b25547ad9.webp",
+      "sha256": "f67b25547ad9cdc2491aae3361d292e4eabf1076532f5a58d1141ecaa5a1e104"
+    },
+    {
+      "id": "1779706066095",
+      "kr": "귀",
+      "sense": "Oreille",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "귀"
+      ],
+      "alternatives": [],
+      "subject": "One anatomically correct human outer ear in side view, clear helix folds and earlobe, isolated as a neutral educational drawing with soft brush edges. No face, earrings, injury or labels. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1779706066095-6e506afcb879.webp",
+      "sha256": "6e506afcb879286f8bcb7e547580c9c8fa6a1db74a5d8a182c3e0726fd0af220"
+    },
+    {
+      "id": "1780695436493",
+      "kr": "이",
+      "sense": "Dent",
+      "status": "approved",
+      "usage": "question",
+      "accepted": [
+        "이"
+      ],
+      "alternatives": [
+        "치아"
+      ],
+      "subject": "One intact healthy human molar tooth with a rounded crown and two visible roots, isolated as a clean neutral educational illustration. No mouth, gums, blood, decay, labels or dental tools. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+      "cefr": "A1",
+      "batch": "a-2026-10-17",
+      "asset": "1780695436493-57baf3a71ee0.webp",
+      "sha256": "57baf3a71ee036733af289d62b3f6fb3a10f400291cb6c67e2ba372ab6004496"
     }
   ]
 }

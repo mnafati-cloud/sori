@@ -1,0 +1,26 @@
+{
+  "id": "pack-1b53e275",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-17T08:30:07.725Z",
+  "sourceSha256": "3dd3615513551e23d1eddda68d4b22ea54d818f9bf3c0598eb37af245a0df0d8",
+  "sha256": "17f7d66d09272a808bb6468d2c992c82ca06842728125b0c8d74c1b4c678e2ef",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne oval bar of soap with smooth rounded corners and a few tiny foam bubbles beside it. No words embossed in the soap, packaging, hands, dish or bottle. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Savon ovale entier avec mousse et bulles ; aucune gravure, la mousse le distingue d’un simple galet. Revu également à 96 et 160 px sur fond sombre.",
+  "reviewedAt": "2026-10-17T08:49:17.736Z",
+  "kr": "비누",
+  "sense": "le savon",
+  "usage": "question",
+  "accepted": [
+    "비누"
+  ],
+  "alternatives": []
+}

@@ -1,11 +1,14 @@
-# Illustrations et rappel visuel — v170
+# Illustrations et rappel visuel — v171
 
 Ce fichier et `tools/images/` sont le point de reprise du projet : aucune
 information de la conversation n'est nécessaire pour continuer la bibliothèque.
 Style approuvé : **2, trait au pinceau**, blanc chaud et lavis gris sur fond noir,
 accent vermillon discret. Toutes les illustrations sont générées, jamais prises
-sur le Web. La bibliothèque initiale contient **3 images publiées** (우산, 사과,
-고양이), et 4 sujets préparés dans l'inventaire. Elle ne couvre pas tout le deck.
+sur le Web. La bibliothèque contient **103 images publiées** : les 3 premières
+(우산, 사과, 고양이), puis **100 nouveaux mots, 71 A1 et 29 A2**. Ce nouveau lot
+comprend 86 questions image → coréen et 14 illustrations d'aide après réponse.
+Les 100 WebP ajoutés pèsent **2,95 Mo** ; bibliothèque complète : **3,05 Mo**.
+Elle ne couvre pas tout le deck.
 
 ## Comportement dans l'app
 
@@ -78,6 +81,8 @@ Les exports/imports transportent ces champs sans recopier le catalogue.
 | `tools/images/generate.py` | Génération payante explicite via API ; produit des candidats |
 | `tools/images/pipeline.mjs` | Import, encodage, validation, publication déterministe du manifeste |
 | `tools/images/reviews/*.json` | Prompt exact, provenance, hashes, encodage, décision et revue visuelle |
+| `tools/images/batches/*.json` | Sélections par niveau, ordre de génération, reprises et revue de chaque sujet |
+| `tools/images/review.mjs` | Planche HTML de contrôle à 96, 160 et 512 px, candidats ou assets publiés |
 | `docs/images/*.webp` | Assets publics approuvés, 512 × 512, nom contenant leur hash |
 | `docs/images-data.js` | Manifeste généré ; ne pas éditer à la main |
 | `docs/images.js` | Module d'affichage, comparaison, repli et téléchargement, sans localStorage |
@@ -145,7 +150,7 @@ node tools/images/pipeline.mjs import 1763266607347 /chemin/image-generee.png co
 L'import refuse les planches non carrées, les petites images et les fichiers
 invalides. Il effectue seulement une réduction à 512 et un encodage WebP qualité
 82, sans recadrage ou retouche du dessin. Cible 20–60 Ko, plafond strict 80 Kio.
-Les trois premiers fichiers ont été générés avec l'outil Codex puis importés
+Les 103 fichiers actuels ont été générés avec l'outil Codex puis importés
 de cette manière. L'API payante n'est pas nécessaire pour tester/publier une
 image déjà générée. Son accès réel exige la clé et l'autorisation réseau vers
 `api.openai.com` ; ne pas contourner une restriction réseau.
@@ -159,9 +164,26 @@ d'ambiguïté injustifiée. La CI vérifie la technique, **pas le sens de l'imag
 Une autre session/une autre personne peut faire cette revue à partir du dépôt.
 
 ```bash
+node tools/images/review.mjs a-2026-10-17
+# Ouvrir tools/images/candidates/review-a-2026-10-17.html dans un navigateur.
 node tools/images/pipeline.mjs approve ID tools/images/candidates/ID-HASH NOM_RELECTEUR 'Constats visuels et décision pédagogique'
 node tools/images/pipeline.mjs check
 ```
+
+La planche fonctionne aussi après un clone neuf : les entrées approuvées pointent
+vers les WebP versionnés. Pour un lot encore en préparation, un fichier local
+`candidates/batch-<nom-du-lot>/<id>.json` peut contenir
+`{"candidate":"tools/images/candidates/ID-HASH"}` afin d'afficher le candidat.
+La planche signale les recettes modifiées et ne donne aucune approbation automatique.
+
+Le lot `a-2026-10-17` est terminé. Ses niveaux viennent de `EXTRA[id].cefr`,
+vérifiés avec les ids et sens du SEED. L'ordre commence par les A1. Cinq premiers
+dessins ont été repris car leurs couleurs naturelles dominaient ; leurs hashes
+et le motif de rejet sont conservés dans le lot. Les recettes suivantes verrouillent
+explicitement le blanc chaud et le gris, sans changer le prompt global déjà validé.
+Les 14 usages `support` comprennent notamment les agrumes, le riz/repas, le kimchi,
+les ramyeon, le kimbap, le dentifrice et le chiot : le dessin seul ne suffit pas à
+imposer un lexème précis. Les autres lectures plausibles sont des réponses neutres.
 
 L'approbation copie le WebP sous un nom immuable avec hash, écrit une revue dans
 `reviews/`, met à jour l'inventaire et reconstruit le manifeste. Pour retirer
@@ -210,8 +232,11 @@ six thèmes, deux tailles mobiles, téléchargement, mise à jour réelle du wor
 préservation du cache audio et mode avion. Les captures sont dans le dossier
 ignoré `browser-results/images/`.
 
-L'extension du catalogue se poursuit avec les quatre entrées `queued`, puis un
-inventaire explicite des autres objets. Les estimations antérieures de 800–1 200
+Validation v171 : 195 tests Node, 3 tests Python et les quatre suites navigateur
+passent ; les 103 images sont décodées et leur téléchargement hors ligne est testé.
+
+L'extension du catalogue se poursuit avec l'entrée `queued` restante (주전자),
+puis un inventaire explicite des autres objets. Les estimations antérieures de 800–1 200
 objets ne constituent pas une classification terminée. Les exercices libres sur
 une galerie d'images et les scènes grammaticales sont des extensions distinctes ;
 la présente livraison intègre le rappel visuel dans l'exercice principal.

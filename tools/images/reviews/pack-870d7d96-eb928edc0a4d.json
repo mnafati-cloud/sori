@@ -1,0 +1,26 @@
+{
+  "id": "pack-870d7d96",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-17T08:20:36.639Z",
+  "sourceSha256": "0621c28d0bc2fa9450fff6b2274f7fdfca538e2eec4a5ea3e026f7c16eff3f7c",
+  "sha256": "eb928edc0a4d6f6719e27ecb8aae306eefba5bbdb45fcf8a5987a7c7878d81a2",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne pair of Korean flat metal chopsticks, laid side by side with their tapered tips visible. Two distinct complete sticks, no food, holder, bowl or hand. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Deux baguettes métalliques séparées, extrémités fines bien visibles ; aucun élément coupé. Revu également à 96 et 160 px sur fond sombre.",
+  "reviewedAt": "2026-10-17T08:49:01.070Z",
+  "kr": "젓가락",
+  "sense": "Baguettes (pour manger)",
+  "usage": "question",
+  "accepted": [
+    "젓가락"
+  ],
+  "alternatives": []
+}

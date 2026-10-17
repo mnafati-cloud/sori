@@ -2,6 +2,8 @@
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),vm=require('node:vm');
 const assert=require('node:assert/strict'),{chromium}=require('playwright');
 const E=require('../docs/engine.js'),D=require('../docs/images-data.js');
+const imageCount=Object.keys(D.items).length;
+const currentCache=fs.readFileSync(path.resolve(__dirname,'../docs/sw.js'),'utf8').match(/const CACHE = "([^"]+)"/)[1];
 const root=path.resolve(__dirname,'../docs'),artifacts=path.resolve('browser-results/images');
 fs.mkdirSync(artifacts,{recursive:true});
 const ctx={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,'data.js'),'utf8'),ctx);
@@ -23,7 +25,7 @@ const server=http.createServer((req,res)=>{
   }
   fs.readFile(file,(error,bytes)=>{
     if(error){res.writeHead(404);res.end();return;}
-    if(file.endsWith('/sw.js') && versionOverride)bytes=Buffer.from(bytes.toString().replace('sori-v170',versionOverride));
+    if(file.endsWith('/sw.js') && versionOverride)bytes=Buffer.from(bytes.toString().replace(currentCache,versionOverride));
     res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream','Cache-Control':'no-store'});res.end(bytes);
   });
 });
@@ -135,15 +137,15 @@ let browser,page;
   }
   await page.setViewportSize({width:390,height:844});
   await page.locator('#setrev').click();await page.locator('#dlimages').click();
-  await page.locator('#dlimgstatus').filter({hasText:'3 / 3'}).waitFor();await page.locator('#setclose').click();
-  const cached=await page.evaluate(async()=>({keys:(await (await caches.open('sori-image-store')).keys()).map(x=>x.url),
-    main:(await (await caches.open('sori-v170')).keys()).filter(x=>x.url.includes('/images/')).length}));
-  assert.equal(cached.keys.length,3);assert.equal(cached.main,0,'images are never duplicated in version cache');
+  await page.locator('#dlimgstatus').filter({hasText:`${imageCount} / ${imageCount}`}).waitFor();await page.locator('#setclose').click();
+  const cached=await page.evaluate(async currentCache=>({keys:(await (await caches.open('sori-image-store')).keys()).map(x=>x.url),
+    main:(await (await caches.open(currentCache)).keys()).filter(x=>x.url.includes('/images/')).length}),currentCache);
+  assert.equal(cached.keys.length,imageCount);assert.equal(cached.main,0,'images are never duplicated in version cache');
   // Activate a new real worker, preserving dedicated image/audio caches.
   await page.evaluate(async()=>{const c=await caches.open('sori-audio-store');await c.put('./audio/test.mp3',new Response('test'));});
-  versionOverride='sori-v170-smoke';await page.evaluate(async()=>{await (await navigator.serviceWorker.getRegistration()).update();});
-  await page.waitForFunction(async()=> (await caches.keys()).includes('sori-v170-smoke') && !(await caches.keys()).includes('sori-v170'));
-  assert.equal(await page.evaluate(async()=> (await (await caches.open('sori-image-store')).keys()).length),3);
+  versionOverride=currentCache+'-smoke';await page.evaluate(async()=>{await (await navigator.serviceWorker.getRegistration()).update();});
+  await page.waitForFunction(async currentCache=> (await caches.keys()).includes(currentCache+'-smoke') && !(await caches.keys()).includes(currentCache),currentCache);
+  assert.equal(await page.evaluate(async()=> (await (await caches.open('sori-image-store')).keys()).length),imageCount);
   assert.equal(await page.evaluate(async()=> (await (await caches.open('sori-audio-store')).keys()).length),1);
   await context.setOffline(true);await page.reload();await page.locator('#tabs [data-tab="review"]').click();await page.locator('.images-input').waitFor();
   await page.locator('.images-input').fill('우산');await page.getByRole('button',{name:'Vérifier',exact:true}).click();
@@ -153,7 +155,7 @@ let browser,page;
   await page.getByText('Retrouvé sans aide',{exact:true}).waitFor();assert.equal(await page.locator('.images-input').count(),0);
   await reset();await page.locator('.big-fr').waitFor();assert.equal(await page.evaluate(()=>ST.rlog.length),0);
   assert.deepEqual(errors,[]);
-  const summary={browser:await browser.version(),imageAssets:3,ime:true,reload:true,undo:true,forgettingGrade:1,typoGrade:2,
+  const summary={browser:await browser.version(),imageAssets:imageCount,ime:true,reload:true,undo:true,forgettingGrade:1,typoGrade:2,
     neutral:true,fallbacks:['no manifest','support only','disabled','missing module','404','corrupt','timeout','offline'],themes:6,offline:true,cacheUpgrade:true,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,'summary.json'),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));
 })().catch(async error=>{
