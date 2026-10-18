@@ -1,0 +1,24 @@
+{
+  "id": "1780695436490",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T14:23:03.594Z",
+  "sourceSha256": "3b0ff4649f947bcbabcf613a59c0fc99a0e45e0f05f5c5205421ebef7a12c0d0",
+  "sha256": "65df0ca6baa0b1c20482603a6e8404b35257160fde7fafb6007c37359e7bd290",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne fully clothed adult person standing naturally, seen from a three-quarter rear angle, with both palms resting on the sides of their own waist just above the hips. The waist is the focus of the pose. Plain shirt tucked into plain trousers and simple shoes. Show the ENTIRE person from top of head to soles, with generous 12 percent black margins on EVERY edge. No cropped body, no arrows, no labels, no text. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject. For a place or an activity, render only its essential compact isolated vignette, with the whole silhouette surrounded by generous black margins.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Personne entièrement cadrée, vue de trois quarts arrière, les deux mains posées à la taille. La pose situe les reins sans anatomie coupée ; emploi en support. Visuel examiné en grand format, puis WebP revu à 96 et 160 px sur fond sombre.",
+  "reviewedAt": "2026-10-18T14:50:56.714Z",
+  "kr": "허리",
+  "sense": "Taille / reins",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

@@ -1,0 +1,24 @@
+{
+  "id": "1779706066067",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T14:06:39.108Z",
+  "sourceSha256": "984108025a2aca08db61c4d3341fb73dd77d99b89ba8f505c1501a9c9b4e157f",
+  "sha256": "ca4880f8c911c6ef8bf529fa7fdc58bc7758213f1df738a31e192f4dc1ca8925",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne simple deep soup bowl with clear broth and a few scallion rings, a faint brush-stroke wisp of steam, no lettering. STRICT PALETTE LOCK: render every surface ONLY in warm ivory (#F2EEE6), neutral grey and black. Do not use the natural color of the object. NO red, orange, yellow, brown, green or blue areas. No vermilion accent in this image. Shape and texture alone must identify the subject. For a place or an activity, render only its essential compact isolated vignette, with the whole silhouette surrounded by generous black margins.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Bol de bouillon fumant avec rondelles de ciboule ; aide pour la soupe générique. Visuel examiné en grand format, puis WebP revu à 96 et 160 px sur fond sombre.",
+  "reviewedAt": "2026-10-18T14:53:36.849Z",
+  "kr": "국",
+  "sense": "Soupe",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}
