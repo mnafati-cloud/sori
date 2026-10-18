@@ -1,19 +1,20 @@
-# Illustrations et rappel visuel — v173
+# Illustrations et rappel visuel — v174
 
 Ce fichier et `tools/images/` sont le point de reprise du projet : aucune
 information de la conversation n'est nécessaire pour continuer la bibliothèque.
 Style approuvé : **2, trait au pinceau**, blanc chaud et lavis gris sur fond noir,
 accent vermillon discret. Toutes les illustrations sont générées, jamais prises
-sur le Web. La bibliothèque contient **403 images publiées** : les 3 premières
-(우산, 사과, 고양이), puis deux lots de 100 et un lot de 200 mots distincts.
+sur le Web. La bibliothèque contient **603 images publiées** : les 3 premières
+(우산, 사과, 고양이), puis deux lots de 100 et deux lots de 200 mots distincts.
 
-| Lot | A1 | A2 | Questions image → coréen | Aides après réponse | Poids WebP |
-| --- | --- | --- | --- | --- | --- |
-| `a-2026-10-17` (v171) | 71 | 29 | 86 | 14 | 2,95 Mo |
-| `a-2026-10-17-02` (v172) | 34 | 66 | 78 | 22 | 2,98 Mo |
-| `a-2026-10-18` (v173) | 70 | 130 | 51 | 149 | 6,87 Mo |
+| Lot | A1 | A2 | B1 | Questions image → coréen | Aides après réponse | Poids WebP |
+| --- | --- | --- | --- | --- | --- | --- |
+| `a-2026-10-17` (v171) | 71 | 29 | 0 | 86 | 14 | 2,95 Mo |
+| `a-2026-10-17-02` (v172) | 34 | 66 | 0 | 78 | 22 | 2,98 Mo |
+| `a-2026-10-18` (v173) | 70 | 130 | 0 | 51 | 149 | 6,87 Mo |
+| `objects-2026-10-18` (v174) | 11 | 21 | 168 | 114 | 86 | 4,63 Mo |
 
-La bibliothèque complète pèse **12,89 Mo** (12 887 570 octets). Elle ne couvre pas
+La bibliothèque complète pèse **17,52 Mo** (17 521 958 octets). Elle ne couvre pas
 tout le deck ; les images sont chargées à la demande.
 
 ## Comportement dans l'app
@@ -156,7 +157,7 @@ node tools/images/pipeline.mjs import 1763266607347 /chemin/image-generee.png co
 L'import refuse les planches non carrées, les petites images et les fichiers
 invalides. Il effectue seulement une réduction à 512 et un encodage WebP qualité
 82, sans recadrage ou retouche du dessin. Cible 20–60 Ko, plafond strict 80 Kio.
-Les 403 fichiers actuels ont été générés avec l'outil Codex puis importés
+Les 603 fichiers actuels ont été générés avec l'outil Codex puis importés
 de cette manière. L'API payante n'est pas nécessaire pour tester/publier une
 image déjà générée. Son accès réel exige la clé et l'autorisation réseau vers
 `api.openai.com` ; ne pas contourner une restriction réseau.
@@ -176,6 +177,8 @@ node tools/images/review.mjs a-2026-10-17-02
 # Même revue pour le deuxième lot, avec son propre fichier HTML.
 node tools/images/review.mjs a-2026-10-18
 # Troisième lot : 200 images, avec les revues et usages dans le JSON du lot.
+node tools/images/review.mjs objects-2026-10-18
+# Quatrième lot : 200 nouveaux mots, priorité A1/A2 puis objets concrets B1.
 node tools/images/pipeline.mjs approve ID tools/images/candidates/ID-HASH NOM_RELECTEUR 'Constats visuels et décision pédagogique'
 node tools/images/pipeline.mjs check
 ```
@@ -218,8 +221,23 @@ neutres pour les 51 questions. Le cadrage de 허리 a été régénéré : la pe
 entière place ses mains à la taille ; le premier hash et son rejet sont conservés.
 Les 200 WebP pèsent 6 866 988 octets, avec un maximum de 58 142 octets par image.
 
+Le quatrième lot `objects-2026-10-18` ajoute 200 mots sans réutiliser aucun id
+ni mot coréen de l'inventaire existant : 11 A1, 21 A2, puis 168 B1 concrets.
+Il privilégie les objets faciles à reconnaître : aliments, animaux, appareils,
+ustensiles, vêtements et transports. Ses 114 questions n'acceptent que le mot
+ciblé ; les autres lectures plausibles restent neutres. Les 86 aides couvrent
+les lieux, parties du corps, plats précis et objets ambigus en monochrome.
+La patate douce, le sèche-linge, le cure-dent, le bol à riz et le surligneur
+ont été reclassés en aides après examen. Les cadrages du repassage, de
+l'humidificateur et du téléphérique ont été régénérés ; les trois hashes rejetés
+et leurs motifs sont conservés. Chaque visuel a été examiné en grand format,
+puis à 96 et 160 px, avec les hashes source et WebP dans le JSON du lot.
+Les 200 WebP pèsent 4 634 388 octets, soit environ 23 Ko par image.
+
 L'approbation copie le WebP sous un nom immuable avec hash, écrit une revue dans
-`reviews/`, met à jour l'inventaire et reconstruit le manifeste. Pour retirer
+`reviews/`, met à jour l'inventaire et reconstruit le manifeste. La référence de
+style partagée est lue et hachée une fois par reconstruction ; chaque asset et
+sa revue restent contrôlés individuellement. Pour retirer
 une mauvaise image, passer son statut à `rejected`, puis lancer `build` : la
 carte revient au texte. Ne jamais réutiliser une URL pour des pixels différents.
 Pour changer le sens, le prompt ou les variantes, refaire explicitement la
@@ -265,8 +283,8 @@ six thèmes, deux tailles mobiles, téléchargement, mise à jour réelle du wor
 préservation du cache audio et mode avion. Les captures sont dans le dossier
 ignoré `browser-results/images/`.
 
-Validation v173 : **197 tests Node**, 3 tests Python et les quatre suites navigateur
-passent ; les **403 images** sont décodées et leur téléchargement hors ligne est
+Validation v174 : **198 tests Node**, 3 tests Python et les quatre suites navigateur
+passent ; les **603 images** sont décodées et leur téléchargement hors ligne est
 testé, ainsi que le repli textuel et la préservation des caches lors de la mise à jour.
 
 L'extension du catalogue se poursuit avec l'entrée `queued` restante (주전자),

@@ -1,0 +1,4831 @@
+{
+  "id": "objects-2026-10-18",
+  "requested": 200,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/extra.js:cefr;docs/data.js:id/sense",
+  "selection": "Objets et sujets concrets non illustrés ; A1/A2 d’abord, puis B1. Aucun id ni mot coréen déjà présent dans les lots précédents.",
+  "items": [
+    {
+      "id": "pack-6e6b469d",
+      "kr": "식탁",
+      "sense": "Table (à manger)",
+      "usage": "question",
+      "cefr": "A1",
+      "rank": 1
+    },
+    {
+      "id": "pack-5f51b383",
+      "kr": "잔",
+      "sense": "Verre, tasse (recipient et unite)",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 2
+    },
+    {
+      "id": "pack-31f61548",
+      "kr": "쓰레기",
+      "sense": "Ordures, déchets",
+      "usage": "question",
+      "cefr": "A1",
+      "rank": 3
+    },
+    {
+      "id": "pack-4ca92aaa",
+      "kr": "건물",
+      "sense": "Batiment, immeuble",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 4
+    },
+    {
+      "id": "pack-76838ad5",
+      "kr": "호텔",
+      "sense": "Hôtel",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 5
+    },
+    {
+      "id": "pack-9928a7bc",
+      "kr": "편지",
+      "sense": "Lettre (courrier)",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 6
+    },
+    {
+      "id": "pack-ba7e7e02",
+      "kr": "신문",
+      "sense": "Journal (presse)",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 7
+    },
+    {
+      "id": "pack-2c96b0a0",
+      "kr": "아기",
+      "sense": "Bébé, nourrisson",
+      "usage": "question",
+      "cefr": "A1",
+      "rank": 8
+    },
+    {
+      "id": "pack-749d1d3f",
+      "kr": "몸",
+      "sense": "Corps",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 9
+    },
+    {
+      "id": "1780695436366",
+      "kr": "옷",
+      "sense": "Vêtement (général)",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 10
+    },
+    {
+      "id": "pack-076925c5",
+      "kr": "메뉴",
+      "sense": "Menu (carte, liste de plats)",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 11
+    },
+    {
+      "id": "1764058248068",
+      "kr": "쓰레기통",
+      "sense": "Poubelle",
+      "usage": "question",
+      "cefr": "A2",
+      "rank": 12
+    },
+    {
+      "id": "1779706066081",
+      "kr": "바닥",
+      "sense": "Sol",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 13
+    },
+    {
+      "id": "1779706066082",
+      "kr": "벽",
+      "sense": "Mur",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 14
+    },
+    {
+      "id": "pack-963287c9",
+      "kr": "책꽂이",
+      "sense": "Une étagère (à livres)",
+      "usage": "question",
+      "cefr": "A2",
+      "rank": 15
+    },
+    {
+      "id": "pack-90ff47e3",
+      "kr": "러그",
+      "sense": "Un tapis (petit)",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 16
+    },
+    {
+      "id": "pack-a5e5218b",
+      "kr": "달걀",
+      "sense": "Œuf (de poule)",
+      "usage": "question",
+      "cefr": "A2",
+      "rank": 17
+    },
+    {
+      "id": "pack-996a8f86",
+      "kr": "우동",
+      "sense": "Oudon, nouilles udon",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 18
+    },
+    {
+      "id": "pack-5fbbde12",
+      "kr": "짜장면",
+      "sense": "Jjajangmyeon (nouilles sauce soja noire)",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 19
+    },
+    {
+      "id": "pack-a276ca30",
+      "kr": "수저",
+      "sense": "Couverts (cuillère et baguettes)",
+      "usage": "question",
+      "cefr": "A2",
+      "rank": 20
+    },
+    {
+      "id": "pack-a9287da1",
+      "kr": "자판기",
+      "sense": "Distributeur automatique",
+      "usage": "question",
+      "cefr": "A2",
+      "rank": 21
+    },
+    {
+      "id": "pack-3d5f8b17",
+      "kr": "통장",
+      "sense": "Livret bancaire (carnet de compte)",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 22
+    },
+    {
+      "id": "pack-83f2c49c",
+      "kr": "핸드폰",
+      "sense": "Téléphone portable",
+      "usage": "question",
+      "cefr": "A2",
+      "rank": 23
+    },
+    {
+      "id": "1779706066039",
+      "kr": "교통카드",
+      "sense": "Carte de transport",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 24
+    },
+    {
+      "id": "pack-e03418c5",
+      "kr": "기차표",
+      "sense": "Billet de train",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 25
+    },
+    {
+      "id": "pack-263e812e",
+      "kr": "학생증",
+      "sense": "Carte d'étudiant",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 26
+    },
+    {
+      "id": "pack-e32397b6",
+      "kr": "유치원",
+      "sense": "Jardin d'enfants, maternelle",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 27
+    },
+    {
+      "id": "pack-5047cff2",
+      "kr": "휴게실",
+      "sense": "Salle de repos, salon de détente",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 28
+    },
+    {
+      "id": "pack-d3487038",
+      "kr": "시청",
+      "sense": "mairie, hôtel de ville",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 29
+    },
+    {
+      "id": "pack-d26fedf5",
+      "kr": "술집",
+      "sense": "Bar, débit de boissons",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 30
+    },
+    {
+      "id": "pack-354a9b58",
+      "kr": "다림질",
+      "sense": "Repassage (du linge)",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 31
+    },
+    {
+      "id": "1781435310393",
+      "kr": "태풍",
+      "sense": "Typhon",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 32
+    },
+    {
+      "id": "1780695436434",
+      "kr": "곰",
+      "sense": "Ours",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 33
+    },
+    {
+      "id": "1780695436444",
+      "kr": "당근",
+      "sense": "Carotte",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 34
+    },
+    {
+      "id": "1780695436445",
+      "kr": "양파",
+      "sense": "Oignon",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 35
+    },
+    {
+      "id": "1780695436447",
+      "kr": "고구마",
+      "sense": "Patate douce",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 36
+    },
+    {
+      "id": "1780695436450",
+      "kr": "마늘",
+      "sense": "Ail",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 37
+    },
+    {
+      "id": "1779706066070",
+      "kr": "치즈",
+      "sense": "Fromage",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 38
+    },
+    {
+      "id": "1779706066066",
+      "kr": "해산물",
+      "sense": "Fruit de mer",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 39
+    },
+    {
+      "id": "pack-4c537d13",
+      "kr": "파",
+      "sense": "Ciboule, oignon vert",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 40
+    },
+    {
+      "id": "pack-b8f71205",
+      "kr": "고추",
+      "sense": "Piment",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 41
+    },
+    {
+      "id": "pack-136539bc",
+      "kr": "옥수수",
+      "sense": "Maïs",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 42
+    },
+    {
+      "id": "pack-7c575a20",
+      "kr": "콩나물",
+      "sense": "Germes de soja",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 43
+    },
+    {
+      "id": "pack-8f6841cb",
+      "kr": "생강",
+      "sense": "Gingembre",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 44
+    },
+    {
+      "id": "pack-efc0dcfd",
+      "kr": "땅콩",
+      "sense": "Cacahuète, arachide",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 45
+    },
+    {
+      "id": "pack-d9e754e5",
+      "kr": "레몬",
+      "sense": "Citron",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 46
+    },
+    {
+      "id": "pack-37fa23e1",
+      "kr": "버섯",
+      "sense": "Champignon",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 47
+    },
+    {
+      "id": "pack-7d680dc6",
+      "kr": "새우",
+      "sense": "Crevette",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 48
+    },
+    {
+      "id": "pack-f91c0f63",
+      "kr": "소시지",
+      "sense": "Saucisse",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 49
+    },
+    {
+      "id": "pack-a9d1a15b",
+      "kr": "양배추",
+      "sense": "Chou (pommé)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 50
+    },
+    {
+      "id": "pack-05796792",
+      "kr": "오징어",
+      "sense": "Calmar, calamar, seiche",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 51
+    },
+    {
+      "id": "pack-5d626bc3",
+      "kr": "호두",
+      "sense": "Noix (le fruit du noyer).",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 52
+    },
+    {
+      "id": "pack-6b64f0ad",
+      "kr": "버터",
+      "sense": "Beurre",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 53
+    },
+    {
+      "id": "pack-0f686b58",
+      "kr": "꿀",
+      "sense": "Miel",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 54
+    },
+    {
+      "id": "pack-76484ebd",
+      "kr": "잼",
+      "sense": "Confiture",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 55
+    },
+    {
+      "id": "pack-d02d9f76",
+      "kr": "요구르트",
+      "sense": "Yaourt",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 56
+    },
+    {
+      "id": "pack-2a3ef86a",
+      "kr": "호떡",
+      "sense": "Hotteok (crêpe fourrée sucrée)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 57
+    },
+    {
+      "id": "pack-ef01fab5",
+      "kr": "붕어빵",
+      "sense": "Bungeoppang (gaufre-poisson)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 58
+    },
+    {
+      "id": "pack-e65ef4ca",
+      "kr": "어묵",
+      "sense": "Eomuk (gâteau de poisson)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 59
+    },
+    {
+      "id": "pack-95b83df7",
+      "kr": "국밥",
+      "sense": "Gukbap (soupe avec riz)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 60
+    },
+    {
+      "id": "pack-9b75e665",
+      "kr": "초밥",
+      "sense": "Sushi",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 61
+    },
+    {
+      "id": "pack-a9c420a6",
+      "kr": "도시락",
+      "sense": "Panier-repas, gamelle (bento)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 62
+    },
+    {
+      "id": "pack-e5263143",
+      "kr": "개구리",
+      "sense": "Grenouille",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 63
+    },
+    {
+      "id": "pack-680d7fcd",
+      "kr": "거미",
+      "sense": "Araignee",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 64
+    },
+    {
+      "id": "pack-1e306986",
+      "kr": "거북이",
+      "sense": "Tortue",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 65
+    },
+    {
+      "id": "pack-872e638f",
+      "kr": "고래",
+      "sense": "Baleine",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 66
+    },
+    {
+      "id": "pack-fee57e1f",
+      "kr": "나비",
+      "sense": "Papillon",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 67
+    },
+    {
+      "id": "pack-97a75004",
+      "kr": "사자",
+      "sense": "Lion",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 68
+    },
+    {
+      "id": "pack-291b292a",
+      "kr": "송아지",
+      "sense": "Veau",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 69
+    },
+    {
+      "id": "pack-cfc2df5c",
+      "kr": "여우",
+      "sense": "Renard",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 70
+    },
+    {
+      "id": "pack-d96fc212",
+      "kr": "오리",
+      "sense": "Canard",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 71
+    },
+    {
+      "id": "pack-d508fd2f",
+      "kr": "원숭이",
+      "sense": "Singe",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 72
+    },
+    {
+      "id": "pack-54d7b238",
+      "kr": "쥐",
+      "sense": "Souris, rat, rongeur",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 73
+    },
+    {
+      "id": "pack-5c72e282",
+      "kr": "소나무",
+      "sense": "Pin (arbre)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 74
+    },
+    {
+      "id": "pack-1353f499",
+      "kr": "장미꽃",
+      "sense": "Rose (fleur).",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 75
+    },
+    {
+      "id": "1781435310388",
+      "kr": "돌",
+      "sense": "Pierre / caillou",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 76
+    },
+    {
+      "id": "pack-806c4c7d",
+      "kr": "나뭇가지",
+      "sense": "Branche (d'arbre)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 77
+    },
+    {
+      "id": "pack-0a363fb8",
+      "kr": "씨",
+      "sense": "Graine, semence, pépin",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 78
+    },
+    {
+      "id": "pack-202f4110",
+      "kr": "연못",
+      "sense": "Étang, mare, bassin",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 79
+    },
+    {
+      "id": "pack-c76bfa9a",
+      "kr": "폭포",
+      "sense": "cascade",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 80
+    },
+    {
+      "id": "pack-3af626f5",
+      "kr": "사막",
+      "sense": "Le désert",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 81
+    },
+    {
+      "id": "pack-8a91f7f3",
+      "kr": "초승달",
+      "sense": "Croissant de lune, nouvelle lune montante",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 82
+    },
+    {
+      "id": "pack-fce33eef",
+      "kr": "지구",
+      "sense": "La Terre, le globe",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 83
+    },
+    {
+      "id": "pack-d045e734",
+      "kr": "베개",
+      "sense": "un oreiller",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 84
+    },
+    {
+      "id": "pack-632379d4",
+      "kr": "담요",
+      "sense": "une couverture (fine), un plaid",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 85
+    },
+    {
+      "id": "pack-a88f1431",
+      "kr": "커튼",
+      "sense": "un rideau",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 86
+    },
+    {
+      "id": "pack-bee56bac",
+      "kr": "샴푸",
+      "sense": "le shampoing",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 87
+    },
+    {
+      "id": "pack-205c0b2b",
+      "kr": "다리미",
+      "sense": "Un fer à repasser",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 88
+    },
+    {
+      "id": "pack-67948dc7",
+      "kr": "벽시계",
+      "sense": "Une horloge murale",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 89
+    },
+    {
+      "id": "pack-44b021f3",
+      "kr": "건전지",
+      "sense": "Pile (électrique)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 90
+    },
+    {
+      "id": "pack-a36ea94d",
+      "kr": "계산기",
+      "sense": "Calculatrice",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 91
+    },
+    {
+      "id": "pack-d0974335",
+      "kr": "가습기",
+      "sense": "Humidificateur",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 92
+    },
+    {
+      "id": "pack-ec8af405",
+      "kr": "가스레인지",
+      "sense": "Cuisinière à gaz",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 93
+    },
+    {
+      "id": "pack-c8b85696",
+      "kr": "난로",
+      "sense": "Poêle, radiateur (chauffage)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 94
+    },
+    {
+      "id": "pack-d4eb0137",
+      "kr": "녹음기",
+      "sense": "Enregistreur, magnétophone",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 95
+    },
+    {
+      "id": "pack-436ebdd0",
+      "kr": "노트북",
+      "sense": "Ordinateur portable",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 96
+    },
+    {
+      "id": "pack-5c0e4e2d",
+      "kr": "모니터",
+      "sense": "Un écran (moniteur, dalle)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 97
+    },
+    {
+      "id": "pack-f1d4069c",
+      "kr": "키보드",
+      "sense": "Un clavier",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 98
+    },
+    {
+      "id": "pack-fcf9e282",
+      "kr": "마우스",
+      "sense": "Une souris (informatique)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 99
+    },
+    {
+      "id": "pack-f25ceba4",
+      "kr": "청소기",
+      "sense": "aspirateur",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 100
+    },
+    {
+      "id": "pack-54b08863",
+      "kr": "건조기",
+      "sense": "sèche-linge",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 101
+    },
+    {
+      "id": "pack-020ac8e1",
+      "kr": "전자레인지",
+      "sense": "micro-ondes",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 102
+    },
+    {
+      "id": "pack-7e6d0f02",
+      "kr": "밥솥",
+      "sense": "cuiseur à riz",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 103
+    },
+    {
+      "id": "pack-08deac75",
+      "kr": "정수기",
+      "sense": "fontaine à eau (filtrée)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 104
+    },
+    {
+      "id": "pack-f3543039",
+      "kr": "리모컨",
+      "sense": "télécommande",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 105
+    },
+    {
+      "id": "pack-c5d74499",
+      "kr": "도어락",
+      "sense": "serrure à code",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 106
+    },
+    {
+      "id": "pack-be434a5d",
+      "kr": "오븐",
+      "sense": "Four",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 107
+    },
+    {
+      "id": "pack-19afecee",
+      "kr": "우편함",
+      "sense": "Boîte aux lettres (du domicile)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 108
+    },
+    {
+      "id": "pack-7ad40d7f",
+      "kr": "액자",
+      "sense": "Cadre (pour photo, tableau)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 109
+    },
+    {
+      "id": "pack-5eb8d84c",
+      "kr": "열쇠고리",
+      "sense": "Porte-clés",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 110
+    },
+    {
+      "id": "pack-e270ea5b",
+      "kr": "빗",
+      "sense": "Peigne",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 111
+    },
+    {
+      "id": "pack-979e6093",
+      "kr": "라이터",
+      "sense": "Briquet",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 112
+    },
+    {
+      "id": "pack-12e46dd8",
+      "kr": "리본",
+      "sense": "Ruban",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 113
+    },
+    {
+      "id": "pack-8c2b74fb",
+      "kr": "봉지",
+      "sense": "Sachet, pochette (emballage)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 114
+    },
+    {
+      "id": "pack-4f5a3bfd",
+      "kr": "걸레",
+      "sense": "Serpillere, chiffon (a nettoyer)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 115
+    },
+    {
+      "id": "pack-34572e7a",
+      "kr": "사진첩",
+      "sense": "Album photo",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 116
+    },
+    {
+      "id": "pack-5c883b13",
+      "kr": "필름",
+      "sense": "Pellicule, film (photo/cinéma)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 117
+    },
+    {
+      "id": "pack-a66d6903",
+      "kr": "수화기",
+      "sense": "Combiné (de téléphone)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 118
+    },
+    {
+      "id": "pack-3830df6d",
+      "kr": "안전띠",
+      "sense": "Ceinture de sécurité",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 119
+    },
+    {
+      "id": "pack-d0ad8eb7",
+      "kr": "국자",
+      "sense": "Louche",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 120
+    },
+    {
+      "id": "pack-35123c11",
+      "kr": "뚜껑",
+      "sense": "Couvercle",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 121
+    },
+    {
+      "id": "pack-eca9cda9",
+      "kr": "이쑤시개",
+      "sense": "Cure-dent",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 122
+    },
+    {
+      "id": "pack-e2371879",
+      "kr": "앞치마",
+      "sense": "Tablier",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 123
+    },
+    {
+      "id": "pack-a6d8573d",
+      "kr": "종이컵",
+      "sense": "Gobelet en papier",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 124
+    },
+    {
+      "id": "pack-a71ba3c2",
+      "kr": "밥그릇",
+      "sense": "Bol à riz, écuelle",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 125
+    },
+    {
+      "id": "pack-df256025",
+      "kr": "찻잔",
+      "sense": "Tasse à thé",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 126
+    },
+    {
+      "id": "pack-cf77a1a6",
+      "kr": "옷깃",
+      "sense": "Col (de vêtement)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 127
+    },
+    {
+      "id": "pack-0b6ce11c",
+      "kr": "옷감",
+      "sense": "Tissu, étoffe (matière)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 128
+    },
+    {
+      "id": "pack-ce552b4f",
+      "kr": "외투",
+      "sense": "Manteau, pardessus",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 129
+    },
+    {
+      "id": "pack-ffc41e64",
+      "kr": "드레스",
+      "sense": "Robe (de soirée, de mariée)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 130
+    },
+    {
+      "id": "pack-dc99eddc",
+      "kr": "등산복",
+      "sense": "Tenue de randonnée, habits de montagne",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 131
+    },
+    {
+      "id": "pack-4adb4d27",
+      "kr": "스커트",
+      "sense": "Jupe",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 132
+    },
+    {
+      "id": "pack-2986e50c",
+      "kr": "스타킹",
+      "sense": "Collant, bas (vêtement)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 133
+    },
+    {
+      "id": "pack-8d6a5b86",
+      "kr": "손가방",
+      "sense": "Sac à main, petit sac",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 134
+    },
+    {
+      "id": "pack-1978e73b",
+      "kr": "손목시계",
+      "sense": "Montre-bracelet",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 135
+    },
+    {
+      "id": "pack-d896ba2b",
+      "kr": "허리띠",
+      "sense": "Ceinture (vêtement).",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 136
+    },
+    {
+      "id": "pack-0deea267",
+      "kr": "잠옷",
+      "sense": "Pyjama",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 137
+    },
+    {
+      "id": "pack-26d5b9fa",
+      "kr": "지퍼",
+      "sense": "Fermeture éclair",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 138
+    },
+    {
+      "id": "pack-4ba1da9d",
+      "kr": "선글라스",
+      "sense": "Lunettes de soleil",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 139
+    },
+    {
+      "id": "pack-346ba7f2",
+      "kr": "렌즈",
+      "sense": "Lentilles de contact",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 140
+    },
+    {
+      "id": "pack-3d7d72b8",
+      "kr": "우비",
+      "sense": "Imperméable",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 141
+    },
+    {
+      "id": "pack-7f0de475",
+      "kr": "장화",
+      "sense": "Bottes de pluie",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 142
+    },
+    {
+      "id": "pack-8cba617a",
+      "kr": "슬리퍼",
+      "sense": "Chaussons / claquettes",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 143
+    },
+    {
+      "id": "pack-bd2aa956",
+      "kr": "부츠",
+      "sense": "Bottes (mode)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 144
+    },
+    {
+      "id": "pack-e079f715",
+      "kr": "조끼",
+      "sense": "Gilet (sans manches)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 145
+    },
+    {
+      "id": "pack-db4a15c7",
+      "kr": "반팔",
+      "sense": "Manches courtes (t-shirt)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 146
+    },
+    {
+      "id": "pack-3bdba316",
+      "kr": "긴팔",
+      "sense": "Manches longues",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 147
+    },
+    {
+      "id": "pack-33a2500f",
+      "kr": "샌들",
+      "sense": "Sandales",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 148
+    },
+    {
+      "id": "pack-76f8e9c3",
+      "kr": "하이힐",
+      "sense": "Talons hauts",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 149
+    },
+    {
+      "id": "pack-88288134",
+      "kr": "형광펜",
+      "sense": "Surligneur",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 150
+    },
+    {
+      "id": "pack-6c147ad6",
+      "kr": "풀",
+      "sense": "Colle (papeterie)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 151
+    },
+    {
+      "id": "pack-53bb0b5a",
+      "kr": "테이프",
+      "sense": "Ruban adhésif / scotch",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 152
+    },
+    {
+      "id": "pack-4f997c98",
+      "kr": "클립",
+      "sense": "Trombone (papeterie)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 153
+    },
+    {
+      "id": "pack-68b8eecb",
+      "kr": "파일",
+      "sense": "Fichier / classeur",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 154
+    },
+    {
+      "id": "pack-3b1c086d",
+      "kr": "책가방",
+      "sense": "Cartable, sac d'école",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 155
+    },
+    {
+      "id": "pack-cc22c352",
+      "kr": "유심",
+      "sense": "Carte SIM",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 156
+    },
+    {
+      "id": "pack-5101c310",
+      "kr": "알약",
+      "sense": "un comprimé, une pilule",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 157
+    },
+    {
+      "id": "pack-c350b884",
+      "kr": "연고",
+      "sense": "une pommade",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 158
+    },
+    {
+      "id": "pack-197947a3",
+      "kr": "반창고",
+      "sense": "un pansement",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 159
+    },
+    {
+      "id": "pack-34b91446",
+      "kr": "안약",
+      "sense": "Collyre, gouttes pour les yeux",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 160
+    },
+    {
+      "id": "pack-f8c5ba99",
+      "kr": "고춧가루",
+      "sense": "Poudre de piment",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 161
+    },
+    {
+      "id": "pack-4d9c45b3",
+      "kr": "쌈장",
+      "sense": "Ssamjang (pâte à envelopper)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 162
+    },
+    {
+      "id": "pack-f529b0a5",
+      "kr": "후추",
+      "sense": "Poivre",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 163
+    },
+    {
+      "id": "pack-f2962f29",
+      "kr": "참기름",
+      "sense": "Huile de sésame",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 164
+    },
+    {
+      "id": "pack-1d7e42ef",
+      "kr": "식용유",
+      "sense": "Huile de cuisson",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 165
+    },
+    {
+      "id": "pack-c9eb48bf",
+      "kr": "보리차",
+      "sense": "Thé d'orge",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 166
+    },
+    {
+      "id": "pack-f90aa921",
+      "kr": "와인",
+      "sense": "Vin",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 167
+    },
+    {
+      "id": "pack-1fed91b6",
+      "kr": "보석",
+      "sense": "Pierre précieuse, bijou, joyau",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 168
+    },
+    {
+      "id": "pack-9705e8f9",
+      "kr": "메달",
+      "sense": "Médaille",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 169
+    },
+    {
+      "id": "pack-1907c333",
+      "kr": "줄넘기",
+      "sense": "Saut à la corde",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 170
+    },
+    {
+      "id": "pack-01a400a4",
+      "kr": "날개",
+      "sense": "Aile",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 171
+    },
+    {
+      "id": "pack-73f4d668",
+      "kr": "벌레",
+      "sense": "Insecte, ver, bestiole",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 172
+    },
+    {
+      "id": "pack-1537f4df",
+      "kr": "국화",
+      "sense": "Chrysanthème",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 173
+    },
+    {
+      "id": "pack-e312bfa1",
+      "kr": "진달래",
+      "sense": "Azalee (fleur)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 174
+    },
+    {
+      "id": "pack-5a55a174",
+      "kr": "개나리",
+      "sense": "Forsythia (arbuste a fleurs jaunes)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 175
+    },
+    {
+      "id": "pack-82ddfc76",
+      "kr": "모래사장",
+      "sense": "Une plage de sable, la grève",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 176
+    },
+    {
+      "id": "pack-65a6fd38",
+      "kr": "반달",
+      "sense": "Demi-lune, croissant",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 177
+    },
+    {
+      "id": "pack-3f857763",
+      "kr": "불꽃",
+      "sense": "Flamme, étincelle",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 178
+    },
+    {
+      "id": "pack-ea9357a5",
+      "kr": "뼈",
+      "sense": "L'os",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 179
+    },
+    {
+      "id": "pack-8dbb6f72",
+      "kr": "주먹",
+      "sense": "Poing",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 180
+    },
+    {
+      "id": "pack-068db24e",
+      "kr": "수염",
+      "sense": "Barbe, moustache",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 181
+    },
+    {
+      "id": "pack-08b2f2db",
+      "kr": "손톱",
+      "sense": "Ongle",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 182
+    },
+    {
+      "id": "1779706066084",
+      "kr": "욕실",
+      "sense": "Salle de bains",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 183
+    },
+    {
+      "id": "pack-d7281c3f",
+      "kr": "주유소",
+      "sense": "une station-service",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 184
+    },
+    {
+      "id": "pack-c942ab59",
+      "kr": "고속도로",
+      "sense": "Autoroute",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 185
+    },
+    {
+      "id": "pack-82291d2d",
+      "kr": "골목길",
+      "sense": "Ruelle, petite rue (d'un quartier).",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 186
+    },
+    {
+      "id": "pack-318f1cc4",
+      "kr": "경기장",
+      "sense": "Stade, terrain de sport",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 187
+    },
+    {
+      "id": "pack-5421935c",
+      "kr": "골프장",
+      "sense": "Terrain de golf, parcours de golf.",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 188
+    },
+    {
+      "id": "pack-566e86a7",
+      "kr": "굴",
+      "sense": "Grotte, terrier, galerie",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 189
+    },
+    {
+      "id": "pack-4811a1f5",
+      "kr": "대문",
+      "sense": "Grand portail, porte d'entrée principale",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 190
+    },
+    {
+      "id": "pack-dec41fda",
+      "kr": "복도",
+      "sense": "Couloir, corridor",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 191
+    },
+    {
+      "id": "pack-e6d00f41",
+      "kr": "에스컬레이터",
+      "sense": "Escalier mécanique, escalator",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 192
+    },
+    {
+      "id": "pack-8bf01668",
+      "kr": "오토바이",
+      "sense": "Moto, motocyclette",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 193
+    },
+    {
+      "id": "pack-27004cb5",
+      "kr": "우물",
+      "sense": "Puits (d'eau)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 194
+    },
+    {
+      "id": "pack-ca45a23f",
+      "kr": "지붕",
+      "sense": "Toit, toiture",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 195
+    },
+    {
+      "id": "pack-8da04e83",
+      "kr": "터널",
+      "sense": "Tunnel",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 196
+    },
+    {
+      "id": "pack-95d4cb94",
+      "kr": "보일러",
+      "sense": "chaudière (chauffage au sol)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 197
+    },
+    {
+      "id": "pack-51c6ffc3",
+      "kr": "놀이공원",
+      "sense": "parc d'attractions",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 198
+    },
+    {
+      "id": "pack-e6568a53",
+      "kr": "케이블카",
+      "sense": "téléphérique",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 199
+    },
+    {
+      "id": "pack-5cd4bd52",
+      "kr": "불꽃놀이",
+      "sense": "feux d'artifice",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 200
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-6e6b469d",
+      "reviewer": "Codex",
+      "sourceSha256": "f90bb57e7557cca4eedf796649c2bacbe1329616c855d8e2bef9f9573ddf45af",
+      "note": "Table à manger complète, deux chaises et une assiette ; lignes au pinceau et marges noires. La table domine, les réponses visant les objets secondaires restent neutres."
+    },
+    {
+      "id": "pack-5f51b383",
+      "reviewer": "Codex",
+      "sourceSha256": "48b8f3dda8533c6aab1d44a3470efc2a20e2cfe0c29e117a18b9cc094ea12367",
+      "note": "Tasse à anse vide, bord et pied clairement dessinés au pinceau. Aide pour éviter de privilégier 잔 face à 컵 ou 찻잔."
+    },
+    {
+      "id": "pack-31f61548",
+      "reviewer": "Codex",
+      "sourceSha256": "3d49c644a9df13b1ae6fdce6000d2d4be3a682a489bc131a7a6e4a1ebdefe08e",
+      "note": "Sac poubelle noué, papiers froissés et canette écrasée regroupés ; déchets reconnaissables sans texte. Question conservée, sac poubelle traité comme alternative neutre."
+    },
+    {
+      "id": "pack-4ca92aaa",
+      "reviewer": "Codex",
+      "sourceSha256": "f26dec1011bee74a57b7b5e0b8f34091c367b12dfc7ce5ddb8a9be9939521dad",
+      "note": "Immeuble entier à étages avec balcons, fenêtres et entrée ; proportions cohérentes et silhouette complète. Aide car le nom générique bâtiment ne peut être imposé face à immeuble ou appartement."
+    },
+    {
+      "id": "pack-76838ad5",
+      "reviewer": "Codex",
+      "sourceSha256": "b92920d0a6a086f705ac90bfa7ebcc97039a4d4e18bcf61b5c3caaf2bec489fc",
+      "note": "Comptoir de réception, sonnette et chariot portant deux valises ; aucun texte et éléments entiers. Aide car réception et hôtel restent deux interprétations plausibles."
+    },
+    {
+      "id": "pack-9928a7bc",
+      "reviewer": "Codex",
+      "sourceSha256": "ded73e3455a0282778d96f0d53080336ea4c29e0f9e306b9b09e9ea94c92524b",
+      "note": "Enveloppe ouverte laissant voir une feuille aux traits gris abstraits, sans caractères lisibles. Aide conservée car enveloppe et lettre restent deux réponses naturelles."
+    },
+    {
+      "id": "pack-ba7e7e02",
+      "reviewer": "Codex",
+      "sourceSha256": "0d3956d1d16d78ee1458b36ae9d130a96b41b9e0200fc2c9b75d2569ab977450",
+      "note": "Journal plié avec colonnes, lignes et rectangle de photo abstraits, sans lettres ni chiffres. Aide conservée, car journal et papier journal ne sont pas visuellement séparables."
+    },
+    {
+      "id": "pack-2c96b0a0",
+      "reviewer": "Codex",
+      "sourceSha256": "4a29505b2bcf58b889db47eacbc43ed26f65239296a30ca61b2aa17f847dbaa5",
+      "note": "Bébé assis en vêtement uni, visage souriant, mains et pieds entièrement dans le cadre. Silhouette clairement infantile, utilisable comme question avec enfant parmi les réponses neutres."
+    },
+    {
+      "id": "pack-749d1d3f",
+      "reviewer": "Codex",
+      "sourceSha256": "f407ac51978bcb2b222d501c8594d96a109e990e7316db2ea0a647d185f39e5e",
+      "note": "Adulte habillé debout, corps entier de la tête aux chaussures visible. Aide seulement : personne, homme et vêtements restent des réponses naturelles."
+    },
+    {
+      "id": "1780695436366",
+      "reviewer": "Codex",
+      "sourceSha256": "cb48293c883fd254cc90dd6160c64ec1960beee92a8a537d27f68a753c3b28ba",
+      "note": "Pile de vêtements pliés, avec col de tee-shirt et plusieurs textures textiles visibles. Aide pour la catégorie générale vêtement, pas de question imposant un type précis."
+    },
+    {
+      "id": "pack-076925c5",
+      "reviewer": "Codex",
+      "sourceSha256": "a0f4a25a9b6db5bd4310d92913a3232ebfc3d4a6855fd1a53e836028f6f72045",
+      "note": "Menu ouvert illustré de trois plats et de lignes sans texte ; le livre de recettes reste une lecture possible, donc aide seulement."
+    },
+    {
+      "id": "1764058248068",
+      "reviewer": "Codex",
+      "sourceSha256": "f62da5af31f6b08a9715ecaa003102f35396bc09fea6be5822e5f17cb289501e",
+      "note": "Poubelle cylindrique à pédale et couvercle relevé, mécanisme et silhouette complets. Objet univoque, question conservée."
+    },
+    {
+      "id": "1779706066081",
+      "reviewer": "Codex",
+      "sourceSha256": "5492fb302a2d98e0c657e018a8ded82c5292a8f966f9f5cbc6f757d43ce29bd2",
+      "note": "Petit carré de parquet en perspective avec un pied de meuble posé dessus. Aide conservée : les planches et le support vertical ne désignent pas univoquement le sol."
+    },
+    {
+      "id": "1779706066082",
+      "reviewer": "Codex",
+      "sourceSha256": "084a4755df5f9be46b7a5810b7f117b9764f41e753cb84b865ad49a118bf1144",
+      "note": "Petit mur de briques complet en perspective. Aide conservée car mur extérieur, muret et briques peuvent être nommés différemment."
+    },
+    {
+      "id": "pack-963287c9",
+      "reviewer": "Codex",
+      "sourceSha256": "93d35e640ce3eff371870b633ba6b3d3eac0e9d52ed2969530123b730021e2e5",
+      "note": "Petite bibliothèque à deux étagères remplie de livres sans titres, meuble complet et séparations nettes. Question conservée avec 책장 et 선반 neutres."
+    },
+    {
+      "id": "pack-90ff47e3",
+      "reviewer": "Codex",
+      "sourceSha256": "1e103d05fc01f3c733161141cc7197c0f14bb3d9bff815bb292b7531c156c3dd",
+      "note": "Petit tapis rectangulaire tissé avec rayures et franges, vu en perspective. Aide conservée pour ne pas imposer 러그 face à tapis ou paillasson."
+    },
+    {
+      "id": "pack-a5e5218b",
+      "reviewer": "Codex",
+      "sourceSha256": "76c69c11822711178102bf4f9d039b876b36eecaedb6168ad7ca593cc9fb9e89",
+      "note": "Œuf entier à côté d’une demi-coquille avec jaune arrondi ; forme et cassure identifiables même en monochrome. Question conservée avec 계란 et 알 neutres."
+    },
+    {
+      "id": "pack-996a8f86",
+      "reviewer": "Codex",
+      "sourceSha256": "784861afa8ceeff892c7daf41a8495292709e2e82d94c1af2fd8c697a53ccabc",
+      "note": "Bol de nouilles épaisses en bouillon, rondelles de ciboule et tranche de gâteau de poisson à spirale. Illustration cohérente de l’udon, mais aide pour ne pas pénaliser d’autres noms de nouilles."
+    },
+    {
+      "id": "pack-5fbbde12",
+      "reviewer": "Codex",
+      "sourceSha256": "4f8af34c5506aabd896d341bd218b635a56dff7f3a248c87cbb7f317e52a5b3c",
+      "note": "Bol de nouilles épaisses à sauce sombre en morceaux, lamelles de concombre sur le dessus ; plat cohérent mais aide seulement, les recettes restant ambiguës en image."
+    },
+    {
+      "id": "pack-a276ca30",
+      "reviewer": "Codex",
+      "sourceSha256": "cb06120f1c81defaaaedc6617b5a0d6305e8938c410da86037610c89f00b5e0d",
+      "note": "Une cuillère métallique et une paire de baguettes côte à côte, contours séparés et aucun élément parasite. Question sur l’ensemble avec noms des ustensiles individuels neutres."
+    },
+    {
+      "id": "pack-a9287da1",
+      "reviewer": "Codex",
+      "sourceSha256": "70205db21b4bcb6fecb7aab52253267ec87bbe76a9afa52fcb4585da09247c3b",
+      "note": "Distributeur de boissons complet, rangées de canettes, boutons vierges, monnayeur et trappe de récupération. Question conservée, aucun texte ni chiffre."
+    },
+    {
+      "id": "pack-3d5f8b17",
+      "reviewer": "Codex",
+      "sourceSha256": "a4767addffc124c70f518b6012ad73af6a1a1002658b6f22e06d176d4e15a723",
+      "note": "Carnet bancaire ouvert montrant des cases vides, carte à puce dépassant du dessous. Aide conservée : les détails distinguent le contexte bancaire sans imposer le nom du livret."
+    },
+    {
+      "id": "pack-83f2c49c",
+      "reviewer": "Codex",
+      "sourceSha256": "b88720955f234738d597ea8659ddfa7604e776a67863960402f998e32135cf73",
+      "note": "Smartphone entier, écran noir vide, objectif et boutons latéraux visibles ; aucune interface révélant le mot. Question conservée avec les autres noms du téléphone neutres."
+    },
+    {
+      "id": "1779706066039",
+      "reviewer": "Codex",
+      "sourceSha256": "ac07a1e994b3ed1a36a21bc28755acf7b0bb5f7156bd42188410d1a89984ea60",
+      "note": "Main présentant une carte vierge à un lecteur sans contact ; le geste est clair, mais paiement bancaire également plausible. Aide seulement."
+    },
+    {
+      "id": "pack-e03418c5",
+      "reviewer": "Codex",
+      "sourceSha256": "41702202011bb0ec68d297813fe5f7d50eae609d27e2afb5bf108495e93c10ca",
+      "note": "Ticket découpé portant un petit dessin de train, sans destination ni chiffres. Aide conservée car billet de train et titre de métro restent voisins."
+    },
+    {
+      "id": "pack-263e812e",
+      "reviewer": "Codex",
+      "sourceSha256": "c527933db3d2c4bfbfe4a29649754bf1025fad86930aba5f9d2a3ad7aa15fb93",
+      "note": "Carte à portrait et lignes abstraites sans identité ni caractères. Aide seulement, car on ne distingue pas une carte étudiante d’une autre pièce d’identité sans texte."
+    },
+    {
+      "id": "pack-e32397b6",
+      "reviewer": "Codex",
+      "sourceSha256": "de6e4323e07fc18dcd3e3016ad9eb6479d356be8889e97a2c8d6143a1c9b1c3a",
+      "note": "Petit bâtiment avec porte ouverte, petites chaises et toboggan ; composition complète. Aide pour la maternelle, car crèche et aire de jeux restent plausibles."
+    },
+    {
+      "id": "pack-5047cff2",
+      "reviewer": "Codex",
+      "sourceSha256": "4c9a5532b73be921db1c917e74dc3dae19236b3c1a33617fdf4f682066c5aef0",
+      "note": "Deux fauteuils et une table basse avec tasse, ensemble compact et complet. Aide seulement car salon et salle de repos ne sont pas distinguables par le mobilier seul."
+    },
+    {
+      "id": "pack-d3487038",
+      "reviewer": "Codex",
+      "sourceSha256": "577977d982fdfc652a627ac32a1624aa87142d844d420a6b5f3e9f95498da9a6",
+      "note": "Bâtiment civique à colonnes et grand escalier, sans inscriptions. Aide conservée, la façade pourrait aussi être celle d’un tribunal ou d’un musée."
+    },
+    {
+      "id": "pack-d26fedf5",
+      "reviewer": "Codex",
+      "sourceSha256": "1c5ba143c11a81dbef60b9f87da94c11be42ad8bede11395c6aeefe1260c12e6",
+      "note": "Comptoir avec deux tabourets, trois bouteilles et un verre, tous complets et sans étiquette. Aide pour le débit de boissons, pas de question imposant un type précis d’établissement."
+    },
+    {
+      "id": "pack-354a9b58",
+      "reviewer": "Codex",
+      "sourceSha256": "74a59b00fa350d72ef20d9151131290c5a50049cc823dacaaece800c52c3c848",
+      "note": "Nouvelle tentative : adulte entièrement visible, tête et chaussures dans le cadre, fer posé sur le vêtement et table complète. Marges noires et geste de repassage lisible ; usage support."
+    },
+    {
+      "id": "1781435310393",
+      "reviewer": "Codex",
+      "sourceSha256": "4436a18f93cf21b0b047ea125f3415399091b602d04fb018e3e691f4d81a750b",
+      "note": "Palmier fortement courbé, vagues et pluie oblique ; le mouvement de tempête est lisible. Aide car une image ne distingue pas typhon, ouragan et tempête."
+    },
+    {
+      "id": "1780695436434",
+      "reviewer": "Codex",
+      "sourceSha256": "fa2a8fa72277e32d0af9bd85939f4abb69251ca5c5811b9346012b28554a8a42",
+      "note": "Ours entier à oreilles rondes, museau large et quatre pattes ; pelage en traits de pinceau et fond noir. Question conservée."
+    },
+    {
+      "id": "1780695436444",
+      "reviewer": "Codex",
+      "sourceSha256": "3b0bda7a21800630212a16a25024aedf6d615febc5f6481515036a7b2baed2cd",
+      "note": "Racine fuselée striée et fanes finement divisées, carotte entièrement visible. Question conservée ; autres racines proches visuellement traitées comme neutres."
+    },
+    {
+      "id": "1780695436445",
+      "reviewer": "Codex",
+      "sourceSha256": "fe5d45d25414349b98cfd1b4b862c7a344c0f72915fa5065fcf0f4718d018fa3",
+      "note": "Oignon entier avec racines et peau sèche, demi-oignon aux couches concentriques visibles. Question conservée, contours complets et monochromes."
+    },
+    {
+      "id": "1780695436447",
+      "reviewer": "Codex",
+      "sourceSha256": "0b92291b07f0e60702485c67ba2d654d2b4201d366cf4c3bd431d6405f65cc75",
+      "note": "Tubercule allongé à bouts effilés avec tranche dense ; la forme reste proche d’autres racines sans couleur. Reclassé en aide pour ne pas imposer patate douce."
+    },
+    {
+      "id": "1780695436450",
+      "reviewer": "Codex",
+      "sourceSha256": "cd05ca25a4a69c4cd36a8570faa75154230a21425956234c728ffb705e41e7ef",
+      "note": "Tête d’ail côtelée avec tige sèche et gousse séparée ; forme reconnaissable sans couleur. Question conservée."
+    },
+    {
+      "id": "1779706066070",
+      "reviewer": "Codex",
+      "sourceSha256": "3e629698bedc3ec01013e90889689388706ae73e1c71ef290de5720d61b0d9dc",
+      "note": "Morceau triangulaire de fromage à trous avec une tranche détachée ; silhouette et cavités lisibles. Question conservée."
+    },
+    {
+      "id": "1779706066066",
+      "reviewer": "Codex",
+      "sourceSha256": "010a88e93231b14840c0bfb51db926bf7febe31a993a8f3b47c1b78aa3a3829e",
+      "note": "Crevette, moule ouverte et coquillage regroupés, sans texte ni décor. Aide pour la catégorie fruits de mer afin de ne pas imposer le terme général face aux espèces."
+    },
+    {
+      "id": "pack-4c537d13",
+      "reviewer": "Codex",
+      "sourceSha256": "2b51c1b9233a46139cdad662e6674db84bb9e39e0e96b98fe694eee39464f28c",
+      "note": "Trois oignons verts avec longues feuilles, tiges claires et chevelu racinaire. Question conservée avec autres appellations d’oignons verts ou de poireaux neutres."
+    },
+    {
+      "id": "pack-b8f71205",
+      "reviewer": "Codex",
+      "sourceSha256": "94db383cfefe779a60eb422c8b7e1f6f8883615314b68ab00567ada8e30c486b",
+      "note": "Piment long, courbé et pointu avec pédoncule ; forme claire sans couleur. Question conservée avec légumes voisins plausibles neutres."
+    },
+    {
+      "id": "pack-136539bc",
+      "reviewer": "Codex",
+      "sourceSha256": "b2cf8255c758103adf443aa0d642687b416690cb52b004d43a06626986719112",
+      "note": "Épi de maïs aux rangées de grains nets, feuilles ouvertes et soies visibles. Question conservée, silhouette entière."
+    },
+    {
+      "id": "pack-7c575a20",
+      "reviewer": "Codex",
+      "sourceSha256": "af0c7ebabb2a091fed90a3a38884cefd5d920f633f375cb4134734316315fb17",
+      "note": "Petit tas de germes portant de grosses têtes de haricots et de longues racines courbes, bien séparées sur noir. Question conservée avec 숙주 et 숙주나물 neutres."
+    },
+    {
+      "id": "pack-8f6841cb",
+      "reviewer": "Codex",
+      "sourceSha256": "1b4d1796db292faceb1e010fcafeff00c59ff001c03eae7e4db8528c6d7bf78f",
+      "note": "Rhizome de gingembre ramifié et noueux, stries et section coupée visibles. Question conservée, dessin entier sans accessoires."
+    },
+    {
+      "id": "pack-efc0dcfd",
+      "reviewer": "Codex",
+      "sourceSha256": "f4c51b15d61484ba708096edd73817c66be9e19b7b4306fb836cd4b33caf1dec",
+      "note": "Coque de cacahuète entière et coque ouverte contenant deux graines, texture réticulée bien lisible. Question conservée."
+    },
+    {
+      "id": "pack-d9e754e5",
+      "reviewer": "Codex",
+      "sourceSha256": "f54d14d22c31a2334fedfafa63380bc97b1ae51c44acdcc3687c3b338016ef50",
+      "note": "Citron entier à extrémités pointues avec moitié coupée montrant les quartiers, forme identifiable. Question conservée, citron vert neutre faute de couleur."
+    },
+    {
+      "id": "pack-37fa23e1",
+      "reviewer": "Codex",
+      "sourceSha256": "d0d91a6b2260d56885f948211b56ec3b0e792dcd9f5a6398f04748d3856190ad",
+      "note": "Trois champignons à chapeau arrondi, dont un incliné laissant voir ses lamelles. Question conservée, aucune espèce précise exigée."
+    },
+    {
+      "id": "pack-7d680dc6",
+      "reviewer": "Codex",
+      "sourceSha256": "dbd7aa22449ee89467cd8494617ca69ed5c2380ac3a723103ead0fc006619fcc",
+      "note": "Crevette complète à corps segmenté, antennes, pattes et queue en éventail ; contraste clair sur noir. Question conservée."
+    },
+    {
+      "id": "pack-f91c0f63",
+      "reviewer": "Codex",
+      "sourceSha256": "9011b65933a927ee62612bd86e45dfae5362af8bb300d82c377fe7efc9ab3a8d",
+      "note": "Saucisse courbe entière avec extrémités liées et coupe montrant la farce, silhouette nette."
+    },
+    {
+      "id": "pack-a9d1a15b",
+      "reviewer": "Codex",
+      "sourceSha256": "229bbc8d7b40598a53a563153062dc9af1341a7acbd2966e13f4aa10f6056e95",
+      "note": "Chou pommé rond aux feuilles nervurées superposées, une feuille externe ouverte. Question conservée avec 배추 neutre."
+    },
+    {
+      "id": "pack-05796792",
+      "reviewer": "Codex",
+      "sourceSha256": "4cdc0652765d826a01da6d890921dae44eb07fd189415b068414500915fc8ff5",
+      "note": "Calmar entier, manteau allongé pointu à nageoires latérales, œil et bras à ventouses visibles."
+    },
+    {
+      "id": "pack-5d626bc3",
+      "reviewer": "Codex",
+      "sourceSha256": "3e44de726de7ac634794080a1ac661153f35e863fa6ecc952e40bd1434b30068",
+      "note": "Noix entière à coque rainurée et demi-coque avec cerneau ; les deux volumes sont lisibles."
+    },
+    {
+      "id": "pack-6b64f0ad",
+      "reviewer": "Codex",
+      "sourceSha256": "a9977ea56f70bc0752881b1d9d7d95295c1e081536308df9b764abed852ee6a2",
+      "note": "Motte rectangulaire dans son papier ouvert, copeau roulé devant ; support car la couleur ne distingue pas les matières grasses."
+    },
+    {
+      "id": "pack-0f686b58",
+      "reviewer": "Codex",
+      "sourceSha256": "0849f1097cb33fa7190f9e3fb235fa6b368d08f2023e9d9dfad127034b504b10",
+      "note": "Pot ouvert et cuillère à miel rainurée portant une goutte épaisse ; aucun texte. Aide conservée car le contenu reste identifié par son accessoire."
+    },
+    {
+      "id": "pack-76484ebd",
+      "reviewer": "Codex",
+      "sourceSha256": "ea9d9b72c4f644c72d419ae18603f71fc756794fa05fef22a0ce44d51497b154",
+      "note": "Bocal ouvert avec confiture épaisse sur une cuillère et deux mûres ; pot sans étiquette, usage support."
+    },
+    {
+      "id": "pack-d02d9f76",
+      "reviewer": "Codex",
+      "sourceSha256": "219d528383ef95a3cbcf780413c3c4e73fb509508e3129ef73019b7e20d88f0a",
+      "note": "Pot ouvert, opercule soulevé et cuillère de crème épaisse ; support pour ne pas confondre les desserts blancs."
+    },
+    {
+      "id": "pack-2a3ef86a",
+      "reviewer": "Codex",
+      "sourceSha256": "d48f1d1a4cd1aba18299e74b92277aadbd0b307d99d567b56cea43f24e272a89",
+      "note": "Deux crêpes épaisses, une ouverte montrant la garniture sombre et les graines ; support pour le plat coréen précis."
+    },
+    {
+      "id": "pack-ef01fab5",
+      "reviewer": "Codex",
+      "sourceSha256": "4ae0f6adc68fd46bfe109a43fd0d12a53d93e274225ac7cb56ce64b5c076d12e",
+      "note": "Gaufre en forme de poisson entière, écailles moulées et ouverture montrant la pâte de haricot ; silhouette caractéristique."
+    },
+    {
+      "id": "pack-e65ef4ca",
+      "reviewer": "Codex",
+      "sourceSha256": "ad013c89a51522a8105ced2633f860552c5af04c8df105a1c2884bab8408420f",
+      "note": "Deux brochettes de feuilles plissées et une galette ronde ; aliments complets, usage support."
+    },
+    {
+      "id": "pack-95b83df7",
+      "reviewer": "Codex",
+      "sourceSha256": "35b1b982573c2be64a21c594cf7459a5f89b6a14c13eb9857b75b3e6fbac0ea7",
+      "note": "Bol entier de soupe avec grains de riz, viande et rondelles, vapeur contenue dans le cadre ; usage support."
+    },
+    {
+      "id": "pack-9b75e665",
+      "reviewer": "Codex",
+      "sourceSha256": "f5af530e468501322ffaead6989a8cfbf4f721d701fee31d9d870138b851fada",
+      "note": "Trois nigiri distincts, riz et tranches de poisson, bande d'algue sur celui du premier plan."
+    },
+    {
+      "id": "pack-a9c420a6",
+      "reviewer": "Codex",
+      "sourceSha256": "452ec009bccb415e72d976e7ec2cb5314d2d58d57b9dd966c85b2bab11f60a8c",
+      "note": "Boîte-repas ouverte entière, riz et petits accompagnements séparés ; couvercle visible sans inscription."
+    },
+    {
+      "id": "pack-e5263143",
+      "reviewer": "Codex",
+      "sourceSha256": "bedf7edeab368a403c1a203a7ec66797f541acd1d108c9882e358697b81ace02",
+      "note": "Grenouille entière assise, gros yeux, pattes repliées et doigts arrondis distincts."
+    },
+    {
+      "id": "pack-680d7fcd",
+      "reviewer": "Codex",
+      "sourceSha256": "1b8e5a5777e8b75c70edf9f2f0f8a7377998b4663cae2b73662540216fec6867",
+      "note": "Araignée entière vue de dessus, huit pattes bien séparées autour du corps en deux volumes."
+    },
+    {
+      "id": "pack-1e306986",
+      "reviewer": "Codex",
+      "sourceSha256": "8106d332fd30a10f555e269131932f94359e60c36005ca4163c9e11492e393d3",
+      "note": "Tortue terrestre entière, carapace bombée à plaques, tête et pattes écailleuses visibles."
+    },
+    {
+      "id": "pack-872e638f",
+      "reviewer": "Codex",
+      "sourceSha256": "9b931b277b6398ab149a1f6dd142c83c87d994e243b416a378d06089979b3950",
+      "note": "Baleine entière avec ventre strié, longues nageoires et queue bifide ; souffle contenu dans le cadre."
+    },
+    {
+      "id": "pack-fee57e1f",
+      "reviewer": "Codex",
+      "sourceSha256": "04b13c312284e82dbca8da8a70118a186ed29481face00f916c2b3f243104e3e",
+      "note": "Papillon entier aux quatre ailes déployées et deux antennes ; dessin symétrique sans découpe."
+    },
+    {
+      "id": "pack-97a75004",
+      "reviewer": "Codex",
+      "sourceSha256": "192fbe2a84acde9adb6a26a8fb516e6bad9fa2648c199258bde8ea4c4f69721a",
+      "note": "Lion debout entier, crinière, quatre pattes et queue à touffe visibles."
+    },
+    {
+      "id": "pack-291b292a",
+      "reviewer": "Codex",
+      "sourceSha256": "c2a1be9df20010c8d06bd31d03959c57e187081af41fa54c3392283d3b39d816",
+      "note": "Veau entier, museau court, grandes oreilles, petites proportions et absence de cornes ; vache ou bovin restent des lectures neutres."
+    },
+    {
+      "id": "pack-cfc2df5c",
+      "reviewer": "Codex",
+      "sourceSha256": "1dd6bdb6e7384405d32cf5ce3441e0f3114e3f315f70688cd6a4af5496242716",
+      "note": "Renard entier de profil, museau pointu, grandes oreilles et queue volumineuse ; contraste suffisant sans couleur orange."
+    },
+    {
+      "id": "pack-d96fc212",
+      "reviewer": "Codex",
+      "sourceSha256": "5aa671a8c3977e9b7b125a14ecc1d48e4ad650ec55fb630c81fc5fd73c816819",
+      "note": "Canard entier debout, bec plat et deux pieds palmés clairement visibles."
+    },
+    {
+      "id": "pack-d508fd2f",
+      "reviewer": "Codex",
+      "sourceSha256": "d2f799d178241ebe21a22169293cd94efee49f10f0c120ad812a2dc77c81e541",
+      "note": "Singe assis entier avec grandes oreilles, mains, pieds et queue courbe ; proportions stylisées cohérentes."
+    },
+    {
+      "id": "pack-54d7b238",
+      "reviewer": "Codex",
+      "sourceSha256": "85619ca913668de07b267806f50118a4e855a4256bcbc30f9e263f67675d44f9",
+      "note": "Souris entière, grandes oreilles arrondies, moustaches et longue queue fine ; silhouette lisible."
+    },
+    {
+      "id": "pack-5c72e282",
+      "reviewer": "Codex",
+      "sourceSha256": "e73dd80ec52aaa3bfb88c26cf2ff317515dbd479f48a2706c9d941b4dd96e612",
+      "note": "Pin entier au tronc tortueux et touffes d'aiguilles étagées ; racines et cime contenues dans l'image."
+    },
+    {
+      "id": "pack-1353f499",
+      "reviewer": "Codex",
+      "sourceSha256": "11cd019939d1d85638986add37fd672e615db62c3dd12ba2764dab4d67acf4ed",
+      "note": "Rose entière sur courte tige avec deux feuilles dentées et épines ; pétales en spirale clairement visibles."
+    },
+    {
+      "id": "1781435310388",
+      "reviewer": "Codex",
+      "sourceSha256": "111feb02dbcbf0133bbddf856bf974a209339d2e514a17dd36cf0f6cc9aaa51b",
+      "note": "Pierre anguleuse seule, faces et texture minérale distinctes sur fond noir."
+    },
+    {
+      "id": "pack-806c4c7d",
+      "reviewer": "Codex",
+      "sourceSha256": "54a544009d1baab3da4ef71ff551f9e81e667d47728a4194e1ec51f8eb580ae0",
+      "note": "Branche entière ramifiée, extrémité sciée et petits bourgeons ; tous les rameaux restent dans le cadre."
+    },
+    {
+      "id": "pack-0a363fb8",
+      "reviewer": "Codex",
+      "sourceSha256": "41093d42293cdbda7f6249dd39dff348a4c7415d650f9812565345eb262a8a97",
+      "note": "Assortiment de graines avec une grosse graine striée et plusieurs petites ; support pour ce terme générique."
+    },
+    {
+      "id": "pack-202f4110",
+      "reviewer": "Codex",
+      "sourceSha256": "ea93c5491ef9095b4ebfcd1eb7cdcbb5054fe369d47148dea51fa18793059e6e",
+      "note": "Petite mare avec nénuphar, roseaux et bord rocheux ; vignette entière, usage support."
+    },
+    {
+      "id": "pack-c76bfa9a",
+      "reviewer": "Codex",
+      "sourceSha256": "25a31ef03f0ad7f90dc9f1ac0e6906419a14882682e5193df8a3d1cc5deddfc1",
+      "note": "Cascade verticale entre deux rochers avec bassin et éclaboussures ; toute la vignette est isolée sur fond noir."
+    },
+    {
+      "id": "pack-3af626f5",
+      "reviewer": "Codex",
+      "sourceSha256": "8dc9d962a9c3b1b4b2789c84b51e4021b3778fc73b5f4af07a529035b341ab48",
+      "note": "Dunes à crêtes et rides de sable avec un petit buisson sec ; support car le monochrome pourrait évoquer la neige."
+    },
+    {
+      "id": "pack-8a91f7f3",
+      "reviewer": "Codex",
+      "sourceSha256": "5ede9a309af05cbe8235e8294af21083a6cc269c439846a047be2f44843f42d5",
+      "note": "Fin croissant de lune entier, texture de cratères sur la portion éclairée, fond noir sans étoile."
+    },
+    {
+      "id": "pack-fce33eef",
+      "reviewer": "Codex",
+      "sourceSha256": "5cb9beffa60d081d3849ccab7f150053e29efce2c6b2aac292a87cbdfb2dab20",
+      "note": "Globe terrestre entier avec Amériques, Afrique et Europe reconnaissables, sans frontières ni noms."
+    },
+    {
+      "id": "pack-d045e734",
+      "reviewer": "Codex",
+      "sourceSha256": "626e8373548dda0aaa1dbfef55e7085404da8d00ee770796b869fdd7f6bcc584",
+      "note": "Oreiller rectangulaire gonflé, quatre coins et couture périphérique visibles."
+    },
+    {
+      "id": "pack-632379d4",
+      "reviewer": "Codex",
+      "sourceSha256": "bd4c1e3e084d5bbc3d8c84e8b4a85d5f8784a3c975d9b2ce74e91d288fec2382",
+      "note": "Couverture souple pliée, angle drapé et franges visibles ; texture textile ivoire sans motif parasite."
+    },
+    {
+      "id": "pack-a88f1431",
+      "reviewer": "Codex",
+      "sourceSha256": "05e1c4080e70359068b159340f0cd4cef804625e1821524a3e9c5dc93e1e0ee2",
+      "note": "Deux rideaux entiers suspendus à une tringle complète, plis et ouverture centrale distincts."
+    },
+    {
+      "id": "pack-bee56bac",
+      "reviewer": "Codex",
+      "sourceSha256": "e50f6536d00cf11018efd890c7f882a6ea9dda48e7ded6f8a3656bb728ef2fb4",
+      "note": "Flacon-pompe entier sans étiquette accompagné de mousse ; support car le produit n'est pas identifiable par sa bouteille."
+    },
+    {
+      "id": "pack-205c0b2b",
+      "reviewer": "Codex",
+      "sourceSha256": "556a1c008043eb5cefc1555815d2765ea2a558fab0ad08743185d9da03046167",
+      "note": "Fer entier avec poignée, semelle pointue et molette ; cordon court terminé en touche de pinceau dans le cadre."
+    },
+    {
+      "id": "pack-67948dc7",
+      "reviewer": "Codex",
+      "sourceSha256": "22d72857bc237e9abd6671ac1fd65fd7bb1e7d09dd736a34aab45fc23122443a",
+      "note": "Horloge ronde entière, repères sans chiffres et deux aiguilles ; support car la fixation murale n'est pas visible."
+    },
+    {
+      "id": "pack-44b021f3",
+      "reviewer": "Codex",
+      "sourceSha256": "23d28acf904d3290dfc2e0a3eae0c7149ed6aaf1ac326dfea02c432536c53b19",
+      "note": "Deux piles cylindriques sans marque, une debout et une couchée ; bornes et volumes bien séparés."
+    },
+    {
+      "id": "pack-a36ea94d",
+      "reviewer": "Codex",
+      "sourceSha256": "9b4531c6fa18fe7b07524385a26a20a6218138f4f1734ca2f481666d96aa2b2c",
+      "note": "Calculatrice entière, écran rectangulaire vierge et rangées de touches en relief dont une longue touche ; aucune inscription."
+    },
+    {
+      "id": "pack-d0974335",
+      "reviewer": "Codex",
+      "sourceSha256": "ac327a393f0c16a50c2b2cfae9c756b676b846d23f3773dbd15006465196f909",
+      "note": "Nouvelle tentative : réservoir transparent et base entière, courte volute de brume qui s'estompe bien avant le haut ; cadrage et marges noirs validés."
+    },
+    {
+      "id": "pack-ec8af405",
+      "reviewer": "Codex",
+      "sourceSha256": "32e488f2965a49631bb4d1c46a746dfd48407817c35e2f68eeb99e0e9b61ebc4",
+      "note": "Cuisinière à gaz entière avec quatre brûleurs, grilles et four ; boutons sans texte, équipement complet."
+    },
+    {
+      "id": "pack-c8b85696",
+      "reviewer": "Codex",
+      "sourceSha256": "1940c60bda01e30c7b32bb5b10b7fefd651fbe3b2cc40cd3bc1bb4e24c68ce31",
+      "note": "Poêle de chauffage entier, petite sortie de conduit, pieds et flammes derrière la porte vitrée."
+    },
+    {
+      "id": "pack-d4eb0137",
+      "reviewer": "Codex",
+      "sourceSha256": "69d4e6ec310618a00da2d9f1b65d63ca1fe025a52d5492de5a0af1ca5544f7c5",
+      "note": "Enregistreur à cassette complet, deux bobines visibles derrière la fenêtre, grille de haut-parleur et commandes sans lettres ; support pour distinguer l'enregistrement de la lecture."
+    },
+    {
+      "id": "pack-436ebdd0",
+      "reviewer": "Codex",
+      "sourceSha256": "86f44b90e5ba04d58574e422373f7e0cf21bac956e64a1f780f6976d668d47c3",
+      "note": "Ordinateur portable ouvert entier, écran noir, clavier vierge et pavé tactile ; charnière et base lisibles."
+    },
+    {
+      "id": "pack-5c0e4e2d",
+      "reviewer": "Codex",
+      "sourceSha256": "cae33bc196307b9b70185836528c170cb3ccc4c6a303475709d7e849fce2a4b5",
+      "note": "Écran plat entier sur pied central, dalle sombre sans contenu et socle visible ; les lectures écran ou télévision restent neutres."
+    },
+    {
+      "id": "pack-f1d4069c",
+      "reviewer": "Codex",
+      "sourceSha256": "1c4da38f0d94a4c4eb26e083d2c82a73e3513c4862abe1f03b66627ee83f338d",
+      "note": "Clavier complet, touches vierges distinctes et grande barre d'espace, silhouette isolée sur fond noir."
+    },
+    {
+      "id": "pack-fcf9e282",
+      "reviewer": "Codex",
+      "sourceSha256": "f18ac4a3c0ff0ed0f877cb870a662889e1de092f4d8e1bb4c6bcb7940e47a602",
+      "note": "Souris informatique entière avec deux boutons, molette et court cordon qui s'efface avant le bord."
+    },
+    {
+      "id": "pack-f25ceba4",
+      "reviewer": "Codex",
+      "sourceSha256": "db2c521a472ccc6804f1d795312a480f4a293eca07929e92655d80b6345f6b53",
+      "note": "Aspirateur traîneau entier : corps à roues, flexible, tube et brosse tous visibles, sans découpe."
+    },
+    {
+      "id": "pack-54b08863",
+      "reviewer": "Codex",
+      "sourceSha256": "e7c68d795a438389e4cde44bc75fcd610b0bc661009cd72eda25f41f3e5e5c9e",
+      "note": "Appareil à hublot entier avec linge et grille basse ; la ressemblance avec un lave-linge impose un usage support."
+    },
+    {
+      "id": "pack-020ac8e1",
+      "reviewer": "Codex",
+      "sourceSha256": "ff0ee27295091e3559fb25afea81ece4ea1f92fcff6f41654f26b107e0895fb2",
+      "note": "Four à micro-ondes entier, porte à grille sombre, poignée latérale et deux molettes sans inscription ; silhouette domestique claire."
+    },
+    {
+      "id": "pack-7e6d0f02",
+      "reviewer": "Codex",
+      "sourceSha256": "cf07fee4db81a58163e0ad13ea63604eebee5165a624f76ff33dd277d77f7656",
+      "note": "Cuiseur à riz ouvert entier, couvercle articulé et cuve remplie de riz visibles ; aucun texte ni marque."
+    },
+    {
+      "id": "pack-08deac75",
+      "reviewer": "Codex",
+      "sourceSha256": "44529c2e80e9f853990fb29b2011e76aeff8a87a7a35387929d20ef88ddf21a9",
+      "note": "Distributeur d'eau entier, jet transparent dans un verre sur le plateau ; support car la fonction de filtration n'est pas directement visible."
+    },
+    {
+      "id": "pack-f3543039",
+      "reviewer": "Codex",
+      "sourceSha256": "c00ee2a585673e05a9632f20f7f9503efa17220a06d8f38b52639706b5b6a26c",
+      "note": "Télécommande entière avec touches vierges et commande circulaire centrale ; forme allongée distincte d'un téléphone."
+    },
+    {
+      "id": "pack-c5d74499",
+      "reviewer": "Codex",
+      "sourceSha256": "925c65a6d5d2c1b7127e4d690d8a1da91b2e4790e64de45433da68ae84c1f288",
+      "note": "Serrure électronique avec pavé de touches vierges, poignée et pêne sur un morceau de porte entier ; usage support."
+    },
+    {
+      "id": "pack-be434a5d",
+      "reviewer": "Codex",
+      "sourceSha256": "43cdaedbecd35bda1e537a15e3db2e8bc5b0d681659db264d5568a321778350c",
+      "note": "Four entier avec porte vitrée, deux grilles intérieures et quatre molettes sans texte."
+    },
+    {
+      "id": "pack-19afecee",
+      "reviewer": "Codex",
+      "sourceSha256": "8bcd9a5135f68007567ba299510da80b342fe821dedb61fde4b677185c80555a",
+      "note": "Boîte aux lettres individuelle entière sur poteau, toit incliné et fente clairement visibles."
+    },
+    {
+      "id": "pack-7ad40d7f",
+      "reviewer": "Codex",
+      "sourceSha256": "d0099e87bfa10af1f439d2b46edc842efce2729a74aed7686b646d7111c817f1",
+      "note": "Cadre rectangulaire vide entier, bord large, centre noir et béquille arrière visibles."
+    },
+    {
+      "id": "pack-5eb8d84c",
+      "reviewer": "Codex",
+      "sourceSha256": "34f49b1d97aa9dd63304eb04c0e8657ca6b1f1bc0a7ebde06bbc74da1b548203",
+      "note": "Anneau de porte-clés avec deux clés et une étiquette vierge, éléments entiers et séparables."
+    },
+    {
+      "id": "pack-e270ea5b",
+      "reviewer": "Codex",
+      "sourceSha256": "5599c8274381d2040d92b747e07ff8e59b5cdb87fbf1d9941642f0df9c62adb7",
+      "note": "Peigne entier avec manche et une rangée de dents espacées, toutes contenues dans le cadre."
+    },
+    {
+      "id": "pack-979e6093",
+      "reviewer": "Codex",
+      "sourceSha256": "461222fb17e150c0a4090b584e8231aa4c850b841b5f6ceb5b28c944f6e22c86",
+      "note": "Briquet entier avec molette crantée et petite flamme entièrement contenue dans le cadre ; sans marque."
+    },
+    {
+      "id": "pack-12e46dd8",
+      "reviewer": "Codex",
+      "sourceSha256": "0f864f83dca1a3fa18e0902ae4b38c9caf502bb0098a3e68641b5c1916447cb3",
+      "note": "Ruban noué en deux boucles et deux pans coupés en V, tous les contours visibles."
+    },
+    {
+      "id": "pack-8c2b74fb",
+      "reviewer": "Codex",
+      "sourceSha256": "f7eaa79df3085c0469c39d59d0c7aa1dd3cf1df3d03549af525e2644a6033bdf",
+      "note": "Sachet en papier ouvert entier, rebord plié et soufflet latéral ; support car le type d'emballage reste générique."
+    },
+    {
+      "id": "pack-4f5a3bfd",
+      "reviewer": "Codex",
+      "sourceSha256": "310f076962cc865654d9e20c450259895f56d2587dd455f424744281c39664a9",
+      "note": "Chiffon usé souple et humide, petites gouttes devant ; support car il ressemble aussi à une serviette."
+    },
+    {
+      "id": "pack-34572e7a",
+      "reviewer": "Codex",
+      "sourceSha256": "aa9bb2b3569d5d5e43fade566551869179dc00e4943e197c2ec02f0d1ffce24e",
+      "note": "Album photo ouvert entier avec quatre emplacements vierges à coins de fixation ; support sans photos ni texte."
+    },
+    {
+      "id": "pack-5c883b13",
+      "reviewer": "Codex",
+      "sourceSha256": "a45567d315f0be4cb53705bbd8e984bea2c2fc9cef5e2e6a4d999317484d43ba",
+      "note": "Cartouche de pellicule et bande courbe avec perforations sur les deux bords ; aucune inscription."
+    },
+    {
+      "id": "pack-a66d6903",
+      "reviewer": "Codex",
+      "sourceSha256": "d3345b70310d37f9a097b5cf29ae24215efeb0b4c0512df66ca6994cd6ec7cff",
+      "note": "Combiné téléphonique entier, écouteur et microphone perforés, court câble spiralé contenu dans l'image."
+    },
+    {
+      "id": "pack-3830df6d",
+      "reviewer": "Codex",
+      "sourceSha256": "95c9b1c8c4dea2f426ce86707c431f48478404d461d9219149664dbfe213a6e7",
+      "note": "Ceinture de sécurité détachée, sangle tissée reliant languette métallique et boucle d'insertion, sans texte."
+    },
+    {
+      "id": "pack-d0ad8eb7",
+      "reviewer": "Codex",
+      "sourceSha256": "1fafdd7b277d6d5bb4ae63b6c90b63f212f318b1c348772188d342f5f7cea2aa",
+      "note": "Louche entière, long manche avec trou de suspension et cuilleron profond bien distinct."
+    },
+    {
+      "id": "pack-35123c11",
+      "reviewer": "Codex",
+      "sourceSha256": "1edcf02c0911424f3f7925d0cc3245531e817b9acb6a66b86b0ac6fb4a2dd95b",
+      "note": "Couvercle rond seul, bord continu et bouton central ; volume complet isolé."
+    },
+    {
+      "id": "pack-eca9cda9",
+      "reviewer": "Codex",
+      "sourceSha256": "9d71259d5b73f1863ece85a09a6edd214ca7f1bd3390352853d31e3b1ff417ee",
+      "note": "Trois petits bâtonnets de bois pointus complets ; sans échelle, ils pourraient être pris pour des piques, donc support."
+    },
+    {
+      "id": "pack-e2371879",
+      "reviewer": "Codex",
+      "sourceSha256": "15fc6202e189ae36a91ff8b6d1f13527f218d32271df0b25649eec5b19de24bb",
+      "note": "Tablier entier, tour de cou, deux liens latéraux et poche ventrale visibles sans personne."
+    },
+    {
+      "id": "pack-a6d8573d",
+      "reviewer": "Codex",
+      "sourceSha256": "b0f138b2e1953e30adc6b72f144fb1fee91f67c5f87293fd9ca45612f2249dea",
+      "note": "Gobelet en papier entier, bord roulé, silhouette conique et surface vierge ; matière seulement indicative."
+    },
+    {
+      "id": "pack-a71ba3c2",
+      "reviewer": "Codex",
+      "sourceSha256": "486f9da62bd64bf2496074fd8042dddbe398d08312c5c85bd70651162b4133d3",
+      "note": "Bol entier rempli de riz, pied et grains bien visibles ; support pour distinguer le récipient du contenu."
+    },
+    {
+      "id": "pack-df256025",
+      "reviewer": "Codex",
+      "sourceSha256": "371adf2dc45dfc38185c0df26410be4975a1047eb849cb72edd450e9d6e0ae52",
+      "note": "Tasse à anse et soucoupe entières, liquide sombre et vapeur qui s'estompe dans le cadre ; support car le contenu n'est pas identifiable."
+    },
+    {
+      "id": "pack-cf77a1a6",
+      "reviewer": "Codex",
+      "sourceSha256": "0405b1137acd8243fb1c5edefcd58a302c9c709e476c29d057b7f38391892539",
+      "note": "Chemise pliée entière dont le col à deux pointes est nettement visible ; support pour la partie du vêtement visée."
+    },
+    {
+      "id": "pack-0b6ce11c",
+      "reviewer": "Codex",
+      "sourceSha256": "966f49580a32b57a498e468d1d07c0b2b5a0d7c99d3a2fb7ee5477bf7d4ffb3e",
+      "note": "Coupon de tissu souple drapé, trame visible et bords effilochés ; support pour la matière."
+    },
+    {
+      "id": "pack-ce552b4f",
+      "reviewer": "Codex",
+      "sourceSha256": "37d938f5c0bb25db2d5280178ae233585200e6f16e8490265b3a0231aa4c324c",
+      "note": "Pardessus entier avec revers, trois boutons et poches, manches et bas complets ; support pour ce terme général."
+    },
+    {
+      "id": "pack-ffc41e64",
+      "reviewer": "Codex",
+      "sourceSha256": "09361a9c9025bb639a5088420f7550ff4d39aded98df1eecf92665c717231a09",
+      "note": "Robe longue entière, corsage croisé, taille marquée et jupe ample avec ourlet visible ; sans personne."
+    },
+    {
+      "id": "pack-dc99eddc",
+      "reviewer": "Codex",
+      "sourceSha256": "d5a1e35c2760846fa63617a5e994952ce15e687e7c0757d926d0d159334aff70",
+      "note": "Veste à capuche et pantalon de randonnée entiers, poches et renforts visibles ; support pour la tenue précise."
+    },
+    {
+      "id": "pack-4adb4d27",
+      "reviewer": "Codex",
+      "sourceSha256": "9c72b24aba133ff9485c77190ec026bb49480c3022805a2d406e92d990205af4",
+      "note": "Jupe plissée entière, bande de taille et ourlet ; plis clairs sur fond noir."
+    },
+    {
+      "id": "pack-2986e50c",
+      "reviewer": "Codex",
+      "sourceSha256": "edbdc042e87c2a3f08490238eb2f8090f671f9dd486929f31f18a8e02aee9325",
+      "note": "Collant entier avec ceinture élastique, deux jambes fines et pieds fermés ; contours complets."
+    },
+    {
+      "id": "pack-8d6a5b86",
+      "reviewer": "Codex",
+      "sourceSha256": "ddd26ae1a93a090503eafecf154583c6587e6eab1c802f7cf8023234bdf09e87",
+      "note": "Sac à main entier à deux anses, rabat et fermoir, sans marque ni texte."
+    },
+    {
+      "id": "pack-1978e73b",
+      "reviewer": "Codex",
+      "sourceSha256": "55b5e78243ec334b8fe1720d440a94b02e50c163d0b660375877b3929415f5c2",
+      "note": "Montre-bracelet entière avec deux aiguilles, repères sans chiffres et bracelet bouclé."
+    },
+    {
+      "id": "pack-d896ba2b",
+      "reviewer": "Codex",
+      "sourceSha256": "fd8f6699be1521721ebce8841b1d8bcea043385429116d4b3909bd5e7721c5c7",
+      "note": "Ceinture enroulée entière, boucle à ardillon et trous de réglage visibles."
+    },
+    {
+      "id": "pack-0deea267",
+      "reviewer": "Codex",
+      "sourceSha256": "de0bd2e17288f6015bf158d26f08da8a58704e8caa8f80d88c8a5a45350b681f",
+      "note": "Ensemble de pyjama rayé, veste boutonnée et pantalon à taille élastique entiers."
+    },
+    {
+      "id": "pack-26d5b9fa",
+      "reviewer": "Codex",
+      "sourceSha256": "a62c16a7b8e55cf6cb2fa3c4515f83d705e3eb00a14de98afe3cd76ab94dbe3d",
+      "note": "Fermeture éclair entrouverte en Y, dents et curseur distincts ; tous les éléments tiennent dans le cadre."
+    },
+    {
+      "id": "pack-4ba1da9d",
+      "reviewer": "Codex",
+      "sourceSha256": "96bf99172abeb1dd8c8639d1d3f2559d19764c96b068dd9525b08d5733e99212",
+      "note": "Lunettes de soleil entières, deux verres sombres et branches ouvertes sans logo."
+    },
+    {
+      "id": "pack-346ba7f2",
+      "reviewer": "Codex",
+      "sourceSha256": "d8bda91d65a141cb4631c3f513be9dbe2d92ea61924685b436ded2b5ed1d9626",
+      "note": "Lentille de contact transparente devant son étui à deux compartiments ; support, détails fins à petite taille."
+    },
+    {
+      "id": "pack-3d7d72b8",
+      "reviewer": "Codex",
+      "sourceSha256": "ffb967daf94170718824ac4e99e65b0c170ccab206db2a331bfe4c63b5e72a77",
+      "note": "Imperméable entier à capuche, boutons-pression et poches, matière lisse brillante ; alternatives vestimentaires neutres."
+    },
+    {
+      "id": "pack-7f0de475",
+      "reviewer": "Codex",
+      "sourceSha256": "bae57de2bea5411c1cda50708a9c034227fef813658062e07031465d954aa599",
+      "note": "Paire de bottes de pluie entières, hautes tiges ouvertes et semelles crantées."
+    },
+    {
+      "id": "pack-8cba617a",
+      "reviewer": "Codex",
+      "sourceSha256": "51363eaee06cf0ecc12d866a277ba1e72b3ff7c3652f20000dd0fcb1030bd465",
+      "note": "Paire de claquettes entières, larges brides ouvertes sur les orteils et talons libres."
+    },
+    {
+      "id": "pack-bd2aa956",
+      "reviewer": "Codex",
+      "sourceSha256": "18d7d7ca186f46d3cf43ea4dda7d7a9f5168a0857b0aa4a45b2fb374761e5a43",
+      "note": "Paire de bottines entières à lacets, œillets et semelles crantées, sans logo."
+    },
+    {
+      "id": "pack-e079f715",
+      "reviewer": "Codex",
+      "sourceSha256": "c11be3d6b906669a85e39240139399d68db5940b4d4a2a6e0998160b5c214a9a",
+      "note": "Gilet sans manches entier, col en V, boutons et deux poches ; emmanchures clairement visibles."
+    },
+    {
+      "id": "pack-db4a15c7",
+      "reviewer": "Codex",
+      "sourceSha256": "4e470458fb297d8db33a8eaab00641d3ef4c9533132c180f6e787ff43da262a4",
+      "note": "T-shirt entier à manches courtes ; support pour cibler la longueur des manches plutôt que le vêtement."
+    },
+    {
+      "id": "pack-3bdba316",
+      "reviewer": "Codex",
+      "sourceSha256": "1ad1e82becb23644a8ad1f85054bea71503f30db819469ea81c81eff53ae0bb5",
+      "note": "Haut entier à manches longues et col rond ; support pour cibler les manches."
+    },
+    {
+      "id": "pack-33a2500f",
+      "reviewer": "Codex",
+      "sourceSha256": "bf7e9e3c0ca4c0df06b68c3d18d224639c78a93163ca952e36e9e0a5cd1c1887",
+      "note": "Paire de sandales entières à brides croisées et attaches de cheville, orteils et talons ouverts."
+    },
+    {
+      "id": "pack-76f8e9c3",
+      "reviewer": "Codex",
+      "sourceSha256": "383cefbfcf1367b8c4c25fafc8b4afab01d96b00b632d12c2af8321739550af7",
+      "note": "Paire d'escarpins entiers, bouts pointus et hauts talons fins bien visibles."
+    },
+    {
+      "id": "pack-88288134",
+      "reviewer": "Codex",
+      "sourceSha256": "fb3a86f00bad2ecbeca730f29ebd9a448a021758d6b94b7bc3bc3742014bdb03",
+      "note": "Surligneur à pointe biseautée avec capuchon séparé ; sans couleur fluorescente il peut être pris pour un marqueur, donc support."
+    },
+    {
+      "id": "pack-6c147ad6",
+      "reviewer": "Codex",
+      "sourceSha256": "53881ffb40396d903618d926e58fe47689aff9fa1b87135766de23cf49d71860",
+      "note": "Bâton de colle ouvert entier et capuchon séparé, base crantée ; support pour distinguer des autres bâtons de produit."
+    },
+    {
+      "id": "pack-53bb0b5a",
+      "reviewer": "Codex",
+      "sourceSha256": "3849dd418f38e3e3e57c66d159b825eee9ae71759ec2773b7bae356913049d5b",
+      "note": "Rouleau de ruban adhésif entier avec extrémité déroulée translucide, sans marque."
+    },
+    {
+      "id": "pack-4f997c98",
+      "reviewer": "Codex",
+      "sourceSha256": "c1ef56ac77e38a0a744b632126a00977866dfa28dc62c869f44008a7ca72330c",
+      "note": "Trois trombones métalliques distincts et entiers, boucles de fil lisibles."
+    },
+    {
+      "id": "pack-68b8eecb",
+      "reviewer": "Codex",
+      "sourceSha256": "88f962c2ca1497cea22c18bbe229f99a9580b6c1421037c8fa5ef609dee97384",
+      "note": "Classeur ouvert entier, anneaux et feuilles vierges à onglets ; support pour ce terme polysémique."
+    },
+    {
+      "id": "pack-3b1c086d",
+      "reviewer": "Codex",
+      "sourceSha256": "3f68b09c891bf06831aac923820d8dbc8c0e88f5919afb7480a63db3d1a96c89",
+      "note": "Sac à dos scolaire entier ouvert sur deux livres, bretelles, poignée et poche frontale ; la lecture sac à dos reste neutre."
+    },
+    {
+      "id": "pack-cc22c352",
+      "reviewer": "Codex",
+      "sourceSha256": "0bc69f65d0f49e146f04999cad3ddbdd4ddfbdfd913ec9aed96fec284bd3461b",
+      "note": "Carte SIM entière à coin biseauté et contacts segmentés, aucune inscription."
+    },
+    {
+      "id": "pack-5101c310",
+      "reviewer": "Codex",
+      "sourceSha256": "e929abcd07021852fa4d86983fd73b25c637c6ede10faed69b13832ee882eb98",
+      "note": "Deux comprimés ronds sécables et une gélule entiers, sans inscription ; formes distinctes."
+    },
+    {
+      "id": "pack-c350b884",
+      "reviewer": "Codex",
+      "sourceSha256": "62ab8a8eaf424a79689c6c83e2cf8a34fd5ce5a7b70b63b753c46313d48a58d1",
+      "note": "Tube ouvert laissant sortir une petite quantité de pommade et bouchon séparé ; support car le contenu n'est pas identifiable."
+    },
+    {
+      "id": "pack-197947a3",
+      "reviewer": "Codex",
+      "sourceSha256": "1de0338c14fd47e43130d05c40ab40af1a8d1e5cef9d840597396e2b1db4ac5c",
+      "note": "Pansement adhésif entier avec compresse centrale et bouts perforés, protection partiellement relevée."
+    },
+    {
+      "id": "pack-34b91446",
+      "reviewer": "Codex",
+      "sourceSha256": "2b4ec608150d7cca962fd54556e0d9b65f2a740ab597c2990610afa205f81ddf",
+      "note": "Flacon compte-gouttes entier, petite goutte à l'embout et bouchon séparé ; support pour ne pas déduire l'usage médical du seul flacon."
+    },
+    {
+      "id": "pack-f8c5ba99",
+      "reviewer": "Codex",
+      "sourceSha256": "d727cfe21f1b7c5045fb58cd8dd980c0d3ff509ff3252e2d388badf5869169c2",
+      "note": "Bol de flocons de piment avec piment séché et quelques flocons épars ; support car la couleur n'est pas disponible."
+    },
+    {
+      "id": "pack-4d9c45b3",
+      "reviewer": "Codex",
+      "sourceSha256": "196eed4748a615f74a6a444081e9e8468bafbc64a72dfcaf870478f880b3ea96",
+      "note": "Petit bol de pâte épaisse accompagné d'une feuille de laitue ; support pour la sauce précise en monochrome."
+    },
+    {
+      "id": "pack-f529b0a5",
+      "reviewer": "Codex",
+      "sourceSha256": "d238a9e837d2b6230ba7432977331e45e88595a811bc3b303495084e1b54997d",
+      "note": "Moulin à poivre entier et quelques grains ronds devant ; support pour distinguer le condiment de l'ustensile."
+    },
+    {
+      "id": "pack-f2962f29",
+      "reviewer": "Codex",
+      "sourceSha256": "4a936fd79de9295f26dde020495a2db5e20366779b5d56b6a20203b637a592cd",
+      "note": "Bouteille d'huile sans étiquette avec tas de graines de sésame ; support pour la composition du liquide."
+    },
+    {
+      "id": "pack-1d7e42ef",
+      "reviewer": "Codex",
+      "sourceSha256": "981b21cdc26a9630d30099f8519067a64094945a2262587f4ae12070873668f6",
+      "note": "Huilier en verre entier avec anse, bouchon et coupelle de liquide ; support pour le type d'huile."
+    },
+    {
+      "id": "pack-c9eb48bf",
+      "reviewer": "Codex",
+      "sourceSha256": "3dfa22d992483bafe042d59940afbbe41e4c07e5f3643a631864ed114a94284e",
+      "note": "Verre entier de boisson accompagné de grains d'orge ; support car le liquide seul reste ambigu."
+    },
+    {
+      "id": "pack-f90aa921",
+      "reviewer": "Codex",
+      "sourceSha256": "8473582a07728c721e0dd9500406399de6032465cc1f3f084943cf535a1db6be",
+      "note": "Bouteille entière sans étiquette et verre à pied partiellement rempli ; support pour la boisson."
+    },
+    {
+      "id": "pack-1fed91b6",
+      "reviewer": "Codex",
+      "sourceSha256": "399760dd26defeba21d92d2679171dbc15e68ce53b3ddfab9a5b038fa5397b68",
+      "note": "Pierre précieuse taillée entière, facettes triangulaires et pointe basse, sans bijou ni inscription."
+    },
+    {
+      "id": "pack-9705e8f9",
+      "reviewer": "Codex",
+      "sourceSha256": "69ac0b3b6fa1052593ec2aecb48dc2fd36e8a8acb3000f3d683bb6e7f6d95157",
+      "note": "Médaille ronde entière avec couronne de laurier et ruban plié, aucune inscription ni chiffre."
+    },
+    {
+      "id": "pack-1907c333",
+      "reviewer": "Codex",
+      "sourceSha256": "6652f30a04321e44ecadbcbdfd8c9a2889a57c7ab9ecc021cce74eecdfbedffb",
+      "note": "Corde à sauter entière en boucle, deux poignées distinctes, sans personne."
+    },
+    {
+      "id": "pack-01a400a4",
+      "reviewer": "Codex",
+      "sourceSha256": "7261a36aadc4ad2774751c2ba75780c67954df304b76652b4ffa3d06660cb05a",
+      "note": "Aile d'oiseau déployée entière, plusieurs rangées de plumes distinctes ; support pour cette partie anatomique."
+    },
+    {
+      "id": "pack-73f4d668",
+      "reviewer": "Codex",
+      "sourceSha256": "5af3f014fc84df1eeda5577ea00e76810f55371033331dfc032e80537c0ca34e",
+      "note": "Petit coléoptère entier, deux antennes, six pattes et élytres ; support pour le terme générique insecte."
+    },
+    {
+      "id": "pack-1537f4df",
+      "reviewer": "Codex",
+      "sourceSha256": "1b039de2cd30e7ff2ff0b3a94a744097b4a5d1e479f4517536593e578f6eb573",
+      "note": "Chrysanthème entier sur courte tige, nombreux pétales recourbés et feuilles lobées ; support botanique."
+    },
+    {
+      "id": "pack-e312bfa1",
+      "reviewer": "Codex",
+      "sourceSha256": "9562473f28f2c70bfd0d6bb2e2ebbf2babd3921a36308b3f8defa8420b84c241",
+      "note": "Rameau d'azalée à trois fleurs ouvertes, étamines et feuilles visibles ; support pour l'identification botanique."
+    },
+    {
+      "id": "pack-5a55a174",
+      "reviewer": "Codex",
+      "sourceSha256": "84c32b174b39fea8fb14866d674cfad3d891d0dfe931ffee5ccabf43b9fea521",
+      "note": "Rameau de forsythia à fleurs de quatre pétales et boutons, silhouette entière ; support sans couleur jaune."
+    },
+    {
+      "id": "pack-82ddfc76",
+      "reviewer": "Codex",
+      "sourceSha256": "9b39d663b600801cbef8fff73fce10b3070b3375fcb09a5f5609ceb942569d14",
+      "note": "Vignette de plage sableuse, coquillage et vague d'écume ; support pour la nuance de plage de sable."
+    },
+    {
+      "id": "pack-65a6fd38",
+      "reviewer": "Codex",
+      "sourceSha256": "7b27f433538b71bf01ed88170c705390fcf55f40e384684d53ad6394bf23adec",
+      "note": "Demi-lune éclairée à droite, limite presque droite et cratères visibles ; silhouette complète."
+    },
+    {
+      "id": "pack-3f857763",
+      "reviewer": "Codex",
+      "sourceSha256": "109bb60f1e1174c74178d86e4438e3d3fcf1c764b3dc6b9a4b479de09c86ba7f",
+      "note": "Flamme isolée entière, pointe ondulée et langues internes en ivoire et gris, contour net."
+    },
+    {
+      "id": "pack-ea9357a5",
+      "reviewer": "Codex",
+      "sourceSha256": "be170af744a3fd77255c289329ce0e23a664579657ba96b462e5a08dad930139",
+      "note": "Os long entier avec extrémités articulaires élargies, isolé sans contexte morbide."
+    },
+    {
+      "id": "pack-8dbb6f72",
+      "reviewer": "Codex",
+      "sourceSha256": "30574227b0d6d007eb6750bf03881cf57c7a0d13fb53fcbad99c5a934834d060",
+      "note": "Poing fermé entier jusqu'au poignet, quatre doigts repliés et pouce posé devant ; anatomie cohérente."
+    },
+    {
+      "id": "pack-068db24e",
+      "reviewer": "Codex",
+      "sourceSha256": "992e7b1ca3361a7852c4f261d111eec55848737971ce62bb9a5c5c7254d1597e",
+      "note": "Portrait à tête complète avec barbe et moustache contrastées ; support pour cibler la pilosité plutôt que la personne."
+    },
+    {
+      "id": "pack-08b2f2db",
+      "reviewer": "Codex",
+      "sourceSha256": "f5a6216c1478183399572fa1472c5df7cc1143c3682b3026538691cf44085b5f",
+      "note": "Dos d'une main complète jusqu'au poignet, cinq doigts et ongles distincts ; support pour cibler les ongles."
+    },
+    {
+      "id": "1779706066084",
+      "reviewer": "Codex",
+      "sourceSha256": "8656a7024d64af870a4bca8870b56033908b726a1a7a69f247ef2111b98a7457",
+      "note": "Vignette entière de salle de bains avec baignoire, douche et lavabo, carrelage estompé dans le fond noir."
+    },
+    {
+      "id": "pack-d7281c3f",
+      "reviewer": "Codex",
+      "sourceSha256": "88d05eeb63284367238528c8bb4816e2f1ec82f6b6006f3d07d57737e8812a4a",
+      "note": "Station-service entière, auvent sur deux poteaux et deux pompes avec pistolets, écrans vierges."
+    },
+    {
+      "id": "pack-c942ab59",
+      "reviewer": "Codex",
+      "sourceSha256": "495b9294d34034afa1681967e81e06ba1d96c65254e267e9485fa92958a20dbb",
+      "note": "Portion d'autoroute à chaussées séparées et pont supérieur, garde-corps et marquages sans panneaux ; support."
+    },
+    {
+      "id": "pack-82291d2d",
+      "reviewer": "Codex",
+      "sourceSha256": "cb53736270adf1d0e5d9e6d259dfbbe9cc73858032827fa3e83eceb67a26098d",
+      "note": "Ruelle pavée entre murs et portes de maisons coréennes, toitures en tuiles ; vignette entourée de noir, support."
+    },
+    {
+      "id": "pack-318f1cc4",
+      "reviewer": "Codex",
+      "sourceSha256": "216c3896e929c3d82efcc76637b1dc1bc61b00d9a3e4c696134161f866737539",
+      "note": "Stade entier vu de dessus, tribunes et terrain avec deux buts et lignes ; aucun public ni texte."
+    },
+    {
+      "id": "pack-5421935c",
+      "reviewer": "Codex",
+      "sourceSha256": "0bb651a89cb43d3a10ca77d80ca780a3603197366efc383bdc12f50f82534864",
+      "note": "Petit green avec trou, drapeau et bunker ; vignette entière, usage support."
+    },
+    {
+      "id": "pack-566e86a7",
+      "reviewer": "Codex",
+      "sourceSha256": "d31f09afd0dbac5ce45df70db6fa47f2c300db5a066f5baa2f6ab96a74f0a62c",
+      "note": "Entrée sombre de grotte naturelle dans un rocher irrégulier, sans route ni maçonnerie ; silhouette complète."
+    },
+    {
+      "id": "pack-4811a1f5",
+      "reviewer": "Codex",
+      "sourceSha256": "40c5fd892917ef19c5267dc304c1006b9b54d3bd66f1436999f60abc5bb67bb5",
+      "note": "Grand portail traditionnel entier à deux vantaux, toiture en tuiles et heurtoirs ronds ; support pour l'entrée principale."
+    },
+    {
+      "id": "pack-dec41fda",
+      "reviewer": "Codex",
+      "sourceSha256": "6cef74ab5e68ac3e257da3f9c0ace1a92adee21b4bde3cc3314b76dc47ad85e7",
+      "note": "Couloir intérieur en perspective avec deux portes latérales ; vignette limitée par des touches de pinceau, support."
+    },
+    {
+      "id": "pack-e6d00f41",
+      "reviewer": "Codex",
+      "sourceSha256": "64a39fa7ebc222421a4676824f15095d653e43ea22ff7f90432df2cbdb63879f",
+      "note": "Escalier mécanique entier, marches rainurées, garde-corps vitrés et mains courantes continues."
+    },
+    {
+      "id": "pack-8bf01668",
+      "reviewer": "Codex",
+      "sourceSha256": "070e294d46366ad3a61d335183687bc4ca30cd2d9bb144f7cb1eab06b16563c1",
+      "note": "Moto entière en trois-quarts, deux roues, rétroviseurs, phare et moteur visibles ; sans marque."
+    },
+    {
+      "id": "pack-27004cb5",
+      "reviewer": "Codex",
+      "sourceSha256": "5d93ada5b124a31b5bc0f97fbfd58429ab8f3a01411becce547fc972b7cadca3",
+      "note": "Puits en pierre entier avec toit, treuil, corde et seau suspendu ; forme claire."
+    },
+    {
+      "id": "pack-ca45a23f",
+      "reviewer": "Codex",
+      "sourceSha256": "d6c4de1db7e43bc2487bb12b15809bffe7f696e1aca099e8a99de44bd09f8634",
+      "note": "Petite maison coréenne entière dont le toit en tuiles est dominant ; support pour désigner la toiture sans confondre avec la maison."
+    },
+    {
+      "id": "pack-8da04e83",
+      "reviewer": "Codex",
+      "sourceSha256": "939a1d270e72177bfd542f1d5d06542a2082d030e4445947c03474b08a9702d2",
+      "note": "Entrée de tunnel maçonnée dans la roche, route et ligne centrale visibles ; vignette entière."
+    },
+    {
+      "id": "pack-95d4cb94",
+      "reviewer": "Codex",
+      "sourceSha256": "a6b016fe975155e77a567ada4741480289f82d4e387b3a28a65e2b3f876e9412",
+      "note": "Chaudière murale entière avec sortie d'évacuation coudée, commandes vierges et deux raccords inférieurs ; support."
+    },
+    {
+      "id": "pack-51c6ffc3",
+      "reviewer": "Codex",
+      "sourceSha256": "8176f82c1a8a6b240f83971726fd3072d5750f4b0ee8deb3252cc9411d7fb166",
+      "note": "Grande roue et boucle de montagnes russes dans une vignette complète, sans enseigne ; support pour le parc d'attractions."
+    },
+    {
+      "id": "pack-e6568a53",
+      "reviewer": "Codex",
+      "sourceSha256": "4a4b4e5cb374edefcda2d2398a3bb753898b73735a9409c86b721380dcc58c8f",
+      "note": "Nouvelle tentative : cabine entière, suspension et poulies, câble horizontal qui s'efface aux deux extrémités dans le cadre ; marges noires validées."
+    },
+    {
+      "id": "pack-5cd4bd52",
+      "reviewer": "Codex",
+      "sourceSha256": "83ddefeb7f6da2ba256b90a8f86b688cc35b755912ec5cb6abe1f978c6d335ce",
+      "note": "Trois gerbes de feu d'artifice aux arcs et étincelles distincts, toutes contenues sur fond noir."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-354a9b58",
+      "kr": "다림질",
+      "sourceSha256": "be9b1158912dbd9e6902c31bf43dcdc07e55beb29001efe0f9cd72db98788dbd",
+      "reason": "Les bras et le haut de la personne sortent du cadre au bord supérieur. Reprise avec une personne entièrement visible et des marges noires."
+    },
+    {
+      "id": "pack-d0974335",
+      "sourceSha256": "db5456780b6885bea34ded58a1bcccdbe634e1be00bfc8beb2029fada4e72a71",
+      "reason": "La vapeur touche le bord supérieur. Reprise avec une petite volute et une marge noire au-dessus."
+    },
+    {
+      "id": "pack-e6568a53",
+      "sourceSha256": "5fba422c9e08024f0aadb6547a9b789f9925a11be677a8307b8cd8984d50c458",
+      "reason": "Le câble oblique atteint le bord supérieur. Reprise avec un segment horizontal entièrement dans le cadre."
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-6e6b469d",
+      "sourceSha256": "f90bb57e7557cca4eedf796649c2bacbe1329616c855d8e2bef9f9573ddf45af",
+      "sha256": "7787fe60143a8d61774995e8c865069231d5e44eb88708c1a1ce711d10ac42d3",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-5f51b383",
+      "sourceSha256": "48b8f3dda8533c6aab1d44a3470efc2a20e2cfe0c29e117a18b9cc094ea12367",
+      "sha256": "5eb237665a958bf49a65fc912c3aaf4fe6641e14f1467e7791def40ddcceddda",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-31f61548",
+      "sourceSha256": "3d49c644a9df13b1ae6fdce6000d2d4be3a682a489bc131a7a6e4a1ebdefe08e",
+      "sha256": "a307c6724c993d71967a9655430b3bf7f204b5f3b58b53cfd33ab74bad9eab91",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-4ca92aaa",
+      "sourceSha256": "f26dec1011bee74a57b7b5e0b8f34091c367b12dfc7ce5ddb8a9be9939521dad",
+      "sha256": "cf77bdbf13c31ee2139cf067ff8ee3d21eb729549dfccc514cc2928481cb89a4",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-76838ad5",
+      "sourceSha256": "b92920d0a6a086f705ac90bfa7ebcc97039a4d4e18bcf61b5c3caaf2bec489fc",
+      "sha256": "20c1d0f1bb6eaeb2a7706a1494b5806fb754335d7df1460bc22fcd7fb8e3cc2b",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-9928a7bc",
+      "sourceSha256": "ded73e3455a0282778d96f0d53080336ea4c29e0f9e306b9b09e9ea94c92524b",
+      "sha256": "93c58cd7a71edce699d9b11aeb45c41fb97398e1e9b8172aa194fcd255712be0",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-ba7e7e02",
+      "sourceSha256": "0d3956d1d16d78ee1458b36ae9d130a96b41b9e0200fc2c9b75d2569ab977450",
+      "sha256": "6902360d20ee86ca3e519a2903a9e6f19b20f4d978a15bf8274a5ed26b9e9588",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-2c96b0a0",
+      "sourceSha256": "4a29505b2bcf58b889db47eacbc43ed26f65239296a30ca61b2aa17f847dbaa5",
+      "sha256": "a8216e2781f52d847e19bc56315850639b4979655db4d8ec8ef85d97529efa1f",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-749d1d3f",
+      "sourceSha256": "f407ac51978bcb2b222d501c8594d96a109e990e7316db2ea0a647d185f39e5e",
+      "sha256": "dd2756714fc80dbca6241c2845acb8d75fda5b8240174937923aefd83188f92b",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1780695436366",
+      "sourceSha256": "cb48293c883fd254cc90dd6160c64ec1960beee92a8a537d27f68a753c3b28ba",
+      "sha256": "4ee0732c8c680dd7db5e0bc5dc69ad689f1add1f2854caed5207b49e5d250f83",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-076925c5",
+      "sourceSha256": "a0f4a25a9b6db5bd4310d92913a3232ebfc3d4a6855fd1a53e836028f6f72045",
+      "sha256": "6036e1007d7ddc992009b6cf94509350b438f452ec4fae6a4d2f9bd028ea1470",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1764058248068",
+      "sourceSha256": "f62da5af31f6b08a9715ecaa003102f35396bc09fea6be5822e5f17cb289501e",
+      "sha256": "9d648bcef709c743825f618f5f20ce585bc010c42c3f74576a7198702f9317cc",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1779706066081",
+      "sourceSha256": "5492fb302a2d98e0c657e018a8ded82c5292a8f966f9f5cbc6f757d43ce29bd2",
+      "sha256": "8512d13891e4ae6c2cb484527ed54848404d48c8956b1a59f6f1a811f38ee9a0",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1779706066082",
+      "sourceSha256": "084a4755df5f9be46b7a5810b7f117b9764f41e753cb84b865ad49a118bf1144",
+      "sha256": "3951265238893d3857a0ce42491cab937a1ac0617238f68a7a9e7d7c1dbfde65",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-963287c9",
+      "sourceSha256": "93d35e640ce3eff371870b633ba6b3d3eac0e9d52ed2969530123b730021e2e5",
+      "sha256": "9d17d4d398f6cd67bd0a4018c8a8432c065a9245f2f709021f36a3a2d49ba30e",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-90ff47e3",
+      "sourceSha256": "1e103d05fc01f3c733161141cc7197c0f14bb3d9bff815bb292b7531c156c3dd",
+      "sha256": "ec6d0e9bb2b25f67e4d4ccf55fc9d859c2e4049f520277da1a3c364bebf0d4d5",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-a5e5218b",
+      "sourceSha256": "76c69c11822711178102bf4f9d039b876b36eecaedb6168ad7ca593cc9fb9e89",
+      "sha256": "acfeb8624da68c725d521e057162efe3a56cca57ca278ac59d630a291dd33d8e",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-996a8f86",
+      "sourceSha256": "784861afa8ceeff892c7daf41a8495292709e2e82d94c1af2fd8c697a53ccabc",
+      "sha256": "77ee7ec7adde0499e934e84f31344937f3ae0780f9d7342c0e0b514c5d9a5100",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-5fbbde12",
+      "sourceSha256": "4f8af34c5506aabd896d341bd218b635a56dff7f3a248c87cbb7f317e52a5b3c",
+      "sha256": "253ff3bcbed7733a9a9d26877b340f12cab2a81f7bf8190115ca16435b507d58",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-a276ca30",
+      "sourceSha256": "cb06120f1c81defaaaedc6617b5a0d6305e8938c410da86037610c89f00b5e0d",
+      "sha256": "57f54ce0151a0134fdde87e56d47725168d8c56c64d0596267017d57f44d970a",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-a9287da1",
+      "sourceSha256": "70205db21b4bcb6fecb7aab52253267ec87bbe76a9afa52fcb4585da09247c3b",
+      "sha256": "c29a7cdac03208c54a406cf401a7453ef9fe19efdb77ca5b8e4d72d9e96ef8fb",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-3d5f8b17",
+      "sourceSha256": "a4767addffc124c70f518b6012ad73af6a1a1002658b6f22e06d176d4e15a723",
+      "sha256": "86515e6736292e4843c6e3feb7e0c77a4be4be01a79fcec8a4f35ccc81f0b638",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-83f2c49c",
+      "sourceSha256": "b88720955f234738d597ea8659ddfa7604e776a67863960402f998e32135cf73",
+      "sha256": "5fd4d62bc19d7aac0fa1e3902371583e350a6481529bb272fe7dde143bbf732e",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1779706066039",
+      "sourceSha256": "ac07a1e994b3ed1a36a21bc28755acf7b0bb5f7156bd42188410d1a89984ea60",
+      "sha256": "3053c7dadbe3bd3ecc2e3f6e7e2bd4df5b01127d61f0842fb9dd0f4b1147348b",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-e03418c5",
+      "sourceSha256": "41702202011bb0ec68d297813fe5f7d50eae609d27e2afb5bf108495e93c10ca",
+      "sha256": "b2400ad702b1389019b8d5600757c7a397839f4ecafebef95e5493783f077105",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-263e812e",
+      "sourceSha256": "c527933db3d2c4bfbfe4a29649754bf1025fad86930aba5f9d2a3ad7aa15fb93",
+      "sha256": "7ce599b064ef2dcb21ccb3828dd0f11af677d940ca924ffaa8cf3bdd90722fe2",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-e32397b6",
+      "sourceSha256": "de6e4323e07fc18dcd3e3016ad9eb6479d356be8889e97a2c8d6143a1c9b1c3a",
+      "sha256": "59881841f61204880f6b143442b901da51fdc967471e760492535f6f1778ee05",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-5047cff2",
+      "sourceSha256": "4c9a5532b73be921db1c917e74dc3dae19236b3c1a33617fdf4f682066c5aef0",
+      "sha256": "e46ee964abb0c9cf76fa8d3182d304e195e6bbc4b19495cae4934230f6f21266",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-d3487038",
+      "sourceSha256": "577977d982fdfc652a627ac32a1624aa87142d844d420a6b5f3e9f95498da9a6",
+      "sha256": "87e4ab9a88b690db3ba8ce262a00065cef7edc5e057c7560541d7cb349b8ffb2",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-d26fedf5",
+      "sourceSha256": "1c5ba143c11a81dbef60b9f87da94c11be42ad8bede11395c6aeefe1260c12e6",
+      "sha256": "6ab93dd6536c699404b6b74d9b4986863d45ad144da553a8c1d2ff3995ff5411",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-354a9b58",
+      "sourceSha256": "74a59b00fa350d72ef20d9151131290c5a50049cc823dacaaece800c52c3c848",
+      "sha256": "a7c4493cca6599d0740e0058da6d6df555a3fa6e3af02bf29c67f2b06f954c3d",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1781435310393",
+      "sourceSha256": "4436a18f93cf21b0b047ea125f3415399091b602d04fb018e3e691f4d81a750b",
+      "sha256": "1e3029ec960c6639f1045c22167fb2d5fefe75084c29a873f583055072ccb8af",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1780695436434",
+      "sourceSha256": "fa2a8fa72277e32d0af9bd85939f4abb69251ca5c5811b9346012b28554a8a42",
+      "sha256": "3e5b7e33c89a29b9ae4424b074206a41305a3835eba2916ecc4b8413199b2ce9",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1780695436444",
+      "sourceSha256": "3b0bda7a21800630212a16a25024aedf6d615febc5f6481515036a7b2baed2cd",
+      "sha256": "47dc2f5e8c54578580cafb4981dc7a49dc5c30d6d9769e408898981ffe02734a",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1780695436445",
+      "sourceSha256": "fe5d45d25414349b98cfd1b4b862c7a344c0f72915fa5065fcf0f4718d018fa3",
+      "sha256": "8d4dddb4def2697af5a72c27acb17925ce6cc64c87038cfadddf5b14f06a8fd4",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1780695436447",
+      "sourceSha256": "0b92291b07f0e60702485c67ba2d654d2b4201d366cf4c3bd431d6405f65cc75",
+      "sha256": "0938f9e28050ad5720181c5b95aa475aa48eff27fbd4e4fd6c82fb75e7cb6376",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1780695436450",
+      "sourceSha256": "cd05ca25a4a69c4cd36a8570faa75154230a21425956234c728ffb705e41e7ef",
+      "sha256": "70bf58b8c0740cc19e358a1ed1e336dde6ddd09811f9534124fa236afeb77a8a",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1779706066070",
+      "sourceSha256": "3e629698bedc3ec01013e90889689388706ae73e1c71ef290de5720d61b0d9dc",
+      "sha256": "bdf93e158438fef04f84b49fa8f042c48ca5b7c5e19c2f6c1230881743a6a6a8",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1779706066066",
+      "sourceSha256": "010a88e93231b14840c0bfb51db926bf7febe31a993a8f3b47c1b78aa3a3829e",
+      "sha256": "2b057a95685d00e0f819439db4c1cdf9d2827c66ca4bdbf7b5320f96a60274a9",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-4c537d13",
+      "sourceSha256": "2b51c1b9233a46139cdad662e6674db84bb9e39e0e96b98fe694eee39464f28c",
+      "sha256": "eaff8720429f74131b6b8836f9f01da78db5c4223dfa156979ad0ddd61e005f8",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-b8f71205",
+      "sourceSha256": "94db383cfefe779a60eb422c8b7e1f6f8883615314b68ab00567ada8e30c486b",
+      "sha256": "f93832e8ea17e4346e5fe1f9683b244ce7fbfefb116f6984cc62307c3b38df96",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-136539bc",
+      "sourceSha256": "b2cf8255c758103adf443aa0d642687b416690cb52b004d43a06626986719112",
+      "sha256": "0c047e7fc623f00ce4ee417c378e6530fe5a9e570bd19a8fc0a3625fdaf9b8ed",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-7c575a20",
+      "sourceSha256": "af0c7ebabb2a091fed90a3a38884cefd5d920f633f375cb4134734316315fb17",
+      "sha256": "7aba44b99f9eedc8208d732771951e1a1ca7f94bb638696031429270bffc9f4c",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-8f6841cb",
+      "sourceSha256": "1b4d1796db292faceb1e010fcafeff00c59ff001c03eae7e4db8528c6d7bf78f",
+      "sha256": "96687b5d26de53c6a007fc6181d2d10f83c3fb19b1321071d1826ad7efe8f801",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-efc0dcfd",
+      "sourceSha256": "f4c51b15d61484ba708096edd73817c66be9e19b7b4306fb836cd4b33caf1dec",
+      "sha256": "f5905f1a25afcae183b595c7043a092f5815fd1f35debf103eb4cbeca75674b8",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-d9e754e5",
+      "sourceSha256": "f54d14d22c31a2334fedfafa63380bc97b1ae51c44acdcc3687c3b338016ef50",
+      "sha256": "6ded49cf15a8a699366a2572b7ce46db00c892c448941b73ffe0c7bdc52dcb86",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-37fa23e1",
+      "sourceSha256": "d0d91a6b2260d56885f948211b56ec3b0e792dcd9f5a6398f04748d3856190ad",
+      "sha256": "b4ef952eaf573afaa1d99469c24e98cfdecdde8a347867aa429a7993247f4174",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-7d680dc6",
+      "sourceSha256": "dbd7aa22449ee89467cd8494617ca69ed5c2380ac3a723103ead0fc006619fcc",
+      "sha256": "09f7e962f741acc7b444b46ce845e2d44a8244325fe07faab894dac49234ca0f",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-f91c0f63",
+      "sourceSha256": "9011b65933a927ee62612bd86e45dfae5362af8bb300d82c377fe7efc9ab3a8d",
+      "sha256": "a3c943b601e47b4a7ad9632698240ef0738f7e5b7cce8ddb03e8fa8eea756e5c",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-a9d1a15b",
+      "sourceSha256": "229bbc8d7b40598a53a563153062dc9af1341a7acbd2966e13f4aa10f6056e95",
+      "sha256": "91052cd83b81b423c714afa308a5954ec98412121e4126bcba5ca542631fea6b",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-05796792",
+      "sourceSha256": "4cdc0652765d826a01da6d890921dae44eb07fd189415b068414500915fc8ff5",
+      "sha256": "a58590669d8275e0ebd05fda884abfd12a12c8113311d1f6cdb39b34ce71206e",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-5d626bc3",
+      "sourceSha256": "3e44de726de7ac634794080a1ac661153f35e863fa6ecc952e40bd1434b30068",
+      "sha256": "eebc16b41c5a1af6d8b766b85171d4a07ad52688df1bd1d987c8a82fc7d04e39",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-6b64f0ad",
+      "sourceSha256": "a9977ea56f70bc0752881b1d9d7d95295c1e081536308df9b764abed852ee6a2",
+      "sha256": "c9e4be04bb039e9637282da51ab04b1789fd41779bd6fbdafcc6e229d064cea0",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-0f686b58",
+      "sourceSha256": "0849f1097cb33fa7190f9e3fb235fa6b368d08f2023e9d9dfad127034b504b10",
+      "sha256": "9060e6e3c691d20095f9f6fb2e446aaa0b708a3d11857eb4e6666a519741e44d",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-76484ebd",
+      "sourceSha256": "ea9d9b72c4f644c72d419ae18603f71fc756794fa05fef22a0ce44d51497b154",
+      "sha256": "c0723f9a6b06acf7986920573b0bd5681e357f4ec92e39f0e25f49c6392c10b7",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-d02d9f76",
+      "sourceSha256": "219d528383ef95a3cbcf780413c3c4e73fb509508e3129ef73019b7e20d88f0a",
+      "sha256": "20a6f7622db40f76a58a1acfbcd3a587e1a602a28920a3b1d50b38a1f147d0ef",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-2a3ef86a",
+      "sourceSha256": "d48f1d1a4cd1aba18299e74b92277aadbd0b307d99d567b56cea43f24e272a89",
+      "sha256": "4d29cf520d0ee4bf90b6f00687d040842c3a4701664415b9c1c282f21554b3a6",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-ef01fab5",
+      "sourceSha256": "4ae0f6adc68fd46bfe109a43fd0d12a53d93e274225ac7cb56ce64b5c076d12e",
+      "sha256": "a642dc7dc0893d804eac97e7775902deb362ef793dcecd214ee45394380b62c0",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-e65ef4ca",
+      "sourceSha256": "ad013c89a51522a8105ced2633f860552c5af04c8df105a1c2884bab8408420f",
+      "sha256": "1876c4bf9eb12e7e3d161d7b2628c8e8cafba6c6e740b062e3deb88871cafcf9",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-95b83df7",
+      "sourceSha256": "35b1b982573c2be64a21c594cf7459a5f89b6a14c13eb9857b75b3e6fbac0ea7",
+      "sha256": "ac4ff61cc82a59726ee502eac4addfc2519a32122c9c8935ebe260a85b090418",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-9b75e665",
+      "sourceSha256": "f5af530e468501322ffaead6989a8cfbf4f721d701fee31d9d870138b851fada",
+      "sha256": "0b6c39b9830f0c3c34c5b9b994837ad7775a87533eca2a7f9dc54a8eec6c8b04",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-a9c420a6",
+      "sourceSha256": "452ec009bccb415e72d976e7ec2cb5314d2d58d57b9dd966c85b2bab11f60a8c",
+      "sha256": "e56328f0f6851d61cd4e58b60ee0eaf909864ed227fdc78d375abe2abbe59a73",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-e5263143",
+      "sourceSha256": "bedf7edeab368a403c1a203a7ec66797f541acd1d108c9882e358697b81ace02",
+      "sha256": "8f9d97abf130d369ca638ef66c2f0485d3e1467dced6794859521cfe81a15d8b",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-680d7fcd",
+      "sourceSha256": "1b8e5a5777e8b75c70edf9f2f0f8a7377998b4663cae2b73662540216fec6867",
+      "sha256": "381e7adac003beacb8ce7fb77b40a3949e04668ee8a7051048760906c345f8f4",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-1e306986",
+      "sourceSha256": "8106d332fd30a10f555e269131932f94359e60c36005ca4163c9e11492e393d3",
+      "sha256": "0308067a0c81289a0325204c16129602261d44fd223f6b51551302a11a205abe",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-872e638f",
+      "sourceSha256": "9b931b277b6398ab149a1f6dd142c83c87d994e243b416a378d06089979b3950",
+      "sha256": "59c43828f1edc78dedfd89fe78d5b47a8870fa67e278cfec79e59ca74648de12",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-fee57e1f",
+      "sourceSha256": "04b13c312284e82dbca8da8a70118a186ed29481face00f916c2b3f243104e3e",
+      "sha256": "7704f77b5211ac20770a2c24312e8e651235f7dd4a0873af68d2a538e6609a92",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-97a75004",
+      "sourceSha256": "192fbe2a84acde9adb6a26a8fb516e6bad9fa2648c199258bde8ea4c4f69721a",
+      "sha256": "8072a187cc28bf45f561319028e8ee6ebcce40329e7a7b8c90b93ec7750e140c",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-291b292a",
+      "sourceSha256": "c2a1be9df20010c8d06bd31d03959c57e187081af41fa54c3392283d3b39d816",
+      "sha256": "49ff12f7f1a99acc793c4518c59f9aaa22b134ac41220b135098096edc59224b",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-cfc2df5c",
+      "sourceSha256": "1dd6bdb6e7384405d32cf5ce3441e0f3114e3f315f70688cd6a4af5496242716",
+      "sha256": "23920ca4e60d86bb95daff613468a72d3d25430a35245ae1ea796080c8cf58d7",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-d96fc212",
+      "sourceSha256": "5aa671a8c3977e9b7b125a14ecc1d48e4ad650ec55fb630c81fc5fd73c816819",
+      "sha256": "864b8a06528dd589720dcd76a40eff23efcd484caa3be667b3ed00ce7cb523ab",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-d508fd2f",
+      "sourceSha256": "d2f799d178241ebe21a22169293cd94efee49f10f0c120ad812a2dc77c81e541",
+      "sha256": "129dfdd4d6f15ba39b37479fb847a1f2a502df3275af52706cdebf8b7e1e59d2",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-54d7b238",
+      "sourceSha256": "85619ca913668de07b267806f50118a4e855a4256bcbc30f9e263f67675d44f9",
+      "sha256": "81a11b3279c64a06977b224e5f1fd90420cdbb5cea1dd422902d4ff3bb4eb05a",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-5c72e282",
+      "sourceSha256": "e73dd80ec52aaa3bfb88c26cf2ff317515dbd479f48a2706c9d941b4dd96e612",
+      "sha256": "0ae496fdb623fbaf6f08b987ca10eade5d9bf054931bc9e598913695654ecdcf",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-1353f499",
+      "sourceSha256": "11cd019939d1d85638986add37fd672e615db62c3dd12ba2764dab4d67acf4ed",
+      "sha256": "347e6d0cbf2f3fa98eda41dd4c5fede116ba6785102acb6ccb66ddcf48220085",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1781435310388",
+      "sourceSha256": "111feb02dbcbf0133bbddf856bf974a209339d2e514a17dd36cf0f6cc9aaa51b",
+      "sha256": "0f88278398a23eb17e17e1df76c539c6d0fcdebf0362c398ad2429a205011a22",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-806c4c7d",
+      "sourceSha256": "54a544009d1baab3da4ef71ff551f9e81e667d47728a4194e1ec51f8eb580ae0",
+      "sha256": "33d6e4c92d499050dfe654d1f77393b9e673d07c1433aa949550711aa4a2a77a",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-0a363fb8",
+      "sourceSha256": "41093d42293cdbda7f6249dd39dff348a4c7415d650f9812565345eb262a8a97",
+      "sha256": "e1ff0b038655fc250172f16915732d98ca6a9c24a28c6994d96b8fc0607e13a3",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-202f4110",
+      "sourceSha256": "ea93c5491ef9095b4ebfcd1eb7cdcbb5054fe369d47148dea51fa18793059e6e",
+      "sha256": "245183993e9a0d93562e50ff05d9bca57c46da16f88ed103d4c696a5bd383938",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-c76bfa9a",
+      "sourceSha256": "25a31ef03f0ad7f90dc9f1ac0e6906419a14882682e5193df8a3d1cc5deddfc1",
+      "sha256": "24c95facd4ffc48a79fcaecd48ec3f37dc26389d197830d2aa471dea16cadfe0",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-3af626f5",
+      "sourceSha256": "8dc9d962a9c3b1b4b2789c84b51e4021b3778fc73b5f4af07a529035b341ab48",
+      "sha256": "b3d133bd1c24b7da818eec14512a21e0fd2e6078e9419386a6d9a3f180034273",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-8a91f7f3",
+      "sourceSha256": "5ede9a309af05cbe8235e8294af21083a6cc269c439846a047be2f44843f42d5",
+      "sha256": "45a144c6d4e62bf251a279a35c91eba6f5d2178b74d33c954bb2b8502136dfe9",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-fce33eef",
+      "sourceSha256": "5cb9beffa60d081d3849ccab7f150053e29efce2c6b2aac292a87cbdfb2dab20",
+      "sha256": "3aea4d4e15847681195647ad8e8e5bb9b9f2bdf5544bf1d3cf43bbec7ba0bb64",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-d045e734",
+      "sourceSha256": "626e8373548dda0aaa1dbfef55e7085404da8d00ee770796b869fdd7f6bcc584",
+      "sha256": "1d0a8c94bcba9a539577ea0c176348dbe88c7325c92fd1a51379cad2f9160d6d",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-632379d4",
+      "sourceSha256": "bd4c1e3e084d5bbc3d8c84e8b4a85d5f8784a3c975d9b2ce74e91d288fec2382",
+      "sha256": "407dd03a5fd3e6b31e515d6bb903bde63c9ee41be41ebf6b19fec9135100c3f6",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-a88f1431",
+      "sourceSha256": "05e1c4080e70359068b159340f0cd4cef804625e1821524a3e9c5dc93e1e0ee2",
+      "sha256": "ca79e66cb28f90a360f5e89678e72d31c5d7366144daf00f751209530c67922a",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-bee56bac",
+      "sourceSha256": "e50f6536d00cf11018efd890c7f882a6ea9dda48e7ded6f8a3656bb728ef2fb4",
+      "sha256": "a84a79386ae8d3cff6846cac3e49272e744cafc1998eba4532f48f2bfd5bbab8",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-205c0b2b",
+      "sourceSha256": "556a1c008043eb5cefc1555815d2765ea2a558fab0ad08743185d9da03046167",
+      "sha256": "6203bbb24f1c19a4ed2058f6a7557bcdaf103ee68fa7537a913bca9d855a1738",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-67948dc7",
+      "sourceSha256": "22d72857bc237e9abd6671ac1fd65fd7bb1e7d09dd736a34aab45fc23122443a",
+      "sha256": "5d9c4917e92b263cd93443ca4f2f86c2710801f1ff666322fb9772774996f57d",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-44b021f3",
+      "sourceSha256": "23d28acf904d3290dfc2e0a3eae0c7149ed6aaf1ac326dfea02c432536c53b19",
+      "sha256": "2646220a9a1c52291a8e5c37fce429cec621c0d57162b03743013ec0717d9450",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-a36ea94d",
+      "sourceSha256": "9b4531c6fa18fe7b07524385a26a20a6218138f4f1734ca2f481666d96aa2b2c",
+      "sha256": "614c6a4bbba5cb68c4f136b6c4635fa5a02cf7cf525b4235e5f84d94e1ec09dd",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-ec8af405",
+      "sourceSha256": "32e488f2965a49631bb4d1c46a746dfd48407817c35e2f68eeb99e0e9b61ebc4",
+      "sha256": "7899216407553352e5cf66a760ca14f731cd7e0362575b338136627c77297492",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-c8b85696",
+      "sourceSha256": "1940c60bda01e30c7b32bb5b10b7fefd651fbe3b2cc40cd3bc1bb4e24c68ce31",
+      "sha256": "3053b71df842007e79eca1ac4792e93982e2a2a7d8c752d0840793d1e46377bb",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-d4eb0137",
+      "sourceSha256": "69d4e6ec310618a00da2d9f1b65d63ca1fe025a52d5492de5a0af1ca5544f7c5",
+      "sha256": "34425f38ace43b14c57840a1dc6483ddf4c436a91345e630f3821eb536cc0916",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-436ebdd0",
+      "sourceSha256": "86f44b90e5ba04d58574e422373f7e0cf21bac956e64a1f780f6976d668d47c3",
+      "sha256": "7737f5f06042b87e0610338fa9d9dfc6d241467c9d623a3ee64978e18dc4ac0e",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-5c0e4e2d",
+      "sourceSha256": "cae33bc196307b9b70185836528c170cb3ccc4c6a303475709d7e849fce2a4b5",
+      "sha256": "188a2f1cacfd423571446134f08e48597948451bbba4475de019ec45837c166b",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-f1d4069c",
+      "sourceSha256": "1c4da38f0d94a4c4eb26e083d2c82a73e3513c4862abe1f03b66627ee83f338d",
+      "sha256": "9ff6e11850ca5207fb21c393c4ad9b8fd2d077d8641e09a4d8f5e714a0e866dd",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-fcf9e282",
+      "sourceSha256": "f18ac4a3c0ff0ed0f877cb870a662889e1de092f4d8e1bb4c6bcb7940e47a602",
+      "sha256": "810ff329039e1ee128007c0af46fc10380bc3c37541f88d67067eacc95f8c1cf",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-f25ceba4",
+      "sourceSha256": "db2c521a472ccc6804f1d795312a480f4a293eca07929e92655d80b6345f6b53",
+      "sha256": "93ac0788e4e0c39fc2c410ee3cdbddea4e17bccc0a4a0f135e9736fc927c2637",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-d0974335",
+      "sourceSha256": "ac327a393f0c16a50c2b2cfae9c756b676b846d23f3773dbd15006465196f909",
+      "sha256": "6a1154ae113326360a9eb2defaf0ee0e540c137f3c297174c8917cd4777b23c5",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-54b08863",
+      "sourceSha256": "e7c68d795a438389e4cde44bc75fcd610b0bc661009cd72eda25f41f3e5e5c9e",
+      "sha256": "ab4cd85317395dbdb9fa3ca8207d9b398f7b47bb390a08504bc933894fc48050",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-020ac8e1",
+      "sourceSha256": "ff0ee27295091e3559fb25afea81ece4ea1f92fcff6f41654f26b107e0895fb2",
+      "sha256": "68e2ed24ed3662f1ea46787cf79fc9612caf5279f42a4cc6b156e5ab4999edca",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-7e6d0f02",
+      "sourceSha256": "cf07fee4db81a58163e0ad13ea63604eebee5165a624f76ff33dd277d77f7656",
+      "sha256": "fca32a3c22c358b664fb5e56c55ca35c250d0317097225bae5131e62ed6cf4fc",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-08deac75",
+      "sourceSha256": "44529c2e80e9f853990fb29b2011e76aeff8a87a7a35387929d20ef88ddf21a9",
+      "sha256": "da706f01926e77f06ff6ac6586ce3d01a0b99276446b12179eb01e7c0ea48592",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-f3543039",
+      "sourceSha256": "c00ee2a585673e05a9632f20f7f9503efa17220a06d8f38b52639706b5b6a26c",
+      "sha256": "c05c148b38b299f3d0f47355eb8c80de8c66ce5424db95bd0fd01eb9303c0467",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-c5d74499",
+      "sourceSha256": "925c65a6d5d2c1b7127e4d690d8a1da91b2e4790e64de45433da68ae84c1f288",
+      "sha256": "d6540bef126742c4132a0535cfd665f37fd2d71d782b5c26c1767386224785a7",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-be434a5d",
+      "sourceSha256": "43cdaedbecd35bda1e537a15e3db2e8bc5b0d681659db264d5568a321778350c",
+      "sha256": "55370e2b25b3600e0d1d48bf49710271822b8a680af9b4088f1cdd31cb723564",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-19afecee",
+      "sourceSha256": "8bcd9a5135f68007567ba299510da80b342fe821dedb61fde4b677185c80555a",
+      "sha256": "cfdc29acdd9725b87d416c971c1dbd2c811e6fa55278421608edbf5fee45f87b",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-7ad40d7f",
+      "sourceSha256": "d0099e87bfa10af1f439d2b46edc842efce2729a74aed7686b646d7111c817f1",
+      "sha256": "bd393aab587468fab79892b5d07c70942d28fbdd754c1ebbb7b84ca042f2fa68",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-5eb8d84c",
+      "sourceSha256": "34f49b1d97aa9dd63304eb04c0e8657ca6b1f1bc0a7ebde06bbc74da1b548203",
+      "sha256": "748be341be0f4a6b45daececc46b992002c9fca4e3148d894d88b2627df3d22a",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-e270ea5b",
+      "sourceSha256": "5599c8274381d2040d92b747e07ff8e59b5cdb87fbf1d9941642f0df9c62adb7",
+      "sha256": "5464636a6ee6c1a28681e259c737d1dbe32476fd9253aadb419bc47b43ea0bdc",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-979e6093",
+      "sourceSha256": "461222fb17e150c0a4090b584e8231aa4c850b841b5f6ceb5b28c944f6e22c86",
+      "sha256": "0ee20a083c7472fb4e7f379f50499baeccefede4b6fbf22572719f26a2e733b3",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-12e46dd8",
+      "sourceSha256": "0f864f83dca1a3fa18e0902ae4b38c9caf502bb0098a3e68641b5c1916447cb3",
+      "sha256": "a3250656a6d4525f19adef1ea13fb64a319e030fa31906098314b111e708c9df",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-8c2b74fb",
+      "sourceSha256": "f7eaa79df3085c0469c39d59d0c7aa1dd3cf1df3d03549af525e2644a6033bdf",
+      "sha256": "f5bc28784e60c2b59a66716e1fd8d12f75df3e039465824af1be11ae82d0dd66",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-4f5a3bfd",
+      "sourceSha256": "310f076962cc865654d9e20c450259895f56d2587dd455f424744281c39664a9",
+      "sha256": "0eb48325cf3aacf5a82c00e3b13dee8ea69deecbba80bf0c58460f3a601e189f",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-34572e7a",
+      "sourceSha256": "aa9bb2b3569d5d5e43fade566551869179dc00e4943e197c2ec02f0d1ffce24e",
+      "sha256": "dcbb5149245b45d0327d8f2f5a93f2e45d01f3d1c4c03a0d9852dcb13d36aa4c",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-5c883b13",
+      "sourceSha256": "a45567d315f0be4cb53705bbd8e984bea2c2fc9cef5e2e6a4d999317484d43ba",
+      "sha256": "c3ac6ce82067e38fb950b4197e6cd8e1a54f408806557e7d39dcceb2145d939d",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-a66d6903",
+      "sourceSha256": "d3345b70310d37f9a097b5cf29ae24215efeb0b4c0512df66ca6994cd6ec7cff",
+      "sha256": "5c8d5f2b56b2a2717deecf897665ca36a2a56c20384531eaa104f6ff1f712162",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-3830df6d",
+      "sourceSha256": "95c9b1c8c4dea2f426ce86707c431f48478404d461d9219149664dbfe213a6e7",
+      "sha256": "b0f0f14c3830879410cf39fb417dfa4f08051a5666fa9fa86cc09c2e7c3a1feb",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-d0ad8eb7",
+      "sourceSha256": "1fafdd7b277d6d5bb4ae63b6c90b63f212f318b1c348772188d342f5f7cea2aa",
+      "sha256": "9de9e3806f8eb9fa09c813013542345b850b9e900f10834b665b6c3ae0b24004",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-35123c11",
+      "sourceSha256": "1edcf02c0911424f3f7925d0cc3245531e817b9acb6a66b86b0ac6fb4a2dd95b",
+      "sha256": "260fa8738dd35558d0837122dffe5326d5caf0c39f4d5f320049d231d2203deb",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-eca9cda9",
+      "sourceSha256": "9d71259d5b73f1863ece85a09a6edd214ca7f1bd3390352853d31e3b1ff417ee",
+      "sha256": "119a6dd52af5e07b4b96293c53a8205a22bd53ecc7a0ca9dd3b760d925aa78d4",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-e2371879",
+      "sourceSha256": "15fc6202e189ae36a91ff8b6d1f13527f218d32271df0b25649eec5b19de24bb",
+      "sha256": "c4c76b3c5a3fe6d9716cd877e9da287051614a916ff0854642dd800fbba39489",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-a6d8573d",
+      "sourceSha256": "b0f138b2e1953e30adc6b72f144fb1fee91f67c5f87293fd9ca45612f2249dea",
+      "sha256": "13695e88ecea2334fa7c3e9dbb55ae6a9db6e1acd03e990e5800c704c677a26c",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-a71ba3c2",
+      "sourceSha256": "486f9da62bd64bf2496074fd8042dddbe398d08312c5c85bd70651162b4133d3",
+      "sha256": "ef214880b8fff3dead589b1eb1e9827951eb51b32b0a6c74e11c7d910950c16e",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-df256025",
+      "sourceSha256": "371adf2dc45dfc38185c0df26410be4975a1047eb849cb72edd450e9d6e0ae52",
+      "sha256": "8e5146da529f42f34e4b8c429d3e4205722da2a4c4d78bd8fc4edc9f5e1ac1a0",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-cf77a1a6",
+      "sourceSha256": "0405b1137acd8243fb1c5edefcd58a302c9c709e476c29d057b7f38391892539",
+      "sha256": "64370163954249a8db84cc11be5794d57ac720636a9ac8f5aa81c76151ef6605",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-0b6ce11c",
+      "sourceSha256": "966f49580a32b57a498e468d1d07c0b2b5a0d7c99d3a2fb7ee5477bf7d4ffb3e",
+      "sha256": "e344457be3fa272698c67d17d39db3e1e8f277eed42c2b6eea69b9a86c24d81b",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-ce552b4f",
+      "sourceSha256": "37d938f5c0bb25db2d5280178ae233585200e6f16e8490265b3a0231aa4c324c",
+      "sha256": "8a8be504dee2d247cf3a7ebe17c48807e88a4e9fe22ae9a43d7e064bc98f12bc",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-ffc41e64",
+      "sourceSha256": "09361a9c9025bb639a5088420f7550ff4d39aded98df1eecf92665c717231a09",
+      "sha256": "6ed0b556682a573acfac36ff161f8cc98c4d079b8c3a61b36b203855b92328bf",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-dc99eddc",
+      "sourceSha256": "d5a1e35c2760846fa63617a5e994952ce15e687e7c0757d926d0d159334aff70",
+      "sha256": "e83dc449e473a1ec1767aaca9ecfc8ccb193f10306d862c11f267eb41f0d7201",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-4adb4d27",
+      "sourceSha256": "9c72b24aba133ff9485c77190ec026bb49480c3022805a2d406e92d990205af4",
+      "sha256": "f5d182a874f32f8403559072cae2d3321c87891207107e6c1a5c6003f5b87007",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-2986e50c",
+      "sourceSha256": "edbdc042e87c2a3f08490238eb2f8090f671f9dd486929f31f18a8e02aee9325",
+      "sha256": "fe4835afc2630f97fc861d37b8d1a3afe18d3010df2aa73daec40667266bdae1",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-8d6a5b86",
+      "sourceSha256": "ddd26ae1a93a090503eafecf154583c6587e6eab1c802f7cf8023234bdf09e87",
+      "sha256": "bdf822e3620bb7806afb12b6f12cc328a25b60aaf137afd8c5d9ac5b6b08eafa",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-1978e73b",
+      "sourceSha256": "55b5e78243ec334b8fe1720d440a94b02e50c163d0b660375877b3929415f5c2",
+      "sha256": "eb894f07fa505866e309b1727349c20f7c79f6f9dc73e3dd90eafd268590b71c",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-d896ba2b",
+      "sourceSha256": "fd8f6699be1521721ebce8841b1d8bcea043385429116d4b3909bd5e7721c5c7",
+      "sha256": "c3aeb4fb1531e00ea0ce44ed604378bc9ab0d0af9a8b9969c752604365211893",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-0deea267",
+      "sourceSha256": "de0bd2e17288f6015bf158d26f08da8a58704e8caa8f80d88c8a5a45350b681f",
+      "sha256": "abb099e4990db3a7ddcc9597e36be2420cc7da1fbf76bb66ca28c813be465f1e",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-26d5b9fa",
+      "sourceSha256": "a62c16a7b8e55cf6cb2fa3c4515f83d705e3eb00a14de98afe3cd76ab94dbe3d",
+      "sha256": "b7e91d424f37b9897d4109d95f3f7469446b21ba5b4f1b3f98c54f985bd30d27",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-4ba1da9d",
+      "sourceSha256": "96bf99172abeb1dd8c8639d1d3f2559d19764c96b068dd9525b08d5733e99212",
+      "sha256": "5d11d702964fb9e0c25439cf4b3fe200e24d993c11a1bdeca99ef927944a4a1f",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-346ba7f2",
+      "sourceSha256": "d8bda91d65a141cb4631c3f513be9dbe2d92ea61924685b436ded2b5ed1d9626",
+      "sha256": "8a21c2ed53db6c894729e35aff82592e2f7a4464492e03750e11d23e91b67209",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-3d7d72b8",
+      "sourceSha256": "ffb967daf94170718824ac4e99e65b0c170ccab206db2a331bfe4c63b5e72a77",
+      "sha256": "3a81d14f603b06fb4ff3964cbea47c8aa007be855cff933636d4dfe2a41299c5",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-7f0de475",
+      "sourceSha256": "bae57de2bea5411c1cda50708a9c034227fef813658062e07031465d954aa599",
+      "sha256": "e80f417ddadb70d3703d75c1c2d2a2232366bb78beb787f49b8b489ee7751a12",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-8cba617a",
+      "sourceSha256": "51363eaee06cf0ecc12d866a277ba1e72b3ff7c3652f20000dd0fcb1030bd465",
+      "sha256": "d6eb7623cc080843a5d9ffb7030b3953aa874de43d73a79eb0890d9abe574a30",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-bd2aa956",
+      "sourceSha256": "18d7d7ca186f46d3cf43ea4dda7d7a9f5168a0857b0aa4a45b2fb374761e5a43",
+      "sha256": "bafb5542442f15081b9941b523ff044f27b18d36dab3fbe2f31e455f76c94a57",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-e079f715",
+      "sourceSha256": "c11be3d6b906669a85e39240139399d68db5940b4d4a2a6e0998160b5c214a9a",
+      "sha256": "e52ac1915070e1abc16390c45ea2502548ed7772cd66722f6d5a1f0534827e18",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-db4a15c7",
+      "sourceSha256": "4e470458fb297d8db33a8eaab00641d3ef4c9533132c180f6e787ff43da262a4",
+      "sha256": "74313517370904aa7a791984f673430c21146889e012cba050d355dcc1293df8",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-3bdba316",
+      "sourceSha256": "1ad1e82becb23644a8ad1f85054bea71503f30db819469ea81c81eff53ae0bb5",
+      "sha256": "7cf28fe0de96b21a6d2c4f24bf67fa8eaa6024ab95bc28a95573cac1fa839bb4",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-33a2500f",
+      "sourceSha256": "bf7e9e3c0ca4c0df06b68c3d18d224639c78a93163ca952e36e9e0a5cd1c1887",
+      "sha256": "44d1b25879772a859883bf34e0ef424f96ef093dda6191c8d9874761f172d999",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-76f8e9c3",
+      "sourceSha256": "383cefbfcf1367b8c4c25fafc8b4afab01d96b00b632d12c2af8321739550af7",
+      "sha256": "3345a9a796ec7533c630f3644b0673532d19aa64d7d9fd5e478da6c07d3e51dd",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-88288134",
+      "sourceSha256": "fb3a86f00bad2ecbeca730f29ebd9a448a021758d6b94b7bc3bc3742014bdb03",
+      "sha256": "56c11cc6e0d3344c7d7c858b7cdf616bda6df76fdd72f054c4f736af76bd055c",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-6c147ad6",
+      "sourceSha256": "53881ffb40396d903618d926e58fe47689aff9fa1b87135766de23cf49d71860",
+      "sha256": "cf1e26127a5415b1f4b3b0dbd116cc3216a68eda98360535e96e53cc54cebbe6",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-53bb0b5a",
+      "sourceSha256": "3849dd418f38e3e3e57c66d159b825eee9ae71759ec2773b7bae356913049d5b",
+      "sha256": "c0a15e047052d59860c4e51218cdca333a89264f5165ccc1e7e6fa4fc2730a05",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-4f997c98",
+      "sourceSha256": "c1ef56ac77e38a0a744b632126a00977866dfa28dc62c869f44008a7ca72330c",
+      "sha256": "fcf46b151bc599321bd1af5173aa61ca9e03448d5ed5509e84531e24dc35738a",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-68b8eecb",
+      "sourceSha256": "88f962c2ca1497cea22c18bbe229f99a9580b6c1421037c8fa5ef609dee97384",
+      "sha256": "dc0a5073569ad822a7c37f64d46a4b30d86afcdc5ce679bb95cddd804b68868d",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-3b1c086d",
+      "sourceSha256": "3f68b09c891bf06831aac923820d8dbc8c0e88f5919afb7480a63db3d1a96c89",
+      "sha256": "5d1ab9c5aa78daf7c69bd0614711c04b921fc5b3de8fb21110d4094b1f1d0ca3",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-cc22c352",
+      "sourceSha256": "0bc69f65d0f49e146f04999cad3ddbdd4ddfbdfd913ec9aed96fec284bd3461b",
+      "sha256": "e680c92555e11d552bb48d4c8dc000545b64e4769256878fd9d69ae4100dfe65",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-5101c310",
+      "sourceSha256": "e929abcd07021852fa4d86983fd73b25c637c6ede10faed69b13832ee882eb98",
+      "sha256": "fd0a8f11d72bd5457cfd4f50e8394c89eced01c40a9075eaadf21d994b54afcb",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-c350b884",
+      "sourceSha256": "62ab8a8eaf424a79689c6c83e2cf8a34fd5ce5a7b70b63b753c46313d48a58d1",
+      "sha256": "9d89bbfb617be50c8302b1c14b736ede3fe827492ff62c732941fc44637374f9",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-197947a3",
+      "sourceSha256": "1de0338c14fd47e43130d05c40ab40af1a8d1e5cef9d840597396e2b1db4ac5c",
+      "sha256": "1d317745ebb2b5c2e6e037949a0b8fd02359e6d3a9e38282da8b89dadebf0299",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-34b91446",
+      "sourceSha256": "2b4ec608150d7cca962fd54556e0d9b65f2a740ab597c2990610afa205f81ddf",
+      "sha256": "bbb676ea01b9248b3c495e66feb1581c5edd61ec97dff71b92be407ffad5ec27",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-f8c5ba99",
+      "sourceSha256": "d727cfe21f1b7c5045fb58cd8dd980c0d3ff509ff3252e2d388badf5869169c2",
+      "sha256": "65f75450072135c7eef5c13b97997504b6427fbdaad83d0e8f67057b6bf4335a",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-4d9c45b3",
+      "sourceSha256": "196eed4748a615f74a6a444081e9e8468bafbc64a72dfcaf870478f880b3ea96",
+      "sha256": "57b7ad91ddebbf993602b2ff72107f30ad881e5894a73e379bacaa4934dd65e4",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-f529b0a5",
+      "sourceSha256": "d238a9e837d2b6230ba7432977331e45e88595a811bc3b303495084e1b54997d",
+      "sha256": "02f0b1b7209b7cbbe7645f993e0bfdcd5bc86176d13470443f9d4f644c1639e2",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-f2962f29",
+      "sourceSha256": "4a936fd79de9295f26dde020495a2db5e20366779b5d56b6a20203b637a592cd",
+      "sha256": "9394f1e0fa9bff237c6363e76a54deadfeac9e200ed32e6a2a05a357c3283438",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-1d7e42ef",
+      "sourceSha256": "981b21cdc26a9630d30099f8519067a64094945a2262587f4ae12070873668f6",
+      "sha256": "fe1a723a648e552c96a494939919851b27ede45fc0241c9ae74ce7225cc90c3c",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-c9eb48bf",
+      "sourceSha256": "3dfa22d992483bafe042d59940afbbe41e4c07e5f3643a631864ed114a94284e",
+      "sha256": "f35d352deb01c34ed04f4ba233d244c2c8b6cb4e9223b81eae460a3c2a25032b",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-f90aa921",
+      "sourceSha256": "8473582a07728c721e0dd9500406399de6032465cc1f3f084943cf535a1db6be",
+      "sha256": "268d452f9c3619df784a67dac978fc943f4ab1b3ea9560e0bf56c3d0638b5ea3",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-1fed91b6",
+      "sourceSha256": "399760dd26defeba21d92d2679171dbc15e68ce53b3ddfab9a5b038fa5397b68",
+      "sha256": "91954bdd165d89a68db44c4c9031a1e73502d6231d6977c7c9445878dadef125",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-9705e8f9",
+      "sourceSha256": "69ac0b3b6fa1052593ec2aecb48dc2fd36e8a8acb3000f3d683bb6e7f6d95157",
+      "sha256": "f15db26b76b7acbff7ae3da1d5dafa06b831dfefc6508065958af091194686e7",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-1907c333",
+      "sourceSha256": "6652f30a04321e44ecadbcbdfd8c9a2889a57c7ab9ecc021cce74eecdfbedffb",
+      "sha256": "26d36755c01f390702f24909cfde470786b44bb4c8bd5771a4f3e38d14c5d5d9",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-01a400a4",
+      "sourceSha256": "7261a36aadc4ad2774751c2ba75780c67954df304b76652b4ffa3d06660cb05a",
+      "sha256": "f4cbc5501c02d8178ea8fe26b752cc5e0ebe8d31c87493c0dbc73f6f51b2917d",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-73f4d668",
+      "sourceSha256": "5af3f014fc84df1eeda5577ea00e76810f55371033331dfc032e80537c0ca34e",
+      "sha256": "393cd6ef44cd39e1a8032cc99ad315f1eab258dcebe6efa525a5d9ab62bae72a",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-1537f4df",
+      "sourceSha256": "1b039de2cd30e7ff2ff0b3a94a744097b4a5d1e479f4517536593e578f6eb573",
+      "sha256": "1e54db74496970c175b5d47789cde66e90f47b00f36d82951e8f121a5e0ea1a3",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-e312bfa1",
+      "sourceSha256": "9562473f28f2c70bfd0d6bb2e2ebbf2babd3921a36308b3f8defa8420b84c241",
+      "sha256": "c34b472bb5bb430a50748b85c7ada2df5dad0fdc51e06cd08435d307cc006576",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-5a55a174",
+      "sourceSha256": "84c32b174b39fea8fb14866d674cfad3d891d0dfe931ffee5ccabf43b9fea521",
+      "sha256": "db39f89a6c01da9c9d5257a27db974feda9a49ae0d5da63f384c491742829223",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-82ddfc76",
+      "sourceSha256": "9b39d663b600801cbef8fff73fce10b3070b3375fcb09a5f5609ceb942569d14",
+      "sha256": "48f38c39e6d6dec114f956b720c4a01e6719a8a845199e43a8f9d2f09b2e10d0",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-65a6fd38",
+      "sourceSha256": "7b27f433538b71bf01ed88170c705390fcf55f40e384684d53ad6394bf23adec",
+      "sha256": "b71ff43d4d4e6d5739bfd22af0d20bf81920e7a1c0180483c38e482cf9c3be82",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-3f857763",
+      "sourceSha256": "109bb60f1e1174c74178d86e4438e3d3fcf1c764b3dc6b9a4b479de09c86ba7f",
+      "sha256": "84e69587c5a5ef27b1ff1c9a4ca7b580a791d863bcc130230361496a0630db85",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-ea9357a5",
+      "sourceSha256": "be170af744a3fd77255c289329ce0e23a664579657ba96b462e5a08dad930139",
+      "sha256": "bc83ea02dce3005401a3dcff4fb39fdfe38829bbe62eccff45a75bb0987a6d9d",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-8dbb6f72",
+      "sourceSha256": "30574227b0d6d007eb6750bf03881cf57c7a0d13fb53fcbad99c5a934834d060",
+      "sha256": "1a0455aa998d7117239834ae6aeedcbb5002153a06125fc8eb1a8c7caeefaf1d",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-068db24e",
+      "sourceSha256": "992e7b1ca3361a7852c4f261d111eec55848737971ce62bb9a5c5c7254d1597e",
+      "sha256": "b1020800ab6e09c14ad78b645153f8f23736208b2c5a05c0c017b868f1525b0b",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-08b2f2db",
+      "sourceSha256": "f5a6216c1478183399572fa1472c5df7cc1143c3682b3026538691cf44085b5f",
+      "sha256": "1449a6d161f5ef9e91715981782176c6cb4b47fc4261cb8b3001539f9974c72f",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "1779706066084",
+      "sourceSha256": "8656a7024d64af870a4bca8870b56033908b726a1a7a69f247ef2111b98a7457",
+      "sha256": "e36be30ade4093603e26e8e21d5bbd162885e169864771f2de6c75269c8ded36",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-d7281c3f",
+      "sourceSha256": "88d05eeb63284367238528c8bb4816e2f1ec82f6b6006f3d07d57737e8812a4a",
+      "sha256": "92d98a4cbeb092171a66261c7d0e65850e701e6e3ea582cb99a21fffdb06ce3d",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-c942ab59",
+      "sourceSha256": "495b9294d34034afa1681967e81e06ba1d96c65254e267e9485fa92958a20dbb",
+      "sha256": "6b5e3daa8e64ceb6f38180481367df7339464008f8bc752bb3e27a8e639695fb",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-82291d2d",
+      "sourceSha256": "cb53736270adf1d0e5d9e6d259dfbbe9cc73858032827fa3e83eceb67a26098d",
+      "sha256": "f36d64f7a837e30fbc98debd8e69e3a588d11ae7d87e5f7f343f008f7ff6188d",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-318f1cc4",
+      "sourceSha256": "216c3896e929c3d82efcc76637b1dc1bc61b00d9a3e4c696134161f866737539",
+      "sha256": "60212dcdf7bf80484cf471fb608fefeb3658d13db8f52d41e9cf0e7b34eb39f4",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-5421935c",
+      "sourceSha256": "0bb651a89cb43d3a10ca77d80ca780a3603197366efc383bdc12f50f82534864",
+      "sha256": "a385edc70bb0a2dc4e5f93cd7e0369020b2c9101b47527361550cd8313e1dab0",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-566e86a7",
+      "sourceSha256": "d31f09afd0dbac5ce45df70db6fa47f2c300db5a066f5baa2f6ab96a74f0a62c",
+      "sha256": "ff71fe76dd1956721d5657ea592c71b026e10eeeb453bc1c2bc3d461b8718058",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-4811a1f5",
+      "sourceSha256": "40c5fd892917ef19c5267dc304c1006b9b54d3bd66f1436999f60abc5bb67bb5",
+      "sha256": "e024cee7228e4024f25ea9a0e220bf92a3141bb8eeca2d97b087427fc9c00f89",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-dec41fda",
+      "sourceSha256": "6cef74ab5e68ac3e257da3f9c0ace1a92adee21b4bde3cc3314b76dc47ad85e7",
+      "sha256": "e68d41666ec014036db06e456efc9cd77190a5ca4afdec93a31fd9646951d28c",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-e6d00f41",
+      "sourceSha256": "64a39fa7ebc222421a4676824f15095d653e43ea22ff7f90432df2cbdb63879f",
+      "sha256": "fc2fceca78db9ddeb7fe87c0bdfaaae195f3ab7e065be2357eba8b2082916ea4",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-8bf01668",
+      "sourceSha256": "070e294d46366ad3a61d335183687bc4ca30cd2d9bb144f7cb1eab06b16563c1",
+      "sha256": "16dc3a51b74efaa2dfa10ce8973b500e3c8c7ba8b75f7786572513b56092bd40",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-27004cb5",
+      "sourceSha256": "5d93ada5b124a31b5bc0f97fbfd58429ab8f3a01411becce547fc972b7cadca3",
+      "sha256": "5cf7e5d21e2943896f45823405e1dcb3f3ee413e81fd0a5fbc4a88e71bfc056c",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-ca45a23f",
+      "sourceSha256": "d6c4de1db7e43bc2487bb12b15809bffe7f696e1aca099e8a99de44bd09f8634",
+      "sha256": "8f2f46d95101c0441a7d773597d3a3442599bd354cb8ad858aabe3e2b2961e78",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-8da04e83",
+      "sourceSha256": "939a1d270e72177bfd542f1d5d06542a2082d030e4445947c03474b08a9702d2",
+      "sha256": "954e5c91bb4d28f622b1fd9884737ce7cbd3494b43be1453f72e04eb0778dab2",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-95d4cb94",
+      "sourceSha256": "a6b016fe975155e77a567ada4741480289f82d4e387b3a28a65e2b3f876e9412",
+      "sha256": "13c110cdc6b0608254426dada1e1288f038fa1080ec14ceadd6acc68fe5cbe96",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-51c6ffc3",
+      "sourceSha256": "8176f82c1a8a6b240f83971726fd3072d5750f4b0ee8deb3252cc9411d7fb166",
+      "sha256": "9144cb42c83c4f18d8787ae7b48132b03231eb0efa88039257de9df8f4df13c9",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-e6568a53",
+      "sourceSha256": "4a4b4e5cb374edefcda2d2398a3bb753898b73735a9409c86b721380dcc58c8f",
+      "sha256": "73e0b67db8308f241dbe5b03a9e0f979c871fa6423d302f820523b31796f2938",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    },
+    {
+      "id": "pack-5cd4bd52",
+      "sourceSha256": "83ddefeb7f6da2ba256b90a8f86b688cc35b755912ec5cb6abe1f978c6d335ce",
+      "sha256": "9f2f123c728661298886b7472cae6f5cdd742a49f4db0470a109f742290ff1b1",
+      "sizes": [
+        96,
+        160
+      ],
+      "reviewer": "Codex"
+    }
+  ]
+}

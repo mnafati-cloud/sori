@@ -8,8 +8,8 @@ const require=createRequire(import.meta.url);
 const I=require('../docs/images.js').pure,D=require('../docs/images-data.js'),B=require('../docs/backup.js');
 const a=D.items['pack-c3c6d557'];
 const it={id:'pack-c3c6d557',kr:'우산',type:'word',stage:3,ok:1,ko:0};
-const imageBatches=[['a-2026-10-17',100],['a-2026-10-17-02',100],['a-2026-10-18',200]];
-for(const [name,count] of imageBatches)test(name+' contains '+count+' distinct new A1/A2 senses from the catalogue',()=>{
+const imageBatches=[['a-2026-10-17',100,['A1','A2']],['a-2026-10-17-02',100,['A1','A2']],['a-2026-10-18',200,['A1','A2']],['objects-2026-10-18',200,['A1','A2','B1']]];
+for(const [name,count,levels] of imageBatches)test(name+' contains '+count+' distinct new '+levels.join('/')+' senses from the catalogue',()=>{
   const batch=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/'+name+'.json',import.meta.url)));
   const inventory=JSON.parse(fs.readFileSync(new URL('../tools/images/inventory.json',import.meta.url)));
   const ctx={window:{}};
@@ -18,7 +18,7 @@ for(const [name,count] of imageBatches)test(name+' contains '+count+' distinct n
   for(const b of batch.items){
     const seed=ctx.window.SEED.items.find(x=>x.id===b.id),entry=inventory.items.find(x=>x.id===b.id);
     assert.equal(seed.kr,b.kr);assert.equal(seed.fr,b.sense);assert.equal(ctx.window.EXTRA[b.id].cefr,b.cefr);
-    assert.ok(['A1','A2'].includes(b.cefr));assert.equal(entry.batch,batch.id);
+    assert.ok(levels.includes(b.cefr));assert.equal(entry.batch,batch.id);
     assert.equal(entry.status,'approved');assert.equal(entry.usage,b.usage);
     assert.equal(D.items[b.id]?.src,'./images/'+entry.asset,'each selected image is published');
   }
