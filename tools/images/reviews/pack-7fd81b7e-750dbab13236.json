@@ -1,0 +1,24 @@
+{
+  "id": "pack-7fd81b7e",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T21:49:58.117Z",
+  "sourceSha256": "79e46613f4451edaae6cfc12f9c9761e161ea45d6b2f6e367e517f38a87f9e55",
+  "sha256": "750dbab13236c8b2c28576262c6211864db76e9041faee22d804dea964f19010",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nUn petit bol contenant une spirale dense de mayonnaise, cuillère courte à côté, aucune marque ou couleur dominante ; support du produit alimentaire. Mot ciblé : 마요네즈. Sens du deck : Mayonnaise. Palette strictement blanc chaud et lavis gris sur noir ; silhouette complète, grandes marges, aucun texte, chiffre, lettre, logo ni pseudo-écriture. Pinceau expressif, pas de photographie ou 3D. Usage aide après réponse sauf validation explicite.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Mayonnaise claire en coupelle avec cuillère, bords entiers, aucun label ; aliment maintenu en support car proche visuellement de crème.",
+  "reviewedAt": "2026-10-18T21:55:12.915Z",
+  "kr": "마요네즈",
+  "sense": "Mayonnaise",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

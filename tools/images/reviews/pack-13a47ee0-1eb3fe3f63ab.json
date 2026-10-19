@@ -1,0 +1,24 @@
+{
+  "id": "pack-13a47ee0",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T22:56:33.248Z",
+  "sourceSha256": "519f77ad3b1ed3a2c701cc09b0b054b0c2d8aaea6bcef6988179bcae6baf0bb5",
+  "sha256": "1eb3fe3f63abf7c39b62be926e1f3131ceff185971535b65dc077090e96cc3c0",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nUne petite touffe de gazon dense avec ses racines et petite motte entière, lames fines et courtes, blanc gris sans vert ni terrain ; support du gazon. Mot ciblé : 잔디. Sens du deck : pelouse, gazon. Palette strictement blanc chaud et lavis gris sur noir, silhouette complète, marges généreuses. Aucun texte, chiffre, lettre, logo ou pseudo-écriture. Pinceau expressif, pas de photo ou 3D. Usage aide après réponse sauf validation explicite. STRICT MONOCHROME: render ALL materials, earth, wood, seeds, grass, liquid and metal ONLY warm white, warm grey and pure black. NO brown, sepia, tan, green, yellow, gold, orange, pink or red pigment anywhere. Preserve the material by its shape and brush texture, never by natural color.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Touffe de gazon et motte racinée entières, brins et racines contenus, palette monochrome sans vert ni brun ; distinction gazon/pelouse/herbe en aide.",
+  "reviewedAt": "2026-10-18T22:58:01.128Z",
+  "kr": "잔디",
+  "sense": "pelouse, gazon",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

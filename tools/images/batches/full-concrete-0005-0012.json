@@ -1,0 +1,214 @@
+{
+  "id": "full-concrete-0005-0012",
+  "requested": 8,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-95aff2e2",
+      "kr": "고등어",
+      "sense": "Maquereau",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 5
+    },
+    {
+      "id": "1780695436443",
+      "kr": "복숭아",
+      "sense": "Pêche (fruit)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 6
+    },
+    {
+      "id": "pack-f68d8bf7",
+      "kr": "호박",
+      "sense": "Courge, potiron, citrouille.",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 7
+    },
+    {
+      "id": "pack-b11e1f63",
+      "kr": "피망",
+      "sense": "Poivron",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 8
+    },
+    {
+      "id": "pack-82faf93b",
+      "kr": "늑대",
+      "sense": "Loup.",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 9
+    },
+    {
+      "id": "pack-5eb6b573",
+      "kr": "사슴",
+      "sense": "Cerf, biche.",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 10
+    },
+    {
+      "id": "pack-8cae53d9",
+      "kr": "까치",
+      "sense": "Pie (oiseau).",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 11
+    },
+    {
+      "id": "pack-f370d2a5",
+      "kr": "제비",
+      "sense": "Hirondelle",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 12
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-95aff2e2",
+      "reviewer": "Codex",
+      "sourceSha256": "cdea8569413fa4c007bd41912e92a2c90f641e3b45b1a5190155700bab627e59",
+      "note": "Maquereau entier, tête et queue fourchue visibles, nageoires cohérentes et bandes dorsales sombres distinctives. Poisson cru sans plat ni décor ; petit accent chaud à l’œil, corps blanc/gris au pinceau sur noir. Motif dorsal encore visible à 160 et 96 px ; question conservée."
+    },
+    {
+      "id": "1780695436443",
+      "reviewer": "Codex",
+      "sourceSha256": "67770877b9d917ba494a2bb2f4cbcb327a28acc605e383b3874d7804dcbac7b1",
+      "note": "Fruit entier arrondi à sillon médian et feuille étroite, silhouette lisible aux trois tailles et style blanc/gris sur noir. Reclassé en aide : en monochrome et petit format, pêche, abricot ou autre fruit à noyau ne se départagent pas de façon assez sûre pour imposer un seul lexème."
+    },
+    {
+      "id": "pack-f68d8bf7",
+      "reviewer": "Codex",
+      "sourceSha256": "1862da87d2e684428612f99a8e32eb569ca232a011314fc385b9961135e90597",
+      "note": "Courge ronde et côtelée, pédoncule épais courbé, corps et tige entiers. Blanc chaud et lavis gris sans orange, pas de visage sculpté ni accessoire. Silhouette caractéristique lisible à 512/160/96 px ; question conservée."
+    },
+    {
+      "id": "pack-b11e1f63",
+      "reviewer": "Codex",
+      "sourceSha256": "f71fa0c3d576634316a1d801233a5f0b40792ab4eead5196250608d15a97f09b",
+      "note": "Poivron entier à lobes courts et larges, pédoncule courbé ; distinct du piment long, lisible à 512/160/96 px. Reclassé en aide après réponse : le dessin monochrome ne permet pas d’imposer 피망 plutôt que 파프리카. Aucun synonyme ajouté aux réponses créditées."
+    },
+    {
+      "id": "pack-82faf93b",
+      "reviewer": "Codex",
+      "sourceSha256": "3fef034fb84289eb138edaf19016dd7ce2dea06bce9cb84b826edd5bd6335312",
+      "note": "Loup entier à oreilles dressées, museau long, épaisse collerette et queue basse, quatre jambes et pattes cohérentes. Au pinceau blanc/gris sur noir ; touches chaudes très petites aux iris, sans fourrure colorée dominante. Reconnaissable aux trois tailles, mais usage aide conservé car un chien de type husky reste une lecture plausible."
+    },
+    {
+      "id": "pack-5eb6b573",
+      "reviewer": "Codex",
+      "sourceSha256": "e847850385a0b7db801593ec0873cbf852c35069d35488df972aca35df25a56c",
+      "note": "Cervidé entier : bois ramifiés complets, oreilles dressées, quatre jambes fines et sabots fendus cohérents. Les pointes ne sont pas coupées ; anatomie et silhouette restent lisibles à 160 et 96 px. Blanc/gris au pinceau sur noir, sans décor ; question conservée."
+    },
+    {
+      "id": "pack-8cae53d9",
+      "reviewer": "Codex",
+      "sourceSha256": "b10a73aa753b59fc6ff83537ac3c49fc99c81c494be22f549312cab20e9caf8a",
+      "note": "Pie entière sur une courte branche de soutien : longue queue, poitrine blanche, tête sombre et large plage blanche à l’aile. Deux pattes cohérentes et bec complet, contrastes lisibles à 512/160/96 px. Trait au pinceau blanc/gris avec très petit accent à l’extrémité du support ; question conservée."
+    },
+    {
+      "id": "pack-f370d2a5",
+      "reviewer": "Codex",
+      "sourceSha256": "191c298df2a37cb2a0db83497126bd202e57b5c7e6a1823c228634c5cc0f3761",
+      "note": "Hirondelle en vol, deux ailes longues et pointues et queue profondément fourchue à deux filets ; silhouette entière et cohérente. Blanc/gris sur noir et petit accent vermillon à la tête. Extrémités et queue lisibles aux trois tailles ; question conservée."
+    }
+  ],
+  "rejectedAttempts": [],
+  "displaySizeReviews": [
+    {
+      "id": "pack-95aff2e2",
+      "reviewer": "Codex",
+      "sha256": "d23f398569d0704e5ca903ce498e61f76669f86e67b025e4c948bebec8c3ad87",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Maquereau entier, tête et queue fourchue visibles, nageoires cohérentes et bandes dorsales sombres distinctives. Poisson cru sans plat ni décor ; petit accent chaud à l’œil, corps blanc/gris au pinceau sur noir. Motif dorsal encore visible à 160 et 96 px ; question conservée."
+    },
+    {
+      "id": "1780695436443",
+      "reviewer": "Codex",
+      "sha256": "a2592fd766067d7b691cf7d0736c8cbaae2f6723c47da9f961cd26798a1d5699",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Fruit entier arrondi à sillon médian et feuille étroite, silhouette lisible aux trois tailles et style blanc/gris sur noir. Reclassé en aide : en monochrome et petit format, pêche, abricot ou autre fruit à noyau ne se départagent pas de façon assez sûre pour imposer un seul lexème."
+    },
+    {
+      "id": "pack-f68d8bf7",
+      "reviewer": "Codex",
+      "sha256": "b899ef6b49cd17fff89d5618b900748adb8ac439bc271e56857934ee56b10c9f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Courge ronde et côtelée, pédoncule épais courbé, corps et tige entiers. Blanc chaud et lavis gris sans orange, pas de visage sculpté ni accessoire. Silhouette caractéristique lisible à 512/160/96 px ; question conservée."
+    },
+    {
+      "id": "pack-b11e1f63",
+      "reviewer": "Codex",
+      "sha256": "621339ea5f24520bd1c3c247dfcbbb6d9d7c1f84a7af321024838ae26d57dd1c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Poivron entier à lobes courts et larges, pédoncule courbé ; distinct du piment long, lisible à 512/160/96 px. Reclassé en aide après réponse : le dessin monochrome ne permet pas d’imposer 피망 plutôt que 파프리카. Aucun synonyme ajouté aux réponses créditées."
+    },
+    {
+      "id": "pack-82faf93b",
+      "reviewer": "Codex",
+      "sha256": "4a84144e58991995c047b92bfc190aed9d64a4fb11e41885a376abf4676cc33a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Loup entier à oreilles dressées, museau long, épaisse collerette et queue basse, quatre jambes et pattes cohérentes. Au pinceau blanc/gris sur noir ; touches chaudes très petites aux iris, sans fourrure colorée dominante. Reconnaissable aux trois tailles, mais usage aide conservé car un chien de type husky reste une lecture plausible."
+    },
+    {
+      "id": "pack-5eb6b573",
+      "reviewer": "Codex",
+      "sha256": "990a0d3cd7f40137002dfa705ff6599975429ea2cbedd51ca4df9dfc73c14405",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Cervidé entier : bois ramifiés complets, oreilles dressées, quatre jambes fines et sabots fendus cohérents. Les pointes ne sont pas coupées ; anatomie et silhouette restent lisibles à 160 et 96 px. Blanc/gris au pinceau sur noir, sans décor ; question conservée."
+    },
+    {
+      "id": "pack-8cae53d9",
+      "reviewer": "Codex",
+      "sha256": "aabb856fd0855df65a7fdbcae017f131b99b3c4e46db4dbd0123a81449ad42ed",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pie entière sur une courte branche de soutien : longue queue, poitrine blanche, tête sombre et large plage blanche à l’aile. Deux pattes cohérentes et bec complet, contrastes lisibles à 512/160/96 px. Trait au pinceau blanc/gris avec très petit accent à l’extrémité du support ; question conservée."
+    },
+    {
+      "id": "pack-f370d2a5",
+      "reviewer": "Codex",
+      "sha256": "a50373243bc450cdc41129daf3da7eef5dc0ba96f652a8a6e21511f7e218a6f2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Hirondelle en vol, deux ailes longues et pointues et queue profondément fourchue à deux filets ; silhouette entière et cohérente. Blanc/gris sur noir et petit accent vermillon à la tête. Extrémités et queue lisibles aux trois tailles ; question conservée."
+    }
+  ]
+}

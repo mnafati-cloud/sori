@@ -1,0 +1,604 @@
+{
+  "id": "full-concrete-0388-0457",
+  "requested": 23,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-41a4dcdc",
+      "kr": "국물",
+      "sense": "Bouillon, jus (d'un plat)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 388
+    },
+    {
+      "id": "pack-a7b16986",
+      "kr": "쇠고기",
+      "sense": "Bœuf (viande)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 400
+    },
+    {
+      "id": "pack-d4805f42",
+      "kr": "방바닥",
+      "sense": "Sol de la chambre, plancher",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 434
+    },
+    {
+      "id": "pack-3ddcd6aa",
+      "kr": "서적",
+      "sense": "Ouvrage, livre (littéraire)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 435
+    },
+    {
+      "id": "pack-9d66b7b3",
+      "kr": "씨앗",
+      "sense": "graine",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 436
+    },
+    {
+      "id": "pack-7d614c88",
+      "kr": "약품",
+      "sense": "Produit pharmaceutique, médicament",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 437
+    },
+    {
+      "id": "pack-de01b010",
+      "kr": "육체",
+      "sense": "Corps, le physique",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 438
+    },
+    {
+      "id": "pack-66dd73d9",
+      "kr": "의류",
+      "sense": "Vêtements, articles d'habillement",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 439
+    },
+    {
+      "id": "pack-95518857",
+      "kr": "의복",
+      "sense": "Habits, vêtements",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 440
+    },
+    {
+      "id": "pack-1d6efb8d",
+      "kr": "잔디밭",
+      "sense": "Pelouse, gazon, aire d'herbe",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 441
+    },
+    {
+      "id": "pack-3e5d40b2",
+      "kr": "정장",
+      "sense": "Costume / tenue formelle",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 442
+    },
+    {
+      "id": "pack-4324afc6",
+      "kr": "조명",
+      "sense": "Éclairage, illumination",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 443
+    },
+    {
+      "id": "pack-c214a6b8",
+      "kr": "창",
+      "sense": "Fenêtre",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 444
+    },
+    {
+      "id": "1779706066038",
+      "kr": "표",
+      "sense": "Billet",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 445
+    },
+    {
+      "id": "pack-4caace1d",
+      "kr": "핸드백",
+      "sense": "Sac à main",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 448
+    },
+    {
+      "id": "pack-3b8295ef",
+      "kr": "호주머니",
+      "sense": "Poche",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 449
+    },
+    {
+      "id": "pack-43c786f1",
+      "kr": "화면",
+      "sense": "Écran",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 450
+    },
+    {
+      "id": "pack-79bcf0d6",
+      "kr": "화장지",
+      "sense": "le papier toilette",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 451
+    },
+    {
+      "id": "pack-1fcdc9da",
+      "kr": "갑",
+      "sense": "Boîte, étui (petit contenant)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 452
+    },
+    {
+      "id": "pack-a689f7ab",
+      "kr": "금메달",
+      "sense": "Médaille d'or.",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 453
+    },
+    {
+      "id": "1779706066101",
+      "kr": "약",
+      "sense": "Médicament",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 455
+    },
+    {
+      "id": "pack-ebd7f88a",
+      "kr": "양상추",
+      "sense": "Laitue (pommée)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 456
+    },
+    {
+      "id": "pack-eef2d36d",
+      "kr": "자판",
+      "sense": "Clavier (de saisie)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 457
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-41a4dcdc",
+      "reviewer": "Codex",
+      "sourceSha256": "26cc58bdef47c9b2486810f666ca6141abd4d6be1f73f015d88ebe6beeaec09b",
+      "note": "Reprise : bol, cuillère, filet de bouillon et vapeur entiers ; liquide désormais noir et gris, sans ocre, lisible aux trois tailles ; aide."
+    },
+    {
+      "id": "pack-a7b16986",
+      "reviewer": "Codex",
+      "sourceSha256": "b9f7f76eb3b739c0ff8f876c5056191e73a61931b40bd9b91339cfdbe9864b72",
+      "note": "Reprise : coupe de viande et tranche entières sur plateau, persillage blanc sur noir et gris, toute grande surface rouge supprimée ; espèce en aide."
+    },
+    {
+      "id": "pack-d4805f42",
+      "reviewer": "Codex",
+      "sourceSha256": "a266ccc26f0a154519776d4814822425d83321c3af8630e8281197867f76faa5",
+      "note": "Échantillon entier de quatre lames de plancher, rainures et nœuds lisibles sans bois brun ; contexte chambre textuel, aide."
+    },
+    {
+      "id": "pack-3ddcd6aa",
+      "reviewer": "Codex",
+      "sourceSha256": "aea6d1e8deb35892100bef7cf16788fbf082645b36256c0845d4e69c3c06ddb1",
+      "note": "Ouvrage épais entier, couverture et dos vierges, petit accent de reliure vermillon ; registre soutenu de livre en aide."
+    },
+    {
+      "id": "pack-9d66b7b3",
+      "reviewer": "Codex",
+      "sourceSha256": "df039cf5749530ba9e2631d5e3edb89644693dcf61a0e63ea899cb318b4f5a77",
+      "note": "Coupelle entière de graines striées en blanc et gris, aucune coloration brune ; catégorie graine et espèce possibles, aide."
+    },
+    {
+      "id": "pack-7d614c88",
+      "reviewer": "Codex",
+      "sourceSha256": "15460687917ad1188ee57eaf34310944d2fd188520276b4e32d6284bfcf035e1",
+      "note": "Boîte pharmaceutique et plaquette entières, surfaces vierges sans marque ni posologie ; médicament générique en aide."
+    },
+    {
+      "id": "pack-de01b010",
+      "reviewer": "Codex",
+      "sourceSha256": "e8d34f24e3e9e49df5d10cee39736cc561fff47d81656b24be1ca42d31dcb568",
+      "note": "Adulte habillé entier en tenue sportive, tête et chaussures contenues avec petit accent au talon ; notion corps/physique en aide."
+    },
+    {
+      "id": "pack-66dd73d9",
+      "reviewer": "Codex",
+      "sourceSha256": "619b0f582b80151e2ce6eaa5c8462b04c34b004aa775f8681db31f69d54f1b51",
+      "note": "Veste et pantalon entiers sur deux cintres, silhouettes séparées, sans marque ; catégorie habillement en aide."
+    },
+    {
+      "id": "pack-95518857",
+      "reviewer": "Codex",
+      "sourceSha256": "a1a88a854f597679c22fd53e21ce4ac92a6644c2d2905b870d08dd3671344efe",
+      "note": "Pile de vêtements pliés entière avec col de chemise visible, palette sobre ; registre vêtements en aide."
+    },
+    {
+      "id": "pack-1d6efb8d",
+      "reviewer": "Codex",
+      "sourceSha256": "3acdfa0320e0948cddea2c035077dac59c3acf0250387c661535cf47af559a55",
+      "note": "Motte carrée de gazon entière, brins et terre blancs/gris sans vert ou brun ; surface pelouse illustrée par échantillon, aide."
+    },
+    {
+      "id": "pack-3e5d40b2",
+      "reviewer": "Codex",
+      "sourceSha256": "653d53d41388a3e81987b24a5aa112910b527d57672c2d63fcc0ad8ea0a08de2",
+      "note": "Costume entier sur cintre avec veste, pantalon et cravate vermillon étroite, aucune marque ; tenue formelle en aide."
+    },
+    {
+      "id": "pack-4324afc6",
+      "reviewer": "Codex",
+      "sourceSha256": "9c0c0d05741d4cdea554da737a79b2a163c68cd7250ede22695a48431839a5e1",
+      "note": "Suspension entière, ampoule lumineuse en blanc chaud et courts traits contenus, petit accent de douille ; éclairage illustré par une source, aide."
+    },
+    {
+      "id": "pack-c214a6b8",
+      "reviewer": "Codex",
+      "sourceSha256": "dc904f950bba62fc664a0c017892cd2326687db1c994c673cd6f1dd498f3672a",
+      "note": "Fenêtre entière à battants entrouverts et intérieur noir, vitres grises, sans paysage ; forme brève 창 face à 창문 en aide."
+    },
+    {
+      "id": "1779706066038",
+      "reviewer": "Codex",
+      "sourceSha256": "f70802342d41b18d2b19480b6f56daf928618126ec6912a1fce2c7423e5438f1",
+      "note": "Billet entier perforé avec motif cinéma sans marque, toutes zones textuelles vierges ; aucun chiffre ni pseudo-écriture, terme billet en aide."
+    },
+    {
+      "id": "pack-4caace1d",
+      "reviewer": "Codex",
+      "sourceSha256": "e23239fc9cdece9341da31567e03b9d0bb8e1727e7bc2c86aab510478c59db3b",
+      "note": "Sac à main entier, deux anses et rabat lisibles même à 96 px, aucune marque ; question 핸드백 avec termes voisins neutralisés."
+    },
+    {
+      "id": "pack-3b8295ef",
+      "reviewer": "Codex",
+      "sourceSha256": "38043fda4ebcb96cb6756e76e948c25ecce90e0fc99d9db61c53bfad635bc0d2",
+      "note": "Pantalon plié entier présentant une poche plaquée ouverte, contour de poche lisible aux trois tailles ; sous-partie poche en aide."
+    },
+    {
+      "id": "pack-43c786f1",
+      "reviewer": "Codex",
+      "sourceSha256": "1997816e3f5ef264d1e03ec61165116a7f46a6bd0db60b2daacc6beefbd96b34",
+      "note": "Téléphone entier avec écran noir vide et reflet sobre, aucune icône ou donnée ; surface écran en aide et jamais question sur le téléphone."
+    },
+    {
+      "id": "pack-79bcf0d6",
+      "reviewer": "Codex",
+      "sourceSha256": "70e89e106defd122daee4847350a635c10e4c330f424717a0b6c26cb77d1b8f4",
+      "note": "Rouleau de papier toilette entier et courte feuille perforée déroulée, lisibles à 96 px ; question 화장지, synonymes neutralisés."
+    },
+    {
+      "id": "pack-1fcdc9da",
+      "reviewer": "Codex",
+      "sourceSha256": "6b4460536aa13c140de608dffb986cc091267d9be2c0fcbc0519423d8ac42e63",
+      "note": "Petit étui vide entrouvert entier, aucun produit, texte ou marque ; contenant/classificateur 갑 en aide."
+    },
+    {
+      "id": "pack-a689f7ab",
+      "reviewer": "Codex",
+      "sourceSha256": "00de2d831b48be9ab6f95d34ee6f086295488a674d484a8c9b29f41ce1a445e6",
+      "note": "Médaille entière et ruban court replié, couronne décorative sans chiffre ; métal monochrome sans or jaune, rang or invisible en aide seulement."
+    },
+    {
+      "id": "1779706066101",
+      "reviewer": "Codex",
+      "sourceSha256": "33364b85cf37dab0cf0df07b7948233bb7154e6a6195a45e5f38935e17c5b043",
+      "note": "Flacon fermé entier contenant des comprimés vierges, aucune marque, dose ou promesse ; médicament générique en aide."
+    },
+    {
+      "id": "pack-ebd7f88a",
+      "reviewer": "Codex",
+      "sourceSha256": "c0c4b7ad36e4d36c909307a76ce69f57c31b011c09fa2663fc167317959e8031",
+      "note": "Laitue pommée entière et feuille extérieure ouverte, nervures lisibles sans vert ; distinction botanique non univoque en monochrome, aide."
+    },
+    {
+      "id": "pack-eef2d36d",
+      "reviewer": "Codex",
+      "sourceSha256": "f81e9b92adc493d26bfd3cbf6f87d1b0b88c9b22c30d6da905ef89b9a6183a94",
+      "note": "Clavier entier et câble USB en boucle contenu, touches vierges, minuscule accent au connecteur ; synonyme 자판 en aide."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-898b41d7",
+      "rank": 446,
+      "kr": "해물",
+      "sourceSha256": "a7fb624bd7ec30334cb0e45ee24f2510a7ed90505fd8cd87cf5dc12173fb6f7d",
+      "sha256": "9fa2c48217b29fb5dc111f1e077b026f1c8f24926c9ca889c387989f27356140",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Crevette largement rouge et chair des coquillages ocre, au-delà d’un petit accent naturel. Reprise monochrome de tout l’ensemble."
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-41a4dcdc",
+      "reviewer": "Codex",
+      "sha256": "554a7c445ad4badb34736529c50ce9dcbe739222be98535659b5e7f278f99c44",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Reprise : bol, cuillère, filet de bouillon et vapeur entiers ; liquide désormais noir et gris, sans ocre, lisible aux trois tailles ; aide."
+    },
+    {
+      "id": "pack-a7b16986",
+      "reviewer": "Codex",
+      "sha256": "fb2ce2ee014aa8086368386d5526a64a66f409138dd46793f9b21f060812719b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Reprise : coupe de viande et tranche entières sur plateau, persillage blanc sur noir et gris, toute grande surface rouge supprimée ; espèce en aide."
+    },
+    {
+      "id": "pack-d4805f42",
+      "reviewer": "Codex",
+      "sha256": "070700c805a950ba9dc5e42e434b164963cf5b22352a6b497b4d4404dec56db8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Échantillon entier de quatre lames de plancher, rainures et nœuds lisibles sans bois brun ; contexte chambre textuel, aide."
+    },
+    {
+      "id": "pack-3ddcd6aa",
+      "reviewer": "Codex",
+      "sha256": "6af49be3922ea965ffe59b9fa40e39e9e501c95dfcbe86ea680424e355b9c33c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Ouvrage épais entier, couverture et dos vierges, petit accent de reliure vermillon ; registre soutenu de livre en aide."
+    },
+    {
+      "id": "pack-9d66b7b3",
+      "reviewer": "Codex",
+      "sha256": "647e6ced2d5fb841819b4071955e6c949c2357a03d2e21069099aa1ac365cc61",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Coupelle entière de graines striées en blanc et gris, aucune coloration brune ; catégorie graine et espèce possibles, aide."
+    },
+    {
+      "id": "pack-7d614c88",
+      "reviewer": "Codex",
+      "sha256": "e119330134251fb609d1668bc2b98b7afd742fda8578c290527aa5ad654bc20e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Boîte pharmaceutique et plaquette entières, surfaces vierges sans marque ni posologie ; médicament générique en aide."
+    },
+    {
+      "id": "pack-de01b010",
+      "reviewer": "Codex",
+      "sha256": "5ae9ab5367cc0c8892c993feedd391e61b9356f2f912ff1c100b09c20674072b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Adulte habillé entier en tenue sportive, tête et chaussures contenues avec petit accent au talon ; notion corps/physique en aide."
+    },
+    {
+      "id": "pack-66dd73d9",
+      "reviewer": "Codex",
+      "sha256": "dc485e521509da8c60af8446929cbb8c1bd7ac71a4bf52dce335c4d0f1631953",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Veste et pantalon entiers sur deux cintres, silhouettes séparées, sans marque ; catégorie habillement en aide."
+    },
+    {
+      "id": "pack-95518857",
+      "reviewer": "Codex",
+      "sha256": "8dd74bd44e2a13099d0be05f29454e4a0898b0e6492f8b9614e6ccb17fc0ce23",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pile de vêtements pliés entière avec col de chemise visible, palette sobre ; registre vêtements en aide."
+    },
+    {
+      "id": "pack-1d6efb8d",
+      "reviewer": "Codex",
+      "sha256": "99b4649729ba18a8d6f0b9bd68f2f140c34522692dc86f65dfddc257e99d8f49",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Motte carrée de gazon entière, brins et terre blancs/gris sans vert ou brun ; surface pelouse illustrée par échantillon, aide."
+    },
+    {
+      "id": "pack-3e5d40b2",
+      "reviewer": "Codex",
+      "sha256": "4be551b04dfba02b220026d47c3f1838461aa730a7c97ecf434e67f105e720d6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Costume entier sur cintre avec veste, pantalon et cravate vermillon étroite, aucune marque ; tenue formelle en aide."
+    },
+    {
+      "id": "pack-4324afc6",
+      "reviewer": "Codex",
+      "sha256": "f46fc6d342b47a19b02a75e30ae6b099ee0070d49c6062027805b28c9143fbcb",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Suspension entière, ampoule lumineuse en blanc chaud et courts traits contenus, petit accent de douille ; éclairage illustré par une source, aide."
+    },
+    {
+      "id": "pack-c214a6b8",
+      "reviewer": "Codex",
+      "sha256": "22d2515990af2023c13a67777873f2fa3c03599620405f73000538e50f5465f8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Fenêtre entière à battants entrouverts et intérieur noir, vitres grises, sans paysage ; forme brève 창 face à 창문 en aide."
+    },
+    {
+      "id": "1779706066038",
+      "reviewer": "Codex",
+      "sha256": "81b690fb205bda21eca3a1b03fb0c79d3c5b703a8f206c0fe17ab54ce7742394",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Billet entier perforé avec motif cinéma sans marque, toutes zones textuelles vierges ; aucun chiffre ni pseudo-écriture, terme billet en aide."
+    },
+    {
+      "id": "pack-4caace1d",
+      "reviewer": "Codex",
+      "sha256": "a4c856abcd36c600647c4026f029372adc4bfa4d8ad6c9332458b45c071de844",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Sac à main entier, deux anses et rabat lisibles même à 96 px, aucune marque ; question 핸드백 avec termes voisins neutralisés."
+    },
+    {
+      "id": "pack-3b8295ef",
+      "reviewer": "Codex",
+      "sha256": "700e3c700eebe1eca526ba27b6e7eae05f9bc41df9feada24947291c8328d2fd",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pantalon plié entier présentant une poche plaquée ouverte, contour de poche lisible aux trois tailles ; sous-partie poche en aide."
+    },
+    {
+      "id": "pack-43c786f1",
+      "reviewer": "Codex",
+      "sha256": "b651d1179810654a0ac27ddd2e3c307f12f6389c4f78cea0070fce351750fbde",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Téléphone entier avec écran noir vide et reflet sobre, aucune icône ou donnée ; surface écran en aide et jamais question sur le téléphone."
+    },
+    {
+      "id": "pack-79bcf0d6",
+      "reviewer": "Codex",
+      "sha256": "df3da7b55c1910c5ac1d19ba353c75943e6e1ab9635e03893fe56e8c45aebc53",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Rouleau de papier toilette entier et courte feuille perforée déroulée, lisibles à 96 px ; question 화장지, synonymes neutralisés."
+    },
+    {
+      "id": "pack-1fcdc9da",
+      "reviewer": "Codex",
+      "sha256": "abe7879a004657f87723a53e90c34068ee73367981c923ccb61bc639ae3e3d80",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petit étui vide entrouvert entier, aucun produit, texte ou marque ; contenant/classificateur 갑 en aide."
+    },
+    {
+      "id": "pack-a689f7ab",
+      "reviewer": "Codex",
+      "sha256": "870aa1092c07cdd6c39f3c8e0c8c8d7853e186427246ca751b8408353c94ad9f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Médaille entière et ruban court replié, couronne décorative sans chiffre ; métal monochrome sans or jaune, rang or invisible en aide seulement."
+    },
+    {
+      "id": "1779706066101",
+      "reviewer": "Codex",
+      "sha256": "cbbd21b75cc7df10a12f2bd8e559094f462655ad320ebdda2a890e8eab0f97db",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Flacon fermé entier contenant des comprimés vierges, aucune marque, dose ou promesse ; médicament générique en aide."
+    },
+    {
+      "id": "pack-ebd7f88a",
+      "reviewer": "Codex",
+      "sha256": "3117a260804c5b030c05e702aa7e2cb487eebdb0b6d70ad1a1abfa91761a011e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Laitue pommée entière et feuille extérieure ouverte, nervures lisibles sans vert ; distinction botanique non univoque en monochrome, aide."
+    },
+    {
+      "id": "pack-eef2d36d",
+      "reviewer": "Codex",
+      "sha256": "ee949ba8d11f173d6bd13ef38bb7efe4839c4b7168e4a3da58be89e4afb11c59",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Clavier entier et câble USB en boucle contenu, touches vierges, minuscule accent au connecteur ; synonyme 자판 en aide."
+    }
+  ]
+}

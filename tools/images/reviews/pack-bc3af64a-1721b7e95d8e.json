@@ -1,0 +1,24 @@
+{
+  "id": "pack-bc3af64a",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T19:22:31.925Z",
+  "sourceSha256": "53862477653823cceaa554520c8363db506fb0f24a12b3d51593de72d2cefd61",
+  "sha256": "1721b7e95d8ecc3f07f7f7d65c74d90da8a24f7268daf638068f9e33fa3c3374",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne whole modestly clothed adult standing, body facing forward while head is turned sideways to look behind, neck turn clear and anatomically coherent, hands resting neutrally by sides. No arrows or duplicate ghost head. 고개 in the example meaning turning the head, not a mountain pass; support only.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Revue effective du PNG puis du WebP aux trois tailles. Personne habillée entière tournant la tête sur le côté ; cou cohérent, pas de double tête ; sens de l’exemple 고개, aide seule, ne couvre pas col de montagne. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px.",
+  "reviewedAt": "2026-10-18T19:25:53.533Z",
+  "kr": "고개",
+  "sense": "Tete (mouvement de tete), nuque; col (de montagne)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

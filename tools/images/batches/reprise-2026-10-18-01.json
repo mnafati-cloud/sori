@@ -1,0 +1,139 @@
+{
+  "id": "reprise-2026-10-18-01",
+  "requested": 5,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/extra.js:cefr;docs/data.js:id/sense",
+  "selection": "Lot de reprise borné : sujet queued existant, puis quatre objets non illustrés, sans réemploi d’asset. Quatre questions, une aide. Les niveaux du deck sont conservés. Les lectures de sens voisin restent neutres.",
+  "items": [
+    {
+      "id": "pack-c5013621",
+      "kr": "주전자",
+      "sense": "Bouilloire / théière",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 1
+    },
+    {
+      "id": "pack-307c6035",
+      "kr": "포크",
+      "sense": "Fourchette",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 2
+    },
+    {
+      "id": "pack-8c62cb1a",
+      "kr": "도마",
+      "sense": "Planche à découper",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 3
+    },
+    {
+      "id": "pack-3a0ed317",
+      "kr": "나침반",
+      "sense": "Boussole, compas.",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 4
+    },
+    {
+      "id": "pack-283db07f",
+      "kr": "망원경",
+      "sense": "Télescope, longue-vue",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 5
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-c5013621",
+      "reviewer": "Codex",
+      "sourceSha256": "58773773a745f76155bf4c8c1483a1977f8b3762bd0e7c4df0d55834ace01603",
+      "note": "Bouilloire entière à anse arquée, couvercle et bec nettement distincts ; lavis gris, traits blanc chaud sur noir et un accent vermillon au bouton. Silhouette et bec restent lisibles à 160 et 96 px. Usage support conservé : ne pas imposer une distinction bouilloire/théière par ce seul dessin."
+    },
+    {
+      "id": "pack-307c6035",
+      "reviewer": "Codex",
+      "sourceSha256": "aa90bfa970b0d45a74f35353bb1b70a5ce2832d0fc582f7adf43989073ea59e5",
+      "note": "Fourchette seule, quatre dents séparées et manche entier ; silhouette complète et traits au pinceau conformes à la colonne 02. Le couvert reste identifiable à 160 et 96 px ; aucune cuillère, aucun texte, aucun objet donnant une réponse différente."
+    },
+    {
+      "id": "pack-8c62cb1a",
+      "reviewer": "Codex",
+      "sourceSha256": "f6cdf9b24b237658c28ba61cba6bafe0fbeb8659b1973f2a6a59ac1b11c0bc94",
+      "note": "Planche à découper en bois, surface rectangulaire, poignée percée, veinage et traces de coupe visibles ; fond noir, blanc chaud et gris sans bois brun. Reconnaissable à 160 et 96 px. 판자 est une lecture générique plausible traitée comme alternative neutre, jamais comme réussite de 도마."
+    },
+    {
+      "id": "pack-3a0ed317",
+      "reviewer": "Codex",
+      "sourceSha256": "69f4b05562c8404c6ddea5a68804de8b3fdb96cc1354a0c7941c6fb40c861dda",
+      "note": "Boussole de navigation avec rose des vents, unique aiguille magnétique et petit accent vermillon ; pas de chiffres ni lettres, absence de bracelet et de cadran horaire. Instrument entier, traits au pinceau et marges préservés à 512/160/96 px. 시계 reste une alternative neutre pour éviter une pénalité sur une lecture de montre de poche."
+    },
+    {
+      "id": "pack-283db07f",
+      "reviewer": "Codex",
+      "sourceSha256": "76017fee190a29d37cd3dd12e8fb2d128954ad4e3729cf33a3540bed132233f0",
+      "note": "Télescope astronomique réfracteur : tube unique, objectif large et oculaire opposé, monture et trois pieds entièrement visibles. Noir, blanc chaud et lavis gris, petit accent vermillon à l’oculaire. Instrument reconnaissable à 160 et 96 px, sans lune ni décor ; aucun jumelage de deux tubes suggérant des jumelles."
+    }
+  ],
+  "rejectedAttempts": [],
+  "displaySizeReviews": [
+    {
+      "id": "pack-c5013621",
+      "sha256": "cccb0c3d11da125d30fac081a36edec7463282750359a50c8d986bea9ffaa277",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "reviewer": "Codex",
+      "note": "Bouilloire entière à anse arquée, couvercle et bec nettement distincts ; lavis gris, traits blanc chaud sur noir et un accent vermillon au bouton. Silhouette et bec restent lisibles à 160 et 96 px. Usage support conservé : ne pas imposer une distinction bouilloire/théière par ce seul dessin."
+    },
+    {
+      "id": "pack-307c6035",
+      "sha256": "a1075d2bad688ab90673092bd71a3697dd9f42d857c8535364dccd43a8950dd2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "reviewer": "Codex",
+      "note": "Fourchette seule, quatre dents séparées et manche entier ; silhouette complète et traits au pinceau conformes à la colonne 02. Le couvert reste identifiable à 160 et 96 px ; aucune cuillère, aucun texte, aucun objet donnant une réponse différente."
+    },
+    {
+      "id": "pack-8c62cb1a",
+      "sha256": "2bd5baa3ba49a9187d0f4bf76b4833e044e41b691a8e58df4d87085c47d0db4a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "reviewer": "Codex",
+      "note": "Planche à découper en bois, surface rectangulaire, poignée percée, veinage et traces de coupe visibles ; fond noir, blanc chaud et gris sans bois brun. Reconnaissable à 160 et 96 px. 판자 est une lecture générique plausible traitée comme alternative neutre, jamais comme réussite de 도마."
+    },
+    {
+      "id": "pack-3a0ed317",
+      "sha256": "f6c311301a7e1251ee9b7dbdf962a7908b23742da8a832d6ae71855648f11572",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "reviewer": "Codex",
+      "note": "Boussole de navigation avec rose des vents, unique aiguille magnétique et petit accent vermillon ; pas de chiffres ni lettres, absence de bracelet et de cadran horaire. Instrument entier, traits au pinceau et marges préservés à 512/160/96 px. 시계 reste une alternative neutre pour éviter une pénalité sur une lecture de montre de poche."
+    },
+    {
+      "id": "pack-283db07f",
+      "sha256": "d091db758115294fa904fb159aef91703fef3afa9b49e74b8c36d73ad0120836",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "reviewer": "Codex",
+      "note": "Télescope astronomique réfracteur : tube unique, objectif large et oculaire opposé, monture et trois pieds entièrement visibles. Noir, blanc chaud et lavis gris, petit accent vermillon à l’oculaire. Instrument reconnaissable à 160 et 96 px, sans lune ni décor ; aucun jumelage de deux tubes suggérant des jumelles."
+    }
+  ]
+}

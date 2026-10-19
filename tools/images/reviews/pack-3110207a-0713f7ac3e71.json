@@ -1,0 +1,24 @@
+{
+  "id": "pack-3110207a",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T22:02:48.475Z",
+  "sourceSha256": "fa559a5730d38f4fafcafed4e9f570aaa67c68501a7458a03876880da01856e0",
+  "sha256": "0713f7ac3e71111f465a3c6cb0094530c9dd6fa833789a1c70d739cea155d94b",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nUne vache adulte de profil et son veau tétant, un seul groupe animal entier isolé. Les deux animaux ont des pattes cohérentes et toutes les queues, cornes et sabots entièrement dans de généreuses marges. STRICTEMENT blanc cassé et gris neutre sur noir : mamelle blanche et grise, aucune couleur rose, chair, beige orangé, rouge ou brun. Pinceau expressif, pas de photo, aucune personne, blessure, inscription ou décor. Support pédagogique de 젖 lait maternel animal.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Vache et veau tétant entiers, pattes cohérentes et mamelle désormais blanche/grise ; reprise de palette validée, lait maternel animal en support.",
+  "reviewedAt": "2026-10-18T22:08:29.100Z",
+  "kr": "젖",
+  "sense": "Lait (maternel), mamelle",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

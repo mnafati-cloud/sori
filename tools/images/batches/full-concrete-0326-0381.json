@@ -1,0 +1,593 @@
+{
+  "id": "full-concrete-0326-0381",
+  "requested": 22,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-55a185a4",
+      "kr": "깨소금",
+      "sense": "Sel de sésame (graines grillées et pilées).",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 326
+    },
+    {
+      "id": "pack-1594b26a",
+      "kr": "꽃씨",
+      "sense": "Graine de fleur.",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 327
+    },
+    {
+      "id": "pack-e17b2060",
+      "kr": "장비",
+      "sense": "Équipement, matériel",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 359
+    },
+    {
+      "id": "pack-d4c4bed6",
+      "kr": "저고리",
+      "sense": "Jeogori (veste courte du costume traditionnel coréen)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 360
+    },
+    {
+      "id": "pack-8cd89ee0",
+      "kr": "전구",
+      "sense": "Une ampoule",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 361
+    },
+    {
+      "id": "pack-07475573",
+      "kr": "조개",
+      "sense": "Coquillage, mollusque bivalve",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 362
+    },
+    {
+      "id": "pack-7651f5c0",
+      "kr": "주름살",
+      "sense": "Ride (du visage)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 363
+    },
+    {
+      "id": "pack-5eeb6f3a",
+      "kr": "촛불",
+      "sense": "Bougie (allumee), lumiere de bougie",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 366
+    },
+    {
+      "id": "pack-1d0f1c82",
+      "kr": "치아",
+      "sense": "La dent",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 367
+    },
+    {
+      "id": "pack-679cd7b1",
+      "kr": "케첩",
+      "sense": "Ketchup",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 368
+    },
+    {
+      "id": "pack-39ddfd72",
+      "kr": "코끝",
+      "sense": "Bout du nez",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 369
+    },
+    {
+      "id": "pack-400fd6da",
+      "kr": "틀",
+      "sense": "Cadre, moule, structure ; châssis",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 370
+    },
+    {
+      "id": "pack-30675920",
+      "kr": "팩스",
+      "sense": "Fax, télécopie",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 371
+    },
+    {
+      "id": "pack-465fd63c",
+      "kr": "팩시밀리",
+      "sense": "Télécopieur, fac-similé",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 372
+    },
+    {
+      "id": "pack-34247d30",
+      "kr": "페인트",
+      "sense": "Peinture (produit), laque",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 373
+    },
+    {
+      "id": "pack-372aaf92",
+      "kr": "하드웨어",
+      "sense": "Matériel informatique, hardware",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 374
+    },
+    {
+      "id": "pack-e4ac4b2e",
+      "kr": "햄",
+      "sense": "Jambon",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 375
+    },
+    {
+      "id": "pack-6519f7ba",
+      "kr": "혈액",
+      "sense": "Sang",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 376
+    },
+    {
+      "id": "pack-e33dffd1",
+      "kr": "화살",
+      "sense": "Flèche",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 377
+    },
+    {
+      "id": "pack-1766a3a3",
+      "kr": "야채",
+      "sense": "Legume(s)",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 378
+    },
+    {
+      "id": "pack-11202d93",
+      "kr": "음료수",
+      "sense": "Boisson (rafraichissement, soda)",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 380
+    },
+    {
+      "id": "pack-06a5309a",
+      "kr": "택배",
+      "sense": "colis, livraison à domicile",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 381
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-55a185a4",
+      "reviewer": "Codex",
+      "sourceSha256": "711c6ed9f95fd7bd2f108a50cd97367298f9d4903d226e485f5fbd5c08154a99",
+      "note": "Reprise : bol entier, sésame pilé et cuillère lisibles, désormais blanc et gris sans brun ; le type de condiment reste une aide après réponse."
+    },
+    {
+      "id": "pack-1594b26a",
+      "reviewer": "Codex",
+      "sourceSha256": "56de85e642981237d5328a3efdd4a97dd904faa22d66f49563429c2b7659db66",
+      "note": "Reprise : graines allongées striées dans une coupelle entière, désormais monochromes ; leur origine florale exige le mot, donc aide."
+    },
+    {
+      "id": "pack-e17b2060",
+      "reviewer": "Codex",
+      "sourceSha256": "38bd37ab1f75c53d69450480559b712f39e3fb103a9b722bfd54c73fc6d56f7f",
+      "note": "Harnais, corde et mousquetons entiers ; petites bagues vermillon fonctionnelles ; ensemble lisible comme exemple de matériel, catégorie en aide."
+    },
+    {
+      "id": "pack-d4c4bed6",
+      "reviewer": "Codex",
+      "sourceSha256": "581aa9ccffb641bab8509cca4edc017c9ca201b87cfed9a90412d35d1cd2394e",
+      "note": "Jeogori court sur cintre entier, col croisé, manches et ruban vermillon lisibles ; vêtement culturel en aide."
+    },
+    {
+      "id": "pack-8cd89ee0",
+      "reviewer": "Codex",
+      "sourceSha256": "6040a2f571202fbef23aa3dcfc6cb673d2031d730b40085e749257f3044349ca",
+      "note": "Ampoule entière, culot et filament distincts même à 96 px ; seul le filament porte le petit accent vermillon. Question 전구, autre désignation neutralisée."
+    },
+    {
+      "id": "pack-07475573",
+      "reviewer": "Codex",
+      "sourceSha256": "cb2324b8894ad955bcf3bde2633f4f7dc6f89d23547b1f4b95ebbc1231d62a01",
+      "note": "Bivalve ouvert entier et strié, chair sobre dans les gris chauds ; type générique de coquillage conservé en aide."
+    },
+    {
+      "id": "pack-7651f5c0",
+      "reviewer": "Codex",
+      "sourceSha256": "d703f5cee78a7c0fdab10cfa6afe327ff0cb4317f15fce7705450ffcd61485cf",
+      "note": "Portrait adulte entier avec rides nettes au front et aux yeux aux trois tailles ; visage comme contexte, rides en aide."
+    },
+    {
+      "id": "pack-5eeb6f3a",
+      "reviewer": "Codex",
+      "sourceSha256": "87fb0aa0d42f1055e49e115ffaa688d19dac0bb094cf4d1f83ca1eaefa3afff5",
+      "note": "Bougie allumée entière, flamme et cire contenues dans le cadre, petit accent à la mèche ; sens lumière de bougie en aide."
+    },
+    {
+      "id": "pack-1d0f1c82",
+      "reviewer": "Codex",
+      "sourceSha256": "5d90d3961e924f605dd504ce878abbaeedbb96ac9e78b221080203470b498b08",
+      "note": "Dent entière, couronne et racines séparées et lisibles ; registre formel 치아 face à 이, donc aide."
+    },
+    {
+      "id": "pack-679cd7b1",
+      "reviewer": "Codex",
+      "sourceSha256": "a39e0d64fbaa32c14421a420603e98ac461ae33cd5edc988999c5b33e4be86dd",
+      "note": "Petit ramequin et pointe de sauce entiers, seul un trait de ketchup vermillon ; condiment non univoque en monochrome, aide."
+    },
+    {
+      "id": "pack-39ddfd72",
+      "reviewer": "Codex",
+      "sourceSha256": "6e596d6eb5eefa64ac673c727d02a464f83675dbc1b65c5f45e6411295b103ea",
+      "note": "Profil adulte complet avec pointe du nez lisible et espace noir autour ; la sous-partie anatomique demande le mot, aide."
+    },
+    {
+      "id": "pack-400fd6da",
+      "reviewer": "Codex",
+      "sourceSha256": "bc11394e9a15ecdc1fd56f57bcebf4b8d92ffb64f5c6bc5ea91501334771f634",
+      "note": "Moule rectangulaire creux entier, bords et intérieur noir lisibles ; un exemple du sens moule, sans imposer les autres sens de 틀."
+    },
+    {
+      "id": "pack-30675920",
+      "reviewer": "Codex",
+      "sourceSha256": "ae4ec32a1457214ae769cd80cbe0dd3b8db3a0d37e7aa4c97b93bb364ea6f71c",
+      "note": "Fax entier avec combiné, cordon, clavier et feuille vierge ; aucune lettre ni marque. Synonymie de fax conservée en aide."
+    },
+    {
+      "id": "pack-465fd63c",
+      "reviewer": "Codex",
+      "sourceSha256": "484991dc2f2a86f0c65c4df83cbe5d8ab79d960a7693dfa031b200f17bf59567",
+      "note": "Second rendu distinct de télécopieur entier, touches et feuille vierges ; pas de réemploi du fax précédent, registre long en aide."
+    },
+    {
+      "id": "pack-34247d30",
+      "reviewer": "Codex",
+      "sourceSha256": "d44e73fcd8fea443a31e9d836e416283d10e16411e7f54bf30e2e0b1ff366930",
+      "note": "Pot de peinture entier avec pinceau et coulures, seul le manche est vermillon ; produit distingué de peinture artistique, aide."
+    },
+    {
+      "id": "pack-372aaf92",
+      "reviewer": "Codex",
+      "sourceSha256": "d8cf783e1dbd389d8ac34fb2d99ca0e8bfbfab5ce5df73a58af55e94270438e9",
+      "note": "Carte mère entière avec ventilateur, ports et barrettes, petit câble vermillon ; matériel informatique illustré par un exemplaire, aide."
+    },
+    {
+      "id": "pack-e4ac4b2e",
+      "reviewer": "Codex",
+      "sourceSha256": "490ae4aa6747a0e40102206bbfed45db2334f1ccc5195bea78e15d721c2051d8",
+      "note": "Pièce de jambon et tranches entières, texture grise sans rose naturel ; type de viande difficile sans couleur, aide."
+    },
+    {
+      "id": "pack-6519f7ba",
+      "reviewer": "Codex",
+      "sourceSha256": "8248420fc08232672c22cc77e2eee6394b247bde44aeef587a34cf0959daa724",
+      "note": "Tube médical fermé et support entiers, faible accent rouge sur bouchon et surface du prélèvement ; sang illustré sans blessure, aide."
+    },
+    {
+      "id": "pack-e33dffd1",
+      "reviewer": "Codex",
+      "sourceSha256": "66742fc8a12d973f101b891f5c2fa9190a104654b0257f6952676c58c8317fc0",
+      "note": "Flèche entière avec pointe, hampe et empennage lisibles à 96 px ; petite ligature vermillon, question 화살."
+    },
+    {
+      "id": "pack-1766a3a3",
+      "reviewer": "Codex",
+      "sourceSha256": "23d5c9b479809ba6bfc3ec859fa476adeb7350f3ae902fff492a654cdcd23719",
+      "note": "Chou, carotte et oignon entiers en blanc et gris ; très petit accent à la racine, catégorie légumes en aide après réponse."
+    },
+    {
+      "id": "pack-11202d93",
+      "reviewer": "Codex",
+      "sourceSha256": "233bf3225c1c7a130618188503b1866a0e0ba91892d545d910b2497d529b4fcd",
+      "note": "Verre entier, glaçons et bulles lisibles même à 96 px ; aucune couleur de soda ni étiquette, rafraîchissement générique en aide."
+    },
+    {
+      "id": "pack-06a5309a",
+      "reviewer": "Codex",
+      "sourceSha256": "96f119302f72b33afe5a1d89a5a20ed83fa0002f86b942fb5dd0d200f57bbc2e",
+      "note": "Colis fermé entier avec ruban et étiquette vierge ; aucune donnée personnelle ; nom de livraison illustré comme aide."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-e2445d29",
+      "rank": 364,
+      "kr": "찌꺼기",
+      "sourceSha256": "3ad2cf4b12471bc17042a5355054537e65f97fa8031661665084715b4ae7b2c8",
+      "sha256": "062ba47373d3b8142a70eec6a95255b0378f1d24c499749bb63ad9f3fe35cd76",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Le marc au fond de la tasse emploie un brun naturel visible aux trois tailles, hors palette. Reprise strictement achromatique."
+    },
+    {
+      "id": "pack-b275142c",
+      "rank": 379,
+      "kr": "음료",
+      "sourceSha256": "17b25fc939fd7b4c638b43a16f3496d26a4bb2290cd31e80c81d9598fb4612b1",
+      "sha256": "65ce3c9a8f88c2f5f98571ba6f5c4e9377ea7aa2222b0eebf2d70919c7bb5925",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Le liquide de la boisson chaude est brun naturel, hors palette. Reprise monochrome sans couleur de café."
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-55a185a4",
+      "reviewer": "Codex",
+      "sha256": "70dc8daf492193ada136bf8595b3193171aa5f2047e680a263e6160db1e86adc",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Reprise : bol entier, sésame pilé et cuillère lisibles, désormais blanc et gris sans brun ; le type de condiment reste une aide après réponse."
+    },
+    {
+      "id": "pack-1594b26a",
+      "reviewer": "Codex",
+      "sha256": "25c36a993381dd062560f81787641dd1ac525d1c73a6173529db7a1a13f23e2c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Reprise : graines allongées striées dans une coupelle entière, désormais monochromes ; leur origine florale exige le mot, donc aide."
+    },
+    {
+      "id": "pack-e17b2060",
+      "reviewer": "Codex",
+      "sha256": "911495fdad88a03dcca727f4f23c105a6acfc3200bb7b3195ebfc503b7cd4c9d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Harnais, corde et mousquetons entiers ; petites bagues vermillon fonctionnelles ; ensemble lisible comme exemple de matériel, catégorie en aide."
+    },
+    {
+      "id": "pack-d4c4bed6",
+      "reviewer": "Codex",
+      "sha256": "acab54e0df8c7b3cdc5ead281d1898e3c95dbe6aede8d84f48229d41c688f8da",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Jeogori court sur cintre entier, col croisé, manches et ruban vermillon lisibles ; vêtement culturel en aide."
+    },
+    {
+      "id": "pack-8cd89ee0",
+      "reviewer": "Codex",
+      "sha256": "2f8f0152396172c5db42841d99d37fd15f5209c9e9fe178ae3906f55274ec233",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Ampoule entière, culot et filament distincts même à 96 px ; seul le filament porte le petit accent vermillon. Question 전구, autre désignation neutralisée."
+    },
+    {
+      "id": "pack-07475573",
+      "reviewer": "Codex",
+      "sha256": "8b1e966748ff3511524b624fd979ba05f9229298f353bd3dc8f65a1b1e50a2f2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bivalve ouvert entier et strié, chair sobre dans les gris chauds ; type générique de coquillage conservé en aide."
+    },
+    {
+      "id": "pack-7651f5c0",
+      "reviewer": "Codex",
+      "sha256": "c79a010a5f7b63c8d233c1ab7d1768be520b084b31fbbdafa48f4bfedd5fd7fd",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Portrait adulte entier avec rides nettes au front et aux yeux aux trois tailles ; visage comme contexte, rides en aide."
+    },
+    {
+      "id": "pack-5eeb6f3a",
+      "reviewer": "Codex",
+      "sha256": "cf7147148d1dda22716fde49f727daf6664670296d6d84ade36b011950ee156b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bougie allumée entière, flamme et cire contenues dans le cadre, petit accent à la mèche ; sens lumière de bougie en aide."
+    },
+    {
+      "id": "pack-1d0f1c82",
+      "reviewer": "Codex",
+      "sha256": "30f12cfb5206f9fb3c38390e8327d4980bc4ab1d74f8250f00fafcbef2d4ea27",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Dent entière, couronne et racines séparées et lisibles ; registre formel 치아 face à 이, donc aide."
+    },
+    {
+      "id": "pack-679cd7b1",
+      "reviewer": "Codex",
+      "sha256": "5f4ced1643f3452f8edf31c2445425f19216c90e70ba8bc406ac099805fdb43d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petit ramequin et pointe de sauce entiers, seul un trait de ketchup vermillon ; condiment non univoque en monochrome, aide."
+    },
+    {
+      "id": "pack-39ddfd72",
+      "reviewer": "Codex",
+      "sha256": "07a6bc145ae5f8f25bf79df0ba43db8ca7e0fb48c35ebb64b5e86d9ddd5734de",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Profil adulte complet avec pointe du nez lisible et espace noir autour ; la sous-partie anatomique demande le mot, aide."
+    },
+    {
+      "id": "pack-400fd6da",
+      "reviewer": "Codex",
+      "sha256": "f3da42aaa6de7a71953603e5de6f35dbd1f72f998beaaf987db562559d9e94ff",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Moule rectangulaire creux entier, bords et intérieur noir lisibles ; un exemple du sens moule, sans imposer les autres sens de 틀."
+    },
+    {
+      "id": "pack-30675920",
+      "reviewer": "Codex",
+      "sha256": "4014459ef3de9e43b9ff56cdae4642a167dbecbefcea16095f42da73c54c5436",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Fax entier avec combiné, cordon, clavier et feuille vierge ; aucune lettre ni marque. Synonymie de fax conservée en aide."
+    },
+    {
+      "id": "pack-465fd63c",
+      "reviewer": "Codex",
+      "sha256": "a819439f5b013511189a134218542a05747c96b23dd07125dcf90be780656c8f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Second rendu distinct de télécopieur entier, touches et feuille vierges ; pas de réemploi du fax précédent, registre long en aide."
+    },
+    {
+      "id": "pack-34247d30",
+      "reviewer": "Codex",
+      "sha256": "42e53f523ef7ff279375b780ae30d90a10f4a1cf508af3e8b159804c65ab80ee",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pot de peinture entier avec pinceau et coulures, seul le manche est vermillon ; produit distingué de peinture artistique, aide."
+    },
+    {
+      "id": "pack-372aaf92",
+      "reviewer": "Codex",
+      "sha256": "e5cdbcbbdbac4de4cae3ba36c75378d30e60dc201d64ea877c27859677dcb0c0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Carte mère entière avec ventilateur, ports et barrettes, petit câble vermillon ; matériel informatique illustré par un exemplaire, aide."
+    },
+    {
+      "id": "pack-e4ac4b2e",
+      "reviewer": "Codex",
+      "sha256": "b1ce1913bf33231e3a52c8db67b40271dd7f80b07f6521abbb23ad7bf47af8c3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pièce de jambon et tranches entières, texture grise sans rose naturel ; type de viande difficile sans couleur, aide."
+    },
+    {
+      "id": "pack-6519f7ba",
+      "reviewer": "Codex",
+      "sha256": "f49b682c12a130155d5434a53a5186e6e9c6bc909c201f6f18eb63cf074ee20e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Tube médical fermé et support entiers, faible accent rouge sur bouchon et surface du prélèvement ; sang illustré sans blessure, aide."
+    },
+    {
+      "id": "pack-e33dffd1",
+      "reviewer": "Codex",
+      "sha256": "d3df5941b5455f608659a96d3c8e669b3150f2265e7f36e0480c293cf0e54fe2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Flèche entière avec pointe, hampe et empennage lisibles à 96 px ; petite ligature vermillon, question 화살."
+    },
+    {
+      "id": "pack-1766a3a3",
+      "reviewer": "Codex",
+      "sha256": "d288ac5501acbc9987e45675a0327c2c938ef7fca95678986d91f7d39d932693",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Chou, carotte et oignon entiers en blanc et gris ; très petit accent à la racine, catégorie légumes en aide après réponse."
+    },
+    {
+      "id": "pack-11202d93",
+      "reviewer": "Codex",
+      "sha256": "dc48619da6cfd320287197e27cf9b7b68803117f4f9a7dd5fd14a846e168d029",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Verre entier, glaçons et bulles lisibles même à 96 px ; aucune couleur de soda ni étiquette, rafraîchissement générique en aide."
+    },
+    {
+      "id": "pack-06a5309a",
+      "reviewer": "Codex",
+      "sha256": "25bd42a1a089bb68a70b4d7bdc62e5aa9405f9e78b0814abd24f1e9d19fe0878",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Colis fermé entier avec ruban et étiquette vierge ; aucune donnée personnelle ; nom de livraison illustré comme aide."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "pack-a713da59",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T21:24:42.255Z",
+  "sourceSha256": "003e371b30524d674d3212b19f7c658448bd12854ff21174a564f6ffeed94878",
+  "sha256": "c874cae79f6fe099dac3fff307c8167bfd1244045ee5cf8e1e3c564b00c6e4fa",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nUn autocar interurbain complet de trois quarts, grand pare-brise, fenêtres de passagers et soute latérale fermée, sans ligne, plaque ou marque ; support de la destination interurbaine. Mot ciblé : 시외버스. Sens du deck : Autocar interurbain. Palette strictement blanc chaud et lavis gris sur noir, sans couleur dominante ; un seul sujet ou ensemble naturel, silhouette complète, marges généreuses, aucun texte, lettre, chiffre, logo ni pseudo-écriture. Pinceau expressif, pas de photographie ni 3D. Usage support après réponse sauf validation explicite ultérieure.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Autocar entier avec grandes fenêtres et soutes latérales, aucune marque ou destination lisible ; caractère interurbain maintenu en support.",
+  "reviewedAt": "2026-10-18T21:28:56.838Z",
+  "kr": "시외버스",
+  "sense": "Autocar interurbain",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

@@ -1,0 +1,24 @@
+{
+  "id": "pack-09f376eb",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T20:44:56.001Z",
+  "sourceSha256": "7ae3d146bc05ce48ab3bf8e207193b2eaf1645956f9507a5f6f77b7afff4ee96",
+  "sha256": "313ae2e6a3006cf7637f5820b1760e9bfb43440df01395caa720b7d4dcb865fd",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nSujet unique : Rayures, rayé. Mot coréen ciblé : 줄무늬. Illustrer précisément ce sens du deck, sans dessiner de mot. Note lexicale : 줄 = ligne, trait. Exemple qui précise le sens : 줄무늬 티셔츠를 자주 입어요.. Une illustration isolée de ce référent concret, silhouette entière, marges noires généreuses. Blanc chaud, lavis gris sobres, larges zones noires ouvertes dans le sujet. Aucun texte, chiffre, lettre, logo ou nom de marque ; aucune couleur naturelle dominante. Si le mot désigne une catégorie ou une nuance non visible, l'image sera une aide après réponse : ne pas inventer de symbole magique qui prétendrait distinguer des synonymes.  Palette verrouillée : blanc chaud et lavis gris uniquement, pas de brun naturel, vert, bleu ou rouge dominant ; aucun accent rouge nécessaire. Rien de coupé, larges marges noires, pas de glyphes ni pseudo-écriture. Pour une partie du corps : étude anatomique neutre adulte, non sexuelle, sans blessure sauf si le sens l’exige. Pour un document : aucun texte lisible ou imité. Pour un médicament : aucune marque, posologie ou promesse médicale. Usage aide après réponse pour toute catégorie, matière, synonyme ou attribut non visuellement certain.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "T-shirt à larges rayures contrastées ; motif encore lisible à 96 px, support car vêtement et motif coexistent.",
+  "reviewedAt": "2026-10-18T20:51:48.296Z",
+  "kr": "줄무늬",
+  "sense": "Rayures, rayé",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

@@ -1,0 +1,479 @@
+{
+  "id": "full-concrete-0045-0068",
+  "requested": 18,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-e0cc00f4",
+      "kr": "체크무늬",
+      "sense": "À carreaux",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 45
+    },
+    {
+      "id": "pack-d3b0796f",
+      "kr": "초대장",
+      "sense": "Carton d'invitation",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 46
+    },
+    {
+      "id": "pack-f4be02d1",
+      "kr": "피",
+      "sense": "le sang",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 49
+    },
+    {
+      "id": "pack-0ab6642f",
+      "kr": "한잔",
+      "sense": "Un verre (une boisson)",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 50
+    },
+    {
+      "id": "pack-bf830825",
+      "kr": "가루",
+      "sense": "Poudre, farine",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 51
+    },
+    {
+      "id": "pack-91189a75",
+      "kr": "가전제품",
+      "sense": "Électroménager, appareils électroménagers",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 52
+    },
+    {
+      "id": "pack-2db984c8",
+      "kr": "가죽",
+      "sense": "Cuir",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 53
+    },
+    {
+      "id": "pack-7ce12812",
+      "kr": "계산대",
+      "sense": "Caisse (comptoir de paiement)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 55
+    },
+    {
+      "id": "pack-1e22efe5",
+      "kr": "고무",
+      "sense": "Caoutchouc",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 56
+    },
+    {
+      "id": "pack-e5408b9b",
+      "kr": "공중전화",
+      "sense": "Téléphone public, cabine téléphonique.",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 57
+    },
+    {
+      "id": "pack-da61c64a",
+      "kr": "국기",
+      "sense": "Drapeau national",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 58
+    },
+    {
+      "id": "pack-23833348",
+      "kr": "굽",
+      "sense": "Talon (de chaussure)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 59
+    },
+    {
+      "id": "pack-bf7b409f",
+      "kr": "그네",
+      "sense": "Balançoire",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 60
+    },
+    {
+      "id": "pack-4ec6ca65",
+      "kr": "그림책",
+      "sense": "Livre d'images, album illustré",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 63
+    },
+    {
+      "id": "pack-c7a34914",
+      "kr": "금속",
+      "sense": "Métal",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 64
+    },
+    {
+      "id": "pack-c8f3a1ce",
+      "kr": "기계",
+      "sense": "Machine, appareil, engin",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 65
+    },
+    {
+      "id": "pack-77db4759",
+      "kr": "깨",
+      "sense": "Sésame (graine)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 66
+    },
+    {
+      "id": "pack-72b88246",
+      "kr": "꽃꽂이",
+      "sense": "Art floral, composition florale (ikebana)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 68
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-e0cc00f4",
+      "reviewer": "Codex",
+      "sourceSha256": "0eadc423b04fd12a4ad993cb7a5095b79a95604d1e8fd17c0fcfc2be4354fb16",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Tissu entier à carreaux alternés clairs/sombres, franges et plis cohérents, motif encore net à 96 px ; aide pour le motif, pas pour le tissu. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-d3b0796f",
+      "reviewer": "Codex",
+      "sourceSha256": "621bde5c70dbeb531b520e636b11fe41139447a111d7da7fb355125a472a7d0c",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Carte pliée entière et vierge, un ruban vermillon unique ; pas d’inscription, but invitation non prouvable donc aide seule. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-f4be02d1",
+      "reviewer": "Codex",
+      "sourceSha256": "67d9fc511d49219298a105f64297d4f82eabd6c2f68f26cc8a2dd7a9e03ac930",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Petit flacon entier contenant un prélèvement sombre, accent rouge localisé dans le liquide, aucune aiguille ou blessure ; sang seulement en aide, pas de diagnostic ni de contenu garanti. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-0ab6642f",
+      "reviewer": "Codex",
+      "sourceSha256": "a08fa7a34387768768ecc90576b89810ed4ce9f5348abba4f2608ebed78c024f",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Petite coupe entière et son liquide, contour et pied lisibles ; un verre comme aide, pas une preuve de contenu alcoolisé. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-bf830825",
+      "reviewer": "Codex",
+      "sourceSha256": "8287d0780f43a33fe8c702fd9d49b6b02e0f6a7a69b4e0ad3774bb8b6ecd8c17",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Tas de poudre fine blanche avec grains à sa base, silhouette complète ; farine/composition non vérifiable, aide seule. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-91189a75",
+      "reviewer": "Codex",
+      "sourceSha256": "021564d7ff6c2e3f858e4c58513fb75530fc263b9d490e4b9af464046e44a9d0",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Lave-linge entier à hublot et commandes vierges ; exemple de la catégorie électroménager, pas une question qui exigerait la catégorie plutôt que l’appareil. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-2db984c8",
+      "reviewer": "Codex",
+      "sourceSha256": "6837df20d73f030d194d470ee9d2dc75898216080401eb3c0a38933ce61c1640",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Pièce de cuir souple à bord irrégulier partiellement roulée, grain et épaisseur perceptibles ; gris chaud, pas de brun dominant, matériau ambigu donc aide. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-7ce12812",
+      "reviewer": "Codex",
+      "sourceSha256": "dc60defc8a86be86f5dd46fe2889138780392bda0c1f8b1e0e5d446087a8872f",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Caisse-comptoir entière avec convoyeur, registre et écran vierge ; aucune écriture ou personne, détails lisibles à 96 px ; aide seule. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-1e22efe5",
+      "reviewer": "Codex",
+      "sourceSha256": "ec9d5ea4fc1e1c959b8fd2a555db4a425a263f1e151d37c465166ca1cd53dabb",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Tuyau souple enroulé avec section creuse visible, aspect mat blanc/noir ; caoutchouc comme matière non prouvable, aide seule. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-e5408b9b",
+      "reviewer": "Codex",
+      "sourceSha256": "b9e2216d150eec7b86de7df73dce92f3dda0ac6b8b90cfa016f660868af4a22d",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Téléphone public mural entier, combiné, fente et clavier vierge ; cordon complet, aucune inscription ; aide pour éviter une correction injustifiée de téléphone générique. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-da61c64a",
+      "reviewer": "Codex",
+      "sourceSha256": "c9a787cbec6938762d31a9d9ce025f5487bfa255ba95833e83d8e90ee5344f8f",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Drapeau générique entier avec hampe et socle ; tissu sans emblème, aucune nation réelle inventée ; aide seule. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-23833348",
+      "reviewer": "Codex",
+      "sourceSha256": "6c838b91515d13820c8ee5fa8ead34a6097d2599a1800f0b09be1498fac29dd1",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Escarpin entier de profil et talon bien séparé sous l’arrière, petit accent dans la semelle intérieure ; 굽 cible la partie, aide seule pour ne pas imposer talon à la place de chaussure. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-bf7b409f",
+      "reviewer": "Codex",
+      "sourceSha256": "7c9da82f1bc97450cc8c0c2730696b4168b44bf9cba6ada5f41c2a011832bafb",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Balançoire entière : portique à quatre pieds cohérents, deux chaînes reliées à une assise unique. Aucune personne/lettre, silhouette et assise nettes à 96 px. Sujet suffisamment distinctif pour question 그네 ; 놀이기구 reste une lecture plus générique neutre. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-4ec6ca65",
+      "reviewer": "Codex",
+      "sourceSha256": "936f69a01a5d76216a05165b485ac0f5ed838fefdc9fbcb3a3a4a5d7e573e9d4",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Livre d’images entier et ouvert montrant un lapin et une pomme ; dessins sur pages, aucun texte ni faux glyphe. Aide pour type de livre, pas question contre BD/album. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-c7a34914",
+      "reviewer": "Codex",
+      "sourceSha256": "777f70f8b7b1abe7f21cdc716333aa8bebebd899ee72bb383e48df5cc974d455",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Lingot métallique entier, arêtes et reflets blancs/gris ; ne prétend pas identifier le métal exact ; aide seule. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-c8f3a1ce",
+      "reviewer": "Codex",
+      "sourceSha256": "ef66a3c54a548fbfd91baf949720b4fa6f17e9dcde1af534ffde07f3382a2236",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Presse mécanique entière avec roue et piston cohérents, aucune inscription, petit accent rouge localisé ; exemple de machine seulement comme aide. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-77db4759",
+      "reviewer": "Codex",
+      "sourceSha256": "17166f7d3893aa97aa5275444f6eb1d0d245ad2956e93b4cf171f4242ff7db21",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Amas de graines ovales claires aux extrémités pointues ; texture résolue en grand mais espèce non vérifiable en miniature, sésame seulement comme aide. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-72b88246",
+      "reviewer": "Codex",
+      "sourceSha256": "19b504c6273510c8829412996e96a06837e593914806d7abeb8ebf283e6654ac",
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Composition florale entière en vase bas, branches et fleurs reliées, volumes blancs et lavis gris, petites étamines vermillon naturelles ; aide pour arrangement floral, pas pour une école particulière. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-fdd28485",
+      "kr": "껍질",
+      "sourceSha256": "06c92b0d096d71fded227a1a516270148e446f0d330cbe0bd2f8d3eb57f6ed27",
+      "sha256": "a466f84762586ac2ad9a26d85903c260d22f69fd12d882fecdc478ebe9386fc9",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Rejet effectif aux trois tailles : peau de pomme largement rouge sur toute sa longueur, couleur devenue dominante au lieu du petit accent naturel autorisé. Forme complète mais palette à reprendre, aucun asset publié."
+      }
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-e0cc00f4",
+      "reviewer": "Codex",
+      "sha256": "86abb4aeca6a097b022bebe6152958043f683f2a64c4d75d034e73f2ecb1d8b6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Tissu entier à carreaux alternés clairs/sombres, franges et plis cohérents, motif encore net à 96 px ; aide pour le motif, pas pour le tissu. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-d3b0796f",
+      "reviewer": "Codex",
+      "sha256": "5f5f850651daef56cc8e1a10db133d21aa208b413a30ff77e81ca625caf0ff49",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Carte pliée entière et vierge, un ruban vermillon unique ; pas d’inscription, but invitation non prouvable donc aide seule. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-f4be02d1",
+      "reviewer": "Codex",
+      "sha256": "aa2dc6d60ba1c5c8798e6280b61ad7d980d643eb3bca0a5122896b1f5773576a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Petit flacon entier contenant un prélèvement sombre, accent rouge localisé dans le liquide, aucune aiguille ou blessure ; sang seulement en aide, pas de diagnostic ni de contenu garanti. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-0ab6642f",
+      "reviewer": "Codex",
+      "sha256": "005e4c25411c613998364af9dd8599dd708f8006478e7b0f52c199967032365e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Petite coupe entière et son liquide, contour et pied lisibles ; un verre comme aide, pas une preuve de contenu alcoolisé. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-bf830825",
+      "reviewer": "Codex",
+      "sha256": "85aae5a764512d91052e74289c2ef7734909033ccce2ed16250ee5225cd91962",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Tas de poudre fine blanche avec grains à sa base, silhouette complète ; farine/composition non vérifiable, aide seule. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-91189a75",
+      "reviewer": "Codex",
+      "sha256": "8e12fe844878b1bf141442b6111728d25f967b252da8cb42395b54e4e5a5d909",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Lave-linge entier à hublot et commandes vierges ; exemple de la catégorie électroménager, pas une question qui exigerait la catégorie plutôt que l’appareil. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-2db984c8",
+      "reviewer": "Codex",
+      "sha256": "60696fd9f82eed5bec0f302a034706d9512b256f9d69d1d34f769981097a5ee2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Pièce de cuir souple à bord irrégulier partiellement roulée, grain et épaisseur perceptibles ; gris chaud, pas de brun dominant, matériau ambigu donc aide. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-7ce12812",
+      "reviewer": "Codex",
+      "sha256": "eac0d0857754a222a27b4bd8847fbce721c5d50be4eb4e293ed7deec0c11f11b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Caisse-comptoir entière avec convoyeur, registre et écran vierge ; aucune écriture ou personne, détails lisibles à 96 px ; aide seule. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-1e22efe5",
+      "reviewer": "Codex",
+      "sha256": "7a44fb8ffad2bd1ffaa02194e3a9d4083f9d5777279366ebc726f17825d2ab16",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Tuyau souple enroulé avec section creuse visible, aspect mat blanc/noir ; caoutchouc comme matière non prouvable, aide seule. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-e5408b9b",
+      "reviewer": "Codex",
+      "sha256": "b7d5c331d772d38704c076dcf067bd6dc9b26e2e606735bbe01986fc17f691bb",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Téléphone public mural entier, combiné, fente et clavier vierge ; cordon complet, aucune inscription ; aide pour éviter une correction injustifiée de téléphone générique. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-da61c64a",
+      "reviewer": "Codex",
+      "sha256": "1026a199d392435c21a86888bc3f5ffa7ace74be79839dd421aa51f16720ceb2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Drapeau générique entier avec hampe et socle ; tissu sans emblème, aucune nation réelle inventée ; aide seule. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-23833348",
+      "reviewer": "Codex",
+      "sha256": "e353bfe8ac53163cd12730aa1ff78ef855a1647a5858ab2556a5f794137ccc6c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Escarpin entier de profil et talon bien séparé sous l’arrière, petit accent dans la semelle intérieure ; 굽 cible la partie, aide seule pour ne pas imposer talon à la place de chaussure. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-bf7b409f",
+      "reviewer": "Codex",
+      "sha256": "7d38de2edf65df54a07f85ea36c35cc0361f0105009a838d0360917c4d8e9498",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Balançoire entière : portique à quatre pieds cohérents, deux chaînes reliées à une assise unique. Aucune personne/lettre, silhouette et assise nettes à 96 px. Sujet suffisamment distinctif pour question 그네 ; 놀이기구 reste une lecture plus générique neutre. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-4ec6ca65",
+      "reviewer": "Codex",
+      "sha256": "4aef7dbf01a4017a2b353ec8c5843fc791a6ff6835564d152b888dc48a4f1b7a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Livre d’images entier et ouvert montrant un lapin et une pomme ; dessins sur pages, aucun texte ni faux glyphe. Aide pour type de livre, pas question contre BD/album. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-c7a34914",
+      "reviewer": "Codex",
+      "sha256": "ee4304269568a07e63e7ea09bfe40a019f4deac34daf19b89f4375b5e2726a49",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Lingot métallique entier, arêtes et reflets blancs/gris ; ne prétend pas identifier le métal exact ; aide seule. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-c8f3a1ce",
+      "reviewer": "Codex",
+      "sha256": "2abb8a00c627c3966b3c734c4806fbf3878b5c0cf5ab173cd71e446d9f5aea29",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Presse mécanique entière avec roue et piston cohérents, aucune inscription, petit accent rouge localisé ; exemple de machine seulement comme aide. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-77db4759",
+      "reviewer": "Codex",
+      "sha256": "64032b1d70c151ac4d1f9b035f20f5d8614e2b023b486231f055bc637d3bda7d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Amas de graines ovales claires aux extrémités pointues ; texture résolue en grand mais espèce non vérifiable en miniature, sésame seulement comme aide. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    },
+    {
+      "id": "pack-72b88246",
+      "reviewer": "Codex",
+      "sha256": "7cf7743c202077a32cfa0e044c159c579201bcec097df011ccaa2cdb392c0af4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective du PNG et WebP à 512, 160 et 96 px. Composition florale entière en vase bas, branches et fleurs reliées, volumes blancs et lavis gris, petites étamines vermillon naturelles ; aide pour arrangement floral, pas pour une école particulière. Style pinceau sur noir, aucun texte/logo, éléments entiers dans le carré."
+    }
+  ]
+}

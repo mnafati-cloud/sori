@@ -1,0 +1,26 @@
+{
+  "id": "pack-e965c1fd",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T18:53:25.943Z",
+  "sourceSha256": "dae9e207a9f13dc192e498f27d36c931fc108d1af6767977561d66fb0cb47b59",
+  "sha256": "bb4bcd6351ade4883497ce3b85227168cde2fa249fe403b7eefea291cd00d125",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne complete tulip plant with one upright cup-shaped flower, a slender stem and two long broad leaves. The characteristic cup has overlapping pointed petals; show the whole flower, stem and leaves inside generous margins. Warm-white expressive brush marks and restrained grey wash on pure black, with no natural flower colors, soil, pot, bouquet, person, words or labels.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Tulipe entière : fleur en coupe, pétales superposés, tige et deux feuilles larges. Silhouette identifiable aux trois tailles, marges noires et traits au pinceau blanc/gris ; aucune couleur naturelle ni texte. Question conservée.",
+  "reviewedAt": "2026-10-18T18:54:27.888Z",
+  "kr": "튤립",
+  "sense": "tulipe",
+  "usage": "question",
+  "accepted": [
+    "튤립"
+  ],
+  "alternatives": []
+}

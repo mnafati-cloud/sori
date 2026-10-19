@@ -1,0 +1,593 @@
+{
+  "id": "full-concrete-0339-0407",
+  "requested": 22,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-4b8b92d0",
+      "kr": "밥상",
+      "sense": "Table dressée, plateau de repas",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 339
+    },
+    {
+      "id": "pack-d3942b2b",
+      "kr": "티브이",
+      "sense": "Télé, TV",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 382
+    },
+    {
+      "id": "1779706066049",
+      "kr": "현금",
+      "sense": "Espèces",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 383
+    },
+    {
+      "id": "pack-1b92eeff",
+      "kr": "가지",
+      "sense": "branche (d'arbre)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 384
+    },
+    {
+      "id": "pack-5d6a0ae4",
+      "kr": "거스름돈",
+      "sense": "Monnaie (rendue)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 386
+    },
+    {
+      "id": "pack-4daef7f7",
+      "kr": "겉옷",
+      "sense": "Vêtement de dessus, manteau",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 387
+    },
+    {
+      "id": "pack-e8fed1b2",
+      "kr": "나뭇잎",
+      "sense": "feuille (d'arbre)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 389
+    },
+    {
+      "id": "pack-5107eb8d",
+      "kr": "낙엽",
+      "sense": "feuilles mortes",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 390
+    },
+    {
+      "id": "pack-fa3bb687",
+      "kr": "도서",
+      "sense": "Livres, ouvrages (collectif)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 391
+    },
+    {
+      "id": "pack-4f0e4924",
+      "kr": "두통약",
+      "sense": "Médicament contre le mal de tête, cachet antimigraine",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 392
+    },
+    {
+      "id": "pack-8697d812",
+      "kr": "드라이어",
+      "sense": "Sèche-cheveux",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 393
+    },
+    {
+      "id": "pack-c2bc0f7c",
+      "kr": "박스",
+      "sense": "Boîte, carton",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 395
+    },
+    {
+      "id": "pack-ab262445",
+      "kr": "벨트",
+      "sense": "Ceinture",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 396
+    },
+    {
+      "id": "pack-aa9b6433",
+      "kr": "사진기",
+      "sense": "Appareil photo",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 397
+    },
+    {
+      "id": "1780695436370",
+      "kr": "셔츠",
+      "sense": "Chemise",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 398
+    },
+    {
+      "id": "pack-9a648190",
+      "kr": "수면제",
+      "sense": "Somnifère",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 401
+    },
+    {
+      "id": "pack-f2072f0b",
+      "kr": "승용차",
+      "sense": "Voiture particulière, berline",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 402
+    },
+    {
+      "id": "pack-d561b8da",
+      "kr": "시내버스",
+      "sense": "Bus urbain, bus de ville",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 403
+    },
+    {
+      "id": "pack-c9c9a331",
+      "kr": "신용카드",
+      "sense": "Carte de credit",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 404
+    },
+    {
+      "id": "pack-96525daf",
+      "kr": "신체",
+      "sense": "Corps (humain)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 405
+    },
+    {
+      "id": "pack-a03faac7",
+      "kr": "아침밥",
+      "sense": "Petit-déjeuner (le repas)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 406
+    },
+    {
+      "id": "pack-53c9752b",
+      "kr": "온몸",
+      "sense": "Tout le corps, le corps entier",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 407
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-4b8b92d0",
+      "reviewer": "Codex",
+      "sourceSha256": "34fd28dc4efe6b24023db957396269303d4fae581312360e24a814eb93a35057",
+      "note": "Reprise : table basse dressée entière, trois pieds visibles et cinq bols ; aliments désormais monochromes sans garniture verte ou orange. Table de repas en aide."
+    },
+    {
+      "id": "pack-d3942b2b",
+      "reviewer": "Codex",
+      "sourceSha256": "7b9c90c27b192767132f19a3fc9c8f44f87149ca9bac016eeb9b2c7ac320f8f2",
+      "note": "Téléviseur entier sur deux pieds, écran noir sans programme ni logo ; désignation brève et synonymes en aide."
+    },
+    {
+      "id": "1779706066049",
+      "reviewer": "Codex",
+      "sourceSha256": "075d7709da9b71501780799278a155c2b3146f5d1ad6c62e23ef960a79a3267a",
+      "note": "Billets fictifs et pièces entiers, simples décors sans chiffres, lettres ou pays ; espèces en aide face à argent générique."
+    },
+    {
+      "id": "pack-1b92eeff",
+      "reviewer": "Codex",
+      "sourceSha256": "15fbb6f239cb5ffd1494f51064a09f629944e2c002125360dc3e7664a380c92a",
+      "note": "Branche ramifiée avec feuilles entières et espace noir autour, sans bois brun ni feuilles vertes ; sous-partie végétale en aide."
+    },
+    {
+      "id": "pack-5d6a0ae4",
+      "reviewer": "Codex",
+      "sourceSha256": "f3f860aaddc51ed38e391ce3a13ba8798b5f5f95306bb785bd77ebfa309d52d8",
+      "note": "Main ouverte entièrement dans le cadre jusqu’à un poignet terminé au pinceau, trois pièces vierges avec petit accent de tranche ; monnaie rendue reste contextuelle en aide."
+    },
+    {
+      "id": "pack-4daef7f7",
+      "reviewer": "Codex",
+      "sourceSha256": "fd3cab860a79962b1d7bb5a08a07d8b73b616cd176b652f33af00fc8e39a0294",
+      "note": "Manteau et cintre entiers, col et manches visibles sans marque ; exemple de vêtement de dessus, aide."
+    },
+    {
+      "id": "pack-e8fed1b2",
+      "reviewer": "Codex",
+      "sourceSha256": "9273054866c2958b692771f35b73c1438be3dc22e544a48ceead155b40ccd945",
+      "note": "Feuille dentée entière avec pétiole et nervures lisibles, sans vert naturel ; distinction na-mu/feuille en aide."
+    },
+    {
+      "id": "pack-5107eb8d",
+      "reviewer": "Codex",
+      "sourceSha256": "d893207d551a451e235bb8bf167c7fa062401707f5e31f79df847da0e77c7f80",
+      "note": "Trois feuilles sèches recroquevillées entières et lisibles en miniature, monochromes ; état feuille morte illustré en aide."
+    },
+    {
+      "id": "pack-fa3bb687",
+      "reviewer": "Codex",
+      "sourceSha256": "6a6de8f8945dd6a7b1e7cf532fab67f3e436a93a9a8a7b6cb89bdc0f350bb914",
+      "note": "Pile de trois ouvrages entiers et marque-page vierge, dos sans titre ; nom collectif et registre des livres en aide."
+    },
+    {
+      "id": "pack-4f0e4924",
+      "reviewer": "Codex",
+      "sourceSha256": "8d4baa6ebb5d839d67444949d87638a01e2595426c9db4cb40342b0b6716d5db",
+      "note": "Plaquette neutre et verre d’eau entiers, comprimés sans marque ni posologie ; indication contre le mal de tête invisible, aide seulement."
+    },
+    {
+      "id": "pack-8697d812",
+      "reviewer": "Codex",
+      "sourceSha256": "3e941f5f75d4ce9764fee6c8cab526ed3be6761b35db4cd8eed9eb949688d11c",
+      "note": "Sèche-cheveux entier et boucle du cordon contenue, buse et poignée nettes à 96 px ; petit bouton vermillon, question 드라이어 avec synonymes neutralisés."
+    },
+    {
+      "id": "pack-c2bc0f7c",
+      "reviewer": "Codex",
+      "sourceSha256": "9b88e692e8e57e4f37ddc41800d314a373072c1e35dd398fe503c8a544e8c9a1",
+      "note": "Carton ouvert entier avec quatre rabats lisibles et intérieur noir ; boîte générique/synonyme en aide."
+    },
+    {
+      "id": "pack-ab262445",
+      "reviewer": "Codex",
+      "sourceSha256": "59e502809621cdc7d64cc5d960f3ea075809abe1cde3d49d621575ceb8359c84",
+      "note": "Ceinture entière enroulée, boucle et trous distincts aux trois tailles, monochrome ; question 벨트, synonyme 허리띠 neutralisé."
+    },
+    {
+      "id": "pack-aa9b6433",
+      "reviewer": "Codex",
+      "sourceSha256": "042712a6144466b1fc527d3a350ef435a954ed1e7fa6abf9fc9ccb8d594569b9",
+      "note": "Appareil photo et sangle entiers, objectif lisible, petit accent à la sangle, aucune marque ; variante lexicale 사진기 en aide."
+    },
+    {
+      "id": "1780695436370",
+      "reviewer": "Codex",
+      "sourceSha256": "4bb5345fe96d0ee44f8035d39208268dc031c248171c4a6a9d34703a9d1caf5d",
+      "note": "Chemise entière sur cintre, col, boutons et manches visibles, sans logo ; habillement en aide."
+    },
+    {
+      "id": "pack-9a648190",
+      "reviewer": "Codex",
+      "sourceSha256": "64743bdebb9dce6a446565f6df7e49ac9d6a470db05e0a9383458d9fd515a4ee",
+      "note": "Flacon neutre fermé et comprimés entiers, aucune inscription ni dose ; usage somnifère non déductible de la forme, aide seulement."
+    },
+    {
+      "id": "pack-f2072f0b",
+      "reviewer": "Codex",
+      "sourceSha256": "b61b7d9a05c96b2935999077175e4192cb5f00872e5891f63710299604dea13f",
+      "note": "Berline entière sans plaque ou marque, petit feu arrière vermillon ; usage particulier et catégorie face à voiture générique en aide."
+    },
+    {
+      "id": "pack-d561b8da",
+      "reviewer": "Codex",
+      "sourceSha256": "224c139e562e8b5b47736263a04c5fd7127c6842965133828623d3329a20224f",
+      "note": "Bus urbain entier avec portes d’accès et aménagement urbain, sans destination ou numéro ; distinction de type de bus en aide."
+    },
+    {
+      "id": "pack-c9c9a331",
+      "reviewer": "Codex",
+      "sourceSha256": "ef4bfc1a8a8a748407ee5d5a0fc488979905918017fcc1011193a771d83bb920",
+      "note": "Carte entière avec puce géométrique sans numéro, nom ni logo ; impossible de distinguer crédit/débit par forme, aide seulement."
+    },
+    {
+      "id": "pack-96525daf",
+      "reviewer": "Codex",
+      "sourceSha256": "9795016c6da8a2b716913277205d78b84af0f4c8fb840a44be8ea0ef57088012",
+      "note": "Adulte habillée entière, tête, mains et chaussures contenues ; registre corps humain en aide, aucune question de reconnaissance de personne."
+    },
+    {
+      "id": "pack-a03faac7",
+      "reviewer": "Codex",
+      "sourceSha256": "c66db1ffc72b5968d2184450dabddbca118fb08c7adcc2950225d88461e97497",
+      "note": "Plateau entier de riz, soupe et petit accompagnement, faible accent vermillon sur garniture ; moment petit-déjeuner invisible, aide seulement."
+    },
+    {
+      "id": "pack-53c9752b",
+      "reviewer": "Codex",
+      "sourceSha256": "9c1723a52e12753ddc907550ee5653573431781481a02f01945ad0f039b405e5",
+      "note": "Adulte vêtu entier de la tête aux chaussures, silhouette nette même à 96 px ; totalité du corps illustrée en aide après réponse."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-41a4dcdc",
+      "rank": 388,
+      "kr": "국물",
+      "sourceSha256": "07833af1e1d469e14d084964feffd6f02dd34f23c66725f8017dfd52703162ce",
+      "sha256": "fce9f3b129480b56f0a3c66f571d5f5c473a617cf33bf15679a9cee5df6d59f9",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bol et cuillère entiers, mais le bouillon est ocre jaune naturel aux trois tailles. Reprise strictement blanche et grise."
+    },
+    {
+      "id": "pack-a7b16986",
+      "rank": 400,
+      "kr": "쇠고기",
+      "sourceSha256": "a44b0b7093f6f7b25e49e5a6aebe4097d64c5c723bb6b4f05fd0817519265445",
+      "sha256": "9666268122b7eb7d166e81c5f4cbb87bf2bd7867c332543b5f88257d090efc5a",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "La viande utilise de larges surfaces rouges et brunes, nettement au-delà d’un petit accent. Reprise monochrome."
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-4b8b92d0",
+      "reviewer": "Codex",
+      "sha256": "5b604396a9f3bbdf810ed942075744392c43ea05ed7d0ff342d659de591371c3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Reprise : table basse dressée entière, trois pieds visibles et cinq bols ; aliments désormais monochromes sans garniture verte ou orange. Table de repas en aide."
+    },
+    {
+      "id": "pack-d3942b2b",
+      "reviewer": "Codex",
+      "sha256": "aa6daca76115747ab6b66ce74305c3cfc87fee28018459a1484a3fcadfe6ae49",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Téléviseur entier sur deux pieds, écran noir sans programme ni logo ; désignation brève et synonymes en aide."
+    },
+    {
+      "id": "1779706066049",
+      "reviewer": "Codex",
+      "sha256": "1462c27b529b543e443a783c074f346e9c14ad0e6212d17738ba87ba0d656cc9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Billets fictifs et pièces entiers, simples décors sans chiffres, lettres ou pays ; espèces en aide face à argent générique."
+    },
+    {
+      "id": "pack-1b92eeff",
+      "reviewer": "Codex",
+      "sha256": "07c5f6f81a744fdfdf669cdf7b6478c5689e1f3625069779de0ce74ba9cf62da",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Branche ramifiée avec feuilles entières et espace noir autour, sans bois brun ni feuilles vertes ; sous-partie végétale en aide."
+    },
+    {
+      "id": "pack-5d6a0ae4",
+      "reviewer": "Codex",
+      "sha256": "9161b25249e20fe6aa3e8fdded7012c91eb08ecebe8da4f35845ec272c559b9e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Main ouverte entièrement dans le cadre jusqu’à un poignet terminé au pinceau, trois pièces vierges avec petit accent de tranche ; monnaie rendue reste contextuelle en aide."
+    },
+    {
+      "id": "pack-4daef7f7",
+      "reviewer": "Codex",
+      "sha256": "140b3e27410668d6c7fdddf82eb707be126a7f695b2d9623e236107b8fcee531",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Manteau et cintre entiers, col et manches visibles sans marque ; exemple de vêtement de dessus, aide."
+    },
+    {
+      "id": "pack-e8fed1b2",
+      "reviewer": "Codex",
+      "sha256": "a8a792ab7d29290f1723a790456fe074fc24711c7470a2f9d5006e70b914a1ee",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Feuille dentée entière avec pétiole et nervures lisibles, sans vert naturel ; distinction na-mu/feuille en aide."
+    },
+    {
+      "id": "pack-5107eb8d",
+      "reviewer": "Codex",
+      "sha256": "976be97837542ca4d1f8abdee2db32361e66977f1808f5b8b002e7c9a8b56d12",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Trois feuilles sèches recroquevillées entières et lisibles en miniature, monochromes ; état feuille morte illustré en aide."
+    },
+    {
+      "id": "pack-fa3bb687",
+      "reviewer": "Codex",
+      "sha256": "53e3a4447450c7d94db879bb3299d252e6c3bbeb9cc51d08a7ff56cf1dc45c09",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pile de trois ouvrages entiers et marque-page vierge, dos sans titre ; nom collectif et registre des livres en aide."
+    },
+    {
+      "id": "pack-4f0e4924",
+      "reviewer": "Codex",
+      "sha256": "2ba24b270aabeef9344921b95f2cabb341d2ad3028a39e20b3eb89f229f734f9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Plaquette neutre et verre d’eau entiers, comprimés sans marque ni posologie ; indication contre le mal de tête invisible, aide seulement."
+    },
+    {
+      "id": "pack-8697d812",
+      "reviewer": "Codex",
+      "sha256": "d56dbd5d3651211ad0d2ee6e18ed376016d66f9da54866221f37102dfbd344a6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Sèche-cheveux entier et boucle du cordon contenue, buse et poignée nettes à 96 px ; petit bouton vermillon, question 드라이어 avec synonymes neutralisés."
+    },
+    {
+      "id": "pack-c2bc0f7c",
+      "reviewer": "Codex",
+      "sha256": "87522a3ee40852ef72e4deb5db9953b00bade8f9002961865d96046034cb475d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Carton ouvert entier avec quatre rabats lisibles et intérieur noir ; boîte générique/synonyme en aide."
+    },
+    {
+      "id": "pack-ab262445",
+      "reviewer": "Codex",
+      "sha256": "020dcc3ee89a5cbc6ed1987ae2469c7f21da130a5f3fc3f8e95e61c29bc9a3a0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Ceinture entière enroulée, boucle et trous distincts aux trois tailles, monochrome ; question 벨트, synonyme 허리띠 neutralisé."
+    },
+    {
+      "id": "pack-aa9b6433",
+      "reviewer": "Codex",
+      "sha256": "36dd0ccabdd3184b01b1c8535f1e83252f606e90e2dd1f9664e3417b4b3a1fd1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Appareil photo et sangle entiers, objectif lisible, petit accent à la sangle, aucune marque ; variante lexicale 사진기 en aide."
+    },
+    {
+      "id": "1780695436370",
+      "reviewer": "Codex",
+      "sha256": "cdc710d256b2fdc4d468d9899ff0919ff3f1fe012f52e28caef04fb75a2c24b5",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Chemise entière sur cintre, col, boutons et manches visibles, sans logo ; habillement en aide."
+    },
+    {
+      "id": "pack-9a648190",
+      "reviewer": "Codex",
+      "sha256": "7d241e5d84c26a63ed4c8469287ca0bc562c9ca0e8b3ca5886cfa13fd00e9b06",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Flacon neutre fermé et comprimés entiers, aucune inscription ni dose ; usage somnifère non déductible de la forme, aide seulement."
+    },
+    {
+      "id": "pack-f2072f0b",
+      "reviewer": "Codex",
+      "sha256": "3e70d4ce1a45f966aa170ff46d5629986bbd7bb9ce730b484c2b76071938640a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Berline entière sans plaque ou marque, petit feu arrière vermillon ; usage particulier et catégorie face à voiture générique en aide."
+    },
+    {
+      "id": "pack-d561b8da",
+      "reviewer": "Codex",
+      "sha256": "61cd6a923198b4dbf17be0f3a1340f4b2a5e3e342d2706e261bbd312158231df",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bus urbain entier avec portes d’accès et aménagement urbain, sans destination ou numéro ; distinction de type de bus en aide."
+    },
+    {
+      "id": "pack-c9c9a331",
+      "reviewer": "Codex",
+      "sha256": "7145da308c81c5144daca275ac147a90732509e6198702d1184a2b0cd9c0cb4d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Carte entière avec puce géométrique sans numéro, nom ni logo ; impossible de distinguer crédit/débit par forme, aide seulement."
+    },
+    {
+      "id": "pack-96525daf",
+      "reviewer": "Codex",
+      "sha256": "919d7b3232a060ba6b5057907d104fab7ad800c7e4a84da086252cedd222770e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Adulte habillée entière, tête, mains et chaussures contenues ; registre corps humain en aide, aucune question de reconnaissance de personne."
+    },
+    {
+      "id": "pack-a03faac7",
+      "reviewer": "Codex",
+      "sha256": "5ed6fd2f8ffb406273c20980a83feb55525d7fd37de5f81f9180efa83d01d2c8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Plateau entier de riz, soupe et petit accompagnement, faible accent vermillon sur garniture ; moment petit-déjeuner invisible, aide seulement."
+    },
+    {
+      "id": "pack-53c9752b",
+      "reviewer": "Codex",
+      "sha256": "9d9aa4a9ae914535c7de0d388d043296b4f7cb510651dd0d486ac8b3d8ec6996",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Adulte vêtu entier de la tête aux chaussures, silhouette nette même à 96 px ; totalité du corps illustrée en aide après réponse."
+    }
+  ]
+}

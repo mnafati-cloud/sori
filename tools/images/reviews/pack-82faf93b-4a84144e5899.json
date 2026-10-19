@@ -1,0 +1,24 @@
+{
+  "id": "pack-82faf93b",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T19:00:23.681Z",
+  "sourceSha256": "3fef034fb84289eb138edaf19016dd7ce2dea06bce9cb84b826edd5bd6335312",
+  "sha256": "4a84144e58991995c047b92bfc190aed9d64a4fb11e41885a376abf4676cc33a",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne adult grey wolf standing in profile with a slight three-quarter head turn. Long muzzle, upright triangular ears, powerful legs, a straight bushy tail held low and a shaggy neck ruff. Exactly four coherent legs and paws, complete silhouette. Warm-white dry brush and restrained grey wash, large black open areas, pure black background, no collar, landscape, moon, people, writing or accessories. Aid after answer because a dog-like animal can invite a different plausible lexeme.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Loup entier à oreilles dressées, museau long, épaisse collerette et queue basse, quatre jambes et pattes cohérentes. Au pinceau blanc/gris sur noir ; touches chaudes très petites aux iris, sans fourrure colorée dominante. Reconnaissable aux trois tailles, mais usage aide conservé car un chien de type husky reste une lecture plausible.",
+  "reviewedAt": "2026-10-18T19:01:22.452Z",
+  "kr": "늑대",
+  "sense": "Loup.",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

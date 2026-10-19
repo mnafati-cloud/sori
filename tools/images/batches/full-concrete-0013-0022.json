@@ -1,0 +1,89 @@
+{
+  "id": "full-concrete-0013-0022",
+  "requested": 3,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-bcfae7ee",
+      "kr": "참새",
+      "sense": "Moineau",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 13
+    },
+    {
+      "id": "pack-7793930c",
+      "kr": "소방차",
+      "sense": "Camion de pompiers",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 21
+    },
+    {
+      "id": "pack-0dad8170",
+      "kr": "헬기",
+      "sense": "Hélicoptère",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 22
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-bcfae7ee",
+      "reviewer": "Codex",
+      "sourceSha256": "c4ce46a9a7281127ace21cf9c14c014a7ef3e466167fa60c215b9ecf302a1415",
+      "note": "Revue effective PNG et WebP aux trois tailles : moineau entier perché, bec court conique, queue courte, deux pattes, tache de joue ; pinceau blanc et gris, fond noir et marges. Espèce ambiguë en monochrome : aide après réponse uniquement."
+    },
+    {
+      "id": "pack-7793930c",
+      "reviewer": "Codex",
+      "sourceSha256": "0c9e43b575779ece1d49b9352090076fe3cb11e673d82cb104fe02a59491d42f",
+      "note": "Revue effective PNG et WebP aux trois tailles : camion de pompiers entier avec cabine, roues, échelle repliée, tuyau et équipements ; petit accent rouge sur gyrophare, aucune inscription. Silhouette complète et reconnaissable à 96 px."
+    },
+    {
+      "id": "pack-0dad8170",
+      "reviewer": "Codex",
+      "sourceSha256": "95c3c45c4d968d865720f8d58bfa2a7388c8a40792048a37fbf2cca68af0024c",
+      "note": "Revue effective PNG et WebP aux trois tailles : hélicoptère entier avec cabine, rotor principal, rotor arrière et deux patins ; pinceau blanc/gris sur noir, petit accent naturel rouge à la queue, aucune inscription ni partie coupée. Lisible à 96 px."
+    }
+  ],
+  "rejectedAttempts": [],
+  "displaySizeReviews": [
+    {
+      "id": "pack-bcfae7ee",
+      "reviewer": "Codex",
+      "sha256": "e9c36d2321a76626b746e9ceb09ef8d1ee496d2dd6c7308a7073af0ac702016f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG et WebP aux trois tailles : moineau entier perché, bec court conique, queue courte, deux pattes, tache de joue ; pinceau blanc et gris, fond noir et marges. Espèce ambiguë en monochrome : aide après réponse uniquement."
+    },
+    {
+      "id": "pack-7793930c",
+      "reviewer": "Codex",
+      "sha256": "f27397d0250c6f59e28a75a0db4e7632bb0529668c27527572ce4978567a0aef",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG et WebP aux trois tailles : camion de pompiers entier avec cabine, roues, échelle repliée, tuyau et équipements ; petit accent rouge sur gyrophare, aucune inscription. Silhouette complète et reconnaissable à 96 px."
+    },
+    {
+      "id": "pack-0dad8170",
+      "reviewer": "Codex",
+      "sha256": "9509ffc140952e38d170bdd63cac0b00d12adc63c37ec50d71460ac43e813396",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG et WebP aux trois tailles : hélicoptère entier avec cabine, rotor principal, rotor arrière et deux patins ; pinceau blanc/gris sur noir, petit accent naturel rouge à la queue, aucune inscription ni partie coupée. Lisible à 96 px."
+    }
+  ]
+}

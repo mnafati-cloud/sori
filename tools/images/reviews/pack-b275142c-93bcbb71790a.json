@@ -1,0 +1,24 @@
+{
+  "id": "pack-b275142c",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T22:37:37.793Z",
+  "sourceSha256": "98d0c42cdf74dc644800484eaee47c40b4fd9805549f2d04a6709798fc2961fe",
+  "sha256": "93bcbb71790a5279f3865c8bfc16c1f9c30f4290ee9313a8ed8420e1559bda98",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne whole simple ceramic cup containing an unspecified hot drink, with two restrained white brush strokes of steam. The whole cup including handle and all steam fully contained within generous black margins. STRICT MONOCHROME warm white, warm grey and pure black ONLY for EVERYTHING, especially the surface of the liquid: pure black with a few warm grey reflections. NO brown, sepia, tan, orange, red, green or natural coffee color. The subject is a generic drink 음료, not specifically coffee or tea; keep support after answer. Match ONLY column02 Pinceau; open black inside the cup. No lettering, brands or symbols.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Reprise : boisson et vapeur désormais blanc, gris et noir, anse et volutes entières ; catégorie générique en aide.",
+  "reviewedAt": "2026-10-18T22:42:29.212Z",
+  "kr": "음료",
+  "sense": "Boisson",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

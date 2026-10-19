@@ -1,0 +1,24 @@
+{
+  "id": "pack-efa06867",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T20:44:51.176Z",
+  "sourceSha256": "7e2cd33cf8e3919267168faee4246c827d269a73acf800a70ba13d510db03ccb",
+  "sha256": "a9ccc3b7e68b336309b3beea3c665b93454f18bfe4dab4714eb260050adb3b13",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nUn seul dépliant publicitaire imprimé entier, papier déplié une fois, zones illustrées simples et blocs graphiques entièrement vierges ; aucune lettre, pseudo-écriture, chiffre, logo, mot ou nom. Aide pour imprimé, pas question de lecture. Palette verrouillée blanc chaud/gris exclusivement, sans couleur naturelle dominante. Sujet entier isolé, noir pur et grandes marges ; aucune écriture ni pseudo-écriture.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Dépliant ouvert à trois volets ; blocs abstraits sans lettres, évocation claire de document imprimé aux trois tailles.",
+  "reviewedAt": "2026-10-18T20:51:48.261Z",
+  "kr": "인쇄물",
+  "sense": "Imprimé, document imprimé",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

@@ -1,0 +1,804 @@
+{
+  "id": "full-concrete-0069-0105",
+  "requested": 31,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-6702df3c",
+      "kr": "꽃무늬",
+      "sense": "Motif floral, à fleurs",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 69
+    },
+    {
+      "id": "pack-6a42f106",
+      "kr": "꽃잎",
+      "sense": "pétale",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 70
+    },
+    {
+      "id": "pack-6c30ccb5",
+      "kr": "나물",
+      "sense": "Légume (assaisonné), herbe comestible",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 71
+    },
+    {
+      "id": "pack-0b1c82ed",
+      "kr": "나이프",
+      "sense": "Couteau (de table)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 72
+    },
+    {
+      "id": "pack-2f0b9e58",
+      "kr": "냉수",
+      "sense": "Eau froide",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 73
+    },
+    {
+      "id": "pack-d0558baa",
+      "kr": "눈사람",
+      "sense": "Bonhomme de neige",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 74
+    },
+    {
+      "id": "pack-04285e83",
+      "kr": "눈썹",
+      "sense": "Sourcil(s)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 75
+    },
+    {
+      "id": "pack-071c1423",
+      "kr": "단발머리",
+      "sense": "Cheveux au carré, coupe courte",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 76
+    },
+    {
+      "id": "pack-b80ec210",
+      "kr": "도구",
+      "sense": "Outil, instrument, ustensile",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 78
+    },
+    {
+      "id": "pack-4067f299",
+      "kr": "도자기",
+      "sense": "Céramique, poterie, porcelaine",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 79
+    },
+    {
+      "id": "pack-87351ee0",
+      "kr": "동굴",
+      "sense": "grotte",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 80
+    },
+    {
+      "id": "pack-0029d7ff",
+      "kr": "두드러기",
+      "sense": "De l'urticaire (éruption cutanée)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 81
+    },
+    {
+      "id": "pack-5ab8e986",
+      "kr": "들기름",
+      "sense": "Huile de périlla",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 84
+    },
+    {
+      "id": "pack-f9ec0024",
+      "kr": "똥",
+      "sense": "Caca, excrément",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 86
+    },
+    {
+      "id": "pack-a28ac5a7",
+      "kr": "띠",
+      "sense": "Ceinture, bande (à nouer)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 87
+    },
+    {
+      "id": "pack-1a831b88",
+      "kr": "렌터카",
+      "sense": "Voiture de location",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 88
+    },
+    {
+      "id": "pack-83e560bb",
+      "kr": "막대기",
+      "sense": "Bâton, gourdin, tige",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 89
+    },
+    {
+      "id": "pack-30a1cf68",
+      "kr": "만화책",
+      "sense": "Bande dessinée, livre de manhwa",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 90
+    },
+    {
+      "id": "pack-31986faf",
+      "kr": "매운탕",
+      "sense": "Ragoût de poisson épicé (plat coréen)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 91
+    },
+    {
+      "id": "pack-470fda67",
+      "kr": "맨발",
+      "sense": "Pieds nus",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 92
+    },
+    {
+      "id": "pack-de902ae2",
+      "kr": "먼지",
+      "sense": "poussière",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 93
+    },
+    {
+      "id": "pack-f8e053d2",
+      "kr": "메모지",
+      "sense": "Bloc-notes, feuille pour notes (papier)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 94
+    },
+    {
+      "id": "pack-4af2e641",
+      "kr": "면허증",
+      "sense": "Permis (de conduire), certificat d'autorisation",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 95
+    },
+    {
+      "id": "pack-e05ae543",
+      "kr": "명함",
+      "sense": "Carte de visite",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 96
+    },
+    {
+      "id": "pack-a601624f",
+      "kr": "모래",
+      "sense": "sable",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 97
+    },
+    {
+      "id": "1780695436373",
+      "kr": "모자",
+      "sense": "Bonnet / chapeau",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 98
+    },
+    {
+      "id": "pack-1b666384",
+      "kr": "무늬",
+      "sense": "Motif (tissu, surface)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 100
+    },
+    {
+      "id": "pack-2caeb34d",
+      "kr": "물감",
+      "sense": "Peinture, couleur (pour peindre)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 101
+    },
+    {
+      "id": "pack-4f9a8960",
+      "kr": "물약",
+      "sense": "Médicament liquide, potion",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 103
+    },
+    {
+      "id": "pack-8b2f4f88",
+      "kr": "물품 보관함",
+      "sense": "consigne (casiers)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 104
+    },
+    {
+      "id": "pack-e7ae221a",
+      "kr": "바둑",
+      "sense": "Go (jeu de plateau)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 105
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-6702df3c",
+      "reviewer": "Codex",
+      "sourceSha256": "3626a4e658f2fa3ef83ce36b53f4c54affcf379ac7c7bc30820091b1d9db93cb",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Robe entière à motif de grandes fleurs, motif encore discernable à 96 px ; le vêtement sert de support au motif, aucune personne. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-6a42f106",
+      "reviewer": "Codex",
+      "sourceSha256": "01520c214ab29f980f78bea99b5b95f1f7ba0d1aa41b5d0632efa2afd0c16439",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Pétale isolé entier, bord échancré et base resserrée, blanc et lavis gris ; peut évoquer une feuille, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-6c30ccb5",
+      "reviewer": "Codex",
+      "sourceSha256": "204db58901d980c661373cd30bccf2018046f4095dcb6091d19872eeaabfecc2",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Petit bol entier de légumes feuillus assaisonnés avec tiges et sésame ; pas de vert dominant, namul comme aide car recette non vérifiable en monochrome. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-0b1c82ed",
+      "reviewer": "Codex",
+      "sourceSha256": "b3fdb3527a3ffb66dce9d62e81260d154ecfbfdccbca09a20b8b597e71a7b035",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Couteau de table entier, bout arrondi et manche lisse, pas une arme ; 칼 reste une autre lecture possible, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-2f0b9e58",
+      "reviewer": "Codex",
+      "sourceSha256": "97777ae648866ac035433fdbcc5f1d5893883607088efe871d0de803a9c6ea5c",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Verre entier avec glaçons et condensation, rendu distinct de 찬물 ; froid seulement comme aide, pas moyen de distinguer les synonymes. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-d0558baa",
+      "reviewer": "Codex",
+      "sourceSha256": "f4b8c2fcc5a18dfcd45e2c717e054d15f147d5db2ddafc6bc7e51c11815bbe26",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Bonhomme de neige entier à trois boules, deux bras de brindilles, yeux de caillou et minuscule nez carotte ; silhouette immédiatement lisible à 96 px, question 눈사람. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-04285e83",
+      "reviewer": "Codex",
+      "sourceSha256": "9d485b31a862ff08cbf1255c3a8de8e11188a8046ba0897c811994a06e4bf99c",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Étude entière d’un œil et d’un sourcil séparé bien visible au-dessus, aucune flèche ; aide pour sourcil sans imposer cette partie plutôt que œil. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-071c1423",
+      "reviewer": "Codex",
+      "sourceSha256": "ff0daa355aaebd2c73518cbb00a8e55cc833e37fcd9d5d4874c3255f8804e193",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Tête adulte au carré net à hauteur du menton, contour et pointes entièrement visibles, grandes masses noires dans les cheveux ; aide pour type de coiffure. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-b80ec210",
+      "reviewer": "Codex",
+      "sourceSha256": "3160e9e50526b4801892f0489b54fdc8aeb667e266cf3ef7ae9088d472229542",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Marteau arrache-clou entier, tête et manche cohérents ; exemple de 도구 outil, pas une question qui imposerait la catégorie plutôt que 망치. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-4067f299",
+      "reviewer": "Codex",
+      "sourceSha256": "d7e6f93bb913a5c3b652034ae4c602bc143612eaccfe21b2aacb63ce5bebc43c",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Vase de poterie entier à col ouvert, épaisseur et contours cohérents ; matière céramique comme aide, pas certitude contre d’autres récipients. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-87351ee0",
+      "reviewer": "Codex",
+      "sourceSha256": "0d936c68091f3c86dc63206da7fc1cfdb6829aa7e8503b34f4dd26ff7014b93e",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Formation rocheuse isolée entière avec entrée sombre et stalactites, pas de décor paysager ; ouverture et silhouette nettes à 96 px, question 동굴. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-0029d7ff",
+      "reviewer": "Codex",
+      "sourceSha256": "8b92854d0cff04353156a67bc438924c98671b533b9d57052d8596725daf713d",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Main adulte entière à cinq doigts présentant une petite zone de reliefs rouges localisés sans plaie ; illustration générale de réaction cutanée, aide après réponse uniquement, ne permet pas un diagnostic spécifique. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-5ab8e986",
+      "reviewer": "Codex",
+      "sourceSha256": "9135a3a7fe873eaff754e17f3d03ffdbc460981c8c1cebdcf3789d2d48e9cdec",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Bouteille entière d’huile sans marque ni texte, bouchon fermé ; provenance périlla non observable, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-f9ec0024",
+      "reviewer": "Codex",
+      "sourceSha256": "4fe71b0da565824f1c5318f788c9d0dd9062cd3deafbd84435ad85188bc3f83c",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Petite forme d’excrément stylisée entière, sans visage ni emoji, blanche/grise ; peut évoquer une spirale de crème en monochrome, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-a28ac5a7",
+      "reviewer": "Codex",
+      "sourceSha256": "c50390e5edc94878e7d1971353b5f08e6327d9379ed309f0b791a9dc3c892e80",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Ceinture souple en tissu nouée, deux pans complets, sans boucle moderne ; aide pour bande à nouer 띠. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-1a831b88",
+      "reviewer": "Codex",
+      "sourceSha256": "cbb1e055eccd9894a717bc3dade36e49930621c30275f79e0abd3931def5d6cf",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Voiture compacte entière sans logo, plaque chiffrée ni loueur ; le statut de location est invisible, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-83e560bb",
+      "reviewer": "Codex",
+      "sourceSha256": "e025b55f1c34c72e5524b5f1d8ed87f772f664c6a787410b7aa5b673c82969e4",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Bâton entier à deux extrémités naturelles/coupées, nœuds et petits ergots, aucun brun dominant ; aide car branche/tige restent plausibles. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-30a1cf68",
+      "reviewer": "Codex",
+      "sourceSha256": "d3d78970a91cdd9fcbb8d3b1f0acf5920d536cd00d62e6fcc995e676fe201ea4",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Livre entier ouvert, cases de BD silencieuses avec personnages cohérents ; pas de bulles écrites ou glyphes ; aide pour type de livre, cases lisibles en miniature. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-31986faf",
+      "reviewer": "Codex",
+      "sourceSha256": "906ed418d3f129684a3c50675c1e42686382f33f43811968b813e7f023e317b9",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Pot entier à deux anses, morceaux de poisson et légumes, minuscule rondelle de piment rouge ; composition plausible du maeuntang, exactitude gustative non vérifiable donc aide. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-470fda67",
+      "reviewer": "Codex",
+      "sourceSha256": "3b857d09fbb415971950843af2070b3aef96d4b307d3241707de3e5114cef0eb",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Deux pieds nus adultes entiers, cinq orteils par pied et chevilles cohérentes, limites hautes en traits de pinceau dans le carré ; aide neutre, pas de chaussures. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-de902ae2",
+      "reviewer": "Codex",
+      "sourceSha256": "57cab03a1c4064ad5de7dfc278b875dc67b264d2122abd4ef37390f51a73a93a",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Nuage isolé de poussière et particules blanches/grises, aucun décor, caractère granuleux conservé à 96 px ; ambigu avec poudre/fumée, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-f8e053d2",
+      "reviewer": "Codex",
+      "sourceSha256": "db1a2777f4bbad40ffaa399022c59cd1c3da6f28360d2db0b194b43c88c75ffc",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Bloc de petites feuilles vierges, épaisseur visible et coin supérieur recourbé ; aucun texte ; aide pour papier à notes. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-4af2e641",
+      "reviewer": "Codex",
+      "sourceSha256": "2d06f52641c0b8244efebea066c9f9c5ec41b5c9820ec9b87967476600b38918",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Carte générique entière avec petite silhouette portrait et blocs vides abstraits, pas de données ou pseudo-écriture ; type permis non prouvable, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-e05ae543",
+      "reviewer": "Codex",
+      "sourceSha256": "af9b976c66ab320767c89a1ca6777d88bfa5e8f56c8abf7278d3db86c3955c7e",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Carte de visite vierge entière à bord en relief, aucun nom, numéro ou logo ; fonction non prouvable, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-a601624f",
+      "reviewer": "Codex",
+      "sourceSha256": "dd39e3cb9f39aa1884635220f2ed56f3bae29a9feb0f3841b41f73f5bf446d30",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Tas isolé de sable granuleux blanc/gris, silhouette complète, pas de brun dominant ; matière ambiguë avec poudre, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "1780695436373",
+      "reviewer": "Codex",
+      "sourceSha256": "4c4e99490641a2f566825a7f69501faa5d97153499da78a12516e219f027066f",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Chapeau entier à calotte pincée, large bord et ruban sombre, aucune marque ; bonnet/chapeau dans le sens du deck, question 모자, type fedora reste neutre. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-1b666384",
+      "reviewer": "Codex",
+      "sourceSha256": "8d16a4538f7f5287484a47dee32172e7eff337cc3ee7d891c836779d6bab982b",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Échantillon de tissu entier à motif géométrique répété, petites franges et plis cohérents ; motif comme catégorie, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-2caeb34d",
+      "reviewer": "Codex",
+      "sourceSha256": "0984f45542eba2a1f9bc7918691c992a2ea472ce2b8374551151aeb5df0b9939",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Tube de peinture entier, capuchon fermé et base sertie, aucune marque ou inscription ; tube générique donc aide, aucune couleur prétendue. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-4f9a8960",
+      "reviewer": "Codex",
+      "sourceSha256": "98e89c737e6dd9d6b7affbe8b0f15a0307346b4f155ab9ce8404af52b9cef734",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Bouteille de médicament liquide entière avec capuchon doseur sans chiffres ; contenu non vérifiable, aide sans promesse médicale. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-8b2f4f88",
+      "reviewer": "Codex",
+      "sourceSha256": "e43e91c0d8fd987b1bb9ade4677fe35dfcf614da07443988d6cdfa73dc52b991",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Bloc entier de quatre casiers, portes/charnières/poignées cohérentes, aucun numéro ; aide pour consigne, pas certitude d’usage des placards. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-e7ae221a",
+      "reviewer": "Codex",
+      "sourceSha256": "2df48e3a33ac1bdfbf832b052f0f939b1021c5e9fb89ebc2f440d4566adf462c",
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Plateau de go entier à neuf lignes horizontales et neuf verticales ; pierres noires/blanches placées sur les intersections, pas de damier coloré ni écriture. Grille reconnaissable en miniature ; aide pour jeu 바둑. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-36109c67",
+      "kr": "목구멍",
+      "sourceSha256": "38ce1553207f01d7a7aa51e5e5bf0864b9a64684002a4dd94ef6f533f3c89b1a",
+      "sha256": "fd9eb7d20c9c77b192d3dd60ac23a68239bd2725949931cad74f21640ee5751e",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Rejet après inspection : langue figurée en deux masses anormalement séparées dans la bouche. La structure anatomique ne convient pas à un support pédagogique du mot gorge. Aucun asset publié."
+      }
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-6702df3c",
+      "reviewer": "Codex",
+      "sha256": "0b400e8a8efcd0d66ff10840dbe91ee49856796a9ca8f06243cd525d3752301b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Robe entière à motif de grandes fleurs, motif encore discernable à 96 px ; le vêtement sert de support au motif, aucune personne. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-6a42f106",
+      "reviewer": "Codex",
+      "sha256": "9a9f8c194a019be68cf9f20a590eb8f8964e7cebdda19c393a000e4b00c7b254",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Pétale isolé entier, bord échancré et base resserrée, blanc et lavis gris ; peut évoquer une feuille, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-6c30ccb5",
+      "reviewer": "Codex",
+      "sha256": "df10465e06b69864624dc3d3bf9f226b507bea2c57d5051edcf3f21b6d174338",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Petit bol entier de légumes feuillus assaisonnés avec tiges et sésame ; pas de vert dominant, namul comme aide car recette non vérifiable en monochrome. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-0b1c82ed",
+      "reviewer": "Codex",
+      "sha256": "c3f1bcf1f55ea28658bdcd458f2c12586dcb5a8ce876821a5f7292ec83e10090",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Couteau de table entier, bout arrondi et manche lisse, pas une arme ; 칼 reste une autre lecture possible, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-2f0b9e58",
+      "reviewer": "Codex",
+      "sha256": "7f21fd56ef72790434b12a8786cef3b7333b4930f9d81ebbce4e80d0f2e47322",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Verre entier avec glaçons et condensation, rendu distinct de 찬물 ; froid seulement comme aide, pas moyen de distinguer les synonymes. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-d0558baa",
+      "reviewer": "Codex",
+      "sha256": "8cd2afdf4e44768c3acce6f8e996091d3e0b72ce7d731bb30e878bce7eaf1e0e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Bonhomme de neige entier à trois boules, deux bras de brindilles, yeux de caillou et minuscule nez carotte ; silhouette immédiatement lisible à 96 px, question 눈사람. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-04285e83",
+      "reviewer": "Codex",
+      "sha256": "3a39445b4bebef9e6acb62d55ac6931b802e29ffb572f0575c63c45cdc9937ee",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Étude entière d’un œil et d’un sourcil séparé bien visible au-dessus, aucune flèche ; aide pour sourcil sans imposer cette partie plutôt que œil. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-071c1423",
+      "reviewer": "Codex",
+      "sha256": "0490d20ee7abd5d26288ed285056345c44ab547d556811a71feea0b24df9e6ec",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Tête adulte au carré net à hauteur du menton, contour et pointes entièrement visibles, grandes masses noires dans les cheveux ; aide pour type de coiffure. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-b80ec210",
+      "reviewer": "Codex",
+      "sha256": "ff950c8faee542875dc2b5ac89d35cf29ce27f67e7cf235c6f31421daf81513b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Marteau arrache-clou entier, tête et manche cohérents ; exemple de 도구 outil, pas une question qui imposerait la catégorie plutôt que 망치. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-4067f299",
+      "reviewer": "Codex",
+      "sha256": "1cf65d8d0bfc84924ad83e7b1d48e69436b073405e66e78e35a6af97ecd09d37",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Vase de poterie entier à col ouvert, épaisseur et contours cohérents ; matière céramique comme aide, pas certitude contre d’autres récipients. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-87351ee0",
+      "reviewer": "Codex",
+      "sha256": "a7db8b5897e7c12dfb05794011b83018ff129985d88d65063083e6f6aa7916a6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Formation rocheuse isolée entière avec entrée sombre et stalactites, pas de décor paysager ; ouverture et silhouette nettes à 96 px, question 동굴. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-0029d7ff",
+      "reviewer": "Codex",
+      "sha256": "5ffa0401825061d4adedc94c588434b579daea508c9cf08ed091c61e61bb5fb1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Main adulte entière à cinq doigts présentant une petite zone de reliefs rouges localisés sans plaie ; illustration générale de réaction cutanée, aide après réponse uniquement, ne permet pas un diagnostic spécifique. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-5ab8e986",
+      "reviewer": "Codex",
+      "sha256": "834bda3c30e8d9c9d72c310f47745521d0b79edf4de3797ebddcf80906e3d03d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Bouteille entière d’huile sans marque ni texte, bouchon fermé ; provenance périlla non observable, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-f9ec0024",
+      "reviewer": "Codex",
+      "sha256": "fce1b7e447acc521bb72103512f959c7ab631775e1c914dfc1bb7d4dea150e36",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Petite forme d’excrément stylisée entière, sans visage ni emoji, blanche/grise ; peut évoquer une spirale de crème en monochrome, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-a28ac5a7",
+      "reviewer": "Codex",
+      "sha256": "bd44f61e9cd83fd057e62d559e5821baceafea557b447e0a8a063d10be112dc1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Ceinture souple en tissu nouée, deux pans complets, sans boucle moderne ; aide pour bande à nouer 띠. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-1a831b88",
+      "reviewer": "Codex",
+      "sha256": "5488792848299bba341fe93681568e662e30bac5b309f88f3953ea668551d24b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Voiture compacte entière sans logo, plaque chiffrée ni loueur ; le statut de location est invisible, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-83e560bb",
+      "reviewer": "Codex",
+      "sha256": "5f44aa71313de917efdc8c8705365e3211f0aea3c40088e4e40fa14c241121ff",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Bâton entier à deux extrémités naturelles/coupées, nœuds et petits ergots, aucun brun dominant ; aide car branche/tige restent plausibles. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-30a1cf68",
+      "reviewer": "Codex",
+      "sha256": "db01087942d9ab30e17a02272a8e80f208dea3a1386c11d50fa4e70d1851c4d5",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Livre entier ouvert, cases de BD silencieuses avec personnages cohérents ; pas de bulles écrites ou glyphes ; aide pour type de livre, cases lisibles en miniature. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-31986faf",
+      "reviewer": "Codex",
+      "sha256": "2b239da6efc7788354724e93e7bed896f28cd925f80b223c2915b3d12e4fe2cf",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Pot entier à deux anses, morceaux de poisson et légumes, minuscule rondelle de piment rouge ; composition plausible du maeuntang, exactitude gustative non vérifiable donc aide. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-470fda67",
+      "reviewer": "Codex",
+      "sha256": "da23bb6770c6a048f3064bfd1f7b55a33e9ed9943213f6c3111b8c6d9419ca34",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Deux pieds nus adultes entiers, cinq orteils par pied et chevilles cohérentes, limites hautes en traits de pinceau dans le carré ; aide neutre, pas de chaussures. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-de902ae2",
+      "reviewer": "Codex",
+      "sha256": "7c8580542c04320abf25ce6c47cc7426e63c10c795781c0db50af04fe583ee30",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Nuage isolé de poussière et particules blanches/grises, aucun décor, caractère granuleux conservé à 96 px ; ambigu avec poudre/fumée, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-f8e053d2",
+      "reviewer": "Codex",
+      "sha256": "4b4b73f1ceb97f9e222669a904e11111962e7459db9c69e772db26493870bb63",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Bloc de petites feuilles vierges, épaisseur visible et coin supérieur recourbé ; aucun texte ; aide pour papier à notes. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-4af2e641",
+      "reviewer": "Codex",
+      "sha256": "53c2673ca853f25df534858366c92d4459e35cdce3ebd1b60b190e11be3d83b8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Carte générique entière avec petite silhouette portrait et blocs vides abstraits, pas de données ou pseudo-écriture ; type permis non prouvable, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-e05ae543",
+      "reviewer": "Codex",
+      "sha256": "47f4062f2f708b632dd2d67c95f4f224f4c340e8881513c690ce8bf4b1933580",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Carte de visite vierge entière à bord en relief, aucun nom, numéro ou logo ; fonction non prouvable, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-a601624f",
+      "reviewer": "Codex",
+      "sha256": "3769d23e308bd3e0349f99246a3732098f1af1a6c1773b0f7e3e03aaa9abc9dd",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Tas isolé de sable granuleux blanc/gris, silhouette complète, pas de brun dominant ; matière ambiguë avec poudre, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "1780695436373",
+      "reviewer": "Codex",
+      "sha256": "38eb70ae0997445d186b9f9700071ddd4c4f8c7c31660c04cbd15899bd17141d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Chapeau entier à calotte pincée, large bord et ruban sombre, aucune marque ; bonnet/chapeau dans le sens du deck, question 모자, type fedora reste neutre. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-1b666384",
+      "reviewer": "Codex",
+      "sha256": "dc7cab7d0d858ff2fed9670c1889180da3872c93ff0e57ca9d85457fa3f249ef",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Échantillon de tissu entier à motif géométrique répété, petites franges et plis cohérents ; motif comme catégorie, aide seule. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-2caeb34d",
+      "reviewer": "Codex",
+      "sha256": "e168f1df416465408fdb7bd7dd9cddc9606ba13695ab1d4391bcf12c0d9d7da0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Tube de peinture entier, capuchon fermé et base sertie, aucune marque ou inscription ; tube générique donc aide, aucune couleur prétendue. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-4f9a8960",
+      "reviewer": "Codex",
+      "sha256": "b74bc4e2a22c6fcd22f6587cfe29affc5bcbb6bb5374f74a30266b2e77ef5d35",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Bouteille de médicament liquide entière avec capuchon doseur sans chiffres ; contenu non vérifiable, aide sans promesse médicale. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-8b2f4f88",
+      "reviewer": "Codex",
+      "sha256": "74dc584da94645bd52426ef8492714951654741f9fd9328827e60fea4258e7a0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Bloc entier de quatre casiers, portes/charnières/poignées cohérentes, aucun numéro ; aide pour consigne, pas certitude d’usage des placards. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    },
+    {
+      "id": "pack-e7ae221a",
+      "reviewer": "Codex",
+      "sha256": "aee365b4d51c8a6e289c88c01ddcacc0b8c0ba26a6eb302bfa7b2f1801c9b802",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG puis WebP à 512, 160 et 96 px. Plateau de go entier à neuf lignes horizontales et neuf verticales ; pierres noires/blanches placées sur les intersections, pas de damier coloré ni écriture. Grille reconnaissable en miniature ; aide pour jeu 바둑. Référence pinceau respectée, noir pur, silhouette à l’intérieur du carré, aucun texte/logo."
+    }
+  ]
+}

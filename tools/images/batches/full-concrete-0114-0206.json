@@ -1,0 +1,789 @@
+{
+  "id": "full-concrete-0114-0206",
+  "requested": 31,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-43ad8d49",
+      "kr": "버튼",
+      "sense": "Bouton (à presser)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 114
+    },
+    {
+      "id": "pack-51ab62e0",
+      "kr": "의상",
+      "sense": "Costume, tenue (de scène, d'apparat)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 171
+    },
+    {
+      "id": "pack-efa06867",
+      "kr": "인쇄물",
+      "sense": "Imprimé, document imprimé",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 175
+    },
+    {
+      "id": "pack-14f664a8",
+      "kr": "인스턴트",
+      "sense": "Instantané (produit à préparation rapide)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 176
+    },
+    {
+      "id": "pack-2b2f1ff3",
+      "kr": "일회용품",
+      "sense": "Produit jetable, article à usage unique",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 178
+    },
+    {
+      "id": "pack-f77cb3f9",
+      "kr": "재떨이",
+      "sense": "Cendrier.",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 179
+    },
+    {
+      "id": "1780695436372",
+      "kr": "재킷",
+      "sense": "Veste / blouson",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 180
+    },
+    {
+      "id": "pack-e7de006c",
+      "kr": "전자사전",
+      "sense": "Dictionnaire électronique",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 181
+    },
+    {
+      "id": "pack-d91e63b0",
+      "kr": "점퍼",
+      "sense": "Blouson, veste (de type jumper)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 183
+    },
+    {
+      "id": "pack-5ab9da94",
+      "kr": "제품",
+      "sense": "produit (fabriqué)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 184
+    },
+    {
+      "id": "pack-d961d220",
+      "kr": "조림",
+      "sense": "Plat mijoté dans une sauce (braisé)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 185
+    },
+    {
+      "id": "pack-6ba77094",
+      "kr": "준비물",
+      "sense": "Fournitures à préparer, affaires",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 187
+    },
+    {
+      "id": "pack-921f90a2",
+      "kr": "줄기",
+      "sense": "Tige, tronc (de plante)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 188
+    },
+    {
+      "id": "pack-09f376eb",
+      "kr": "줄무늬",
+      "sense": "Rayures, rayé",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 189
+    },
+    {
+      "id": "pack-0cc7c605",
+      "kr": "중고차",
+      "sense": "Voiture d'occasion",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 190
+    },
+    {
+      "id": "pack-274cdb7e",
+      "kr": "중고품",
+      "sense": "Article d'occasion",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 191
+    },
+    {
+      "id": "pack-8cc2ad7e",
+      "kr": "중식",
+      "sense": "Cuisine chinoise, plat chinois",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 192
+    },
+    {
+      "id": "pack-8ec55c7c",
+      "kr": "중형차",
+      "sense": "Voiture de taille moyenne",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 193
+    },
+    {
+      "id": "pack-a5b441e6",
+      "kr": "짐승",
+      "sense": "Bete, animal (sauvage)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 194
+    },
+    {
+      "id": "pack-442c71ac",
+      "kr": "천사",
+      "sense": "Ange",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 195
+    },
+    {
+      "id": "pack-1db22ef8",
+      "kr": "충치",
+      "sense": "Une carie (dentaire)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 196
+    },
+    {
+      "id": "pack-5886aa0c",
+      "kr": "턱",
+      "sense": "Menton, mâchoire",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 197
+    },
+    {
+      "id": "pack-ac57252c",
+      "kr": "털",
+      "sense": "Poil, pelage",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 198
+    },
+    {
+      "id": "pack-0f3bf77d",
+      "kr": "파도",
+      "sense": "vague (mer)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 199
+    },
+    {
+      "id": "pack-b486dea5",
+      "kr": "팔꿈치",
+      "sense": "Coude",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 200
+    },
+    {
+      "id": "pack-100d7e0e",
+      "kr": "팩",
+      "sense": "Pack, brique, berlingot",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 201
+    },
+    {
+      "id": "pack-e2e48e8c",
+      "kr": "팬티",
+      "sense": "Culotte, slip",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 202
+    },
+    {
+      "id": "pack-33989ae6",
+      "kr": "포스터",
+      "sense": "Affiche, poster",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 203
+    },
+    {
+      "id": "pack-b95214f6",
+      "kr": "포장지",
+      "sense": "Papier d'emballage, papier cadeau",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 204
+    },
+    {
+      "id": "pack-c84f6ff3",
+      "kr": "표지",
+      "sense": "Couverture (de livre) ; panneau, écriteau",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 205
+    },
+    {
+      "id": "pack-2b276083",
+      "kr": "표지판",
+      "sense": "Panneau, pancarte",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 206
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-43ad8d49",
+      "reviewer": "Codex",
+      "sourceSha256": "33ff73b6eb77314b7eff79b0173686a2e4d65781a76bddf56f6a22fb6560d60b",
+      "note": "Bouton mécanique sur ressort entièrement visible, sans rouge dominant ; silhouette du poussoir claire à 96 px."
+    },
+    {
+      "id": "pack-51ab62e0",
+      "reviewer": "Codex",
+      "sourceSha256": "64eb83a161d7e63e7c17ca3c00f605204e10d3550b3dec3f50053cda4caf5a22",
+      "note": "Costume de scène ornementé sur cintre, manches et ourlet intacts ; support car le registre théâtral dépend du contexte."
+    },
+    {
+      "id": "pack-efa06867",
+      "reviewer": "Codex",
+      "sourceSha256": "7e2cd33cf8e3919267168faee4246c827d269a73acf800a70ba13d510db03ccb",
+      "note": "Dépliant ouvert à trois volets ; blocs abstraits sans lettres, évocation claire de document imprimé aux trois tailles."
+    },
+    {
+      "id": "pack-14f664a8",
+      "reviewer": "Codex",
+      "sourceSha256": "32848dfdd62f1d0ba996899d6d6b79fb6b6f7269b473014f9605f230f696598a",
+      "note": "Gobelet de nouilles instantanées avec opercule entrouvert ; préparation rapide évoquée, support après réponse."
+    },
+    {
+      "id": "pack-2b2f1ff3",
+      "reviewer": "Codex",
+      "sourceSha256": "23410661146384cb420d879f1ef48c080867a7960892b6c8ea06d0813cec4d20",
+      "note": "Gobelet jetable simple, bord et fond distincts aux trois tailles ; la catégorie usage unique reste contextuelle."
+    },
+    {
+      "id": "pack-f77cb3f9",
+      "reviewer": "Codex",
+      "sourceSha256": "2eeef577fdf828a27d15e1d6f4752eb3553cc6b9e58deed9014a5300c9ecc4c0",
+      "note": "Cendrier vide avec trois encoches, silhouette lisible à 96 px, aucune cigarette ni texte."
+    },
+    {
+      "id": "1780695436372",
+      "reviewer": "Codex",
+      "sourceSha256": "830cbd649bba71c92b37435b9e3209433f0dec0d4c9097ae509399b6a3c56a53",
+      "note": "Blouson zippé complet, col et manches bien détachés du fond ; support du mot veste."
+    },
+    {
+      "id": "pack-e7de006c",
+      "reviewer": "Codex",
+      "sourceSha256": "013f0d7bd1758410edca23a276cdf3897c568123645a1926e094d79fb393efc5",
+      "note": "Petit appareil à clapet, écran et touches sans glyphes ; support car ordinateur et dictionnaire électronique restent proches."
+    },
+    {
+      "id": "pack-d91e63b0",
+      "reviewer": "Codex",
+      "sourceSha256": "7d341f0e4e1bd5030d5854a35f77870f7391986fa1129af39def8c77f4da1542",
+      "note": "Blouson à bords côtelés entièrement visible ; support car les deux mots veste/blouson ne se distinguent pas seuls."
+    },
+    {
+      "id": "pack-5ab9da94",
+      "reviewer": "Codex",
+      "sourceSha256": "6af296573f2cdb21d65810edf765a508a6e61d437ff1c81d2d687c701305169c",
+      "note": "Boîte de produit fermée sans marque ; objet lisible, catégorie produit apprise après réponse."
+    },
+    {
+      "id": "pack-d961d220",
+      "reviewer": "Codex",
+      "sourceSha256": "093e8fac73464df3ca4b9ad2eae221aae3f884ae907baed40207ae593fc1dc2e",
+      "note": "Poisson braisé dans son plat avec radis et sauce ; petite touche de piment, aucun texte, support du procédé culinaire."
+    },
+    {
+      "id": "pack-6ba77094",
+      "reviewer": "Codex",
+      "sourceSha256": "bd5e46af8844ca99676f86fa135389144a12d6bad7416f0aa752b4dc9ea2d54e",
+      "note": "Trousse ouverte avec crayon, gomme et règle sans graduations écrites ; fournitures préparées en support."
+    },
+    {
+      "id": "pack-921f90a2",
+      "reviewer": "Codex",
+      "sourceSha256": "39af00899dd338253065822a19e515f0f6a4ca6e469bbb9a912c3460b21a0cba",
+      "note": "Plante isolée avec tige continue, feuilles et racines distinctes ; tige reconnaissable, support du détail."
+    },
+    {
+      "id": "pack-09f376eb",
+      "reviewer": "Codex",
+      "sourceSha256": "7ae3d146bc05ce48ab3bf8e207193b2eaf1645956f9507a5f6f77b7afff4ee96",
+      "note": "T-shirt à larges rayures contrastées ; motif encore lisible à 96 px, support car vêtement et motif coexistent."
+    },
+    {
+      "id": "pack-0cc7c605",
+      "reviewer": "Codex",
+      "sourceSha256": "95d6daa9e30be75154d2b1636900843346073252a6f7bc10d11c71f13e29dfd0",
+      "note": "Berline complète, légère usure et aucune marque lisible ; le statut occasion reste une information textuelle."
+    },
+    {
+      "id": "pack-274cdb7e",
+      "reviewer": "Codex",
+      "sourceSha256": "fa749d19214e1e19a386c4a784e5b118c5db602ddba0adb261abe318797cf80a",
+      "note": "Radio usagée aux bords éraflés, boutons lisibles sans lettres ; support de la catégorie objet occasion."
+    },
+    {
+      "id": "pack-8cc2ad7e",
+      "reviewer": "Codex",
+      "sourceSha256": "db1aaee596f33994ecfc12789d9a854781ea3bd3f605792d672b6dd20be0cc8e",
+      "note": "Bol de jajangmyeon, nouilles et sauce sombre visibles ; cuisine chinoise illustrée par un exemple, usage support."
+    },
+    {
+      "id": "pack-8ec55c7c",
+      "reviewer": "Codex",
+      "sourceSha256": "17e33e80679d33186792b15c97e7e18d95fb56a72e5d34fe1cae3feb25976b15",
+      "note": "Berline de taille moyenne sans logo ni plaque lisible ; catégorie de taille conservée en support."
+    },
+    {
+      "id": "pack-a5b441e6",
+      "reviewer": "Codex",
+      "sourceSha256": "c567f66cc3a5d8e75b9c2b854f466e90538381fc82075f8117a6472cae0f1c19",
+      "note": "Sanglier entier, museau, petites défenses et pattes distincts ; exemple de bête sauvage, usage support."
+    },
+    {
+      "id": "pack-442c71ac",
+      "reviewer": "Codex",
+      "sourceSha256": "fd8cd58e5c62782025725f0ec865b0f31722358b24f1ced9e40b39387ccd9fb4",
+      "note": "Figure ailée habillée avec auréole, silhouette complète et lisible à 96 px ; support de la représentation conventionnelle."
+    },
+    {
+      "id": "pack-1db22ef8",
+      "reviewer": "Codex",
+      "sourceSha256": "3c877a323296c3c33351efa576ed6e847b0e93c25c1749d99d2d971ca4449a86",
+      "note": "Molaire isolée avec cavité noire nette sur la couronne, encore visible à 96 px ; illustration pédagogique de carie."
+    },
+    {
+      "id": "pack-5886aa0c",
+      "reviewer": "Codex",
+      "sourceSha256": "0381550de7208aa169e508e43c38f2d97c8fd18239f5079d5efb0e40f9f3d334",
+      "note": "Portrait adulte de trois quarts, ligne de mâchoire et menton dégagés ; partie du visage en support."
+    },
+    {
+      "id": "pack-ac57252c",
+      "reviewer": "Codex",
+      "sourceSha256": "45087cd705d6ca522695b9976dd41a723d05409c75264d5fd2c222176fda7326",
+      "note": "Petite touffe de poils claire et grise, fils visibles et masse reconnaissable à 96 px ; support du matériau."
+    },
+    {
+      "id": "pack-0f3bf77d",
+      "reviewer": "Codex",
+      "sourceSha256": "054b7a4d480d09136064ed8582b06adbd400af15815ca573fabd417b09799d6e",
+      "note": "Vague isolée en rouleau et écume au pinceau, sans paysage ; silhouette du mouvement conservée aux trois tailles."
+    },
+    {
+      "id": "pack-b486dea5",
+      "reviewer": "Codex",
+      "sourceSha256": "ca91c702e281bbda11e1155b1575d671409b866e58ba0794bfb7c4a8d2e5881d",
+      "note": "Bras adulte plié avec coude clairement coudé ; étude anatomique neutre et support du détail."
+    },
+    {
+      "id": "pack-100d7e0e",
+      "reviewer": "Codex",
+      "sourceSha256": "03f419b0072eb4b687f829874960fc1d60f4305410f530f0cdd3e8247a1f8556",
+      "note": "Brique à bouchon sans marque ni lettres ; volume et pli supérieur distincts aux trois tailles."
+    },
+    {
+      "id": "pack-e2e48e8c",
+      "reviewer": "Codex",
+      "sourceSha256": "e5bbf07cda1cfd4d13d0b42d1edb7d22be647d4e51aa9ee8dadb164949e1d2fc",
+      "note": "Sous-vêtement seul posé à plat, aucun corps ; coutures et silhouette entières, support du type de vêtement."
+    },
+    {
+      "id": "pack-33989ae6",
+      "reviewer": "Codex",
+      "sourceSha256": "76dffcf472e965345f8c7660aadaef7a6f315a017c7dc09acd6c8f76e313be09",
+      "note": "Affiche roulée légèrement avec silhouette imprimée sans glyphes ; bords du papier entiers et lisibles."
+    },
+    {
+      "id": "pack-b95214f6",
+      "reviewer": "Codex",
+      "sourceSha256": "d28a2de9ae5e03cff856a9aa13f0e3bcc31a79eab388dff5571e777a68b248a1",
+      "note": "Rouleau de papier décoratif déroulé, sans texte ; extrémités intégrales et silhouette claire à 96 px."
+    },
+    {
+      "id": "pack-c84f6ff3",
+      "reviewer": "Codex",
+      "sourceSha256": "b5746f90e8c865b65a11295898fa501c97ef1907f9764f81b0af015189410734",
+      "note": "Livre fermé à couverture florale sans titre ; support du sens couverture, pas une question sur le livre."
+    },
+    {
+      "id": "pack-2b276083",
+      "reviewer": "Codex",
+      "sourceSha256": "1802cb6ba8564904db7802c3536039399de842d7cf3e0faa4755291bc69b28f1",
+      "note": "Panneau directionnel vide sur poteau, forme fléchée complète et lisible, aucune inscription."
+    }
+  ],
+  "rejectedAttempts": [],
+  "displaySizeReviews": [
+    {
+      "id": "pack-43ad8d49",
+      "reviewer": "Codex",
+      "sha256": "71eddbf14e340b504d0f60607d37d63564b59da00ab9bdac80b6c62cf42b3d5e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bouton mécanique sur ressort entièrement visible, sans rouge dominant ; silhouette du poussoir claire à 96 px."
+    },
+    {
+      "id": "pack-51ab62e0",
+      "reviewer": "Codex",
+      "sha256": "7791d04201831d8b06a9216efae3e6eabc3b47009cd9c666dbb3dee2174ffc19",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Costume de scène ornementé sur cintre, manches et ourlet intacts ; support car le registre théâtral dépend du contexte."
+    },
+    {
+      "id": "pack-efa06867",
+      "reviewer": "Codex",
+      "sha256": "a9ccc3b7e68b336309b3beea3c665b93454f18bfe4dab4714eb260050adb3b13",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Dépliant ouvert à trois volets ; blocs abstraits sans lettres, évocation claire de document imprimé aux trois tailles."
+    },
+    {
+      "id": "pack-14f664a8",
+      "reviewer": "Codex",
+      "sha256": "d161eb2dbee8c8159a904ed0745196eb4b9a0c150794c631b3aae15a08c3f01a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Gobelet de nouilles instantanées avec opercule entrouvert ; préparation rapide évoquée, support après réponse."
+    },
+    {
+      "id": "pack-2b2f1ff3",
+      "reviewer": "Codex",
+      "sha256": "9c7f9c66b2ec031bd45bafb422ee231d0486e5ff75b12aadda0f2971f977b74d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Gobelet jetable simple, bord et fond distincts aux trois tailles ; la catégorie usage unique reste contextuelle."
+    },
+    {
+      "id": "pack-f77cb3f9",
+      "reviewer": "Codex",
+      "sha256": "b712648e65828d1e91212124cdf4e0d04dd948766381d1404ba9086b294408d5",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Cendrier vide avec trois encoches, silhouette lisible à 96 px, aucune cigarette ni texte."
+    },
+    {
+      "id": "1780695436372",
+      "reviewer": "Codex",
+      "sha256": "aeb2446ff1e6d748c8d1dd513d4e69afaba6fe676c8713f6562827614617b600",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Blouson zippé complet, col et manches bien détachés du fond ; support du mot veste."
+    },
+    {
+      "id": "pack-e7de006c",
+      "reviewer": "Codex",
+      "sha256": "d334465c8443ee8b0c55518b9738ef080d30b9231e79f8cb0fc112e5b92a46e6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petit appareil à clapet, écran et touches sans glyphes ; support car ordinateur et dictionnaire électronique restent proches."
+    },
+    {
+      "id": "pack-d91e63b0",
+      "reviewer": "Codex",
+      "sha256": "cfd5b4cc799a979dc52b15446c3399945674cae196013dd107a4248d746f28c0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Blouson à bords côtelés entièrement visible ; support car les deux mots veste/blouson ne se distinguent pas seuls."
+    },
+    {
+      "id": "pack-5ab9da94",
+      "reviewer": "Codex",
+      "sha256": "0ef7a615c8452dfac5559bee74517240ec2d3b62a91af44339522e2bdc122e02",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Boîte de produit fermée sans marque ; objet lisible, catégorie produit apprise après réponse."
+    },
+    {
+      "id": "pack-d961d220",
+      "reviewer": "Codex",
+      "sha256": "2135b348040d80f8257f644e44e29c346a8420158aeb1894d975d9c7382de41d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Poisson braisé dans son plat avec radis et sauce ; petite touche de piment, aucun texte, support du procédé culinaire."
+    },
+    {
+      "id": "pack-6ba77094",
+      "reviewer": "Codex",
+      "sha256": "5fc3910a1b6b31c8523d8216bbe346ece1ad4997e9462a6fbbf6f22f14a537a6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Trousse ouverte avec crayon, gomme et règle sans graduations écrites ; fournitures préparées en support."
+    },
+    {
+      "id": "pack-921f90a2",
+      "reviewer": "Codex",
+      "sha256": "6ba188b22ca6534fa51dc2baa7c1b152a553243d1daae9f5b51efbf0cd52a6dd",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Plante isolée avec tige continue, feuilles et racines distinctes ; tige reconnaissable, support du détail."
+    },
+    {
+      "id": "pack-09f376eb",
+      "reviewer": "Codex",
+      "sha256": "313ae2e6a3006cf7637f5820b1760e9bfb43440df01395caa720b7d4dcb865fd",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "T-shirt à larges rayures contrastées ; motif encore lisible à 96 px, support car vêtement et motif coexistent."
+    },
+    {
+      "id": "pack-0cc7c605",
+      "reviewer": "Codex",
+      "sha256": "175d7ece2ce342da2de2ea2cc5f501fc17577f00c0f454292ca1c63e904e85ec",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Berline complète, légère usure et aucune marque lisible ; le statut occasion reste une information textuelle."
+    },
+    {
+      "id": "pack-274cdb7e",
+      "reviewer": "Codex",
+      "sha256": "0e08f00f33baa553fbb8b396c8d7f9187b91c2ad1c583a64a164215026742941",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Radio usagée aux bords éraflés, boutons lisibles sans lettres ; support de la catégorie objet occasion."
+    },
+    {
+      "id": "pack-8cc2ad7e",
+      "reviewer": "Codex",
+      "sha256": "4353750d9a635d04ef18a8ae7748a98b83d3d44a7c04c350f711ebaea352da9e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bol de jajangmyeon, nouilles et sauce sombre visibles ; cuisine chinoise illustrée par un exemple, usage support."
+    },
+    {
+      "id": "pack-8ec55c7c",
+      "reviewer": "Codex",
+      "sha256": "ebb00cf9a227c26f4236aa9fbf9df8bc42e80056aafe17ce8796faf0037aa075",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Berline de taille moyenne sans logo ni plaque lisible ; catégorie de taille conservée en support."
+    },
+    {
+      "id": "pack-a5b441e6",
+      "reviewer": "Codex",
+      "sha256": "ee1140df8dac5830cbba5aad7551b9803d70f393d990c0de6d4fd5d98ff80abd",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Sanglier entier, museau, petites défenses et pattes distincts ; exemple de bête sauvage, usage support."
+    },
+    {
+      "id": "pack-442c71ac",
+      "reviewer": "Codex",
+      "sha256": "9bfa58a06126da783c96f9c057ae804b2546ffffd5d56a73a0929bfd83daf289",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Figure ailée habillée avec auréole, silhouette complète et lisible à 96 px ; support de la représentation conventionnelle."
+    },
+    {
+      "id": "pack-1db22ef8",
+      "reviewer": "Codex",
+      "sha256": "813ebd6a1d4399552dc1f90cfe339160cef3e65bc41f86d05613179932ae9aff",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Molaire isolée avec cavité noire nette sur la couronne, encore visible à 96 px ; illustration pédagogique de carie."
+    },
+    {
+      "id": "pack-5886aa0c",
+      "reviewer": "Codex",
+      "sha256": "ffac19497c4907b5e478a707d3cbb3fc0e830fcddc3fa27ad9581bb95d781920",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Portrait adulte de trois quarts, ligne de mâchoire et menton dégagés ; partie du visage en support."
+    },
+    {
+      "id": "pack-ac57252c",
+      "reviewer": "Codex",
+      "sha256": "127c5625b25aa7c2479ba7cfabb9a6f16c9d3c26a6d83c3fb232c23693a0b648",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petite touffe de poils claire et grise, fils visibles et masse reconnaissable à 96 px ; support du matériau."
+    },
+    {
+      "id": "pack-0f3bf77d",
+      "reviewer": "Codex",
+      "sha256": "01a01546eadbe30ccee87e0b6183b421667914f7c222b4c6c1818f9a6fd0da58",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Vague isolée en rouleau et écume au pinceau, sans paysage ; silhouette du mouvement conservée aux trois tailles."
+    },
+    {
+      "id": "pack-b486dea5",
+      "reviewer": "Codex",
+      "sha256": "f790aa28f540aaf91db41d2cd90713fd348e2dc0ca75861c2f4414b2effedbc2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bras adulte plié avec coude clairement coudé ; étude anatomique neutre et support du détail."
+    },
+    {
+      "id": "pack-100d7e0e",
+      "reviewer": "Codex",
+      "sha256": "75ef1926ef7088910e6798df45af4af723f6f8d6dd4ee0002a4c8a748ca4bf35",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Brique à bouchon sans marque ni lettres ; volume et pli supérieur distincts aux trois tailles."
+    },
+    {
+      "id": "pack-e2e48e8c",
+      "reviewer": "Codex",
+      "sha256": "67c6b8d54c5fcb76f751430cdf7f097afb8ec3aa3778a1793d7f70f832a6fd20",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Sous-vêtement seul posé à plat, aucun corps ; coutures et silhouette entières, support du type de vêtement."
+    },
+    {
+      "id": "pack-33989ae6",
+      "reviewer": "Codex",
+      "sha256": "f4dd1dd90cdbdd561a8988d9e484a9b92031364e0f58947b2013762d75e8b724",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Affiche roulée légèrement avec silhouette imprimée sans glyphes ; bords du papier entiers et lisibles."
+    },
+    {
+      "id": "pack-b95214f6",
+      "reviewer": "Codex",
+      "sha256": "d66af83bc17224fd2bef8d4c140df94a2267829bfc09dd5bfba60b3bdcc0ca6a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Rouleau de papier décoratif déroulé, sans texte ; extrémités intégrales et silhouette claire à 96 px."
+    },
+    {
+      "id": "pack-c84f6ff3",
+      "reviewer": "Codex",
+      "sha256": "7c9758b6f6057b9ae4d693f0c725dadc9649de65825e2c87415528f459a7631f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Livre fermé à couverture florale sans titre ; support du sens couverture, pas une question sur le livre."
+    },
+    {
+      "id": "pack-2b276083",
+      "reviewer": "Codex",
+      "sha256": "97aa54874de3664bb97d085a7bb2a5e42cec884ccf4b1424a9b7bd9a6c2eef4a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Panneau directionnel vide sur poteau, forme fléchée complète et lisible, aucune inscription."
+    }
+  ]
+}

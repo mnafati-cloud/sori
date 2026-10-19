@@ -1,0 +1,24 @@
+{
+  "id": "pack-b11e1f63",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T19:00:23.339Z",
+  "sourceSha256": "f71fa0c3d576634316a1d801233a5f0b40792ab4eead5196250608d15a97f09b",
+  "sha256": "621339ea5f24520bd1c3c247dfcbbb6d9d7c1f84a7af321024838ae26d57dd1c",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne whole bell pepper in a three-quarter view, with a squat blocky three-lobed body and a short curved stem. Show the characteristic rounded lobes, not a long pointed chili. Entire pepper and stem inside generous margins. Warm-white and warm-grey brushwork only, no red/green/yellow coloring, no cut half, plate, vegetables, people or text.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Poivron entier à lobes courts et larges, pédoncule courbé ; distinct du piment long, lisible à 512/160/96 px. Reclassé en aide après réponse : le dessin monochrome ne permet pas d’imposer 피망 plutôt que 파프리카. Aucun synonyme ajouté aux réponses créditées.",
+  "reviewedAt": "2026-10-18T19:01:22.449Z",
+  "kr": "피망",
+  "sense": "Poivron",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

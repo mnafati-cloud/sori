@@ -1,0 +1,24 @@
+{
+  "id": "pack-8ecfa879",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T20:06:52.516Z",
+  "sourceSha256": "54422a5d449de24b2cc22ece334ba17bff54199ab6ab8ce971972a7131317384",
+  "sha256": "45b80df58aa41308883edbe92ff8050a8d0211b65005423aa42eadc70a94b73d",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne short whole detached leafless twig entirely encased in ice, with three small downward icicles, all branch endpoints fully visible. Twig is warm-grey ONLY, no brown and NO orange or red buds. Bright white ice highlights and large black open gaps. Center within the middle 70 percent of the square; thick generous pure-black margins on every side. No trunk exiting frame, no snowy landscape. Illustrates physical frozen state 얼어붙다 as support after answer only, never a visual test of the verb. Expressive brush, not a photograph.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Reprise manuelle du rameau gelé : branche courte entière, trois glaçons pendants et tous les bouts dans les marges ; palette désormais blanc/gris sans brun ni rouge. État gelé comme aide uniquement, ne teste pas le verbe. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo.",
+  "reviewedAt": "2026-10-18T20:12:17.010Z",
+  "kr": "얼어붙다",
+  "sense": "Geler, etre gele (de froid)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

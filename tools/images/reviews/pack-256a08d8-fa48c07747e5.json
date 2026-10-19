@@ -1,0 +1,24 @@
+{
+  "id": "pack-256a08d8",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T21:00:13.594Z",
+  "sourceSha256": "58587a53548939b4814dc87aaa9f3a9176fee60f9f7f206a52411f42e45450b0",
+  "sha256": "fa48c07747e5e8269e4ea49897d83a1e1d53b43b395c9f4e4467b0826d5487cc",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne whole freestanding gym exercise weight machine with coherent seat, frame, pulley and weight stack, no person, gym room, numbers or labels; equipment category from the example, support only. Warm-white/grey brush ONLY, no natural brown, green, blue or dominant red. Whole silhouette inside broad pure black margins; no writing or pseudo-writing.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Appareil de musculation entier, câble, barre et siège cohérents ; détail compact lisible, support de la catégorie appareil.",
+  "reviewedAt": "2026-10-18T21:03:27.527Z",
+  "kr": "기구",
+  "sense": "Instrument, ustensile, appareil",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

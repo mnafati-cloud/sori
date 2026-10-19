@@ -1,10 +1,44 @@
-# Illustrations et rappel visuel — v174
+# Illustrations et rappel visuel — v175
+
+<!-- FULL_CONCRETE_PROGRESS_START -->
+> **Campagne concrète v175 : 405 images intégrées sur 461 candidats initiaux.**
+> Chaque WebP a été revu à 512, 160 et 96 px, selon la référence Pinceau existante.
+> 54 candidats sont différés pour des limites de sens, de scène ou de palette ;
+> 1 candidat (종아리) est bloqué par un refus du fournisseur et n’a pas été relancé.
+> 1 rendu validé visuellement (배 — ventre) est conservé hors manifeste : le test d’homonymie actuel exige cet id sans image.
+> Le test et le code restent inchangés. Le refus antérieur 어깨 reste exclu. Détail : `tools/images/batches/full-concrete-plan-2026-10-18.json`.
+> Catalogue v175 : **1 013 images** = 603 de v174 + 5 du premier lot + 405 de cette campagne.
+> Recettes, provenance et revues dans les lots `full-concrete-*.json` et `tools/images/reviews/`.
+> Les synonymes et sens non univoques restent des aides après réponse ; aucun asset n’est réemployé.
+> Cache : `sori-v175`. Publication du catalogue validé depuis `main`, sans modification du seed ni de la progression.
+> Validation finale : 198 tests Node, 31 fichiers JS en syntaxe, 161 cas FSRS, compilation Python,
+> 3 tests Python, pipeline 1 013 et quatre suites navigateur réussis ; zéro erreur JS.
+> Campagne : 52 questions et 353 aides ; 12 334 670 octets de WebP ajoutés.
+> Catalogue complet : 29 996 910 octets, chargé à la demande.
+<!-- FULL_CONCRETE_PROGRESS_END -->
+
+> **Historique du premier lot v175.** Le lot
+> `reprise-2026-10-18-01` ajoute 5 illustrations validées à 512, 160 et 96 px :
+> 주전자, 포크, 도마, 나침반 et 망원경. À cette étape, le manifeste local contenait **608 images**,
+> tandis que la dernière version déployée documentée ci-dessous était v174
+> avec 603 images. Les 5 WebP ajoutés pèsent **140 282 octets** (512 × 512,
+> qualité 82), pour 4 questions et 1 aide. Les niveaux du deck sont conservés :
+> 3 B2 et 2 C1. Le cache préparé est `sori-v175`.
+>
+> La bouilloire conserve son usage aide. `판자` (planche de bois) pour 도마 et
+> `시계` (montre) pour 나침반 sont des alternatives **neutres**, pas des réponses
+> créditées. Aucun asset existant n'a été réemployé ou remplacé. Les recettes,
+> hashes, provenance et revues sont dans `tools/images/batches/reprise-2026-10-18-01.json`
+> et `tools/images/reviews/`. Aucune génération de remplacement automatique.
+> Validation locale : 198 tests Node, syntaxe JS, 161 cas FSRS, compilation et
+> 3 tests Python, pipeline 608 et quatre suites navigateur réussis ; zéro erreur JS.
 
 Ce fichier et `tools/images/` sont le point de reprise du projet : aucune
 information de la conversation n'est nécessaire pour continuer la bibliothèque.
 Style approuvé : **2, trait au pinceau**, blanc chaud et lavis gris sur fond noir,
 accent vermillon discret. Toutes les illustrations sont générées, jamais prises
-sur le Web. La bibliothèque contient **603 images publiées** : les 3 premières
+sur le Web. La bibliothèque v175 contient **1 013 images**. La base v174 comptait
+**603 images publiées** : les 3 premières
 (우산, 사과, 고양이), puis deux lots de 100 et deux lots de 200 mots distincts.
 
 | Lot | A1 | A2 | B1 | Questions image → coréen | Aides après réponse | Poids WebP |
@@ -14,7 +48,7 @@ sur le Web. La bibliothèque contient **603 images publiées** : les 3 première
 | `a-2026-10-18` (v173) | 70 | 130 | 0 | 51 | 149 | 6,87 Mo |
 | `objects-2026-10-18` (v174) | 11 | 21 | 168 | 114 | 86 | 4,63 Mo |
 
-La bibliothèque complète pèse **17,52 Mo** (17 521 958 octets). Elle ne couvre pas
+La bibliothèque publiée v174 pèse **17,52 Mo** (17 521 958 octets). Elle ne couvre pas
 tout le deck ; les images sont chargées à la demande.
 
 ## Comportement dans l'app
@@ -287,8 +321,10 @@ Validation v174 : **198 tests Node**, 3 tests Python et les quatre suites naviga
 passent ; les **603 images** sont décodées et leur téléchargement hors ligne est
 testé, ainsi que le repli textuel et la préservation des caches lors de la mise à jour.
 
-L'extension du catalogue se poursuit avec l'entrée `queued` restante (주전자),
-puis un inventaire explicite des autres objets. Les estimations antérieures de 800–1 200
+L'entrée 주전자 auparavant `queued` est désormais validée dans le lot local
+`reprise-2026-10-18-01`. L'extension suivante passe par une revue des mots et sens
+encore non illustrés ; un rapprochement avec un asset existant ne résout pas
+l'ambiguïté entre deux lexèmes. Les estimations antérieures de 800–1 200
 objets ne constituent pas une classification terminée. Les exercices libres sur
 une galerie d'images et les scènes grammaticales sont des extensions distinctes ;
 la présente livraison intègre le rappel visuel dans l'exercice principal.

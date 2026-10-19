@@ -1,0 +1,24 @@
+{
+  "id": "pack-6bd7b123",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T20:24:03.134Z",
+  "sourceSha256": "24f73daf4a39b2987ad1a678e289d87ca2228dc5f5ff4ad21e8813646d4f0aba",
+  "sha256": "227afac3f327b4389c07b9a437eea399e0384ebfc1fa1d6dbe1fd33e80478719",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne complete neutral adult eye region, upper and lower eyelashes clearly distinguished as small coherent curved white brush hairs at the eyelid edge, eyebrow subdued, no makeup tool, artificial eyelashes package, arrows, words or disease. Support for 속눈썹 eyelashes, not eyebrow. Palette lock: warm-white and grey only; no natural brown, green, blue or dominant red. Complete silhouette, broad pure black margins, no text or pseudo-writing.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Étude entière de l’œil, longs cils cohérents au bord supérieur et quelques cils inférieurs ; sourcil distinct au-dessus ; aide pour partie cil, pas question contre œil/sourcil. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré.",
+  "reviewedAt": "2026-10-18T20:32:45.973Z",
+  "kr": "속눈썹",
+  "sense": "Cil",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

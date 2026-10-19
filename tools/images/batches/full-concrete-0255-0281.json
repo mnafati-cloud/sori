@@ -1,0 +1,593 @@
+{
+  "id": "full-concrete-0255-0281",
+  "requested": 22,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-d21fa097",
+      "kr": "백신",
+      "sense": "Un vaccin",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 255
+    },
+    {
+      "id": "pack-63ae8ec7",
+      "kr": "벤치",
+      "sense": "Banc",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 257
+    },
+    {
+      "id": "pack-f18fb7cc",
+      "kr": "벼",
+      "sense": "Riz sur pied, plant de riz",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 258
+    },
+    {
+      "id": "pack-87729236",
+      "kr": "보리",
+      "sense": "Orge",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 259
+    },
+    {
+      "id": "pack-c72996aa",
+      "kr": "볼",
+      "sense": "Joue",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 261
+    },
+    {
+      "id": "pack-a8af129d",
+      "kr": "부채",
+      "sense": "Éventail",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 262
+    },
+    {
+      "id": "pack-4bf6389c",
+      "kr": "부품",
+      "sense": "Pièce détachée; composant",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 263
+    },
+    {
+      "id": "pack-0ecc72a1",
+      "kr": "분필",
+      "sense": "Craie",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 264
+    },
+    {
+      "id": "pack-88814119",
+      "kr": "빗방울",
+      "sense": "Goutte de pluie",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 266
+    },
+    {
+      "id": "1780695436427",
+      "kr": "새",
+      "sense": "Oiseau",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 269
+    },
+    {
+      "id": "pack-3aae32b6",
+      "kr": "생활용품",
+      "sense": "Articles de la vie courante",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 270
+    },
+    {
+      "id": "pack-47b8ee38",
+      "kr": "세제",
+      "sense": "Détergent, produit lavant",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 271
+    },
+    {
+      "id": "pack-aaba4899",
+      "kr": "세트",
+      "sense": "Ensemble, jeu, lot (set)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 272
+    },
+    {
+      "id": "pack-dea3f93e",
+      "kr": "소매",
+      "sense": "Manche (de vêtement)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 273
+    },
+    {
+      "id": "pack-312a8bdc",
+      "kr": "소지품",
+      "sense": "Effets personnels, affaires",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 274
+    },
+    {
+      "id": "pack-6fd59930",
+      "kr": "쇠",
+      "sense": "Fer (métal)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 275
+    },
+    {
+      "id": "pack-5e982788",
+      "kr": "수도꼭지",
+      "sense": "un robinet",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 276
+    },
+    {
+      "id": "pack-29c5999c",
+      "kr": "스위치",
+      "sense": "Un interrupteur (lumière)",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 277
+    },
+    {
+      "id": "pack-57a020f1",
+      "kr": "시금치",
+      "sense": "Épinard",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 278
+    },
+    {
+      "id": "pack-5420f2e9",
+      "kr": "시디",
+      "sense": "CD, disque compact",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 279
+    },
+    {
+      "id": "pack-660253bb",
+      "kr": "시멘트",
+      "sense": "Ciment",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 280
+    },
+    {
+      "id": "pack-a713da59",
+      "kr": "시외버스",
+      "sense": "Autocar interurbain",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 281
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-d21fa097",
+      "reviewer": "Codex",
+      "sourceSha256": "d451a3b07552590ed1f0ef7033d9bab220c511162898d0f3858b105a64b0a7d0",
+      "note": "Flacon fermé et seringue capuchonnée entiers, aucune inscription ni dose ; illustration médicale neutre en support de vaccin."
+    },
+    {
+      "id": "pack-63ae8ec7",
+      "reviewer": "Codex",
+      "sourceSha256": "948830b9e917f316bad578b54b2e61a5f955a235b5281aa49bc93a4bc0cee59c",
+      "note": "Banc à lattes entier avec dossier, accoudoirs et pieds cohérents, silhouette claire à 96 px ; question 벤치 possible."
+    },
+    {
+      "id": "pack-f18fb7cc",
+      "reviewer": "Codex",
+      "sourceSha256": "d18ec1039b2ee0d9358eb20cb2583183750b9c36b21e47553aaff8c1e9c182cd",
+      "note": "Plant de riz à panicules retombantes et feuilles étroites, extrémités contenues dans le carré ; support botanique distinct du riz cuit."
+    },
+    {
+      "id": "pack-87729236",
+      "reviewer": "Codex",
+      "sourceSha256": "d3b01e2c927af3c251096089de4616efe5bd7ede19a5e2ea7856b9efee0764c1",
+      "note": "Épis d’orge à très longues barbes, tiges et pointes entières ; détails lisibles à 160 px, type de céréale maintenu en support."
+    },
+    {
+      "id": "pack-c72996aa",
+      "reviewer": "Codex",
+      "sourceSha256": "f8db88ec8b974998d00eec48bded444647176039f53025d5d6eae044fa6b4d0e",
+      "note": "Portrait adulte de profil avec joue dégagée et visage entier, fin du cou au pinceau sur noir ; synonyme joue en support."
+    },
+    {
+      "id": "pack-a8af129d",
+      "reviewer": "Codex",
+      "sourceSha256": "06360aa3ee030cb8c9d77be48ff36ea8178426cc2849b99e447d6630ae8d8abf",
+      "note": "Éventail ouvert complet, nervures reliées à un pivot et papier sans texte, silhouette claire à 96 px ; question 부채 possible."
+    },
+    {
+      "id": "pack-4bf6389c",
+      "reviewer": "Codex",
+      "sourceSha256": "dfcade3a39ccfe741387e2fc89d4bb13eab0d48b0a50d65d130c6994470c34c3",
+      "note": "Engrenage seul, dents et trou central cohérents, pièce entièrement isolée ; support de composant."
+    },
+    {
+      "id": "pack-0ecc72a1",
+      "reviewer": "Codex",
+      "sourceSha256": "4f465ce11849f8cd24df1b2e57d4f53a11282dca6d85e5ef54faf4fc0de3dac6",
+      "note": "Trois bâtons de craie aux cassures poudreuses, entièrement visibles sans écriture ni tableau ; usage support."
+    },
+    {
+      "id": "pack-88814119",
+      "reviewer": "Codex",
+      "sourceSha256": "09d18eec47939fb53620d0556eb9563111eb11e25928e22995082b0be09349f8",
+      "note": "Goutte en chute au-dessus d’un petit impact circulaire, aucune coupure, lisible à 96 px ; provenance pluviale maintenue en support."
+    },
+    {
+      "id": "1780695436427",
+      "reviewer": "Codex",
+      "sourceSha256": "103697f24727139d01da4e67e15f75a44be8c3397a7f04953a23ad2c8d162eea",
+      "note": "Oiseau entier sur branche courte, bec, queue et deux pattes cohérents, sans paysage ; support de la catégorie oiseau."
+    },
+    {
+      "id": "pack-3aae32b6",
+      "reviewer": "Codex",
+      "sourceSha256": "ecd8ab9af30662cb229e17617cb7d9e8a18cfcccb51e3e9926fcd66605d8d439",
+      "note": "Balayette dans sa pelle, ensemble emboîté cohérent et entier avec un petit accent de poignée ; exemple d’article de vie courante en support."
+    },
+    {
+      "id": "pack-47b8ee38",
+      "reviewer": "Codex",
+      "sourceSha256": "91182b479c4c7ef77d05aa0911b36461171245b91a232fcd776d3e1c42defb58",
+      "note": "Bidon de lessive entier à poignée et petit bouchon contrasté, aucune marque ni inscription ; type de produit maintenu en support."
+    },
+    {
+      "id": "pack-aaba4899",
+      "reviewer": "Codex",
+      "sourceSha256": "b4bf18d2541b43df5b70fe56b7511b56d4bc8b01f80bb650c3464a5da7a7d9a6",
+      "note": "Trois bols assortis empilés, même décor abstrait sans glyphes ; support du sens ensemble/jeu."
+    },
+    {
+      "id": "pack-dea3f93e",
+      "reviewer": "Codex",
+      "sourceSha256": "56a70ad9a2ec5e5ccff8085b7ddcfa2acbd5b30f510d3dfd9ee850ef06e172cb",
+      "note": "Chemise entière avec une manche retroussée et l’autre déployée ; les deux manches restent visibles, détail manche en support."
+    },
+    {
+      "id": "pack-312a8bdc",
+      "reviewer": "Codex",
+      "sourceSha256": "c3f2379d89b0cf090bec166382096f0029881adb10f322d6a561734f99710341",
+      "note": "Pochette ouverte avec portefeuille, téléphone et clé, sans écran lisible ni texte ; effets personnels illustrés en support."
+    },
+    {
+      "id": "pack-6fd59930",
+      "reviewer": "Codex",
+      "sourceSha256": "5bfe583e3fe04189132d969c5cc90338ca62249d5ec5d16992ffe922a7e43ed8",
+      "note": "Fer à cheval entier usé, reflets blanc gris et trous distincts ; support du fer comme matière, pas de brun rouille dominant."
+    },
+    {
+      "id": "pack-5e982788",
+      "reviewer": "Codex",
+      "sourceSha256": "2863ed9425af04757a080d6353cd2f22e77c3096d235312d0cb7bdaa8ac050fc",
+      "note": "Robinet entier à poignée en croix et sortie d’eau claire, sans gouttes ni évier ; silhouette claire à 96 px, question 수도꼭지 possible."
+    },
+    {
+      "id": "pack-29c5999c",
+      "reviewer": "Codex",
+      "sourceSha256": "7647d03a7f33b9d334e48fcbd973d4fbda34635abb62a98bc1e5be22c3b15b1e",
+      "note": "Interrupteur à bascule dans sa plaque entière, touches et vis distinctes, aucun symbole I/O ; question 스위치 possible."
+    },
+    {
+      "id": "pack-57a020f1",
+      "reviewer": "Codex",
+      "sourceSha256": "09cfe931ee09ec6aa5c0055c07f09c10733c7545b9065ef67093d913669a4871",
+      "note": "Botte d’épinards aux feuilles souples à nervures et petites racines entières, monochrome ; support de la distinction botanique."
+    },
+    {
+      "id": "pack-5420f2e9",
+      "reviewer": "Codex",
+      "sourceSha256": "02ed299501c7b26ac44c311916c34d23d7957b3504113dd7a717e1f8becad666",
+      "note": "Disque compact entier avec trou central et reflets gris, aucun arc-en-ciel ni inscription ; synonyme et format maintenus en support."
+    },
+    {
+      "id": "pack-660253bb",
+      "reviewer": "Codex",
+      "sourceSha256": "408d78a62cf28247046dd1e19f8097a9c8cd40a1b361c5552e2f68bebd1c7021",
+      "note": "Tas compact de ciment en poudre avec truelle, tout contenu dans le cadre, petit accent de manche ; support du matériau."
+    },
+    {
+      "id": "pack-a713da59",
+      "reviewer": "Codex",
+      "sourceSha256": "003e371b30524d674d3212b19f7c658448bd12854ff21174a564f6ffeed94878",
+      "note": "Autocar entier avec grandes fenêtres et soutes latérales, aucune marque ou destination lisible ; caractère interurbain maintenu en support."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-4c2786f1",
+      "rank": 256,
+      "kr": "번개",
+      "sourceSha256": "e4c042fa361a214f7192a17c96b09ee7c656910a64b86f9d28977e1ef06fc341",
+      "sha256": "5dbcd13b3d950431c83d19638ad4cccb7bf2809b6b9e67e99d05448f5961f71d",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "La branche supérieure de l’éclair franchit le bord haut ; la marge noire demandée manque. Reprise manuelle du cadrage."
+    },
+    {
+      "id": "pack-ed277e78",
+      "rank": 260,
+      "kr": "볶음",
+      "sourceSha256": "c9ef20c3a5423538dd5ed40a319124e43c5997bbcbc2a3d466eb414d50b1ce56",
+      "sha256": "b6dcb27b770509d83488d25e311d74f02dffb7a0aa645ad984423cf9d35806c1",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Le plat est lisible mais sauce et graines présentent des plages brun doré saturées au-delà du lavis gris autorisé. Reprise monochrome."
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-d21fa097",
+      "reviewer": "Codex",
+      "sha256": "311cd1f93c75d53ed4d667936c0be3acfe4266a2a6c93f27bee982e781cbbc9f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Flacon fermé et seringue capuchonnée entiers, aucune inscription ni dose ; illustration médicale neutre en support de vaccin."
+    },
+    {
+      "id": "pack-63ae8ec7",
+      "reviewer": "Codex",
+      "sha256": "b0e57df74480c746b6a6f64a7ff37ed466fe68ce3a79bfbcdd4b500728d1edc4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Banc à lattes entier avec dossier, accoudoirs et pieds cohérents, silhouette claire à 96 px ; question 벤치 possible."
+    },
+    {
+      "id": "pack-f18fb7cc",
+      "reviewer": "Codex",
+      "sha256": "81795975b0fce62f704f61394264bcaae5fea071ae3b727155f7a5e82af76d3d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Plant de riz à panicules retombantes et feuilles étroites, extrémités contenues dans le carré ; support botanique distinct du riz cuit."
+    },
+    {
+      "id": "pack-87729236",
+      "reviewer": "Codex",
+      "sha256": "f1b5937d9f8a78304c1cbd5bd743a87d6107197d028190f774718ad1a8feeec9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Épis d’orge à très longues barbes, tiges et pointes entières ; détails lisibles à 160 px, type de céréale maintenu en support."
+    },
+    {
+      "id": "pack-c72996aa",
+      "reviewer": "Codex",
+      "sha256": "d0978193fd20d0018e823fa7193a67c8a8e5cef7c6310132b7d1ccfec244f0b2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Portrait adulte de profil avec joue dégagée et visage entier, fin du cou au pinceau sur noir ; synonyme joue en support."
+    },
+    {
+      "id": "pack-a8af129d",
+      "reviewer": "Codex",
+      "sha256": "56e762e36480472b4538ecd92e2492b480d5c4e8ee230ffedef638234894846d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Éventail ouvert complet, nervures reliées à un pivot et papier sans texte, silhouette claire à 96 px ; question 부채 possible."
+    },
+    {
+      "id": "pack-4bf6389c",
+      "reviewer": "Codex",
+      "sha256": "fd2cc3c46b71dd4916b5fc8c6fb54894f487f2a86fe21e5a65e38538c9f897d9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Engrenage seul, dents et trou central cohérents, pièce entièrement isolée ; support de composant."
+    },
+    {
+      "id": "pack-0ecc72a1",
+      "reviewer": "Codex",
+      "sha256": "9bebf958fbff8ab9492a2cd4be92a9abb0ea3183f258becf403ca929452da09b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Trois bâtons de craie aux cassures poudreuses, entièrement visibles sans écriture ni tableau ; usage support."
+    },
+    {
+      "id": "pack-88814119",
+      "reviewer": "Codex",
+      "sha256": "3643bb9d17931185744fa1b864d3e9e14bde01340cad89f9d9071fd744f30d06",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Goutte en chute au-dessus d’un petit impact circulaire, aucune coupure, lisible à 96 px ; provenance pluviale maintenue en support."
+    },
+    {
+      "id": "1780695436427",
+      "reviewer": "Codex",
+      "sha256": "895eab6ecf7eb20fda5b23f556f5c2b16751af00064c4c4436f9c18553d97cae",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Oiseau entier sur branche courte, bec, queue et deux pattes cohérents, sans paysage ; support de la catégorie oiseau."
+    },
+    {
+      "id": "pack-3aae32b6",
+      "reviewer": "Codex",
+      "sha256": "9c2e5b0b07e9cc7bae7a5b58c1772caf23db1aec6917cad8544ba498402747c3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Balayette dans sa pelle, ensemble emboîté cohérent et entier avec un petit accent de poignée ; exemple d’article de vie courante en support."
+    },
+    {
+      "id": "pack-47b8ee38",
+      "reviewer": "Codex",
+      "sha256": "f4b78eb1958ef7be0912002bde786ed1f7feb1b7842f6939d22a1cab8a43f5b6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bidon de lessive entier à poignée et petit bouchon contrasté, aucune marque ni inscription ; type de produit maintenu en support."
+    },
+    {
+      "id": "pack-aaba4899",
+      "reviewer": "Codex",
+      "sha256": "3a0cf4d40b3b781befcc0fa0d0ad11d7f4d43bc1e2e694303a0f94de33aab3e9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Trois bols assortis empilés, même décor abstrait sans glyphes ; support du sens ensemble/jeu."
+    },
+    {
+      "id": "pack-dea3f93e",
+      "reviewer": "Codex",
+      "sha256": "c5792e3d3775effb2cdcdd9ffdb5334815630b194a06c4531e6218fac2540aed",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Chemise entière avec une manche retroussée et l’autre déployée ; les deux manches restent visibles, détail manche en support."
+    },
+    {
+      "id": "pack-312a8bdc",
+      "reviewer": "Codex",
+      "sha256": "8cb6a96cb6b7a172fd52d0382df1126b68101d199b4afc8882df1ea7a55a9cf2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pochette ouverte avec portefeuille, téléphone et clé, sans écran lisible ni texte ; effets personnels illustrés en support."
+    },
+    {
+      "id": "pack-6fd59930",
+      "reviewer": "Codex",
+      "sha256": "72707c374f539d042fe551d2ea7c960a661b32eb207f6a3ff180462ca45c66f9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Fer à cheval entier usé, reflets blanc gris et trous distincts ; support du fer comme matière, pas de brun rouille dominant."
+    },
+    {
+      "id": "pack-5e982788",
+      "reviewer": "Codex",
+      "sha256": "07021b5751f81e045be378f2c6017a3cc69a9fd1d372c2f5ac94b33f102fece0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Robinet entier à poignée en croix et sortie d’eau claire, sans gouttes ni évier ; silhouette claire à 96 px, question 수도꼭지 possible."
+    },
+    {
+      "id": "pack-29c5999c",
+      "reviewer": "Codex",
+      "sha256": "487d9dcca1ff2bacc876c93da9d09374fd911f2d40a6b8b1ab9cc85f9668e104",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Interrupteur à bascule dans sa plaque entière, touches et vis distinctes, aucun symbole I/O ; question 스위치 possible."
+    },
+    {
+      "id": "pack-57a020f1",
+      "reviewer": "Codex",
+      "sha256": "7b317783475a880bc212e3270a83d3700112e6c4b04d5d06900336b0c413dd6a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Botte d’épinards aux feuilles souples à nervures et petites racines entières, monochrome ; support de la distinction botanique."
+    },
+    {
+      "id": "pack-5420f2e9",
+      "reviewer": "Codex",
+      "sha256": "2fc41c5a971968c43ab6d513e55e24865e356e1c7a5dbcd792e2758b5dd5a708",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Disque compact entier avec trou central et reflets gris, aucun arc-en-ciel ni inscription ; synonyme et format maintenus en support."
+    },
+    {
+      "id": "pack-660253bb",
+      "reviewer": "Codex",
+      "sha256": "96c2a3c127fccd5d732995c3d09f4bb6606d9a91759a473f5bbdc0f6ad256e43",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Tas compact de ciment en poudre avec truelle, tout contenu dans le cadre, petit accent de manche ; support du matériau."
+    },
+    {
+      "id": "pack-a713da59",
+      "reviewer": "Codex",
+      "sha256": "c874cae79f6fe099dac3fff307c8167bfd1244045ee5cf8e1e3c564b00c6e4fa",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Autocar entier avec grandes fenêtres et soutes latérales, aucune marque ou destination lisible ; caractère interurbain maintenu en support."
+    }
+  ]
+}

@@ -1,0 +1,414 @@
+{
+  "id": "full-concrete-0023-0044",
+  "requested": 15,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-d84bfcbd",
+      "kr": "가슴",
+      "sense": "Poitrine, coeur (partie du corps)",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 23
+    },
+    {
+      "id": "pack-77994a56",
+      "kr": "동물",
+      "sense": "Animal",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 26
+    },
+    {
+      "id": "pack-500b9e60",
+      "kr": "술",
+      "sense": "Alcool, boisson alcoolisée",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 29
+    },
+    {
+      "id": "pack-91032991",
+      "kr": "전화",
+      "sense": "Telephone; appel telephonique",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 31
+    },
+    {
+      "id": "pack-bc3af64a",
+      "kr": "고개",
+      "sense": "Tete (mouvement de tete), nuque; col (de montagne)",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 32
+    },
+    {
+      "id": "pack-f3ce23c8",
+      "kr": "메모",
+      "sense": "Mémo / petite note",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 33
+    },
+    {
+      "id": "pack-acdfff43",
+      "kr": "사이다",
+      "sense": "Soda (limonade type Sprite)",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 35
+    },
+    {
+      "id": "pack-91e4b0dc",
+      "kr": "상처",
+      "sense": "une blessure, une plaie",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 36
+    },
+    {
+      "id": "1779561925954",
+      "kr": "상품",
+      "sense": "Produit",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 37
+    },
+    {
+      "id": "pack-071c37df",
+      "kr": "알람",
+      "sense": "alarme (réveil)",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 39
+    },
+    {
+      "id": "pack-a829abdf",
+      "kr": "엉덩이",
+      "sense": "Fesses, derriere",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 41
+    },
+    {
+      "id": "pack-ef126edc",
+      "kr": "엽서",
+      "sense": "Carte postale",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 42
+    },
+    {
+      "id": "pack-89851d53",
+      "kr": "웹툰",
+      "sense": "un webtoon (BD en ligne)",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 43
+    },
+    {
+      "id": "pack-1b44ba3f",
+      "kr": "찬물",
+      "sense": "Eau froide",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 44
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-d84bfcbd",
+      "reviewer": "Codex",
+      "sourceSha256": "47604f21ce6e19f84cfbf600650536780ed499a200d46c45f77006930ec6ce02",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Adulte entièrement habillé, main ouverte sur le haut du thorax ; cible 가슴 poitrine, pas cœur figuré ; geste perceptible, seule aide après réponse. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-77994a56",
+      "reviewer": "Codex",
+      "sourceSha256": "3f450d8e9cf52448c5c29e713e5e751a411c437098cb404936f619075dde7d33",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Lapin entier aux longues oreilles et queue courte ; simple représentant de la catégorie animal, pas une question imposant 동물 plutôt que lapin. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "1779706066098",
+      "reviewer": "Codex",
+      "sourceSha256": "3e345ce2ed475667205b533d760be48fd0de4ed2004fc8906348537797ba13df",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Adulte habillé de profil, mains sur le bas de l’abdomen ; cible ventre 배 distincte de poire/bateau ; geste lisible mais ambigu, aide seule. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-500b9e60",
+      "reviewer": "Codex",
+      "sourceSha256": "b81576d8c30eda45290e438d72b9804c51524f69445d6c37d800fe207a074b58",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Bouteille en céramique entière à col court et bouchon ; silhouette intacte. Son contenu alcoolisé reste non vérifiable : aide seule. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-91032991",
+      "reviewer": "Codex",
+      "sourceSha256": "967511ecba9f247e13dcc9e98d1768b3bbc521a9457b84133f754749425c69ca",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Téléphone fixe entier, combiné au berceau, cadran sans chiffres et cordon complet ; sens appareil uniquement, pas représentation certaine d’un appel. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-bc3af64a",
+      "reviewer": "Codex",
+      "sourceSha256": "53862477653823cceaa554520c8363db506fb0f24a12b3d51593de72d2cefd61",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Personne habillée entière tournant la tête sur le côté ; cou cohérent, pas de double tête ; sens de l’exemple 고개, aide seule, ne couvre pas col de montagne. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-f3ce23c8",
+      "reviewer": "Codex",
+      "sourceSha256": "d73ff65a91fbe9199cbbd4c93fd8fb8a6ad7380aebf14a553b879b9016c66163",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Petite feuille vierge avec coin recourbé et trombone ; aucun texte ; mémo seulement comme aide, sans prétendre distinguer tout papier. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-acdfff43",
+      "reviewer": "Codex",
+      "sourceSha256": "c339165934b017578f9cb3d122b7ea5e38ba27263ef2e23ed41a502406ba03a3",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Verre entier de liquide transparent avec nombreuses bulles ; aucune marque ; soda et non cidre dans la recette, contenu exact ambigu donc aide seule. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-91e4b0dc",
+      "reviewer": "Codex",
+      "sourceSha256": "208ccd1ded9da4319b7f02c43ebab47cf8858c35fc38510ee0096b09217e2a33",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Étude localisée de genou fléchi avec petite égratignure superficielle vermillon ; aucune plaie ouverte ; cible blessure, pas exercice de diagnostic. Limites du membre assumées comme étude, image entièrement à l’intérieur du carré. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "1779561925954",
+      "reviewer": "Codex",
+      "sourceSha256": "6c8f3c7c5c8f6452e783e6c699754f7f1f52e33087cb63e50b1cfe90cf432118",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Carton de produit entier et scellé, dessin de bouilloire sans écriture ; aide pour catégorie produit, pas pour imposer ce lexème. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-071c37df",
+      "reviewer": "Codex",
+      "sourceSha256": "92f97c6ec53536a92198010184baa3af9c131ee95974d6b1962ae73e80050dcb",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Réveil entier à deux cloches, marteau et deux aiguilles, aucun chiffre ni repère écrit ; aide pour alarme de réveil, pas certitude d’une sonnerie. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-a829abdf",
+      "reviewer": "Codex",
+      "sourceSha256": "bf249aaa8711481305a32dc62d8cf6656d2bc4d3274cce8683dc63955760fe99",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Adulte habillé de dos, main sur arrière de hanche à travers pantalon opaque ; anatomie cohérente, posture neutre ; localisation 엉덩이 uniquement en aide. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-ef126edc",
+      "reviewer": "Codex",
+      "sourceSha256": "b22aa35bb0b49cb5be4ebaf4ce7d8e71fe5e5b31c857f5815d7107255ce98d2a",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Carte postale entière, séparateur central et emplacement de timbre vide ; aucune adresse ni pseudo-écriture ; aide seule. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-89851d53",
+      "reviewer": "Codex",
+      "sourceSha256": "cab7d62b146ebd8cf73d216ec1d8f311d0a44c085a13291bfdf1822bd7f7e8ed",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Téléphone entier montrant trois cases dessinées verticalement ; personnages cohérents, aucune bulle écrite ; webtoon lisible en miniature, aide seule car plusieurs BD numériques possibles. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-1b44ba3f",
+      "reviewer": "Codex",
+      "sourceSha256": "1338308b0b7e56b732a3bf51f6f21d027d494f90e0bc5300561b19668773d46a",
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Verre entier avec glaçons visibles et condensation, aucune vapeur ; eau froide et non chaude comme aide, composition et température non garanties par l’image. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-8ecfa879",
+      "kr": "얼어붙다",
+      "sourceSha256": "ea7bf626031a78bdfc56408388b9468a6acf873a75d9d4bb1f6f284c8297f390",
+      "sha256": "c521f6e29b1b8acd67dd83af3e18d9d26f40c94520a6a1385b47f650fd251644",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Rejet visuel : rameau trop près du bord gauche, nombreuses touches brunes sur toute la branche ; le rendu ne respecte pas suffisamment la palette à accent unique et les marges. Aucun asset publié."
+      }
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-d84bfcbd",
+      "reviewer": "Codex",
+      "sha256": "a6260560945ec1f1c22aed4f96e5bacceeb8f0273bf74b5ac333c2870f0a4a8c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Adulte entièrement habillé, main ouverte sur le haut du thorax ; cible 가슴 poitrine, pas cœur figuré ; geste perceptible, seule aide après réponse. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-77994a56",
+      "reviewer": "Codex",
+      "sha256": "2a7d5721e32b4a19814686215233be5d0d3915d66cec67ec4d1e5f2c4cf3bdb2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Lapin entier aux longues oreilles et queue courte ; simple représentant de la catégorie animal, pas une question imposant 동물 plutôt que lapin. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "1779706066098",
+      "reviewer": "Codex",
+      "sha256": "0a18a12485a0e20a95193896c9093fe200389e3c01a5ed19ad24b8fee8eda336",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Adulte habillé de profil, mains sur le bas de l’abdomen ; cible ventre 배 distincte de poire/bateau ; geste lisible mais ambigu, aide seule. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-500b9e60",
+      "reviewer": "Codex",
+      "sha256": "1bf4c136c00edd01da02d3327af541218d0e490e20320402f8c476c75bb920e2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Bouteille en céramique entière à col court et bouchon ; silhouette intacte. Son contenu alcoolisé reste non vérifiable : aide seule. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-91032991",
+      "reviewer": "Codex",
+      "sha256": "56586772542ac4350708ac526ffb59e2d591f9014b0aa152cb26bb388354e940",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Téléphone fixe entier, combiné au berceau, cadran sans chiffres et cordon complet ; sens appareil uniquement, pas représentation certaine d’un appel. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-bc3af64a",
+      "reviewer": "Codex",
+      "sha256": "1721b7e95d8ecc3f07f7f7d65c74d90da8a24f7268daf638068f9e33fa3c3374",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Personne habillée entière tournant la tête sur le côté ; cou cohérent, pas de double tête ; sens de l’exemple 고개, aide seule, ne couvre pas col de montagne. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-f3ce23c8",
+      "reviewer": "Codex",
+      "sha256": "4c7bd62e2a1cf4bea798d518f5c5ae98d385d310df6d50d7d3c83e94a99eb016",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Petite feuille vierge avec coin recourbé et trombone ; aucun texte ; mémo seulement comme aide, sans prétendre distinguer tout papier. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-acdfff43",
+      "reviewer": "Codex",
+      "sha256": "58eda963b46c827a55b844f9535d907376d22050f313a9f799bb68d1100e1b85",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Verre entier de liquide transparent avec nombreuses bulles ; aucune marque ; soda et non cidre dans la recette, contenu exact ambigu donc aide seule. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-91e4b0dc",
+      "reviewer": "Codex",
+      "sha256": "b098a8671cfff132ecd8265fdb5566482956121026cfc8bd5f775eafea3b429e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Étude localisée de genou fléchi avec petite égratignure superficielle vermillon ; aucune plaie ouverte ; cible blessure, pas exercice de diagnostic. Limites du membre assumées comme étude, image entièrement à l’intérieur du carré. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "1779561925954",
+      "reviewer": "Codex",
+      "sha256": "b8aa0bfd39481833b35eda6a79aecf9cd96d3b62ffb34d8fef38190ab3d495ab",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Carton de produit entier et scellé, dessin de bouilloire sans écriture ; aide pour catégorie produit, pas pour imposer ce lexème. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-071c37df",
+      "reviewer": "Codex",
+      "sha256": "8d38458caaa4d84aad0a9e542c2fe793123fa81fbc6ef7b50d1e5e96fdb3d130",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Réveil entier à deux cloches, marteau et deux aiguilles, aucun chiffre ni repère écrit ; aide pour alarme de réveil, pas certitude d’une sonnerie. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-a829abdf",
+      "reviewer": "Codex",
+      "sha256": "2cd9486a45d99ed1074957fb1377a514f0b6963e6e3fb185dad8ffee714c4d3b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Adulte habillé de dos, main sur arrière de hanche à travers pantalon opaque ; anatomie cohérente, posture neutre ; localisation 엉덩이 uniquement en aide. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-ef126edc",
+      "reviewer": "Codex",
+      "sha256": "3671d20e63f1f22d22631edff6652458c484a895da756d43e24a4168ccddba7b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Carte postale entière, séparateur central et emplacement de timbre vide ; aucune adresse ni pseudo-écriture ; aide seule. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-89851d53",
+      "reviewer": "Codex",
+      "sha256": "6b6f1f0ec3b3cfa7b99570921dbd2eadf70eaf5fb796efbfde3162211bb89de4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Téléphone entier montrant trois cases dessinées verticalement ; personnages cohérents, aucune bulle écrite ; webtoon lisible en miniature, aide seule car plusieurs BD numériques possibles. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    },
+    {
+      "id": "pack-1b44ba3f",
+      "reviewer": "Codex",
+      "sha256": "15f9c87af9e78be1c94eb9c62c0d19d1f6598cfbec46b778237e96fb28e7b93f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective du PNG puis du WebP aux trois tailles. Verre entier avec glaçons visibles et condensation, aucune vapeur ; eau froide et non chaude comme aide, composition et température non garanties par l’image. Pinceau blanc chaud et gris, noir, aucun texte/logo ; éléments utiles conservés à 96 px."
+    }
+  ],
+  "withdrawnAssociations": [
+    {
+      "item": {
+        "id": "1779706066098",
+        "kr": "배",
+        "sense": "Ventre",
+        "usage": "support",
+        "cefr": "A1",
+        "rank": 27
+      },
+      "asset": "1779706066098-0a18a12485a0.webp",
+      "file": "/workspace/sori-environment/image-production/full-concrete/withheld-test-contract/1779706066098-0a18a12485a0.webp",
+      "reviewFile": "/workspace/sori-environment/image-production/full-concrete/withheld-test-contract/1779706066098-0a18a12485a0.json",
+      "sha256": "0a18a12485a0e20a95193896c9093fe200389e3c01a5ed19ad24b8fee8eda336",
+      "withdrawnAt": "2026-10-18T23:02:13.995980+00:00",
+      "reason": "Contrat actuel de tests/images.test.mjs:45 : l’id 1779706066098 (배 — ventre) doit rester absent du manifeste pour le contrôle d’homonymie avec poire. Le rendu propre au ventre est visuellement validé, mais son association est différée sans modifier le test ni le code applicatif."
+    }
+  ]
+}

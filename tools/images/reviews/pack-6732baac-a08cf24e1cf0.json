@@ -1,0 +1,28 @@
+{
+  "id": "pack-6732baac",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T21:12:35.393Z",
+  "sourceSha256": "718b58605fcf57c5ac2ef90c435c3fd095da87931393628f7f6a59bf59a80003",
+  "sha256": "a08cf24e1cf0de796998328844c5b00939e972c7eb916a8189b60b41af00bb1c",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne whole empty bird nest of coherently interwoven twigs, bowl-shaped interior and complete rim, no eggs, birds, tree, landscape, letters or natural brown. Warm-white/grey brush ONLY, no natural brown, green, blue or dominant red. Whole silhouette inside broad pure black margins; no writing or pseudo-writing.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Nid vide à parois de brindilles et creux central net, toutes les brindilles finissent dans les marges ; silhouette distinctive à 96 px, question 둥지 possible.",
+  "reviewedAt": "2026-10-18T21:16:46.254Z",
+  "kr": "둥지",
+  "sense": "Nid",
+  "usage": "question",
+  "accepted": [
+    "둥지"
+  ],
+  "alternatives": [
+    "새집"
+  ]
+}

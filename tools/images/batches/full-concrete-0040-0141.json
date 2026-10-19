@@ -1,0 +1,804 @@
+{
+  "id": "full-concrete-0040-0141",
+  "requested": 31,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-8ecfa879",
+      "kr": "얼어붙다",
+      "sense": "Geler, etre gele (de froid)",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 40
+    },
+    {
+      "id": "pack-fdd28485",
+      "kr": "껍질",
+      "sense": "Peau, écorce, coquille (d'un fruit, etc.)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 67
+    },
+    {
+      "id": "pack-cdf761e4",
+      "kr": "바위",
+      "sense": "rocher",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 106
+    },
+    {
+      "id": "pack-963e26dd",
+      "kr": "발꿈치",
+      "sense": "Talon (du pied)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 107
+    },
+    {
+      "id": "pack-bd9da7f7",
+      "kr": "발등",
+      "sense": "Dessus du pied, cou-de-pied",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 108
+    },
+    {
+      "id": "pack-6c50dcef",
+      "kr": "발목",
+      "sense": "La cheville",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 109
+    },
+    {
+      "id": "pack-0e14b0d9",
+      "kr": "배꼽",
+      "sense": "Nombril, ombilic",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 111
+    },
+    {
+      "id": "pack-159f91b6",
+      "kr": "배낭",
+      "sense": "Sac à dos, havresac",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 112
+    },
+    {
+      "id": "pack-40524c64",
+      "kr": "배터리",
+      "sense": "Batterie, pile (accumulateur)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 113
+    },
+    {
+      "id": "pack-56b2db60",
+      "kr": "벨",
+      "sense": "Sonnette, sonnerie",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 115
+    },
+    {
+      "id": "pack-234d80f1",
+      "kr": "벽지",
+      "sense": "Papier peint",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 116
+    },
+    {
+      "id": "pack-5578bab4",
+      "kr": "보름달",
+      "sense": "pleine lune",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 117
+    },
+    {
+      "id": "pack-3830a543",
+      "kr": "보물",
+      "sense": "Trésor",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 118
+    },
+    {
+      "id": "pack-8bca25af",
+      "kr": "부처",
+      "sense": "Bouddha",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 119
+    },
+    {
+      "id": "pack-41344122",
+      "kr": "분실물",
+      "sense": "objet perdu",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 120
+    },
+    {
+      "id": "pack-e36779e4",
+      "kr": "비닐",
+      "sense": "Plastique, vinyle",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 122
+    },
+    {
+      "id": "pack-61dab8fb",
+      "kr": "비닐봉지",
+      "sense": "Sac plastique",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 123
+    },
+    {
+      "id": "pack-68540961",
+      "kr": "비타민",
+      "sense": "Vitamine",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 124
+    },
+    {
+      "id": "pack-fbbf151e",
+      "kr": "빗물",
+      "sense": "Eau de pluie",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 126
+    },
+    {
+      "id": "pack-78652ec9",
+      "kr": "뺨",
+      "sense": "Joue",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 127
+    },
+    {
+      "id": "pack-a1b26e53",
+      "kr": "뿌리",
+      "sense": "racine",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 128
+    },
+    {
+      "id": "1765435052266",
+      "kr": "사전",
+      "sense": "Dictionnaire",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 129
+    },
+    {
+      "id": "pack-ab5d6492",
+      "kr": "산꼭대기",
+      "sense": "Sommet de la montagne, cime",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 130
+    },
+    {
+      "id": "pack-8703a889",
+      "kr": "새끼",
+      "sense": "Petit (d'un animal), rejeton",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 134
+    },
+    {
+      "id": "pack-422d633c",
+      "kr": "생머리",
+      "sense": "Cheveux raides (naturels)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 135
+    },
+    {
+      "id": "pack-ea010f45",
+      "kr": "석유",
+      "sense": "Pétrole",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 136
+    },
+    {
+      "id": "pack-831f7103",
+      "kr": "세탁물",
+      "sense": "Linge (à laver), lessive (le linge)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 137
+    },
+    {
+      "id": "pack-e54cbf4b",
+      "kr": "소금물",
+      "sense": "Eau salée, saumure",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 138
+    },
+    {
+      "id": "pack-e07ae340",
+      "kr": "소독약",
+      "sense": "Désinfectant, antiseptique",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 139
+    },
+    {
+      "id": "pack-8fc81232",
+      "kr": "소변",
+      "sense": "Urine",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 140
+    },
+    {
+      "id": "pack-f50c09a2",
+      "kr": "소설책",
+      "sense": "Roman (le livre)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 141
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-8ecfa879",
+      "reviewer": "Codex",
+      "sourceSha256": "54422a5d449de24b2cc22ece334ba17bff54199ab6ab8ce971972a7131317384",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Reprise manuelle du rameau gelé : branche courte entière, trois glaçons pendants et tous les bouts dans les marges ; palette désormais blanc/gris sans brun ni rouge. État gelé comme aide uniquement, ne teste pas le verbe. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-fdd28485",
+      "reviewer": "Codex",
+      "sourceSha256": "9ac2b788e417067ca1ec0a9071f4d133a84edc8de49e4f7d10a4d6fd7e3d3bc6",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Reprise manuelle de la pelure : ruban entier en spirale, deux extrémités visibles, bord interne clair et surface grise ponctuée. Plus de rouge dominant ; aide pour peau de fruit, pas pour toutes les écorces/coquilles. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-cdf761e4",
+      "reviewer": "Codex",
+      "sourceSha256": "d25a48f3e8f26a0baef3f21fbaa4d183eaa37317e2b955c99259c70868205733",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Rocher entier aux faces anguleuses, texture minérale et creux noirs, aucune scène ; taille réelle impossible à établir contre pierre/caillou donc aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-963e26dd",
+      "reviewer": "Codex",
+      "sourceSha256": "81978f03c9eec9a45900a1f23626c58f1b5b572d9a7b7d35fcdfd0e44ac4aba0",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Pied adulte entier vu de l’arrière trois-quarts, talon arrondi au premier plan, cheville et orteils cohérents ; étude locale sans blessure ni flèche ; aide pour partie talon. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-bd9da7f7",
+      "reviewer": "Codex",
+      "sourceSha256": "6b7307536aff9379077a8f166d01a76751c2008023808c9283ad164759061b37",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Dessus du pied adulte entier en vue plongeante, cinq orteils et tendons cohérents ; aide pour cou-de-pied, pas question forçant cette partie contre pied. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-6c50dcef",
+      "reviewer": "Codex",
+      "sourceSha256": "4302e7a5317872e8620de9fe3b7001d9701d12cc3f2b6e6d39828d012f9f11c3",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Pied adulte de profil, cheville et malléole visibles, cinq orteils cohérents, bord de jambe en pinceau à l’intérieur du carré ; aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-0e14b0d9",
+      "reviewer": "Codex",
+      "sourceSha256": "e414f82cb8702c66b8cfce3542dfbcc45fe76c357153ea060b0296717813e587",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Étude neutre d’abdomen adulte entre shirt et pantalon, nombril simple et bien placé, aucun organe ou blessure ; cible partie nombril, aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-159f91b6",
+      "reviewer": "Codex",
+      "sourceSha256": "b3b71cc8cee99c7a6bcd8b37be403ab30afc364db21c66cbd4bd0a6f953cff73",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Sac à dos de randonnée entier, anse, bretelles, sangles et poches cohérentes, aucune marque ; silhouette lisible à 96 px. Question 배낭 ; 백팩 reste autre lexème neutre. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-40524c64",
+      "reviewer": "Codex",
+      "sourceSha256": "adf6a48fcd57ca8c37d1d51ec00d871c4861b19c0c40aecece22e2ae13e6a7b9",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Batterie rectangulaire entière à deux bornes, petit anneau rouge naturel autour d’une seule borne, aucun signe de polarité ou texte ; aide pour catégorie accumulateur. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-56b2db60",
+      "reviewer": "Codex",
+      "sourceSha256": "87a69524ba8cf2168284d751ad1340d00e86a475bf84abb140bf942113ae716b",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Sonnette de porte entière avec bouton central et platine, vis cohérentes, aucune écriture ; fonction sonore non visible, aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-234d80f1",
+      "reviewer": "Codex",
+      "sourceSha256": "1fa08ca6b62a6a5af05b6e5bad8c83a291e5a4df4edf8da7a21cea7851e13627",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Rouleau de papier peint entier partiellement déroulé à motif de feuilles gris/blanc, aucun texte ; peut évoquer papier décoratif, aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-5578bab4",
+      "reviewer": "Codex",
+      "sourceSha256": "dd0760db60b14a4c19e20cb4bae87ef6e98f9347e5e47f83e30ea6cf543cfc88",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Pleine lune entière en disque circulaire, reliefs et mers en blanc/gris sans ciel ou rayons ; phase pleine visible à 96 px. Question 보름달 ; 달 et 만월 neutres. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-3830a543",
+      "reviewer": "Codex",
+      "sourceSha256": "84447bf934065e586186f51572df488cb0161751cacd89e51cf83ac0d8b5d9ff",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Coffre au trésor entier ouvert avec pièces, perles et bijoux contenus, pas de sceau, texte ou or naturel dominant ; trésor comme aide, pas question imposant richesse plutôt que coffre. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-8bca25af",
+      "reviewer": "Codex",
+      "sourceSha256": "e9d5469010b73951900fa30504f6fa65c02e0b674f19944910d1b7da67405e34",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Statue bouddhique entière assise en lotus sur socle, mains et drapé cohérents, minuscule accent vermillon au front ; aide pour Bouddha, sans imposer 부처 plutôt que 불상 statue. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-41344122",
+      "reviewer": "Codex",
+      "sourceSha256": "bca044cfde1b9f30a73176fb4a473b593cd6f74041ba20f3687b3b8a334da86e",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Un gant entier à cinq doigts et poignet tricoté ; objet perdu seulement comme aide, statut perdu non observable. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-e36779e4",
+      "reviewer": "Codex",
+      "sourceSha256": "a406d72402a8690c094715a029d1db81344aaadcbc711b1a26f1e9389c6970c1",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Rouleau entier de film plastique partiellement déployé, bords transparents, cœur en gris chaud discret ; matière comme aide, pas d’attribution de composition certaine. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-61dab8fb",
+      "reviewer": "Codex",
+      "sourceSha256": "5b093eb5bdc1735b33c6aa1eda9e5a9198dd5539b630a1695bc3e6c55c63e401",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Sac plastique entier à deux anses, plis et transparence cohérents, aucune marque ; silhouette claire à 96 px. Question 비닐봉지 ; 봉지 neutre. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-68540961",
+      "reviewer": "Codex",
+      "sourceSha256": "2a78f24c124ae94bc2ab93460788a14f5b8c2f3c3fdddeae0f5a77ad866b283b",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Flacon entier fermé contenant des comprimés blancs visibles, sans label, dosage ou texte ; contenu vitaminique non prouvable, aide seule sans promesse de santé. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-fbbf151e",
+      "reviewer": "Codex",
+      "sourceSha256": "d9e95c61f6b48d9d889c9dc54ce364afa3fdb03b2fa6f404ffa3b804c9c49add",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Seau entier d’eau collectée, gouttes sur rebord et poignée cohérente ; origine pluie invisible, aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-78652ec9",
+      "reviewer": "Codex",
+      "sourceSha256": "e4c449e00e2878b1ff87dd68ec5ca5f6c16c6b41645bcb24f5a506edd1b35287",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Tête adulte entière de trois-quarts, joue modelée par lavis clair, pas de flèche ou rougeur ; aide pour partie du visage. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-a1b26e53",
+      "reviewer": "Codex",
+      "sourceSha256": "a3b99784e66bf51477e3cdba42d700743a13c2b46184386736051272db23a2e8",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Plant entier à deux feuilles et réseau de racines exposées dominant le bas ; toutes ramifications dans le carré, lisibles en miniature ; aide pour racine, pas question forçant une partie. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "1765435052266",
+      "reviewer": "Codex",
+      "sourceSha256": "4ccf8637893d58b672883a79e3d4c74f615da4dcc665269894f40901cbda7cfc",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Livre épais entier fermé avec onglets sans lettres, couverture vierge ; dictionnaire comme aide, type impossible à certifier seul. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-ab5d6492",
+      "reviewer": "Codex",
+      "sourceSha256": "846458834d72acff3f8b1851f1e22ec829123ef227c9b9cd8d60b136b6e0a56b",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Massif rocheux isolé entier, cime claire la plus haute, pas de paysage ou ciel ; aide pour sommet, pas question contre montagne. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-8703a889",
+      "reviewer": "Codex",
+      "sourceSha256": "e19c0e4a160f0dd2bcc5c69d7a9fbbe9f738ced5582d62069979dbeb1db36e8e",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Chaton entier à proportions juvéniles, quatre pattes, oreilles et queue cohérentes, petit nez vermillon ; petit d’animal comme aide, ne force pas catégorie plutôt que chaton. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-422d633c",
+      "reviewer": "Codex",
+      "sourceSha256": "07e6ab6cd2780c0cd9327f5c783ba5e41a7e92f018a195cadc5f9b6bc9c2c9a5",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Tête adulte avec longs cheveux raides et pointes dans les marges, grandes masses noires ouvertes ; caractère naturel non vérifiable, aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-ea010f45",
+      "reviewer": "Codex",
+      "sourceSha256": "4f4f00d1ce41be81c6b5953b2af5b3879b3e1150b46c44434558c02400c1b3e6",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Fût métallique entier fermé et sans marquage, aucun feu ou fuite ; pétrole comme aide, contenu invisible. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-831f7103",
+      "reviewer": "Codex",
+      "sourceSha256": "5f0650268b050950f3f5690fbd6bce978e99ffa4f3b246f517b3a0af49673f35",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Corbeille entière contenant du linge froissé, bords/ajours cohérents, pas de personne ou scène ; aide pour linge à laver, pas certitude de saleté. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-e54cbf4b",
+      "reviewer": "Codex",
+      "sourceSha256": "9d6dcca4e60e0b832ec7615db4942b0d6152d6263d40a33fe2104854d4bbc654",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Verre entier de liquide clair avec quelques cristaux au fond, aucune inscription ; saumure avec excès de sel comme aide, salinité non vérifiable par image. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-e07ae340",
+      "reviewer": "Codex",
+      "sourceSha256": "18a331191cb761b0044b6164e8393303a897ffe556e7a13dac9742302ddb000d",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Flacon-pompe entier, tube interne et gel clair cohérents, aucune marque ou promesse ; désinfectant comme aide, savon possible donc jamais question. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-8fc81232",
+      "reviewer": "Codex",
+      "sourceSha256": "4ffd436ed13c190b10fb0ae9d34de51427fdb082f46283d76d755d571b6b3361",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Pot de prélèvement entier fermé avec peu de liquide clair, sans texte, personne ou jaune dominant ; urine comme aide, contenu et diagnostic non déductibles. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-f50c09a2",
+      "reviewer": "Codex",
+      "sourceSha256": "7f78a760138bd34b64e4a205ea2facef3b11eef885e325f8466806cd30151b8f",
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Livre relié entier fermé et vierge, pages et reliure cohérentes ; roman comme aide, type impossible à reconnaître sans texte. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-43ad8d49",
+      "kr": "버튼",
+      "sourceSha256": "d729c351291fd588deef49f5e0827c0ec764beeb6c2b7222c03d2b28ed31df4e",
+      "sha256": "b69c7ab292db29d22abe3ad5e56863487f116d2734b039e669f2284cb988f4e2",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Rejet après inspection : grand capuchon rouge couvrant une partie importante du bouton, accent trop large pour la palette validée. Forme correcte mais non intégrée."
+      }
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-8ecfa879",
+      "reviewer": "Codex",
+      "sha256": "45b80df58aa41308883edbe92ff8050a8d0211b65005423aa42eadc70a94b73d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Reprise manuelle du rameau gelé : branche courte entière, trois glaçons pendants et tous les bouts dans les marges ; palette désormais blanc/gris sans brun ni rouge. État gelé comme aide uniquement, ne teste pas le verbe. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-fdd28485",
+      "reviewer": "Codex",
+      "sha256": "ff059c84f00b8c2bff97f94e3a38cf52005c9347571f20fa2420afe65f50e273",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Reprise manuelle de la pelure : ruban entier en spirale, deux extrémités visibles, bord interne clair et surface grise ponctuée. Plus de rouge dominant ; aide pour peau de fruit, pas pour toutes les écorces/coquilles. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-cdf761e4",
+      "reviewer": "Codex",
+      "sha256": "5fc9d894b391a4dcf605b0aec15e57f5b312c1784152deb54131e774712f51a2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Rocher entier aux faces anguleuses, texture minérale et creux noirs, aucune scène ; taille réelle impossible à établir contre pierre/caillou donc aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-963e26dd",
+      "reviewer": "Codex",
+      "sha256": "83e2727704d4a390b585df88401e881b4ce53b7112d59b21dced8b0ee87ccfdd",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Pied adulte entier vu de l’arrière trois-quarts, talon arrondi au premier plan, cheville et orteils cohérents ; étude locale sans blessure ni flèche ; aide pour partie talon. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-bd9da7f7",
+      "reviewer": "Codex",
+      "sha256": "264c0273b3e50112e3e7c2f2888e0a9e12055f958c742260e1b70bfe34c7aa43",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Dessus du pied adulte entier en vue plongeante, cinq orteils et tendons cohérents ; aide pour cou-de-pied, pas question forçant cette partie contre pied. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-6c50dcef",
+      "reviewer": "Codex",
+      "sha256": "5029d33cd79cb69ee0d6e6f44de61cc00560f539613cee7f38e6c1342f3481af",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Pied adulte de profil, cheville et malléole visibles, cinq orteils cohérents, bord de jambe en pinceau à l’intérieur du carré ; aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-0e14b0d9",
+      "reviewer": "Codex",
+      "sha256": "ba1e5cfcb2d48da77b27ddcf71436ca987b42a2b3f8c2af27ad98e9f735470cc",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Étude neutre d’abdomen adulte entre shirt et pantalon, nombril simple et bien placé, aucun organe ou blessure ; cible partie nombril, aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-159f91b6",
+      "reviewer": "Codex",
+      "sha256": "013f242c0783b8988964cae354d8fff3df475e71956dd041a393ab905eb39184",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Sac à dos de randonnée entier, anse, bretelles, sangles et poches cohérentes, aucune marque ; silhouette lisible à 96 px. Question 배낭 ; 백팩 reste autre lexème neutre. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-40524c64",
+      "reviewer": "Codex",
+      "sha256": "f0e60f312f5b2ca88b462120931ef735db52c8c60f1574332ecd2259d5935e18",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Batterie rectangulaire entière à deux bornes, petit anneau rouge naturel autour d’une seule borne, aucun signe de polarité ou texte ; aide pour catégorie accumulateur. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-56b2db60",
+      "reviewer": "Codex",
+      "sha256": "b91ac20e0392e971865446f283321bad2724f0779c626dd2474ed540e366c44c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Sonnette de porte entière avec bouton central et platine, vis cohérentes, aucune écriture ; fonction sonore non visible, aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-234d80f1",
+      "reviewer": "Codex",
+      "sha256": "e102ff5bb710f5860d618b49acd1d5309ffb35fa645ed08b4ab502ca9e5ee138",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Rouleau de papier peint entier partiellement déroulé à motif de feuilles gris/blanc, aucun texte ; peut évoquer papier décoratif, aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-5578bab4",
+      "reviewer": "Codex",
+      "sha256": "c035be7135a672b60fef5670348dfbae3007a0b353c5e2165dfe7462d51b1413",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Pleine lune entière en disque circulaire, reliefs et mers en blanc/gris sans ciel ou rayons ; phase pleine visible à 96 px. Question 보름달 ; 달 et 만월 neutres. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-3830a543",
+      "reviewer": "Codex",
+      "sha256": "84dd1e37580cd0d892022feee1dfbc11b81abddf12b98dcf76368c49c3f9902e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Coffre au trésor entier ouvert avec pièces, perles et bijoux contenus, pas de sceau, texte ou or naturel dominant ; trésor comme aide, pas question imposant richesse plutôt que coffre. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-8bca25af",
+      "reviewer": "Codex",
+      "sha256": "f1ca5186a120ad1ae31609e2e5641d5edbcb86155230d9d5c835cbfc3de573f9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Statue bouddhique entière assise en lotus sur socle, mains et drapé cohérents, minuscule accent vermillon au front ; aide pour Bouddha, sans imposer 부처 plutôt que 불상 statue. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-41344122",
+      "reviewer": "Codex",
+      "sha256": "18480a6748a66fc27b53f48200b841293b9cf3e022db41818af420016894291e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Un gant entier à cinq doigts et poignet tricoté ; objet perdu seulement comme aide, statut perdu non observable. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-e36779e4",
+      "reviewer": "Codex",
+      "sha256": "89f666e0fa836acfd08027a2cdf15a1dff7cb4359641c911a98846a716dd884c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Rouleau entier de film plastique partiellement déployé, bords transparents, cœur en gris chaud discret ; matière comme aide, pas d’attribution de composition certaine. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-61dab8fb",
+      "reviewer": "Codex",
+      "sha256": "7969cdc45588e0d7d4c4adddc29129101d322d308173e6a4ad004b9d25ef56b9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Sac plastique entier à deux anses, plis et transparence cohérents, aucune marque ; silhouette claire à 96 px. Question 비닐봉지 ; 봉지 neutre. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-68540961",
+      "reviewer": "Codex",
+      "sha256": "f0c53df15842795019f35b0a22a09e76b2312c12710eeaacbb58e18d9006c4ee",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Flacon entier fermé contenant des comprimés blancs visibles, sans label, dosage ou texte ; contenu vitaminique non prouvable, aide seule sans promesse de santé. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-fbbf151e",
+      "reviewer": "Codex",
+      "sha256": "4666c41112664d2d488a41e3ae0a698c27af979ecad6ef1596fcd65a9dff3898",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Seau entier d’eau collectée, gouttes sur rebord et poignée cohérente ; origine pluie invisible, aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-78652ec9",
+      "reviewer": "Codex",
+      "sha256": "afd1db62b3aec1e63bdfa8b2a745f8ccfede540c8999284fc6473e7b7f007677",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Tête adulte entière de trois-quarts, joue modelée par lavis clair, pas de flèche ou rougeur ; aide pour partie du visage. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-a1b26e53",
+      "reviewer": "Codex",
+      "sha256": "bea28e78a2278ea99d809c62b4e036e12b870af0cae8d0f6d83ccdf6001af47e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Plant entier à deux feuilles et réseau de racines exposées dominant le bas ; toutes ramifications dans le carré, lisibles en miniature ; aide pour racine, pas question forçant une partie. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "1765435052266",
+      "reviewer": "Codex",
+      "sha256": "b2811309970e4c34606f544e393a07624489df01cbce464076c2aeb492376d48",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Livre épais entier fermé avec onglets sans lettres, couverture vierge ; dictionnaire comme aide, type impossible à certifier seul. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-ab5d6492",
+      "reviewer": "Codex",
+      "sha256": "f629c8aef92ea85a5b6141169ece92bb9291cb15ce3b31a682e90f283cb29e94",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Massif rocheux isolé entier, cime claire la plus haute, pas de paysage ou ciel ; aide pour sommet, pas question contre montagne. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-8703a889",
+      "reviewer": "Codex",
+      "sha256": "0673d209a5bc630e46f13c5bd916b4094f04666b09cb7709ac6df0b3fb797dca",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Chaton entier à proportions juvéniles, quatre pattes, oreilles et queue cohérentes, petit nez vermillon ; petit d’animal comme aide, ne force pas catégorie plutôt que chaton. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-422d633c",
+      "reviewer": "Codex",
+      "sha256": "527289a763ec428baac26be0420243f8828225264cddbea79ca64a1b654477d3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Tête adulte avec longs cheveux raides et pointes dans les marges, grandes masses noires ouvertes ; caractère naturel non vérifiable, aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-ea010f45",
+      "reviewer": "Codex",
+      "sha256": "04729f620e301cd06f37b015e68dbf58a691180c99194e04c0349335433245f3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Fût métallique entier fermé et sans marquage, aucun feu ou fuite ; pétrole comme aide, contenu invisible. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-831f7103",
+      "reviewer": "Codex",
+      "sha256": "cf4a95ffabfdc00370c047a64d8f14fd1a3fa561e9c5d4fc94d2f1fa8f65e172",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Corbeille entière contenant du linge froissé, bords/ajours cohérents, pas de personne ou scène ; aide pour linge à laver, pas certitude de saleté. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-e54cbf4b",
+      "reviewer": "Codex",
+      "sha256": "ab5e6ad16829d66fe2935b7f40174efc12b7edd593632fe26ffa9a150c4a3d13",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Verre entier de liquide clair avec quelques cristaux au fond, aucune inscription ; saumure avec excès de sel comme aide, salinité non vérifiable par image. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-e07ae340",
+      "reviewer": "Codex",
+      "sha256": "e4984fe9ff2ef7dfd6578f4d37c20902639cbf8b3e5c14ec6f329f46ad380046",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Flacon-pompe entier, tube interne et gel clair cohérents, aucune marque ou promesse ; désinfectant comme aide, savon possible donc jamais question. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-8fc81232",
+      "reviewer": "Codex",
+      "sha256": "3bf8703bec26b54692b48027163d4d173b189bbd692ea7cf6bb0da5b379e170e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Pot de prélèvement entier fermé avec peu de liquide clair, sans texte, personne ou jaune dominant ; urine comme aide, contenu et diagnostic non déductibles. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    },
+    {
+      "id": "pack-f50c09a2",
+      "reviewer": "Codex",
+      "sha256": "cd256f3590b709dcd5e72ae61325cea2964a8086ce83a3c5b308dd4c5b626f42",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Livre relié entier fermé et vierge, pages et reliure cohérentes ; roman comme aide, type impossible à reconnaître sans texte. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo."
+    }
+  ]
+}

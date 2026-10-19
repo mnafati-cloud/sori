@@ -1,0 +1,775 @@
+{
+  "id": "full-concrete-0099-0174",
+  "requested": 29,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-36109c67",
+      "kr": "목구멍",
+      "sense": "Gorge, gosier",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 99
+    },
+    {
+      "id": "pack-aee63909",
+      "kr": "소스",
+      "sense": "Sauce",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 142
+    },
+    {
+      "id": "pack-6bd7b123",
+      "kr": "속눈썹",
+      "sense": "Cil",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 143
+    },
+    {
+      "id": "pack-b3c3754f",
+      "kr": "손목",
+      "sense": "Le poignet",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 144
+    },
+    {
+      "id": "pack-8e3d69bf",
+      "kr": "손발",
+      "sense": "Mains et pieds ; membres",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 145
+    },
+    {
+      "id": "pack-a2dd660d",
+      "kr": "손잡이",
+      "sense": "Poignée, anse",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 146
+    },
+    {
+      "id": "pack-85a5da3e",
+      "kr": "수하물",
+      "sense": "Bagage (enregistre en soute)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 148
+    },
+    {
+      "id": "pack-98bfee46",
+      "kr": "술병",
+      "sense": "Bouteille d'alcool",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 149
+    },
+    {
+      "id": "pack-a1921818",
+      "kr": "술잔",
+      "sense": "Verre à alcool, coupe",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 150
+    },
+    {
+      "id": "pack-342fee99",
+      "kr": "식물",
+      "sense": "plante (végétal)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 152
+    },
+    {
+      "id": "pack-e306bbaa",
+      "kr": "신",
+      "sense": "Chaussure(s)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 153
+    },
+    {
+      "id": "pack-aa3fd0a6",
+      "kr": "신문지",
+      "sense": "Papier journal",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 154
+    },
+    {
+      "id": "pack-f9e005c2",
+      "kr": "안주",
+      "sense": "Accompagnement (mets pris avec l'alcool)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 155
+    },
+    {
+      "id": "pack-bc89708f",
+      "kr": "알",
+      "sense": "Œuf (d'oiseau, de poisson, d'insecte)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 156
+    },
+    {
+      "id": "pack-75398cfb",
+      "kr": "앞머리",
+      "sense": "Frange, cheveux de devant",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 157
+    },
+    {
+      "id": "pack-10f94256",
+      "kr": "애완동물",
+      "sense": "Animal de compagnie",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 158
+    },
+    {
+      "id": "pack-e004b03a",
+      "kr": "액세서리",
+      "sense": "Accessoire (bijou, ornement)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 159
+    },
+    {
+      "id": "pack-52d60761",
+      "kr": "양산",
+      "sense": "Ombrelle, parasol (de main)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 160
+    },
+    {
+      "id": "pack-1db33cb3",
+      "kr": "연탄",
+      "sense": "Briquette de charbon (aggloméré)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 162
+    },
+    {
+      "id": "pack-54a789b2",
+      "kr": "영양제",
+      "sense": "Complément alimentaire, supplément nutritif",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 163
+    },
+    {
+      "id": "pack-7171a624",
+      "kr": "오이지",
+      "sense": "Concombre mariné",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 164
+    },
+    {
+      "id": "pack-48c25c93",
+      "kr": "외출복",
+      "sense": "Vêtements de sortie, tenue de ville",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 165
+    },
+    {
+      "id": "pack-e8762a25",
+      "kr": "요",
+      "sense": "Natte de paille, tapis (traditionnel coréen)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 166
+    },
+    {
+      "id": "pack-8db01d53",
+      "kr": "유람선",
+      "sense": "Bateau de croisiere/promenade",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 167
+    },
+    {
+      "id": "pack-b94b569f",
+      "kr": "유리",
+      "sense": "Verre (matière)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 168
+    },
+    {
+      "id": "pack-007d1926",
+      "kr": "음식물",
+      "sense": "Aliment, nourriture",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 170
+    },
+    {
+      "id": "pack-48c770bb",
+      "kr": "이름표",
+      "sense": "Badge, étiquette portant un nom",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 172
+    },
+    {
+      "id": "pack-f65ec145",
+      "kr": "이빨",
+      "sense": "Dent (familier)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 173
+    },
+    {
+      "id": "pack-b0195d56",
+      "kr": "인삼차",
+      "sense": "Thé au ginseng",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 174
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-36109c67",
+      "reviewer": "Codex",
+      "sourceSha256": "e1c986416c0389ac0deb3d4c5089833e6a02232c935303fa2e792545f3b80482",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Reprise anatomique : langue désormais en une seule masse continue arrondie, luette et ouverture postérieure cohérentes, aucune division en deux langues ; étude neutre en aide, pas schéma clinique. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-aee63909",
+      "reviewer": "Codex",
+      "sourceSha256": "fa28d1eeb5bf977cbed35a93cf49b47e383794440f3939053cbd32911aaa541b",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Petit saucier entier à bec contenant liquide sombre, sans marque ; sauce en aide seule car contenu exact non prouvable. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-6bd7b123",
+      "reviewer": "Codex",
+      "sourceSha256": "24f73daf4a39b2987ad1a678e289d87ca2228dc5f5ff4ad21e8813646d4f0aba",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Étude entière de l’œil, longs cils cohérents au bord supérieur et quelques cils inférieurs ; sourcil distinct au-dessus ; aide pour partie cil, pas question contre œil/sourcil. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-b3c3754f",
+      "reviewer": "Codex",
+      "sourceSha256": "7c58f00f6ebe6d523c8b68e39f848be492dd35ff927968b400e02821bc4e96a6",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Main adulte entière à cinq doigts avec poignet et court segment d’avant-bras, anatomie cohérente, pas de montre ou flèche ; aide pour poignet. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-8e3d69bf",
+      "reviewer": "Codex",
+      "sourceSha256": "bf031b79c21b7fde4497ba0f1f1b0c5f3c1c9df1499619d86a3901123dde0f6e",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Adulte entier habillé en noir/gris, mains ouvertes et pieds nus clairs détachés du vêtement ; doigts/orteils cohérents, silhouette complète ; aide pour mains et pieds collectivement. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-a2dd660d",
+      "reviewer": "Codex",
+      "sourceSha256": "1dbb79d4d52229f38cdff350a7f2c2541097455b3701bcfe2f9f9a1de26c235c",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Poignée de porte entière à levier et rosace, vis et fixation cohérentes ; silhouette nette en miniature. Question 손잡이 ; 문손잡이 et 문고리 restent lectures neutres. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-85a5da3e",
+      "reviewer": "Codex",
+      "sourceSha256": "007224eb30859fefc1489409e9e89c25fbcb1d1de5c8ab2b270c8c90c9aeb84a",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Valise entière à roulettes avec anse et étiquette vierge à petit œillet rouge, aucune compagnie ou code ; soute non prouvable, aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-98bfee46",
+      "reviewer": "Codex",
+      "sourceSha256": "2d98a2e499b8f60061630c2e31807c919820f3da732fd6ed14094caa2a5bce61",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Bouteille entière en verre à long col, vide et sans inscription ; alcool non déductible, aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-a1921818",
+      "reviewer": "Codex",
+      "sourceSha256": "7600c815193a883a25a82c87d4ed036c5b7de5c6298b3b091930d894e70a36d1",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Petite coupe entière en céramique avec pied, aucun mot ou marque ; usage alcool non déductible, aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-342fee99",
+      "reviewer": "Codex",
+      "sourceSha256": "aef4a570dfbebcdecd53bc214ff571e99fef58d6adf32a1a3f40f8006687db9b",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Plante entière, tige, feuilles et système racinaire cohérents, pas de scène ni vert dominant ; catégorie végétal seulement comme aide. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-e306bbaa",
+      "reviewer": "Codex",
+      "sourceSha256": "5c3f1b3f974064fd1f1ba127e743b869fb411fbd4e7175d652535ed8a24c65b7",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Chaussure slip-on entière, semelle et ouverture cohérentes, sans marque ; 신 et 신발 visuellement indissociables donc aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-aa3fd0a6",
+      "reviewer": "Codex",
+      "sourceSha256": "4949f3246ee31e55f8704b544bc5ab494a0e974d86152eec83690d42e7b1cbdb",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Feuille de journal froissée entière, rectangles graphiques et lignes pleines abstraites sans glyphes ; matière papier journal comme aide, pas lecture. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-f9e005c2",
+      "reviewer": "Codex",
+      "sourceSha256": "bbe84e425db73eff3b44400e421eae71fb7786f5213b8705b4c3976af517bdab",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Assiette entière de morceaux de poulet frit blanc/gris, pas de brun dominant ou boisson ; accompagnement d’alcool tiré de l’exemple, contexte non visible donc aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-bc89708f",
+      "reviewer": "Codex",
+      "sourceSha256": "099baa6325f84e6afd6de503d901788d55b888008ae22917a70bc0283eae7a8b",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Œuf d’oiseau entier non cassé, forme ovoïde cohérente ; sens de l’exemple éclosion de poussin, pas tous les œufs ; aide car 달걀/계란 plausibles. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-75398cfb",
+      "reviewer": "Codex",
+      "sourceSha256": "41729867cdd6b3449e1053b87e8c8f34ec4cf8048bea9339964351dc2043b3fd",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Tête entière avec frange droite couvrant le front, pointes et contour complets ; aide pour partie de coiffure, pas question qui forcerait frange plutôt que cheveux. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-10f94256",
+      "reviewer": "Codex",
+      "sourceSha256": "d57e689427b9ca80240228b33317c46e6fabe1ea2115307b628105792c1ba6ab",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Chat domestique entier assis à collier vermillon unique, anatomie et queue cohérentes ; exemple de compagnon, catégorie 애완동물 en aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-e004b03a",
+      "reviewer": "Codex",
+      "sourceSha256": "cdabd68751786196adad16125f2c752f61f2c8c7d94ee4c064d316959ce9cfd6",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Bracelet entier avec fermoir et breloque unique, chaîne cohérente sans lettre ; catégorie accessoire en aide, pas question imposant catégorie plutôt que bijou. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-52d60761",
+      "reviewer": "Codex",
+      "sourceSha256": "b5cd5e5e17e3c016e0b668f86d9017fedc2f55e165ac3773bede887a4e9e07d6",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Ombrelle entière à toile de dentelle et baleines cohérentes, poignée complète ; type parasol en aide, parapluie reste plausible. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-1db33cb3",
+      "reviewer": "Codex",
+      "sourceSha256": "c6891c465ee3ca667ca1e10f0ebeaf0ac9672ddafa660b5e56f982e5631c47d2",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Briquette cylindrique de charbon entière perforée, texture poreuse en noir/blanc, aucun poêle ou feu. Image générique de briquette à trous, ne revendique aucun modèle standard ou nombre précis de conduits ; aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-54a789b2",
+      "reviewer": "Codex",
+      "sourceSha256": "42c4a860826384a83a3f3890a8c7977976860d25a90a4af73b6063827606a7b4",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Flacon fermé entier contenant capsules translucides sans étiquette, dosage ou promesse ; complément alimentaire non prouvable, aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-7171a624",
+      "reviewer": "Codex",
+      "sourceSha256": "bd4a3468d13cbd62d6afcfa97e080d649bfc1f5c6abde1574183ab5099b7408d",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Petit plat entier de rondelles de concombre mariné, bords fripés et graines visibles, pas de vert dominant ; recette oiji seulement comme aide. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-48c25c93",
+      "reviewer": "Codex",
+      "sourceSha256": "24e311bb92c850df1f5f19ea8d8c27e74368d72b7e6ac6b336e57e2ebb3ba7be",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Ensemble complet de vêtements de ville sur un seul cintre, veste sur chemise et pantalon cohérents, petit accent naturel au cintre ; usage sortie invisible, aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-e8762a25",
+      "reviewer": "Codex",
+      "sourceSha256": "2ec87911b53328ffceccb4f01319c099ce325c7a7570bccb5e408a410aa2c70e",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Matelas coréen de sol rembourré et matelassé entier, plié/roulé, pas de natte de paille. Suit explicitement la note et l’exemple 요, malgré le raccourci français imprécis conservé ; aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-8db01d53",
+      "reviewer": "Codex",
+      "sourceSha256": "0cd834418269203c4aae178cad58cf568803f25fdd486d55c311561c92a749e0",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Bateau de promenade fluviale entier à deux ponts, coque, fenêtres et garde-corps cohérents, sans paysage, passagers ou inscriptions ; usage excursion en aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-b94b569f",
+      "reviewer": "Codex",
+      "sourceSha256": "9724fe9f2581b1dcdf5b717daddee6187805b054f9bd5dc42776e72627c65459",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Fragment entier de verre à reflets blancs et gris, centre transparent en noir, sans blessure ou outil ; matière verre comme aide, pas certitude contre cristal/plastique. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-007d1926",
+      "reviewer": "Codex",
+      "sourceSha256": "876edcfcfa7744c93f2440ca09da78df6dad1866a777ed2733d2db753e248cac",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Bol entier de riz et morceaux alimentaires, deux minuscules accents naturels de légumes sans couleur dominante ; nourriture comme catégorie en aide seule, pas repas précis. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-48c770bb",
+      "reviewer": "Codex",
+      "sourceSha256": "f3e47f6b3688e13e90c8f29b9cce66b78ba929769800110201b64e1c3afc92ae",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Badge entier avec pince et attache, zone centrale vierge, aucune donnée ni écriture ; nom absent volontairement, type étiquette comme aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-f65ec145",
+      "reviewer": "Codex",
+      "sourceSha256": "9221a801b0eb67c7f834d9323b13a78736198ac1c2a7af998f431c2b9e92279f",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Dent molaire entière avec couronne et racines cohérentes, neutre sans sang ni outil ; 이빨 familier et 치아 formel indiscernables, aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-b0195d56",
+      "reviewer": "Codex",
+      "sourceSha256": "72de9af0c08063f04c8955521f9c748547ce0f12136fd17b90db4d6e64c40bd2",
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Tasse entière de thé avec racine de ginseng visible et vapeur, anse et fond complets, blanc/lavis gris ; aide illustrative du thé, pas preuve de préparation ou bienfait médical. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-7b4e0ba2",
+      "kr": "수돗물",
+      "sourceSha256": "66f3d2a2df9e35f40277677c4a3ff6fc58b7f566940ac6e87327541d8b13bf5c",
+      "sha256": "de3e9433bcb5d6a70c6f7444974024ffd0429d94c96feeb8b08a8473c064f2e8",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Rejet : le jet d’eau du robinet sort du bord inférieur et supprime la marge ; illustration non entière."
+      }
+    },
+    {
+      "id": "pack-89b4215b",
+      "kr": "여드름",
+      "sourceSha256": "8a1b7304406d7ac75b89e48870f61f2ca562d2f7eac20908fa8aef1c4ec5d5c6",
+      "sha256": "95b3bc1b7ff7c416f10deb00f1014c421404adbda7d5caf7b84bfabcfdee1121",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Rejet : bouton d’acné trop petit sur la tête entière, détail cible devenu presque invisible à 96 px ; la simple présence d’un visage ne suffit pas."
+      }
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-36109c67",
+      "reviewer": "Codex",
+      "sha256": "5625a57025bcecf683a47a8c82133120acb16093b4b7ba2feca35e648f6ee991",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Reprise anatomique : langue désormais en une seule masse continue arrondie, luette et ouverture postérieure cohérentes, aucune division en deux langues ; étude neutre en aide, pas schéma clinique. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-aee63909",
+      "reviewer": "Codex",
+      "sha256": "c50cb791ece2e8b4f91ca706b5986ee5f77f4f80cc31788faabe2abe5b9e17d9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Petit saucier entier à bec contenant liquide sombre, sans marque ; sauce en aide seule car contenu exact non prouvable. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-6bd7b123",
+      "reviewer": "Codex",
+      "sha256": "227afac3f327b4389c07b9a437eea399e0384ebfc1fa1d6dbe1fd33e80478719",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Étude entière de l’œil, longs cils cohérents au bord supérieur et quelques cils inférieurs ; sourcil distinct au-dessus ; aide pour partie cil, pas question contre œil/sourcil. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-b3c3754f",
+      "reviewer": "Codex",
+      "sha256": "3fd3b7094b07d758367f371627e0ab774c0c33e2c5ffcbe1944d96f9073bfa90",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Main adulte entière à cinq doigts avec poignet et court segment d’avant-bras, anatomie cohérente, pas de montre ou flèche ; aide pour poignet. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-8e3d69bf",
+      "reviewer": "Codex",
+      "sha256": "976f699915ea3ddb48f485593a39006e68e94c78377dbd5d61598286ec94a372",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Adulte entier habillé en noir/gris, mains ouvertes et pieds nus clairs détachés du vêtement ; doigts/orteils cohérents, silhouette complète ; aide pour mains et pieds collectivement. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-a2dd660d",
+      "reviewer": "Codex",
+      "sha256": "5e5d4982a158b3fe2e90fc7eff0c1461d5f43648ecf32b258468e096dcd9d94d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Poignée de porte entière à levier et rosace, vis et fixation cohérentes ; silhouette nette en miniature. Question 손잡이 ; 문손잡이 et 문고리 restent lectures neutres. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-85a5da3e",
+      "reviewer": "Codex",
+      "sha256": "79b86bd106d787a9f8d2f81576ebdfd119062d2847411317a8cb272f291c816f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Valise entière à roulettes avec anse et étiquette vierge à petit œillet rouge, aucune compagnie ou code ; soute non prouvable, aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-98bfee46",
+      "reviewer": "Codex",
+      "sha256": "9ed7bf3fb70dee5bc79372463370d114b28f1feb1d0499acf212d54de30a9c18",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Bouteille entière en verre à long col, vide et sans inscription ; alcool non déductible, aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-a1921818",
+      "reviewer": "Codex",
+      "sha256": "65a4867cd699783cd74b04fc0b4ae4ed4554763685b534802c71b563fcec0b0d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Petite coupe entière en céramique avec pied, aucun mot ou marque ; usage alcool non déductible, aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-342fee99",
+      "reviewer": "Codex",
+      "sha256": "ba9fe87fd735347d51dda7c5681d12a89da66580362138ad2e97dd1af03d0da4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Plante entière, tige, feuilles et système racinaire cohérents, pas de scène ni vert dominant ; catégorie végétal seulement comme aide. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-e306bbaa",
+      "reviewer": "Codex",
+      "sha256": "7918f0f0d5d159c99d3f0790e891a651a83a972997de1454384fb87567e0d739",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Chaussure slip-on entière, semelle et ouverture cohérentes, sans marque ; 신 et 신발 visuellement indissociables donc aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-aa3fd0a6",
+      "reviewer": "Codex",
+      "sha256": "d12490d7b5cee22924db2f5f4ab3e41bf506ffc9648f08a2665d7032d965dfad",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Feuille de journal froissée entière, rectangles graphiques et lignes pleines abstraites sans glyphes ; matière papier journal comme aide, pas lecture. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-f9e005c2",
+      "reviewer": "Codex",
+      "sha256": "958149e361ba6cbfaf56d22a8fc2ee09bb21baffafbe438ab775ab1f4321b9fa",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Assiette entière de morceaux de poulet frit blanc/gris, pas de brun dominant ou boisson ; accompagnement d’alcool tiré de l’exemple, contexte non visible donc aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-bc89708f",
+      "reviewer": "Codex",
+      "sha256": "c7ed01722e62134af1c7ce5c02ed6f6c6212675b93ede297c49f4cbad42be337",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Œuf d’oiseau entier non cassé, forme ovoïde cohérente ; sens de l’exemple éclosion de poussin, pas tous les œufs ; aide car 달걀/계란 plausibles. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-75398cfb",
+      "reviewer": "Codex",
+      "sha256": "69a1b9833a29f50551663dc64dba8ad4a5cda54d9b3ca4e75f69be74bed4f3c0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Tête entière avec frange droite couvrant le front, pointes et contour complets ; aide pour partie de coiffure, pas question qui forcerait frange plutôt que cheveux. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-10f94256",
+      "reviewer": "Codex",
+      "sha256": "ab5e8c5621123289dce0bd7002855571691dff816951e8ec89ff1ebeda536122",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Chat domestique entier assis à collier vermillon unique, anatomie et queue cohérentes ; exemple de compagnon, catégorie 애완동물 en aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-e004b03a",
+      "reviewer": "Codex",
+      "sha256": "622bf4656ec78b73697ca15aa9a777167efd1f6d84a05e6d2597d9fafc07686b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Bracelet entier avec fermoir et breloque unique, chaîne cohérente sans lettre ; catégorie accessoire en aide, pas question imposant catégorie plutôt que bijou. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-52d60761",
+      "reviewer": "Codex",
+      "sha256": "95201314c50770a0b598d223c622ba84817bfdacead5d1075034369a94960b51",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Ombrelle entière à toile de dentelle et baleines cohérentes, poignée complète ; type parasol en aide, parapluie reste plausible. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-1db33cb3",
+      "reviewer": "Codex",
+      "sha256": "9933c6eee2ba6f011a97e7bb1e594ad9248fec749cd0e035f52cda4e43627953",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Briquette cylindrique de charbon entière perforée, texture poreuse en noir/blanc, aucun poêle ou feu. Image générique de briquette à trous, ne revendique aucun modèle standard ou nombre précis de conduits ; aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-54a789b2",
+      "reviewer": "Codex",
+      "sha256": "dd842af3aaf333766f294b6354082dc2e27c5a27f79b5a0698ca65f336e9e5e9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Flacon fermé entier contenant capsules translucides sans étiquette, dosage ou promesse ; complément alimentaire non prouvable, aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-7171a624",
+      "reviewer": "Codex",
+      "sha256": "c72884998ff7128a1bcdd5360d1d8cf1290bff313e26a2881cf40e54c54b3b84",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Petit plat entier de rondelles de concombre mariné, bords fripés et graines visibles, pas de vert dominant ; recette oiji seulement comme aide. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-48c25c93",
+      "reviewer": "Codex",
+      "sha256": "df0ae8b088f45f79da11be04cb2b448851328af92eca9ff45dfeaf363176ff15",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Ensemble complet de vêtements de ville sur un seul cintre, veste sur chemise et pantalon cohérents, petit accent naturel au cintre ; usage sortie invisible, aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-e8762a25",
+      "reviewer": "Codex",
+      "sha256": "c323c1730d12b36e66453fd038f67b102f67503b52f73163de8a4f29bd3b5bc1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Matelas coréen de sol rembourré et matelassé entier, plié/roulé, pas de natte de paille. Suit explicitement la note et l’exemple 요, malgré le raccourci français imprécis conservé ; aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-8db01d53",
+      "reviewer": "Codex",
+      "sha256": "aab4a3c5f9db8dca55e47909b945863af5ec6dacfa22df1063738d48d3b0b190",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Bateau de promenade fluviale entier à deux ponts, coque, fenêtres et garde-corps cohérents, sans paysage, passagers ou inscriptions ; usage excursion en aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-b94b569f",
+      "reviewer": "Codex",
+      "sha256": "ff14bab4d2ca401a81813a5ce65f19dd0d19115aff1aa0c25a67aba2960ceb17",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Fragment entier de verre à reflets blancs et gris, centre transparent en noir, sans blessure ou outil ; matière verre comme aide, pas certitude contre cristal/plastique. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-007d1926",
+      "reviewer": "Codex",
+      "sha256": "2abdc1ca079eb87d324828ab26cbdca7332717b6f25292f62952c43a490f22f9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Bol entier de riz et morceaux alimentaires, deux minuscules accents naturels de légumes sans couleur dominante ; nourriture comme catégorie en aide seule, pas repas précis. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-48c770bb",
+      "reviewer": "Codex",
+      "sha256": "2c020da61bcd5e4fc7ff2469b27614ebb1aa6eac36922686b29afd4040280c31",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Badge entier avec pince et attache, zone centrale vierge, aucune donnée ni écriture ; nom absent volontairement, type étiquette comme aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-f65ec145",
+      "reviewer": "Codex",
+      "sha256": "3bf93280eba75b0d3c5270da855d80aded01339ca2ae377944312842942890dc",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Dent molaire entière avec couronne et racines cohérentes, neutre sans sang ni outil ; 이빨 familier et 치아 formel indiscernables, aide seule. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    },
+    {
+      "id": "pack-b0195d56",
+      "reviewer": "Codex",
+      "sha256": "494dafe8f4348d7ca00416c1a9faf9fa8c39a8aa77bb36ebb9e04d3b0c674ccd",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective PNG puis WebP à 512, 160 et 96 px. Tasse entière de thé avec racine de ginseng visible et vapeur, anse et fond complets, blanc/lavis gris ; aide illustrative du thé, pas preuve de préparation ou bienfait médical. Style pinceau blanc chaud/gris sur noir, aucun texte/logo, sujet utile contenu dans le carré."
+    }
+  ],
+  "sourceFailures": [
+    {
+      "id": "pack-51ab62e0",
+      "kr": "의상",
+      "note": "Image retournée sans source PNG locale exploitable ; aucun import ni asset associé à cette tentative."
+    }
+  ]
+}

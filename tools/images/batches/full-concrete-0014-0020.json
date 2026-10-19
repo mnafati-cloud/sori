@@ -1,0 +1,189 @@
+{
+  "id": "full-concrete-0014-0020",
+  "requested": 7,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-198eb740",
+      "kr": "병아리",
+      "sense": "Poussin.",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 14
+    },
+    {
+      "id": "pack-3550f8a0",
+      "kr": "비둘기",
+      "sense": "Pigeon, colombe.",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 15
+    },
+    {
+      "id": "pack-c76f6e7d",
+      "kr": "개미",
+      "sense": "Fourmi",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 16
+    },
+    {
+      "id": "pack-ba46f25d",
+      "kr": "로봇",
+      "sense": "Un robot",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 17
+    },
+    {
+      "id": "pack-ee7c3937",
+      "kr": "금고",
+      "sense": "Coffre-fort.",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 18
+    },
+    {
+      "id": "pack-98f349e5",
+      "kr": "타자기",
+      "sense": "Machine à écrire",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 19
+    },
+    {
+      "id": "pack-cd116a0a",
+      "kr": "바늘",
+      "sense": "Aiguille",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 20
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-198eb740",
+      "reviewer": "Codex",
+      "sourceSha256": "126b06f4e9c5b591bbf9c67a660dead9062121fd0ede01a15e96eda27b401883",
+      "note": "Petit oiseau duveteux entier, bec court, deux pattes et doigts cohérents, silhouette lisible à 512/160/96 px. Trait blanc/gris sur noir et petite touche vermillon au bec. Reclassé en aide : sans couleur jaune ni mère poule, le jeune oiseau ne peut pas être imposé comme poussin de poule plutôt qu’oisillon."
+    },
+    {
+      "id": "pack-3550f8a0",
+      "reviewer": "Codex",
+      "sourceSha256": "77f84316a04d10ad5bb117f0fbaade8c9ed79d64a6734e6c09a2aff397de15e5",
+      "note": "Pigeon entier à poitrine ronde, petite tête, cire au-dessus du bec, deux barres alaires et deux pattes naturelles. Corps blanc/gris, petit accent vermillon aux pattes, aucun décor ou texte. Reconnaissable à 160 et 96 px ; question conservée."
+    },
+    {
+      "id": "pack-c76f6e7d",
+      "reviewer": "Codex",
+      "sourceSha256": "eeea2d917063fca90e536e6060d939fcb10a633264b00122e44bff28fdea1869",
+      "note": "Fourmi entière : tête, thorax et abdomen séparés par une taille étroite, deux antennes coudées et six pattes articulées. Blanc/gris sur fond noir, minuscules accents chauds aux mandibules ; silhouette et segmentation lisibles aux trois tailles. Question conservée."
+    },
+    {
+      "id": "pack-ba46f25d",
+      "reviewer": "Codex",
+      "sourceSha256": "eb9c5afcbd48fb2f64b15834449b5312e8e6b12d2143c7af1c825b72cd04bd77",
+      "note": "Robot mécanique complet, deux bras et deux jambes articulés, tête à deux capteurs, mains et pieds entiers ; aucun logo ni texte. Volumes au pinceau blanc/gris et petit accent chaud aux capteurs. Reconnaissable à 512/160/96 px ; question conservée."
+    },
+    {
+      "id": "pack-ee7c3937",
+      "reviewer": "Codex",
+      "sourceSha256": "1a8366696f7e4e9548557b58929d15999a12d636d3bfb0fb4a963921a6956a66",
+      "note": "Coffre-fort fermé entier, porte épaisse à charnières, cadran de combinaison avec traits sans nombres et poignée de verrouillage. Blanc/gris au pinceau sur noir avec un seul petit repère vermillon ; lisible aux trois tailles. Question conservée."
+    },
+    {
+      "id": "pack-98f349e5",
+      "reviewer": "Codex",
+      "sourceSha256": "db78a3b582047b4818d59649b34ae6a1d704aecb10698c0364421543ecc4605f",
+      "note": "Machine à écrire manuelle entière, touches rondes toutes vierges, chariot, rouleau, bobines et levier de retour cohérents. Ruban vermillon étroit, reste blanc/gris sur noir. Aucune lettre ni marque ; silhouette reconnaissable à 512/160/96 px. Question conservée."
+    },
+    {
+      "id": "pack-cd116a0a",
+      "reviewer": "Codex",
+      "sourceSha256": "c67acf5c49bf3912462ff42cdb46e7e070d37e191b35960e1477867360ff3d87",
+      "note": "Aiguille à coudre seule et entière, pointe effilée et chas ovale clairement distinct ; diagonale dans des marges noires. Trait blanc/gris sobre, aucun fil ou doigt donnant un autre sujet. Le chas reste perceptible à 160 et 96 px ; question conservée."
+    }
+  ],
+  "rejectedAttempts": [],
+  "displaySizeReviews": [
+    {
+      "id": "pack-198eb740",
+      "reviewer": "Codex",
+      "sha256": "dd5f79d4a2d53f6a3c571eedaf16cea851fdb482662a9261c6ab7c0179c0ef7b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petit oiseau duveteux entier, bec court, deux pattes et doigts cohérents, silhouette lisible à 512/160/96 px. Trait blanc/gris sur noir et petite touche vermillon au bec. Reclassé en aide : sans couleur jaune ni mère poule, le jeune oiseau ne peut pas être imposé comme poussin de poule plutôt qu’oisillon."
+    },
+    {
+      "id": "pack-3550f8a0",
+      "reviewer": "Codex",
+      "sha256": "395338e0a0a97a0e2f5a3a95152175a89a0721fd4f686e2767474c9346d65986",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pigeon entier à poitrine ronde, petite tête, cire au-dessus du bec, deux barres alaires et deux pattes naturelles. Corps blanc/gris, petit accent vermillon aux pattes, aucun décor ou texte. Reconnaissable à 160 et 96 px ; question conservée."
+    },
+    {
+      "id": "pack-c76f6e7d",
+      "reviewer": "Codex",
+      "sha256": "f9c44f385e3f89b47febfe1deeaf653dfc3822fa333860d7266766b6dcea8d68",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Fourmi entière : tête, thorax et abdomen séparés par une taille étroite, deux antennes coudées et six pattes articulées. Blanc/gris sur fond noir, minuscules accents chauds aux mandibules ; silhouette et segmentation lisibles aux trois tailles. Question conservée."
+    },
+    {
+      "id": "pack-ba46f25d",
+      "reviewer": "Codex",
+      "sha256": "e8d6e998e4914124578a358baa567b57bcad4203885c49b6bff3fd2191e91930",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Robot mécanique complet, deux bras et deux jambes articulés, tête à deux capteurs, mains et pieds entiers ; aucun logo ni texte. Volumes au pinceau blanc/gris et petit accent chaud aux capteurs. Reconnaissable à 512/160/96 px ; question conservée."
+    },
+    {
+      "id": "pack-ee7c3937",
+      "reviewer": "Codex",
+      "sha256": "b821e8efc3b9b7e323fb6368a3ac9af00643b3a4f137f898fe299230d29b35ee",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Coffre-fort fermé entier, porte épaisse à charnières, cadran de combinaison avec traits sans nombres et poignée de verrouillage. Blanc/gris au pinceau sur noir avec un seul petit repère vermillon ; lisible aux trois tailles. Question conservée."
+    },
+    {
+      "id": "pack-98f349e5",
+      "reviewer": "Codex",
+      "sha256": "4a4dbde8f3d4183bb67e0a0bf12d04e32244f6cef4f394a4eb9cc3e0a0178f47",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Machine à écrire manuelle entière, touches rondes toutes vierges, chariot, rouleau, bobines et levier de retour cohérents. Ruban vermillon étroit, reste blanc/gris sur noir. Aucune lettre ni marque ; silhouette reconnaissable à 512/160/96 px. Question conservée."
+    },
+    {
+      "id": "pack-cd116a0a",
+      "reviewer": "Codex",
+      "sha256": "38753ef89c8c06756dfec6df238c67253e80bcd2a48b51a4389f5db01148386f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Aiguille à coudre seule et entière, pointe effilée et chas ovale clairement distinct ; diagonale dans des marges noires. Trait blanc/gris sobre, aucun fil ou doigt donnant un autre sujet. Le chas reste perceptible à 160 et 96 px ; question conservée."
+    }
+  ]
+}

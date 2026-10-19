@@ -1,0 +1,26 @@
+{
+  "id": "pack-c76f6e7d",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T19:07:25.306Z",
+  "sourceSha256": "eeea2d917063fca90e536e6060d939fcb10a633264b00122e44bff28fdea1869",
+  "sha256": "f9c44f385e3f89b47febfe1deeaf653dfc3822fa333860d7266766b6dcea8d68",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne anatomically coherent worker ant in a clear three-quarter overhead view, showing three distinct body segments, exactly six thin jointed legs attached to the thorax, two elbowed antennae and a narrow waist. Entire legs and antennae inside generous black margins. Warm-white dry brush and sparse grey on pure black. No magnifying glass, ground scene, food, extra insects, text or diagram labels.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Fourmi entière : tête, thorax et abdomen séparés par une taille étroite, deux antennes coudées et six pattes articulées. Blanc/gris sur fond noir, minuscules accents chauds aux mandibules ; silhouette et segmentation lisibles aux trois tailles. Question conservée.",
+  "reviewedAt": "2026-10-18T19:08:26.979Z",
+  "kr": "개미",
+  "sense": "Fourmi",
+  "usage": "question",
+  "accepted": [
+    "개미"
+  ],
+  "alternatives": []
+}

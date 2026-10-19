@@ -1,0 +1,604 @@
+{
+  "id": "full-concrete-0364-0433",
+  "requested": 23,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-e2445d29",
+      "kr": "찌꺼기",
+      "sense": "Residu, restes, lie, marc",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 364
+    },
+    {
+      "id": "pack-b275142c",
+      "kr": "음료",
+      "sense": "Boisson",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 379
+    },
+    {
+      "id": "pack-02711d09",
+      "kr": "우체통",
+      "sense": "Boîte aux lettres (publique)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 408
+    },
+    {
+      "id": "pack-ea7bb335",
+      "kr": "우편물",
+      "sense": "Courrier, envoi postal",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 409
+    },
+    {
+      "id": "pack-ee75839c",
+      "kr": "유리창",
+      "sense": "Vitre, carreau de fenêtre",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 410
+    },
+    {
+      "id": "pack-584a7826",
+      "kr": "자가용",
+      "sense": "Voiture particulière, véhicule personnel",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 412
+    },
+    {
+      "id": "pack-fa7ff697",
+      "kr": "잔돈",
+      "sense": "petite monnaie",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 413
+    },
+    {
+      "id": "pack-723dc7e5",
+      "kr": "전기밥솥",
+      "sense": "Cuiseur à riz électrique.",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 414
+    },
+    {
+      "id": "pack-1e8535a1",
+      "kr": "진통제",
+      "sense": "Analgesique, antidouleur",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 415
+    },
+    {
+      "id": "pack-b34910b1",
+      "kr": "출입문",
+      "sense": "Porte d'entrée, porte d'accès (entrée-sortie)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 416
+    },
+    {
+      "id": "pack-a27a1765",
+      "kr": "치료제",
+      "sense": "Médicament curatif, remède (contre une maladie).",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 417
+    },
+    {
+      "id": "1780695436371",
+      "kr": "코트",
+      "sense": "Manteau",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 418
+    },
+    {
+      "id": "1781435310383",
+      "kr": "태양",
+      "sense": "Soleil",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 419
+    },
+    {
+      "id": "pack-ab7c6d23",
+      "kr": "포도주",
+      "sense": "Vin (de raisin)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 420
+    },
+    {
+      "id": "pack-f75eddc6",
+      "kr": "피시",
+      "sense": "Ordinateur, PC",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 423
+    },
+    {
+      "id": "pack-b1c377fc",
+      "kr": "화폐",
+      "sense": "Devise, monnaie (d'un pays)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 426
+    },
+    {
+      "id": "pack-a305125e",
+      "kr": "후춧가루",
+      "sense": "Poivre (moulu)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 427
+    },
+    {
+      "id": "pack-cf297e2c",
+      "kr": "흙",
+      "sense": "terre (sol, matière)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 428
+    },
+    {
+      "id": "pack-1d276c45",
+      "kr": "끈",
+      "sense": "Cordon, lacet, ficelle, lien",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 429
+    },
+    {
+      "id": "pack-1d35d1e4",
+      "kr": "담",
+      "sense": "Mur (de clôture), muraille",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 430
+    },
+    {
+      "id": "pack-ed0c30dd",
+      "kr": "땅바닥",
+      "sense": "Sol, terre (surface du sol)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 431
+    },
+    {
+      "id": "pack-c178d435",
+      "kr": "머리칼",
+      "sense": "Cheveux (mèche de cheveux)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 432
+    },
+    {
+      "id": "pack-80b8c687",
+      "kr": "바가지",
+      "sense": "Louche (en calebasse) ; prix exorbitant",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 433
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-e2445d29",
+      "reviewer": "Codex",
+      "sourceSha256": "97d5773cbb54688bb2ccc5b5f8c50d0542a5b313572725c95649018969ebb479",
+      "note": "Reprise : tasse entière inclinée et résidus granuleux presque noirs, rehauts gris chauds très discrets ; masse brune supprimée, résidu lisible aux trois tailles, aide."
+    },
+    {
+      "id": "pack-b275142c",
+      "reviewer": "Codex",
+      "sourceSha256": "98d0c42cdf74dc644800484eaee47c40b4fd9805549f2d04a6709798fc2961fe",
+      "note": "Reprise : boisson et vapeur désormais blanc, gris et noir, anse et volutes entières ; catégorie générique en aide."
+    },
+    {
+      "id": "pack-02711d09",
+      "reviewer": "Codex",
+      "sourceSha256": "0c7a768d42d74cc1605f5d1bb0dec476e0ae1e166231fb7e45bfc87c7e9bd8e2",
+      "note": "Boîte postale sur pied entière, fente et petit volet vermillon lisibles, aucune inscription ; sans contexte postal univoque, aide."
+    },
+    {
+      "id": "pack-ea7bb335",
+      "reviewer": "Codex",
+      "sourceSha256": "0dbebfede7292189846dede903434471ba22565c701d40ab29b235f1ba32ede8",
+      "note": "Enveloppes et colis entiers, cadres de timbres vierges avec faible accent vermillon ; aucune adresse ni donnée personnelle, courrier en aide."
+    },
+    {
+      "id": "pack-ee75839c",
+      "reviewer": "Codex",
+      "sourceSha256": "c6a2acb8b05d95986c17dc4a229c0d89c2e8a3aa705a924c42b7333f56349634",
+      "note": "Fenêtre entière avec quatre carreaux et reflets sobres, intérieur noir ; vitrage et fenêtre restent proches, aide."
+    },
+    {
+      "id": "pack-584a7826",
+      "reviewer": "Codex",
+      "sourceSha256": "2afca1389464158a99c8bf03d6ab47ce51caaa1570feb2b845ea8db28cb5e3ac",
+      "note": "Voiture compacte entière sans marque ou plaque, petit feu vermillon ; propriété personnelle invisible, aide seulement."
+    },
+    {
+      "id": "pack-fa7ff697",
+      "reviewer": "Codex",
+      "sourceSha256": "cacb2b943ae0c7f613464e8bf136db8b68002fb6dd6a5a0fa17d81e71787f63c",
+      "note": "Petites pièces entières groupées, aucune lettre ou valeur, monochromes ; quantité/valeur de petite monnaie reste textuelle, aide."
+    },
+    {
+      "id": "pack-723dc7e5",
+      "reviewer": "Codex",
+      "sourceSha256": "c378cb0c6716edaacf1d2f00e238ef7da87fdfaac5fd51baf85a03cf226441dd",
+      "note": "Cuiseur électrique entier ouvert avec riz lisible à 96 px et bouton vermillon discret ; question 전기밥솥, terme plus générique 밥솥 neutralisé."
+    },
+    {
+      "id": "pack-1e8535a1",
+      "reviewer": "Codex",
+      "sourceSha256": "e3dce131c8e51a296fc5c235773a10e5ca592422566526fe8f68f4a1aacebdc6",
+      "note": "Plaquette de gélules et flacon fermé entiers, aucune marque, dose ou indication ; fonction antidouleur textuelle en aide."
+    },
+    {
+      "id": "pack-b34910b1",
+      "reviewer": "Codex",
+      "sourceSha256": "505d0efd7dc91c6f0bf9afa83012a2edee7439bed88acf0aa32ec18d519d4e81",
+      "note": "Porte entière avec chambranle, judas et seuil, monochrome ; rôle entrée/sortie non univoque, aide."
+    },
+    {
+      "id": "pack-a27a1765",
+      "reviewer": "Codex",
+      "sourceSha256": "edf09d1aeb2389afaf90474871213307aacc03d6a65806a63bea3b9086dcff0d",
+      "note": "Flacon fermé et comprimé neutre entiers, sans étiquette ni indication ; nature curative invisible, aide seulement."
+    },
+    {
+      "id": "1780695436371",
+      "reviewer": "Codex",
+      "sourceSha256": "d5a8a7fd836b98bfb303f1e62b93e019aeb892c8309d7154974ffd30c988cc75",
+      "note": "Manteau long entier et cintre à petit accent vermillon, col et manches lisibles ; synonyme de manteau en aide."
+    },
+    {
+      "id": "1781435310383",
+      "reviewer": "Codex",
+      "sourceSha256": "8640b1611752e7d2f85a2c0ab7a87a359ade7b351561c83e5cf42017a66b7841",
+      "note": "Disque solaire rayonnant entier en blanc et gris, rayons contenus, sans paysage ni jaune ; soleil stylisé et synonyme 태양 en aide."
+    },
+    {
+      "id": "pack-ab7c6d23",
+      "reviewer": "Codex",
+      "sourceSha256": "2663aa79af612b9cd024947a6beccc0271bf2276d6ea5123dc75059ae8e1ca2a",
+      "note": "Bouteille et verre à pied entiers, liquide désormais noir/gris, aucune étiquette ; vin de raisin face aux autres boissons reste en aide."
+    },
+    {
+      "id": "pack-f75eddc6",
+      "reviewer": "Codex",
+      "sourceSha256": "1c9fc52ce4bd04d816d800e4fc49c5bafb274b694277d5964088c1d8995ee6be",
+      "note": "PC entier avec tour, écran, clavier et souris, touches sans glyphes ; variante lexicale et catégorie en aide."
+    },
+    {
+      "id": "pack-b1c377fc",
+      "reviewer": "Codex",
+      "sourceSha256": "889ce953ba32234bab07e8d6beb6a728c895b853192da2bbf62c27b3dac52a4e",
+      "note": "Deux billets fictifs et deux pièces entiers, motifs abstraits vierges, aucune monnaie réelle ; devise institutionnelle en aide."
+    },
+    {
+      "id": "pack-a305125e",
+      "reviewer": "Codex",
+      "sourceSha256": "38d1bc332cdb2bfe4008bd698a3044878a965585d6684f4372590f7af21bfc64",
+      "note": "Poivre moulu en coupelle entière avec grains entiers proches, texture monochrome sans brun ; nature du condiment en aide."
+    },
+    {
+      "id": "pack-cf297e2c",
+      "reviewer": "Codex",
+      "sourceSha256": "56b1b208ee3b1bdeffec7069c461b5a21c7921ad63ec82df247718760425d4c7",
+      "note": "Motte de terre meuble avec grumeaux et racines fines, entière et monochrome sans brun ; matière illustrée par texture, aide."
+    },
+    {
+      "id": "pack-1d276c45",
+      "reviewer": "Codex",
+      "sourceSha256": "4f9c51fe45074d272975eb93376b217ce878b568c65cfef097016f5ba26eb3d0",
+      "note": "Lacet souple entier en boucles et deux embouts vermillon discrets, aucun bord coupé ; exemple de lien/cordon générique, aide."
+    },
+    {
+      "id": "pack-1d35d1e4",
+      "reviewer": "Codex",
+      "sourceSha256": "c3fe7fbe7abe8f89ada945b25ffb84e98f0d6730227e92863051315f5ddd7f80",
+      "note": "Modèle de mur en pierres entier avec deux extrémités, aucun paysage ; clôture et mur générique proches, aide."
+    },
+    {
+      "id": "pack-ed0c30dd",
+      "reviewer": "Codex",
+      "sourceSha256": "21617621fe15bd62ecaf2940f08b6fece295968ebf6aead7931a6bb6eb2753cc",
+      "note": "Échantillon de sol compact entier avec gravillons et contours contenus, sans brun ni paysage ; rôle de surface du sol en aide."
+    },
+    {
+      "id": "pack-c178d435",
+      "reviewer": "Codex",
+      "sourceSha256": "47e6182e7011cfe1db2612a0091d8b589ab99b7e2c88238e4cf2e14f1e7531d1",
+      "note": "Mèche de cheveux liée entière, pointes et brins contenus, pas de tête ; variante lexicale cheveux en aide."
+    },
+    {
+      "id": "pack-80b8c687",
+      "reviewer": "Codex",
+      "sourceSha256": "2b68ecc20e1a1b73bb9e9d6a0e9cfe636a51297f50606ac19b89899f7c996b39",
+      "note": "Louche en demi-calebasse entière, cavité et manche distincts, sans bois brun ; seul le sens concret est illustré, aide après réponse."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-7a7a2c6d",
+      "rank": 411,
+      "kr": "육수",
+      "sourceSha256": "56836e05bfab26bfbe34bb478aa7b58a6702c4a8f16a14e3091f25cbda4dd9b1",
+      "sha256": "3fa193b14727d11049232d0a331f7dbdb07571f29cab2bbf5cc7968f2c285609",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "La casserole et la louche sont entières, mais le bouillon reste ocre jaune, hors palette. Nouvelle recette achromatique."
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-e2445d29",
+      "reviewer": "Codex",
+      "sha256": "0b0d3b83d24a946b230ca39d645ade37859c7771faedf4e2e05a39cb91551ad8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Reprise : tasse entière inclinée et résidus granuleux presque noirs, rehauts gris chauds très discrets ; masse brune supprimée, résidu lisible aux trois tailles, aide."
+    },
+    {
+      "id": "pack-b275142c",
+      "reviewer": "Codex",
+      "sha256": "93bcbb71790a5279f3865c8bfc16c1f9c30f4290ee9313a8ed8420e1559bda98",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Reprise : boisson et vapeur désormais blanc, gris et noir, anse et volutes entières ; catégorie générique en aide."
+    },
+    {
+      "id": "pack-02711d09",
+      "reviewer": "Codex",
+      "sha256": "f9fc6bb85cca6777647413704ad09e6f27a89cc6a49e04a81ef953b537a54365",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Boîte postale sur pied entière, fente et petit volet vermillon lisibles, aucune inscription ; sans contexte postal univoque, aide."
+    },
+    {
+      "id": "pack-ea7bb335",
+      "reviewer": "Codex",
+      "sha256": "20d090a43de1bf4dd8bb92863e22c8515ca6db015131941643c5c0e71a1f1fe1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Enveloppes et colis entiers, cadres de timbres vierges avec faible accent vermillon ; aucune adresse ni donnée personnelle, courrier en aide."
+    },
+    {
+      "id": "pack-ee75839c",
+      "reviewer": "Codex",
+      "sha256": "d680abbb7cc8d5e35e8b458b90a7aac0152e2f667144e39bde79215a9aaf9a64",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Fenêtre entière avec quatre carreaux et reflets sobres, intérieur noir ; vitrage et fenêtre restent proches, aide."
+    },
+    {
+      "id": "pack-584a7826",
+      "reviewer": "Codex",
+      "sha256": "fb36d78525a6332b6056d70f9024ea42c6051414b018b6abf2d3f6e2ca113410",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Voiture compacte entière sans marque ou plaque, petit feu vermillon ; propriété personnelle invisible, aide seulement."
+    },
+    {
+      "id": "pack-fa7ff697",
+      "reviewer": "Codex",
+      "sha256": "e590e17832298ae3409e468b417da8fbd2d0fab98b597ccf42d66d66540c0a5f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petites pièces entières groupées, aucune lettre ou valeur, monochromes ; quantité/valeur de petite monnaie reste textuelle, aide."
+    },
+    {
+      "id": "pack-723dc7e5",
+      "reviewer": "Codex",
+      "sha256": "8adc31125a1f8b26da7942589db86609cf8b74c9a5b1d82bed363a6b24dc2f38",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Cuiseur électrique entier ouvert avec riz lisible à 96 px et bouton vermillon discret ; question 전기밥솥, terme plus générique 밥솥 neutralisé."
+    },
+    {
+      "id": "pack-1e8535a1",
+      "reviewer": "Codex",
+      "sha256": "6cc9f2eff821d2502b0edf66844075246b74ad40296259846ce49f7b7e55dd4d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Plaquette de gélules et flacon fermé entiers, aucune marque, dose ou indication ; fonction antidouleur textuelle en aide."
+    },
+    {
+      "id": "pack-b34910b1",
+      "reviewer": "Codex",
+      "sha256": "c3009fa76d201f34f24ecfaa4c801d90d1ed52579a101d8445371981de21ea2a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Porte entière avec chambranle, judas et seuil, monochrome ; rôle entrée/sortie non univoque, aide."
+    },
+    {
+      "id": "pack-a27a1765",
+      "reviewer": "Codex",
+      "sha256": "f91584ad3914599d961b9480d2a8e9c6e0d52484d705e01f2a6a27baece48ed3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Flacon fermé et comprimé neutre entiers, sans étiquette ni indication ; nature curative invisible, aide seulement."
+    },
+    {
+      "id": "1780695436371",
+      "reviewer": "Codex",
+      "sha256": "631a382a6791803ffdf388f73d3727ccdd68af864cf23691ab9272703348c43c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Manteau long entier et cintre à petit accent vermillon, col et manches lisibles ; synonyme de manteau en aide."
+    },
+    {
+      "id": "1781435310383",
+      "reviewer": "Codex",
+      "sha256": "32a59f4760472094483a3eb8f6290858e5f68aeee8928dff843b7f26051ad4ab",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Disque solaire rayonnant entier en blanc et gris, rayons contenus, sans paysage ni jaune ; soleil stylisé et synonyme 태양 en aide."
+    },
+    {
+      "id": "pack-ab7c6d23",
+      "reviewer": "Codex",
+      "sha256": "979cf2949612d90e0c76d12fd03e0579ab9b37f87f88def4be66152d42f02780",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bouteille et verre à pied entiers, liquide désormais noir/gris, aucune étiquette ; vin de raisin face aux autres boissons reste en aide."
+    },
+    {
+      "id": "pack-f75eddc6",
+      "reviewer": "Codex",
+      "sha256": "189ced097cb2ceaa2652c9ae12310ddf070f4a6b76f3f0aaf690575023911c04",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "PC entier avec tour, écran, clavier et souris, touches sans glyphes ; variante lexicale et catégorie en aide."
+    },
+    {
+      "id": "pack-b1c377fc",
+      "reviewer": "Codex",
+      "sha256": "846994cd0a53f0924bc36043daec14b3b0e084ef0e7fb608faee03eb60557872",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux billets fictifs et deux pièces entiers, motifs abstraits vierges, aucune monnaie réelle ; devise institutionnelle en aide."
+    },
+    {
+      "id": "pack-a305125e",
+      "reviewer": "Codex",
+      "sha256": "2c3ccbda72a6e34b58652bbebd9bc4d7d00dd5e6a158d253011883a185eecfae",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Poivre moulu en coupelle entière avec grains entiers proches, texture monochrome sans brun ; nature du condiment en aide."
+    },
+    {
+      "id": "pack-cf297e2c",
+      "reviewer": "Codex",
+      "sha256": "c8022a58f04a08b7d372abf331fbef0a53146dbaf789ba4b7d774e7542cc1d2b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Motte de terre meuble avec grumeaux et racines fines, entière et monochrome sans brun ; matière illustrée par texture, aide."
+    },
+    {
+      "id": "pack-1d276c45",
+      "reviewer": "Codex",
+      "sha256": "ee351707edf57ca76e508d4775a8e08d9e1f445753ff98916ff7249b70d86a2d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Lacet souple entier en boucles et deux embouts vermillon discrets, aucun bord coupé ; exemple de lien/cordon générique, aide."
+    },
+    {
+      "id": "pack-1d35d1e4",
+      "reviewer": "Codex",
+      "sha256": "3dd0aa1a31af66277eed905600a89ae0e972da3405a5f72d0950fdf731214e44",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Modèle de mur en pierres entier avec deux extrémités, aucun paysage ; clôture et mur générique proches, aide."
+    },
+    {
+      "id": "pack-ed0c30dd",
+      "reviewer": "Codex",
+      "sha256": "abaf49638bf3eab4b8cdfbca1f99fd63969092b595700a574c0883e696b9a469",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Échantillon de sol compact entier avec gravillons et contours contenus, sans brun ni paysage ; rôle de surface du sol en aide."
+    },
+    {
+      "id": "pack-c178d435",
+      "reviewer": "Codex",
+      "sha256": "e02ca96418cb410c443a3b4b9a7ba620c32ab5f240d2dbf9c2f600360953599a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Mèche de cheveux liée entière, pointes et brins contenus, pas de tête ; variante lexicale cheveux en aide."
+    },
+    {
+      "id": "pack-80b8c687",
+      "reviewer": "Codex",
+      "sha256": "0f41773f0ed7d467bc9517b5e518d64f0a7aad6aec99435a79450fdc4e557485",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Louche en demi-calebasse entière, cavité et manche distincts, sans bois brun ; seul le sens concret est illustré, aide après réponse."
+    }
+  ]
+}

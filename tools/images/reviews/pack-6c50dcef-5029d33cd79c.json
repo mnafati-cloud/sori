@@ -1,0 +1,24 @@
+{
+  "id": "pack-6c50dcef",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T20:06:54.321Z",
+  "sourceSha256": "4302e7a5317872e8620de9fe3b7001d9701d12cc3f2b6e6d39828d012f9f11c3",
+  "sha256": "5029d33cd79cb69ee0d6e6f44de61cc00560f539613cee7f38e6c1342f3481af",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nPied humain adulte entier de profil avec cheville et malléole bien définies, pas de poignet, étude neutre sans flèche ; aide seule. Palette verrouillée blanc chaud/gris, aucun brun, vert, bleu ou rouge dominant. Sujet entier au centre, pas de texte ni pseudo-écriture, grandes marges noires.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Pied adulte de profil, cheville et malléole visibles, cinq orteils cohérents, bord de jambe en pinceau à l’intérieur du carré ; aide seule. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo.",
+  "reviewedAt": "2026-10-18T20:12:17.031Z",
+  "kr": "발목",
+  "sense": "La cheville",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

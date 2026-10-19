@@ -1,0 +1,593 @@
+{
+  "id": "full-concrete-0240-0308",
+  "requested": 22,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-566bbfa5",
+      "kr": "먹이",
+      "sense": "Nourriture (pour animaux), proie, appât",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 240
+    },
+    {
+      "id": "pack-f9813383",
+      "kr": "발끝",
+      "sense": "Bout des pieds, orteils",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 251
+    },
+    {
+      "id": "pack-b868760b",
+      "kr": "식기",
+      "sense": "Vaisselle",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 282
+    },
+    {
+      "id": "pack-75b89855",
+      "kr": "식량",
+      "sense": "Vivres, denrées alimentaires",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 283
+    },
+    {
+      "id": "pack-197e611a",
+      "kr": "식료품",
+      "sense": "Produits alimentaires, épicerie",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 284
+    },
+    {
+      "id": "pack-5714157f",
+      "kr": "실",
+      "sense": "Fil (à coudre)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 285
+    },
+    {
+      "id": "pack-d5ec018e",
+      "kr": "언덕",
+      "sense": "colline",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 287
+    },
+    {
+      "id": "pack-7627f012",
+      "kr": "열매",
+      "sense": "Fruit (d'une plante)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 288
+    },
+    {
+      "id": "pack-c8547479",
+      "kr": "용",
+      "sense": "Dragon",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 289
+    },
+    {
+      "id": "pack-b949ada4",
+      "kr": "유물",
+      "sense": "Relique, vestige (objet ancien)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 291
+    },
+    {
+      "id": "pack-38d20ff5",
+      "kr": "은",
+      "sense": "Argent (métal)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 292
+    },
+    {
+      "id": "pack-1aa4c75a",
+      "kr": "음반",
+      "sense": "Disque, album (musical)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 293
+    },
+    {
+      "id": "pack-af7add3a",
+      "kr": "인공위성",
+      "sense": "Un satellite",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 294
+    },
+    {
+      "id": "pack-a862646b",
+      "kr": "자",
+      "sense": "Règle (pour tracer, mesurer)",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 295
+    },
+    {
+      "id": "pack-c2e8dffe",
+      "kr": "장치",
+      "sense": "Un dispositif, un appareil",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 298
+    },
+    {
+      "id": "pack-8430a506",
+      "kr": "재활용품",
+      "sense": "Objets recyclables, matériaux de recyclage.",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 299
+    },
+    {
+      "id": "pack-ae3e6286",
+      "kr": "저울",
+      "sense": "Balance (pour peser).",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 300
+    },
+    {
+      "id": "pack-4db21f20",
+      "kr": "조각",
+      "sense": "Morceau, bout, fragment",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 302
+    },
+    {
+      "id": "pack-c0fbcb38",
+      "kr": "조미료",
+      "sense": "Condiment, assaisonnement",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 303
+    },
+    {
+      "id": "pack-76897e2c",
+      "kr": "지폐",
+      "sense": "billet (de banque)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 305
+    },
+    {
+      "id": "pack-addb3ac2",
+      "kr": "차창",
+      "sense": "Fenêtre (de véhicule)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 306
+    },
+    {
+      "id": "pack-f3646743",
+      "kr": "침",
+      "sense": "Salive",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 308
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-566bbfa5",
+      "reviewer": "Codex",
+      "sourceSha256": "d6e38e089b2786b06237d433c7ac9301ced51189e5405e67cf10f941923c3621",
+      "note": "Gamelle entière contenant des croquettes sèches monochromes, rouge absent ; reprise de palette validée aux trois tailles, nourriture animale en support."
+    },
+    {
+      "id": "pack-f9813383",
+      "reviewer": "Codex",
+      "sourceSha256": "698e4af7e0444f951aad2d733767c55f57c6908da33f07bad9263076f64f560f",
+      "note": "Maquette de pied en pointe sur socle, terminaison de cheville entière et cinq orteils cohérents ; reprise de cadrage validée, bout des pieds en support."
+    },
+    {
+      "id": "pack-b868760b",
+      "reviewer": "Codex",
+      "sourceSha256": "f6bcf8513211bf3a756d3a77a593c0d31c16687c21cff672c4ec7446b3798b5a",
+      "note": "Assiette, bol et deux baguettes entiers en ensemble compact sans nourriture ; support de la catégorie vaisselle."
+    },
+    {
+      "id": "pack-75b89855",
+      "reviewer": "Codex",
+      "sourceSha256": "42c87c2735402c3976b17203576d385bdd16b1180966768776cb1528f431329f",
+      "note": "Sac ouvert de grains de riz avec petite louche, tout contenu dans les marges et grains lisibles ; support de vivres."
+    },
+    {
+      "id": "pack-197e611a",
+      "reviewer": "Codex",
+      "sourceSha256": "56bb973d5036c980e779eb17d4018040349ec7076a9656e76a586da0e48f0087",
+      "note": "Panier de courses avec légumes, pain et paquet neutre, petite tomate contrastée seulement ; produits alimentaires en support."
+    },
+    {
+      "id": "pack-5714157f",
+      "reviewer": "Codex",
+      "sourceSha256": "759390855848bc965acac2acfd7655e3b14b395e1d5b52371d01d625596af75c",
+      "note": "Bobine et fil déroulé en boucle entière, aucune aiguille ni écriture ; fil à coudre illustré en support."
+    },
+    {
+      "id": "pack-d5ec018e",
+      "reviewer": "Codex",
+      "sourceSha256": "4a66160df72bb2060a2d219894f6455745d6764d057f131dee167a6eed800122",
+      "note": "Colline isolée aux pentes arrondies rendue en vignette de relief sur noir, sans ciel ni maison ; support de relief."
+    },
+    {
+      "id": "pack-7627f012",
+      "reviewer": "Codex",
+      "sourceSha256": "9e37f80a597221d28d7d60817c09453b71e1a4287534a6b91998ea0908a0a851",
+      "note": "Branche courte portant trois fruits et feuilles cohérentes, extrémités entières ; fruit botanique attaché à la plante en support."
+    },
+    {
+      "id": "pack-c8547479",
+      "reviewer": "Codex",
+      "sourceSha256": "32425538a841a60d0da809b00e879f89b67a166060c00b3a9c4d4f4574a966c9",
+      "note": "Dragon asiatique entier, corps sinueux cohérent, quatre pattes, cornes et moustaches distinctes ; silhouette reconnaissable à 96 px, question 용 possible."
+    },
+    {
+      "id": "pack-b949ada4",
+      "reviewer": "Codex",
+      "sourceSha256": "87d08c7153566153b1e99c873f93097740752fdc50ded588b05ccb64b6217532",
+      "note": "Jarre antique à deux anses et bord ébréché, entièrement visible, sans inscription ; statut de vestige en support."
+    },
+    {
+      "id": "pack-38d20ff5",
+      "reviewer": "Codex",
+      "sourceSha256": "657d34f2e2dca83bf47a6dff39465cc8d89d53a592c1d98dbe0c3ad40118d5e8",
+      "note": "Bracelet métallique fermé aux reflets blancs gris, aucun poinçon ni couleur ; matière argent maintenue en support."
+    },
+    {
+      "id": "pack-1aa4c75a",
+      "reviewer": "Codex",
+      "sourceSha256": "97ff5ec9277de6c8319e918a0cb706b9297afe97eb4f177fe5381600205e8030",
+      "note": "Disque vinyle à sillons avec pochette entrouverte sans texte, ensemble entier ; album musical en support."
+    },
+    {
+      "id": "pack-af7add3a",
+      "reviewer": "Codex",
+      "sourceSha256": "126f5081583f870d8e350b53e5c56525a73d6983c1b99984b6db1c20c7819a69",
+      "note": "Satellite artificiel entier avec deux panneaux, antenne et parabole reliés, aucun paysage ou logo ; question 인공위성 possible, 위성 générique neutre."
+    },
+    {
+      "id": "pack-a862646b",
+      "reviewer": "Codex",
+      "sourceSha256": "01c2b80dcf93b6928c3a022eda2db127739a6655c7498a4f1071cba058ca86ae",
+      "note": "Règle entière à graduations sans chiffres, deux bouts et largeur nets à 96 px ; question 자 possible."
+    },
+    {
+      "id": "pack-c2e8dffe",
+      "reviewer": "Codex",
+      "sourceSha256": "d92b7ddd1fbc343dfa747771be45828871da0fae9aec70ae87a3f37867b328eb",
+      "note": "Petit verrou mécanique cohérent entièrement visible, pêne dans sa gâche et commandes sans inscription ; support de dispositif."
+    },
+    {
+      "id": "pack-8430a506",
+      "reviewer": "Codex",
+      "sourceSha256": "ed17698ab50f23c685e6b013a9a038822c53c613a0d3cc072658a798de00ed4f",
+      "note": "Bouteille, canette et carton vides entièrement visibles, aucun logo de recyclage ou texte ; catégorie objets recyclables en support."
+    },
+    {
+      "id": "pack-ae3e6286",
+      "reviewer": "Codex",
+      "sourceSha256": "1a31859f7f8207fafad495bb173cac85f9556695b7e273a00ef3c9475793a8cf",
+      "note": "Balance de cuisine entière avec plateau, cadran sans chiffres et aiguille distincts, pas de lettres ; question 저울 possible."
+    },
+    {
+      "id": "pack-4db21f20",
+      "reviewer": "Codex",
+      "sourceSha256": "e05bc3ebcf122e4437f27b9a3639adacedea7477c19ad02a96be97ea76f631f1",
+      "note": "Fragment de glace irrégulier isolé avec petite goutte, arêtes et reflets visibles ; sens morceau en support, pas sculpture."
+    },
+    {
+      "id": "pack-c0fbcb38",
+      "reviewer": "Codex",
+      "sourceSha256": "092ec27e8e1c32a7ef50312ffcc71c53b180a7fb2e59125b0e68d0e50465279c",
+      "note": "Coupelle de poudre d’assaisonnement avec cuillère courte, aucune marque ; condiment maintenu en support car matière non univoque."
+    },
+    {
+      "id": "pack-76897e2c",
+      "reviewer": "Codex",
+      "sourceSha256": "47c83eb3145d6b16decb9b6073952ea8e4701ac0f5ce234cde3d202ec32f6e56",
+      "note": "Billet fictif décoré de motifs abstraits sans lettre, chiffre, effigie ni pseudo-écriture ; aucun pays ou montant suggéré, support."
+    },
+    {
+      "id": "pack-addb3ac2",
+      "reviewer": "Codex",
+      "sourceSha256": "e08ac0507c2b87aec1703ca520ce7c81eaea28a72f21134adec8467317f14fb9",
+      "note": "Portière entière avec vitre fermée et reflets, poignée et rétroviseur cohérents ; détail fenêtre de véhicule en support."
+    },
+    {
+      "id": "pack-f3646743",
+      "reviewer": "Codex",
+      "sourceSha256": "4521121283f092882ff12f1a7258a64b22d33d09fabea3d23ed27bcc46a06666",
+      "note": "Profil adulte entier avec fine goutte au coin de la bouche et tissu sous le menton ; salive perceptible en support, aucune acupuncture."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-169ac9d5",
+      "rank": 297,
+      "kr": "장식",
+      "sourceSha256": "5493757881e554d6c730c5f38c77c70e6206e2b7b6147254e39928d37b9104e2",
+      "sha256": "8612302ab69d68767937a833f1b3be00c95231e3db0caa3af139c571531f0726",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Le ruban de suspension sort du bord supérieur et son rouge dépasse un petit accent ; l’étoile elle-même est entière. Reprise du ruban et de la palette."
+    },
+    {
+      "id": "pack-3110207a",
+      "rank": 301,
+      "kr": "젖",
+      "sourceSha256": "1f5428e9592754d05995a6a0bc974f40c4df281266193466d21dade94a35a4af",
+      "sha256": "d61abac76fd7fc0f6b3160862a7852780a175cfa46663d4dc3c6ca5aa9011c3a",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "La scène animale est cohérente et entière, mais la mamelle est colorée en rose chair, hors palette blanc/gris. Reprise strictement monochrome."
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-566bbfa5",
+      "reviewer": "Codex",
+      "sha256": "db08217e38439614f7acc332d7fe5763a55c9569bb644ab6ec54109a7b26493b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Gamelle entière contenant des croquettes sèches monochromes, rouge absent ; reprise de palette validée aux trois tailles, nourriture animale en support."
+    },
+    {
+      "id": "pack-f9813383",
+      "reviewer": "Codex",
+      "sha256": "37f8a0af9c98d8dbd6374a67bb9c68de9b4f9a50d22c73b7784c6820adaf24bb",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Maquette de pied en pointe sur socle, terminaison de cheville entière et cinq orteils cohérents ; reprise de cadrage validée, bout des pieds en support."
+    },
+    {
+      "id": "pack-b868760b",
+      "reviewer": "Codex",
+      "sha256": "096e277cf2bc7f0715b8346b3f12a1861ea888eb2360c8f97b48124c45735c2e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Assiette, bol et deux baguettes entiers en ensemble compact sans nourriture ; support de la catégorie vaisselle."
+    },
+    {
+      "id": "pack-75b89855",
+      "reviewer": "Codex",
+      "sha256": "9622cf799ea2462d39c0e042c3174f052efddd367e715badfa44f0e6725c100c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Sac ouvert de grains de riz avec petite louche, tout contenu dans les marges et grains lisibles ; support de vivres."
+    },
+    {
+      "id": "pack-197e611a",
+      "reviewer": "Codex",
+      "sha256": "f456f8952d93b8caa869edb81e16a476fd591dcb5c7a848e1faa25516c6bcc32",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Panier de courses avec légumes, pain et paquet neutre, petite tomate contrastée seulement ; produits alimentaires en support."
+    },
+    {
+      "id": "pack-5714157f",
+      "reviewer": "Codex",
+      "sha256": "0527ec02ada65ef8208ef547214f2e268e98e3c744aa9b2cedfd9a4fa46a440d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bobine et fil déroulé en boucle entière, aucune aiguille ni écriture ; fil à coudre illustré en support."
+    },
+    {
+      "id": "pack-d5ec018e",
+      "reviewer": "Codex",
+      "sha256": "70cc33a35947ae738719c0ec6380e7956d3da6e99a1e1b05c2c188d6e8cf9ef7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Colline isolée aux pentes arrondies rendue en vignette de relief sur noir, sans ciel ni maison ; support de relief."
+    },
+    {
+      "id": "pack-7627f012",
+      "reviewer": "Codex",
+      "sha256": "cec3c36abc92b9920f0cac24f76e8e1dd5b9f284e22d7e9945b1df6914e35756",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Branche courte portant trois fruits et feuilles cohérentes, extrémités entières ; fruit botanique attaché à la plante en support."
+    },
+    {
+      "id": "pack-c8547479",
+      "reviewer": "Codex",
+      "sha256": "ae5371f7d819437cae17de2d04ad4dbf9716d1aa00147db3b36336c951390a90",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Dragon asiatique entier, corps sinueux cohérent, quatre pattes, cornes et moustaches distinctes ; silhouette reconnaissable à 96 px, question 용 possible."
+    },
+    {
+      "id": "pack-b949ada4",
+      "reviewer": "Codex",
+      "sha256": "1766a4165bd068b49ad03d50e3d645aa37ce6cb75ebf8029d558de1a9a820ca1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Jarre antique à deux anses et bord ébréché, entièrement visible, sans inscription ; statut de vestige en support."
+    },
+    {
+      "id": "pack-38d20ff5",
+      "reviewer": "Codex",
+      "sha256": "1fd2d06fbba49d91a2f5c9eca61331d77c987a1af7b5ba701773515e856aef76",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bracelet métallique fermé aux reflets blancs gris, aucun poinçon ni couleur ; matière argent maintenue en support."
+    },
+    {
+      "id": "pack-1aa4c75a",
+      "reviewer": "Codex",
+      "sha256": "492b13a039d03f3adda11f421634c69c3a269dfec93142cb5f394f3e5e50d082",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Disque vinyle à sillons avec pochette entrouverte sans texte, ensemble entier ; album musical en support."
+    },
+    {
+      "id": "pack-af7add3a",
+      "reviewer": "Codex",
+      "sha256": "0fc6cd0b4b3133955d20599ff19ccb029b11e27e84539ce6d958e9a7dc194200",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Satellite artificiel entier avec deux panneaux, antenne et parabole reliés, aucun paysage ou logo ; question 인공위성 possible, 위성 générique neutre."
+    },
+    {
+      "id": "pack-a862646b",
+      "reviewer": "Codex",
+      "sha256": "d331b6155d472da2b165efe429674fb1210334454281de21983a2f5d8612ecf0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Règle entière à graduations sans chiffres, deux bouts et largeur nets à 96 px ; question 자 possible."
+    },
+    {
+      "id": "pack-c2e8dffe",
+      "reviewer": "Codex",
+      "sha256": "0d555fec4b16fd38fac33938bb8c73e0cbf716c3e10637545b8ce8de31080d11",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petit verrou mécanique cohérent entièrement visible, pêne dans sa gâche et commandes sans inscription ; support de dispositif."
+    },
+    {
+      "id": "pack-8430a506",
+      "reviewer": "Codex",
+      "sha256": "d20ac1bb44ae44194ce059073864763e6a7e273ca56580c87c2163a4426206b5",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bouteille, canette et carton vides entièrement visibles, aucun logo de recyclage ou texte ; catégorie objets recyclables en support."
+    },
+    {
+      "id": "pack-ae3e6286",
+      "reviewer": "Codex",
+      "sha256": "288603acceb1a82235554cda028856603b6a9c23066e4975ace526a4d0daf56e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Balance de cuisine entière avec plateau, cadran sans chiffres et aiguille distincts, pas de lettres ; question 저울 possible."
+    },
+    {
+      "id": "pack-4db21f20",
+      "reviewer": "Codex",
+      "sha256": "aac6762df46833f0592702690641c58b9c8344f288ec33ddaae52b1b1baa63c9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Fragment de glace irrégulier isolé avec petite goutte, arêtes et reflets visibles ; sens morceau en support, pas sculpture."
+    },
+    {
+      "id": "pack-c0fbcb38",
+      "reviewer": "Codex",
+      "sha256": "a6f75193a13c252c0e79b75e53e69f2b04811d6260fb59c99ce2a86946047c8c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Coupelle de poudre d’assaisonnement avec cuillère courte, aucune marque ; condiment maintenu en support car matière non univoque."
+    },
+    {
+      "id": "pack-76897e2c",
+      "reviewer": "Codex",
+      "sha256": "e65f61ef8071391833dd0f2cb983e3ba81cd8070d8885e5cf0c67fe155e2f021",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Billet fictif décoré de motifs abstraits sans lettre, chiffre, effigie ni pseudo-écriture ; aucun pays ou montant suggéré, support."
+    },
+    {
+      "id": "pack-addb3ac2",
+      "reviewer": "Codex",
+      "sha256": "1578d5a32e460e829aafab940cced80226acdd06fcb6e7545318679629101a40",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Portière entière avec vitre fermée et reflets, poignée et rétroviseur cohérents ; détail fenêtre de véhicule en support."
+    },
+    {
+      "id": "pack-f3646743",
+      "reviewer": "Codex",
+      "sha256": "b3cd2ab2135a35ac1043a99e9b3c776f4390e49a6984febff57b5adbadf04fd6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Profil adulte entier avec fine goutte au coin de la bouche et tissu sous le menton ; salive perceptible en support, aucune acupuncture."
+    }
+  ]
+}

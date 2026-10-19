@@ -1,0 +1,24 @@
+{
+  "id": "pack-28c80e21",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T21:12:41.274Z",
+  "sourceSha256": "cf72e704ad317288efd600b7be2666f7eed4755fbf5f6c2df0e5c3fba5c818b2",
+  "sha256": "a8734d2617ade711fbbdee0116c1f61106b475d4ffd908a91938e20213112d36",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nUne seule goutte d’eau isolée en train de tomber, contour simple et quelques reflets blancs ; pas de clochette car exemple vise la goutte, usage support. Mot ciblé : 방울. Sens du deck : Goutte ; grelot, clochette. Palette strictement blanc chaud et lavis gris sur noir, sans couleur dominante ; un seul sujet ou ensemble naturel, silhouette complète, marges généreuses, aucun texte, lettre, chiffre, logo ni pseudo-écriture. Pinceau expressif, pas de photographie ni 3D. Usage support après réponse sauf validation explicite ultérieure.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Goutte unique de forme simple, contour blanc au pinceau et point inférieur entier ; usage support car 방울 peut être classificateur ou clochette.",
+  "reviewedAt": "2026-10-18T21:16:46.315Z",
+  "kr": "방울",
+  "sense": "Goutte ; grelot, clochette",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

@@ -1,0 +1,600 @@
+{
+  "id": "full-concrete-0212-0254",
+  "requested": 22,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-4d09f512",
+      "kr": "허벅지",
+      "sense": "Cuisse.",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 212
+    },
+    {
+      "id": "pack-0b4a560f",
+      "kr": "댐",
+      "sense": "Barrage (hydraulique)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 231
+    },
+    {
+      "id": "pack-c4ca4528",
+      "kr": "덩어리",
+      "sense": "Bloc, morceau, amas",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 232
+    },
+    {
+      "id": "pack-518a115a",
+      "kr": "도장",
+      "sense": "Sceau, cachet (à apposer)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 233
+    },
+    {
+      "id": "pack-b3a3182e",
+      "kr": "돌멩이",
+      "sense": "Caillou, pierre (petite)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 234
+    },
+    {
+      "id": "pack-04520c47",
+      "kr": "동화책",
+      "sense": "Livre de contes (pour enfants)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 235
+    },
+    {
+      "id": "pack-6732baac",
+      "kr": "둥지",
+      "sense": "Nid",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 236
+    },
+    {
+      "id": "pack-9d7d4d59",
+      "kr": "마디",
+      "sense": "Nœud (d'un doigt, d'un bambou) ; articulation ; mot, parole (mesure)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 238
+    },
+    {
+      "id": "pack-d5f5e788",
+      "kr": "마이크",
+      "sense": "Micro, microphone",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 239
+    },
+    {
+      "id": "pack-8e00ac68",
+      "kr": "멸치",
+      "sense": "Anchois (séché)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 241
+    },
+    {
+      "id": "pack-2a5a538c",
+      "kr": "몸매",
+      "sense": "Silhouette, ligne du corps",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 242
+    },
+    {
+      "id": "pack-3d0349d0",
+      "kr": "몸통",
+      "sense": "Tronc (du corps), corps (d'un objet)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 243
+    },
+    {
+      "id": "pack-8c4dac1f",
+      "kr": "무기",
+      "sense": "Arme",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 244
+    },
+    {
+      "id": "pack-8db57ae9",
+      "kr": "물결",
+      "sense": "Vague, ondulation de l'eau",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 245
+    },
+    {
+      "id": "pack-7f4f6e01",
+      "kr": "물기",
+      "sense": "Humidité, gouttes d'eau",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 246
+    },
+    {
+      "id": "pack-99d48ebf",
+      "kr": "물방울무늬",
+      "sense": "À pois",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 247
+    },
+    {
+      "id": "pack-1a1bd70b",
+      "kr": "바구니",
+      "sense": "Panier, corbeille",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 248
+    },
+    {
+      "id": "pack-e857858c",
+      "kr": "바퀴",
+      "sense": "Roue",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 249
+    },
+    {
+      "id": "pack-923f23ab",
+      "kr": "반죽",
+      "sense": "Pâte (à modeler, à pain, à gâteau) ; mélange pâteux",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 250
+    },
+    {
+      "id": "pack-bd6c8fc8",
+      "kr": "발자국",
+      "sense": "Empreinte de pas, trace de pied",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 252
+    },
+    {
+      "id": "pack-4322a4a7",
+      "kr": "발톱",
+      "sense": "Ongle du pied, griffe",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 253
+    },
+    {
+      "id": "pack-28c80e21",
+      "kr": "방울",
+      "sense": "Goutte ; grelot, clochette",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 254
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-4d09f512",
+      "reviewer": "Codex",
+      "sourceSha256": "aaf265802eee0d55a6b90f7831ca3916ef56aa47eb4f6dddb25b0312ae533441",
+      "note": "Maquette anatomique entière sur socle, bord supérieur fini dans le carré, genou, pied et cuisse cohérents ; reprise de cadrage validée, détail de cuisse en support."
+    },
+    {
+      "id": "pack-0b4a560f",
+      "reviewer": "Codex",
+      "sourceSha256": "e0d2e96b2f3739960fcd3eaa371951a7b0509702da006856273cd4875ffb0d7b",
+      "note": "Barrage isolé avec retenue d’eau et deux déversoirs, tout le volume dans le cadre sans paysage ; support du type de construction."
+    },
+    {
+      "id": "pack-c4ca4528",
+      "reviewer": "Codex",
+      "sourceSha256": "64691c1b8655e4b168f402ee6b5970f288f98a00ff42733a4e8a0f4d35c56bc0",
+      "note": "Amas compact de terre avec fragments adjacents, silhouettes entièrement dans les marges ; support du mot bloc/amas générique."
+    },
+    {
+      "id": "pack-518a115a",
+      "reviewer": "Codex",
+      "sourceSha256": "58628ce362ffe631eeffa07a55c013365912b59f1f38c884dbaa3602a4fe4614",
+      "note": "Cachet à poignée et face entièrement vierge, sans sceau ni pseudo-glyphes ; forme de tampon lisible à 96 px, usage support."
+    },
+    {
+      "id": "pack-b3a3182e",
+      "reviewer": "Codex",
+      "sourceSha256": "27d943a5589718aa7a1d67a7918506881a3e75c27cb9dfb02b028a8f64f1cdb1",
+      "note": "Petit galet isolé à contour rond entier, texture au pinceau blanc gris ; échelle et nuance petite pierre gardées en support."
+    },
+    {
+      "id": "pack-04520c47",
+      "reviewer": "Codex",
+      "sourceSha256": "ca83b993ec59513fb8a73d3df34e5750be2ddc2fd99070f4b1dfa274f22f0f88",
+      "note": "Livre de contes à couverture illustrée d’un château, aucune écriture ; petit accent sur les toits, genre narratif maintenu en support."
+    },
+    {
+      "id": "pack-6732baac",
+      "reviewer": "Codex",
+      "sourceSha256": "718b58605fcf57c5ac2ef90c435c3fd095da87931393628f7f6a59bf59a80003",
+      "note": "Nid vide à parois de brindilles et creux central net, toutes les brindilles finissent dans les marges ; silhouette distinctive à 96 px, question 둥지 possible."
+    },
+    {
+      "id": "pack-9d7d4d59",
+      "reviewer": "Codex",
+      "sourceSha256": "89da68399220df316279a60ecbbdb889989f7d1e8eee05deebbd710a827079ae",
+      "note": "Main adulte aux articulations fléchies, doigts plausibles et terminaison au pinceau dans le noir ; support du sens articulation/nœud, aucun texte."
+    },
+    {
+      "id": "pack-d5f5e788",
+      "reviewer": "Codex",
+      "sourceSha256": "f8e7a5bf7ba54317f1948662ce9cf14edb41825c0e92bcb76e56960a6befe14f",
+      "note": "Microphone entier à grille et manche clairement distincts, petit anneau vermillon ; silhouette claire à 96 px, question 마이크 possible."
+    },
+    {
+      "id": "pack-8e00ac68",
+      "reviewer": "Codex",
+      "sourceSha256": "c4a9543ac785edd9997e558fde50c1d003223812a4e26b1b584ba9e50475a0f5",
+      "note": "Petits anchois séchés entiers en poignée compacte, yeux et queues distincts, pas de gros poisson frais ; support du produit alimentaire."
+    },
+    {
+      "id": "pack-2a5a538c",
+      "reviewer": "Codex",
+      "sourceSha256": "40251fe3b8083ac9eb9713f21a7b3a16e41d635092320bbd25e36e716b8a25ae",
+      "note": "Personne adulte entière en tenue de sport ample, silhouette et deux pieds dans le cadre, aucun jugement esthétique ; sens ligne du corps en support."
+    },
+    {
+      "id": "pack-3d0349d0",
+      "reviewer": "Codex",
+      "sourceSha256": "7deb0e741ec11b8234fbd7b09b2bcbd325c666c63516d5551f743b98a0f6d4b5",
+      "note": "Coléoptère entier à six pattes et deux antennes cohérentes, corps central large ; support du corps de l’insecte selon exemple lexical."
+    },
+    {
+      "id": "pack-8c4dac1f",
+      "reviewer": "Codex",
+      "sourceSha256": "df84f8b3d3ed66a7b778068642238d519d0324d17704e5fef83a10c5ab21f4e5",
+      "note": "Arme blanche dans son fourreau, poignée, garde et pointe entières, pas de scène violente ; support de la catégorie arme."
+    },
+    {
+      "id": "pack-8db57ae9",
+      "reviewer": "Codex",
+      "sourceSha256": "a1e2dc3ba7a3809b6b0c033759f1f483ca4b66691d352c113ab5c2938aa8a339",
+      "note": "Trois ondulations parallèles isolées au pinceau, sans paysage ni mer détaillée ; support des rides de l’eau plutôt que symbole de synonyme visuel."
+    },
+    {
+      "id": "pack-7f4f6e01",
+      "reviewer": "Codex",
+      "sourceSha256": "d5e1504d3c75289ed14b2954e12db254bdcdf85567b2f0a15e44ab80af030196",
+      "note": "Serviette pliée humide avec trois gouttes distinctes sur un coin, objet entier ; humidité évoquée en support après réponse."
+    },
+    {
+      "id": "pack-99d48ebf",
+      "reviewer": "Codex",
+      "sourceSha256": "931bfa7677b8d5006c23d20b691975e93e2d38d127b45bce374a696417bd4838",
+      "note": "Robe entière sur cintre avec gros pois ronds contrastés, motif clairement visible à 96 px et distinct des rayures/carreaux ; support du motif."
+    },
+    {
+      "id": "pack-1a1bd70b",
+      "reviewer": "Codex",
+      "sourceSha256": "83bcfcea9415d2a76183a53879aec685246e47e352f6fed0b46e315315376466",
+      "note": "Panier vide tressé à anse arrondie entière et creux bien visible, lisible à 96 px ; question 바구니 possible, autres mots panier neutres."
+    },
+    {
+      "id": "pack-e857858c",
+      "reviewer": "Codex",
+      "sourceSha256": "5a5d106eb08f39736af359702a6ba44597705d3c85ec72f000bb350d6c47d32d",
+      "note": "Roue entière avec moyeu et rayons cohérents, contour fermé bien lisible à 96 px ; question 바퀴 possible, sens tour non illustré."
+    },
+    {
+      "id": "pack-923f23ab",
+      "reviewer": "Codex",
+      "sourceSha256": "66b03e568c1283f2a86c842c0545c31bd01a1e02c6673171cecc99cc4cb7d698",
+      "note": "Boule de pâte pâle à plis souples sur petite planche entière ; pas de croûte dorée, catégorie pâte maintenue en support."
+    },
+    {
+      "id": "pack-bd6c8fc8",
+      "reviewer": "Codex",
+      "sourceSha256": "3becfad6e832fdcf024fbd07a9952de09199b2781bb921155b3f4bf4087eb779",
+      "note": "Empreinte unique de pied à cinq orteils, voûte et talon distincts, petite motte de sol entière ; support du sens empreinte de pas."
+    },
+    {
+      "id": "pack-4322a4a7",
+      "reviewer": "Codex",
+      "sourceSha256": "a61537274e64e57db935f63593d1ae8e8b1e86a36abe5b80bf0a5a94c3a45d34",
+      "note": "Pied adulte vu du dessus, cinq orteils et cinq ongles cohérents, gros ongle clair à 96 px ; détail ongle du pied maintenu en support."
+    },
+    {
+      "id": "pack-28c80e21",
+      "reviewer": "Codex",
+      "sourceSha256": "cf72e704ad317288efd600b7be2666f7eed4755fbf5f6c2df0e5c3fba5c818b2",
+      "note": "Goutte unique de forme simple, contour blanc au pinceau et point inférieur entier ; usage support car 방울 peut être classificateur ou clochette."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-566bbfa5",
+      "rank": 240,
+      "kr": "먹이",
+      "sourceSha256": "04ccd042b6099dddbb71df6a2461dc7b3253a7342b813e25de54097b28375485",
+      "sha256": "3b300b3270816dad32efe2b179a8e4796bf972919080d0821e34c25a51842c86",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Plusieurs morceaux de viande rouges : le rouge occupe une grande partie du contenu et dépasse un petit accent. Reprise de palette avec croquettes monochromes."
+    },
+    {
+      "id": "pack-f9813383",
+      "rank": 251,
+      "kr": "발끝",
+      "sourceSha256": "aee1db02fff30ca7d61c2c4d3f6479aee6c72a6f9d0fbd2ff94077b3aeb17f41",
+      "sha256": "fb8e1e3797047abfd35c8590ed4fda0c8d0cbde1c0356ab45e5c38b4a9ecd3ea",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "La cheville franchit le bord supérieur : pied en pointe lisible mais silhouette coupée. Reprise avec petit modèle entier sur socle."
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-4d09f512",
+      "reviewer": "Codex",
+      "sha256": "38563dbff5c21d5781e089a81b6172e0154d474805bff10999f56d5a497a5ca4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Maquette anatomique entière sur socle, bord supérieur fini dans le carré, genou, pied et cuisse cohérents ; reprise de cadrage validée, détail de cuisse en support."
+    },
+    {
+      "id": "pack-0b4a560f",
+      "reviewer": "Codex",
+      "sha256": "98274c70a7bb08f1e64779bd73062fef2e3559bc82f5d30eb969e6285f98133f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Barrage isolé avec retenue d’eau et deux déversoirs, tout le volume dans le cadre sans paysage ; support du type de construction."
+    },
+    {
+      "id": "pack-c4ca4528",
+      "reviewer": "Codex",
+      "sha256": "bd1660a51b61247d8c5ba897cfa527af638c608c118fbfe9f9bf31078864d006",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Amas compact de terre avec fragments adjacents, silhouettes entièrement dans les marges ; support du mot bloc/amas générique."
+    },
+    {
+      "id": "pack-518a115a",
+      "reviewer": "Codex",
+      "sha256": "5d1a73440bbb2de6bfa55b5d3f665ab73cb737a136e2ffd2c0cf2c69fe55527c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Cachet à poignée et face entièrement vierge, sans sceau ni pseudo-glyphes ; forme de tampon lisible à 96 px, usage support."
+    },
+    {
+      "id": "pack-b3a3182e",
+      "reviewer": "Codex",
+      "sha256": "7427863f26c08d9eb406824038baa9a8fbffe6cef0a27b3f4666644e4c8cfdda",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petit galet isolé à contour rond entier, texture au pinceau blanc gris ; échelle et nuance petite pierre gardées en support."
+    },
+    {
+      "id": "pack-04520c47",
+      "reviewer": "Codex",
+      "sha256": "bc61cedce3e2d32dabcf5e40a15551e717cc0a73758e7e00f102f9fc5f4ab99a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Livre de contes à couverture illustrée d’un château, aucune écriture ; petit accent sur les toits, genre narratif maintenu en support."
+    },
+    {
+      "id": "pack-6732baac",
+      "reviewer": "Codex",
+      "sha256": "a08cf24e1cf0de796998328844c5b00939e972c7eb916a8189b60b41af00bb1c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Nid vide à parois de brindilles et creux central net, toutes les brindilles finissent dans les marges ; silhouette distinctive à 96 px, question 둥지 possible."
+    },
+    {
+      "id": "pack-9d7d4d59",
+      "reviewer": "Codex",
+      "sha256": "6f01866db08831ec2b4693f182db3b2a336e29c891c13f7e20cab0b9f8792ba8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Main adulte aux articulations fléchies, doigts plausibles et terminaison au pinceau dans le noir ; support du sens articulation/nœud, aucun texte."
+    },
+    {
+      "id": "pack-d5f5e788",
+      "reviewer": "Codex",
+      "sha256": "d16040793d168c1cc67785cd4d122562de195a6a7f8288906321eff03b89e52f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Microphone entier à grille et manche clairement distincts, petit anneau vermillon ; silhouette claire à 96 px, question 마이크 possible."
+    },
+    {
+      "id": "pack-8e00ac68",
+      "reviewer": "Codex",
+      "sha256": "4373ed8033521b96d0af632a9f21ce9302dd31e15f852ae93681169f5aa2a733",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petits anchois séchés entiers en poignée compacte, yeux et queues distincts, pas de gros poisson frais ; support du produit alimentaire."
+    },
+    {
+      "id": "pack-2a5a538c",
+      "reviewer": "Codex",
+      "sha256": "a9b38921b8ffffc1be1c3d3a65c78bbf159357029c50b90a4764563b1329403d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne adulte entière en tenue de sport ample, silhouette et deux pieds dans le cadre, aucun jugement esthétique ; sens ligne du corps en support."
+    },
+    {
+      "id": "pack-3d0349d0",
+      "reviewer": "Codex",
+      "sha256": "22ead6d56f5369c0131332b683019ddd70db6144e90087ac871e3ffcc884656a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Coléoptère entier à six pattes et deux antennes cohérentes, corps central large ; support du corps de l’insecte selon exemple lexical."
+    },
+    {
+      "id": "pack-8c4dac1f",
+      "reviewer": "Codex",
+      "sha256": "50c92a3c01bc1b3d4a5071601854e10bf8b97184f7d029aac4b277980b05a053",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Arme blanche dans son fourreau, poignée, garde et pointe entières, pas de scène violente ; support de la catégorie arme."
+    },
+    {
+      "id": "pack-8db57ae9",
+      "reviewer": "Codex",
+      "sha256": "4af50fd5e5d55178afa7a359844380520ad201751e597555c878c36115a38034",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Trois ondulations parallèles isolées au pinceau, sans paysage ni mer détaillée ; support des rides de l’eau plutôt que symbole de synonyme visuel."
+    },
+    {
+      "id": "pack-7f4f6e01",
+      "reviewer": "Codex",
+      "sha256": "51bfd5709b5ecb98c0152bde240ce495bd6a2442c8056609f2f8741327f98134",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Serviette pliée humide avec trois gouttes distinctes sur un coin, objet entier ; humidité évoquée en support après réponse."
+    },
+    {
+      "id": "pack-99d48ebf",
+      "reviewer": "Codex",
+      "sha256": "eb61b301cacd87204a2d92d3033bb2b198a9ab6718f8c9d323c3a4e06fe0a81e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Robe entière sur cintre avec gros pois ronds contrastés, motif clairement visible à 96 px et distinct des rayures/carreaux ; support du motif."
+    },
+    {
+      "id": "pack-1a1bd70b",
+      "reviewer": "Codex",
+      "sha256": "7ad2d4d18001f09717e1ddd2fa88f1ca767df374b52ac42fde64f20cdff3d5d7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Panier vide tressé à anse arrondie entière et creux bien visible, lisible à 96 px ; question 바구니 possible, autres mots panier neutres."
+    },
+    {
+      "id": "pack-e857858c",
+      "reviewer": "Codex",
+      "sha256": "3c170fc12803672b7716869da3ddbb805f870bced2c1048783aec6fe401cbfc8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Roue entière avec moyeu et rayons cohérents, contour fermé bien lisible à 96 px ; question 바퀴 possible, sens tour non illustré."
+    },
+    {
+      "id": "pack-923f23ab",
+      "reviewer": "Codex",
+      "sha256": "62057936146ba11fb313391d354b1230fcb3f57ccc2dd7f41aa4c33971f9bdde",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Boule de pâte pâle à plis souples sur petite planche entière ; pas de croûte dorée, catégorie pâte maintenue en support."
+    },
+    {
+      "id": "pack-bd6c8fc8",
+      "reviewer": "Codex",
+      "sha256": "a9abded1e5074b307b737be97a93b9bd9f0f3339aadea0cb128f0f899f2f70b4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Empreinte unique de pied à cinq orteils, voûte et talon distincts, petite motte de sol entière ; support du sens empreinte de pas."
+    },
+    {
+      "id": "pack-4322a4a7",
+      "reviewer": "Codex",
+      "sha256": "8b101a47f0bc39f7157a56f468f7d04476612a6152a8b6e81a7d10a8df60ce78",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pied adulte vu du dessus, cinq orteils et cinq ongles cohérents, gros ongle clair à 96 px ; détail ongle du pied maintenu en support."
+    },
+    {
+      "id": "pack-28c80e21",
+      "reviewer": "Codex",
+      "sha256": "a8734d2617ade711fbbdee0116c1f61106b475d4ffd908a91938e20213112d36",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Goutte unique de forme simple, contour blanc au pinceau et point inférieur entier ; usage support car 방울 peut être classificateur ou clochette."
+    }
+  ],
+  "sourceRecoveries": [
+    {
+      "id": "pack-0b4a560f",
+      "method": "Exact PNG bytes decoded from imagegen data URI; output_hint absent. No regeneration or pixel edit.",
+      "sha256": "e0d2e96b2f3739960fcd3eaa371951a7b0509702da006856273cd4875ffb0d7b"
+    }
+  ]
+}

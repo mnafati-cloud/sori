@@ -1,0 +1,24 @@
+{
+  "id": "pack-de01b010",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T22:50:02.611Z",
+  "sourceSha256": "e8d34f24e3e9e49df5d10cee39736cc561fff47d81656b24be1ca42d31dcb568",
+  "sha256": "5ae9ab5367cc0c8892c993feedd391e61b9356f2f912ff1c100b09c20674072b",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nUne personne adulte entière en tenue sportive couvrante, debout neutre avec tête et chaussures visibles, aucune évaluation du corps ; support du corps physique. Mot ciblé : 육체. Sens du deck : Corps, le physique. Palette strictement blanc chaud et lavis gris sur noir, silhouette complète, marges généreuses. Aucun texte, chiffre, lettre, logo ou pseudo-écriture. Pinceau expressif, pas de photo ou 3D. Usage aide après réponse sauf validation explicite.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Adulte habillé entier en tenue sportive, tête et chaussures contenues avec petit accent au talon ; notion corps/physique en aide.",
+  "reviewedAt": "2026-10-18T22:52:34.578Z",
+  "kr": "육체",
+  "sense": "Corps, le physique",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

@@ -1,0 +1,114 @@
+{
+  "id": "full-concrete-0001-0004",
+  "requested": 4,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-e965c1fd",
+      "kr": "튤립",
+      "sense": "tulipe",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 1
+    },
+    {
+      "id": "pack-3a5061fc",
+      "kr": "벚꽃",
+      "sense": "fleurs de cerisier",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 2
+    },
+    {
+      "id": "pack-3c982b52",
+      "kr": "양",
+      "sense": "Mouton (animal)",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 3
+    },
+    {
+      "id": "pack-40375799",
+      "kr": "게",
+      "sense": "Crabe",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 4
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-e965c1fd",
+      "reviewer": "Codex",
+      "sourceSha256": "dae9e207a9f13dc192e498f27d36c931fc108d1af6767977561d66fb0cb47b59",
+      "note": "Tulipe entière : fleur en coupe, pétales superposés, tige et deux feuilles larges. Silhouette identifiable aux trois tailles, marges noires et traits au pinceau blanc/gris ; aucune couleur naturelle ni texte. Question conservée."
+    },
+    {
+      "id": "pack-3a5061fc",
+      "reviewer": "Codex",
+      "sourceSha256": "ac57eef9e1f6fdcca1dbf3be5abb575a28037f0cf7dfd487d18586e7c61f1fb7",
+      "note": "Branche entière avec deux fleurs ouvertes à cinq pétales échancrés et deux boutons ; dessin blanc/gris sans rose. Lisible à 160 et 96 px. Aide après réponse, car l’espèce d’une fleur monochrome ne peut pas être imposée par la seule silhouette."
+    },
+    {
+      "id": "pack-3c982b52",
+      "reviewer": "Codex",
+      "sourceSha256": "d35391fa79ec721f767adb6555662293b90620ca4a2854fbf1002c57a0fbccf1",
+      "note": "Mouton adulte à toison épaisse et bouclée, quatre jambes et sabots cohérents, oreilles et museau complets ; aucune barbe ni corne de chèvre. Au pinceau blanc/gris, fond noir, très petites touches chaudes aux oreilles. Reconnaissable à 160 et 96 px ; question conservée."
+    },
+    {
+      "id": "pack-40375799",
+      "reviewer": "Codex",
+      "sourceSha256": "3ca2d12c6a79b4fe33205f4968686aaae297a487fa71e5971d0f80868bfe2233",
+      "note": "Crabe entier : carapace compacte, deux pinces au premier plan, quatre pattes de marche de chaque côté et deux yeux ; extrémités entières. Traits blanc/gris sur noir sans carapace rouge ni décor. Silhouette identifiable à 512/160/96 px ; question conservée."
+    }
+  ],
+  "rejectedAttempts": [],
+  "displaySizeReviews": [
+    {
+      "id": "pack-e965c1fd",
+      "reviewer": "Codex",
+      "sha256": "bb4bcd6351ade4883497ce3b85227168cde2fa249fe403b7eefea291cd00d125",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Tulipe entière : fleur en coupe, pétales superposés, tige et deux feuilles larges. Silhouette identifiable aux trois tailles, marges noires et traits au pinceau blanc/gris ; aucune couleur naturelle ni texte. Question conservée."
+    },
+    {
+      "id": "pack-3a5061fc",
+      "reviewer": "Codex",
+      "sha256": "80c65d09bb7850698099a44845a0f4667eca2b47f3b230beb812f918b9d5ccb5",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Branche entière avec deux fleurs ouvertes à cinq pétales échancrés et deux boutons ; dessin blanc/gris sans rose. Lisible à 160 et 96 px. Aide après réponse, car l’espèce d’une fleur monochrome ne peut pas être imposée par la seule silhouette."
+    },
+    {
+      "id": "pack-3c982b52",
+      "reviewer": "Codex",
+      "sha256": "d3a43271593fc9381d7b3c4a7f7d3b707b55ab55f1f1ee7feb1549b80e2927e2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Mouton adulte à toison épaisse et bouclée, quatre jambes et sabots cohérents, oreilles et museau complets ; aucune barbe ni corne de chèvre. Au pinceau blanc/gris, fond noir, très petites touches chaudes aux oreilles. Reconnaissable à 160 et 96 px ; question conservée."
+    },
+    {
+      "id": "pack-40375799",
+      "reviewer": "Codex",
+      "sha256": "ea6ea8299d3d62c2f3d6e2b8e2bd9c5f9e4b39ebe8477c1e71ffb695614078b0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Crabe entier : carapace compacte, deux pinces au premier plan, quatre pattes de marche de chaque côté et deux yeux ; extrémités entières. Traits blanc/gris sur noir sans carapace rouge ni décor. Silhouette identifiable à 512/160/96 px ; question conservée."
+    }
+  ]
+}

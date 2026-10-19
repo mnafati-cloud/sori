@@ -1,0 +1,26 @@
+{
+  "id": "pack-6763e190",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T20:51:58.811Z",
+  "sourceSha256": "bfcfebcc5f6b5d5504033dc7425ec01c99b06e2390e1183abc5ba79c45b6354f",
+  "sha256": "f1c03c8b6992c62a4ed7ba89c709d910d4b05964b8bb3654a5ca330acee11109",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nUn seul ballon de baudruche ovale gonflé, nœud fermé et ficelle entière légèrement courbe, blanc/gris uniquement, aucun texte, logo, visage, chiffre, personne ou paysage. Silhouette et extrémité de ficelle dans de larges marges noires. Palette verrouillée blanc chaud/gris exclusivement, sans couleur naturelle dominante. Sujet entier isolé, noir pur et grandes marges ; aucune écriture ni pseudo-écriture.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Ballon ovale, nœud et ficelle entière clairement lisibles aux trois tailles ; silhouette univoque pour 풍선, question possible.",
+  "reviewedAt": "2026-10-18T20:59:59.112Z",
+  "kr": "풍선",
+  "sense": "Ballon (de baudruche)",
+  "usage": "question",
+  "accepted": [
+    "풍선"
+  ],
+  "alternatives": []
+}

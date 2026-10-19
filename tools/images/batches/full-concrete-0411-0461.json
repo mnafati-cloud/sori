@@ -1,0 +1,139 @@
+{
+  "id": "full-concrete-0411-0461",
+  "requested": 5,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-7a7a2c6d",
+      "kr": "육수",
+      "sense": "Bouillon, soupe de base",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 411
+    },
+    {
+      "id": "pack-898b41d7",
+      "kr": "해물",
+      "sense": "Fruits de mer, produits de la mer",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 446
+    },
+    {
+      "id": "pack-13a47ee0",
+      "kr": "잔디",
+      "sense": "pelouse, gazon",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 458
+    },
+    {
+      "id": "pack-57e36a4d",
+      "kr": "초상화",
+      "sense": "Portrait (peint)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 459
+    },
+    {
+      "id": "pack-c3591794",
+      "kr": "항공기",
+      "sense": "Aéronef, avion",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 461
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-7a7a2c6d",
+      "reviewer": "Codex",
+      "sourceSha256": "8418b2f5d96d83e568dd6efdc51421473cdf8687e50c5f3f1ff10c13ed6d39dc",
+      "note": "Reprise : casserole, deux anses, louche et vapeur entièrement dans le cadre ; le bouillon est désormais noir avec reflets gris, tout ocre supprimé. Sens de bouillon de base en aide."
+    },
+    {
+      "id": "pack-898b41d7",
+      "reviewer": "Codex",
+      "sourceSha256": "908a6ef15695f12baf5f426fe050a196b4b4b995cca25d43b4ab8c7f55906fb7",
+      "note": "Reprise : crevette, antennes, deux coquillages et calamar avec tentacules entiers, lisibles aux trois tailles ; ensemble désormais blanc/gris/noir, aucun rouge ou ocre naturel. Catégorie fruits de mer en aide."
+    },
+    {
+      "id": "pack-13a47ee0",
+      "reviewer": "Codex",
+      "sourceSha256": "519f77ad3b1ed3a2c701cc09b0b054b0c2d8aaea6bcef6988179bcae6baf0bb5",
+      "note": "Touffe de gazon et motte racinée entières, brins et racines contenus, palette monochrome sans vert ni brun ; distinction gazon/pelouse/herbe en aide."
+    },
+    {
+      "id": "pack-57e36a4d",
+      "reviewer": "Codex",
+      "sourceSha256": "74908ad4da4dfbf3c014a127743aa12898d38c76d289250963541aef92f9e1a8",
+      "note": "Tableau de portrait entier avec cadre aux tons blancs/gris chauds, visage adulte fictif et petit accent vermillon dans les cheveux ; sujet portrait peint lisible à 96 px, aide."
+    },
+    {
+      "id": "pack-c3591794",
+      "reviewer": "Codex",
+      "sourceSha256": "98598a99df92407fa71e5ceff8eaae97032039ab578c38ef552f9e4bf85dd41d",
+      "note": "Avion de transport entier, les deux ailes, la queue et les deux moteurs restent dans les marges ; aucune marque ni immatriculation, monochrome ; terme aéronef et niveau lexical en aide."
+    }
+  ],
+  "rejectedAttempts": [],
+  "displaySizeReviews": [
+    {
+      "id": "pack-7a7a2c6d",
+      "reviewer": "Codex",
+      "sha256": "d1ee2c25e9490589e0a63a2639ef0292c5dbeb6fbe83f34d478af07eaf4732a2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Reprise : casserole, deux anses, louche et vapeur entièrement dans le cadre ; le bouillon est désormais noir avec reflets gris, tout ocre supprimé. Sens de bouillon de base en aide."
+    },
+    {
+      "id": "pack-898b41d7",
+      "reviewer": "Codex",
+      "sha256": "14df25422d1df9e2f5622629e5076e22fb4e44c902eb786045d989b514af3aa8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Reprise : crevette, antennes, deux coquillages et calamar avec tentacules entiers, lisibles aux trois tailles ; ensemble désormais blanc/gris/noir, aucun rouge ou ocre naturel. Catégorie fruits de mer en aide."
+    },
+    {
+      "id": "pack-13a47ee0",
+      "reviewer": "Codex",
+      "sha256": "1eb3fe3f63abf7c39b62be926e1f3131ceff185971535b65dc077090e96cc3c0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Touffe de gazon et motte racinée entières, brins et racines contenus, palette monochrome sans vert ni brun ; distinction gazon/pelouse/herbe en aide."
+    },
+    {
+      "id": "pack-57e36a4d",
+      "reviewer": "Codex",
+      "sha256": "1790d3e2c07501aead3c9129f390f510686b5191e10445c0459e8ad087ce01c8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Tableau de portrait entier avec cadre aux tons blancs/gris chauds, visage adulte fictif et petit accent vermillon dans les cheveux ; sujet portrait peint lisible à 96 px, aide."
+    },
+    {
+      "id": "pack-c3591794",
+      "reviewer": "Codex",
+      "sha256": "012caf326bcebe4c4a7133a434184bf392bd5dec5c7b8136f474b50a08efc51d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Avion de transport entier, les deux ailes, la queue et les deux moteurs restent dans les marges ; aucune marque ni immatriculation, monochrome ; terme aéronef et niveau lexical en aide."
+    }
+  ]
+}

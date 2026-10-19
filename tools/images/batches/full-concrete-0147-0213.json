@@ -1,0 +1,204 @@
+{
+  "id": "full-concrete-0147-0213",
+  "requested": 7,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-7b4e0ba2",
+      "kr": "수돗물",
+      "sense": "Eau du robinet",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 147
+    },
+    {
+      "id": "pack-89b4215b",
+      "kr": "여드름",
+      "sense": "Bouton d'acné, acné",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 161
+    },
+    {
+      "id": "pack-6763e190",
+      "kr": "풍선",
+      "sense": "Ballon (de baudruche)",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 207
+    },
+    {
+      "id": "pack-86f1f8e2",
+      "kr": "플라스틱",
+      "sense": "Plastique",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 208
+    },
+    {
+      "id": "pack-83f54f2f",
+      "kr": "피부",
+      "sense": "la peau",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 209
+    },
+    {
+      "id": "pack-265fdc0f",
+      "kr": "필수품",
+      "sense": "Produit de première nécessité",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 210
+    },
+    {
+      "id": "pack-7cd2afd3",
+      "kr": "화분",
+      "sense": "pot de fleurs, plante en pot",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 213
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-7b4e0ba2",
+      "reviewer": "Codex",
+      "sourceSha256": "a4725ae5401339d322b88f07ee220929829a8c19bbe1a32229461aae82aec189",
+      "note": "Robinet entier avec gouttes entièrement contenues dans les marges ; eau du robinet évoquée en support, aucune coupure inférieure."
+    },
+    {
+      "id": "pack-89b4215b",
+      "reviewer": "Codex",
+      "sourceSha256": "e74175fad63873bfd04c71c64eb07cffcab2ca43d56eb4c08bded5ccc7f5b972",
+      "note": "Front au pinceau avec bouton rouge central assez contrasté pour rester perceptible à 96 px ; support après réponse, pas de diagnostic."
+    },
+    {
+      "id": "pack-6763e190",
+      "reviewer": "Codex",
+      "sourceSha256": "bfcfebcc5f6b5d5504033dc7425ec01c99b06e2390e1183abc5ba79c45b6354f",
+      "note": "Ballon ovale, nœud et ficelle entière clairement lisibles aux trois tailles ; silhouette univoque pour 풍선, question possible."
+    },
+    {
+      "id": "pack-86f1f8e2",
+      "reviewer": "Codex",
+      "sourceSha256": "64eab39729b7a9a529850870efd0e8f4adc7e6eeb0080704c422027f56f9ee33",
+      "note": "Chaise monobloc complète, quatre pieds cohérents, aucun texte ; support du matériau plastique qui ne se déduit pas avec certitude de la palette."
+    },
+    {
+      "id": "pack-83f54f2f",
+      "reviewer": "Codex",
+      "sourceSha256": "14b87d324d27e48fa472b5d08a40fe7cc0b2062dd4ac0f0a3452989a64912cd5",
+      "note": "Main adulte ouverte à cinq doigts cohérents, plis de peau visibles ; aide au mot peau après réponse, pas une question sur la main."
+    },
+    {
+      "id": "pack-265fdc0f",
+      "reviewer": "Codex",
+      "sourceSha256": "1aa54fd9a74213c5faad09a75003fc70e497a812bbc6a6c29b1ba8c0d832d52b",
+      "note": "Trousse de voyage contenant brosse à dents et tube neutre, petite tirette rouge, silhouette entière ; exemple de produit de première nécessité, support."
+    },
+    {
+      "id": "pack-7cd2afd3",
+      "reviewer": "Codex",
+      "sourceSha256": "0c153a57afe46846a08dfdba01c87d6bf1aac74a668281c63bfd1687218aa7b7",
+      "note": "Plante fleurie avec pot entièrement visible ; tiges, feuilles et fleurs lisibles à 96 px, support pour éviter la confusion fleur/plante/pot."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-4d09f512",
+      "rank": 212,
+      "kr": "허벅지",
+      "sourceSha256": "86fa5ef75514b0c59096876727ca48210f2082b3a34e678776b1f39bb31edce7",
+      "sha256": "2f38ac75bb0dceb3839f8f923ab476c298fcda48b4e87d7e93650849739eecb6",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Short et haut de cuisse touchent le bord supérieur ; silhouette coupée malgré le pied entier. Reprise manuelle avec un modèle anatomique entier et son socle."
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-7b4e0ba2",
+      "reviewer": "Codex",
+      "sha256": "c057eeaa90980a793188004e1bd57c8bfbfc28eecb2039bdac74189c65c970ea",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Robinet entier avec gouttes entièrement contenues dans les marges ; eau du robinet évoquée en support, aucune coupure inférieure."
+    },
+    {
+      "id": "pack-89b4215b",
+      "reviewer": "Codex",
+      "sha256": "0200f63d6cc480546a083f9f17b117e7bd93f86837d8f43cc75727ec8f385d2e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Front au pinceau avec bouton rouge central assez contrasté pour rester perceptible à 96 px ; support après réponse, pas de diagnostic."
+    },
+    {
+      "id": "pack-6763e190",
+      "reviewer": "Codex",
+      "sha256": "f1c03c8b6992c62a4ed7ba89c709d910d4b05964b8bb3654a5ca330acee11109",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Ballon ovale, nœud et ficelle entière clairement lisibles aux trois tailles ; silhouette univoque pour 풍선, question possible."
+    },
+    {
+      "id": "pack-86f1f8e2",
+      "reviewer": "Codex",
+      "sha256": "c19d147a6a9db35c94718c678c0cc2e282cf25814781be7c961f26d62d2be88f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Chaise monobloc complète, quatre pieds cohérents, aucun texte ; support du matériau plastique qui ne se déduit pas avec certitude de la palette."
+    },
+    {
+      "id": "pack-83f54f2f",
+      "reviewer": "Codex",
+      "sha256": "9f6c61f2a1989c606017cc74f2c2766039051c0036d72d9323d7c4356fd1bf7e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Main adulte ouverte à cinq doigts cohérents, plis de peau visibles ; aide au mot peau après réponse, pas une question sur la main."
+    },
+    {
+      "id": "pack-265fdc0f",
+      "reviewer": "Codex",
+      "sha256": "cbe6b21ba85a8b004d6f57e8be22afc20130fdfd6541943a022b2aebb23f3047",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Trousse de voyage contenant brosse à dents et tube neutre, petite tirette rouge, silhouette entière ; exemple de produit de première nécessité, support."
+    },
+    {
+      "id": "pack-7cd2afd3",
+      "reviewer": "Codex",
+      "sha256": "87e453848893efb4d267320116806262564b58dcc1f22fc78654bbfa1ee15f39",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Plante fleurie avec pot entièrement visible ; tiges, feuilles et fleurs lisibles à 96 px, support pour éviter la confusion fleur/plante/pot."
+    }
+  ]
+}

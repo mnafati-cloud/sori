@@ -1,0 +1,28 @@
+{
+  "id": "pack-61dab8fb",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T20:06:58.949Z",
+  "sourceSha256": "5b093eb5bdc1735b33c6aa1eda9e5a9198dd5539b630a1695bc3e6c55c63e401",
+  "sha256": "7969cdc45588e0d7d4c4adddc29129101d322d308173e6a4ad004b9d25ef56b9",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nSujet unique : Sac plastique. Mot coréen ciblé : 비닐봉지. Illustrer précisément ce sens du deck, sans dessiner de mot. Note lexicale : 비닐 (vinyle) + 봉지 (封紙, sachet).. Exemple qui précise le sens : 물건을 비닐봉지에 담았다.. Une illustration isolée de ce référent concret, silhouette entière, marges noires généreuses. Blanc chaud, lavis gris sobres, larges zones noires ouvertes dans le sujet. Aucun texte, chiffre, lettre, logo ou nom de marque ; aucune couleur naturelle dominante. Si le mot désigne une catégorie ou une nuance non visible, l'image sera une aide après réponse : ne pas inventer de symbole magique qui prétendrait distinguer des synonymes.  Palette verrouillée : blanc chaud et lavis gris uniquement, pas de brun naturel, vert, bleu ou rouge dominant ; aucun accent rouge nécessaire. Rien de coupé, larges marges noires, pas de glyphes ni pseudo-écriture. Pour une partie du corps : étude anatomique neutre adulte, non sexuelle, sans blessure sauf si le sens l’exige. Pour un document : aucun texte lisible ou imité. Pour un médicament : aucune marque, posologie ou promesse médicale. Usage aide après réponse pour toute catégorie, matière, synonyme ou attribut non visuellement certain.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Inspection effective PNG et WebP à 512, 160 et 96 px. Sac plastique entier à deux anses, plis et transparence cohérents, aucune marque ; silhouette claire à 96 px. Question 비닐봉지 ; 봉지 neutre. Pinceau blanc chaud/lavis gris sur noir, sujet entièrement dans le carré, aucun texte ou logo.",
+  "reviewedAt": "2026-10-18T20:12:17.073Z",
+  "kr": "비닐봉지",
+  "sense": "Sac plastique",
+  "usage": "question",
+  "accepted": [
+    "비닐봉지"
+  ],
+  "alternatives": [
+    "봉지"
+  ]
+}

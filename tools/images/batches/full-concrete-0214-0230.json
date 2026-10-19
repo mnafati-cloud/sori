@@ -1,0 +1,414 @@
+{
+  "id": "full-concrete-0214-0230",
+  "requested": 16,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-157b467c",
+      "kr": "화장대",
+      "sense": "Coiffeuse, table de toilette (avec miroir).",
+      "usage": "question",
+      "cefr": "B1",
+      "rank": 214
+    },
+    {
+      "id": "pack-9b517313",
+      "kr": "후식",
+      "sense": "Dessert",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 215
+    },
+    {
+      "id": "pack-0feba798",
+      "kr": "가로등",
+      "sense": "Réverbère, lampadaire",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 216
+    },
+    {
+      "id": "pack-0c6163ae",
+      "kr": "가뭄",
+      "sense": "La sécheresse",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 217
+    },
+    {
+      "id": "pack-8f904c62",
+      "kr": "거품",
+      "sense": "Mousse, bulles",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 218
+    },
+    {
+      "id": "pack-e96d80fa",
+      "kr": "곡식",
+      "sense": "Céréales, grains (à récolter).",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 219
+    },
+    {
+      "id": "pack-16512ae8",
+      "kr": "교복",
+      "sense": "Uniforme scolaire",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 220
+    },
+    {
+      "id": "pack-7ddbc8cc",
+      "kr": "교재",
+      "sense": "Manuel, support pedagogique",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 221
+    },
+    {
+      "id": "pack-86d06323",
+      "kr": "근육",
+      "sense": "Muscle",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 222
+    },
+    {
+      "id": "pack-256a08d8",
+      "kr": "기구",
+      "sense": "Instrument, ustensile, appareil",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 223
+    },
+    {
+      "id": "pack-af727592",
+      "kr": "기념품",
+      "sense": "souvenir (objet)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 224
+    },
+    {
+      "id": "pack-4fdd784c",
+      "kr": "김",
+      "sense": "Algue séchée (gim)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 225
+    },
+    {
+      "id": "pack-02db1798",
+      "kr": "꼬리",
+      "sense": "Queue (d'un animal)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 226
+    },
+    {
+      "id": "pack-c7def9fe",
+      "kr": "눈가",
+      "sense": "Coin de l'œil, contour des yeux",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 228
+    },
+    {
+      "id": "pack-b3adda01",
+      "kr": "눈동자",
+      "sense": "Pupille (de l'œil)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 229
+    },
+    {
+      "id": "pack-8cbb379d",
+      "kr": "대",
+      "sense": "Tige, tronc (de plante)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 230
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-157b467c",
+      "reviewer": "Codex",
+      "sourceSha256": "5f32622233c46f166162416cbb36d65b10c3188c04d0b8115dd415d50155aed9",
+      "note": "Coiffeuse entière avec miroir ovale, deux tiroirs et quatre pieds cohérents ; silhouette distinctive à 96 px. Question 화장대 possible."
+    },
+    {
+      "id": "pack-9b517313",
+      "reviewer": "Codex",
+      "sourceSha256": "5339364eed5356542c990641b8b06ccc3cce438395ec3abac74e6559608a75a2",
+      "note": "Coupelle de fruits coupés, bol et morceaux entiers ; dessert illustré par un exemple, moment après repas maintenu en support."
+    },
+    {
+      "id": "pack-0feba798",
+      "reviewer": "Codex",
+      "sourceSha256": "3b7309a37fccdb4d4fa96c20c8b3d071c5ba509361e9d15a709af2909e908ccd",
+      "note": "Réverbère entier, lanterne vitrée et pied autonome ; silhouette lisible aux trois tailles. Question 가로등 possible, lampe générique neutre."
+    },
+    {
+      "id": "pack-0c6163ae",
+      "reviewer": "Codex",
+      "sourceSha256": "992f0d8ad95f61d78eaa9dc42c00ebe5a29ef459bff046a9e5153a72f32b1c84",
+      "note": "Petit échantillon de sol desséché et fissuré, aucun paysage ; fissures visibles à 96 px, sécheresse évoquée en support."
+    },
+    {
+      "id": "pack-8f904c62",
+      "reviewer": "Codex",
+      "sourceSha256": "2ca6e52d244f7191752a053f53881c01c8ce6627243d0bec922e8dfe861392a6",
+      "note": "Groupe compact de bulles de tailles variées, contours blancs sur noir encore distincts à 96 px ; support de mousse/bulles."
+    },
+    {
+      "id": "pack-e96d80fa",
+      "reviewer": "Codex",
+      "sourceSha256": "78685b8db6aaa476c087422e9e8e62d069c63630f69e79735a123d06291437ec",
+      "note": "Gerbe de céréales avec panicules et tiges entières, grains lisibles à 160 px ; support de la catégorie grains à récolter."
+    },
+    {
+      "id": "pack-16512ae8",
+      "reviewer": "Codex",
+      "sourceSha256": "78df7b93fa65705547e40ddc945c855ee6ba51aa84957520860deb4776ceb926",
+      "note": "Uniforme sur cintre avec blazer à liserés, cravate et pantalon entiers ; statut scolaire maintenu en support."
+    },
+    {
+      "id": "pack-7ddbc8cc",
+      "reviewer": "Codex",
+      "sourceSha256": "43a60e9258ea558f63c05e7fd04adecd29d1800e8f2d811759ce26c9efc909de",
+      "note": "Livre fermé avec schéma géométrique simple sans glyphes ; support pédagogique illustré, aucun titre ni texte."
+    },
+    {
+      "id": "pack-86d06323",
+      "reviewer": "Codex",
+      "sourceSha256": "26ee8f776f3612dca0a8a46df0984d9549f6fd577bb952244c83ff6f02466eae",
+      "note": "Bras adulte fléchi au pinceau, biceps nettement modelé et extrémités fondues dans le noir sans franchir les bords ; support du muscle."
+    },
+    {
+      "id": "pack-256a08d8",
+      "reviewer": "Codex",
+      "sourceSha256": "58587a53548939b4814dc87aaa9f3a9176fee60f9f7f206a52411f42e45450b0",
+      "note": "Appareil de musculation entier, câble, barre et siège cohérents ; détail compact lisible, support de la catégorie appareil."
+    },
+    {
+      "id": "pack-af727592",
+      "reviewer": "Codex",
+      "sourceSha256": "78cbbbeec0b42cac6d445e49229d9fec1b38920c2bd36557e5e62d1b8a72bfd0",
+      "note": "Maquette de hanok isolée sur petit socle, toiture et murs entiers ; valeur de souvenir contextuelle, usage support."
+    },
+    {
+      "id": "pack-4fdd784c",
+      "reviewer": "Codex",
+      "sourceSha256": "10bb2ff75c625a662bb7af037aa79184f84115b489d9828d10a6310227a3345b",
+      "note": "Pile de feuilles de gim carrées et fines, bords irréguliers et surface froissée, aucune couleur naturelle ; support du produit alimentaire."
+    },
+    {
+      "id": "pack-02db1798",
+      "reviewer": "Codex",
+      "sourceSha256": "e8ae044f660583e51a24d08acad6262b06403d57c85751794d8d723e3ba9ce0d",
+      "note": "Chien entier vu de dos, queue relevée bien dégagée, quatre pattes cohérentes ; support de la partie queue, pas une question sur chien."
+    },
+    {
+      "id": "pack-c7def9fe",
+      "reviewer": "Codex",
+      "sourceSha256": "934d881977537343c4d8bc8e669ae44b7af9436b160ec7a8898d24e20671656d",
+      "note": "Œil et coin externe avec plis périphériques clairement visibles, étude neutre au pinceau sans glyphes ; support de contour des yeux."
+    },
+    {
+      "id": "pack-b3adda01",
+      "reviewer": "Codex",
+      "sourceSha256": "464add2f161abfe7cdbfdcd6dd3cc36882a7e67923bbba6568e17f17579da27d",
+      "note": "Œil avec pupille centrale noire bien ronde et iris distinct, encore clair à 96 px ; partie ciblée maintenue en support."
+    },
+    {
+      "id": "pack-8cbb379d",
+      "reviewer": "Codex",
+      "sourceSha256": "a11656126ff34e6e936d9ff2fa292df9b034dafae2095f61bfea95845cc6d879",
+      "note": "Segment de tige de bambou à un nœud, deux extrémités entières et lisibles, sans feuilles ni texte ; support de tige/tronc."
+    }
+  ],
+  "rejectedAttempts": [],
+  "displaySizeReviews": [
+    {
+      "id": "pack-157b467c",
+      "reviewer": "Codex",
+      "sha256": "06ffab0acec7d455cfdd4c9d64f8f8c1fddffe6c526b741f8b1929c2f75252be",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Coiffeuse entière avec miroir ovale, deux tiroirs et quatre pieds cohérents ; silhouette distinctive à 96 px. Question 화장대 possible."
+    },
+    {
+      "id": "pack-9b517313",
+      "reviewer": "Codex",
+      "sha256": "94b119fb7a5410b0b7dd5d7e32f5540d31ccc71cb6432e27504ee693e3da0242",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Coupelle de fruits coupés, bol et morceaux entiers ; dessert illustré par un exemple, moment après repas maintenu en support."
+    },
+    {
+      "id": "pack-0feba798",
+      "reviewer": "Codex",
+      "sha256": "4380cb27c08c1a368a0135c2b013c44b0b479dd2c9f11f49d8826c37bdb96c8d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Réverbère entier, lanterne vitrée et pied autonome ; silhouette lisible aux trois tailles. Question 가로등 possible, lampe générique neutre."
+    },
+    {
+      "id": "pack-0c6163ae",
+      "reviewer": "Codex",
+      "sha256": "0248b3f1c369cb5c1549746230353764dd57dfc2a42b6f7761c37154b57a9643",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petit échantillon de sol desséché et fissuré, aucun paysage ; fissures visibles à 96 px, sécheresse évoquée en support."
+    },
+    {
+      "id": "pack-8f904c62",
+      "reviewer": "Codex",
+      "sha256": "5fae392f00616ee599e1eee90fe2740733a41a2c63f91ac34d42eed0fb6ee95f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Groupe compact de bulles de tailles variées, contours blancs sur noir encore distincts à 96 px ; support de mousse/bulles."
+    },
+    {
+      "id": "pack-e96d80fa",
+      "reviewer": "Codex",
+      "sha256": "de5ec42329345dfb96e77da0305ba9aee5c940ace9773bbec8d582a3d4f926ad",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Gerbe de céréales avec panicules et tiges entières, grains lisibles à 160 px ; support de la catégorie grains à récolter."
+    },
+    {
+      "id": "pack-16512ae8",
+      "reviewer": "Codex",
+      "sha256": "df613b4c0a8427526b68dc88a75e940bd75dcb237217a7f3f726e99303900371",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Uniforme sur cintre avec blazer à liserés, cravate et pantalon entiers ; statut scolaire maintenu en support."
+    },
+    {
+      "id": "pack-7ddbc8cc",
+      "reviewer": "Codex",
+      "sha256": "1943665c017bf95e2dfff59f6583a53eccbff59b6097cd2f34140de0a1af53be",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Livre fermé avec schéma géométrique simple sans glyphes ; support pédagogique illustré, aucun titre ni texte."
+    },
+    {
+      "id": "pack-86d06323",
+      "reviewer": "Codex",
+      "sha256": "1fdba836124e2af6a491cb1339eabf5dd29798ca4c26bd7d903a071b30b5eb4b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bras adulte fléchi au pinceau, biceps nettement modelé et extrémités fondues dans le noir sans franchir les bords ; support du muscle."
+    },
+    {
+      "id": "pack-256a08d8",
+      "reviewer": "Codex",
+      "sha256": "fa48c07747e5e8269e4ea49897d83a1e1d53b43b395c9f4e4467b0826d5487cc",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Appareil de musculation entier, câble, barre et siège cohérents ; détail compact lisible, support de la catégorie appareil."
+    },
+    {
+      "id": "pack-af727592",
+      "reviewer": "Codex",
+      "sha256": "ebad55ede4d05a6548b82dbf0428f8903e0330d70c2a03c9db7c9a8729c99e73",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Maquette de hanok isolée sur petit socle, toiture et murs entiers ; valeur de souvenir contextuelle, usage support."
+    },
+    {
+      "id": "pack-4fdd784c",
+      "reviewer": "Codex",
+      "sha256": "eeb193c6557643ed080b6f929624210e926119142cd39604c78649cfc0a666eb",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pile de feuilles de gim carrées et fines, bords irréguliers et surface froissée, aucune couleur naturelle ; support du produit alimentaire."
+    },
+    {
+      "id": "pack-02db1798",
+      "reviewer": "Codex",
+      "sha256": "8c7e98b6927109981b74ce75e7ead6e36d382c4ffc1fd7c3d13403b6ade6a3e8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Chien entier vu de dos, queue relevée bien dégagée, quatre pattes cohérentes ; support de la partie queue, pas une question sur chien."
+    },
+    {
+      "id": "pack-c7def9fe",
+      "reviewer": "Codex",
+      "sha256": "324b11baf009d3fdc416ec51df9adc310f9ab5684bc59134eb8167fb113680ce",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Œil et coin externe avec plis périphériques clairement visibles, étude neutre au pinceau sans glyphes ; support de contour des yeux."
+    },
+    {
+      "id": "pack-b3adda01",
+      "reviewer": "Codex",
+      "sha256": "bc10aa2e527ead2618791b6a8de02f405bfa1090f49a55ca1ab0d5b705f43cf3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Œil avec pupille centrale noire bien ronde et iris distinct, encore clair à 96 px ; partie ciblée maintenue en support."
+    },
+    {
+      "id": "pack-8cbb379d",
+      "reviewer": "Codex",
+      "sha256": "d3e6fe20d8612c488e4a4e6568957614607b6a7f36df592e379b50aee9ffda73",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Segment de tige de bambou à un nœud, deux extrémités entières et lisibles, sans feuilles ni texte ; support de tige/tronc."
+    }
+  ]
+}

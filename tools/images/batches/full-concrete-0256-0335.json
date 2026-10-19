@@ -1,0 +1,593 @@
+{
+  "id": "full-concrete-0256-0335",
+  "requested": 22,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-4c2786f1",
+      "kr": "번개",
+      "sense": "Éclair (foudre)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 256
+    },
+    {
+      "id": "pack-ed277e78",
+      "kr": "볶음",
+      "sense": "Plat sauté; friture (à la poêle)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 260
+    },
+    {
+      "id": "pack-5ee50d64",
+      "kr": "크림",
+      "sense": "Crème (alimentaire ou cosmétique).",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 309
+    },
+    {
+      "id": "pack-211572bc",
+      "kr": "탁자",
+      "sense": "Une petite table / table basse",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 310
+    },
+    {
+      "id": "pack-fbc8f019",
+      "kr": "품",
+      "sense": "Giron, poitrine (que l'on serre) ; ampleur d'un vêtement",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 311
+    },
+    {
+      "id": "pack-e670b594",
+      "kr": "프린터",
+      "sense": "Imprimante",
+      "usage": "question",
+      "cefr": "B2",
+      "rank": 312
+    },
+    {
+      "id": "pack-889c9c04",
+      "kr": "학용품",
+      "sense": "Fournitures scolaires",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 313
+    },
+    {
+      "id": "pack-661f9c32",
+      "kr": "향",
+      "sense": "Encens ; parfum, senteur.",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 314
+    },
+    {
+      "id": "pack-b7215b5c",
+      "kr": "화재",
+      "sense": "Incendie.",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 316
+    },
+    {
+      "id": "pack-16c63bde",
+      "kr": "가로수",
+      "sense": "Arbre d'alignement, arbre de rue",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 317
+    },
+    {
+      "id": "pack-5d7d0d18",
+      "kr": "겨자",
+      "sense": "Moutarde (condiment)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 319
+    },
+    {
+      "id": "pack-221041ad",
+      "kr": "고무신",
+      "sense": "Chaussures de caoutchouc (traditionnelles)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 320
+    },
+    {
+      "id": "pack-3c83b4f0",
+      "kr": "관광버스",
+      "sense": "Autocar de tourisme, bus touristique",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 322
+    },
+    {
+      "id": "pack-cf5632c7",
+      "kr": "금",
+      "sense": "Or (métal)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 323
+    },
+    {
+      "id": "pack-d79c455f",
+      "kr": "기기",
+      "sense": "Appareil, dispositif, machine.",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 324
+    },
+    {
+      "id": "pack-08fa4a79",
+      "kr": "깍두기",
+      "sense": "Kkakdugi (kimchi de radis coupé en dés).",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 325
+    },
+    {
+      "id": "pack-df706e6a",
+      "kr": "낚싯대",
+      "sense": "Canne à pêche.",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 328
+    },
+    {
+      "id": "pack-f465aea4",
+      "kr": "디스크",
+      "sense": "Disque ; hernie discale (fam.).",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 331
+    },
+    {
+      "id": "pack-80b863ca",
+      "kr": "라켓",
+      "sense": "Raquette (tennis, badminton)",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 332
+    },
+    {
+      "id": "pack-3aa96c9e",
+      "kr": "레이저",
+      "sense": "Laser",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 333
+    },
+    {
+      "id": "pack-7fd81b7e",
+      "kr": "마요네즈",
+      "sense": "Mayonnaise",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 334
+    },
+    {
+      "id": "pack-2f1918a4",
+      "kr": "면",
+      "sense": "Coton (matière)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 335
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-4c2786f1",
+      "reviewer": "Codex",
+      "sourceSha256": "eff332103a124c08fc7b27c884dde352620c70a1d321337a2fee5cf1839ab297",
+      "note": "Éclair ramifié entièrement dans le carré, origine et toutes pointes séparées des bords par du noir ; reprise de cadrage validée aux trois tailles, support."
+    },
+    {
+      "id": "pack-ed277e78",
+      "reviewer": "Codex",
+      "sourceSha256": "aea01b856fd5a1b82fcfef21aef6b754410d81633da218dedca5fe2b4a31a199",
+      "note": "Coupelle d’anchois sautés au sésame maintenant blanc gris, sauce noire sans brun doré ; poissons et bol lisibles à 96 px, reprise de palette validée en support."
+    },
+    {
+      "id": "pack-5ee50d64",
+      "reviewer": "Codex",
+      "sourceSha256": "e61e90383a7fcd6d66c8a772be9d2ad5bef1dfee888cd3dd947e70e336f4c5d5",
+      "note": "Spirale de crème fouettée dans coupelle entière, blanc chaud et lavis gris sobres ; sens alimentaire de crème en support selon exemple."
+    },
+    {
+      "id": "pack-211572bc",
+      "reviewer": "Codex",
+      "sourceSha256": "f80e127c6e1d3d8fa4df613c8479d35a767366acedc6f674b02d6d8699e6674c",
+      "note": "Table basse vide à quatre pieds cohérents, plateau entier, sans décor ; usage support du type table basse et des synonymes."
+    },
+    {
+      "id": "pack-fbc8f019",
+      "reviewer": "Codex",
+      "sourceSha256": "6298ca6b329f711ed6e863d2cf3a689efceffc7f81e39023bab4f038f495afc0",
+      "note": "Groupe mère adulte habillée et enfant endormi dans les bras, figures entières et étreinte cohérente, petit accent du foulard ; sens giron en support."
+    },
+    {
+      "id": "pack-e670b594",
+      "reviewer": "Codex",
+      "sourceSha256": "41d409961102dbd8cfbd91c10874aeba34ee5a0f87b552845c521e70370586b5",
+      "note": "Imprimante entière avec entrée et sortie de feuille blanche, sans marque ou glyphes ; silhouette claire à 96 px, question 프린터 possible."
+    },
+    {
+      "id": "pack-889c9c04",
+      "reviewer": "Codex",
+      "sourceSha256": "b2cf3a06a14faceca989a0f141cec2982b040afa83337a0691024d35d9994546",
+      "note": "Trousse scolaire ouverte contenant crayon, gomme et règle sans chiffres ; ensemble entier et compact, fournitures en support."
+    },
+    {
+      "id": "pack-661f9c32",
+      "reviewer": "Codex",
+      "sourceSha256": "2b0a962225f452a9d2459024b71f21a4e34da4c376f9da61a376e0ad947c38e8",
+      "note": "Trois bâtons d’encens dans porte-encens et filets de fumée entièrement dans les marges ; pas de texte ou autel, sens encens en support."
+    },
+    {
+      "id": "pack-b7215b5c",
+      "reviewer": "Codex",
+      "sourceSha256": "5574000fd9ba5c869df0080814566a355d882905b963f30e56c3cf400e9ea8a4",
+      "note": "Petite maison isolée en flammes blanches et fumée grise, contour entier sans personnes ni paysage ; exemple d’incendie en support."
+    },
+    {
+      "id": "pack-16c63bde",
+      "reviewer": "Codex",
+      "sourceSha256": "e05ce30b71f2d97df32cc794a5216d27b64a1472323b160ce8f9d5a2aaaff9e9",
+      "note": "Arbre entier dans grille de pied circulaire, tronc et couronne contenus, aucune rue ; fonction arbre d’alignement maintenue en support."
+    },
+    {
+      "id": "pack-5d7d0d18",
+      "reviewer": "Codex",
+      "sourceSha256": "f8ab3f7515d3a280059a500e4edf7f6f928d263095af39b971ad87d7102f49e3",
+      "note": "Coupelle de moutarde à cuillère courte entière, crème blanc chaud et gris sans jaune vif ; condiment en support, aucune identification par couleur."
+    },
+    {
+      "id": "pack-221041ad",
+      "reviewer": "Codex",
+      "sourceSha256": "34410b345695966ae8c9c8a9c0df91ab8af67ac2850d6246293b3a0495a08466",
+      "note": "Paire de gomusin moulées basses sans lacets, bouts relevés et deux ouvertures cohérentes, entièrement visibles ; type traditionnel en support."
+    },
+    {
+      "id": "pack-3c83b4f0",
+      "reviewer": "Codex",
+      "sourceSha256": "66300c1b94a774c628739bc9d5def1730804a1189d44e034743fc8f296b74a58",
+      "note": "Autocar de tourisme entier à grands vitrages et soutes, aucune marque, plaque ou destination ; usage touristique contextuel en support."
+    },
+    {
+      "id": "pack-cf5632c7",
+      "reviewer": "Codex",
+      "sourceSha256": "3f56cf33665595e6d6b1dfa8a824c6c85555ef9caccce3cffdae8a858fa926fb",
+      "note": "Bague simple entière rendue blanc et gris, aucune teinte or ou poinçon ; matière or maintenue en support après réponse."
+    },
+    {
+      "id": "pack-d79c455f",
+      "reviewer": "Codex",
+      "sourceSha256": "ba25047678e5b19182be550e0a11b2178ac52e08dc72459042c087b9960baeab",
+      "note": "Appareil médical compact de mesure avec brassard relié, écran et boutons vierges, ensemble entier ; exemple de catégorie appareil en support."
+    },
+    {
+      "id": "pack-08fa4a79",
+      "reviewer": "Codex",
+      "sourceSha256": "7160ca779407915beefccb1d0717afddd3f1d80970690b19abc5a2f03151c185",
+      "note": "Coupelle de kkakdugi à cubes de radis distincts, majorité claire avec seules traces de piment sur deux cubes ; plat spécifique maintenu en support."
+    },
+    {
+      "id": "pack-df706e6a",
+      "reviewer": "Codex",
+      "sourceSha256": "ec0b304802ff3621c1489f76e9946b95c8685d4564c40157c09eef28be13a9b3",
+      "note": "Canne, moulinet, anneaux, ligne et hameçon entiers, assemblage cohérent et lisible à 96 px ; question 낚싯대 possible."
+    },
+    {
+      "id": "pack-f465aea4",
+      "reviewer": "Codex",
+      "sourceSha256": "7abb90f3b7296bf37ea3d140df870ffcfe74c5daafefd9040ba34028e627a0f9",
+      "note": "Disquette informatique carrée entière avec volet et étiquette sans texte ; sens stockage de l’exemple illustré en support, pas hernie discale."
+    },
+    {
+      "id": "pack-80b863ca",
+      "reviewer": "Codex",
+      "sourceSha256": "cabcf8bbc06af67214a8f09ae80cf6fd0b608ff6cb9bc440de38c5cdfbb98ed3",
+      "note": "Raquette entière à cordage régulier et manche terminé dans les marges, aucun logo ; silhouette claire à 96 px, question 라켓 possible."
+    },
+    {
+      "id": "pack-3aa96c9e",
+      "reviewer": "Codex",
+      "sourceSha256": "d9fc10065a49a35ea41fc219ffb5562ee4b28b51a1eba76c168ed29868e09d69",
+      "note": "Tête de laser industriel isolée avec petit faisceau sur plaque, câble terminé au pinceau dans le noir, tout contenu dans le cadre ; fonctionnement évoqué en support."
+    },
+    {
+      "id": "pack-7fd81b7e",
+      "reviewer": "Codex",
+      "sourceSha256": "79e46613f4451edaae6cfc12f9c9761e161ea45d6b2f6e367e517f38a87f9e55",
+      "note": "Mayonnaise claire en coupelle avec cuillère, bords entiers, aucun label ; aliment maintenu en support car proche visuellement de crème."
+    },
+    {
+      "id": "pack-2f1918a4",
+      "reviewer": "Codex",
+      "sourceSha256": "04d95f9761e5b1699f2d7a0cc8c9344bc9474fe0d89607f8c915379e8e849ad5",
+      "note": "Tee-shirt uni entier aux plis et tissage suggérés, sans étiquette ; matière coton maintenue en support, pas sens nouilles."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-55a185a4",
+      "rank": 326,
+      "kr": "깨소금",
+      "sourceSha256": "f83c126d4bc2e3d46962bb5b41418207082c1e7b82fc53a1c77726bb7766d10c",
+      "sha256": "ae8c52c37d3e484c29c061bacf10014f913a9793c2a3c089ca54622a0b5a0d82",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Les grains pilés sont brun doré sur une grande partie du contenu ; palette naturelle trop saturée pour le style blanc/gris. Reprise strictement achromatique."
+    },
+    {
+      "id": "pack-1594b26a",
+      "rank": 327,
+      "kr": "꽃씨",
+      "sourceSha256": "9adb085ea4f371ad22fe0b408b88433c9ab60b0157ed9a07e8eee3ae600f8d3e",
+      "sha256": "60feacbc89ecdb01360bc0ff9a683b71e20edd2dcecf6160b1582782f69ecd9b",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Plusieurs coques des graines sont colorées en brun naturel ; correction de palette pour rester en blanc/gris."
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-4c2786f1",
+      "reviewer": "Codex",
+      "sha256": "28247120883de7d74cb69b0ba7fddfe1fca3e4b8694ed48d38f6ddaf8c63a482",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Éclair ramifié entièrement dans le carré, origine et toutes pointes séparées des bords par du noir ; reprise de cadrage validée aux trois tailles, support."
+    },
+    {
+      "id": "pack-ed277e78",
+      "reviewer": "Codex",
+      "sha256": "2230708f309988ce332ed90c5df9c4b1623bef6a7a00f7e7d885c1f42acb910c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Coupelle d’anchois sautés au sésame maintenant blanc gris, sauce noire sans brun doré ; poissons et bol lisibles à 96 px, reprise de palette validée en support."
+    },
+    {
+      "id": "pack-5ee50d64",
+      "reviewer": "Codex",
+      "sha256": "53015ba85611d26c4c5d7940fdd278896a015388dbc0600bb04801ccad5d3ee0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Spirale de crème fouettée dans coupelle entière, blanc chaud et lavis gris sobres ; sens alimentaire de crème en support selon exemple."
+    },
+    {
+      "id": "pack-211572bc",
+      "reviewer": "Codex",
+      "sha256": "2e4afc6338ecd0f6ee703f0027c1fce870bb165d80e4fb1e167434a8d4bcf4b3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Table basse vide à quatre pieds cohérents, plateau entier, sans décor ; usage support du type table basse et des synonymes."
+    },
+    {
+      "id": "pack-fbc8f019",
+      "reviewer": "Codex",
+      "sha256": "06c93a516b76b77a0a7e9dd58d47fcc8f3e5a393d0a1eff0fe8349a96b397449",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Groupe mère adulte habillée et enfant endormi dans les bras, figures entières et étreinte cohérente, petit accent du foulard ; sens giron en support."
+    },
+    {
+      "id": "pack-e670b594",
+      "reviewer": "Codex",
+      "sha256": "1dd60fece872f84af622e73151d090465127b8630a1411ea4ca626ba613031fa",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Imprimante entière avec entrée et sortie de feuille blanche, sans marque ou glyphes ; silhouette claire à 96 px, question 프린터 possible."
+    },
+    {
+      "id": "pack-889c9c04",
+      "reviewer": "Codex",
+      "sha256": "5fed9fa8e0dc0543e098462df57fef919311fa475ee9d2907e4d27dd1dc8054e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Trousse scolaire ouverte contenant crayon, gomme et règle sans chiffres ; ensemble entier et compact, fournitures en support."
+    },
+    {
+      "id": "pack-661f9c32",
+      "reviewer": "Codex",
+      "sha256": "723041121243ed8ae97387cb474ec3c323b48cae4289a433078ff2753158bea3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Trois bâtons d’encens dans porte-encens et filets de fumée entièrement dans les marges ; pas de texte ou autel, sens encens en support."
+    },
+    {
+      "id": "pack-b7215b5c",
+      "reviewer": "Codex",
+      "sha256": "1b5d5d52ad2f91d1402e7405e5b115c4091e6e9c46cc8177843975aff951b586",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petite maison isolée en flammes blanches et fumée grise, contour entier sans personnes ni paysage ; exemple d’incendie en support."
+    },
+    {
+      "id": "pack-16c63bde",
+      "reviewer": "Codex",
+      "sha256": "12aa814963f409333108e3031d72f1a68ef0490fd4742ac5dff4e47cb7050bbb",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Arbre entier dans grille de pied circulaire, tronc et couronne contenus, aucune rue ; fonction arbre d’alignement maintenue en support."
+    },
+    {
+      "id": "pack-5d7d0d18",
+      "reviewer": "Codex",
+      "sha256": "39f72856f79e0965d0e1deb191add781880049f5ae8f3cf18e0ebf94ebb01b6b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Coupelle de moutarde à cuillère courte entière, crème blanc chaud et gris sans jaune vif ; condiment en support, aucune identification par couleur."
+    },
+    {
+      "id": "pack-221041ad",
+      "reviewer": "Codex",
+      "sha256": "25c287fd958eae820de9502d2794c1f37c05d0d3ddff4f90924ddef5b4824a74",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Paire de gomusin moulées basses sans lacets, bouts relevés et deux ouvertures cohérentes, entièrement visibles ; type traditionnel en support."
+    },
+    {
+      "id": "pack-3c83b4f0",
+      "reviewer": "Codex",
+      "sha256": "98bd98c28107cdc2291c343f603c76916e2ed35a39725eb4facc433f41830a06",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Autocar de tourisme entier à grands vitrages et soutes, aucune marque, plaque ou destination ; usage touristique contextuel en support."
+    },
+    {
+      "id": "pack-cf5632c7",
+      "reviewer": "Codex",
+      "sha256": "4f07d159b15f502f54ae2a82dd0fdc87bb111d2794c96d8757e4d03b45c51cd4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bague simple entière rendue blanc et gris, aucune teinte or ou poinçon ; matière or maintenue en support après réponse."
+    },
+    {
+      "id": "pack-d79c455f",
+      "reviewer": "Codex",
+      "sha256": "6b70716634fcc48ee23576d9cb63d80e4d2ce07dbf37b995e3953b383a148ad1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Appareil médical compact de mesure avec brassard relié, écran et boutons vierges, ensemble entier ; exemple de catégorie appareil en support."
+    },
+    {
+      "id": "pack-08fa4a79",
+      "reviewer": "Codex",
+      "sha256": "5649baf927f76702ffdd52f7cb995c5922b02938b740455094b8c51b6ce6629d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Coupelle de kkakdugi à cubes de radis distincts, majorité claire avec seules traces de piment sur deux cubes ; plat spécifique maintenu en support."
+    },
+    {
+      "id": "pack-df706e6a",
+      "reviewer": "Codex",
+      "sha256": "17ac7cf1533f5a99cd2bd360c868f498b9dd44e942a3684577ed74b4c2384030",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Canne, moulinet, anneaux, ligne et hameçon entiers, assemblage cohérent et lisible à 96 px ; question 낚싯대 possible."
+    },
+    {
+      "id": "pack-f465aea4",
+      "reviewer": "Codex",
+      "sha256": "a29d027ddb27cedcaadf8f1048dccb1dc02975cd49ccaec72ad7e764b9825035",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Disquette informatique carrée entière avec volet et étiquette sans texte ; sens stockage de l’exemple illustré en support, pas hernie discale."
+    },
+    {
+      "id": "pack-80b863ca",
+      "reviewer": "Codex",
+      "sha256": "ddfb1a0b5fc31336135a5140819483cc331fc742c4839b3630a6f7646b870b70",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Raquette entière à cordage régulier et manche terminé dans les marges, aucun logo ; silhouette claire à 96 px, question 라켓 possible."
+    },
+    {
+      "id": "pack-3aa96c9e",
+      "reviewer": "Codex",
+      "sha256": "1eb61da2ce55be3305029400c441740d4a9934bb6a0e4bb0a0d22138a21e2817",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Tête de laser industriel isolée avec petit faisceau sur plaque, câble terminé au pinceau dans le noir, tout contenu dans le cadre ; fonctionnement évoqué en support."
+    },
+    {
+      "id": "pack-7fd81b7e",
+      "reviewer": "Codex",
+      "sha256": "750dbab13236c8b2c28576262c6211864db76e9041faee22d804dea964f19010",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Mayonnaise claire en coupelle avec cuillère, bords entiers, aucun label ; aliment maintenu en support car proche visuellement de crème."
+    },
+    {
+      "id": "pack-2f1918a4",
+      "reviewer": "Codex",
+      "sha256": "7c30f43fd2e9a177cd565c742e80b4217a8f16e4501b2962d97b25e8ceba7c12",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Tee-shirt uni entier aux plis et tissage suggérés, sans étiquette ; matière coton maintenue en support, pas sens nouilles."
+    }
+  ]
+}

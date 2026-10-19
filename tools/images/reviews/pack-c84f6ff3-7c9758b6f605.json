@@ -1,0 +1,24 @@
+{
+  "id": "pack-c84f6ff3",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T20:45:01.976Z",
+  "sourceSha256": "b5746f90e8c865b65a11295898fa501c97ef1907f9764f81b0af015189410734",
+  "sha256": "7c9758b6f6057b9ae4d693f0c725dadc9649de65825e2c87415528f459a7631f",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nUn seul livre entier fermé vu principalement de face, couverture avec une petite illustration végétale sans aucun texte, titre, auteur, lettres, marque ou chiffres ; bord des pages visible pour contextualiser couverture. 표지 sens couverture du livre dans l’exemple, pas panneau ; aide seule. Palette verrouillée blanc chaud/gris exclusivement, sans couleur naturelle dominante. Sujet entier isolé, noir pur et grandes marges ; aucune écriture ni pseudo-écriture.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Livre fermé à couverture florale sans titre ; support du sens couverture, pas une question sur le livre.",
+  "reviewedAt": "2026-10-18T20:51:48.351Z",
+  "kr": "표지",
+  "sense": "Couverture (de livre) ; panneau, écriteau",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

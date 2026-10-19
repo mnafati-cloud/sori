@@ -1,0 +1,604 @@
+{
+  "id": "full-concrete-0297-0358",
+  "requested": 23,
+  "style": "pinceau-blanc-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Production de la liste concrète auditée ; aucun réemploi, ambiguïtés en aide après réponse, aucune fusion d’ids.",
+  "items": [
+    {
+      "id": "pack-169ac9d5",
+      "kr": "장식",
+      "sense": "Décoration, ornement.",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 297
+    },
+    {
+      "id": "pack-3110207a",
+      "kr": "젖",
+      "sense": "Lait (maternel), mamelle",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 301
+    },
+    {
+      "id": "pack-c6c2ca94",
+      "kr": "미사일",
+      "sense": "Missile",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 336
+    },
+    {
+      "id": "pack-93a9c83e",
+      "kr": "미역",
+      "sense": "Wakamé, algue brune comestible",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 337
+    },
+    {
+      "id": "pack-5c64fa15",
+      "kr": "배추김치",
+      "sense": "Kimchi de chou chinois",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 340
+    },
+    {
+      "id": "pack-480d8de5",
+      "kr": "보자기",
+      "sense": "Foulard d'emballage, carré de tissu (pour envelopper).",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 341
+    },
+    {
+      "id": "pack-c71c251d",
+      "kr": "복사기",
+      "sense": "Photocopieuse",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 342
+    },
+    {
+      "id": "pack-3916602d",
+      "kr": "색연필",
+      "sense": "Crayon de couleur.",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 343
+    },
+    {
+      "id": "pack-8b604706",
+      "kr": "성경",
+      "sense": "La Bible, les Écritures saintes.",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 344
+    },
+    {
+      "id": "pack-3aa8f921",
+      "kr": "솜",
+      "sense": "Ouate, coton (matière)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 345
+    },
+    {
+      "id": "pack-ee83709e",
+      "kr": "시디롬",
+      "sense": "CD-ROM",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 346
+    },
+    {
+      "id": "pack-4c89187e",
+      "kr": "아스팔트",
+      "sense": "Asphalte, bitume",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 347
+    },
+    {
+      "id": "pack-50720e77",
+      "kr": "알루미늄",
+      "sense": "Aluminium",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 348
+    },
+    {
+      "id": "pack-686287e6",
+      "kr": "약수",
+      "sense": "Eau de source (minérale, réputée saine)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 349
+    },
+    {
+      "id": "pack-ac4f4ab9",
+      "kr": "양주",
+      "sense": "Alcool/spiritueux occidental (whisky, cognac...)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 350
+    },
+    {
+      "id": "pack-eebf1158",
+      "kr": "엔진",
+      "sense": "Un moteur",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 351
+    },
+    {
+      "id": "pack-fce03e56",
+      "kr": "옆구리",
+      "sense": "Flanc, côté (du corps).",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 352
+    },
+    {
+      "id": "pack-59c9317c",
+      "kr": "위성",
+      "sense": "Satellite (astre ou engin en orbite).",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 353
+    },
+    {
+      "id": "pack-8ffa23d8",
+      "kr": "윗몸",
+      "sense": "Buste, haut du corps (torse).",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 354
+    },
+    {
+      "id": "pack-faa671dd",
+      "kr": "은행나무",
+      "sense": "Ginkgo (arbre).",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 355
+    },
+    {
+      "id": "pack-cd8e2760",
+      "kr": "이슬",
+      "sense": "Rosée.",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 356
+    },
+    {
+      "id": "pack-41fbe72f",
+      "kr": "잠바",
+      "sense": "Blouson, veste (de type jumper)",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 357
+    },
+    {
+      "id": "pack-c6c0729a",
+      "kr": "잠수함",
+      "sense": "Sous-marin",
+      "usage": "question",
+      "cefr": "C1",
+      "rank": 358
+    }
+  ],
+  "visualReviews": [
+    {
+      "id": "pack-169ac9d5",
+      "reviewer": "Codex",
+      "sourceSha256": "c0b483984c607528309f538363161d13112be2e72f76804efb7b9536c1e0a109",
+      "note": "Étoile à cinq branches avec boucle courte fermée, toutes extrémités entières, rouge absent ; reprises de cadrage et palette validées en support."
+    },
+    {
+      "id": "pack-3110207a",
+      "reviewer": "Codex",
+      "sourceSha256": "fa559a5730d38f4fafcafed4e9f570aaa67c68501a7458a03876880da01856e0",
+      "note": "Vache et veau tétant entiers, pattes cohérentes et mamelle désormais blanche/grise ; reprise de palette validée, lait maternel animal en support."
+    },
+    {
+      "id": "pack-c6c2ca94",
+      "reviewer": "Codex",
+      "sourceSha256": "b15a8cf5ed1e5be1af2e5db8c5b0640b6def16d16f5656f2eda795cdae8f85e0",
+      "note": "Missile isolé entier, ogive, ailettes et tuyère cohérents, petit anneau rouge ; aucune scène ou inscription, support."
+    },
+    {
+      "id": "pack-93a9c83e",
+      "reviewer": "Codex",
+      "sourceSha256": "cb304400751031a4b0df1fd80d61118e51e869360ca5ee7d726c2f2a0659f2e8",
+      "note": "Lames de wakamé froncées entièrement visibles, gris et blanc sans vert/brun ; produit alimentaire en support."
+    },
+    {
+      "id": "pack-5c64fa15",
+      "reviewer": "Codex",
+      "sourceSha256": "0981d072b9e468c8f7b60333b5f60bf7695e4928904200c880304892e62ebbdb",
+      "note": "Kimchi de chou aux côtes épaisses et feuilles plissées, coupelle entière et quelques traits de piment ; plat en support."
+    },
+    {
+      "id": "pack-480d8de5",
+      "reviewer": "Codex",
+      "sourceSha256": "955bb89ea5ff1bc3edcc68299b477541ff52808a1d21fa0d930638736afab86e",
+      "note": "Paquet enveloppé de bojagi, nœud et pans entiers, plis souples sans motif écrit ; support du foulard d’emballage."
+    },
+    {
+      "id": "pack-c71c251d",
+      "reviewer": "Codex",
+      "sourceSha256": "5cad87e765f61c277a5b9020dcaf1924b7ffa496e5b781c602a082e15ad01fbf",
+      "note": "Photocopieuse entière à platine et bacs cohérents, touches vierges ; silhouette claire à 96 px, question 복사기 possible, imprimante générique neutre."
+    },
+    {
+      "id": "pack-3916602d",
+      "reviewer": "Codex",
+      "sourceSha256": "26fc0e95d45b2f7dce30d178f982c44cea28085de45680cc3f86e24ac111fc8f",
+      "note": "Trois crayons entiers à mines distinctes dont une rouge, aucun glyphe ; type crayon de couleur en support."
+    },
+    {
+      "id": "pack-8b604706",
+      "reviewer": "Codex",
+      "sourceSha256": "b5e40fcabad90f9b0c94500ea1650cda0ecbf274c782014ad5725256d759aee9",
+      "note": "Livre fermé à croix simple et ruban entier, sans titre ; représentation conventionnelle de Bible en support."
+    },
+    {
+      "id": "pack-3aa8f921",
+      "reviewer": "Codex",
+      "sourceSha256": "6a2d94cfb6145c82a38a857b2147b7ddee6791be8f908fd7ad44b7cd647ec241",
+      "note": "Boule de ouate à fibres souples, silhouette entière lisible à 96 px, blanc et lavis gris ; support du matériau."
+    },
+    {
+      "id": "pack-ee83709e",
+      "reviewer": "Codex",
+      "sourceSha256": "8423bc7016ef4e692a71dc8dfdda242b08f37a2f77957b2f90b28ec71cc5bf8a",
+      "note": "CD dans boîte entrouverte entière sans écriture ni arc-en-ciel ; format ROM maintenu en support, visuellement non distinguable du CD audio."
+    },
+    {
+      "id": "pack-4c89187e",
+      "reviewer": "Codex",
+      "sourceSha256": "8fe774bf63fcfd661e7c07515e40f290f534a38eae05f1f8c29a183b1524d84e",
+      "note": "Échantillon épais d’asphalte à granulats serrés, coupe entière sans route ; matériau en support."
+    },
+    {
+      "id": "pack-50720e77",
+      "reviewer": "Codex",
+      "sourceSha256": "9687d989a1cf4ade4a201da5a857096279314c2fbedf61c80988abfe5eb939ca",
+      "note": "Profilé métallique court en U, volume entier et reflets blanc gris ; aluminium comme matière en support."
+    },
+    {
+      "id": "pack-686287e6",
+      "reviewer": "Codex",
+      "sourceSha256": "994b4357c2acd5c7585aec077a989da46c92e2661fc51a811bf853877f1be27a",
+      "note": "Gourde ouverte et bouchon entiers, petite goutte, aucun symbole de santé ; origine de source maintenue en support, sans allégation."
+    },
+    {
+      "id": "pack-ac4f4ab9",
+      "reviewer": "Codex",
+      "sourceSha256": "16a2d08700de979415520cf23d417c6bb0679c34ff62328fbc5f986d5423a53f",
+      "note": "Carafe fermée et verre court avec liquide gris, objets entiers sans marque ; spiritueux occidentaux en support."
+    },
+    {
+      "id": "pack-eebf1158",
+      "reviewer": "Codex",
+      "sourceSha256": "a92b4a49652ee3c5424335a971ccd39228dd1de62e8a34cbe09f48ba59158c11",
+      "note": "Bloc moteur entier avec poulies, courroie et conduits cohérents, sans inscriptions ; silhouette claire à 96 px, question 엔진 possible."
+    },
+    {
+      "id": "pack-fce03e56",
+      "reviewer": "Codex",
+      "sourceSha256": "18a4987b815bf1f584bfe183931dad63f921d0ef6f8503f627af5070bf4767f4",
+      "note": "Adulte entier habillé avec main posée sur son flanc, posture et membres cohérents ; détail du côté du corps en support."
+    },
+    {
+      "id": "pack-59c9317c",
+      "reviewer": "Codex",
+      "sourceSha256": "d3f0ac5c6c24878401663e57dd2f02b20472bcadb81468f2557ff53ee8adb491",
+      "note": "Satellite artificiel entier avec panneaux et parabole reliés ; sens choisi conforme à l’exemple, catégorie 위성 en support."
+    },
+    {
+      "id": "pack-8ffa23d8",
+      "reviewer": "Codex",
+      "sourceSha256": "a3ebdd8d9cdf427fe68e13ac87f9601b00c380b9384877ac2d8c7e0e7da2a2a1",
+      "note": "Buste sculpté habillé avec tête, torse et socle entiers, pinceau visible ; haut du corps en support."
+    },
+    {
+      "id": "pack-faa671dd",
+      "reviewer": "Codex",
+      "sourceSha256": "ca477ddabd48a4c39e9d549bc8641e8ed90c9931cdc7e5a9598956be9d66fef1",
+      "note": "Ginkgo isolé aux feuilles en éventail caractéristiques, racines et branches entières, aucune couleur automnale ; support botanique."
+    },
+    {
+      "id": "pack-cd8e2760",
+      "reviewer": "Codex",
+      "sourceSha256": "1f163444547eed4b0ab44e004c5f42457ee7b6be4df1a30053f80fdd637ecd1a",
+      "note": "Feuille étroite entière avec trois gouttes de rosée bien détachées, reflets lisibles à 96 px ; support du phénomène."
+    },
+    {
+      "id": "pack-41fbe72f",
+      "reviewer": "Codex",
+      "sourceSha256": "4877ec2766eb1900ebbc37ba7036a6bd8151d8d7f67763f5e705c1b462ad3e88",
+      "note": "Blouson sur cintre entier avec bord côtelé et zip, aucun logo ; variante lexicale 잠바 maintenue en support."
+    },
+    {
+      "id": "pack-c6c0729a",
+      "reviewer": "Codex",
+      "sourceSha256": "1566b499a1d244e8a653ae96b06e5ca7fe05223b7ccbaa676e2938df8730a960",
+      "note": "Sous-marin entier, coque, kiosque, antennes et hélice visibles sans mer ni inscription ; silhouette claire à 96 px, question 잠수함 possible."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-4b8b92d0",
+      "rank": 339,
+      "kr": "밥상",
+      "sourceSha256": "a5ad626585cdbe5875a47faad8644bd62884a127a93fb9c6ee090a0e571613d5",
+      "sha256": "3ba528345a0146c9d85092215edd6f7d8e2283de05ddb809981fdbeecbed6b95",
+      "reviewer": "Codex",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "La table dressée est cohérente et entière, mais plusieurs plats utilisent du vert, de l’orange et du rouge naturel ; palette non conforme. Reprise monochrome."
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-169ac9d5",
+      "reviewer": "Codex",
+      "sha256": "2e17a78344c4274f737b8f1556bf5a007554d338123e00e11aa608a5f0432c46",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Étoile à cinq branches avec boucle courte fermée, toutes extrémités entières, rouge absent ; reprises de cadrage et palette validées en support."
+    },
+    {
+      "id": "pack-3110207a",
+      "reviewer": "Codex",
+      "sha256": "0713f7ac3e71111f465a3c6cb0094530c9dd6fa833789a1c70d739cea155d94b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Vache et veau tétant entiers, pattes cohérentes et mamelle désormais blanche/grise ; reprise de palette validée, lait maternel animal en support."
+    },
+    {
+      "id": "pack-c6c2ca94",
+      "reviewer": "Codex",
+      "sha256": "f02a8e38f55dfc5fd693f5c993fec4cad8013213f393e991b05d54a085738aa5",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Missile isolé entier, ogive, ailettes et tuyère cohérents, petit anneau rouge ; aucune scène ou inscription, support."
+    },
+    {
+      "id": "pack-93a9c83e",
+      "reviewer": "Codex",
+      "sha256": "14245bf064eda72af80518bf370172fc337e9b5b0cb2ddfefdba16f4c70cdc85",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Lames de wakamé froncées entièrement visibles, gris et blanc sans vert/brun ; produit alimentaire en support."
+    },
+    {
+      "id": "pack-5c64fa15",
+      "reviewer": "Codex",
+      "sha256": "2807fde7840306ae4c47c95cb1066a514ad484425d60ab4af808fcca1c0f6951",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Kimchi de chou aux côtes épaisses et feuilles plissées, coupelle entière et quelques traits de piment ; plat en support."
+    },
+    {
+      "id": "pack-480d8de5",
+      "reviewer": "Codex",
+      "sha256": "62517cab9c4769498b37da6ebee5eea3f6bac1f2857f6c020c4d89308c4c0f3a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Paquet enveloppé de bojagi, nœud et pans entiers, plis souples sans motif écrit ; support du foulard d’emballage."
+    },
+    {
+      "id": "pack-c71c251d",
+      "reviewer": "Codex",
+      "sha256": "15e6764e80f29385af85ce3c2bf7944198616795c6fc892a12eeaf7bfc13ffc7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Photocopieuse entière à platine et bacs cohérents, touches vierges ; silhouette claire à 96 px, question 복사기 possible, imprimante générique neutre."
+    },
+    {
+      "id": "pack-3916602d",
+      "reviewer": "Codex",
+      "sha256": "2463bf1fa17e6d00cb8c442c51653ecc45c83535a729cc487927dfa5e45814c5",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Trois crayons entiers à mines distinctes dont une rouge, aucun glyphe ; type crayon de couleur en support."
+    },
+    {
+      "id": "pack-8b604706",
+      "reviewer": "Codex",
+      "sha256": "1ea757a3ef287e00151f9689e8337d59ce9aebebae9d902b76a5d84fcd732832",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Livre fermé à croix simple et ruban entier, sans titre ; représentation conventionnelle de Bible en support."
+    },
+    {
+      "id": "pack-3aa8f921",
+      "reviewer": "Codex",
+      "sha256": "660ce0308cf16b516b1afaa02cbfb0e6a40fef860535e0734c4615e51a4b466a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Boule de ouate à fibres souples, silhouette entière lisible à 96 px, blanc et lavis gris ; support du matériau."
+    },
+    {
+      "id": "pack-ee83709e",
+      "reviewer": "Codex",
+      "sha256": "e35233ed8fe1f731e610484bccf228c449aa9c2bf2c70c6887ff16357cecdb86",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "CD dans boîte entrouverte entière sans écriture ni arc-en-ciel ; format ROM maintenu en support, visuellement non distinguable du CD audio."
+    },
+    {
+      "id": "pack-4c89187e",
+      "reviewer": "Codex",
+      "sha256": "08e8836fb3ee5f10334536cf1fe1e0915e483a4be3fea27ffb71df7ccbd525f8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Échantillon épais d’asphalte à granulats serrés, coupe entière sans route ; matériau en support."
+    },
+    {
+      "id": "pack-50720e77",
+      "reviewer": "Codex",
+      "sha256": "85db8eedc3c4184a3d553509907551880928c3fa40efe8fc562a8bdf4121a179",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Profilé métallique court en U, volume entier et reflets blanc gris ; aluminium comme matière en support."
+    },
+    {
+      "id": "pack-686287e6",
+      "reviewer": "Codex",
+      "sha256": "e0658d6daddc3070dd15eddaa829e659379fc7c4e9eb88778c6edf6c6042dc60",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Gourde ouverte et bouchon entiers, petite goutte, aucun symbole de santé ; origine de source maintenue en support, sans allégation."
+    },
+    {
+      "id": "pack-ac4f4ab9",
+      "reviewer": "Codex",
+      "sha256": "098304171764235f5983e18215a1b1fd3a166abf4bdc9d4b34dcd7a32e0e9c01",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Carafe fermée et verre court avec liquide gris, objets entiers sans marque ; spiritueux occidentaux en support."
+    },
+    {
+      "id": "pack-eebf1158",
+      "reviewer": "Codex",
+      "sha256": "f99df101a90976d5e16d9806a838ff48ade14a9246066f25413a205b53913296",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bloc moteur entier avec poulies, courroie et conduits cohérents, sans inscriptions ; silhouette claire à 96 px, question 엔진 possible."
+    },
+    {
+      "id": "pack-fce03e56",
+      "reviewer": "Codex",
+      "sha256": "182740ac115a278572f6c87d0fb5d563e1a07ad23e61ceea30176f4c47d8b0f0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Adulte entier habillé avec main posée sur son flanc, posture et membres cohérents ; détail du côté du corps en support."
+    },
+    {
+      "id": "pack-59c9317c",
+      "reviewer": "Codex",
+      "sha256": "171e5da81f187394bb8d88f2f202df27dc49e9b621ea5a55b21e4c3225082b37",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Satellite artificiel entier avec panneaux et parabole reliés ; sens choisi conforme à l’exemple, catégorie 위성 en support."
+    },
+    {
+      "id": "pack-8ffa23d8",
+      "reviewer": "Codex",
+      "sha256": "4bb4201c19f956cc9be8e6947a2735358779aebda185f68977180c678c98e78f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Buste sculpté habillé avec tête, torse et socle entiers, pinceau visible ; haut du corps en support."
+    },
+    {
+      "id": "pack-faa671dd",
+      "reviewer": "Codex",
+      "sha256": "b8119f62d98f0d56344d3027ebf33a69d80ef9f02ffd4808bf6e93593286b81b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Ginkgo isolé aux feuilles en éventail caractéristiques, racines et branches entières, aucune couleur automnale ; support botanique."
+    },
+    {
+      "id": "pack-cd8e2760",
+      "reviewer": "Codex",
+      "sha256": "e2b50481519945bfaca54a38f01ec3fe913a5282b052be95415bd0863d3bd4eb",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Feuille étroite entière avec trois gouttes de rosée bien détachées, reflets lisibles à 96 px ; support du phénomène."
+    },
+    {
+      "id": "pack-41fbe72f",
+      "reviewer": "Codex",
+      "sha256": "044144aa229022986080cfe1f0904d796ce23bdd37253459618ecb1f01d46526",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Blouson sur cintre entier avec bord côtelé et zip, aucun logo ; variante lexicale 잠바 maintenue en support."
+    },
+    {
+      "id": "pack-c6c0729a",
+      "reviewer": "Codex",
+      "sha256": "f1c01d25b39baef90995d5fa0c23ed09b33a0234fa58bbf214566aca0cc8e284",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Sous-marin entier, coque, kiosque, antennes et hélice visibles sans mer ni inscription ; silhouette claire à 96 px, question 잠수함 possible."
+    }
+  ]
+}

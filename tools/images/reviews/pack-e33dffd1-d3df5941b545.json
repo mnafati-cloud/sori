@@ -1,0 +1,26 @@
+{
+  "id": "pack-e33dffd1",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T22:14:52.545Z",
+  "sourceSha256": "66742fc8a12d973f101b891f5c2fa9190a104654b0257f6952676c58c8317fc0",
+  "sha256": "d3df5941b5455f608659a96d3c8e669b3150f2265e7f36e0480c293cf0e54fe2",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nUne seule flèche entière, pointe triangulaire, hampe droite et empennage distinct, oblique dans le cadre avec grandes marges, aucun arc ni cible. Mot ciblé : 화살. Sens du deck : Flèche. Palette strictement blanc chaud et lavis gris sur noir ; silhouette complète, grandes marges, aucun texte, chiffre, lettre, logo ni pseudo-écriture. Pinceau expressif, pas de photographie ou 3D. Usage aide après réponse sauf validation explicite.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Flèche entière avec pointe, hampe et empennage lisibles à 96 px ; petite ligature vermillon, question 화살.",
+  "reviewedAt": "2026-10-18T22:18:27.583Z",
+  "kr": "화살",
+  "sense": "Flèche",
+  "usage": "question",
+  "accepted": [
+    "화살"
+  ],
+  "alternatives": []
+}

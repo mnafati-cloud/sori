@@ -1,0 +1,28 @@
+{
+  "id": "pack-0feba798",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-18T21:00:10.876Z",
+  "sourceSha256": "3b7309a37fccdb4d4fa96c20c8b3d071c5ba509361e9d15a709af2909e908ccd",
+  "sha256": "4380cb27c08c1a368a0135c2b013c44b0b479dd2c9f11f49d8826c37bdb96c8d",
+  "prompt": "# Sori — pinceau blanc v1 (style 2 validé le 17 octobre 2026)\n\nCreate ONE square vocabulary illustration for the Korean learning app Sori.\nMatch ONLY column 02 « Pinceau » of the reference board: expressive warm-white\nbrush strokes, restrained warm-grey ink washes, visible bristle marks and large\nopen black areas inside the subject. Solid pure black background. At most one\nsmall vermilion accent (#E4584A), only where natural for the subject.\nNot the speckled rubbing print, not layered paper, not a 3D render or photograph.\nOne isolated, immediately recognizable subject, centered, occupying 65–80% of\nthe square; generous empty margins. Complete silhouette with no cropped parts.\nReadable at 160 pixels and still recognizable at 96 pixels. No decorative frame,\nno scene, no unrelated accessories, no people unless the subject requires them.\nNO text, letters, Hangul, labels, numbers, signatures, logos, seals or watermark.\nThe reference is a style guide, never a layout to reproduce: deliver exactly one\nobject on one square canvas, never a comparison board, contact sheet or grid.\n\nLa référence contient plusieurs styles pour comparaison : seul le deuxième\nest autorisé. Les mots et traductions sont rendus par l'application après réponse,\njamais dessinés dans l'image. Les couleurs et concepts abstraits ne deviennent\npas des questions visuelles par simple illustration décorative.\n\n\nSubject:\nOne whole streetlamp on a slender upright post ending in its own base, one simple lamp head, no street, person, scene, sign, number or lettering; generous margins above and below. Warm-white/grey brush ONLY, no natural brown, green, blue or dominant red. Whole silhouette inside broad pure black margins; no writing or pseudo-writing.",
+  "referenceSha256": "9713604e4b81a333230b72b6e7b3298b472994ab1775c0ce33d8f8784294ca53",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Réverbère entier, lanterne vitrée et pied autonome ; silhouette lisible aux trois tailles. Question 가로등 possible, lampe générique neutre.",
+  "reviewedAt": "2026-10-18T21:03:27.503Z",
+  "kr": "가로등",
+  "sense": "Réverbère, lampadaire",
+  "usage": "question",
+  "accepted": [
+    "가로등"
+  ],
+  "alternatives": [
+    "등"
+  ]
+}
