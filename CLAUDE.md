@@ -161,7 +161,7 @@ afficher `$TOKEN` dans un log, ne jamais l'écrire dans un fichier du repo.
 3. Si data.js / extra.js / audio / packs touchés : le garde-fou d'ids a tourné dans le build ; valider extra.js (recette R2.2), compter les items (`meta.counts`).
 4. Bump `CACHE` dans `docs/sw.js` (+1) ; `ASSETS` à jour si fichier JS/CSS ajouté dans `docs/`.
 5. Test local : `python -m http.server 8123 --directory docs` → une carte de chaque onglet + les modules touchés + un export. Console (F12) sans erreur.
-6. `git add` ciblé (vérifier avec `git status` : AUCUN .anki2, AUCUN sori-export-*.json) → commit → push (méthode token ci-dessus).
+6. `git add` ciblé (vérifier avec `git status` : AUCUN .anki2, AUCUN sori-export-*.json) → commit → push (méthode token ci-dessus). Titre de release : **`vNNN: description`**, avec la version en tête, pour conserver les badges et les titres lisibles dans l'historique de l'app.
 7. Déploiement = **GitHub Actions** (plus le build Pages legacy — voir MAINTENANCE §1). Le push déclenche le run **« Deploy Pages »**. ⚠️ l'étape `deploy-pages` échoue souvent (« Deployment failed, try again later ») → **re-lancer le run** (`POST /repos/mnafati-cloud/sori/actions/runs/<id>/rerun`), ça passe en 1-2 essais ; n'avoir qu'UN run à la fois. Vérifier ensuite `curl -s https://mnafati-cloud.github.io/sori/sw.js | grep CACHE`. Sur le téléphone, le service worker network-first récupère la mise à jour au prochain ouvrir/fermer.
 
 ## Réflexes de sécurité

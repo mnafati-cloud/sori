@@ -2645,7 +2645,8 @@ function openSettings(){
 }
 /* ===== Historique des versions (popin ouverte au clic sur le n° de version) =====
    Données tirées EN DIRECT de l'API publique GitHub (repo public, sans jeton) : chaque
-   release est un commit « vNN: … ». Repli propre hors-ligne / si limite d'API atteinte. */
+   release est un commit « vNN: … » ; les anciens titres finissant par « (vNN) »
+   sont aussi reconnus. Repli propre hors-ligne / si limite d'API atteinte. */
 function vhStyleOnce(){
   if(document.getElementById("vh-style")) return;
   const s = document.createElement("style"); s.id = "vh-style";
@@ -2693,9 +2694,11 @@ function openVersionHistory(){
         const msg  = ((c.commit && c.commit.message) || "").split("\n")[0];
         const iso  = c.commit && c.commit.author && c.commit.author.date;
         const dstr = iso ? new Date(iso).toLocaleDateString("fr-FR", {day:"2-digit", month:"short", year:"numeric"}) : "";
-        const mv   = /^v(\d+)\s*[:\-–—]\s*/.exec(msg);   // v97 : accepte aussi le tiret cadratin — (commits ≥ v81)
-        const tag  = mv ? `<span class="vh-tag">v${mv[1]}</span>` : `<span class="vh-tag" style="opacity:.45">·</span>`;
-        const title= mv ? msg.slice(mv[0].length).trim() : msg;
+        const mv   = /^v(\d+)\s*[:\-–—]\s*/.exec(msg);   // accepte aussi les anciens tirets de séparation
+        const endv = mv ? null : /\s+\(v(\d+)\)\s*$/.exec(msg);   // titres v172–v175 déjà publiés
+        const ver  = mv || endv;
+        const tag  = ver ? `<span class="vh-tag">v${ver[1]}</span>` : `<span class="vh-tag" style="opacity:.45">·</span>`;
+        const title= mv ? msg.slice(mv[0].length).trim() : endv ? msg.slice(0,endv.index).trim() : msg;
         const sha  = (c.sha || "").slice(0,7);
         return `<div class="vh-item">${tag}<div class="vh-body"><div class="vh-title">${esc(title)}</div>
           <div class="vh-meta">${esc(dstr)}${sha?` · ${esc(sha)}`:""}</div></div></div>`;

@@ -76,6 +76,38 @@ let browser,page;
     await page.screenshot({path:path.join(artifacts,kr+"-comparison.png")});
     await page.locator("#dicoclose").click();
   }
+  // Les titres déjà publiés v172–v175 gardent leur badge, comme les préfixes historiques.
+  const historyMessages=[
+    "v176: rétablir les badges de version dans l’historique",
+    "Add 410 reviewed vocabulary illustrations (v175)",
+    "Add 200 reviewed vocabulary illustrations (v174)",
+    "Add 200 reviewed A1/A2 illustrations (v173)",
+    "Add 100 more A1/A2 brush illustrations (v172)",
+    "v171: add 100 reviewed A1/A2 illustrations",
+    "v169 — résoudre les trois points restants de l’audit",
+    "Documenter v168 sans release\nDétail (v167)"
+  ];
+  await page.route("https://api.github.com/repos/mnafati-cloud/sori/commits?**",route=>route.fulfill({
+    contentType:"application/json",body:JSON.stringify(historyMessages.map((message,i)=>({
+      sha:String(i+1).padStart(40,"0"),commit:{message,author:{date:"2026-10-19T00:00:00Z"}}
+    })))
+  }));
+  await page.locator("#setrev").click();await page.locator("#appver").click();
+  await page.locator(".vh-item").last().waitFor();
+  assert.deepEqual(await page.locator(".vh-tag").allTextContents(),["v176","v175","v174","v173","v172","v171","v169","·"]);
+  assert.deepEqual(await page.locator(".vh-title").allTextContents(),[
+    "rétablir les badges de version dans l’historique",
+    "Add 410 reviewed vocabulary illustrations",
+    "Add 200 reviewed vocabulary illustrations",
+    "Add 200 reviewed A1/A2 illustrations",
+    "Add 100 more A1/A2 brush illustrations",
+    "add 100 reviewed A1/A2 illustrations",
+    "résoudre les trois points restants de l’audit",
+    "Documenter v168 sans release"
+  ]);
+  assert.equal(await page.locator(".vh-meta").count(),historyMessages.length);
+  await page.screenshot({path:path.join(artifacts,"version-history.png")});
+  await page.locator("#vhclose").click();await page.locator("#setclose").click();
   // Contrôle du vrai DOM et des minuteries : l'animation normale n'est pas une panne.
   await page.emulateMedia({reducedMotion:"reduce"});
   await page.clock.install();
@@ -109,7 +141,7 @@ let browser,page;
   });
   assert.equal(repaired,"1","un vrai mot transparent est toujours réparé");
   assert.deepEqual(errors,[]);
-  const summary={browser:await browser.version(),productionReports:true,reportReload:true,lexicalNotes:3,
+  const summary={browser:await browser.version(),productionReports:true,reportReload:true,lexicalNotes:3,versionHistory:true,
     normalStamp:true,stuckStampRecovered:true,invisibleWordRecovered:true,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,"summary.json"),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));
 })().catch(async error=>{
