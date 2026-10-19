@@ -1,5 +1,5 @@
 /* Sori service worker — network-first (mises à jour auto), repli cache (hors-ligne) */
-const CACHE = "sori-v176";
+const CACHE = "sori-v177";
 const ASSETS = ["./", "./index.html", "./style.css", "./themes.css", "./themes.js",
                 "./engine.js", "./backup.js", "./app.js", "./data.js", "./extra.js",
                 "./production-data.js", "./production.js",
@@ -29,24 +29,30 @@ self.addEventListener("fetch", e => {
   /* Content-addressed illustrations: optional, cache-first, survive app releases.
      Never install a whole catalogue, or substitute HTML for a missing picture. */
   if(/\/images\/[a-z0-9-]+-[a-f0-9]{12}\.webp$/.test(url.pathname)){
+    let maintenance=Promise.resolve();
     const response=(async()=>{
       let cache;
       try{cache=await caches.open("sori-image-store");const hit=await cache.match(e.request);if(hit)return hit;}catch(_){}
       const res=await fetch(e.request);
       if(res.ok && res.headers.get("content-type")?.includes("image/") && cache){
         const copy=res.clone();
-        try{
-          const bytes=await copy.arrayBuffer();
-          if(bytes.byteLength<=80*1024){
-            await cache.put(e.request,new Response(bytes,{status:res.status,headers:res.headers}));
-            const keys=await cache.keys();
-            for(const key of keys.slice(0,Math.max(0,keys.length-1024)))await cache.delete(key);
-          }
-        }catch(_){} // quota/cache failure must not break a valid image response
+        // Let the browser receive/decode the network response immediately;
+        // disk writes and catalogue pruning must not delay its display.
+        maintenance=(async()=>{
+          try{
+            const bytes=await copy.arrayBuffer();
+            if(bytes.byteLength<=80*1024){
+              await cache.put(e.request,new Response(bytes,{status:res.status,headers:res.headers}));
+              const keys=await cache.keys();
+              for(const key of keys.slice(0,Math.max(0,keys.length-1024)))await cache.delete(key);
+            }
+          }catch(_){} // quota/cache failure must not break a valid image response
+        })();
       }
       return res;
     })();
     e.respondWith(response.catch(()=>Response.error()));
+    e.waitUntil(response.then(()=>maintenance,()=>{}));
     return;
   }
   /* v157 : les MP3 ne vont JAMAIS dans le cache versionne — ils ont leur cache dedie

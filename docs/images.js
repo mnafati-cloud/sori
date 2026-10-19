@@ -60,6 +60,31 @@
       img.src=a.src;
     });
   }
+  // A few decoded pictures, prepared while reading the question. Never preload
+  // the catalogue or attach an answer-bearing image to the question's DOM.
+  const prepared=new Map();
+  function prepare(id){
+    const a=asset(id);if(!a)return Promise.resolve(null);
+    let entry=prepared.get(a.src);
+    if(!entry || entry.failed || entry.img?.isConnected){
+      entry={img:null,failed:false};
+      entry.promise=load(a).then(img=>{entry.img=img;entry.failed=!img;return img;});
+      prepared.delete(a.src);prepared.set(a.src,entry);
+      while(prepared.size>4)prepared.delete(prepared.keys().next().value);
+    }
+    return entry.promise;
+  }
+  async function reveal(container,id,paint){
+    const a=asset(id);
+    const img=a ? await (prepared.get(a.src)?.promise || prepare(id)) : null;
+    if(!container.isConnected)return;
+    // One DOM transaction: no correction, notes or buttons before the decoded
+    // picture is ready. Failed/slow loads finish as text, with no late insertion.
+    if(img && !container.querySelector(".images-art")){
+      styles();img.alt=a.alt;img.classList.add("images-support");container.prepend(img);
+    }
+    paint();
+  }
   async function support(container,id){
     const a=asset(id);if(!a || container.querySelector(".images-art"))return;
     styles();const img=await load(a);
@@ -151,7 +176,7 @@
     if(!failed)for(const req of await cache.keys())if(!urls.has(req.url))await cache.delete(req);
     return {ok,failed,total:entries.length};
   }
-  const api={asset,load,support,render,download,pure:{normalize,usable,eligible,judge,resume}};
+  const api={asset,load,prepare,reveal,support,render,download,pure:{normalize,usable,eligible,judge,resume}};
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   root.SORI_IMAGES=api;
 })(typeof window!=="undefined"?window:globalThis);

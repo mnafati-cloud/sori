@@ -76,7 +76,12 @@ Entrée pendant une composition IME ne soumet pas la réponse. Aucun audio de la
 réponse avant la tentative. Après : mot, français, exemple, notes et audio au
 toucher. L'image se réduit avec le clavier et après réponse. Le dictionnaire
 charge l'image au dépliage ; les autres exercices l'affichent seulement après
-réponse pour ne pas donner la solution.
+réponse pour ne pas donner la solution. Depuis v177, ils préchargent et décodent
+l’illustration pendant la question (au plus quatre images en mémoire), sans
+l’insérer dans le DOM. La correction, l’image et les boutons apparaissent
+ensemble, après décodage ; en cas d’échec ou après 1,6 s de chargement,
+la correction textuelle reste définitive pour ce tour, sans ajout tardif.
+Le temps de réponse des QCM exclut cette attente éventuelle.
 
 `set.images` est activé par défaut et désactivable dans Réglages. Le mode texte
 reste disponible pour l'accessibilité ; l'alt de la question ne donne pas le mot.
@@ -287,7 +292,9 @@ nécessaire pour relancer cette chaîne sur une autre machine.
 
 `sori-image-store` survit aux changements de version comme le cache audio.
 Chargement à la demande, cache-first sur les URLs avec hash. Les images ne sont
-jamais dupliquées dans le cache de version. Un fichier indécodable est évincé ;
+jamais dupliquées dans le cache de version. La réponse réseau est transmise
+immédiatement au navigateur ; l’écriture et le nettoyage du cache se terminent
+en arrière-plan via `waitUntil`. Un fichier indécodable est évincé ;
 la question revient au texte. Les erreurs de quota ne bloquent pas la révision.
 
 Réglages → Télécharger les illustrations prépare les assets validés, vérifie

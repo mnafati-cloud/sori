@@ -1654,7 +1654,6 @@ function exTokens(ex){ return String(ex==null?"":ex).trim().split(/\s+/).filter(
      • ST.set.wordgloss→ chaque mot cliquable affiche sa traduction (EXTRA[id].gl) */
 function showTrivia(card, it){
   const bid = baseId(it.id);          // trivia/glose/cefr indexés par l'id de base (partagés recto/verso)
-  if(!card.closest(".images-card")) window.SORI_IMAGES?.support(card,bid);
   const x = EXTRA[bid];
   if(!x) return false;
   const toks = x.ex ? exTokens(x.ex) : [];
@@ -1758,7 +1757,7 @@ function nextCard(){
   // Le filet conserve sa capacité à débloquer un tampon dont la fin n'a pas été exécutée.
   setTimeout(()=>{ if(ov.isConnected) healInvisibleWords(); }, lifetime);
 }
-function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto){
+function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto, answeredAt=Date.now()){
   LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞
   armUndo(it.id);                           // photo AVANT toute mutation (annulation possible)
   if(kind==="image" && ST.imageReview){
@@ -1781,7 +1780,7 @@ function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto){
      Legacy (rollback) : inchangé — computeAnswer ne lit que `ok`. */
   const G = ok ? Math.min(Graw, maxG)                    // note plafonnée par l'aide (canal stabilité)
              : (kind === "type" ? 2 : 1);
-  const rt = EXO_T0 ? Date.now() - EXO_T0 : 0;           // temps de réponse (ms) — agrégats ET journal (v65)
+  const rt = EXO_T0 ? answeredAt - EXO_T0 : 0;          // exclude image preparation after the answer
   let blanc = false;
   if(!BONUS && CONSOL.has(it.id)){ CONSOL.delete(it.id); REPRISE_IDS.delete(it.id); if(ok) blanc = true; }   // consolidation réussie = blanche ; ratée = échec réel
   if(blanc){                                                     // v71 : heure du contact (les vues blanches ne journalisent pas)
@@ -1849,7 +1848,12 @@ function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto){
    l'AFFICHAGE seulement (rapports 23-25/07 « la réponse est dans la question »). */
 function maskAnswer(fr, kr){ return kr && fr && fr.includes(kr) ? fr.split(kr).join("◌") : fr; }
 /* stage 1-2 : QCM coréen -> français */
+function revealAnswer(card,it,paint){
+  if(window.SORI_IMAGES?.reveal) return SORI_IMAGES.reveal(card,baseId(it.id),paint);
+  if(card.isConnected)paint();
+}
 function exoQcmKr2Fr(it){
+  window.SORI_IMAGES?.prepare?.(baseId(it.id));
   const ds = distractors(it, 3, "fr");
   const opts = shuffle([it.id, ...ds]);
   /* v116 (suite rapports 21/07) : QCM aligné sur les cartes Rappel — pas d'en-tête,
@@ -1863,15 +1867,18 @@ function exoQcmKr2Fr(it){
     const o = SEED_BY_ID[id];
     const b = el(`<button>${esc(o.fr)}</button>`);
     b.onclick = ()=>{
+      const answeredAt=Date.now();
       const ok = id===it.id;
       box.querySelectorAll("button").forEach(x=>x.disabled=true);
-      b.classList.add(ok?"good":"bad");
-      const goodBtn = [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].fr);
-      goodBtn?.classList.add("good");
-      /* compacter : ne garder que la bonne réponse (+ la tienne si fausse) -> Continuer visible sans défiler */
-      [...box.children].forEach(x=>{ if(x!==b && x!==goodBtn) x.remove(); });
-      speak(it.kr, it.id);
-      afterAnswer(it, ok, showTrivia(card, it), it.stage<=1?"qcm1":"qcm2");
+      revealAnswer(card,it,()=>{
+        b.classList.add(ok?"good":"bad");
+        const goodBtn = [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].fr);
+        goodBtn?.classList.add("good");
+        /* compacter : ne garder que la bonne réponse (+ la tienne si fausse) -> Continuer visible sans défiler */
+        [...box.children].forEach(x=>{ if(x!==b && x!==goodBtn) x.remove(); });
+        speak(it.kr, it.id);
+        afterAnswer(it, ok, showTrivia(card, it), it.stage<=1?"qcm1":"qcm2", undefined, undefined, undefined, answeredAt);
+      });
     };
     box.appendChild(b);
   });
@@ -1880,6 +1887,7 @@ function exoQcmKr2Fr(it){
 }
 /* stage 3 : QCM français -> coréen */
 function exoQcmFr2Kr(it){
+  window.SORI_IMAGES?.prepare?.(baseId(it.id));
   const ds = distractors(it, 3, "kr");
   const opts = shuffle([it.id, ...ds]);
   /* v116 : même épure que le QCM compréhension — le mot seul, les choix parlent d'eux-mêmes */
@@ -1891,14 +1899,17 @@ function exoQcmFr2Kr(it){
     const o = SEED_BY_ID[id];
     const b = el(`<button class="kr">${esc(o.kr)}</button>`);
     b.onclick = ()=>{
+      const answeredAt=Date.now();
       const ok = id===it.id;
       box.querySelectorAll("button").forEach(x=>x.disabled=true);
-      b.classList.add(ok?"good":"bad");
-      const goodBtn = [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].kr);
-      goodBtn?.classList.add("good");
-      [...box.children].forEach(x=>{ if(x!==b && x!==goodBtn) x.remove(); });
-      speak(it.kr, it.id);
-      afterAnswer(it, ok, showTrivia(card, it), "qcm3");
+      revealAnswer(card,it,()=>{
+        b.classList.add(ok?"good":"bad");
+        const goodBtn = [...box.children].find(x=>x.textContent===SEED_BY_ID[it.id].kr);
+        goodBtn?.classList.add("good");
+        [...box.children].forEach(x=>{ if(x!==b && x!==goodBtn) x.remove(); });
+        speak(it.kr, it.id);
+        afterAnswer(it, ok, showTrivia(card, it), "qcm3", undefined, undefined, undefined, answeredAt);
+      });
     };
     box.appendChild(b);
   });
@@ -1949,6 +1960,7 @@ function gradeButtons(row, it, kind, capMax, onGrade){
    si un autre onglet change le thème — revue v103) ; le select de Réglages re-rend l'écran. */
 function isTakbon(){ try{ return document.documentElement.classList.contains("theme-takbon"); }catch(_){ return false; } }
 function exoRecall(it, hinted){
+  window.SORI_IMAGES?.prepare?.(baseId(it.id));
   /* indice (v76) : ENGINE.hintPlan choisit une position TOURNANTE (compteur ok+ko) et n'expose que
      l'attaque (jamo) quand révéler le bloc donnerait le mot (1 syll, radical d'un verbe 2 syll).
      meaningful=false (on est tombé sur le 다 prévisible) → l'indice ne donne rien → on LÈVE le plafond
@@ -1975,23 +1987,26 @@ function exoRecall(it, hinted){
     <div class="row" style="margin-top:12px"></div></div>`);
   card.onclick = ()=>{
     card.onclick = null;                          // une seule révélation ; ensuite les taps vont aux notes
-    armCooldown(200);                             // v141 : gel court post-révélation — tue le double-tap
-                                                  // fantôme (~100 ms) sans avaler les notes rapides
-    /* v158 (rapport 22/08) : la réponse REMPLACE le texte à trou — les tuiles d'indice
-       disparaissent, le mot complet prend leur place. Plus de bouton haut-parleur :
-       toucher le mot le fait réécouter (même geste que le sens inversé, v115). */
-    const h2 = card.querySelector(".hint2");
-    if(h2) h2.remove();
-    card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span>`;
-    card.querySelector(".feedback .kr").onclick = ev=>{ ev.stopPropagation(); speak(it.kr, it.id); };
-    speak(it.kr, it.id);
-    showTrivia(card, it);        // lisible pendant l'auto-évaluation
-    gradeButtons(card.querySelector(".row"), it, recKind, recCap);
+    revealAnswer(card,it,()=>{
+      armCooldown(200);                             // v141 : gel court post-révélation — tue le double-tap
+                                                    // fantôme (~100 ms) sans avaler les notes rapides
+      /* v158 (rapport 22/08) : la réponse REMPLACE le texte à trou — les tuiles d'indice
+         disparaissent, le mot complet prend leur place. Plus de bouton haut-parleur :
+         toucher le mot le fait réécouter (même geste que le sens inversé, v115). */
+      const h2 = card.querySelector(".hint2");
+      if(h2) h2.remove();
+      card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.kr)}</span>`;
+      card.querySelector(".feedback .kr").onclick = ev=>{ ev.stopPropagation(); speak(it.kr, it.id); };
+      speak(it.kr, it.id);
+      showTrivia(card, it);        // lisible pendant l'auto-évaluation
+      gradeButtons(card.querySelector(".row"), it, recKind, recCap);
+    });
   };
   $screen.appendChild(card);
 }
 /* stage 4-5 (variante) : rappel inversé — je vois le coréen, je donne le sens */
 function exoRecallRev(it){
+  window.SORI_IMAGES?.prepare?.(baseId(it.id));
   /* v115 (rapports 🐞 21/07) : plus d'instruction, plus d'icône 🔊 ni de zone à cliquer —
      toucher la carte (le mot compris) révèle le sens ; après, toucher le mot le fait réécouter. */
   const card = el(`<div class="card center">
@@ -2000,17 +2015,20 @@ function exoRecallRev(it){
     <div class="row" style="margin-top:12px"></div></div>`);
   card.onclick = ()=>{
     card.onclick = null;
-    armCooldown(200);                             // v141 : gel court post-révélation (cf. exoRecall)
-    card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.fr)}</span>`;
-    card.querySelector(".big-kr").onclick = ()=>speak(it.kr, it.id);   // réécoute au tap sur le mot
-    showTrivia(card, it);
-    gradeButtons(card.querySelector(".row"), it, "recrev");
+    revealAnswer(card,it,()=>{
+      armCooldown(200);                             // v141 : gel court post-révélation (cf. exoRecall)
+      card.querySelector(".feedback").innerHTML = `<span class="kr">${esc(it.fr)}</span>`;
+      card.querySelector(".big-kr").onclick = ()=>speak(it.kr, it.id);   // réécoute au tap sur le mot
+      showTrivia(card, it);
+      gradeButtons(card.querySelector(".row"), it, "recrev");
+    });
   };
   $screen.appendChild(card);
   if(ST.set.autoplay && !NAV) speak(it.kr, it.id);
 }
 /* stage 3 (phrases) : construction de phrase façon Duolingo */
 function exoBuild(it){
+  window.SORI_IMAGES?.prepare?.(baseId(it.id));
   const answer = it.kr.trim();
   const tokens = answer.split(" ");
   const pool = shuffle(tokens.map((w,i)=>({w, k:i})));
@@ -2039,14 +2057,17 @@ function exoBuild(it){
     });
   }
   function check(){
+    const answeredAt=Date.now();
     const got = built.map(t=>t.w).join(" ");
     const ok = got === answer;
-    card.querySelector(".feedback").innerHTML =
-      ok ? `<span style="color:var(--ok)">✓ ${esc(answer)}</span>`
-         : `<span style="color:var(--ko)">✗</span> <span class="kr">${esc(answer)}</span>`;
     [...card.querySelectorAll(".chip")].forEach(b=>b.disabled=true);
-    speak(answer, it.id);
-    afterAnswer(it, ok, showTrivia(card, it), "build");
+    revealAnswer(card,it,()=>{
+      card.querySelector(".feedback").innerHTML =
+        ok ? `<span style="color:var(--ok)">✓ ${esc(answer)}</span>`
+           : `<span style="color:var(--ko)">✗</span> <span class="kr">${esc(answer)}</span>`;
+      speak(answer, it.id);
+      afterAnswer(it, ok, showTrivia(card, it), "build", undefined, undefined, undefined, answeredAt);
+    });
   }
   paint();
   $screen.appendChild(card);
