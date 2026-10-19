@@ -7,6 +7,17 @@ import vm from 'node:vm';
 const require=createRequire(import.meta.url);
 const I=require('../docs/images.js').pure,D=require('../docs/images-data.js'),B=require('../docs/backup.js');
 const a=D.items['pack-c3c6d557'];
+test('a timed-out image releases its pending browser request',async()=>{
+  let image;
+  const context={window:{},setTimeout,clearTimeout,Image:class{
+    constructor(){image=this;}
+    removeAttribute(name){assert.equal(name,'src');this.src=null;}
+  }};
+  vm.runInNewContext(fs.readFileSync(new URL('../docs/images.js',import.meta.url),'utf8'),context);
+  assert.equal(await context.window.SORI_IMAGES.load(a,10),null);
+  assert.equal(image.src,null,'stop loading after the deadline, rather than leaving a pending image');
+  assert.equal(image.onload,null);assert.equal(image.onerror,null);
+});
 const it={id:'pack-c3c6d557',kr:'우산',type:'word',stage:3,ok:1,ko:0};
 const imageBatches=[['a-2026-10-17',100,['A1','A2']],['a-2026-10-17-02',100,['A1','A2']],['a-2026-10-18',200,['A1','A2']],['objects-2026-10-18',200,['A1','A2','B1']]];
 for(const [name,count,levels] of imageBatches)test(name+' contains '+count+' distinct new '+levels.join('/')+' senses from the catalogue',()=>{
@@ -44,10 +55,10 @@ test('image questions: only reviewed assets, production slots, every other produ
   assert.equal(I.eligible({...it,type:'phrase'},false,a),false);
   assert.equal(D.items['1779706066098'],undefined,'배 belly is never matched to pear by Korean spelling');
 });
-test('image answers: exact/NFC accepted, plausible alternative neutral, no fuzzy semantic credit',()=>{
+test('image answers: exact/NFC accepted, every other answer gets the ordinary correction',()=>{
   assert.equal(I.judge('  우산.  ',a),'correct');
   assert.equal(I.judge('우산'.normalize('NFD'),a),'correct');
-  assert.equal(I.judge('양산',a),'neutral');
+  assert.equal(I.judge('양산',a),'mismatch','review alternatives do not open a separate ambiguity flow');
   assert.equal(I.judge('우선',a),'mismatch');
   assert.equal(I.judge('<script>',a),'mismatch');
   assert.equal(I.judge(' ',a),'empty');

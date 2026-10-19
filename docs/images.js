@@ -18,7 +18,6 @@
     const n=normalize(answer);
     if(!n) return "empty";
     if((a.accepted||[]).some(x=>normalize(x)===n)) return "correct";
-    if((a.alternatives||[]).some(x=>normalize(x)===n)) return "neutral";
     return "mismatch";
   }
   function resume(a,it,pos,day){
@@ -48,10 +47,17 @@
     if(!usable(a))return Promise.resolve(null);
     return new Promise(resolve=>{
       const img=new Image();let settled=false;
-      const finish=value=>{if(settled)return;settled=true;clearTimeout(timer);img.onload=img.onerror=null;resolve(value);};
+      const finish=value=>{
+        if(settled)return;settled=true;clearTimeout(timer);img.onload=img.onerror=null;
+        // A timed-out request must release the browser's page-load event too,
+        // especially when a missing picture is requested while offline.
+        if(!value)img.removeAttribute("src");
+        resolve(value);
+      };
       const timer=setTimeout(()=>finish(null),timeout);
       img.alt="Illustration à nommer en coréen";img.className="images-art";img.width=512;img.height=512;img.draggable=false;
       const bad=()=>{
+        if(settled)return;
         if(root.caches)caches.open("sori-image-store").then(c=>c.delete(a.src)).catch(()=>{});
         finish(null);
       };
@@ -143,9 +149,11 @@
       if(["correct","oral","typo"].includes(phase))opts.grades(row,grade);
       else if(phase==="forgot")row.append(button("Encore",()=>grade(1),"btn ko"));
       else if(phase==="neutral"){
+        // Resume an ungraded attempt saved before v178; new answers never enter
+        // this phase. Preserve its outcome rather than inventing a failed grade.
         row.append(button("Continuer sans noter",neutral));
       } else {
-        row.append(button("J’avais oublié",()=>grade(1),"btn ko"),button("Faute de frappe",()=>setPhase("typo")),button("Image ambiguë / autre mot valable",()=>setPhase("neutral")));
+        row.append(button("J’avais oublié",()=>grade(1),"btn ko"),button("Faute de frappe",()=>setPhase("typo")));
       }
     }
     paint();opts.onReady();

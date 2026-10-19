@@ -150,11 +150,23 @@ let browser,page;
   assert.equal(await page.evaluate(()=>ST.log[todayStr()].imageTypo),1);
   for(const answer of ['양산','<b>autre mot</b>']){
     await reset();await page.locator('.images-input').fill(answer);await page.getByRole('button',{name:'Vérifier',exact:true}).click();
-    if(answer!=='양산')await page.getByRole('button',{name:'Image ambiguë / autre mot valable',exact:true}).click();
-    const neutralBefore=await snapshot();await page.getByRole('button',{name:'Continuer sans noter',exact:true}).click();
-    await page.locator('.opts button').first().waitFor();const neutralAfter=await snapshot();
-    assert.equal(neutralAfter.items,neutralBefore.items);assert.equal(neutralAfter.rlog,neutralBefore.rlog);assert.equal(neutralAfter.p,1);
+    await page.getByText('La réponse attendue',{exact:true}).waitFor();
+    assert.equal(await page.locator('.images-actions button').count(),2,'incorrect answers offer only forgetting or typing error');
+    assert.equal(await page.getByRole('button',{name:/Image ambiguë|Continuer sans noter/}).count(),0);
+    assert.equal(await page.locator('.images-yours').textContent(),'Ta réponse : '+answer);
+    assert.equal(await page.locator('.images-yours b').count(),0,'typed markup remains literal text');
+    assert.equal(await page.evaluate(()=>ST.rlog.length),0,'correction still requires an explicit assessment');
+    if(answer==='양산')await page.screenshot({path:path.join(artifacts,'simple-correction.png')});
+    await page.getByRole('button',{name:'J’avais oublié',exact:true}).click();await page.locator('.opts button').first().waitFor();
+    assert.equal(await page.evaluate(()=>ST.rlog[0][2]),1);assert.equal(await page.evaluate(()=>ST.rlog.length),1);
   }
+  // An existing neutral attempt from an older app remains ungraded on resume.
+  await reset();await page.locator('.images-input').waitFor();
+  await page.evaluate(()=>{ST.imageReview.phase='neutral';save();});
+  await page.reload();await page.locator('#tabs [data-tab="review"]').click();
+  const neutralBefore=await snapshot();await page.getByRole('button',{name:'Continuer sans noter',exact:true}).click();
+  await page.locator('.opts button').first().waitFor();const neutralAfter=await snapshot();
+  assert.equal(neutralAfter.items,neutralBefore.items);assert.equal(neutralAfter.rlog,neutralBefore.rlog);assert.equal(neutralAfter.p,1);
   await reset({grade4:false});await page.locator('.images-input').waitFor();
   await page.getByRole('button',{name:'J’ai répondu à voix haute',exact:true}).click();
   assert.equal(await page.locator('.images-actions button').count(),2,'binary grading preference is respected');
@@ -223,10 +235,12 @@ let browser,page;
   await reset();await page.locator('.big-fr').waitFor();assert.equal(await page.evaluate(()=>ST.rlog.length),0);
   assert.deepEqual(errors,[]);
   const summary={browser:await browser.version(),imageAssets:imageCount,ime:true,reload:true,undo:true,forgettingGrade:1,typoGrade:2,
-    neutral:true,atomicCorrections:true,preloadBeforeAnswer:true,responseTimeExcludesImageWait:true,
+    simpleCorrection:true,legacyNeutralResume:true,atomicCorrections:true,preloadBeforeAnswer:true,responseTimeExcludesImageWait:true,
     fallbacks:['no manifest','support only','disabled','missing module','404','corrupt','timeout','offline'],themes:6,offline:true,cacheUpgrade:true,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,'summary.json'),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));
 })().catch(async error=>{
   console.error(error);process.exitCode=1;fs.writeFileSync(path.join(artifacts,'failure.txt'),String(error.stack||error));
+  if(process.env.GITHUB_ACTIONS)console.error('::error title=Images smoke::'+String(error.stack||error)
+    .replace(/%/g,'%25').replace(/\r/g,'%0D').replace(/\n/g,'%0A'));
   if(page)await page.screenshot({path:path.join(artifacts,'failure.png')}).catch(()=>{});
 }).finally(async()=>{if(browser)await browser.close();server.closeAllConnections();await new Promise(r=>server.close(r));});

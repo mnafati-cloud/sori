@@ -26,7 +26,7 @@
 > 3 B2 et 2 C1. Le cache préparé est `sori-v175`.
 >
 > La bouilloire conserve son usage aide. `판자` (planche de bois) pour 도마 et
-> `시계` (montre) pour 나침반 sont des alternatives **neutres**, pas des réponses
+> `시계` (montre) pour 나침반 étaient alors des alternatives **neutres**, pas des réponses
 > créditées. Aucun asset existant n'a été réemployé ou remplacé. Les recettes,
 > hashes, provenance et revues sont dans `tools/images/batches/reprise-2026-10-18-01.json`
 > et `tools/images/reviews/`. Aucune génération de remplacement automatique.
@@ -81,6 +81,7 @@ l’illustration pendant la question (au plus quatre images en mémoire), sans
 l’insérer dans le DOM. La correction, l’image et les boutons apparaissent
 ensemble, après décodage ; en cas d’échec ou après 1,6 s de chargement,
 la correction textuelle reste définitive pour ce tour, sans ajout tardif.
+La requête d’une image qui dépasse ce délai est annulée.
 Le temps de réponse des QCM exclut cette attente éventuelle.
 
 `set.images` est activé par défaut et désactivable dans Réglages. Le mode texte
@@ -95,11 +96,14 @@ nécessiteraient un corpus et une validation sémantique propres.
 | --- | --- | --- |
 | Mot exact / variante explicitement admise | Correction, puis choix de la note | Bien normalement ; Difficile/Facile selon l'effort ressenti |
 | « Je ne sais pas » | Réponse immédiate, bouton Encore | Vrai oubli : note 1 |
-| Réponse différente | Réponse immédiate et choix oubli / faute de frappe / ambiguïté | Pas de note automatique |
+| Réponse différente, y compris un autre lexème plausible | Correction et choix oubli / faute de frappe | Pas de note automatique |
 | Oubli confirmé | Encore | Note 1 |
 | Faute de frappe confirmée | Auto-évaluation du rappel | Pas de faux oubli imposé par le clavier |
-| Autre lexème plausible ou image ambiguë | Correction puis Continuer sans noter | Ni réussite ni échec ; la carte reste due |
 | Réponse orale | Correction et auto-évaluation | Même notes que le rappel libre |
+
+Depuis v178, aucun choix « Image ambiguë / autre mot valable » ni écran spécial
+pour un autre lexème. Les anciennes tentatives neutres sauvegardées restent
+reprenables sans note ; aucune nouvelle tentative ne prend ce chemin.
 
 Le réglage à deux boutons conserve Encore/Bien ; quatre boutons donnent les
 notes 1–4. Aucune note n'est déduite automatiquement de la vitesse. La première
@@ -114,7 +118,8 @@ de correction. Le champ additif `ST.imageReview` contient seulement
 `{d,id,p,n,asset,phase}` pour la tentative courante (environ 200 octets), jamais
 l'image ou le texte saisi. `rlog` garde son format à 7 champs, avec `kind=image` ;
 le codec compact v2 compresse déjà ce champ. `log[jour].imageTypo` et
-`imageNeutral` comptent les exceptions. Les rapports incluent l'asset et la phase.
+`imageNeutral` comptent les exceptions (ce dernier reste historique depuis v178).
+Les rapports incluent l'asset et la phase.
 Les exports/imports transportent ces champs sans recopier le catalogue.
 
 ## Bibliothèque et pipeline Git
@@ -155,7 +160,8 @@ ids différents. Ne pas modifier les ids existants, ni régénérer `data.js`.
 
 `usage: question` exige un objet suffisamment univoque et `accepted` contenant
 le mot canonique. Seules les variantes du **même mot ciblé** vont dans `accepted`.
-Un autre mot plausible va dans `alternatives` (neutre, pas de crédit automatique).
+Un autre mot plausible va dans `alternatives` pour la revue sémantique, sans
+crédit automatique. Depuis v178, il suit la correction habituelle dans l’app.
 컵/잔, 밥/쌀/벼 et les mots dont le sens dépend de la couleur nécessitent une
 revue explicite ; laisser `usage: support` en cas de doute. `subject` décrit la
 forme, le cadrage et les exclusions. Ne pas générer une décoration abstraite
@@ -317,7 +323,8 @@ node tools/backup_smoke.cjs
 ```
 
 Les tests navigateur utilisent Playwright 1.63.0 et Chromium (installation comme
-dans la CI). `images_smoke.cjs` couvre IME, résultat avant note, oubli/typo/neutre,
+dans la CI). `images_smoke.cjs` couvre IME, résultat avant note, oubli/typo,
+reprise des anciens états neutres,
 rechargement, annulation, deux/quatre notes, absence de manifeste/module/image,
 404, corruption, timeout, navigation pendant le chargement, dictionnaire,
 six thèmes, deux tailles mobiles, téléchargement, mise à jour réelle du worker,
