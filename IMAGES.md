@@ -1,20 +1,22 @@
-# Illustrations et rappel visuel — v175
+# Illustrations et rappel visuel — v179
 
 <!-- FULL_CONCRETE_PROGRESS_START -->
-> **Campagne concrète v175 : 405 images intégrées sur 461 candidats initiaux.**
+> **Campagne concrète : 406 images intégrées sur 461 candidats initiaux** (405 en v175, 1 en v179).
 > Chaque WebP a été revu à 512, 160 et 96 px, selon la référence Pinceau existante.
-> 54 candidats sont différés pour des limites de sens, de scène ou de palette ;
-> 1 candidat (종아리) est bloqué par un refus du fournisseur et n’a pas été relancé.
-> 1 rendu validé visuellement (배 — ventre) est conservé hors manifeste : le test d’homonymie actuel exige cet id sans image.
-> Le test et le code restent inchangés. Le refus antérieur 어깨 reste exclu. Détail : `tools/images/batches/full-concrete-plan-2026-10-18.json`.
-> Catalogue v175 : **1 013 images** = 603 de v174 + 5 du premier lot + 405 de cette campagne.
-> Recettes, provenance et revues dans les lots `full-concrete-*.json` et `tools/images/reviews/`.
+> 54 candidats restent différés pour des limites de sens, de scène ou de palette ;
+> 1 candidat (종아리) reste bloqué par un refus du fournisseur et n’a pas été relancé.
+> Le refus antérieur 어깨 reste également exclu. Les 54 sujets seront étudiés séparément.
+> **v179 : 배 — ventre intégré en aide après réponse**, avec son propre fichier et son id.
+> Le test vérifie désormais les associations distinctes ventre/poire par id, plutôt que d’interdire l’image du ventre.
+> Détail : `tools/images/batches/full-concrete-plan-2026-10-18.json` et `homonymes-2026-10-19.json`.
+> Catalogue v179 : **1 014 images** = 603 de v174 + 5 du premier lot + 406 de cette campagne.
+> Recettes, provenance et revues dans les lots et `tools/images/reviews/` ; aucune nouvelle génération pour ce correctif.
 > Les synonymes et sens non univoques restent des aides après réponse ; aucun asset n’est réemployé.
-> Cache : `sori-v175`. Publication du catalogue validé depuis `main`, sans modification du seed ni de la progression.
-> Validation finale : 198 tests Node, 31 fichiers JS en syntaxe, 161 cas FSRS, compilation Python,
-> 3 tests Python, pipeline 1 013 et quatre suites navigateur réussis ; zéro erreur JS.
-> Campagne : 52 questions et 353 aides ; 12 334 670 octets de WebP ajoutés.
-> Catalogue complet : 29 996 910 octets, chargé à la demande.
+> Cache : `sori-v179`. Publication depuis `main`, sans modification du seed ni de la progression.
+> Campagne : 52 questions et 354 aides ; 12 348 264 octets de WebP ajoutés.
+> Catalogue complet : 30 010 504 octets, chargé à la demande.
+> Validation v179 : 202 tests Node, syntaxe des 31 JS, 161 cas FSRS, compilation Python,
+> 3 tests Python, pipeline 1 014 et quatre suites navigateur réussis ; zéro erreur JS.
 <!-- FULL_CONCRETE_PROGRESS_END -->
 
 > **Historique du premier lot v175.** Le lot
@@ -37,7 +39,7 @@ Ce fichier et `tools/images/` sont le point de reprise du projet : aucune
 information de la conversation n'est nécessaire pour continuer la bibliothèque.
 Style approuvé : **2, trait au pinceau**, blanc chaud et lavis gris sur fond noir,
 accent vermillon discret. Toutes les illustrations sont générées, jamais prises
-sur le Web. La bibliothèque v175 contient **1 013 images**. La base v174 comptait
+sur le Web. La bibliothèque v179 contient **1 014 images** (1 013 en v175). La base v174 comptait
 **603 images publiées** : les 3 premières
 (우산, 사과, 고양이), puis deux lots de 100 et deux lots de 200 mots distincts.
 

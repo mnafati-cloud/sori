@@ -53,7 +53,23 @@ test('image questions: only reviewed assets, production slots, every other produ
   assert.equal(I.eligible(it,true,a),false,'comprehension recto is never replaced');
   assert.equal(I.eligible({...it,stage:2},false,a),false);
   assert.equal(I.eligible({...it,type:'phrase'},false,a),false);
-  assert.equal(D.items['1779706066098'],undefined,'배 belly is never matched to pear by Korean spelling');
+});
+test('배 homonyms resolve by card id to separate reviewed support images',()=>{
+  const images=require('../docs/images.js'),ctx={window:{}};
+  vm.runInNewContext(fs.readFileSync(new URL('../docs/data.js',import.meta.url),'utf8'),ctx);
+  const entries=[['1779706066098','Ventre'],['1780695436442','Poire (fruit)']];
+  for(const [id,sense] of entries){
+    const seed=ctx.window.SEED.items.find(x=>x.id===id),entry=D.items[id];
+    assert.equal(seed.kr,'배');assert.equal(seed.fr,sense);
+    assert.ok(entry,'a reviewed illustration exists for '+sense);
+    assert.equal(images.asset(id),entry,'lookup uses the immutable card id');
+    assert.equal(entry.alt,sense);assert.equal(entry.usage,'support');
+    assert.match(entry.src,new RegExp('^\\./images/'+id+'-[a-f0-9]{12}\\.webp$'));
+    assert.deepEqual(entry.accepted,[],'a support image never asks an ambiguous word');
+    assert.equal(I.eligible({...seed,stage:5,ok:1,ko:0},false,entry),false);
+  }
+  assert.notEqual(D.items[entries[0][0]].src,D.items[entries[1][0]].src,'belly never reuses the pear asset');
+  assert.equal(images.asset('배'),null,'Korean spelling alone cannot select an image');
 });
 test('image answers: exact/NFC accepted, every other answer gets the ordinary correction',()=>{
   assert.equal(I.judge('  우산.  ',a),'correct');

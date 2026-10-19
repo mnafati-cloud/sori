@@ -10197,8 +10197,10 @@
       "accepted": [],
       "alternatives": [],
       "subject": "One fully clothed adult standing in profile, complete head and feet, plain loose shirt and trousers, both hands gently resting over the lower abdomen between ribs and hips. No pregnancy emphasis, no organs or pain icon. Illustrates belly 배, not pear or ship; support only.",
-      "status": "queued",
-      "deferredReason": "Contrat actuel de tests/images.test.mjs:45 : l’id 1779706066098 (배 — ventre) doit rester absent du manifeste pour le contrôle d’homonymie avec poire. Le rendu propre au ventre est visuellement validé, mais son association est différée sans modifier le test ni le code applicatif."
+      "status": "approved",
+      "batch": "homonymes-2026-10-19",
+      "asset": "1779706066098-0a18a12485a0.webp",
+      "sha256": "0a18a12485a0e20a95193896c9093fe200389e3c01a5ed19ad24b8fee8eda336"
     },
     {
       "id": "pack-500b9e60",

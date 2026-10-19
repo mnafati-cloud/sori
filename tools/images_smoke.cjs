@@ -201,7 +201,30 @@ let browser,page;
   await reset();await page.locator('.images-input').waitFor();
   await page.locator('#dicorev').click();await page.locator('.search-input').fill('우산');
   const hit=page.locator('.search-hit').filter({has:page.locator('.kr').getByText('우산',{exact:true})});
-  await hit.click();await hit.locator('.images-support').waitFor();await page.locator('#dicoclose').click();
+  await hit.click();await hit.locator('.images-support').waitFor();
+  // Same Korean spelling, separate meanings and files in the real dictionary.
+  await page.locator('.search-input').fill('배');
+  for(const [cardId,sense] of [['1779706066098','Ventre'],['1780695436442','Poire (fruit)']]){
+    const row=page.locator('.search-hit').filter({has:page.locator('.fr').getByText(sense,{exact:true})});
+    await row.click();await row.locator('.images-support').waitFor();
+    assert.equal(await row.locator('img').getAttribute('src'),D.items[cardId].src);
+    assert.equal(await row.locator('img').getAttribute('alt'),sense);
+  }
+  await page.screenshot({path:path.join(artifacts,'homonyms-dictionary.png')});
+  await page.locator('#dicoclose').click();
+  // Belly remains a text question: its own image appears only with the answer.
+  await page.evaluate(({belly,next})=>{
+    ST.items[belly]={s:4,i:7,S:7,D:5,d:todayStr(),ok:1,ko:0};
+    delete ST.imageReview;Q=[belly,next];QPOS=0;UNDO=null;saveSess();render();
+  },{belly:'1779706066098',next});
+  await page.locator('.big-fr').getByText('Ventre',{exact:true}).waitFor();
+  assert.equal(await page.locator('.images-art,.images-input').count(),0,'support image never exposes the question answer');
+  await page.locator('#screen .card.center').click();await page.locator('.feedback .kr').waitFor();
+  assert.equal(await page.locator('.images-support').getAttribute('src'),D.items['1779706066098'].src);
+  assert.equal(await page.locator('.images-support').getAttribute('alt'),'Ventre');
+  assert.equal(await page.evaluate(()=>ST.rlog.length),0,'revealing the belly illustration does not grade');
+  await page.screenshot({path:path.join(artifacts,'belly-support.png')});
+  await reset();await page.locator('.images-input').waitFor();
   // Six actual themes, small phone and keyboard-height viewports, no horizontal overflow.
   for(const theme of ['encre','seoul','nuit','hanji','dansaekhwa','takbon'])for(const viewport of [{width:320,height:568},{width:412,height:400}]){
     await page.setViewportSize(viewport);await page.evaluate(theme=>SORI_THEMES.set(theme),theme);
@@ -235,7 +258,8 @@ let browser,page;
   await reset();await page.locator('.big-fr').waitFor();assert.equal(await page.evaluate(()=>ST.rlog.length),0);
   assert.deepEqual(errors,[]);
   const summary={browser:await browser.version(),imageAssets:imageCount,ime:true,reload:true,undo:true,forgettingGrade:1,typoGrade:2,
-    simpleCorrection:true,legacyNeutralResume:true,atomicCorrections:true,preloadBeforeAnswer:true,responseTimeExcludesImageWait:true,
+    simpleCorrection:true,legacyNeutralResume:true,homonymImagesById:true,bellySupportOnly:true,
+    atomicCorrections:true,preloadBeforeAnswer:true,responseTimeExcludesImageWait:true,
     fallbacks:['no manifest','support only','disabled','missing module','404','corrupt','timeout','offline'],themes:6,offline:true,cacheUpgrade:true,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,'summary.json'),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));
 })().catch(async error=>{
