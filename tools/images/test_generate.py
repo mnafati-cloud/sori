@@ -49,6 +49,28 @@ class GenerationTests(unittest.TestCase):
         self.assertNotEqual(code, None)
         network.assert_not_called()
 
+    def test_scene_profile_receipt_and_reference(self):
+        inventory=json.loads((self.root / 'inventory.json').read_text())
+        inventory['items'][0].update(styleProfile='pinceau-scenes-v1',usage='support')
+        (self.root / 'inventory.json').write_text(json.dumps(inventory))
+        (self.root / 'style-scenes.md').write_text('Scene style')
+        (self.root / 'style-scenes-reference.png').write_bytes(b'scene reference')
+        answer=io.BytesIO(json.dumps({'data':[{'b64_json':base64.b64encode(b'generated-png').decode()}]}).encode())
+        code,network,importer=self.invoke(['--ids','a','--execute'],[answer])
+        self.assertIsNone(code)
+        data=json.loads(next((self.root / 'candidates').rglob('a.json')).read_text())
+        self.assertEqual(data['parameters']['prompt'],'Scene style\n\nSubject:\napple')
+        self.assertIn(b'scene reference',network.call_args.args[0].data)
+        self.assertEqual(importer.call_count,1)
+
+    def test_invalid_profile_and_scene_question_fail_before_network(self):
+        for profile,usage in [('unknown','support'),('pinceau-scenes-v1','question')]:
+            inventory=json.loads((self.root / 'inventory.json').read_text())
+            inventory['items'][0].update(styleProfile=profile,usage=usage)
+            (self.root / 'inventory.json').write_text(json.dumps(inventory))
+            code,network,importer=self.invoke(['--ids','a','--execute'])
+            self.assertIsNotNone(code);network.assert_not_called();importer.assert_not_called()
+
     def test_candidate_receipt_then_stop_on_http_failure_without_retry(self):
         answer = io.BytesIO(json.dumps({'data':[{'b64_json':base64.b64encode(b'generated-png').decode()}], 'usage':{'total_tokens':1}}).encode())
         code, network, importer = self.invoke(['--ids','a,b','--execute'], [answer, urllib.error.HTTPError(generate.API, 429, 'rate limit', {}, None)])

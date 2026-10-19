@@ -1,0 +1,24 @@
+{
+  "id": "pack-5ed2015d",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-19T07:48:06.293Z",
+  "sourceSha256": "c6a9b171f9ac4a558b57236579b1168387d5c0dae3456cd76a268add06e4e1aa",
+  "sha256": "9913160171f48227d485a2525ce8851e1505b021f1c364fb8cf4d083958d11b1",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nTarget meaning (not lettering): 소나기 — Averse.\nComposition: Rideau de pluie localisé sous un nuage sombre, avec une zone claire à côté et des éclaboussures.\nSemantic constraints: Une image fixe ne prouve pas la brièveté de l’averse ; le mot reste donné après réponse.\nKeep only 2–3 essential visual elements. NO TEXT OR LETTERING in the artwork.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Revue effective512/160/96 : Rideau localisé sous un nuage sombre, zone plus claire à côté et impacts sur l’eau. Averse évoquée aux trois tailles ; durée non prouvée par une image fixe, aide seulement.",
+  "reviewedAt": "2026-10-19T07:55:42.857Z",
+  "kr": "소나기",
+  "sense": "Averse",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

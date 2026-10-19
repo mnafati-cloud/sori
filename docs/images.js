@@ -161,7 +161,7 @@
   async function download(onProgress){
     const entries=Object.values(root.SORI_IMAGES_DATA?.items||{}).filter(usable);
     if(!root.caches)throw Error("Le stockage hors connexion n’est pas disponible.");
-    if(entries.length>1024 || entries.reduce((n,a)=>n+(a.bytes||80*1024),0)>80*1024*1024)throw Error("La bibliothèque dépasse la limite de stockage hors connexion (80 Mo).");
+    if(entries.length>1280 || entries.reduce((n,a)=>n+(a.bytes||64*1024),0)>80*1024*1024)throw Error("La bibliothèque dépasse la limite de stockage hors connexion (80 Mo).");
     const cache=await caches.open("sori-image-store"),urls=new Set(entries.map(a=>new URL(a.src,document.baseURI).href));
     let ok=0,failed=0;
     for(const a of entries){
@@ -172,7 +172,7 @@
         if(!response.ok || !response.headers.get("content-type")?.includes("image/"))throw Error("image");
         try{
           const blob=await response.clone().blob();
-          if(blob.size>80*1024)throw Error("size");
+          if(blob.size>64*1024)throw Error("size");
           const bitmap=await createImageBitmap(blob);bitmap.close();
         }catch(error){await cache.delete(url);throw error;}
         if(!cached)await cache.put(url,response);

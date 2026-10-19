@@ -1,0 +1,24 @@
+{
+  "id": "pack-f34163ab",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-19T07:43:44.364Z",
+  "sourceSha256": "f0e0beb0352856ca7de6e6a7a52e2ffa3ec2f41fd7451c557c734e44328c3e41",
+  "sha256": "9e011f4b8f80bc65b2229de5c92bca3e2c9150bd70a4469f0e120f834fc9a3b6",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nTarget meaning (not lettering): 빙하 — Le glacier.\nComposition: Langue de glace épaisse et crevassée entre deux versants rocheux, front du glacier visible.\nSemantic constraints: Ne pas remplacer par un iceberg flottant ou une montagne seulement enneigée.\nKeep only 2–3 essential visual elements. NO TEXT OR LETTERING in the artwork.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Revue effective512/160/96 : Langue de glacier crevassée entre versants rocheux et front épais au-dessus de l’eau. La glace blanche/gris froid reste reconnaissable à96px ; ce n’est pas un iceberg flottant isolé.",
+  "reviewedAt": "2026-10-19T07:55:42.765Z",
+  "kr": "빙하",
+  "sense": "Le glacier",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

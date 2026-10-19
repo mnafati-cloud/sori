@@ -1,5 +1,5 @@
 /* Sori service worker — network-first (mises à jour auto), repli cache (hors-ligne) */
-const CACHE = "sori-v179";
+const CACHE = "sori-v180";
 const ASSETS = ["./", "./index.html", "./style.css", "./themes.css", "./themes.js",
                 "./engine.js", "./backup.js", "./app.js", "./data.js", "./extra.js",
                 "./production-data.js", "./production.js",
@@ -41,10 +41,10 @@ self.addEventListener("fetch", e => {
         maintenance=(async()=>{
           try{
             const bytes=await copy.arrayBuffer();
-            if(bytes.byteLength<=80*1024){
+            if(bytes.byteLength<=64*1024){
               await cache.put(e.request,new Response(bytes,{status:res.status,headers:res.headers}));
               const keys=await cache.keys();
-              for(const key of keys.slice(0,Math.max(0,keys.length-1024)))await cache.delete(key);
+              for(const key of keys.slice(0,Math.max(0,keys.length-1280)))await cache.delete(key);
             }
           }catch(_){} // quota/cache failure must not break a valid image response
         })();

@@ -6,6 +6,8 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import sharp from 'sharp';
+import {profileFor,promptFor,referenceFor} from './profiles.mjs';
+export {profileFor,promptFor,referenceFor};
 
 export const dir = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(dir, '../..');
@@ -14,9 +16,6 @@ const manifestFile = path.join(root, 'docs/images-data.js');
 const digest = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const readJSON = async file => JSON.parse(await fs.readFile(file, 'utf8'));
 const writeJSON = (file, value) => fs.writeFile(file, JSON.stringify(value, null, 2) + '\n');
-export async function promptFor(item) {
-  return await fs.readFile(path.join(dir, 'style.md'), 'utf8') + '\n\nSubject:\n' + item.subject;
-}
 export async function loadInventory() {
   const data = await readJSON(inventoryFile);
   const ctx = {window:{}};
@@ -25,6 +24,7 @@ export async function loadInventory() {
   const seen = new Set();
   if(data.version !== 1 || data.style !== 'pinceau-blanc-v1') throw Error('Unknown inventory/style version');
   for(const it of data.items) {
+    profileFor(it);
     if(!/^[a-z0-9-]+$/.test(it.id) || seen.has(it.id)) throw Error('Invalid or duplicate id: '+it.id);
     seen.add(it.id);
     if(!seed.has(it.id) || seed.get(it.id).kr !== it.kr || seed.get(it.id).type !== 'word') throw Error('Seed mismatch: '+it.id);
@@ -39,14 +39,17 @@ export async function loadInventory() {
 }
 export async function buildManifest(data) {
   const items = {};
-  // The reference is shared by every image in this manifest; hash it once per build.
-  const referenceSha256 = digest(await fs.readFile(path.join(dir, 'style-reference.png')));
+  // Hash each profile's shared reference once per build.
+  const references=new Map();
   for(const it of data.items.filter(x=>x.status === 'approved').sort((a,b)=>a.id.localeCompare(b.id,'en'))) {
+    const profile=it.styleProfile||'pinceau-blanc-v1';
+    if(!references.has(profile))references.set(profile,digest(await referenceFor(it)));
+    const referenceSha256=references.get(profile);
     if(!it.asset || !new RegExp('^'+it.id+'-[a-f0-9]{12}\\.webp$').test(it.asset)) throw Error('Unsafe asset name: '+it.id);
     const file = path.join(root, 'docs/images', it.asset), bytes = await fs.readFile(file);
     const meta = await sharp(bytes).metadata();
     await sharp(bytes).raw().toBuffer(); // actual decode, not just header inspection
-    if(meta.format !== 'webp' || meta.width !== 512 || meta.height !== 512 || meta.pages > 1 || bytes.length > 80*1024) throw Error('Image dimensions/size invalid: '+it.id);
+    if(meta.format !== 'webp' || meta.width !== 512 || meta.height !== 512 || meta.pages > 1 || bytes.length > 64*1024) throw Error('Image dimensions/size invalid: '+it.id);
     if(digest(bytes) !== it.sha256 || !it.asset.includes(it.sha256.slice(0,12))) throw Error('Image hash mismatch: '+it.id);
     const review = await readJSON(path.join(dir, 'reviews', it.asset.replace('.webp','.json')));
     if(review.id !== it.id || review.sha256 !== it.sha256 || !review.reviewer || !review.note || !review.createdAt ||
@@ -75,19 +78,27 @@ async function main() {
     const out = path.join(dir, 'candidates', id+'-'+digest(bytes).slice(0,12));
     await fs.mkdir(out,{recursive:true});
     // Technical resize/encoding only; no cropping or repainting the generated subject.
-    const encoded = await sharp(bytes).resize(512,512,{fit:'contain'}).flatten({background:'#000000'}).webp({quality:82,effort:6}).toBuffer();
-    if(encoded.length > 80*1024) throw Error('Over 80 KiB: review compression before publication');
+    let quality=82;
+    let encoded = await sharp(bytes).resize(512,512,{fit:'contain'}).flatten({background:'#000000'}).webp({quality,effort:6}).toBuffer();
+    if(encoded.length>64*1024 && it.styleProfile==='pinceau-scenes-v1'){
+      for(const candidateQuality of [78,74,70]){
+        quality=candidateQuality;
+        encoded=await sharp(bytes).resize(512,512,{fit:'contain'}).flatten({background:'#000000'}).webp({quality,effort:6}).toBuffer();
+        if(encoded.length<=64*1024)break;
+      }
+    }
+    if(encoded.length > 64*1024) throw Error('Over 64 KiB: review compression before publication');
     await fs.writeFile(path.join(out,'image.webp'),encoded);
     let api;
     if(receiptFile){
       const receipt=await readJSON(receiptFile);
-      if(receipt.id!==id || receipt.parameters?.prompt!==await promptFor(it) || receipt.referenceSha256!==digest(await fs.readFile(path.join(dir,'style-reference.png')))) throw Error('API receipt mismatch');
+      if(receipt.id!==id || receipt.parameters?.prompt!==await promptFor(it) || receipt.referenceSha256!==digest(await referenceFor(it))) throw Error('API receipt mismatch');
       api={model:receipt.model,endpoint:receipt.endpoint,parameters:receipt.parameters,usage:receipt.usage};
     }
     await writeJSON(path.join(out,'generation.json'),{
       id,provider,createdAt:new Date().toISOString(),sourceSha256:digest(bytes),sha256:digest(encoded),
-      prompt:await promptFor(it),referenceSha256:digest(await fs.readFile(path.join(dir,'style-reference.png'))),
-      encoding:{width:512,height:512,format:'webp',quality:82,sharp:sharp.versions.sharp},api
+      prompt:await promptFor(it),referenceSha256:digest(await referenceFor(it)),
+      encoding:{width:512,height:512,format:'webp',quality,sharp:sharp.versions.sharp},api
     });
     console.log(path.relative(root,out));
   } else if(command === 'approve') {
@@ -96,7 +107,7 @@ async function main() {
     const review = await readJSON(path.join(candidate,'generation.json'));
     const bytes = await fs.readFile(path.join(candidate,'image.webp'));
     if(review.id !== id || review.sha256 !== digest(bytes) || review.prompt !== await promptFor(it) ||
-       review.referenceSha256 !== digest(await fs.readFile(path.join(dir,'style-reference.png')))) throw Error('Candidate does not match current recipe');
+       review.referenceSha256 !== digest(await referenceFor(it))) throw Error('Candidate does not match current recipe');
     const asset=id+'-'+review.sha256.slice(0,12)+'.webp';
     await fs.mkdir(path.join(root,'docs/images'),{recursive:true});
     await fs.mkdir(path.join(dir,'reviews'),{recursive:true});

@@ -224,6 +224,19 @@ let browser,page;
   assert.equal(await page.locator('.images-support').getAttribute('alt'),'Ventre');
   assert.equal(await page.evaluate(()=>ST.rlog.length),0,'revealing the belly illustration does not grade');
   await page.screenshot({path:path.join(artifacts,'belly-support.png')});
+  for(const sceneId of ['pack-b6372707','pack-1f0506be']){
+    await page.evaluate(({sceneId,next})=>{
+      ST.items[sceneId]={s:4,i:7,S:7,D:5,d:todayStr(),ok:1,ko:0};
+      delete ST.imageReview;Q=[sceneId,next];QPOS=0;UNDO=null;saveSess();render();
+    },{sceneId,next});
+    await page.locator('.big-fr').waitFor();
+    assert.equal(await page.locator('.images-art,.images-input').count(),0,'a scene is never shown as a question');
+    await page.locator('#screen .card.center').click();await page.locator('.feedback .kr').waitFor();
+    assert.equal(await page.locator('.images-support').getAttribute('src'),D.items[sceneId].src);
+    assert.equal(await page.locator('.images-support').getAttribute('alt'),D.items[sceneId].alt);
+    assert.equal(await page.evaluate(()=>ST.rlog.length),0,'scene reveal does not invent a grade');
+    await page.screenshot({path:path.join(artifacts,'scene-'+sceneId+'.png')});
+  }
   await reset();await page.locator('.images-input').waitFor();
   // Six actual themes, small phone and keyboard-height viewports, no horizontal overflow.
   for(const theme of ['encre','seoul','nuit','hanji','dansaekhwa','takbon'])for(const viewport of [{width:320,height:568},{width:412,height:400}]){
@@ -258,7 +271,7 @@ let browser,page;
   await reset();await page.locator('.big-fr').waitFor();assert.equal(await page.evaluate(()=>ST.rlog.length),0);
   assert.deepEqual(errors,[]);
   const summary={browser:await browser.version(),imageAssets:imageCount,ime:true,reload:true,undo:true,forgettingGrade:1,typoGrade:2,
-    simpleCorrection:true,legacyNeutralResume:true,homonymImagesById:true,bellySupportOnly:true,
+    simpleCorrection:true,legacyNeutralResume:true,homonymImagesById:true,bellySupportOnly:true,scenesSupportOnly:true,
     atomicCorrections:true,preloadBeforeAnswer:true,responseTimeExcludesImageWait:true,
     fallbacks:['no manifest','support only','disabled','missing module','404','corrupt','timeout','offline'],themes:6,offline:true,cacheUpgrade:true,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,'summary.json'),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));

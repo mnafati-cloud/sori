@@ -1,0 +1,24 @@
+{
+  "id": "pack-408d0f7e",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-19T07:48:00.685Z",
+  "sourceSha256": "414f6a0d203216397e3eb0eac48032c38d11f638df6e3e3b9590a1136090c484",
+  "sha256": "56f10abd556e3e50f82c2e2f2a66c6dd116bbdec813a90cd98070f1e016a9c01",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nTarget meaning (not lettering): 비바람 — Vent et pluie, intempéries.\nComposition: Arbre courbé, pluie très oblique et adulte habillé tenant un parapluie incliné.\nSemantic constraints: Vent et pluie doivent être lisibles ensemble ; ne pas réduire au parapluie.\nKeep only 2–3 essential visual elements. NO TEXT OR LETTERING in the artwork.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 74,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Revue effective512/160/96 : Arbre courbé et adulte entièrement habillé tenant un parapluie incliné sous une pluie oblique, vent et pluie présents à96px. Aucun blessé ; compression supplémentaire contrôlée, silhouettes restent nettes.",
+  "reviewedAt": "2026-10-19T07:55:42.757Z",
+  "kr": "비바람",
+  "sense": "Vent et pluie, intempéries",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

@@ -16,6 +16,19 @@ from datetime import datetime, timezone
 
 HERE = Path(__file__).resolve().parent
 API = "https://api.openai.com/v1/images/edits"
+PROFILES = {
+    "pinceau-blanc-v1": ("style.md", "style-reference.png"),
+    "pinceau-scenes-v1": ("style-scenes.md", "style-scenes-reference.png"),
+}
+
+
+def profile_for(item):
+    name = item.get("styleProfile", "pinceau-blanc-v1")
+    if name not in PROFILES:
+        raise ValueError("Unknown style profile")
+    if name == "pinceau-scenes-v1" and item.get("usage") != "support":
+        raise ValueError("Scenes are support only")
+    return PROFILES[name]
 
 
 def multipart(fields, reference):
@@ -46,6 +59,10 @@ def main():
         parser.error("Unknown inventory id")
     if any(items[i]["status"] == "approved" for i in ids):
         parser.error("Already approved: change status to queued explicitly to request a replacement")
+    try:
+        profiles = {iid: profile_for(items[iid]) for iid in ids}
+    except ValueError as exc:
+        parser.error(str(exc))
     print(f"{len(ids)} image(s), model={args.model}, quality=medium, size=1024x1024; no automatic retries or publication")
     if not args.execute:
         print("Dry run: no API request. Use --execute to spend API credits.")
@@ -53,11 +70,12 @@ def main():
     key = os.environ.get("OPENAI_API_KEY")
     if not key:
         parser.error("OPENAI_API_KEY missing: set it securely in the environment / GitHub Actions secret")
-    reference = (HERE / "style-reference.png").read_bytes()
     run = HERE / "candidates" / (datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8])
     run.mkdir(parents=True)
     for iid in ids:
-        prompt = (HERE / "style.md").read_text() + "\n\nSubject:\n" + items[iid]["subject"]
+        style_file, reference_file = profiles[iid]
+        reference = (HERE / reference_file).read_bytes()
+        prompt = (HERE / style_file).read_text() + "\n\nSubject:\n" + items[iid]["subject"]
         fields = {"model": args.model, "prompt": prompt, "n": "1", "size": "1024x1024", "quality": "medium"}
         body, content_type = multipart(fields, reference)
         req = urllib.request.Request(API, data=body, headers={"Authorization": "Bearer " + key, "Content-Type": content_type})

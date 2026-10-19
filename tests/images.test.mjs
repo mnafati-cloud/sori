@@ -18,7 +18,38 @@ test('a timed-out image releases its pending browser request',async()=>{
   assert.equal(image.src,null,'stop loading after the deadline, rather than leaving a pending image');
   assert.equal(image.onload,null);assert.equal(image.onerror,null);
 });
+test('offline download rejects file-count and total-byte overflow before touching storage',async()=>{
+  for(const [count,bytes] of [[1281,1],[1,80*1024*1024+1]]){
+    let opened=0;const cacheAPI={open:async()=>{opened++;throw Error('unexpected storage access');}};
+    const items=Object.fromEntries(Array.from({length:count},(_,i)=>[String(i),{
+      src:'./images/scene-'+i+'-012345abcdef.webp',usage:'support',alt:'Scene',bytes
+    }]));
+    const context={window:{caches:cacheAPI,SORI_IMAGES_DATA:{items}},caches:cacheAPI};
+    vm.runInNewContext(fs.readFileSync(new URL('../docs/images.js',import.meta.url),'utf8'),context);
+    await assert.rejects(context.window.SORI_IMAGES.download(()=>{}),/limite de stockage/);
+    assert.equal(opened,0);
+  }
+});
 const it={id:'pack-c3c6d557',kr:'우산',type:'word',stage:3,ok:1,ko:0};
+test('all 54 approved mini-scenes have distinct support assets and recorded reviews',()=>{
+  const batch=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/scenes-2026-10-19.json',import.meta.url)));
+  const inventory=JSON.parse(fs.readFileSync(new URL('../tools/images/inventory.json',import.meta.url)));
+  const plan=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/full-concrete-plan-2026-10-18.json',import.meta.url)));
+  assert.equal(batch.items.length,54);assert.equal(new Set(batch.items.map(x=>x.id)).size,54);
+  assert.equal(new Set(batch.items.map(x=>D.items[x.id]?.src)).size,54,'no shared picture between words');
+  const ctx={window:{}};vm.runInNewContext(fs.readFileSync(new URL('../docs/data.js',import.meta.url),'utf8'),ctx);
+  for(const item of batch.items){
+    const seed=ctx.window.SEED.items.find(x=>x.id===item.id),entry=inventory.items.find(x=>x.id===item.id),asset=D.items[item.id];
+    assert.equal(seed.kr,item.kr);assert.equal(seed.fr,item.sense);assert.equal(entry.status,'approved');
+    assert.equal(entry.styleProfile,'pinceau-scenes-v1');assert.equal(asset.usage,'support');
+    assert.equal(asset.src,'./images/'+entry.asset);assert.equal(asset.alt,item.sense);assert.ok(asset.bytes<=64*1024);
+    assert.deepEqual(asset.accepted,[]);assert.equal(I.eligible({...seed,stage:5,ok:1,ko:0},false,asset),false);
+    const review=batch.displaySizeReviews.find(x=>x.id===item.id);
+    assert.deepEqual(review.sizes,[512,160,96]);assert.equal(review.sha256,entry.sha256);assert.ok(review.note);
+    assert.equal(plan.items.find(x=>x.id===item.id).status,'approved');
+  }
+  assert.equal(plan.counts['deferred-style-incompatible']||0,0,'every deferred scene is resolved');
+});
 const imageBatches=[['a-2026-10-17',100,['A1','A2']],['a-2026-10-17-02',100,['A1','A2']],['a-2026-10-18',200,['A1','A2']],['objects-2026-10-18',200,['A1','A2','B1']]];
 for(const [name,count,levels] of imageBatches)test(name+' contains '+count+' distinct new '+levels.join('/')+' senses from the catalogue',()=>{
   const batch=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/'+name+'.json',import.meta.url)));

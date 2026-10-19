@@ -12,7 +12,7 @@ for(const failure of [false,true])test(`image response does not wait for cache w
   const cache={
     match:async()=>hit,
     put:async()=>{writes++;writeStarted.resolve();await allowWrite.promise;if(failure)throw Error('quota');},
-    keys:async()=>Array.from({length:1026},(_,i)=>'image-'+i),
+    keys:async()=>Array.from({length:1282},(_,i)=>'image-'+i),
     delete:async key=>deleted.push(key)
   };
   vm.runInNewContext(worker,{
@@ -39,4 +39,16 @@ for(const failure of [false,true])test(`image response does not wait for cache w
   hit=new Response('cached image');
   const second=request();assert.equal(await (await second.response).text(),'cached image');await second.lifetime;
   assert.equal(fetches,1);assert.equal(writes,1);
+});
+
+for(const size of [64*1024,64*1024+1])test(`automatic image cache enforces the 64 KiB object budget (${size} bytes)`,async()=>{
+  const handlers={};let writes=0,lifetime,response;
+  vm.runInNewContext(worker,{
+    self:{location:{origin:'https://sori.test'},addEventListener:(name,fn)=>handlers[name]=fn},URL,Response,
+    caches:{open:async()=>({match:async()=>null,put:async()=>writes++,keys:async()=>[]})},
+    fetch:async()=>new Response(new Uint8Array(size),{headers:{'content-type':'image/webp'}})
+  });
+  handlers.fetch({request:{url:'https://sori.test/images/scene-012345abcdef.webp',method:'GET'},respondWith:p=>response=p,waitUntil:p=>lifetime=p});
+  assert.equal((await (await response).arrayBuffer()).byteLength,size,'valid network response is never discarded by the cache budget');
+  await lifetime;assert.equal(writes,size<=64*1024?1:0);
 });

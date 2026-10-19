@@ -1,22 +1,20 @@
-# Illustrations et rappel visuel — v179
+# Illustrations et rappel visuel — v180
 
 <!-- FULL_CONCRETE_PROGRESS_START -->
-> **Campagne concrète : 406 images intégrées sur 461 candidats initiaux** (405 en v175, 1 en v179).
-> Chaque WebP a été revu à 512, 160 et 96 px, selon la référence Pinceau existante.
-> 54 candidats restent différés pour des limites de sens, de scène ou de palette ;
-> 1 candidat (종아리) reste bloqué par un refus du fournisseur et n’a pas été relancé.
-> Le refus antérieur 어깨 reste également exclu. Les 54 sujets seront étudiés séparément.
-> **v179 : 배 — ventre intégré en aide après réponse**, avec son propre fichier et son id.
-> Le test vérifie désormais les associations distinctes ventre/poire par id, plutôt que d’interdire l’image du ventre.
-> Détail : `tools/images/batches/full-concrete-plan-2026-10-18.json` et `homonymes-2026-10-19.json`.
-> Catalogue v179 : **1 014 images** = 603 de v174 + 5 du premier lot + 406 de cette campagne.
-> Recettes, provenance et revues dans les lots et `tools/images/reviews/` ; aucune nouvelle génération pour ce correctif.
-> Les synonymes et sens non univoques restent des aides après réponse ; aucun asset n’est réemployé.
-> Cache : `sori-v179`. Publication depuis `main`, sans modification du seed ni de la progression.
-> Campagne : 52 questions et 354 aides ; 12 348 264 octets de WebP ajoutés.
-> Catalogue complet : 30 010 504 octets, chargé à la demande.
-> Validation v179 : 202 tests Node, syntaxe des 31 JS, 161 cas FSRS, compilation Python,
-> 3 tests Python, pipeline 1 014 et quatre suites navigateur réussis ; zéro erreur JS.
+> **v180 : les 54 mini-scènes ont été produites et revues individuellement.**
+> Elles sont toutes des aides après réponse, sans question image ni nouvelle notation.
+> Palette au pinceau blanc/gris sur noir, contexte sobre ; le drapeau coréen conserve rouge/bleu et ses quatre trigrammes contrôlés.
+> Profil versionné `pinceau-scenes-v1` ; les recettes et références des 1 014 anciennes images restent inchangées.
+> Catalogue : **1 068 images**, 32 809 868 octets de WebP ; les 54 nouveautés pèsent 2 799 364 octets.
+> Total : 388 questions et 680 aides. Aucun asset partagé entre mots.
+> Revue effective à 512, 160 et 96 px dans `scenes-2026-10-19.json` et `tools/images/reviews/`.
+> Le premier essai d’aube au soleil visible a été écarté ; la version retenue n’a pas de disque solaire.
+> La campagne concrète compte désormais **460 approuvées sur 461** ; aucun des 54 reports de style ne subsiste.
+> Seul 종아리 reste bloqué dans cette campagne ; le refus antérieur 어깨 reste également exclu, sans relance.
+> Hors ligne : **1 280 fichiers de 64 Kio maximum = 80 Mio**, budget total inchangé ; cache `sori-v180`.
+> Aucun changement du seed, des ids, de la progression ou des réglages réseau.
+> Validation v180 : 209 tests Node, syntaxe des 31 JS, 161 cas FSRS, compilation Python,
+> 5 tests Python, pipeline 1 068 et quatre suites navigateur réussis ; zéro erreur JS.
 <!-- FULL_CONCRETE_PROGRESS_END -->
 
 > **Historique du premier lot v175.** Le lot
@@ -38,8 +36,11 @@
 Ce fichier et `tools/images/` sont le point de reprise du projet : aucune
 information de la conversation n'est nécessaire pour continuer la bibliothèque.
 Style approuvé : **2, trait au pinceau**, blanc chaud et lavis gris sur fond noir,
-accent vermillon discret. Toutes les illustrations sont générées, jamais prises
-sur le Web. La bibliothèque v179 contient **1 014 images** (1 013 en v175). La base v174 comptait
+accent vermillon discret. Depuis v180, les mini-scènes approuvées utilisent un
+profil distinct et la planche `style-scenes-reference.png`, uniquement en aide
+après réponse ; le drapeau autorise ses couleurs exactes. Le profil historique
+reste inchangé pour les objets. Toutes les illustrations sont générées, jamais prises
+sur le Web. La bibliothèque v180 contient **1 068 images** (1 014 en v179, 1 013 en v175). La base v174 comptait
 **603 images publiées** : les 3 premières
 (우산, 사과, 고양이), puis deux lots de 100 et deux lots de 200 mots distincts.
 
@@ -129,7 +130,10 @@ Les exports/imports transportent ces champs sans recopier le catalogue.
 | Fichier | Rôle |
 | --- | --- |
 | `tools/images/inventory.json` | Source éditable : id, coréen, sens, sujet, usage, réponses et statut |
-| `tools/images/style.md` | Prompt de style versionné |
+| `tools/images/style.md` | Prompt historique versionné, inchangé |
+| `tools/images/style-scenes.md` | Profil des mini-scènes approuvées, aide après réponse uniquement |
+| `tools/images/profiles.mjs` | Sélection fermée du prompt et de la référence par profil |
+| `tools/images/style-scenes-reference.png` | Planche de mini-scènes approuvée, référence de style uniquement |
 | `tools/images/style-reference.png` | Planche approuvée : utiliser uniquement la colonne 02 |
 | `tools/images/generate.py` | Génération payante explicite via API ; produit des candidats |
 | `tools/images/pipeline.mjs` | Import, encodage, validation, publication déterministe du manifeste |
@@ -203,7 +207,9 @@ node tools/images/pipeline.mjs import 1763266607347 /chemin/image-generee.png co
 
 L'import refuse les planches non carrées, les petites images et les fichiers
 invalides. Il effectue seulement une réduction à 512 et un encodage WebP qualité
-82, sans recadrage ou retouche du dessin. Cible 20–60 Ko, plafond strict 80 Kio.
+82, sans recadrage ou retouche du dessin. Pour une mini-scène dépassant 64 Kio,
+l’encodage essaie ensuite 78, 74 puis 70, avec la qualité réelle dans sa provenance
+et revue visuelle du WebP final. Cible 20–60 Ko, plafond strict 64 Kio.
 Les 603 fichiers actuels ont été générés avec l'outil Codex puis importés
 de cette manière. L'API payante n'est pas nécessaire pour tester/publier une
 image déjà générée. Son accès réel exige la clé et l'autorisation réseau vers
@@ -296,6 +302,22 @@ Puis appliquer la release habituelle de `CLAUDE.md` ; le push sur main publie
 sur GitHub Pages. Aucun chemin `/workspace`, résultat de chat ou clé n'est
 nécessaire pour relancer cette chaîne sur une autre machine.
 
+
+### Profils et reproductibilité des mini-scènes
+
+`styleProfile` est optionnel dans l’inventaire : son absence conserve exactement
+`style.md` et `style-reference.png` pour les anciennes recettes. Le profil fermé
+`pinceau-scenes-v1` sélectionne `style-scenes.md` et sa propre référence ; la
+publication et le générateur API emploient le même choix. Une scène en
+`usage: question` est refusée. Les reçus et revues conservent le prompt exact,
+le hash de la référence et la qualité WebP réellement utilisée.
+
+Les deux planches d’exemples ne sont jamais découpées en assets : chacun des
+54 ids a sa propre génération et son propre hash. L’exception de couleur
+concerne le drapeau ; les autres scènes restent au pinceau clair sur noir
+avec un accent chaud localisé lorsque le sens le demande. Les synonymes
+reçoivent des compositions distinctes sans inventer une différence de définition.
+
 ## Hors connexion et limites
 
 `sori-image-store` survit aux changements de version comme le cache audio.
@@ -307,8 +329,8 @@ la question revient au texte. Les erreurs de quota ne bloquent pas la révision.
 
 Réglages → Télécharger les illustrations prépare les assets validés, vérifie
 leur décodage et donne les échecs éventuels. Après un téléchargement complet,
-les versions obsolètes sont retirées. Plafond automatique : 1 024 fichiers de
-80 Kio maximum (80 Mio) ; le téléchargement global refuse de dépasser ce budget.
+les versions obsolètes sont retirées. Plafond automatique : 1 280 fichiers de
+64 Kio maximum (80 Mio) ; le téléchargement global refuse de dépasser ce budget.
 Avant une bibliothèque plus grande, prévoir des lots sélectifs et revoir le
 budget de stockage Android. Ne jamais vider les données du site du téléphone.
 

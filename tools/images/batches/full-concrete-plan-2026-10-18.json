@@ -1,12 +1,11 @@
 {
-  "updatedAt": "2026-10-19T07:06:20.014275+00:00",
+  "updatedAt": "2026-10-19T07:59:15.566471+00:00",
   "baseCommit": "9b725ba2c092d373f6fae71e8e59df1a8d7e79f4",
   "initialCatalogue": 608,
-  "catalogue": 1014,
+  "catalogue": 1068,
   "initialCandidates": 461,
   "counts": {
-    "approved": 406,
-    "deferred-style-incompatible": 54,
+    "approved": 460,
     "blocked-provider": 1
   },
   "published": true,
@@ -455,9 +454,19 @@
       "sense": "Automne",
       "cefr": "A1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "La saison ou la période de la journée exigerait une scène ou un symbole arbitraire ; incompatible avec le sujet isolé du style validé. Pas de génération ni question visuelle.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective à 512,160 et96 px : érable entier, feuillage clairsemé et feuilles tombantes/localisées vermillon, sol et tronc au pinceau blanc-gris. Automne encore lisible à96px ; scène contextuelle conservée en aide, sans texte ni réemploi.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "1780695436483",
@@ -466,9 +475,19 @@
       "sense": "Hiver",
       "cefr": "A1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "La saison ou la période de la journée exigerait une scène ou un symbole arbitraire ; incompatible avec le sujet isolé du style validé. Pas de génération ni question visuelle.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective à512,160 et96px : arbre nu, toit coréen et sol chargés de neige, grosses masses blanches reconnaissables au petit format. Scène hivernale cohérente, sans texte ni autre couleur, aide après réponse.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-77994a56",
@@ -516,9 +535,19 @@
       "sense": "Printemps",
       "cefr": "A1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "La saison ou la période de la journée exigerait une scène ou un symbole arbitraire ; incompatible avec le sujet isolé du style validé. Pas de génération ni question visuelle.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective à512,160 et96px : cerisier complet aux fleurs blanches, pétales tombants et jeunes herbes ; silhouette de floraison reste lisible à96px. Pinceau clair/gris sur noir, aide printanière contextuelle, composition propre.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-500b9e60",
@@ -546,9 +575,19 @@
       "sense": "Été",
       "cefr": "A1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "La saison ou la période de la journée exigerait une scène ou un symbole arbitraire ; incompatible avec le sujet isolé du style validé. Pas de génération ni question visuelle.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective à512,160 et96px : adulte entièrement habillé avec chapeau et éventail, arbre feuillu et soleil, tous visibles au petit format. Évocation estivale cohérente et aide seulement ; pas de texte, de découpe ou de réemploi.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-91032991",
@@ -614,9 +653,19 @@
       "sense": "Les quatre saisons",
       "cefr": "A2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "La saison ou la période de la journée exigerait une scène ou un symbole arbitraire ; incompatible avec le sujet isolé du style validé. Pas de génération ni question visuelle.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : quatre arbres distincts en succession fleurs/feuillage/feuilles rouges/neige. La séquence saisonnière reste visible au petit format, aucune légende, aucun réemploi des autres fichiers ; aide contextuelle.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-acdfff43",
@@ -682,9 +731,19 @@
       "sense": "aube, très tôt le matin",
       "cefr": "A2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "La saison ou la période de la journée exigerait une scène ou un symbole arbitraire ; incompatible avec le sujet isolé du style validé. Pas de génération ni question visuelle.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Version corrigée revue512/160/96 : trois étoiles s’effacent au-dessus des toits et d’un horizon diffus qui pâlit. Aucun disque solaire ni lune, la scène reste lisible à96px. Premier essai au soleil visible rejeté, nouvelle génération propre au même id.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-071c37df",
@@ -845,9 +904,19 @@
       "sense": "le taegeukgi (drapeau coréen)",
       "cefr": "A2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Le drapeau coréen exige le bleu et le rouge et ses trigrammes exacts ; la palette pinceau blanc à accent unique ne permet pas une illustration fidèle.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : drapeau frontal complet, blanc, taegeuk rouge supérieur/bleu inférieur. Trigrammes contrôlés : geon111 haut-gauche, gam010 haut-droite, ri101 bas-gauche, gon000 bas-droite ; motifs restent séparés et lisibles à96px. Seule exception de bleu avec le rouge, scène en aide uniquement.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-4fecb226",
@@ -856,9 +925,19 @@
       "sense": "Paysage, panorama",
       "cefr": "A2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Ce référent spatial, saisonnier ou paysager nécessite une scène ou un contexte lumineux ; hors style validé de sujet isolé sur noir.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : panorama lac/montagne/arbre au premier plan, reflets cohérents, masses blanches-grises lisibles à96px. Pinceau sur noir sans texte ni détail coloré ; évocation du paysage en aide.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-f4be02d1",
@@ -962,9 +1041,19 @@
       "sense": "Saison d'hiver, période hivernale",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Ce référent spatial, saisonnier ou paysager nécessite une scène ou un contexte lumineux ; hors style validé de sujet isolé sur noir.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue512/160/96 : rue coréenne, branches et toits enneigés, adulte emmitouflé complet au centre. La période hivernale est lisible au petit format, composition distincte de 겨울 sans fabriquer une différence de sens ; aide uniquement.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-7ce12812",
@@ -1087,9 +1176,19 @@
       "sense": "Ombre (endroit ombragé)",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Ce référent spatial, saisonnier ou paysager nécessite une scène ou un contexte lumineux ; hors style validé de sujet isolé sur noir.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue512/160/96 : banc et adulte abrités sous la frondaison, zone sombre du sol opposée au terrain clair. L’endroit ombragé reste lisible à96px ; pinceau clair sur noir, sans texte.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-18afa85a",
@@ -1098,9 +1197,19 @@
       "sense": "ombre (silhouette portée)",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Ce référent spatial, saisonnier ou paysager nécessite une scène ou un contexte lumineux ; hors style validé de sujet isolé sur noir.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue512/160/96 : adulte habillé debout et longue ombre humaine reliée aux pieds sur le sol clair. Le contraste ombre portée/personne reste net à96px, composition différente de l’endroit ombragé, aide seulement.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-4ec6ca65",
@@ -1375,9 +1484,19 @@
       "sense": "Clair de lune, lumière de la lune",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue512/160/96 : lune au-dessus d’un cours d’eau, chemin de réflexion lumineux bien présent. La lumière lunaire plutôt qu’un disque isolé reste lisible à96px ; vignette monochrome sans texte.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-b80ec210",
@@ -1462,9 +1581,19 @@
       "sense": "Colline derrière (la maison, le village), mont voisin",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Maison coréenne au premier plan, colline boisée clairement derrière. Relation spatiale visible aux trois tailles, scène entière sur noir, aide contextuelle.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-fe719aa8",
@@ -1473,9 +1602,19 @@
       "sense": "Plaine, champs, prairie",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Grande plaine herbeuse et horizon bas, masses ouvertes lisibles à96px. Composition propre et monochrome ; pas de distinction imposée avec les lexèmes voisins 들판/초원.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-5ab8e986",
@@ -1503,9 +1642,19 @@
       "sense": "champ, plaine (étendue ouverte)",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Chemin dans une étendue de champs, herbes basses et horizon ouvert. Perspective lisible au petit format ; fichier distinct de 들, sans fabriquer une différence de définition.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-f9ec0024",
@@ -1818,9 +1967,19 @@
       "sense": "Dans l'eau, sous l'eau",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Surface de l’eau en haut, poisson entier et rochers vus dessous, rayons et bulles cohérents. Position sous la surface claire même à96px, aide spatiale sans texte.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-4f9a8960",
@@ -1962,9 +2121,19 @@
       "sense": "Champ, potager (cultivé à sec)",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Rangées de légumes et sillons de terre sèche sans eau stagnante ; différence avec rizière lisible à96px. Sujet et marges complets, pinceau blanc-gris, aide seulement.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-0e14b0d9",
@@ -2163,9 +2332,19 @@
       "sense": "Lueur, lumière (d'une source)",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Lanterne avec petit accent chaud et halo qui éclaire le seuil et le mur. Source et effet lumineux présents aux trois tailles ; pas de texte, composition propre.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-e36779e4",
@@ -2231,9 +2410,19 @@
       "sense": "Route mouillée par la pluie",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Route humide courbe et reflets des lampadaires, quelques traits de pluie ; la chaussée domine et reste identifiable à96px. Pas de submersion, scène distincte de l’inondation.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-fbbf151e",
@@ -2337,9 +2526,19 @@
       "sense": "Le feu de forêt, l'incendie",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Feu de forêt : événement exigeant plusieurs arbres et une scène ; un arbre isolé en feu confondrait le référent, hors style d’objet isolé.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Plusieurs arbres touchés sur un versant, flammes vermillon localisées et masse de fumée grise. Feu de forêt lisible aux trois tailles sans victimes ni blessures ; aide après réponse.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-3e863ca3",
@@ -2348,9 +2547,19 @@
       "sense": "Au cœur de la montagne, en pleine montagne",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Sentier entre pentes boisées et crêtes qui entourent la vue, profondeur lisible à96px ; sentiment d’être à l’intérieur du massif. WebP comprimé pour le budget, détail utile préservé, aide seulement.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-a365d205",
@@ -2359,9 +2568,19 @@
       "sense": "La forêt",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Massif forestier dense sur plusieurs versants, conifères/feuillus et brume ; masses restent lisibles à96px. Fichier distinct de 숲, sans prétendre une différence de définition, monochrome.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-8703a889",
@@ -2693,9 +2912,19 @@
       "sense": "forêt",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Vue à hauteur d’homme entre des troncs complets, chemin et canopée ; forêt reconnaissable même à96px. Composition propre, pinceau gris/blanc, sans texte.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-342fee99",
@@ -3027,9 +3256,19 @@
       "sense": "Terre ferme, continent",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Vue depuis la mer vers une masse de terre et collines ; opposition mer/terre ferme nette aux trois tailles, aucune flèche, aide contextuelle distincte du littoral.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-007d1926",
@@ -3171,9 +3410,19 @@
       "sense": "Lever du soleil",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Soleil émergeant sur un horizon marin, reflet lumineux et vagues ; disque et horizon visibles à96px, accent chaud localisé au soleil/reflet. Aide, ne prétend pas différencier les synonymes de lever du soleil.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-2b2f1ff3",
@@ -3258,9 +3507,19 @@
       "sense": "falaise",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Paroi rocheuse abrupte, sommet et mer au pied, chute verticale très claire à96px. Silhouette dans les marges, pinceau monochrome sans écriture.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-d91e63b0",
@@ -3793,9 +4052,19 @@
       "sense": "Lever du soleil",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Soleil apparaissant derrière une crête, brume et premiers rayons ; lecture du lever conservée à96px, composition distincte de 일출 sur mer, sans différence lexicale artificielle.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-4d09f512",
@@ -4089,9 +4358,19 @@
       "sense": "coucher de soleil (ciel rougeoyant)",
       "cefr": "B2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Nuages et horizon rougeoyants au-dessus d’un village, sans disque solaire dominant. Le ciel rougeoyant reste lisible à96px ; accent vermillon porteur du sens, pas de texte.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-c7def9fe",
@@ -4271,9 +4550,19 @@
       "sense": "Sous-sol, sous la terre",
       "cefr": "B2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Coupe de sol sous une surface herbeuse, tronc et réseau de racines clairement sous terre. Relation dessus/dessous lisible à96px sans flèche ni légende, convention de coupe assumée.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-9d7d4d59",
@@ -4795,9 +5084,19 @@
       "sense": "Vent et pluie, intempéries",
       "cefr": "B2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Arbre courbé et adulte entièrement habillé tenant un parapluie incliné sous une pluie oblique, vent et pluie présents à96px. Aucun blessé ; compression supplémentaire contrôlée, silhouettes restent nettes.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-88814119",
@@ -4825,9 +5124,19 @@
       "sense": "Le glacier",
       "cefr": "B2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Langue de glacier crevassée entre versants rocheux et front épais au-dessus de l’eau. La glace blanche/gris froid reste reconnaissable à96px ; ce n’est pas un iceberg flottant isolé.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-ff11f136",
@@ -4836,9 +5145,19 @@
       "sense": "Amont (d'un cours d'eau)",
       "cefr": "B2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Rivière étroite et rapide descendant d’un vallon montagneux, cascade et courant lisibles à96px. Le contexte suggère l’amont ; aucune flèche ni question à réponse unique.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "1780695436427",
@@ -5170,9 +5489,19 @@
       "sense": "Mer proche de la côte, eaux littorales",
       "cefr": "B2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Mer immédiatement devant un village côtier, maisons et digue au premier plan, rive proche. Rapport au littoral lisible aux trois tailles, vignette différente de 해안/육지, aide contextuelle.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-d5ec018e",
@@ -5238,9 +5567,19 @@
       "sense": "L'univers, le cosmos",
       "cefr": "B2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Bord planétaire au premier plan, petite planète entière et galaxie spirale dans un champ d’étoiles. Lecture cosmique nette à96px, sans vaisseau, écriture ou fausse infographie.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-b949ada4",
@@ -5344,9 +5683,19 @@
       "sense": "Environnement naturel, milieu naturel",
       "cefr": "B2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Cours d’eau, arbre, relief et oiseau composent un milieu naturel cohérent. Les masses restent lisibles à96px ; notion large illustrée en aide, sans promettre une définition univoque.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-169ac9d5",
@@ -5488,9 +5837,19 @@
       "sense": "Tremblement de terre",
       "cefr": "B2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Rue vide, murs fissurés/désaxés et fissure dans le sol avec tuiles tombées. Indices de séisme cohérents et visibles à96px, sans victime ni blessure, pinceau monochrome.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-76897e2c",
@@ -5537,9 +5896,19 @@
       "sense": "Tombée de la nuit, début de soirée",
       "cefr": "B2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Maison avec fenêtres qui s’allument sous un ciel encore faiblement clair, début de soirée cohérent. Fenêtres et lumière lisibles à96px, pas de prétention à fixer une heure, aide seulement.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-f3646743",
@@ -5681,9 +6050,19 @@
       "sense": "Une inondation",
       "cefr": "B2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Maison et tronc d’arbre partiellement submergés, niveau d’eau horizontal cohérent et anormal visible à96px. Scène sans personne ni blessure, distincte de la pluie seule.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-b7215b5c",
@@ -5730,9 +6109,19 @@
       "sense": "Bord de fleuve, rive",
       "cefr": "C1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Chemin et bande de rive au bord d’une large rivière, arbre et rive opposée. La berge occupe une place claire même à96px, vignette monochrome propre.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-5d7d0d18",
@@ -5779,9 +6168,19 @@
       "sense": "Vallée, ravin",
       "cefr": "C1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Deux versants escarpés encadrent un creux étroit et un filet d’eau. Ravin/vallée lisibles aux trois tailles, pas une paire de montagnes isolées, sans texte.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-3c83b4f0",
@@ -5923,9 +6322,19 @@
       "sense": "Ruisseau, eau d'un cours d'eau.",
       "cefr": "C1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Petit courant peu profond entre pierres et végétation, l’eau du ruisseau est au centre. Eau/pierres restent lisibles à96px, scène propre sans flèche ni étiquette.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-b6372707",
@@ -5934,9 +6343,19 @@
       "sense": "Rizière.",
       "cefr": "C1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Rizière inondée avec digues, rangées de jeunes plants et reflets dans l’eau. Le contraste avec le champ sec reste net à96px, aide seule et contexte agricole cohérent.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-f465aea4",
@@ -6078,9 +6497,19 @@
       "sense": "Ciel nocturne",
       "cefr": "C1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Ciel étoilé avec croissant et bande de Voie lactée au-dessus d’une très basse crête terrestre. Le ciel domine aux trois tailles, composition distincte de l’univers à premier plan planétaire.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-4b8b92d0",
@@ -6583,9 +7012,19 @@
       "sense": "Prairie, steppe",
       "cefr": "C1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Large prairie d’herbes hautes, horizon dégagé et petites bosses basses. Masse herbeuse lisible à96px ; fichier propre, pas de distinction lexicale artificielle avec 들.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-5eeb6f3a",
@@ -6955,9 +7394,19 @@
       "sense": "Eau du fleuve, eau de la riviere",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Courant et reflets d’une rivière remplissent l’essentiel du cadre, berges latérales et pierres servent de contexte. L’eau en mouvement reste lisible à96px ; aide, sans prétendre identifier un liquide isolé.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-5d6a0ae4",
@@ -7118,9 +7567,19 @@
       "sense": "Eau de mer",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Vague côtière, écume et galets au premier plan, horizon marin discret. Le contexte mer est clair aux trois tailles ; la salinité n’est pas prétendue visible.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-c2bc0f7c",
@@ -7205,9 +7664,19 @@
       "sense": "Averse",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique complémentaire : L’averse désigne un événement bref : durée et contexte ne sont pas exprimables par un objet isolé sans scène.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Rideau localisé sous un nuage sombre, zone plus claire à côté et impacts sur l’eau. Averse évoquée aux trois tailles ; durée non prouvée par une image fixe, aide seulement.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-a7b16986",
@@ -7615,9 +8084,19 @@
       "sense": "Chute de neige abondante, forte neige",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique complémentaire : La chute de neige abondante est un événement et une quantité contextuelle ; une scène serait nécessaire.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Gros flocons serrés, branches et toit lourdement chargés, chemin presque effacé. L’abondance de neige est visible à96px, pas simplement une saison d’hiver ; aucune personne en danger.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-4535f08c",
@@ -7626,9 +8105,19 @@
       "sense": "Pluie torrentielle",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique complémentaire : La pluie torrentielle exige contexte de paysage et intensité ; pas de pictogramme décoratif présenté comme référent.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Pluie très dense et oblique dans une rue, gouttière/toit ruisselants, fortes éclaboussures au sol. Rue non submergée, lecture distincte de l’inondation à96px, accent chaud localisé à la lanterne.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-f75eddc6",
@@ -7656,9 +8145,19 @@
       "sense": "Rayons du soleil, soleil (chaleur)",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique complémentaire : La chaleur des rayons du soleil n’est pas un objet isolable ; distinction 햇볕/햇빛 textuelle dans ce style.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Adulte habillé essuyant/protégeant son front sous un soleil fort, sol sec ; corps et geste restent lisibles à96px. Chaleur du soleil évoquée, sans distinction absolue imposée avec 햇살.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-15f8a98e",
@@ -7667,9 +8166,19 @@
       "sense": "Rayons de soleil, lumière du soleil",
       "cefr": "B1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique complémentaire : Les rayons de soleil exigent un contexte lumineux ou une scène, incompatible avec le fond noir et le sujet isolé.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Fenêtre ouverte, rayons de soleil et plages de lumière sur le sol ; faisceaux et ombres cohérents, nets à96px. La lumière visible domine, pas une personne ou un soleil isolé.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-b1c377fc",
@@ -8077,9 +8586,19 @@
       "sense": "Côte, littoral",
       "cefr": "B2",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Ligne de côte oblique avec plage, rochers et vagues ; la rencontre terre/mer est lisible à96px. Composition propre distincte des eaux littorales 앞바다, monochrome.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-4caace1d",
@@ -8202,9 +8721,19 @@
       "sense": "Rideau de pluie, trombe d'eau.",
       "cefr": "C1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique complémentaire : Le rideau de pluie est une scène météorologique, sans silhouette autonome compatible.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Gros plan sur pluie et ruissellement devant une avancée de toit, longs traits et impacts concentriques au sol. Rideau de pluie lisible à96px, décor limité, pas de texte.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "1779706066101",
@@ -8308,9 +8837,19 @@
       "sense": "Un fleuve, un cours d'eau",
       "cefr": "C1",
       "usage": "support",
-      "status": "deferred-style-incompatible",
-      "deferredReason": "Revue sémantique : paysage, contexte spatial/lumineux, événement ou origine de l’eau sans silhouette d’objet autonome. Une scène serait nécessaire ; pas de substitut décoratif ni de faux mot visuel dans le style isolé actuel.",
-      "review": null
+      "status": "approved",
+      "review": {
+        "sizes": [
+          512,
+          160,
+          96
+        ],
+        "note": "Revue effective512/160/96 : Cours d’eau continu, deux berges et méandre en perspective ; structure de rivière claire à96px. Aucune fausse différence de taille prétendue avec les autres mots de rivière, aide seulement.",
+        "reviewer": "Codex"
+      },
+      "resolvedIn": "v180",
+      "batch": "scenes-2026-10-19",
+      "styleProfile": "pinceau-scenes-v1"
     },
     {
       "id": "pack-c3591794",
@@ -8332,5 +8871,5 @@
       }
     }
   ],
-  "releaseVersion": "v179"
+  "releaseVersion": "v180"
 }

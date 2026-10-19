@@ -1,0 +1,24 @@
+{
+  "id": "pack-00f3485a",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-19T07:36:44.103Z",
+  "sourceSha256": "e6fade7d5debf386cfd7e48a18d5e381cc7fb25fdd15c451d9e2c666e01a58f4",
+  "sha256": "0895c35bee037a3d03c1fc47bf73ad11b03ea14f5679c6a23b3f6d7e716d0203",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nTarget meaning (not lettering): 들판 — champ, plaine (étendue ouverte).\nComposition: Étendue ouverte vue depuis un petit chemin de campagne ; herbes et champs bas sans relief marqué.\nSemantic constraints: Composition propre, sans réemploi de 들 ; accompagnement d’un sens voisin.\nKeep only 2–3 essential visual elements. NO TEXT OR LETTERING in the artwork.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Revue effective512/160/96 : Chemin dans une étendue de champs, herbes basses et horizon ouvert. Perspective lisible au petit format ; fichier distinct de 들, sans fabriquer une différence de définition.",
+  "reviewedAt": "2026-10-19T07:56:43.975Z",
+  "kr": "들판",
+  "sense": "champ, plaine (étendue ouverte)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

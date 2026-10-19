@@ -1,0 +1,1098 @@
+{
+  "id": "scenes-2026-10-19",
+  "requested": 54,
+  "style": "pinceau-scenes-v1",
+  "source": "docs/data.js:id/sense;docs/extra.js:cefr",
+  "selection": "Les54 mini-scènes approuvées par l’utilisateur, chacune générée séparément, aide après réponse uniquement ; aucune fusion ni réutilisation d’asset.",
+  "items": [
+    {
+      "id": "1780695436482",
+      "kr": "가을",
+      "sense": "Automne",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 1
+    },
+    {
+      "id": "1780695436483",
+      "kr": "겨울",
+      "sense": "Hiver",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 2
+    },
+    {
+      "id": "1780695436480",
+      "kr": "봄",
+      "sense": "Printemps",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 3
+    },
+    {
+      "id": "1780695436481",
+      "kr": "여름",
+      "sense": "Été",
+      "usage": "support",
+      "cefr": "A1",
+      "rank": 4
+    },
+    {
+      "id": "pack-52c9dbad",
+      "kr": "사계절",
+      "sense": "Les quatre saisons",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 5
+    },
+    {
+      "id": "pack-e1c48573",
+      "kr": "새벽",
+      "sense": "aube, très tôt le matin",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 6
+    },
+    {
+      "id": "pack-1f0506be",
+      "kr": "태극기",
+      "sense": "le taegeukgi (drapeau coréen)",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 7
+    },
+    {
+      "id": "pack-4fecb226",
+      "kr": "풍경",
+      "sense": "Paysage, panorama",
+      "usage": "support",
+      "cefr": "A2",
+      "rank": 8
+    },
+    {
+      "id": "pack-c022add7",
+      "kr": "겨울철",
+      "sense": "Saison d'hiver, période hivernale",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 9
+    },
+    {
+      "id": "pack-9cd67a95",
+      "kr": "그늘",
+      "sense": "Ombre (endroit ombragé)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 10
+    },
+    {
+      "id": "pack-18afa85a",
+      "kr": "그림자",
+      "sense": "ombre (silhouette portée)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 11
+    },
+    {
+      "id": "pack-96a16db0",
+      "kr": "달빛",
+      "sense": "Clair de lune, lumière de la lune",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 12
+    },
+    {
+      "id": "pack-a2d14c68",
+      "kr": "뒷산",
+      "sense": "Colline derrière (la maison, le village), mont voisin",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 13
+    },
+    {
+      "id": "pack-fe719aa8",
+      "kr": "들",
+      "sense": "Plaine, champs, prairie",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 14
+    },
+    {
+      "id": "pack-00f3485a",
+      "kr": "들판",
+      "sense": "champ, plaine (étendue ouverte)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 15
+    },
+    {
+      "id": "pack-430fab4a",
+      "kr": "물속",
+      "sense": "Dans l'eau, sous l'eau",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 16
+    },
+    {
+      "id": "pack-3e0859c5",
+      "kr": "밭",
+      "sense": "Champ, potager (cultivé à sec)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 17
+    },
+    {
+      "id": "pack-eb4ff764",
+      "kr": "불빛",
+      "sense": "Lueur, lumière (d'une source)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 18
+    },
+    {
+      "id": "pack-32ef5d58",
+      "kr": "빗길",
+      "sense": "Route mouillée par la pluie",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 19
+    },
+    {
+      "id": "pack-e95eb242",
+      "kr": "산불",
+      "sense": "Le feu de forêt, l'incendie",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 20
+    },
+    {
+      "id": "pack-3e863ca3",
+      "kr": "산속",
+      "sense": "Au cœur de la montagne, en pleine montagne",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 21
+    },
+    {
+      "id": "pack-a365d205",
+      "kr": "삼림",
+      "sense": "La forêt",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 22
+    },
+    {
+      "id": "pack-7cc8a7a9",
+      "kr": "숲",
+      "sense": "forêt",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 23
+    },
+    {
+      "id": "pack-485a75b8",
+      "kr": "육지",
+      "sense": "Terre ferme, continent",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 24
+    },
+    {
+      "id": "pack-8cd4f835",
+      "kr": "일출",
+      "sense": "Lever du soleil",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 25
+    },
+    {
+      "id": "pack-488150ac",
+      "kr": "절벽",
+      "sense": "falaise",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 26
+    },
+    {
+      "id": "pack-17da2fd0",
+      "kr": "해돋이",
+      "sense": "Lever du soleil",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 27
+    },
+    {
+      "id": "pack-097dee0d",
+      "kr": "노을",
+      "sense": "coucher de soleil (ciel rougeoyant)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 28
+    },
+    {
+      "id": "pack-707f06d1",
+      "kr": "땅속",
+      "sense": "Sous-sol, sous la terre",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 29
+    },
+    {
+      "id": "pack-408d0f7e",
+      "kr": "비바람",
+      "sense": "Vent et pluie, intempéries",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 30
+    },
+    {
+      "id": "pack-f34163ab",
+      "kr": "빙하",
+      "sense": "Le glacier",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 31
+    },
+    {
+      "id": "pack-ff11f136",
+      "kr": "상류",
+      "sense": "Amont (d'un cours d'eau)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 32
+    },
+    {
+      "id": "pack-35ba6ee2",
+      "kr": "앞바다",
+      "sense": "Mer proche de la côte, eaux littorales",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 33
+    },
+    {
+      "id": "pack-5f41ee24",
+      "kr": "우주",
+      "sense": "L'univers, le cosmos",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 34
+    },
+    {
+      "id": "pack-408e3b54",
+      "kr": "자연환경",
+      "sense": "Environnement naturel, milieu naturel",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 35
+    },
+    {
+      "id": "1781435310392",
+      "kr": "지진",
+      "sense": "Tremblement de terre",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 36
+    },
+    {
+      "id": "pack-9a1e509b",
+      "kr": "초저녁",
+      "sense": "Tombée de la nuit, début de soirée",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 37
+    },
+    {
+      "id": "pack-123ee672",
+      "kr": "홍수",
+      "sense": "Une inondation",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 38
+    },
+    {
+      "id": "pack-8b726302",
+      "kr": "강변",
+      "sense": "Bord de fleuve, rive",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 39
+    },
+    {
+      "id": "pack-00bf7473",
+      "kr": "골짜기",
+      "sense": "Vallée, ravin",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 40
+    },
+    {
+      "id": "pack-a44a5c10",
+      "kr": "냇물",
+      "sense": "Ruisseau, eau d'un cours d'eau.",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 41
+    },
+    {
+      "id": "pack-b6372707",
+      "kr": "논",
+      "sense": "Rizière.",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 42
+    },
+    {
+      "id": "pack-73fa8517",
+      "kr": "밤하늘",
+      "sense": "Ciel nocturne",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 43
+    },
+    {
+      "id": "pack-bc9ce179",
+      "kr": "초원",
+      "sense": "Prairie, steppe",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 44
+    },
+    {
+      "id": "pack-7dea9401",
+      "kr": "강물",
+      "sense": "Eau du fleuve, eau de la riviere",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 45
+    },
+    {
+      "id": "pack-f81970da",
+      "kr": "바닷물",
+      "sense": "Eau de mer",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 46
+    },
+    {
+      "id": "pack-5ed2015d",
+      "kr": "소나기",
+      "sense": "Averse",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 47
+    },
+    {
+      "id": "pack-b457587c",
+      "kr": "폭설",
+      "sense": "Chute de neige abondante, forte neige",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 48
+    },
+    {
+      "id": "pack-4535f08c",
+      "kr": "폭우",
+      "sense": "Pluie torrentielle",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 49
+    },
+    {
+      "id": "pack-8e697367",
+      "kr": "햇볕",
+      "sense": "Rayons du soleil, soleil (chaleur)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 50
+    },
+    {
+      "id": "pack-15f8a98e",
+      "kr": "햇살",
+      "sense": "Rayons de soleil, lumière du soleil",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 51
+    },
+    {
+      "id": "pack-bfa33444",
+      "kr": "해안",
+      "sense": "Côte, littoral",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 52
+    },
+    {
+      "id": "pack-e5b1f106",
+      "kr": "빗줄기",
+      "sense": "Rideau de pluie, trombe d'eau.",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 53
+    },
+    {
+      "id": "pack-0336cafa",
+      "kr": "하천",
+      "sense": "Un fleuve, un cours d'eau",
+      "usage": "support",
+      "cefr": "C1",
+      "rank": 54
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "1780695436482",
+      "reviewer": "Codex",
+      "sourceSha256": "0035d03ea50d7ea8965959fa8cbd017ad25901cdc23177c83788afd559b188ff",
+      "sha256": "bbc99e523bb90da9da2b771a792cd37c0c4c89c5a45335c7eb2c6e33b30d3045",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective à 512,160 et96 px : érable entier, feuillage clairsemé et feuilles tombantes/localisées vermillon, sol et tronc au pinceau blanc-gris. Automne encore lisible à96px ; scène contextuelle conservée en aide, sans texte ni réemploi."
+    },
+    {
+      "id": "1780695436483",
+      "reviewer": "Codex",
+      "sourceSha256": "f408b936ebbacd9fd4c6155232b071ad46e4472ba114c38e08d336d5534473fe",
+      "sha256": "34e1537fdd157587d1a3c1da64c2380b8a98c4cd5829eb74513d248c4d5e2769",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective à512,160 et96px : arbre nu, toit coréen et sol chargés de neige, grosses masses blanches reconnaissables au petit format. Scène hivernale cohérente, sans texte ni autre couleur, aide après réponse."
+    },
+    {
+      "id": "1780695436480",
+      "reviewer": "Codex",
+      "sourceSha256": "94d5da91f1dfbe9fa154a09e449415e26644d5894160bbc6a302b11b926b3618",
+      "sha256": "95ac52062047a5550cf8309853ad44a7a7ada54e88c66b0528ff3bf12ba2b696",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective à512,160 et96px : cerisier complet aux fleurs blanches, pétales tombants et jeunes herbes ; silhouette de floraison reste lisible à96px. Pinceau clair/gris sur noir, aide printanière contextuelle, composition propre."
+    },
+    {
+      "id": "1780695436481",
+      "reviewer": "Codex",
+      "sourceSha256": "18e43bfe377153bb1abce07ffcb9fc7f7f4b5232ae3e6cb63148235a6aec8e4e",
+      "sha256": "edc669bea330287bc5efc464bacec76753c7760b096d37ebe5e63ffbf9e7f8c0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective à512,160 et96px : adulte entièrement habillé avec chapeau et éventail, arbre feuillu et soleil, tous visibles au petit format. Évocation estivale cohérente et aide seulement ; pas de texte, de découpe ou de réemploi."
+    },
+    {
+      "id": "pack-52c9dbad",
+      "reviewer": "Codex",
+      "sourceSha256": "8bccfd5d0f36356b876ab2f4ce0fc32ed3b37d06bfa5dcdcb4c8261cbe2d1123",
+      "sha256": "91784fba506b16e9d4ea12799cd7e77fd70767c8a31af385f3313e1500ea544e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : quatre arbres distincts en succession fleurs/feuillage/feuilles rouges/neige. La séquence saisonnière reste visible au petit format, aucune légende, aucun réemploi des autres fichiers ; aide contextuelle."
+    },
+    {
+      "id": "pack-e1c48573",
+      "reviewer": "Codex",
+      "sourceSha256": "e5010505750846b2277770efacea57068757ff2e3d9e8cc59ebdab16c094bbe9",
+      "sha256": "c20495599ef1f3aa0d233cba717c797e6405280d4357dc70eafc9d11f8300ea4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Version corrigée revue512/160/96 : trois étoiles s’effacent au-dessus des toits et d’un horizon diffus qui pâlit. Aucun disque solaire ni lune, la scène reste lisible à96px. Premier essai au soleil visible rejeté, nouvelle génération propre au même id."
+    },
+    {
+      "id": "pack-1f0506be",
+      "reviewer": "Codex",
+      "sourceSha256": "bb9e4458c4f4f4454c2f02ec698a404a22ee42d51d1004d58df05e1cf8859345",
+      "sha256": "15941d52bb11672bc17cade536fc0b26da1913b114b4e09bed8260b4011cdb0c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : drapeau frontal complet, blanc, taegeuk rouge supérieur/bleu inférieur. Trigrammes contrôlés : geon111 haut-gauche, gam010 haut-droite, ri101 bas-gauche, gon000 bas-droite ; motifs restent séparés et lisibles à96px. Seule exception de bleu avec le rouge, scène en aide uniquement."
+    },
+    {
+      "id": "pack-4fecb226",
+      "reviewer": "Codex",
+      "sourceSha256": "729c988ea9bd9af770666aadc9827acc825c3c5e8e082c8aa8ed6103287c82a0",
+      "sha256": "6c2be1cb862dfd33b7a1c934613b88ab2f5ffb76d1a360a450c97906a950337b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : panorama lac/montagne/arbre au premier plan, reflets cohérents, masses blanches-grises lisibles à96px. Pinceau sur noir sans texte ni détail coloré ; évocation du paysage en aide."
+    },
+    {
+      "id": "pack-c022add7",
+      "reviewer": "Codex",
+      "sourceSha256": "689caa9b6a4e1531a72fd75feaa21edf18d9678aa70e579a2f3848623e8e5326",
+      "sha256": "6e19e74b5ce75041fcff568a699919e26c67541d6a4a89a17686a4848d56c944",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue512/160/96 : rue coréenne, branches et toits enneigés, adulte emmitouflé complet au centre. La période hivernale est lisible au petit format, composition distincte de 겨울 sans fabriquer une différence de sens ; aide uniquement."
+    },
+    {
+      "id": "pack-9cd67a95",
+      "reviewer": "Codex",
+      "sourceSha256": "d778b663ad247c36d41fcb6b04a7cef29f29ac0311629b6a82e9167f7a2adb09",
+      "sha256": "238a85ccf4df9ec9b9afaa929a4b8880bb3e3918ae02369ef1907961f2179abb",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue512/160/96 : banc et adulte abrités sous la frondaison, zone sombre du sol opposée au terrain clair. L’endroit ombragé reste lisible à96px ; pinceau clair sur noir, sans texte."
+    },
+    {
+      "id": "pack-18afa85a",
+      "reviewer": "Codex",
+      "sourceSha256": "652a670fed044e405d62868834c148eff2a73ae93283c49472221198b667ede9",
+      "sha256": "7ee5ac597045d6bd07b95aad0faaa3fd1d48dec8cb31ab413c68e8eda533c566",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue512/160/96 : adulte habillé debout et longue ombre humaine reliée aux pieds sur le sol clair. Le contraste ombre portée/personne reste net à96px, composition différente de l’endroit ombragé, aide seulement."
+    },
+    {
+      "id": "pack-96a16db0",
+      "reviewer": "Codex",
+      "sourceSha256": "0187e14496774c0b93fd55036cda33969b80052962a828527cf3e9ac5be9f5c2",
+      "sha256": "d658082664cd281a9c60e8cf92fddafb93d2ad986fdb00643a73da54d9fefcf1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue512/160/96 : lune au-dessus d’un cours d’eau, chemin de réflexion lumineux bien présent. La lumière lunaire plutôt qu’un disque isolé reste lisible à96px ; vignette monochrome sans texte."
+    },
+    {
+      "id": "pack-a2d14c68",
+      "reviewer": "Codex",
+      "sourceSha256": "6c00ef7b7742b1509bae6e207e946c54741f0abebca7edc17d8d563177f3b1bb",
+      "sha256": "75c620193fc77d8b4575c6f9dd4a97dfffd4e7f73bcc03f4354a8d11f38ee5d5",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Maison coréenne au premier plan, colline boisée clairement derrière. Relation spatiale visible aux trois tailles, scène entière sur noir, aide contextuelle."
+    },
+    {
+      "id": "pack-fe719aa8",
+      "reviewer": "Codex",
+      "sourceSha256": "36a83e93911a91292edc8160399f8148bfed6b7de52460ff2c6e22b848dc26f3",
+      "sha256": "347d2d8a62541926652e9de393ba8173de8a0448363f5adb512968092996c8e6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Grande plaine herbeuse et horizon bas, masses ouvertes lisibles à96px. Composition propre et monochrome ; pas de distinction imposée avec les lexèmes voisins 들판/초원."
+    },
+    {
+      "id": "pack-00f3485a",
+      "reviewer": "Codex",
+      "sourceSha256": "e6fade7d5debf386cfd7e48a18d5e381cc7fb25fdd15c451d9e2c666e01a58f4",
+      "sha256": "0895c35bee037a3d03c1fc47bf73ad11b03ea14f5679c6a23b3f6d7e716d0203",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Chemin dans une étendue de champs, herbes basses et horizon ouvert. Perspective lisible au petit format ; fichier distinct de 들, sans fabriquer une différence de définition."
+    },
+    {
+      "id": "pack-430fab4a",
+      "reviewer": "Codex",
+      "sourceSha256": "b92d72048025df19de9664d2e6e3b6910ca839eb8fda3d675c5e2a29479c86f4",
+      "sha256": "1a1aa6c09081c88a5b539b163d926f25265ef8f03bf08483eb258ba8eaaa5107",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Surface de l’eau en haut, poisson entier et rochers vus dessous, rayons et bulles cohérents. Position sous la surface claire même à96px, aide spatiale sans texte."
+    },
+    {
+      "id": "pack-3e0859c5",
+      "reviewer": "Codex",
+      "sourceSha256": "961bbf270bb5d84cb996abe9c2d56673e24cc4396013cee8aedf36035865dde6",
+      "sha256": "3a7e32c62b3c068071c82b83c9f3bdd000e01d2fc50a492ba7b8c87f8accb445",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Rangées de légumes et sillons de terre sèche sans eau stagnante ; différence avec rizière lisible à96px. Sujet et marges complets, pinceau blanc-gris, aide seulement."
+    },
+    {
+      "id": "pack-eb4ff764",
+      "reviewer": "Codex",
+      "sourceSha256": "f3180e079891137dc86bbdf7ec7fbb9e1c2ba541f76ce9fb9030eefd4a09ebbc",
+      "sha256": "4cae0d499cf2e0f5d2b9114309b25ec286ac399a6ba53790d27f233a8d5408c6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Lanterne avec petit accent chaud et halo qui éclaire le seuil et le mur. Source et effet lumineux présents aux trois tailles ; pas de texte, composition propre."
+    },
+    {
+      "id": "pack-32ef5d58",
+      "reviewer": "Codex",
+      "sourceSha256": "d72b23f7b22bd58459288dc3a4d04fdcb0b7d7e903d1d241eeccbb2c3eae4335",
+      "sha256": "e4c18f6b12276e112271bc8a921013d642ec0648b2bf39242f7c9104a599a8e1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Route humide courbe et reflets des lampadaires, quelques traits de pluie ; la chaussée domine et reste identifiable à96px. Pas de submersion, scène distincte de l’inondation."
+    },
+    {
+      "id": "pack-e95eb242",
+      "reviewer": "Codex",
+      "sourceSha256": "ee481d52f8fb56c20fec82db497566f0293808a4dc46d7f46fa767695cfc5c65",
+      "sha256": "83383839ca6d481ad4a6c587fd252dffea55a4795ab1fa90994caf62a954ebc8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Plusieurs arbres touchés sur un versant, flammes vermillon localisées et masse de fumée grise. Feu de forêt lisible aux trois tailles sans victimes ni blessures ; aide après réponse."
+    },
+    {
+      "id": "pack-3e863ca3",
+      "reviewer": "Codex",
+      "sourceSha256": "04dc525b0deb82aadcd86c639154d77128acba78e4f7f2f466cddeffc05cb5e0",
+      "sha256": "d5d6e91b238334356a3123a6752e16e240c1ec9709528ca2022b7bbbcc10f23f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Sentier entre pentes boisées et crêtes qui entourent la vue, profondeur lisible à96px ; sentiment d’être à l’intérieur du massif. WebP comprimé pour le budget, détail utile préservé, aide seulement."
+    },
+    {
+      "id": "pack-a365d205",
+      "reviewer": "Codex",
+      "sourceSha256": "06dd25559db198d62779f083ab10e33c3fe0a9b9e6641d6ca54306981ae52046",
+      "sha256": "0bab5cf544b3900efe77fde1674864ca915fe61ec4822c1aeccb6be58ffc7e08",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Massif forestier dense sur plusieurs versants, conifères/feuillus et brume ; masses restent lisibles à96px. Fichier distinct de 숲, sans prétendre une différence de définition, monochrome."
+    },
+    {
+      "id": "pack-7cc8a7a9",
+      "reviewer": "Codex",
+      "sourceSha256": "104c391676df75b03d3d70c395d01ba13f8a81b032b697b192df563d2274978f",
+      "sha256": "e77db22b0c4f0f240ee13c03427052ab6aff9d12031893676782c4b17a3abf11",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Vue à hauteur d’homme entre des troncs complets, chemin et canopée ; forêt reconnaissable même à96px. Composition propre, pinceau gris/blanc, sans texte."
+    },
+    {
+      "id": "pack-485a75b8",
+      "reviewer": "Codex",
+      "sourceSha256": "cb8956f4f31958e58f75d95cbb0481da8bb95c0b63defd0a356a41dea7a15998",
+      "sha256": "359b0055bee525544cc46ba035759648aded1a92e6df87c0d095a691319f060c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Vue depuis la mer vers une masse de terre et collines ; opposition mer/terre ferme nette aux trois tailles, aucune flèche, aide contextuelle distincte du littoral."
+    },
+    {
+      "id": "pack-8cd4f835",
+      "reviewer": "Codex",
+      "sourceSha256": "61d89fcfa5989e4a9914e025890d94799ea2b38d02931c020c53994276a7f15b",
+      "sha256": "1c971e1900ed8af4bbd35d3f500435dd40345cfe32625c4a778ec7e06f161977",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Soleil émergeant sur un horizon marin, reflet lumineux et vagues ; disque et horizon visibles à96px, accent chaud localisé au soleil/reflet. Aide, ne prétend pas différencier les synonymes de lever du soleil."
+    },
+    {
+      "id": "pack-488150ac",
+      "reviewer": "Codex",
+      "sourceSha256": "3194b2be1ff272ba717ab4226b40dc2e1c7ae4583e697739001eec24cf2e3768",
+      "sha256": "1af54efce214a8bd1badf8f5ba36b6852bd12a56536f4abb283fb2c665dbb066",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Paroi rocheuse abrupte, sommet et mer au pied, chute verticale très claire à96px. Silhouette dans les marges, pinceau monochrome sans écriture."
+    },
+    {
+      "id": "pack-17da2fd0",
+      "reviewer": "Codex",
+      "sourceSha256": "8a1d3ce8205b85db4e049531a4b3f443876d27088748b4fb86db206b3f8dbf51",
+      "sha256": "3fa82a3bc2fefd6460689b94e30d83d68f0c16fa56ddea6ff855d77b26a5690f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Soleil apparaissant derrière une crête, brume et premiers rayons ; lecture du lever conservée à96px, composition distincte de 일출 sur mer, sans différence lexicale artificielle."
+    },
+    {
+      "id": "pack-097dee0d",
+      "reviewer": "Codex",
+      "sourceSha256": "409b83143e6137239f7dde797afefc69c138f3660c4e5772c97311d39072a2e8",
+      "sha256": "227830232f8fbe2ce552cc492796bab96a5e13461812694cc79ffdd0077625e8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Nuages et horizon rougeoyants au-dessus d’un village, sans disque solaire dominant. Le ciel rougeoyant reste lisible à96px ; accent vermillon porteur du sens, pas de texte."
+    },
+    {
+      "id": "pack-707f06d1",
+      "reviewer": "Codex",
+      "sourceSha256": "2c5df3fcdabda679c85c692f4c6876404ed7820affca30622e3b0ce142bb21f8",
+      "sha256": "0057e4639cc356aeac307f395ee0c6e5d3af8d5b95ddd1f9c9d4c23fce6880d9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Coupe de sol sous une surface herbeuse, tronc et réseau de racines clairement sous terre. Relation dessus/dessous lisible à96px sans flèche ni légende, convention de coupe assumée."
+    },
+    {
+      "id": "pack-408d0f7e",
+      "reviewer": "Codex",
+      "sourceSha256": "414f6a0d203216397e3eb0eac48032c38d11f638df6e3e3b9590a1136090c484",
+      "sha256": "56f10abd556e3e50f82c2e2f2a66c6dd116bbdec813a90cd98070f1e016a9c01",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Arbre courbé et adulte entièrement habillé tenant un parapluie incliné sous une pluie oblique, vent et pluie présents à96px. Aucun blessé ; compression supplémentaire contrôlée, silhouettes restent nettes."
+    },
+    {
+      "id": "pack-f34163ab",
+      "reviewer": "Codex",
+      "sourceSha256": "f0e0beb0352856ca7de6e6a7a52e2ffa3ec2f41fd7451c557c734e44328c3e41",
+      "sha256": "9e011f4b8f80bc65b2229de5c92bca3e2c9150bd70a4469f0e120f834fc9a3b6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Langue de glacier crevassée entre versants rocheux et front épais au-dessus de l’eau. La glace blanche/gris froid reste reconnaissable à96px ; ce n’est pas un iceberg flottant isolé."
+    },
+    {
+      "id": "pack-ff11f136",
+      "reviewer": "Codex",
+      "sourceSha256": "c1dc3b9d2e032c44a4fc7fdda210bfcb5c5499e12c132f8e95ef0be6de6ecc4c",
+      "sha256": "773c086dcc9f9462d1559df5d71ddf62844396a0e95b3f2b7a31c71dbb9d112b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Rivière étroite et rapide descendant d’un vallon montagneux, cascade et courant lisibles à96px. Le contexte suggère l’amont ; aucune flèche ni question à réponse unique."
+    },
+    {
+      "id": "pack-35ba6ee2",
+      "reviewer": "Codex",
+      "sourceSha256": "7881f1136dbd224ec4041c8685a0fe98ab4f8b9fbbf639b2bf1ba1f5553547a6",
+      "sha256": "b1d6b52d691037bdf418b1e970a361b5e6798615f1506a576a25d3a2472f992f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Mer immédiatement devant un village côtier, maisons et digue au premier plan, rive proche. Rapport au littoral lisible aux trois tailles, vignette différente de 해안/육지, aide contextuelle."
+    },
+    {
+      "id": "pack-5f41ee24",
+      "reviewer": "Codex",
+      "sourceSha256": "5b6a91c62088befe76cff273ced8f673f047b8ff5c9e264947a557291a514e45",
+      "sha256": "55a777ea75ae950809e3e2f2c5c4f55c02a560d4663566919e3f3cf095287869",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Bord planétaire au premier plan, petite planète entière et galaxie spirale dans un champ d’étoiles. Lecture cosmique nette à96px, sans vaisseau, écriture ou fausse infographie."
+    },
+    {
+      "id": "pack-408e3b54",
+      "reviewer": "Codex",
+      "sourceSha256": "b0c60bbd7d73d9e62680c93784a7ac76be9ee24083c13e532a9591b77588d63b",
+      "sha256": "03c8b3e990db781caae23ff80e32646f0c5424cd5ff1fc16d9af67bcb246fe69",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Cours d’eau, arbre, relief et oiseau composent un milieu naturel cohérent. Les masses restent lisibles à96px ; notion large illustrée en aide, sans promettre une définition univoque."
+    },
+    {
+      "id": "1781435310392",
+      "reviewer": "Codex",
+      "sourceSha256": "ceaf9d7cf6248e49b46be35db3832d32f8cad869553288116f1d138af695c59a",
+      "sha256": "44cbebe02452a47cc2e282213f8f9ec91ad5293bea8fa97e543a7f85112179fd",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Rue vide, murs fissurés/désaxés et fissure dans le sol avec tuiles tombées. Indices de séisme cohérents et visibles à96px, sans victime ni blessure, pinceau monochrome."
+    },
+    {
+      "id": "pack-9a1e509b",
+      "reviewer": "Codex",
+      "sourceSha256": "768a62f3fdbff6ef5848a68eefb5206755b5c6d03b165db4557c9b63d722efeb",
+      "sha256": "5cdc9d77d764cf2fecf18626dd721856caa486f9a08ed2f28917a0a95572d321",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Maison avec fenêtres qui s’allument sous un ciel encore faiblement clair, début de soirée cohérent. Fenêtres et lumière lisibles à96px, pas de prétention à fixer une heure, aide seulement."
+    },
+    {
+      "id": "pack-123ee672",
+      "reviewer": "Codex",
+      "sourceSha256": "52e8bd790278bce69fdb8e26e8fbdd167c5478b5392a223a29e5b5f1a480b3be",
+      "sha256": "5725716426e9b2354d22d9c064c8230d64a87df84ea8da93c80ed1ec7b86f661",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Maison et tronc d’arbre partiellement submergés, niveau d’eau horizontal cohérent et anormal visible à96px. Scène sans personne ni blessure, distincte de la pluie seule."
+    },
+    {
+      "id": "pack-8b726302",
+      "reviewer": "Codex",
+      "sourceSha256": "3fd5ce05066b1140693beb9eb283786a11c141ee16ef2f75da48b1f4605d610e",
+      "sha256": "14d2fa0a5373d4fa6cc5fb14d2fb8e25004bfd42f00ba3add2b2ccdf82e6e6a1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Chemin et bande de rive au bord d’une large rivière, arbre et rive opposée. La berge occupe une place claire même à96px, vignette monochrome propre."
+    },
+    {
+      "id": "pack-00bf7473",
+      "reviewer": "Codex",
+      "sourceSha256": "4ed983fbb335cd53f202e64e641a3a22cdae73346c931be0da7fd0dad8002578",
+      "sha256": "15a8a682df1b5809e9e3c67ac0383b188edf96ab54e1bad98d45c61477dcdeba",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Deux versants escarpés encadrent un creux étroit et un filet d’eau. Ravin/vallée lisibles aux trois tailles, pas une paire de montagnes isolées, sans texte."
+    },
+    {
+      "id": "pack-a44a5c10",
+      "reviewer": "Codex",
+      "sourceSha256": "428cabc4c589dd4a3ea9c319e2adf85e12af0ee2fdb408b1a08476abda8794d8",
+      "sha256": "fb752380ccabe9977e17e41a19d86717825b0453bf3a758e8294679a823322e5",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Petit courant peu profond entre pierres et végétation, l’eau du ruisseau est au centre. Eau/pierres restent lisibles à96px, scène propre sans flèche ni étiquette."
+    },
+    {
+      "id": "pack-b6372707",
+      "reviewer": "Codex",
+      "sourceSha256": "b2d723a335bff284e4155cc04810b80229d6414799e42497cf5ca819eeb2ff3c",
+      "sha256": "4424826dfe50aaf95490e0468c0e9b1bf3290111a8691fc544feef9e79a31e9f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Rizière inondée avec digues, rangées de jeunes plants et reflets dans l’eau. Le contraste avec le champ sec reste net à96px, aide seule et contexte agricole cohérent."
+    },
+    {
+      "id": "pack-73fa8517",
+      "reviewer": "Codex",
+      "sourceSha256": "66014b91ec6fd1677ad36d8b7e778c2d92849e470cbbf5991228cd7733847e67",
+      "sha256": "be89a56b53c9372204d4150068d7ca9bf7fc6916fe7494e5cd47587a638021e4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Ciel étoilé avec croissant et bande de Voie lactée au-dessus d’une très basse crête terrestre. Le ciel domine aux trois tailles, composition distincte de l’univers à premier plan planétaire."
+    },
+    {
+      "id": "pack-bc9ce179",
+      "reviewer": "Codex",
+      "sourceSha256": "5a84a093c2b4743dc415e3edc83b9ebd3e7487aa9c44a47d3a1c96f1ba81f521",
+      "sha256": "87325c337aef7a2a1de698d51ef125c16433022983391c3c011f0ed4ac13b998",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Large prairie d’herbes hautes, horizon dégagé et petites bosses basses. Masse herbeuse lisible à96px ; fichier propre, pas de distinction lexicale artificielle avec 들."
+    },
+    {
+      "id": "pack-7dea9401",
+      "reviewer": "Codex",
+      "sourceSha256": "9741463cd99df04f7292c1254bf04772897e29a0cdb875ffcb7a659cb9b62b4c",
+      "sha256": "0524b17138c1035412707e440349521a4f39ec750a9e0924f6a0762e55b1de1a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Courant et reflets d’une rivière remplissent l’essentiel du cadre, berges latérales et pierres servent de contexte. L’eau en mouvement reste lisible à96px ; aide, sans prétendre identifier un liquide isolé."
+    },
+    {
+      "id": "pack-f81970da",
+      "reviewer": "Codex",
+      "sourceSha256": "c8d2098747620a72394955215df0af96f7e953fa5053b649f539f008ba05078c",
+      "sha256": "5b3efd2b05ab8c27e433701f0b311cfce41749256461368173e70cbaf51da40e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Vague côtière, écume et galets au premier plan, horizon marin discret. Le contexte mer est clair aux trois tailles ; la salinité n’est pas prétendue visible."
+    },
+    {
+      "id": "pack-5ed2015d",
+      "reviewer": "Codex",
+      "sourceSha256": "c6a9b171f9ac4a558b57236579b1168387d5c0dae3456cd76a268add06e4e1aa",
+      "sha256": "9913160171f48227d485a2525ce8851e1505b021f1c364fb8cf4d083958d11b1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Rideau localisé sous un nuage sombre, zone plus claire à côté et impacts sur l’eau. Averse évoquée aux trois tailles ; durée non prouvée par une image fixe, aide seulement."
+    },
+    {
+      "id": "pack-b457587c",
+      "reviewer": "Codex",
+      "sourceSha256": "b45f0da811f38369893205b97d575e50c9592b973ec572d4f2cb2ce8565d3d41",
+      "sha256": "befd54086a93d11496812cf68fed75fba628892e1f13654fa19bb99aa6337aa5",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Gros flocons serrés, branches et toit lourdement chargés, chemin presque effacé. L’abondance de neige est visible à96px, pas simplement une saison d’hiver ; aucune personne en danger."
+    },
+    {
+      "id": "pack-4535f08c",
+      "reviewer": "Codex",
+      "sourceSha256": "97664cd88585a62e8c92eda3e7807cc441a74d57a278dd656c9b6b75f5f4ff21",
+      "sha256": "1c28b4974d94f223db2562e21ab9602d72ed3957a28726956c8cf8006b383fdc",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Pluie très dense et oblique dans une rue, gouttière/toit ruisselants, fortes éclaboussures au sol. Rue non submergée, lecture distincte de l’inondation à96px, accent chaud localisé à la lanterne."
+    },
+    {
+      "id": "pack-8e697367",
+      "reviewer": "Codex",
+      "sourceSha256": "320751863f9ca44f980e8341be0c6991c62f83b1af9e35a0ebd315136e2cfe92",
+      "sha256": "dfc36001db383803b858f5d221068a9740ec9dc718b4fef36a3d03415e09ee08",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Adulte habillé essuyant/protégeant son front sous un soleil fort, sol sec ; corps et geste restent lisibles à96px. Chaleur du soleil évoquée, sans distinction absolue imposée avec 햇살."
+    },
+    {
+      "id": "pack-15f8a98e",
+      "reviewer": "Codex",
+      "sourceSha256": "2d2e1dfc1b301d463ae1faa4bb0443ffaae0a2cc3bf12de49bf1b3e5e06171e9",
+      "sha256": "482b8319ecadbdad4c13908631063ec86b87d58520917fe6135117af44d25732",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Fenêtre ouverte, rayons de soleil et plages de lumière sur le sol ; faisceaux et ombres cohérents, nets à96px. La lumière visible domine, pas une personne ou un soleil isolé."
+    },
+    {
+      "id": "pack-bfa33444",
+      "reviewer": "Codex",
+      "sourceSha256": "c61af10cc0c36606d53ea10398cb27f5e4aaf948953372051c85cbd3a94d4a62",
+      "sha256": "84f35f474d1d9988d24fc8aa768388fe1f6d078d92543e01b6071fb71e9ca76c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Ligne de côte oblique avec plage, rochers et vagues ; la rencontre terre/mer est lisible à96px. Composition propre distincte des eaux littorales 앞바다, monochrome."
+    },
+    {
+      "id": "pack-e5b1f106",
+      "reviewer": "Codex",
+      "sourceSha256": "59a5842d2eed99757ba462dfb362d6e85cb9ff61e644a8c4f2c55a456ef25926",
+      "sha256": "ee1472625e47968c254ccdb96e4d9571ec14e12a54b7ff018661cffb8656564e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Gros plan sur pluie et ruissellement devant une avancée de toit, longs traits et impacts concentriques au sol. Rideau de pluie lisible à96px, décor limité, pas de texte."
+    },
+    {
+      "id": "pack-0336cafa",
+      "reviewer": "Codex",
+      "sourceSha256": "b7da5bf76e2dcc1cd4ff8a289f527f38ef241f11100015add9d219541b4441ac",
+      "sha256": "8a6d80b58e93069b2326a237df6e4f2a8e5b81274d56cecdc2e9c5123b6412ce",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Revue effective512/160/96 : Cours d’eau continu, deux berges et méandre en perspective ; structure de rivière claire à96px. Aucune fausse différence de taille prétendue avec les autres mots de rivière, aide seulement."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "pack-e1c48573",
+      "sourceSha256": "ac59186950d1e6201f7d52b3ef655868de835f1079aef10f5017bcae3db95d6f",
+      "reason": "Disque solaire visible, alors que l’aube proposée exige le soleil encore sous l’horizon."
+    }
+  ]
+}

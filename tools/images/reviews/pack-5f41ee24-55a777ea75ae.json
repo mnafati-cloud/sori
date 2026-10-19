@@ -1,0 +1,24 @@
+{
+  "id": "pack-5f41ee24",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-19T07:48:01.374Z",
+  "sourceSha256": "5b6a91c62088befe76cff273ced8f673f047b8ff5c9e264947a557291a514e45",
+  "sha256": "55a777ea75ae950809e3e2f2c5c4f55c02a560d4663566919e3f3cf095287869",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nTarget meaning (not lettering): 우주 — L'univers, le cosmos.\nComposition: Grand croissant planétaire au premier plan, petite planète lointaine et ruban de galaxie.\nSemantic constraints: Distinguer l’espace cosmique du ciel terrestre ; rester simple, sans science-fiction décorative.\nKeep only 2–3 essential visual elements. NO TEXT OR LETTERING in the artwork.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "Codex",
+  "note": "Revue effective512/160/96 : Bord planétaire au premier plan, petite planète entière et galaxie spirale dans un champ d’étoiles. Lecture cosmique nette à96px, sans vaisseau, écriture ou fausse infographie.",
+  "reviewedAt": "2026-10-19T07:55:42.793Z",
+  "kr": "우주",
+  "sense": "L'univers, le cosmos",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}
