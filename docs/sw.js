@@ -1,9 +1,9 @@
 /* Sori service worker — network-first (mises à jour auto), repli cache (hors-ligne) */
-const CACHE = "sori-v180";
+const CACHE = "sori-v181";
 const ASSETS = ["./", "./index.html", "./style.css", "./themes.css", "./themes.js",
                 "./engine.js", "./backup.js", "./app.js", "./data.js", "./extra.js",
                 "./production-data.js", "./production.js",
-                "./images-data.js", "./images.js",
+                "./images-data.js", "./offline.js", "./images.js",
                 "./events-data.js", "./events.js", "./search.js", "./exam.js", "./quests.js", "./typing.js", "./numbers.js", "./structure.js", "./placement.js", "./conversation.js",
                 "./grammar.js", "./grammar-data.js", "./gramex.js", "./story.js", "./story-data.js", "./story-sens.js",
                 "./scenarios-data.js", "./scenarios.js", "./player.js",
@@ -26,6 +26,10 @@ self.addEventListener("fetch", e => {
   if (e.request.method !== "GET") return;
   const url = new URL(e.request.url);
   if (url.origin !== self.location.origin) return;  // api.github.com etc. : ne pas intercepter/cacher
+  // The explicit downloader validates and writes each file itself. Fetch fresh
+  // bytes to repair corrupt cache entries, without a second competing SW write.
+  if(e.request.headers?.get("X-Sori-Download")==="1" &&
+     (/\/images\/[a-z0-9-]+-[a-f0-9]{12}\.webp$/.test(url.pathname) || /\/audio\/[^/]+\.mp3$/.test(url.pathname)))return;
   /* Content-addressed illustrations: optional, cache-first, survive app releases.
      Never install a whole catalogue, or substitute HTML for a missing picture. */
   if(/\/images\/[a-z0-9-]+-[a-f0-9]{12}\.webp$/.test(url.pathname)){

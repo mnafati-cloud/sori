@@ -328,8 +328,16 @@ en arrière-plan via `waitUntil`. Un fichier indécodable est évincé ;
 la question revient au texte. Les erreurs de quota ne bloquent pas la révision.
 
 Réglages → Télécharger les illustrations prépare les assets validés, vérifie
-leur décodage et donne les échecs éventuels. Après un téléchargement complet,
-les versions obsolètes sont retirées. Plafond automatique : 1 280 fichiers de
+leur décodage et donne les échecs éventuels. Depuis v181, `offline.js` partage
+avec l’audio les tentatives automatiques, la pause et la reprise : fichiers
+existants vérifiés sans retéléchargement, cache invalide réparé dans la même
+passe, arrêt sur manque de place ou coupure réseau. Le message distingue les
+causes des échecs au lieu de tout déclarer « indisponible ». Les requêtes explicites
+contournent le cache du worker pour éviter une double écriture ou une réponse
+corrompue répétée. Le décodage fonctionne aussi sans `createImageBitmap` et le
+délai réseau ne dépend plus d’`AbortSignal.timeout` (anciens Android/WebViews).
+Après un téléchargement complet, les versions obsolètes sont retirées.
+Plafond automatique : 1 280 fichiers de
 64 Kio maximum (80 Mio) ; le téléchargement global refuse de dépasser ce budget.
 Avant une bibliothèque plus grande, prévoir des lots sélectifs et revoir le
 budget de stockage Android. Ne jamais vider les données du site du téléphone.
@@ -341,6 +349,7 @@ node tools/images/pipeline.mjs check
 node --test tests/*.mjs
 for f in docs/*.js docs/audio/index.js; do node --check "$f" || exit 1; done
 node tools/images_smoke.cjs
+node tools/offline_smoke.cjs
 node tools/production_smoke.cjs
 node tools/ui_repairs_smoke.cjs
 node tools/backup_smoke.cjs

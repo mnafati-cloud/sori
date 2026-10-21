@@ -15,6 +15,29 @@
 
 ## Sommaire
 
+**v181 — téléchargement des images et de l’audio réparable.** `docs/offline.js`
+partage la file de téléchargement (2 requêtes, jusqu’à 3 tentatives par fichier),
+la validation et la reprise des caches `sori-image-store` / `sori-audio-store`.
+Une réponse déjà en cache mais invalide est remplacée dans la même passe ; un
+fichier n’est compté enregistré qu’après l’écriture réussie. Une coupure réseau
+ou un quota atteint suspend la file, sans marquer le reste du catalogue absent.
+Les Réglages distinguent réseau, HTTP, fichier illisible et stockage ; pause,
+reprise et état du téléchargement survivent à la fermeture des Réglages.
+Un rechargement reprend à partir des fichiers présents. Le worker laisse les
+requêtes média `X-Sori-Download: 1` au téléchargeur, qui valide puis écrit une
+seule fois. La stratégie réseau d’abord de l’app reste identique, les deux caches
+média restent préservés à l’activation. Aucun changement d’ids, de notes ou de
+progression. Une seule synthèse d’erreurs bornée est ajoutée au journal existant.
+Validation : `tests/offline.test.mjs` et `tools/offline_smoke.cjs` (Chromium,
+vrais MP3/WebP, pannes mixtes, cache corrompu, quota, pause et lecture hors ligne).
+Le test complet se lance avec `SORI_FULL_MEDIA=1 node tools/offline_smoke.cjs`.
+Vérifié pour cette release : 223 tests Node, syntaxe JS, manifeste des 1 068
+images, cinq suites Chromium ; téléchargement complet des 1 068 WebP et
+15 468 MP3, reprise sans requête supplémentaire, rechargement hors ligne,
+décodage d’image et lecture audio. Aucune erreur JavaScript ni modification
+de progression dans ces tests synthétiques. Le symptôme précis du téléphone
+ne peut pas être attribué rétroactivement : l’ancienne boucle avalait les erreurs.
+
 **v174 — 603 images générées et rappel visuel : [IMAGES.md](IMAGES.md).** Ajout de
 200 illustrations supplémentaires (11 A1, 21 A2, 168 B1), dont 114 questions et 86 aides,
 pour 4,63 Mo ; bibliothèque complète de 17,52 Mo.

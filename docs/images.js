@@ -160,29 +160,9 @@
   }
   async function download(onProgress){
     const entries=Object.values(root.SORI_IMAGES_DATA?.items||{}).filter(usable);
-    if(!root.caches)throw Error("Le stockage hors connexion n’est pas disponible.");
     if(entries.length>1280 || entries.reduce((n,a)=>n+(a.bytes||64*1024),0)>80*1024*1024)throw Error("La bibliothèque dépasse la limite de stockage hors connexion (80 Mo).");
-    const cache=await caches.open("sori-image-store"),urls=new Set(entries.map(a=>new URL(a.src,document.baseURI).href));
-    let ok=0,failed=0;
-    for(const a of entries){
-      try{
-        const url=new URL(a.src,document.baseURI).href;
-        const cached=await cache.match(url);
-        const response=cached || await fetch(url,{signal:AbortSignal.timeout(10000)});
-        if(!response.ok || !response.headers.get("content-type")?.includes("image/"))throw Error("image");
-        try{
-          const blob=await response.clone().blob();
-          if(blob.size>64*1024)throw Error("size");
-          const bitmap=await createImageBitmap(blob);bitmap.close();
-        }catch(error){await cache.delete(url);throw error;}
-        if(!cached)await cache.put(url,response);
-        ok++;
-      }catch(_){failed++;}
-      onProgress({ok,failed,total:entries.length});
-    }
-    // Only prune obsolete versions once this catalogue is fully available offline.
-    if(!failed)for(const req of await cache.keys())if(!urls.has(req.url))await cache.delete(req);
-    return {ok,failed,total:entries.length};
+    if(!root.SORI_OFFLINE)throw Error("Le téléchargement se prépare. Ferme puis rouvre l’app pour charger la mise à jour.");
+    return root.SORI_OFFLINE.download({kind:"images",entries,onProgress});
   }
   const api={asset,load,prepare,reveal,support,render,download,pure:{normalize,usable,eligible,judge,resume}};
   if(typeof module!=="undefined"&&module.exports)module.exports=api;

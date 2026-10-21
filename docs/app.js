@@ -2488,6 +2488,8 @@ function renderStats(){
 /* ===== Réglages en surcouche (ouverts par la roue ⚙️ du header, depuis n'importe quel onglet) ===== */
 function openSettings(){
   const back = el(`<div class="modal-back"></div>`);
+  let unsubscribeDownloads=()=>{};
+  const closeSettings=()=>{unsubscribeDownloads();back.remove();};
   const set = el(`<div class="card modal wide settings"><h2>Réglages</h2>
     <label>Nouvelles cartes / jour <input type="number" id="npd" min="0" max="50" value="${ST.set.newPerDay}"></label>
     <label>Taille max de session <input type="number" id="smax" min="20" max="500" step="10" value="${ST.set.sessionMax||120}"></label>
@@ -2529,8 +2531,9 @@ function openSettings(){
     <label title="Après chaque réponse du partenaire, une petite traduction mot à mot se charge sous la bulle (appel séparé, ~0,1 centime).">Mot à mot sous les réponses <input type="checkbox" id="cvgl" ${convCfg().gl!==false?"checked":""}></label>
     <div class="section-title" style="margin-top:14px">Mode avion</div>
     <div class="row" style="margin-top:6px"><button class="btn ghost" id="dlaudio">Télécharger tout l'audio (${AUDIO_IDS.size + AUDIO_EX_IDS.size} fichiers)</button></div>
-    <p class="dim" id="dlstatus" style="margin-top:6px">Mots + phrases d'exemple, disponibles hors connexion (avion, métro coréen).</p>
+    <p class="dim" id="dlstatus" aria-live="polite" style="margin-top:6px">Mots + phrases d'exemple, disponibles hors connexion (avion, métro coréen).</p>
     ${window.SORI_IMAGES?'<div class="row"><button class="btn ghost" id="dlimages">Télécharger les illustrations</button></div><p class="dim" id="dlimgstatus" aria-live="polite">Sans image disponible, les questions habituelles prennent le relais.</p>':""}
+    <div class="row"><button class="btn ghost" id="dlpause" hidden>Mettre en pause</button></div>
     <div class="section-title" style="margin-top:14px">Sauvegarde cloud (le canal principal)</div>
     <p class="dim" style="margin-top:4px">Ta progression part toute seule dans le cloud (à chaque fin de bloc) — c'est ta sauvegarde ET ce que Claude lit. Rien d'autre à faire.</p>
     <label>Jeton d'accès <input type="password" id="ghtok" placeholder="${ghToken()?"•••• configuré ••••":"github_pat_…"}" autocomplete="off"></label>
@@ -2610,39 +2613,22 @@ function openSettings(){
   set.querySelector("#imp").onclick  = ()=>set.querySelector("#impfile").click();
   set.querySelector("#impfile").onchange = importState;
   const dlimg=set.querySelector("#dlimages");
-  if(dlimg)dlimg.onclick=async()=>{
-    dlimg.disabled=true;
-    const status=set.querySelector("#dlimgstatus");
+  async function downloadMedia(kind){
+    const status=set.querySelector(kind==="images"?"#dlimgstatus":"#dlstatus");
     try{
-      const progress=({ok,failed,total})=>{status.textContent=`${ok} / ${total} illustrations disponibles hors connexion${failed?` · ${failed} indisponible(s)`:""}`;};
-      progress(await SORI_IMAGES.download(progress));
-    }catch(e){status.textContent=e.message||"Téléchargement indisponible. Les questions textuelles restent disponibles.";}
-    finally{dlimg.disabled=false;}
-  };
-  set.querySelector("#dlaudio").onclick = async ()=>{
-    const st = set.querySelector("#dlstatus");
-    const btn = set.querySelector("#dlaudio"); btn.disabled = true;
-    try{
-      const cache = await caches.open("sori-audio-store");
+      if(!window.SORI_OFFLINE)throw Error("Ferme puis rouvre l’app pour charger le téléchargement mis à jour.");
       const urls = [...AUDIO_IDS].map(id=>"./audio/"+id+".mp3")
-        .concat([...AUDIO_EX_IDS].map(id=>"./audio/"+id+"-ex.mp3"));   // mots + phrases
-      let done = 0, added = 0, fail = 0;
-      const CONC = 6;
-      async function one(url){
-        if(!(await cache.match(url))){
-          try{ await cache.add(url); added++; }catch(e){ fail++; }
-        }
-        done++;
-        if(done % 40 === 0 || done === urls.length)
-          st.textContent = `Téléchargement… ${done}/${urls.length}` + (fail?` (${fail} échecs)`:"");
-      }
-      for(let i=0; i<urls.length; i+=CONC) await Promise.all(urls.slice(i, i+CONC).map(one));
-      st.textContent = fail ? `${done-fail}/${urls.length} audios hors-ligne (${fail} échecs — relance pour compléter).`
-                            : `Tout l'audio est disponible hors connexion (${urls.length} fichiers).`;
-    }catch(e){ st.textContent = "Échec (connexion ?) — relance pour reprendre où c'était."; }
-    btn.disabled = false;
-  };
-  set.querySelector("#ghtok").onchange = e=>{ setGhToken(e.target.value); e.target.value=""; back.remove(); openSettings(); };
+        .concat([...AUDIO_EX_IDS].map(id=>"./audio/"+id+"-ex.mp3"));
+      const result=kind==="images" ? await SORI_IMAGES.download() : await SORI_OFFLINE.download({kind,entries:urls});
+      // One bounded diagnostic per run, available in the usual backup. Never
+      // serialize the whole catalogue or log every transient network attempt.
+      if(Object.keys(result.errors).length)logErr("download",kind+": "+JSON.stringify({ok:result.ok,total:result.total,reason:result.reason,errors:result.errors,samples:result.samples}),"");
+    }catch(e){status.textContent=e.message||"Téléchargement interrompu. Relance pour reprendre.";}
+  }
+  if(dlimg)dlimg.onclick=()=>downloadMedia("images");
+  set.querySelector("#dlaudio").onclick=()=>downloadMedia("audio");
+  set.querySelector("#dlpause").onclick=()=>window.SORI_OFFLINE?.pause();
+  set.querySelector("#ghtok").onchange = e=>{ setGhToken(e.target.value); e.target.value=""; closeSettings(); openSettings(); };
   set.querySelector("#cloud").onclick = async ()=>{
     const st = set.querySelector("#cloudstatus");
     st.textContent = "Envoi en cours…";
@@ -2657,12 +2643,20 @@ function openSettings(){
     const st = set.querySelector("#cloudstatus");
     st.textContent = "Lecture du cloud…";
     const r = await cloudRestore();
-    if(r.ok){ back.remove(); return; }   // restauration OK : render() déjà relancé, on ferme l'overlay
+    if(r.ok){ closeSettings(); return; }   // restauration OK : render() déjà relancé, on ferme l'overlay
     st.textContent = "Restauration : "+r.msg;
   };
-  set.querySelector("#setclose").onclick = ()=>back.remove();
-  back.addEventListener("click", e=>{ if(e.target===back) back.remove(); });
+  set.querySelector("#setclose").onclick = closeSettings;
+  back.addEventListener("click", e=>{ if(e.target===back) closeSettings(); });
   document.body.appendChild(back);
+  if(window.SORI_OFFLINE)unsubscribeDownloads=SORI_OFFLINE.subscribe(s=>{
+    const status=set.querySelector(s.kind==="images"?"#dlimgstatus":"#dlstatus");
+    if(status)status.textContent=SORI_OFFLINE.describe(s);
+    for(const id of ["#dlaudio","#dlimages"]){const btn=set.querySelector(id);if(btn)btn.disabled=SORI_OFFLINE.isRunning();}
+    const btn=set.querySelector(s.kind==="images"?"#dlimages":"#dlaudio");
+    if(btn && !s.running && s.ok<s.total)btn.textContent=s.kind==="images"?"Reprendre les illustrations":"Reprendre l’audio";
+    set.querySelector("#dlpause").hidden=!SORI_OFFLINE.isRunning();
+  });
 }
 /* ===== Historique des versions (popin ouverte au clic sur le n° de version) =====
    Données tirées EN DIRECT de l'API publique GitHub (repo public, sans jeton) : chaque

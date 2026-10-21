@@ -6,6 +6,15 @@ import vm from 'node:vm';
 const worker=fs.readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
 const deferred=()=>{let resolve;const promise=new Promise(r=>resolve=r);return {promise,resolve};};
 
+test('explicit media downloads bypass stale caches and competing worker writes',()=>{
+  const handlers={};
+  vm.runInNewContext(worker,{self:{location:{origin:'https://sori.test'},addEventListener:(name,fn)=>handlers[name]=fn},URL});
+  for(const path of ['/sori/images/test-012345abcdef.webp','/sori/audio/test.mp3']){
+    handlers.fetch({request:{url:'https://sori.test'+path,method:'GET',headers:new Headers({'X-Sori-Download':'1'})},
+      respondWith:()=>assert.fail('download must go straight to the network'),waitUntil:()=>assert.fail('no duplicate write')});
+  }
+});
+
 for(const failure of [false,true])test(`image response does not wait for cache writes${failure?' (quota failure)':''}`,async()=>{
   const writeStarted=deferred(),allowWrite=deferred(),handlers={},deleted=[];
   let writes=0,fetches=0,hit;
