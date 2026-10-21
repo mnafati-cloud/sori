@@ -36,7 +36,6 @@
 
   /* ================= PUR : modes & filtres ================= */
   var MODES = [
-    { id:"kit",   label:"🧳 Kit voyage",    f:function(t){ return !!t.kit; } },
     { id:"enemy", label:"⚔️ Ennemies",      f:function(t){ return !!t.enemy; } },
     { id:"cours", label:"📚 En cours",      f:function(t){ return t.stage===3 || t.stage===4; } },
     { id:"connu", label:"🎓 Tout le connu", f:function(t){ return t.stage>=3; } }

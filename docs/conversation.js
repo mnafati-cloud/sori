@@ -19,7 +19,7 @@
   const MAX_REPLY_TOKENS = 1000;   // réponses courtes (1-2 phrases) ; marge pour le raisonnement OpenAI
 
   /* v89 : scénarios de jeu de rôle — le modèle tient un rôle et OUVRE la conversation.
-     Situations utiles pour son voyage (2026-10-01), vocabulaire A2. */
+     Situations du quotidien, vocabulaire A2. */
   const SCENARIOS = [
     { id: "resto",  kr: "식당", fr: "Au restaurant",        sys: "Tu joues le SERVEUR d'un restaurant coréen ; l'apprenant est le client. Accueille-le, prends sa commande, propose une boisson. Reste dans ce rôle." },
     { id: "cafe",   kr: "카페", fr: "Au café",              sys: "Tu joues le BARISTA d'un café coréen ; l'apprenant est le client. Prends sa commande : boisson, taille, sur place ou à emporter." },

@@ -29,6 +29,36 @@ let browser,page;
   await context.addInitScript(data=>{if(!localStorage.getItem("sori-state-v1"))localStorage.setItem("sori-state-v1",JSON.stringify(data));},initial);
   page=await context.newPage();const errors=[];page.on("pageerror",e=>errors.push(e.message));
   await page.goto("http://127.0.0.1:"+server.address().port+"/");
+  // The finished travel campaign no longer affects either entry point for new
+  // cards, even when an older backup still contains kitFirst:true.
+  assert.equal(await page.locator('.event-card,.korea-line').count(),0);
+  await page.locator('#settings').click();assert.equal(await page.locator('#kf').count(),0);
+  assert.doesNotMatch(await page.locator('.settings').innerText(),/kit voyage/i);
+  await page.screenshot({path:path.join(artifacts,'settings-without-trip.png')});
+  await page.locator('#setclose').click();
+  const retired=await browser.newContext();
+  await retired.addInitScript(data=>localStorage.setItem('sori-state-v1',JSON.stringify(data)),initial);
+  const retiredPage=await retired.newPage();
+  await retiredPage.goto('http://127.0.0.1:'+server.address().port+'/');
+  const queues=await retiredPage.evaluate(()=>{
+    const all=BASE_IDS.map(eff);
+    const kit=all.find(b=>b.kit && all.some(a=>!a.kit && a.id<b.id && newRank(a)===newRank(b)));
+    const ordinary=all.find(a=>!a.kit && a.id<kit.id && newRank(a)===newRank(kit));
+    function reset(){
+      ST.items=Object.fromEntries(ALL_IDS.map(id=>[id,{s:0,sus:true}]));
+      for(const id of [ordinary.id,kit.id])ST.items[id]={s:0,sus:false};
+      ST.intro={};ST.set.kitFirst=true;ST.set.production=false;ST.set.newPerDay=1;
+    }
+    reset();const daily=buildQueue();reset();const more=learnMoreQueue(1);
+    return {daily,more,expected:ordinary.id,legacySetting:ST.set.kitFirst};
+  });
+  assert.deepEqual(queues.daily,[queues.expected]);assert.deepEqual(queues.more,[queues.expected]);
+  assert.equal(queues.legacySetting,true,'old settings are preserved without affecting priority');
+  for(const demo of ['events','player']){
+    await retiredPage.goto('http://127.0.0.1:'+server.address().port+'/design/'+demo+'-test.html');
+    assert.match(await retiredPage.title(),/^✔/,'existing '+demo+' contract checks: '+(await retiredPage.locator('#checks .fail').allTextContents()).join('; '));
+  }
+  await retired.close();
   await page.locator('#tabs [data-tab="review"]').click();
   await page.locator(".production-input").waitFor();
   // Rapport réellement enregistré depuis la situation visible, même si Q pointe ailleurs.
@@ -141,7 +171,8 @@ let browser,page;
   });
   assert.equal(repaired,"1","un vrai mot transparent est toujours réparé");
   assert.deepEqual(errors,[]);
-  const summary={browser:await browser.version(),productionReports:true,reportReload:true,lexicalNotes:3,versionHistory:true,
+  const summary={browser:await browser.version(),retiredTrip:true,newCardsIgnoreLegacyKitPriority:true,eventAndPlayerContracts:true,
+    productionReports:true,reportReload:true,lexicalNotes:3,versionHistory:true,
     normalStamp:true,stuckStampRecovered:true,invisibleWordRecovered:true,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,"summary.json"),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));
 })().catch(async error=>{

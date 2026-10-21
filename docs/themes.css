@@ -313,7 +313,6 @@
 .theme-takbon #screen .section-title, .theme-takbon #screen > .dim,
 .theme-takbon #screen .sc-head{padding-left:14px; padding-right:14px}   /* .sc-head : en-tête de scène (petit-fils, revue v103) */
 .theme-takbon .hero{padding:14px 14px 4px}
-.theme-takbon .korea-line{padding:2px 14px}
 .theme-takbon .rev-head{padding:0 8px 0 14px}
 .theme-takbon #tabs{border-top-color:transparent}
 .theme-takbon .list{border-top:none}
@@ -387,7 +386,6 @@
 .theme-takbon .num, .theme-takbon #daycount, .theme-takbon .lvlpct{font-family:var(--num-display)}
 .theme-takbon #daycount{font-size:1.2rem}
 .theme-takbon .cta .num{font-family:var(--num-display); font-size:1.15rem}
-.theme-takbon .korea-line b{font-size:1.1rem}
 .theme-takbon .lvlpct{font-size:1rem}
 .theme-takbon .btn.g4 .ans-ivl{font-family:var(--num-display)}   /* taille : voir le bloc auto-évaluation */
 

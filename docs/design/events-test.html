@@ -37,9 +37,15 @@ for (var day = 1; day <= 20; day++) {
   MOCK_LOG["2026-09-" + String(day).padStart(2, "0")] = { ok: 20, ko: 4, n: 24, listen: 6 };
 }
 
+/* Historical fixtures live only in this test, independently of published events. */
+var EVENT_FIXTURE = [
+  {id:"seoul-2026",type:"countdown",from:"2026-07-01",to:"2026-10-01",title:"Compte à rebours de test",
+    milestones:[{at:90,label:"J-90"},{at:30,label:"J-30"},{at:7,label:"J-7"}]},
+  {id:"post-voyage",type:"message",from:"2026-10-01",to:"2026-10-22",title:"Message de test",text:"Après le compte à rebours"}
+];
 /* événement challenge injecté SEULEMENT ici, pour tester le 3e type sans
    toucher aux vraies données (dans l'app il viendrait d'events-data.js) */
-var CHALLENGE_DEMO = window.EVENTS_DATA.concat([
+var CHALLENGE_DEMO = EVENT_FIXTURE.concat([
   { id: "demo-defi", type: "challenge", from: "2026-09-01", to: "2026-10-01",
     title: "Défi de septembre", emoji: "🏁",
     text: "500 réponses avant le départ.", goal: { reviews: 500 } }
@@ -51,7 +57,7 @@ var PANELS = [
   { today: "2026-08-15", note: "PENDANT le countdown — attendu : carte J-47 (jalon J-90)" },
   { today: "2026-09-20", note: "PENDANT + challenge (données de démo) — attendu : countdown J-11 + défi 480/500",
     data: CHALLENGE_DEMO },
-  { today: "2026-10-05", note: "APRÈS le départ — attendu : bannière « En Corée ! », PLUS de countdown" },
+  { today: "2026-10-05", note: "APRÈS le compte à rebours de test — attendu : message de test seul" },
   { today: "2026-10-25", note: "APRÈS le 22 octobre — attendu : AUCUNE carte" }
 ];
 var $panels = document.getElementById("panels");
@@ -59,7 +65,7 @@ PANELS.forEach(function(p){
   var panel = document.createElement("div"); panel.className = "panel";
   panel.innerHTML = "<h2>today = " + p.today + "</h2><p class='expect'>" + p.note + "</p>";
   var n = SORI_EVENTS.renderCards(panel, {
-    today: p.today, log: MOCK_LOG, dismissed: {}, data: p.data,
+    today: p.today, log: MOCK_LOG, dismissed: {}, data: p.data || EVENT_FIXTURE,
     onDismiss: function(id){ console.log("dismiss demandé :", id); }
   });
   if (n === 0) {
@@ -73,7 +79,7 @@ PANELS.forEach(function(p){
 /* ---------- assertions automatiques (fonctions pures) ---------- */
 var P = SORI_EVENTS.pure, out = [];
 function check(name, cond){ out.push({ name: name, ok: !!cond }); }
-function ids(today, data){ return P.activeEvents(data || window.EVENTS_DATA, today).map(function(e){ return e.id; }).join(","); }
+function ids(today, data){ return P.activeEvents(data || EVENT_FIXTURE, today).map(function(e){ return e.id; }).join(","); }
 
 check("2026-06-15 : rien d'actif",                    ids("2026-06-15") === "");
 check("2026-07-01 : countdown démarre (from inclus)", ids("2026-07-01") === "seoul-2026");
@@ -85,23 +91,25 @@ check("2026-10-21 : dernier jour du message",         ids("2026-10-21") === "pos
 check("2026-10-22 : plus rien",                       ids("2026-10-22") === "");
 check("2026-10-25 : plus rien",                       ids("2026-10-25") === "");
 
-var cd = P.eventProgress(window.EVENTS_DATA[0], "2026-08-15", {});
+check("campagne voyage retirée des données publiées", !window.EVENTS_DATA.some(function(e){ return e.id === "seoul-2026" || e.id === "post-voyage"; }));
+
+var cd = P.eventProgress(EVENT_FIXTURE[0], "2026-08-15", {});
 check("countdown 15/08 : daysLeft = 47",   cd && cd.daysLeft === 47);
 check("countdown 15/08 : total = 92 j",    cd && cd.totalDays === 92);
 check("countdown 15/08 : ratio ~ 0.49",    cd && Math.abs(cd.ratio - 45/92) < 1e-9);
 check("countdown 15/08 : jalon J-90",      cd && cd.milestone && cd.milestone.at === 90);
-var cd7 = P.eventProgress(window.EVENTS_DATA[0], "2026-09-27", {});
+var cd7 = P.eventProgress(EVENT_FIXTURE[0], "2026-09-27", {});
 check("countdown 27/09 : jalon J-7 (le plus récent gagne)", cd7 && cd7.milestone && cd7.milestone.at === 7);
 
 var ch = P.eventProgress(CHALLENGE_DEMO[2], "2026-09-20", MOCK_LOG);
 check("challenge : 20 j × 24 = 480 comptés", ch && ch.count === 480 && ch.target === 500 && !ch.done);
-var msg = P.eventProgress(window.EVENTS_DATA[1], "2026-10-05", MOCK_LOG);
+var msg = P.eventProgress(EVENT_FIXTURE[1], "2026-10-05", MOCK_LOG);
 check("message : progress = null", msg === null);
 
 var tmp = document.createElement("div");
 var n0 = SORI_EVENTS.renderCards(tmp, { today: "2026-10-25", log: {}, dismissed: {} });
 check("renderCards à vide : 0 carte, 0 nœud", n0 === 0 && tmp.childNodes.length === 0);
-var n1 = SORI_EVENTS.renderCards(tmp, { today: "2026-08-15", log: {}, dismissed: { "seoul-2026": true } });
+var n1 = SORI_EVENTS.renderCards(tmp, { today: "2026-08-15", log: {}, data: EVENT_FIXTURE, dismissed: { "seoul-2026": true } });
 check("dismissed masque bien la carte", n1 === 0 && tmp.childNodes.length === 0);
 
 var $checks = document.getElementById("checks");

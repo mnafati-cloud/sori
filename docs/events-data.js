@@ -58,18 +58,6 @@
         goal: { reviews: 500 } },
 
    ────────────────────────────────────────────────────────────────────── */
-window.EVENTS_DATA = [
-  { id: "seoul-2026", type: "countdown",
-    from: "2026-07-01", to: "2026-10-01",
-    title: "Départ pour Séoul", emoji: "🇰🇷",
-    milestones: [
-      { at: 90, label: "J-90 — le kit voyage commence maintenant" },
-      { at: 30, label: "J-30 — objectif : tout le kit au niveau 4+" },
-      { at: 7,  label: "J-7 — drill audio tous les jours !" },
-    ] },
-
-  { id: "post-voyage", type: "message",
-    from: "2026-10-01", to: "2026-10-22",
-    title: "En Corée !", emoji: "🎒",
-    text: "Mode terrain : le kit voyage est ton ami." },
-];
+// Retired in v182 after the trip. These ids remain reserved forever:
+// seoul-2026, post-voyage. Existing ST.evDismiss entries stay untouched.
+window.EVENTS_DATA = [];

@@ -15,6 +15,19 @@
 
 ## Sommaire
 
+**v182 — fin de la préparation du voyage.** Suppression du réglage « Prioriser
+le kit voyage », des bannières `seoul-2026` / `post-voyage`, du compte à rebours
+de secours, de l’ancien écran Voyage/drill dormant et du filtre kit du lecteur.
+Les deux chemins d’introduction (file du jour et « apprendre plus ») passent
+désormais `false` à l’ancienne priorité kit : ordre par niveau, mot/phrase puis id.
+`ST.set.kitFirst`, les métadonnées du seed, les ids, les mots et les progressions
+existants sont conservés pour compatibilité ; l’ancien réglage n’a plus d’effet.
+Les ids d’événement retirés restent réservés, les clés `ST.evDismiss` intactes.
+Le dictionnaire, les scènes et la conversation restent disponibles dans leurs
+écrans actuels. Contrôle navigateur avec un ancien réglage `kitFirst:true`, sur
+la file du jour et les nouvelles cartes à la demande ; pages de tests événements
+et lecteur maintenues avec des exemples synthétiques, indépendants de la campagne.
+
 **v181 — téléchargement des images et de l’audio réparable.** `docs/offline.js`
 partage la file de téléchargement (2 requêtes, jusqu’à 3 tentatives par fichier),
 la validation et la reprise des caches `sori-image-store` / `sori-audio-store`.
@@ -1304,8 +1317,9 @@ vers un exercice plus facile sans redevenir « nouveau » ; `itv=0` = re-testé 
 ### 4.3 La file du jour (`buildQueue`)
 
 1. Échues = items avec `stage ≥ 1` et `due ≤ aujourd'hui` (`selectDue`).
-2. Nouvelles = jusqu'à `newPerDay − intro[aujourd'hui]` items de stage 0, kit d'abord si
-   `kitFirst`, puis par id croissant (`pickNew`). Chacune posée à `{s:1, i:0, d:aujourd'hui}`.
+2. Nouvelles = jusqu'à `newPerDay − intro[aujourd'hui]` items de stage 0, ordonnés
+   par niveau, mots avant phrases, puis par id croissant (`pickNew`, priorité kit
+   désactivée depuis v182). Chacune posée à `{s:1, i:0, d:aujourd'hui}`.
 3. Mélange, coupe à `sessionMax` (120). Le reste = PENDING (« Continuer (N en attente) »).
 
 ### 4.4 Ce qui compte pour la planification — et ce qui ne compte pas
@@ -2158,7 +2172,7 @@ par vagues — le mot ET son niveau sont fournis (autorité), l'IA ne produit qu
 | **Phase 1 / phase 2** | Phase 1 « ombre » : planification legacy bit-à-bit, ease et métriques accumulées. Phase 2 : `adaptive=true`, planification à l'ease. Bascule et critères : R16. |
 | **Shadow (`so`/`sn`)** | Sommes journalières des intervalles qu'auraient donnés legacy (`so`) et adaptatif (`sn`) sur les succès comptés — pour comparer les deux systèmes sans risque. |
 | **Révision comptée (`ok1`/`ko1`)** | 1re présentation espacée du jour, non anticipée (`counted`). La mesure « propre » de rétention (`retention7`). |
-| **Kit (de survie voyage)** | Les 54 phrases indispensables du voyage (`kit: true`). Introduites en priorité si `kitFirst`, drillées dans Voyage, MP3 natifs. |
+| **Kit (ancien voyage)** | Métadonnée historique `kit: true` conservée avec les mots et leur progression. Depuis v182 : aucun réglage, filtre, drill ni priorité d’introduction spécifiques. |
 | **Conf / sosies** | Champ `conf` : jusqu'à 6 ids de mots ressemblants. Distracteurs « piégeux » dès le stage 2. |
 | **File / PENDING** | Session du jour : échues + nouvelles, plafonnée à `sessionMax` (120). Le surplus est proposé en fin de session. |
 | **Bonus / Entraînement libre** | 10 cartes qui ne touchent PAS la planification (contrairement au boss fight, qui compte). |

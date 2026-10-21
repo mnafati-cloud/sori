@@ -73,8 +73,7 @@ check("SORI_PLAYER exposé (renderCard + stop)",
       window.SORI_PLAYER && typeof SORI_PLAYER.renderCard==="function" && typeof SORI_PLAYER.stop==="function");
 
 var F = SORI_PLAYER.pure.filterTracks;
-var kitN = TRACKS.filter(function(t){ return t.kit; }).length;
-check("mode kit : exactement les pistes kit", F(TRACKS,"kit").length === kitN && kitN >= 1);
+check("ancien filtre kit retiré", !SORI_PLAYER.pure.MODES.some(function(m){ return m.id === "kit"; }));
 check("mode ennemies : que des enemy", F(TRACKS,"enemy").every(function(t){ return t.enemy; }));
 check("mode en cours : que des stage 3-4", F(TRACKS,"cours").every(function(t){ return t.stage===3||t.stage===4; }));
 check("mode connu ⊇ mode en cours", F(TRACKS,"connu").length >= F(TRACKS,"cours").length);
@@ -91,7 +90,7 @@ var host = document.getElementById("host");
 SORI_PLAYER.renderCard(host, { tracks: TRACKS, rate: 0.9, audioBase: "../audio/" });
 
 check("une .card rendue", host.querySelectorAll(".card").length === 1);
-check("4 chips de mode", host.querySelectorAll("[data-mode]").length === 4);
+check("3 modes sans kit voyage", host.querySelectorAll("[data-mode]").length === 3 && !host.querySelector('[data-mode="kit"]'));
 check("bouton ▶ actif (file non vide)", !host.querySelector('[data-role="play"]').disabled);
 check("mot courant affiché", host.querySelector('[data-role="kr"]').textContent !== "—");
 check("position x / y affichée", /^\d+ \/ \d+$/.test(host.querySelector('[data-role="pos"]').textContent));

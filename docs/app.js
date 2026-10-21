@@ -890,7 +890,8 @@ function buildQueue(){
   let slots = Math.max(0, Math.min((ST.set.newPerDay||0) - introToday, cap - due.length));
   if(slots>0){
     /* on pioche large (×2 : recto+verso) puis introduceCards forme les paires dans la limite du budget */
-    const picked = ENGINE.pickNew(effAll, slots*2, ST.set.kitFirst, newRank);
+    // v182: the former trip priority is retired, including for older settings.
+    const picked = ENGINE.pickNew(effAll, slots*2, false, newRank);
     introduceCards(picked, slots, t).forEach(id => due.push(id));
     save();
   }
@@ -1599,7 +1600,7 @@ function auraClass(it){
    « je veux réviser autant que je veux » : répétable, chaque lot fait avancer le deck. */
 function learnMoreQueue(n){
   const t = todayStr();
-  const picked = ENGINE.pickNew(ALL_IDS.map(eff).filter(it=>!it.sus), n*2, ST.set.kitFirst, newRank);   // ×2 recto+verso ; !sus : les rangées ne reviennent pas par ce chemin (v68)
+  const picked = ENGINE.pickNew(ALL_IDS.map(eff).filter(it=>!it.sus), n*2, false, newRank);   // ×2 recto+verso ; !sus : les rangées ne reviennent pas par ce chemin (v68)
   const news = introduceCards(picked, n, t);                                        // paires recto+verso
   if(news.length) save();
   return shuffle(news.slice());
@@ -2149,66 +2150,6 @@ function renderListen(){
   setTimeout(()=>{ if(speakOnLand) speak(it.kr, it.id); }, 250);
 }
 
-/* ---------- mode Voyage ---------- */
-const TRIP_LABELS = { resto:"🍜 Restaurant", transport:"🚕 Transports", hotel:"🏨 Hôtel",
-  achats:"🛍️ Achats", urgence:"🚨 Urgences & santé", communication:"💬 Communication", deck:"⭐ Essentiels du deck" };
-let DRILL=null, DPOS=0;
-function renderTrip(){
-  if(DRILL){ renderDrill(); return; }
-  /* 🔍 Mon dictionnaire — recherche FR⇄KR dans tout le deck (search.js) */
-  if(window.SORI_SEARCH){
-    $screen.appendChild(el(`<div class="section-title">Mon dictionnaire</div>`));
-    SORI_SEARCH.renderPanel($screen, {
-      items: BASE_IDS.map(eff),        // pas de doublon recto/verso
-      extra: EXTRA,
-      onExpand:(container,id)=>window.SORI_IMAGES?.support(container,id),
-      onSpeak: (kr, id)=>speak(kr, id)
-    });
-  }
-  /* simulations interactives (scenarios.js) — l'état "meilleur score" est additif dans ST.scen */
-  if(window.SORI_SCENARIOS && window.SCENARIOS){
-    ST.scen = ST.scen || {};
-    const scBox = el(`<div></div>`);
-    SORI_SCENARIOS.renderList(scBox, {
-      speak: (txt)=>ttsSpeak(txt),
-      onAnswer: (ok)=>logAnswer(ok, "scenario"),
-      getBest: (id)=>ST.scen[id],
-      setBest: (id, v)=>{ ST.scen[id]=v; save(); },
-    });
-    $screen.appendChild(scBox);
-  }
-  /* v42 : « kit de survie » (phrases isolées + drill audio) RETIRÉ (peu utile).
-     Voyage = dictionnaire + simulations. renderDrill/DRILL/TRIP_LABELS conservés
-     mais inatteignables (DRILL jamais réactivé ici) — réactivables si besoin. */
-}
-function renderDrill(){
-  if(DPOS>=DRILL.length){
-    $screen.appendChild(el(`<div class="card center"><div class="done-banner">🧳</div>
-      <h2>Drill terminé</h2><button class="btn" id="back" style="margin-top:10px">Retour au kit</button></div>`));
-    document.getElementById("back").onclick=()=>{ DRILL=null; render(); };
-    return;
-  }
-  const it = eff(DRILL[DPOS]);
-  const card = el(`<div class="card center">
-    <div class="dim">Drill ${DPOS+1}/${DRILL.length} — écoute puis répète à voix haute</div>
-    <div class="big-fr">${esc(it.fr)}</div>
-    <div class="feedback"></div>
-    <div class="row" style="margin-top:10px">
-      <button class="btn ghost" id="hear">🔊 Réécouter</button>
-      <button class="btn" id="rev">Voir + suivant</button>
-    </div></div>`);
-  let revealed=false;
-  card.querySelector("#hear").onclick=()=>speak(it.kr, it.id);
-  card.querySelector("#rev").onclick=()=>{
-    if(!revealed){
-      card.querySelector(".feedback").innerHTML=`<span class="kr">${esc(it.kr)}</span>`;
-      card.querySelector("#rev").textContent="Suivant →"; revealed=true; speak(it.kr, it.id);
-    } else { DPOS++; render(); }
-  };
-  $screen.appendChild(card);
-  if(!NAV) speak(it.kr, it.id);   // drill : silencieux à l'arrivée, sonore en progression
-}
-
 /* ---------- Stats & réglages ---------- */
 /* accueil = Progrès : LANCEUR (action d'abord) puis métriques. */
 /* ===== historique de maîtrise (pour suivre la progression de niveau dans le temps) =====
@@ -2267,11 +2208,7 @@ function renderStats(){
     state:ST.production,today:t,known:productionWords(),enabled:ST.set.production!==false,
     onReview:()=>{if(BONUS){Q=null;BONUS=false;}PRODUCTION_FORCE=true;launch.click();}
   });
-  const jx = Math.round((new Date("2026-10-01T12:00:00") - new Date(t+"T12:00:00"))/864e5);
-  const evSeoul = window.SORI_EVENTS && !((ST.evDismiss||{})["seoul-2026"]);   // la carte événement affiche déjà le compte à rebours
-  if(jx > 0 && !evSeoul) $screen.appendChild(el(`<div class="korea-line"><span>Départ pour la Corée</span><b class="num">J − ${jx}</b></div>`));
-
-  /* événements actifs (countdown départ, défis…) — events-data.js / MAINTENANCE-EVENTS.md */
+  /* événements actifs — events-data.js / MAINTENANCE-EVENTS.md */
   if(window.SORI_EVENTS){
     ST.evDismiss = ST.evDismiss || {};
     SORI_EVENTS.renderCards($screen, {
@@ -2493,7 +2430,6 @@ function openSettings(){
   const set = el(`<div class="card modal wide settings"><h2>Réglages</h2>
     <label>Nouvelles cartes / jour <input type="number" id="npd" min="0" max="50" value="${ST.set.newPerDay}"></label>
     <label>Taille max de session <input type="number" id="smax" min="20" max="500" step="10" value="${ST.set.sessionMax||120}"></label>
-    <label>Prioriser le kit voyage <input type="checkbox" id="kf" ${ST.set.kitFirst?"checked":""}></label>
     <label>Prononcer automatiquement <input type="checkbox" id="ap" ${ST.set.autoplay?"checked":""}></label>
     <label title="Coupe toute la synthèse vocale et les sons de l'app. v153 : le bouton du bandeau a été retiré, le réglage vit ici.">Couper le son <input type="checkbox" id="mutechk" ${ST.set.mute?"checked":""}></label>
     <label title="Halo vermillon pulsant autour du mot en révision. Adaptée = gradué par la difficulté FSRS (la plupart des cartes restent calmes, les ennemies brûlent). Toujours = sur tous les mots.">Aura de difficulté
@@ -2574,7 +2510,6 @@ function openSettings(){
   })();
   set.querySelector("#npd").onchange = e=>{ ST.set.newPerDay=Math.max(0,+e.target.value||0); save(); };
   set.querySelector("#smax").onchange= e=>{ ST.set.sessionMax=Math.max(20,+e.target.value||120); save(); };
-  set.querySelector("#kf").onchange  = e=>{ ST.set.kitFirst=e.target.checked; save(); };
   set.querySelector("#ap").onchange  = e=>{ ST.set.autoplay=e.target.checked; save(); };
   set.querySelector("#mutechk").onchange = e=>{ ST.set.mute=e.target.checked;
     if(ST.set.mute) try{ speechSynthesis.cancel(); }catch(_){ } save(); };
