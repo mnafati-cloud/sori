@@ -15,6 +15,14 @@
 
 ## Sommaire
 
+**v184 — écoute visible dans le dictionnaire.** Le bouton d’écoute est dans
+l’en-tête du résultat, à côté du coréen, avec le libellé « Écouter » et une cible
+tactile d’au moins 44 px. Il ne descend plus au milieu de la fiche lorsque les
+exemples ou l’image se déplient. Un tap lit le mot sans ouvrir ni fermer les
+détails. Contrôle dans `design/search-test.html` et la vraie PWA : six thèmes,
+écrans de 320 et 412 px, mot illustré, mot sans image, phrase longue et lecture
+réelle du MP3. Le réglage de sourdine et la progression restent inchangés.
+
 **v183 — contexte après une réponse écrite.** La saisie hangul appelle désormais
 `onReveal` lorsque la correction apparaît (exacte, écart à confirmer ou secours
 sans clavier). `app.js` y branche le même `showTrivia` que les autres révisions :

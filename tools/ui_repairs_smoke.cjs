@@ -1,4 +1,4 @@
-/* Régressions issues de l'audit : contexte des rapports, notes lexicales et tampon.
+/* Régressions UI : rapports, contexte des réponses, dictionnaire et tampon.
    Vraie PWA, état synthétique, aucun accès au dépôt privé de sauvegardes. */
 const fs=require("node:fs"),path=require("node:path"),http=require("node:http"),vm=require("node:vm");
 const assert=require("node:assert/strict"),{chromium}=require("playwright");
@@ -14,7 +14,7 @@ const initial={v:1,freshOk:1,reverseMig:1,adapMig:1,audioCleanMig:1,
   set:{...E.DEF_SET,report:true,reverse:false,mute:true,autoplay:false,newPerDay:0},
   sess:{d:day,q:[ordinary.id],p:0,pen:0}};
 initial.items[ordinary.id]={s:1,i:1,d:day,ok:1,ko:0};
-const mime={".html":"text/html",".js":"text/javascript",".css":"text/css",".woff2":"font/woff2",".json":"application/json",".png":"image/png"};
+const mime={".html":"text/html",".js":"text/javascript",".css":"text/css",".woff2":"font/woff2",".json":"application/json",".png":"image/png",".webp":"image/webp",".mp3":"audio/mpeg"};
 const server=http.createServer((req,res)=>{
   let file=path.resolve(root,"."+decodeURIComponent(new URL(req.url,"http://localhost").pathname));
   if(file===root) file=path.join(root,"index.html");
@@ -54,7 +54,7 @@ let browser,page;
   });
   assert.deepEqual(queues.daily,[queues.expected]);assert.deepEqual(queues.more,[queues.expected]);
   assert.equal(queues.legacySetting,true,'old settings are preserved without affecting priority');
-  for(const demo of ['events','player','typing']){
+  for(const demo of ['events','player','typing','search']){
     await retiredPage.goto('http://127.0.0.1:'+server.address().port+'/design/'+demo+'-test.html');
     assert.match(await retiredPage.title(),/^✔/,'existing '+demo+' contract checks: '+(await retiredPage.locator('#checks .fail').allTextContents()).join('; '));
   }
@@ -90,6 +90,54 @@ let browser,page;
   assert.equal(await page.evaluate(()=>reportCtx().production),undefined);
   await page.locator('#tabs [data-tab="progres"]').click();
   assert.equal(await page.evaluate(()=>reportCtx().production),undefined);
+  // Dictionary audio stays next to each word on narrow phones, including
+  // after expanding an illustrated entry. Exercise the real MP3, not a stub.
+  const dictionaryState=await page.evaluate(()=>JSON.stringify({items:ST.items,rlog:ST.rlog}));
+  const dictionaryTheme=await page.evaluate(()=>SORI_THEMES.get());
+  const themes=await page.evaluate(()=>SORI_THEMES.list.map(t=>t.id));
+  const fixtures=await page.evaluate(()=>['학교','종아리',
+    SEED.items.filter(it=>AUDIO_IDS.has(String(it.id))).reduce((a,b)=>a.kr.length>b.kr.length?a:b).kr
+  ].map(kr=>SEED.items.find(it=>it.kr===kr)).map(it=>({id:it.id,kr:it.kr})));
+  await page.evaluate(()=>{ST.set.mute=false;});
+  await page.locator('#dico').click();
+  for(const width of [320,412]){
+    await page.setViewportSize({width,height:740});
+    for(const theme of themes){
+      await page.evaluate(theme=>SORI_THEMES.set(theme),theme);
+      for(const fixture of fixtures){
+        await page.locator('.search-input').fill(fixture.kr);
+        await page.locator('.search-input').press('Enter');
+        const row=page.locator('.search-hit').first(),button=row.locator('.speak');
+        assert.equal(await row.locator('.kr').innerText(),fixture.kr);
+        assert.equal(await button.getAttribute('aria-label'),'Écouter '+fixture.kr);
+        assert.equal(await button.innerText(),'Écouter');
+        await button.tap();
+        await page.waitForFunction(id=>CURAUDIO && CURAUDIO.src.endsWith('/audio/'+id+'.mp3') && CURAUDIO.currentTime>0 && !CURAUDIO.error,fixture.id);
+        await page.evaluate(()=>CURAUDIO.pause());
+        assert.equal(await row.locator('.trivia').count(),0,'listening does not expand the entry');
+        await row.locator('.kr').tap();
+        if(fixture.kr==='학교')await row.locator('.images-support').waitFor();
+        await row.locator('.kr').scrollIntoViewIfNeeded();
+        const layout=await row.evaluate(el=>{
+          const b=el.querySelector('.speak').getBoundingClientRect(),k=el.querySelector('.kr').getBoundingClientRect();
+          const modal=el.closest('.modal');
+          return {near:b.top<=k.bottom && b.bottom>=k.top,touch:b.width>=44 && b.height>=44,
+            inside:b.left>=0 && b.right<=innerWidth && modal.scrollWidth<=modal.clientWidth,
+            visible:!!document.elementFromPoint(b.x+b.width/2,b.y+b.height/2)?.closest('.speak')};
+        });
+        assert.deepEqual(layout,{near:true,touch:true,inside:true,visible:true},theme+' '+width+' '+fixture.kr);
+        if(width===320 && fixture.kr==='학교')await page.screenshot({path:path.join(artifacts,'dictionary-audio-'+theme+'.png')});
+        await button.tap();
+        await page.waitForFunction(()=>CURAUDIO && CURAUDIO.currentTime>0 && !CURAUDIO.error);
+        await page.evaluate(()=>CURAUDIO.pause());
+        assert.equal(await row.locator('.trivia').count(),1,'listening leaves details open');
+      }
+    }
+  }
+  await page.locator('#dicoclose').click();
+  await page.setViewportSize({width:412,height:915});
+  await page.evaluate(theme=>{SORI_THEMES.set(theme);ST.set.mute=true;},dictionaryTheme);
+  assert.equal(await page.evaluate(()=>JSON.stringify({items:ST.items,rlog:ST.rlog})),dictionaryState,'dictionary never grades a word');
   // Les trois notes sont accessibles après réponse ET dans le dictionnaire.
   for(const kr of ["전체","전부","전"]){
     const fr=await page.evaluate(kr=>{
@@ -218,6 +266,7 @@ let browser,page;
   assert.equal(repaired,"1","un vrai mot transparent est toujours réparé");
   assert.deepEqual(errors,[]);
   const summary={browser:await browser.version(),retiredTrip:true,newCardsIgnoreLegacyKitPriority:true,eventAndPlayerContracts:true,
+    dictionaryAudio:true,dictionaryThemes:themes.length,dictionaryWidths:[320,412],dictionaryProgressUnchanged:true,
     productionReports:true,reportReload:true,lexicalNotes:3,typingContext:true,typingContextBeforeSelfGrade:true,typingIme:true,versionHistory:true,
     normalStamp:true,stuckStampRecovered:true,invisibleWordRecovered:true,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,"summary.json"),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));

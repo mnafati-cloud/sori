@@ -177,6 +177,10 @@
     "  background:none; border:none; color:var(--dim); font-size:1.05rem;",
     "  padding:10px 12px; cursor:pointer; line-height:1}",
     ".search-count{font-size:.78rem; color:var(--dim); padding:0 2px}",
+    ".search-heading{display:flex; align-items:flex-start; gap:8px}",
+    ".search-heading .kr{flex:1; min-width:0; align-self:center}",
+    ".search-heading .search-speak{flex:none; display:flex; align-items:center; gap:5px;",
+    "  min-width:44px; min-height:44px; font-family:inherit; font-size:.85rem}",
     ".search-hit .search-pills{margin-top:2px; margin-left:-2px}",
     ".search-hit .trivia{margin-top:8px}",
     ".search-more{text-align:center; font-size:.82rem; color:var(--warn); padding:6px 0}"
@@ -214,10 +218,11 @@
     var pills = '<span class="pill">' + esc(themeShort(e.theme)) + '</span>' +
       (e.stage != null ? '<span class="pill stage">niv ' + esc(e.stage) + '</span>' : "");
     var row = el('<div class="item search-hit"><div class="txt">' +
-      '<div class="kr">' + esc(e.kr) + '</div>' +
+      '<div class="search-heading"><div class="kr">' + esc(e.kr) + '</div>' +
+      (typeof onSpeak === "function" ? '<button type="button" class="speak search-speak" aria-label="Écouter ' + esc(e.kr) + '" title="Écouter le mot"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" style="width:22px;height:22px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/></svg><span>Écouter</span></button>' : "") +
+      '</div>' +
       '<div class="fr">' + esc(e.fr) + '</div>' +
       '<div class="search-pills">' + pills + '</div></div>' +
-      (typeof onSpeak === "function" ? '<button class="speak" title="écouter"><svg viewBox="0 0 24 24" style="width:22px;height:22px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/></svg></button>' : "") +
       '</div>');
     var sp = row.querySelector(".speak");
     if(sp) sp.onclick = function(ev){ ev.stopPropagation(); onSpeak(e.kr, e.id); };

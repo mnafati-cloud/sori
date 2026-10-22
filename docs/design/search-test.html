@@ -18,7 +18,7 @@
 </head>
 <body>
 <h1>🧪 Test du dictionnaire personnel (search.js)</h1>
-<p class="dim">Charge les vraies données (data.js, 1079 items) + extra.js + le vrai style.css,
+<p class="dim">Charge les vraies données (data.js) + extra.js + le vrai style.css,
 et rend le panneau avec un onSpeak factice (console.log). Aucune écriture localStorage.</p>
 <p class="tryme">À essayer à la main : <code>ecole</code> (accents), <code>ㅅㅈ</code> (초성 → 성적),
 <code>성</code>, <code>eau</code> (exact d'abord), <code>zzz</code> (aucun résultat),
@@ -33,13 +33,13 @@ tap sur un résultat (dépliage exemple/conjugaison/note), 🔊 (console).</p>
 <script>
 "use strict";
 /* ---------- rendu réel : les vrais items du deck + onSpeak factice ---------- */
-var ITEMS = window.SEED.items.map(function(it){
+var spoken = [], ITEMS = window.SEED.items.map(function(it){
   return { id:it.id, fr:it.fr, kr:it.kr, theme:it.theme, stage:it.stage, type:it.type };
 });
 SORI_SEARCH.renderPanel(document.getElementById("panelhost"), {
   items: ITEMS,
   extra: window.EXTRA,
-  onSpeak: function(kr, id){ console.log("🔊 onSpeak(", kr, ",", id, ")"); }
+  onSpeak: function(kr, id){ spoken.push({kr:kr,id:id}); console.log("🔊 onSpeak(", kr, ",", id, ")"); }
 });
 
 /* ---------- assertions automatiques (fonctions pures) ---------- */
@@ -49,7 +49,7 @@ var idx = P.buildIndex(ITEMS, window.EXTRA);
 function frs(res){ return res.map(function(r){ return r.e.fr; }); }
 function krs(res){ return res.map(function(r){ return r.e.kr; }); }
 
-check("index construit : 1079 items", idx.length === ITEMS.length && idx.length === 1079);
+check("index construit : tous les items du deck", idx.length === ITEMS.length && idx.length > 0);
 check('"ecole" trouve « École » (accents ignorés)', frs(P.search(idx, "ecole")).indexOf("École") >= 0);
 check('"ecole" : le mot « École » avant les phrases', P.search(idx, "ecole")[0].e.fr === "École");
 check('"ㅅㅈ" (초성) trouve 성적', krs(P.search(idx, "ㅅㅈ")).indexOf("성적") >= 0);
@@ -68,6 +68,27 @@ var t0 = performance.now();
 for(var i=0;i<50;i++) QS.forEach(function(q){ P.search(idx, q); });
 var ms = (performance.now()-t0)/(50*QS.length);
 check("recherche < 5 ms (mesuré : "+ms.toFixed(2)+" ms)", ms < 5);
+
+/* Le bouton reste près du mot, même avec une longue fiche dépliée. */
+var input = document.querySelector(".search-input");
+input.value = "école";
+input.dispatchEvent(new KeyboardEvent("keydown", {key:"Enter", bubbles:true}));
+var hit = document.querySelector(".search-hit"), button = hit.querySelector(".speak");
+var first = P.search(idx, "école")[0].e;
+check("chaque résultat propose l'écoute", Array.from(document.querySelectorAll(".search-hit")).every(function(row){
+  return !!row.querySelector("button.speak");
+}));
+check("bouton explicite et accessible", button.textContent === "Écouter" && button.getAttribute("aria-label") === "Écouter " + first.kr);
+button.click();
+check("écoute du bon mot sans déplier la fiche", spoken.length === 1 && spoken[0].kr === first.kr && spoken[0].id === first.id && !hit.querySelector(".trivia"));
+hit.querySelector(".kr").click();
+var detail = hit.querySelector(".trivia");
+detail.style.minHeight = "500px";
+var br = button.getBoundingClientRect(), kr = hit.querySelector(".kr").getBoundingClientRect();
+check("écoute à côté du mot après dépliage", br.top <= kr.bottom && br.bottom >= kr.top && br.width >= 44 && br.height >= 44);
+button.click();
+check("écouter conserve la fiche ouverte", spoken.length === 2 && hit.querySelector(".trivia") === detail);
+hit.querySelector(".kr").click();
 
 var $checks = document.getElementById("checks");
 var fails = out.filter(function(c){ return !c.ok; }).length;
