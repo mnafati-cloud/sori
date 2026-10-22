@@ -82,22 +82,36 @@ check('judge : diffHtml échappé HTML', P.judge("x", "<b>").diffHtml.indexOf("&
 function ghost(item, drive){
   var host = document.createElement("div");
   var got = [];
-  SORI_TYPING.render(host, { item:item, speak:function(){}, onResult:function(ok){ got.push(ok); } });
+  var revealed = 0;
+  SORI_TYPING.render(host, {
+    item:item, speak:function(){},
+    onReveal:function(container){
+      revealed++;
+      check("contexte : la réponse est déjà affichée", !!container.querySelector(".kr"));
+      var extra=document.createElement("p");extra.className="trivia";extra.textContent="Phrase de contexte";container.appendChild(extra);
+    },
+    onResult:function(ok){check("contexte présent avant la notation", host.querySelectorAll(".trivia").length === 1);got.push(ok);}
+  });
+  check("aucun contexte avant la réponse", revealed === 0 && !host.querySelector(".trivia"));
   drive(host, got);
+  check("contexte ajouté une seule fois", revealed === 1 && host.querySelectorAll(".trivia").length === 1);
   return got;
 }
 var IT = { id:"t1", kr:"안녕하세요", fr:"Bonjour", type:"word" };
 var g1 = ghost(IT, function(h){
+  h.querySelector(".typing-verify").click();
+  check("réponse vide : aucune révélation", !h.querySelector(".trivia"));
   h.querySelector(".typing-input").value = "안녕하세요.";
   h.querySelector(".typing-verify").click();
 });
 check("scripté : bonne réponse -> onResult(true) direct", g1.length === 1 && g1[0] === true);
-var g2 = ghost(IT, function(h){
+var g2 = ghost(IT, function(h, got){
   h.querySelector(".typing-input").value = "감사합니다";
   h.querySelector(".typing-verify").click();
   var btns = h.querySelectorAll(".typing-actions .btn");
   check("scripté : réponse fausse -> comparatif + 2 boutons",
     btns.length === 2 && !!h.querySelector(".typing-cmp"));
+  check("correction et contexte sans note prématurée", !!h.querySelector(".trivia") && got.length === 0);
   btns[0].click();          /* « J'avais faux » */
   btns[1].click();          /* double clic -> ignoré */
 });

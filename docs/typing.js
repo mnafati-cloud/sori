@@ -9,6 +9,7 @@
    - opts = {
        item:     {id, kr, fr, type}           (l'item à produire)
        speak:    function(kr, id)             (audio délégué à app.js)
+       onReveal: function(container)         (optionnel : contexte après révélation)
        onResult: function(ok)                 (verdict — branché sur afterAnswer)
      }
    - Contrat pure :
@@ -150,6 +151,7 @@
     opts = opts || {};
     var it = opts.item || {};
     var speak    = typeof opts.speak    === "function" ? opts.speak    : function(){};
+    var onReveal = typeof opts.onReveal === "function" ? opts.onReveal : function(){};
     var onResult = typeof opts.onResult === "function" ? opts.onResult : function(){};
     injectStyles();
 
@@ -194,6 +196,7 @@
         $fb.innerHTML = '<div class="typing-okmark">✓</div>' +
           '<div class="kr">' + esc(normalize(it.kr)) + '</div>';
         $act.innerHTML = "";
+        onReveal($fb);
         finish(true);
         return;
       }
@@ -212,6 +215,7 @@
           '<div class="typing-lbl">la bonne réponse</div>' +
           '<div class="kr typing-goal">' + j.diffHtml + '</div>' +
         '</div>';
+      onReveal($fb);
       $act.innerHTML = "";
       var bad  = el('<button class="btn ko">J\'avais faux</button>');
       var good = el('<button class="btn ghost">C\'était juste<small>faute de frappe IME</small></button>');
@@ -230,6 +234,7 @@
       speak(it.kr, it.id);
       $fb.innerHTML = '<div class="kr">' + esc(it.kr == null ? "" : it.kr) + '</div>' +
         '<div class="dim" style="margin-top:6px">Dis-le à voix haute, puis évalue-toi.</div>';
+      onReveal($fb);
       $act.innerHTML = "";
       var again = el('<button class="btn ko">Encore</button>');
       var good  = el('<button class="btn ok">Bien</button>');

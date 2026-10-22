@@ -1510,7 +1510,12 @@ function renderReview(){
   const typingTop = it.stage===5 && ST.set.typing===true && window.SORI_TYPING && Math.random()<0.5;
   function typingExo(){
     if(exoImage(it,()=>exoRecall(it,false)))return;
-    SORI_TYPING.render($screen, { item: it, speak:(kr,id)=>speak(kr,id), onResult: ok=>afterAnswer(it, ok, false, "type") });
+    let hasTrivia=false;
+    SORI_TYPING.render($screen, {
+      item:it, speak:(kr,id)=>speak(kr,id),
+      onReveal:container=>{hasTrivia=showTrivia(container,it);},
+      onResult:ok=>afterAnswer(it,ok,hasTrivia,"type")
+    });
   }
   function recall(hinted){
     if(!hinted && exoImage(it,()=>exoRecall(it,false)))return;

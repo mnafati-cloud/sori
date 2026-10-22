@@ -15,6 +15,16 @@
 
 ## Sommaire
 
+**v183 — contexte après une réponse écrite.** La saisie hangul appelle désormais
+`onReveal` lorsque la correction apparaît (exacte, écart à confirmer ou secours
+sans clavier). `app.js` y branche le même `showTrivia` que les autres révisions :
+phrase d’exemple, traduction, note, conjugaison, audio et gloses selon les réglages.
+Le bloc reste absent pendant la question et la composition IME ; sur erreur ou
+révélation manuelle, il apparaît avant le choix de notation. Les notes, le bouton
+Continuer et les données sauvegardées gardent leur fonctionnement. Cas vérifiés
+dans la page `design/typing-test.html` et dans la vraie PWA (`ui_repairs_smoke.cjs`),
+y compris une carte verso, la faute de frappe et la traduction d’un mot au toucher.
+
 **v182 — fin de la préparation du voyage.** Suppression du réglage « Prioriser
 le kit voyage », des bannières `seoul-2026` / `post-voyage`, du compte à rebours
 de secours, de l’ancien écran Voyage/drill dormant et du filtre kit du lecteur.
@@ -971,7 +981,7 @@ mainteneur de toucher un module sans risquer la progression :
 | `player.js` | `SORI_PLAYER.renderCard(container, {tracks, rate, audioBase})`, `.stop()`, `pure.MODES / filterTracks` | **DORMANT depuis v42** — chargé par index.html mais plus branché nulle part (aucun appel `SORI_PLAYER` dans app.js) | Zéro localStorage, zéro écriture ST. UN SEUL élément `Audio` réutilisé (exigence Android/MediaSession). Utilitaires recopiés volontairement (zéro couplage). |
 | `scenarios-data.js` | `window.SCENARIOS = [...]` (données pures, vérifiées par relecture native) | — | LE fichier à éditer pour un scénario (R13). Ids éternels (clés de `ST.scen`). |
 | `scenarios.js` | `SORI_SCENARIOS.renderList(container, {speak, onAnswer, getBest, setBest})` | `renderTrip()`. Records persistés par app.js dans `ST.scen[id]` via `setBest` ; journalisation via `onAnswer(ok)` → `logAnswer(ok, "scenario")` | Zéro localStorage. Ne touche pas la planification (journal seulement). |
-| `typing.js` | `SORI_TYPING.render(container, {item, speak, onResult})` + `pure.normalize / judge` | Dispatch de `renderReview()` : stage 5, `type==="word"`, **opt-in** `ST.set.typing===true`, 50 % du temps. Verdict → `onResult(ok)` → `afterAnswer(it, ok, false, "type")` | Zéro localStorage. Saisie à l'IME coréen : normalize NFC + juge Levenshtein syllabique (exact/presque/espacement) ; en cas d'écart, l'UTILISATEUR tranche (faute de frappe IME vs vraie erreur). Jamais bloquant sans clavier coréen (lien « je ne peux pas taper » → auto-évaluation). Kind journalisé : `type`. |
+| `typing.js` | `SORI_TYPING.render(container, {item, speak, onReveal, onResult})` + `pure.normalize / judge` | Dispatch de `renderReview()` : stage 5, `type==="word"`, **opt-in** `ST.set.typing===true`, 50 % du temps. Révélation → `showTrivia` ; verdict → `onResult(ok)` → `afterAnswer(it, ok, hasTrivia, "type")` | Zéro localStorage. Saisie à l'IME coréen : normalize NFC + juge Levenshtein syllabique (exact/presque/espacement) ; en cas d'écart, l'UTILISATEUR tranche (faute de frappe IME vs vraie erreur). Jamais bloquant sans clavier coréen (lien « je ne peux pas taper » → auto-évaluation). Kind journalisé : `type`. |
 | `numbers.js` | `SORI_NUMBERS.renderCard(container, {speak, onAnswer, random})` + `pure.sino / native / nativeCounter / price / time / date / quantity / makeExercise` | `renderListen()` (onglet Écoute) : `if(window.SORI_NUMBERS){ SORI_NUMBERS.renderCard($screen, { speak:(txt)=>ttsSpeak(txt), onAnswer:(ok)=>logAnswer(ok,"nombres") }); }` | **ZÉRO localStorage, zéro écriture ST.** Génère à l'infini des exercices prix/heures/dates/quantités (4 modes cochables). `speak` reçoit du **TEXTE BRUT** (les nombres aléatoires n'ont PAS de MP3 → `ttsSpeak`, PAS `speak(kr,id)`). Convertisseurs purs verrouillables (sino sans 일 initial, natif déterminant, 유월/시월…), RNG injectable, hors bornes ⇒ `""`. **ZÉRO effet planification** ; journalisé par app.js sous le kind `nombres`. |
 
 ### 2.5 Le flux de données complet

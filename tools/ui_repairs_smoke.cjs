@@ -54,7 +54,7 @@ let browser,page;
   });
   assert.deepEqual(queues.daily,[queues.expected]);assert.deepEqual(queues.more,[queues.expected]);
   assert.equal(queues.legacySetting,true,'old settings are preserved without affecting priority');
-  for(const demo of ['events','player']){
+  for(const demo of ['events','player','typing']){
     await retiredPage.goto('http://127.0.0.1:'+server.address().port+'/design/'+demo+'-test.html');
     assert.match(await retiredPage.title(),/^✔/,'existing '+demo+' contract checks: '+(await retiredPage.locator('#checks .fail').allTextContents()).join('; '));
   }
@@ -105,6 +105,52 @@ let browser,page;
     await row.click();assert.equal(await row.locator(".tnote").innerText(),note.replace(/^※\s*/,""));
     await page.screenshot({path:path.join(artifacts,kr+"-comparison.png")});
     await page.locator("#dicoclose").click();
+  }
+  // Written recall must reveal the same real example, translation and lexical
+  // notes as other reviews. IME composition and empty input reveal nothing.
+  for(const outcome of ['exact','wrong','typo','no-keyboard']){
+    const fixture=await page.evaluate(outcome=>{
+      const seed=SEED.items.find(x=>x.kr==='조용하다');
+      const id=outcome==='typo'?seed.id+REV:seed.id;
+      ST.set.typing=true;ST.set.images=false;ST.set.production=false;
+      ST.set.wordgloss=true;ST.set.exaudio=true;
+      ST.items[id]={s:5,i:30,S:30,D:5,d:todayStr(),ok:4,ko:0};
+      delete ST.imageReview;FAILPOS.clear();CONSOL.clear();REPRISE_IDS.clear();
+      Q=[id];QPOS=0;TAB='review';BONUS=false;UNDO=null;STAMP_NEXT=null;
+      const random=Math.random;Math.random=()=>0;
+      try{render();}finally{Math.random=random;}
+      return {id,kr:seed.kr,extra:EXTRA[seed.id],before:ST.rlog.length};
+    },outcome);
+    const card=page.locator('.typing-card');await card.waitFor();
+    assert.equal(await card.locator('.trivia').count(),0,'no answer-bearing context in the question');
+    await card.locator('.typing-verify').click();
+    assert.equal(await card.locator('.trivia').count(),0,'empty input never reveals the answer');
+    if(outcome==='no-keyboard')await card.locator('.typing-nokb').click();
+    else{
+      await card.locator('.typing-input').fill(outcome==='exact'?fixture.kr:'조용하');
+      await card.locator('.typing-input').dispatchEvent('keydown',{key:'Enter',isComposing:true});
+      assert.equal(await card.locator('.trivia').count(),0,'IME Enter only composes the answer');
+      await card.locator('.typing-verify').click();
+    }
+    assert.equal(await card.locator('.trivia').count(),1,outcome+' has one context block');
+    assert.equal((await card.locator('.tkr').innerText()).trim(),fixture.extra.ex);
+    assert.equal(await card.locator('.tfr').innerText(),fixture.extra.exFr);
+    assert.equal(await card.locator('.tnote').innerText(),fixture.extra.note);
+    assert.ok((await card.locator('.tconj').innerText()).includes(fixture.extra.conj));
+    assert.equal(await card.locator('.exspeak').count(),1,'example audio control remains available');
+    await card.locator('.tkr .w').first().click();
+    assert.ok((await card.locator('.glossbar').innerText()).includes(fixture.extra.gl[0]));
+    assert.equal(await page.evaluate(()=>ST.rlog.length),fixture.before+(outcome==='exact'?1:0));
+    await page.screenshot({path:path.join(artifacts,'typing-context-'+outcome+'.png')});
+    if(outcome!=='exact'){
+      const name=outcome==='wrong'?"J'avais faux":outcome==='typo'?"C'était juste":"Bien";
+      await card.getByRole('button',{name,exact:outcome!=='typo'}).click();
+    }
+    await page.locator('#cont').waitFor();
+    assert.equal(await card.locator('.trivia').count(),1,'grading does not append duplicate context');
+    assert.equal(await page.evaluate(()=>ST.rlog.length),fixture.before+1,'one grade per written answer');
+    assert.equal(await page.evaluate(()=>ST.rlog.at(-1)[4]),'type');
+    assert.equal(await page.evaluate(()=>ST.rlog.at(-1)[2]),outcome==='wrong'?2:3,'typing grades retain their existing semantics');
   }
   // Les titres déjà publiés v172–v175 gardent leur badge, comme les préfixes historiques.
   const historyMessages=[
@@ -172,7 +218,7 @@ let browser,page;
   assert.equal(repaired,"1","un vrai mot transparent est toujours réparé");
   assert.deepEqual(errors,[]);
   const summary={browser:await browser.version(),retiredTrip:true,newCardsIgnoreLegacyKitPriority:true,eventAndPlayerContracts:true,
-    productionReports:true,reportReload:true,lexicalNotes:3,versionHistory:true,
+    productionReports:true,reportReload:true,lexicalNotes:3,typingContext:true,typingContextBeforeSelfGrade:true,typingIme:true,versionHistory:true,
     normalStamp:true,stuckStampRecovered:true,invisibleWordRecovered:true,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,"summary.json"),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));
 })().catch(async error=>{
