@@ -73,7 +73,8 @@ let browser,page;
   // Hold a cold image request: the question must start it, and every mutation
   // exposing a correction must already include the decoded image and controls.
   for(const mode of ['recall','recall-reverse','qcm-kr','qcm-fr','timeout','navigate','404','corrupt']){
-    const atomic=await browser.newContext({serviceWorkers:'block',viewport:{width:390,height:844}});
+    // Match the Seoul date used by the fixture: UTC can still be the previous day.
+    const atomic=await browser.newContext({serviceWorkers:'block',viewport:{width:390,height:844},timezoneId:'Asia/Seoul'});
     const state=structuredClone(initial);state.items[id].ok=mode==='recall-reverse'?0:3;
     state.items[id].s=mode==='qcm-kr'?1:4;
     if(mode==='qcm-fr'){

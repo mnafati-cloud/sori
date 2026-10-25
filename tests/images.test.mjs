@@ -18,19 +18,46 @@ test('a timed-out image releases its pending browser request',async()=>{
   assert.equal(image.src,null,'stop loading after the deadline, rather than leaving a pending image');
   assert.equal(image.onload,null);assert.equal(image.onerror,null);
 });
-test('offline download rejects file-count and total-byte overflow before touching storage',async()=>{
-  for(const [count,bytes] of [[1281,1],[1,80*1024*1024+1]]){
-    let opened=0;const cacheAPI={open:async()=>{opened++;throw Error('unexpected storage access');}};
-    const items=Object.fromEntries(Array.from({length:count},(_,i)=>[String(i),{
-      src:'./images/scene-'+i+'-012345abcdef.webp',usage:'support',alt:'Scene',bytes
-    }]));
-    const context={window:{caches:cacheAPI,SORI_IMAGES_DATA:{items}},caches:cacheAPI};
-    vm.runInNewContext(fs.readFileSync(new URL('../docs/images.js',import.meta.url),'utf8'),context);
-    await assert.rejects(context.window.SORI_IMAGES.download(()=>{}),/limite de stockage/);
-    assert.equal(opened,0);
-  }
+test('offline images above the former file and byte limits reach the resumable downloader',async()=>{
+  const items=Object.fromEntries(Array.from({length:1300},(_,i)=>[String(i),{
+    src:'./images/scene-'+i+'-012345abcdef.webp',usage:'support',alt:'Scene',bytes:64*1024
+  }]));
+  let request;
+  const result={saved:1300},onProgress=()=>{};
+  const context={window:{SORI_IMAGES_DATA:{items},SORI_OFFLINE:{download:async options=>{request=options;return result;}}}};
+  vm.runInNewContext(fs.readFileSync(new URL('../docs/images.js',import.meta.url),'utf8'),context);
+  assert.equal(await context.window.SORI_IMAGES.download(onProgress),result);
+  assert.equal(request.kind,'images');assert.equal(request.entries.length,1300);
+  assert.equal(request.onProgress,onProgress);
+  assert.ok(request.entries.reduce((sum,a)=>sum+a.bytes,0)>80*1024*1024);
 });
 const it={id:'pack-c3c6d557',kr:'우산',type:'word',stage:3,ok:1,ko:0};
+test('100 new A1/A2 action scenes keep sense-specific reviewed assets out of graded image questions',()=>{
+  const batch=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/actions-2026-10-25.json',import.meta.url)));
+  const inventory=JSON.parse(fs.readFileSync(new URL('../tools/images/inventory.json',import.meta.url)));
+  const ctx={window:{}};
+  for(const file of ['data','extra'])vm.runInNewContext(fs.readFileSync(new URL('../docs/'+file+'.js',import.meta.url),'utf8'),ctx);
+  assert.equal(batch.items.length,100);assert.equal(new Set(batch.items.map(x=>x.id)).size,100);
+  const hashes=new Set();
+  for(const item of batch.items){
+    const seed=ctx.window.SEED.items.find(x=>x.id===item.id),entry=inventory.items.find(x=>x.id===item.id),asset=D.items[item.id];
+    assert.equal(seed.kr,item.kr);assert.equal(seed.fr,item.sense);
+    assert.equal(ctx.window.EXTRA[item.id].cefr,item.cefr);assert.ok(['A1','A2'].includes(item.cefr));
+    assert.equal(entry.batch,batch.id);assert.equal(entry.status,'approved');assert.equal(item.status,'approved');
+    assert.equal(entry.styleProfile,'pinceau-scenes-v1');assert.equal(asset.usage,'support');
+    assert.equal(asset.src,'./images/'+entry.asset);assert.equal(asset.alt,item.sense);assert.ok(asset.bytes<=64*1024);
+    assert.deepEqual(asset.accepted,[]);
+    for(const reverse of [false,true])assert.equal(I.eligible({...seed,stage:5,ok:1,ko:0,rev:reverse},reverse,asset),false);
+    const review=batch.displaySizeReviews.find(x=>x.id===item.id);
+    assert.deepEqual(review.sizes,[512,160,96]);assert.equal(review.sha256,entry.sha256);assert.ok(review.note);
+    hashes.add(entry.sha256);
+  }
+  assert.equal(hashes.size,100,'each sense has its own generated picture');
+  assert.ok(inventory.items.filter(x=>x.batch!==batch.id).every(x=>!hashes.has(x.sha256)),'existing pictures are not reused');
+  const homonyms=batch.items.filter(x=>x.kr==='쓰다');
+  assert.equal(homonyms.length,2,'writing and wearing a hat remain distinct cards');
+  assert.notEqual(D.items[homonyms[0].id].src,D.items[homonyms[1].id].src);
+});
 test('all 54 approved mini-scenes have distinct support assets and recorded reviews',()=>{
   const batch=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/scenes-2026-10-19.json',import.meta.url)));
   const inventory=JSON.parse(fs.readFileSync(new URL('../tools/images/inventory.json',import.meta.url)));

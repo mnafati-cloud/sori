@@ -160,7 +160,6 @@
   }
   async function download(onProgress){
     const entries=Object.values(root.SORI_IMAGES_DATA?.items||{}).filter(usable);
-    if(entries.length>1280 || entries.reduce((n,a)=>n+(a.bytes||64*1024),0)>80*1024*1024)throw Error("La bibliothèque dépasse la limite de stockage hors connexion (80 Mo).");
     if(!root.SORI_OFFLINE)throw Error("Le téléchargement se prépare. Ferme puis rouvre l’app pour charger la mise à jour.");
     return root.SORI_OFFLINE.download({kind:"images",entries,onProgress});
   }

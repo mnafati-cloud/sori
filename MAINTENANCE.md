@@ -15,6 +15,22 @@
 
 ## Sommaire
 
+**v185 — 100 nouvelles illustrations A1/A2.** Actions, émotions, contrastes et
+positions, au pinceau blanc/gris sur noir, avec une image distincte par sens.
+Toutes sont des aides après réponse : aucun changement de notation ni de
+progression. Catalogue de 1 168 images (388 questions, 780 aides), pour 35 507 298
+octets ; nouveau lot de 2 697 430 octets, revu à 512, 160 et 96 px.
+Recettes et décisions dans `tools/images/batches/actions-2026-10-25.json` ;
+reprise détaillée dans [IMAGES.md](IMAGES.md). Le plafond global de téléchargement
+(1 280 fichiers / 80 Mio) est supprimé ; WebP de 64 Kio maximum, pause sur quota
+réel, reprise et caches média conservés. Le refus du fournisseur pour 재채기하다
+est consigné sans relance ; 식사하다 complète les 100 illustrations.
+Validation : 224 tests Node, 5 tests Python, syntaxe JS, manifeste et cinq suites
+Chromium réussis ; les 1 168 images sont téléchargées, les caches survivent au
+changement de worker et la révision fonctionne hors ligne. Zéro erreur JavaScript.
+Le test d’images utilise le fuseau de Séoul dans tous ses contextes, comme sa
+fixture, pour ne pas exclure les cartes dues quand UTC est encore la veille.
+
 **v184 — écoute visible dans le dictionnaire.** Le bouton d’écoute est dans
 l’en-tête du résultat, à côté du coréen, avec le libellé « Écouter » et une cible
 tactile d’au moins 44 px. Il ne descend plus au milieu de la fiche lorsque les

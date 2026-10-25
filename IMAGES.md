@@ -1,7 +1,22 @@
-# Illustrations et rappel visuel — v180
+# Illustrations et rappel visuel — v185
+
+> **v185 : 100 nouvelles illustrations A1/A2**, dont 56 A1 et 44 A2.
+> Actions quotidiennes, émotions, contrastes et positions ; profil `pinceau-scenes-v1`,
+> toutes en aide après réponse. Aucune nouvelle question ni modification de notation.
+> Catalogue : **1 168 images** (388 questions, 780 aides), **35 507 298 octets**.
+> Les 100 nouveautés pèsent 2 697 430 octets ; chaque WebP fait 512 × 512 et au plus 64 Kio.
+> Chaque sens a une image distincte, contrôlée à 512, 160 et 96 px ; les 1 068 anciennes images restent inchangées.
+> Reprise : `tools/images/batches/actions-2026-10-25.json` et `tools/images/reviews/`.
+> 재채기하다 a été refusé par le fournisseur et laissé sans relance ; 식사하다 complète le lot.
+> Le premier 끓이다 a été écarté pour un halo bleu hors palette ; la version retenue est monochrome.
+> Le téléchargement n'a plus de plafond global de nombre ou de poids ; pause et reprise sur quota réel conservées.
+> Cache de version : `sori-v185` ; caches média et progression préservés.
+> Validation : 224 tests Node, 5 tests Python, syntaxe JS et manifeste vérifiés ;
+> cinq suites Chromium réussies, dont téléchargement des 1 168 images, reprise et lecture hors ligne.
+> Aucune erreur JavaScript. Les contextes du test d’images partagent désormais le fuseau de sa fixture (Séoul).
 
 <!-- FULL_CONCRETE_PROGRESS_START -->
-> **v180 : les 54 mini-scènes ont été produites et revues individuellement.**
+> **Historique v180 : les 54 mini-scènes ont été produites et revues individuellement.**
 > Elles sont toutes des aides après réponse, sans question image ni nouvelle notation.
 > Palette au pinceau blanc/gris sur noir, contexte sobre ; le drapeau coréen conserve rouge/bleu et ses quatre trigrammes contrôlés.
 > Profil versionné `pinceau-scenes-v1` ; les recettes et références des 1 014 anciennes images restent inchangées.
@@ -11,7 +26,7 @@
 > Le premier essai d’aube au soleil visible a été écarté ; la version retenue n’a pas de disque solaire.
 > La campagne concrète compte désormais **460 approuvées sur 461** ; aucun des 54 reports de style ne subsiste.
 > Seul 종아리 reste bloqué dans cette campagne ; le refus antérieur 어깨 reste également exclu, sans relance.
-> Hors ligne : **1 280 fichiers de 64 Kio maximum = 80 Mio**, budget total inchangé ; cache `sori-v180`.
+> Ancien plafond hors ligne v180 : 1 280 fichiers / 80 Mio, supprimé en v185 ; cache `sori-v180`.
 > Aucun changement du seed, des ids, de la progression ou des réglages réseau.
 > Validation v180 : 209 tests Node, syntaxe des 31 JS, 161 cas FSRS, compilation Python,
 > 5 tests Python, pipeline 1 068 et quatre suites navigateur réussis ; zéro erreur JS.
@@ -40,7 +55,7 @@ accent vermillon discret. Depuis v180, les mini-scènes approuvées utilisent un
 profil distinct et la planche `style-scenes-reference.png`, uniquement en aide
 après réponse ; le drapeau autorise ses couleurs exactes. Le profil historique
 reste inchangé pour les objets. Toutes les illustrations sont générées, jamais prises
-sur le Web. La bibliothèque v180 contient **1 068 images** (1 014 en v179, 1 013 en v175). La base v174 comptait
+sur le Web. La bibliothèque v185 contient **1 168 images** (1 068 en v180, 1 014 en v179, 1 013 en v175). La base v174 comptait
 **603 images publiées** : les 3 premières
 (우산, 사과, 고양이), puis deux lots de 100 et deux lots de 200 mots distincts.
 
@@ -318,6 +333,19 @@ concerne le drapeau ; les autres scènes restent au pinceau clair sur noir
 avec un accent chaud localisé lorsque le sens le demande. Les synonymes
 reçoivent des compositions distinctes sans inventer une différence de définition.
 
+### Lot actions, contrastes et positions v185
+
+Le lot `actions-2026-10-25` est terminé. Pour revoir les images publiées :
+
+```bash
+node tools/images/review.mjs actions-2026-10-25
+```
+
+Les recettes exactes, références, hashes et notes de revue sont versionnés.
+L’entrée refusée reste `rejected` dans l’inventaire ; ne pas la relancer automatiquement.
+Le lot final contient 100 sens distincts, tous en aide après réponse. Les tests
+contrôlent leurs ids, sens, niveaux, fichiers distincts et absence de question notée.
+
 ## Hors connexion et limites
 
 `sori-image-store` survit aux changements de version comme le cache audio.
@@ -337,10 +365,11 @@ contournent le cache du worker pour éviter une double écriture ou une réponse
 corrompue répétée. Le décodage fonctionne aussi sans `createImageBitmap` et le
 délai réseau ne dépend plus d’`AbortSignal.timeout` (anciens Android/WebViews).
 Après un téléchargement complet, les versions obsolètes sont retirées.
-Plafond automatique : 1 280 fichiers de
-64 Kio maximum (80 Mio) ; le téléchargement global refuse de dépasser ce budget.
-Avant une bibliothèque plus grande, prévoir des lots sélectifs et revoir le
-budget de stockage Android. Ne jamais vider les données du site du téléphone.
+Depuis v185, aucun plafond global de nombre de fichiers ou de poids ne bloque
+le téléchargement. Chaque WebP reste limité à 64 Kio par la pipeline ; le
+téléchargeur s'arrête uniquement sur une erreur réelle, notamment un quota de
+stockage atteint, puis permet la reprise. Ne jamais vider les données du site
+du téléphone.
 
 ## Vérification avant release
 
