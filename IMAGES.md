@@ -1,6 +1,20 @@
-# Illustrations et rappel visuel — v186
+# Illustrations et rappel visuel — v187
 
-> **v186 : 100 illustrations supplémentaires**, dont 56 A1 et 44 A2.
+> **v187 : 100 illustrations supplémentaires**, dont 15 A1 et 85 A2.
+> Échanges, activités, déplacements, lieux et relations ; style 2, profil `pinceau-scenes-v1`.
+> Toutes sont des aides après réponse et dans le dictionnaire.
+> Catalogue : **1 368 images** (388 questions, 980 aides), **43 000 640 octets**.
+> Nouveau lot : 3 754 348 octets ; WebP 512 × 512, chacun au plus 64 Kio.
+> Chaque sens a sa propre génération et une revue effective à 512, 160 et 96 px.
+> Les 1 268 anciennes images et leurs recettes sont inchangées.
+> Reprise : `tools/images/batches/actions-2026-10-26-02.json`, inventaire et revues versionnés.
+> Les premiers essais d’embouteillage (voitures côte à côte) et de présentation (main supplémentaire) ont été écartés puis régénérés ; reçus de rejet conservés.
+> Palette blanc/gris sur noir ; feux stop vermillon localisés dans la scène d’embouteillage.
+> Cache `sori-v187` ; caches média et progression conservés.
+> Validation : 226 tests Node, 5 tests Python, syntaxe JS et manifeste vérifiés ;
+> cinq suites Chromium réussies, dont les 1 368 images téléchargées et accessibles hors ligne ; zéro erreur JavaScript.
+
+> **Historique v186 : 100 illustrations supplémentaires**, dont 56 A1 et 44 A2.
 > Actions quotidiennes, déplacements, métiers, lieux, météo et contrastes ; style 2,
 > profil `pinceau-scenes-v1`, uniquement en aide après réponse et dans le dictionnaire.
 > Catalogue : **1 268 images** (388 questions, 880 aides), **39 246 292 octets**.
@@ -68,7 +82,7 @@ accent vermillon discret. Depuis v180, les mini-scènes approuvées utilisent un
 profil distinct et la planche `style-scenes-reference.png`, uniquement en aide
 après réponse ; le drapeau autorise ses couleurs exactes. Le profil historique
 reste inchangé pour les objets. Toutes les illustrations sont générées, jamais prises
-sur le Web. La bibliothèque v186 contient **1 268 images** (1 168 en v185, 1 068 en v180). La base v174 comptait
+sur le Web. La bibliothèque v187 contient **1 368 images** (1 268 en v186, 1 168 en v185). La base v174 comptait
 **603 images publiées** : les 3 premières
 (우산, 사과, 고양이), puis deux lots de 100 et deux lots de 200 mots distincts.
 
@@ -365,6 +379,13 @@ Le lot `actions-2026-10-26` ajoute 100 sens distincts. La planche se recrée apr
 un clone avec `node tools/images/review.mjs actions-2026-10-26`. Les prompts,
 hashes et constats visuels figurent dans les revues ; aucun contenu de cette
 conversation n’est nécessaire pour reprendre la production.
+
+### Lot complémentaire v187
+
+Le lot `actions-2026-10-26-02` ajoute 100 sens distincts, tous en aide. La planche
+se recrée après un clone avec `node tools/images/review.mjs actions-2026-10-26-02`.
+Les prompts, références, hashes, constats aux trois tailles et les deux rejets
+sont versionnés. Aucun contexte de conversation n’est nécessaire pour reprendre.
 
 ## Hors connexion et limites
 

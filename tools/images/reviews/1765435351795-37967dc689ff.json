@@ -1,0 +1,24 @@
+{
+  "id": "1765435351795",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-25T20:44:25.770Z",
+  "sourceSha256": "66785a1a96f892927e0d4af21d75cb4e547c6cfdcde2385915ab66e8472602da",
+  "sha256": "37967dc689ff740aa819d893016f7d24c68851835abda9e2f9dba67a78f4f624",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nAn adult lender extending their spare folded umbrella to another adult near a doorway, rain visible outside; focus on the giver, one hand retaining a second umbrella. No symbols. Use only warm white and neutral grey on pure black. No colored accents, no letters, numerals, icons, arrows, motion lines, or logos. Preserve generous black margins and recognizable forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Revue effective du WebP à 512, 160 et 96 px. Un adulte tend un parapluie tout en gardant le second ; pluie et seuil donnent le contexte du prêt, sans prétendre montrer la durée du prêt. Style au pinceau blanc chaud/gris sur noir, accent vermillon localisé seulement pour les feux stop de la circulation, sans texte ni logo ; usage aide après réponse uniquement.",
+  "reviewedAt": "2026-10-25T21:05:19.686Z",
+  "kr": "빌려주다",
+  "sense": "Prêter / louer à quelqu'un",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

@@ -32,7 +32,7 @@ test('offline images above the former file and byte limits reach the resumable d
   assert.ok(request.entries.reduce((sum,a)=>sum+a.bytes,0)>80*1024*1024);
 });
 const it={id:'pack-c3c6d557',kr:'우산',type:'word',stage:3,ok:1,ko:0};
-for(const batchId of ['actions-2026-10-25','actions-2026-10-26'])test(batchId+': 100 A1/A2 scenes keep sense-specific reviewed assets out of graded image questions',()=>{
+for(const batchId of ['actions-2026-10-25','actions-2026-10-26','actions-2026-10-26-02'])test(batchId+': 100 A1/A2 scenes keep sense-specific reviewed assets out of graded image questions',()=>{
   const batch=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/'+batchId+'.json',import.meta.url)));
   const inventory=JSON.parse(fs.readFileSync(new URL('../tools/images/inventory.json',import.meta.url)));
   const ctx={window:{}};

@@ -1,0 +1,24 @@
+{
+  "id": "pack-065ce56c",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-25T21:01:10.294Z",
+  "sourceSha256": "db4189314826ef5b833e4307ff0c8288f2731d56060b2f106b4edfbed29f381f",
+  "sha256": "7bbdf86cbab05871a293ab880a76124b8f4a9497572f20e49570576f3c76619b",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nAn adult host at an open doorway extending an inviting open palm toward a visiting adult, a prepared pair of cups visible on a small table inside. Use only warm white and neutral grey on pure black. No colored accents, no letters, numerals, icons, arrows, motion lines, or logos. Preserve generous black margins and recognizable forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Revue effective du WebP à 512, 160 et 96 px. Hôte ouvrant la porte et invitant un visiteur, deux tasses prêtes à l’intérieur ; geste d’accueil lisible. Style au pinceau blanc chaud/gris sur noir, accent vermillon localisé seulement pour les feux stop de la circulation, sans texte ni logo ; usage aide après réponse uniquement.",
+  "reviewedAt": "2026-10-25T21:05:20.020Z",
+  "kr": "초대하다",
+  "sense": "Inviter",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}
