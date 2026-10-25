@@ -1,0 +1,24 @@
+{
+  "id": "pack-3e69730d",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-25T20:03:00.610Z",
+  "sourceSha256": "df1e332a03b48316900ad083d6809685908985955097dfff6a3f21a6929cc774",
+  "sha256": "b75eb582032b201898f3b0fa370d11ba695fe088c1692b61ff9b83d7397ec692",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nClose waist-up view of an adult shaking one tightly sealed transparent bottle, held in one hand at an angle near their shoulder. The bottle has one firmly screwed cap and a small amount of water visibly sloshing INSIDE its intact walls. All liquid and bubbles stay INSIDE the bottle. The exterior and surrounding black space are completely dry and empty. Show movement only through the natural bent wrist and tilted water surface, no floating marks, motion lines, arcs, droplets, splashes or duplicated silhouettes. One bottle and one visible hand holding it, simple natural anatomy. Fully clothed adult, warm-white and neutral-grey brushwork on pure black. No text or logos, generous margins. Use the reference only for brush style.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Revue effective du WebP à 512, 160 et 96 px. Nouvelle génération : bouteille inclinée, bouchon fermé et eau agitée strictement à l’intérieur. Une main naturelle, aucune goutte ou marque extérieure. Bouteille et posture restent lisibles à 96 px ; secouer reste un geste contextualisé après réponse. Style au pinceau blanc chaud/gris sur noir, sans texte ni logo ; usage aide après réponse uniquement.",
+  "reviewedAt": "2026-10-25T20:07:28.064Z",
+  "kr": "흔들다",
+  "sense": "secouer, agiter",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

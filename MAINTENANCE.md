@@ -15,6 +15,16 @@
 
 ## Sommaire
 
+**v186 — 100 illustrations supplémentaires.** 56 A1 et 44 A2,
+profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
+le dictionnaire. Catalogue de 1 268 images (388 questions, 880 aides),
+39 246 292 octets ; lot de 3 738 994 octets. Chaque sens a son fichier
+distinct, contrôlé à 512, 160 et 96 px. Les anciennes recettes restent inchangées.
+Reprise autonome : `tools/images/batches/actions-2026-10-26.json` et [IMAGES.md](IMAGES.md).
+Cache `sori-v186`, caches média et progression conservés.
+Validation : 225 tests Node, 5 tests Python, syntaxe et manifeste vérifiés ;
+cinq suites Chromium réussies, dont les 1 268 images hors ligne, zéro erreur JS.
+
 **v185 — 100 nouvelles illustrations A1/A2.** Actions, émotions, contrastes et
 positions, au pinceau blanc/gris sur noir, avec une image distincte par sens.
 Toutes sont des aides après réponse : aucun changement de notation ni de

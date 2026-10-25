@@ -1,0 +1,24 @@
+{
+  "id": "pack-ad451da0",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-25T19:59:26.401Z",
+  "sourceSha256": "18a4956ba38080b322f338c3a89f95a8a8b0cc86cdc9f3b1c5c9b24d043e063f",
+  "sha256": "a9b5bbc4a51149c8ec17b29dfa6ecc90313b856f0d80fbd79706d01dc9e78641",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nAn adult musician seated and playing a plain acoustic guitar, one hand naturally fretting the neck and the other plucking near the sound hole. Full upper body and instrument, no printed brand or floating musical notes. Strictly warm-white and neutral-grey brushwork on PURE BLACK; no blue, green, violet, sepia or brown cast. People are clearly adult, fully clothed, with simple natural anatomy. Keep only the essential subject, in one individual square composition with generous margins. Use the attached reference only for brush style, never its grid or labels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Revue effective du WebP à 512, 160 et 96 px. Musicien jouant de la guitare, une main sur le manche et l’autre sur les cordes ; instrument et action dominent la vignette. Style au pinceau blanc chaud/gris sur noir, sans texte ni logo ; usage aide après réponse uniquement.",
+  "reviewedAt": "2026-10-25T20:07:28.341Z",
+  "kr": "음악가",
+  "sense": "Musicien, musicienne",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

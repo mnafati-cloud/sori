@@ -1,0 +1,24 @@
+{
+  "id": "1765436356686",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-25T19:55:39.334Z",
+  "sourceSha256": "2765b6faf9a7a2ef9405093ec0ec1f0efcb270cb3b8e2b3ba2fea08905cb4552",
+  "sha256": "0579acfec52c788163939e1a35a6d8bb6d414ce2030171481220cac635c74dfe",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nAn adult teacher beside a simple board showing only a large leaf drawing, addressing one seated adult learner. The teacher holds a small pointer and a closed book. No letters, equations or institutional logos. Strictly warm-white and neutral-grey brushwork on PURE BLACK; no blue, green, violet, sepia or brown cast. People are clearly adult, fully clothed, with simple natural anatomy. Keep only the essential subject, in one individual square composition with generous margins. Use the attached reference only for brush style, never its grid or labels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Revue effective du WebP à 512, 160 et 96 px. Enseignante montrant un dessin de feuille au tableau à un élève adulte ; rôle pédagogique lisible aux trois tailles, sans texte au tableau. Style au pinceau blanc chaud/gris sur noir, sans texte ni logo ; usage aide après réponse uniquement.",
+  "reviewedAt": "2026-10-25T20:07:28.305Z",
+  "kr": "선생님",
+  "sense": "Professeur / enseignant",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

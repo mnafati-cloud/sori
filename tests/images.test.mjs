@@ -32,8 +32,8 @@ test('offline images above the former file and byte limits reach the resumable d
   assert.ok(request.entries.reduce((sum,a)=>sum+a.bytes,0)>80*1024*1024);
 });
 const it={id:'pack-c3c6d557',kr:'우산',type:'word',stage:3,ok:1,ko:0};
-test('100 new A1/A2 action scenes keep sense-specific reviewed assets out of graded image questions',()=>{
-  const batch=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/actions-2026-10-25.json',import.meta.url)));
+for(const batchId of ['actions-2026-10-25','actions-2026-10-26'])test(batchId+': 100 A1/A2 scenes keep sense-specific reviewed assets out of graded image questions',()=>{
+  const batch=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/'+batchId+'.json',import.meta.url)));
   const inventory=JSON.parse(fs.readFileSync(new URL('../tools/images/inventory.json',import.meta.url)));
   const ctx={window:{}};
   for(const file of ['data','extra'])vm.runInNewContext(fs.readFileSync(new URL('../docs/'+file+'.js',import.meta.url),'utf8'),ctx);
@@ -54,9 +54,11 @@ test('100 new A1/A2 action scenes keep sense-specific reviewed assets out of gra
   }
   assert.equal(hashes.size,100,'each sense has its own generated picture');
   assert.ok(inventory.items.filter(x=>x.batch!==batch.id).every(x=>!hashes.has(x.sha256)),'existing pictures are not reused');
-  const homonyms=batch.items.filter(x=>x.kr==='쓰다');
-  assert.equal(homonyms.length,2,'writing and wearing a hat remain distinct cards');
-  assert.notEqual(D.items[homonyms[0].id].src,D.items[homonyms[1].id].src);
+  if(batchId==='actions-2026-10-25'){
+    const homonyms=batch.items.filter(x=>x.kr==='쓰다');
+    assert.equal(homonyms.length,2,'writing and wearing a hat remain distinct cards');
+    assert.notEqual(D.items[homonyms[0].id].src,D.items[homonyms[1].id].src);
+  }
 });
 test('all 54 approved mini-scenes have distinct support assets and recorded reviews',()=>{
   const batch=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/scenes-2026-10-19.json',import.meta.url)));

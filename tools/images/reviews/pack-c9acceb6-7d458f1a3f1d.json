@@ -1,0 +1,24 @@
+{
+  "id": "pack-c9acceb6",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-25T19:42:44.654Z",
+  "sourceSha256": "b6416494e29d579bab9a7330f36db7d18a38113197fef3c61c558b4232837c2f",
+  "sha256": "7d458f1a3f1d5437bf7e8e9ce457082dfe4f1f87f1c507af5c2d409036884827",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nA quiet short path just after rain has stopped: wet puddles reflect a break in the clouds, no falling raindrops anywhere. One small tree still has droplets on its leaves. Restrained monochrome sky opening, no rainbow. Strictly warm-white and neutral-grey brushwork on PURE BLACK; no blue, green, violet, sepia or brown cast. People are clearly adult, fully clothed, with simple natural anatomy. Keep only the essential subject, in one individual square composition with generous margins. Use the attached reference only for brush style, never its grid or labels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 78,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Revue effective du WebP à 512, 160 et 96 px. Éclaircie au-dessus d’un chemin encore mouillé, gouttes sur les feuilles mais aucune pluie tombante ; le passant et les flaques donnent un contexte après la pluie. Aide au sens s’arrêter pour la pluie, pas une preuve visuelle du temps écoulé. Style au pinceau blanc chaud/gris sur noir, sans texte ni logo ; usage aide après réponse uniquement.",
+  "reviewedAt": "2026-10-25T20:07:28.159Z",
+  "kr": "그치다",
+  "sense": "S'arrêter (pluie, neige)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}
