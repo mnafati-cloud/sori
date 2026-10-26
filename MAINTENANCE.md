@@ -15,6 +15,19 @@
 
 ## Sommaire
 
+**v190 — 200 illustrations supplémentaires.** 146 B1 et 54 B2,
+profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
+le dictionnaire. Catalogue de 1 968 images (388 questions, 1 580 aides),
+66 814 412 octets ; lot de 8 278 286 octets. Chaque sens a son fichier
+distinct, contrôlé à 512, 160 et 96 px. Les anciennes recettes restent inchangées.
+Reprise : `tools/images/batches/vie-active-2026-10-26.json` et [IMAGES.md](IMAGES.md).
+Trois premiers essais ont été remplacés après revue (deux écarts de palette et une main surnuméraire) ;
+les reçus de rejet conservent leurs recettes et motifs. 203 générations pour 200 images retenues.
+Cache `sori-v190`, caches média et progression conservés.
+Validation : 229 tests Node, 5 tests Python, syntaxe et manifeste vérifiés ;
+cinq suites Chromium réussies, dont les 1 968 images hors ligne, zéro erreur JS.
+Le test de mise à jour attend le worker actif et le cache applicatif prêt avant de couper le réseau.
+
 **v189 — 200 illustrations supplémentaires.** 83 A1 et 117 A2,
 profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
 le dictionnaire. Catalogue de 1 768 images (388 questions, 1 380 aides),

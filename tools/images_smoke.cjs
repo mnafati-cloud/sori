@@ -260,7 +260,16 @@ let browser,page;
   // Activate a new real worker, preserving dedicated image/audio caches.
   await page.evaluate(async()=>{const c=await caches.open('sori-audio-store');await c.put('./audio/test.mp3',new Response('test'));});
   versionOverride=currentCache+'-smoke';await page.evaluate(async()=>{await (await navigator.serviceWorker.getRegistration()).update();});
-  await page.waitForFunction(async currentCache=> (await caches.keys()).includes(currentCache+'-smoke') && !(await caches.keys()).includes(currentCache),currentCache);
+  // A cache name alone does not prove that the new worker has finished taking
+  // control or that its app shell is available. Go offline after both are ready.
+  await page.waitForFunction(async currentCache=>{
+    const keys=await caches.keys(),registration=await navigator.serviceWorker.getRegistration();
+    if(!keys.includes(currentCache+'-smoke') || keys.includes(currentCache) ||
+       registration?.active?.state!=='activated' || navigator.serviceWorker.controller!==registration.active)return false;
+    const cache=await caches.open(currentCache+'-smoke');
+    return (await Promise.all(['./index.html','./app.js','./data.js','./images-data.js','./images.js']
+      .map(src=>cache.match(src)))).every(Boolean);
+  },currentCache);
   assert.equal(await page.evaluate(async()=> (await (await caches.open('sori-image-store')).keys()).length),imageCount);
   assert.equal(await page.evaluate(async()=> (await (await caches.open('sori-audio-store')).keys()).length),1);
   await context.setOffline(true);await page.reload();await page.locator('#tabs [data-tab="review"]').click();await page.locator('.images-input').waitFor();

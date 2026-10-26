@@ -32,18 +32,19 @@ test('offline images above the former file and byte limits reach the resumable d
   assert.ok(request.entries.reduce((sum,a)=>sum+a.bytes,0)>80*1024*1024);
 });
 const it={id:'pack-c3c6d557',kr:'우산',type:'word',stage:3,ok:1,ko:0};
-for(const batchId of ['actions-2026-10-25','actions-2026-10-26','actions-2026-10-26-02','situations-2026-10-26','quotidien-2026-10-26'])test(batchId+': A1/A2 scenes keep sense-specific reviewed assets out of graded image questions',()=>{
+for(const batchId of ['actions-2026-10-25','actions-2026-10-26','actions-2026-10-26-02','situations-2026-10-26','quotidien-2026-10-26','vie-active-2026-10-26'])test(batchId+': scenes keep sense-specific reviewed assets out of graded image questions',()=>{
   const batch=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/'+batchId+'.json',import.meta.url)));
   const inventory=JSON.parse(fs.readFileSync(new URL('../tools/images/inventory.json',import.meta.url)));
   const ctx={window:{}};
   for(const file of ['data','extra'])vm.runInNewContext(fs.readFileSync(new URL('../docs/'+file+'.js',import.meta.url),'utf8'),ctx);
-  const count=['situations-2026-10-26','quotidien-2026-10-26'].includes(batchId)?200:100;
+  const count=['situations-2026-10-26','quotidien-2026-10-26','vie-active-2026-10-26'].includes(batchId)?200:100;
+  const levels=batchId==='vie-active-2026-10-26'?['B1','B2']:['A1','A2'];
   assert.equal(batch.requested,count);assert.equal(batch.items.length,count);assert.equal(new Set(batch.items.map(x=>x.id)).size,count);
   const hashes=new Set();
   for(const item of batch.items){
     const seed=ctx.window.SEED.items.find(x=>x.id===item.id),entry=inventory.items.find(x=>x.id===item.id),asset=D.items[item.id];
     assert.equal(seed.kr,item.kr);assert.equal(seed.fr,item.sense);
-    assert.equal(ctx.window.EXTRA[item.id].cefr,item.cefr);assert.ok(['A1','A2'].includes(item.cefr));
+    assert.equal(ctx.window.EXTRA[item.id].cefr,item.cefr);assert.ok(levels.includes(item.cefr));
     assert.equal(entry.batch,batch.id);assert.equal(entry.status,'approved');assert.equal(item.status,'approved');
     assert.equal(entry.styleProfile,'pinceau-scenes-v1');assert.equal(asset.usage,'support');
     assert.equal(asset.src,'./images/'+entry.asset);assert.equal(asset.alt,item.sense);assert.ok(asset.bytes<=64*1024);
