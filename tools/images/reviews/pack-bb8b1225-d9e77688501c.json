@@ -1,0 +1,24 @@
+{
+  "id": "pack-bb8b1225",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-26T09:33:16.999Z",
+  "sourceSha256": "f56f219265c722ef041e849b9d56ee4755dc59b1b6fea2426f24b91330bedbbf",
+  "sha256": "d9e77688501c2435747c6881647545c065101be846f669c6069c4d14e08b8625",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nOne matched pair of knitted socks placed side by side on a low bench, full socks visible, no decorative marks. Use only warm white and neutral grey on pure black. No colored accents, no letters, numerals, icons, arrows, motion lines, or logos. Preserve generous black margins and recognizable forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Revue effective du WebP à 512, 160 et 96 px. Exactement deux chaussettes assorties formant une paire, talons et pointes cohérents. Style au pinceau blanc chaud/gris sur noir, sans texte ni logo ; usage aide après réponse uniquement.",
+  "reviewedAt": "2026-10-26T09:58:37.011Z",
+  "kr": "켤레",
+  "sense": "Paire (compteur: chaussures, chaussettes)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

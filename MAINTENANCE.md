@@ -15,6 +15,18 @@
 
 ## Sommaire
 
+**v189 — 200 illustrations supplémentaires.** 83 A1 et 117 A2,
+profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
+le dictionnaire. Catalogue de 1 768 images (388 questions, 1 380 aides),
+58 536 126 octets ; lot de 7 803 282 octets. Chaque sens a son fichier
+distinct, contrôlé à 512, 160 et 96 px. Les anciennes recettes restent inchangées.
+Reprise : `tools/images/batches/quotidien-2026-10-26.json` et [IMAGES.md](IMAGES.md).
+Le premier essai de 영화배우 a été remplacé après revue ; le reçu de rejet conserve sa recette et son motif.
+Cache `sori-v189`, caches média et progression conservés.
+Validation : 228 tests Node, 5 tests Python, syntaxe et manifeste vérifiés ;
+cinq suites Chromium réussies, dont les 1 768 images hors ligne, zéro erreur JS.
+La suite UI a été exécutée seule après les quatre autres suites navigateur.
+
 **v188 — 200 illustrations supplémentaires.** 70 A1 et 130 A2,
 profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
 le dictionnaire. Catalogue de 1 568 images (388 questions, 1 180 aides),
