@@ -32,12 +32,13 @@ test('offline images above the former file and byte limits reach the resumable d
   assert.ok(request.entries.reduce((sum,a)=>sum+a.bytes,0)>80*1024*1024);
 });
 const it={id:'pack-c3c6d557',kr:'우산',type:'word',stage:3,ok:1,ko:0};
-for(const batchId of ['actions-2026-10-25','actions-2026-10-26','actions-2026-10-26-02'])test(batchId+': 100 A1/A2 scenes keep sense-specific reviewed assets out of graded image questions',()=>{
+for(const batchId of ['actions-2026-10-25','actions-2026-10-26','actions-2026-10-26-02','situations-2026-10-26'])test(batchId+': A1/A2 scenes keep sense-specific reviewed assets out of graded image questions',()=>{
   const batch=JSON.parse(fs.readFileSync(new URL('../tools/images/batches/'+batchId+'.json',import.meta.url)));
   const inventory=JSON.parse(fs.readFileSync(new URL('../tools/images/inventory.json',import.meta.url)));
   const ctx={window:{}};
   for(const file of ['data','extra'])vm.runInNewContext(fs.readFileSync(new URL('../docs/'+file+'.js',import.meta.url),'utf8'),ctx);
-  assert.equal(batch.items.length,100);assert.equal(new Set(batch.items.map(x=>x.id)).size,100);
+  const count=batchId==='situations-2026-10-26'?200:100;
+  assert.equal(batch.requested,count);assert.equal(batch.items.length,count);assert.equal(new Set(batch.items.map(x=>x.id)).size,count);
   const hashes=new Set();
   for(const item of batch.items){
     const seed=ctx.window.SEED.items.find(x=>x.id===item.id),entry=inventory.items.find(x=>x.id===item.id),asset=D.items[item.id];
@@ -52,7 +53,7 @@ for(const batchId of ['actions-2026-10-25','actions-2026-10-26','actions-2026-10
     assert.deepEqual(review.sizes,[512,160,96]);assert.equal(review.sha256,entry.sha256);assert.ok(review.note);
     hashes.add(entry.sha256);
   }
-  assert.equal(hashes.size,100,'each sense has its own generated picture');
+  assert.equal(hashes.size,count,'each sense has its own generated picture');
   assert.ok(inventory.items.filter(x=>x.batch!==batch.id).every(x=>!hashes.has(x.sha256)),'existing pictures are not reused');
   if(batchId==='actions-2026-10-25'){
     const homonyms=batch.items.filter(x=>x.kr==='쓰다');

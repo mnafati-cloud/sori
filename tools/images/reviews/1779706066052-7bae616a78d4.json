@@ -1,0 +1,24 @@
+{
+  "id": "1779706066052",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-26T00:55:41.679Z",
+  "sourceSha256": "f5fa58d011c86bbc1177d42ddebb5692cbab6ca2ecb32cefa1af04e60d59e54d",
+  "sha256": "7bae616a78d452b50835f495f97c14354181832e22352880080b55b38cc93693",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nA customer happily receiving a simple useful shopping basket of vegetables in exchange for just one plain coin at a market stall, no prices or writing. Use only warm white and neutral grey on pure black. No colored accents, no letters, numerals, icons, arrows, motion lines, or logos. Preserve generous black margins and recognizable forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Revue effective du WebP à 512, 160 et 96 px. Cliente proposant une petite pièce pour un panier garni au marché ; bon marché contextualisé sans prix écrit. Style au pinceau blanc chaud/gris sur noir, sans texte ni logo ; usage aide après réponse uniquement.",
+  "reviewedAt": "2026-10-26T01:19:43.773Z",
+  "kr": "싸다",
+  "sense": "Bon marché",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

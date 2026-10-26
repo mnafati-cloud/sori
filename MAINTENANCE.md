@@ -15,6 +15,18 @@
 
 ## Sommaire
 
+**v188 — 200 illustrations supplémentaires.** 70 A1 et 130 A2,
+profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
+le dictionnaire. Catalogue de 1 568 images (388 questions, 1 180 aides),
+50 732 844 octets ; lot de 7 732 204 octets. Chaque sens a son fichier
+distinct, contrôlé à 512, 160 et 96 px. Les anciennes recettes restent inchangées.
+Reprise : `tools/images/batches/situations-2026-10-26.json` et [IMAGES.md](IMAGES.md).
+Le refus du fournisseur pour 다치다 est consigné sans relance ; 충분하다 complète les 200 images.
+Cache `sori-v188`, caches média et progression conservés.
+Validation : 227 tests Node, 5 tests Python, syntaxe et manifeste vérifiés ;
+cinq suites Chromium réussies, dont les 1 568 images hors ligne, zéro erreur JS.
+La suite UI passe seule après un dépassement chronométrique sous charge parallèle (6,95 ms pour 5 ms).
+
 **v187 — 100 illustrations supplémentaires.** 15 A1 et 85 A2,
 profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
 le dictionnaire. Catalogue de 1 368 images (388 questions, 980 aides),

@@ -1,6 +1,20 @@
-# Illustrations et rappel visuel — v187
+# Illustrations et rappel visuel — v188
 
-> **v187 : 100 illustrations supplémentaires**, dont 15 A1 et 85 A2.
+> **v188 : 200 illustrations supplémentaires**, dont 70 A1 et 130 A2.
+> Situations quotidiennes, positions, relations, métiers, émotions et lieux ; style 2, profil `pinceau-scenes-v1`.
+> Toutes sont des aides après réponse et dans le dictionnaire.
+> Catalogue : **1 568 images** (388 questions, 1 180 aides), **50 732 844 octets**.
+> Nouveau lot : 7 732 204 octets ; WebP 512 × 512, chacun au plus 64 Kio.
+> Chaque sens a sa propre génération et une revue effective à 512, 160 et 96 px.
+> Les 1 368 anciennes images et leurs recettes sont inchangées.
+> Reprise : `tools/images/batches/situations-2026-10-26.json`, inventaire et revues versionnés.
+> Le refus du fournisseur pour 다치다 est conservé sans relance ; 충분하다 complète le lot.
+> Cache `sori-v188` ; caches média et progression conservés.
+> Validation : 227 tests Node, 5 tests Python, syntaxe JS et manifeste vérifiés ;
+> cinq suites Chromium réussies, dont téléchargement des 1 568 images et lecture hors ligne ; zéro erreur JavaScript.
+> La suite UI a été relancée seule après un dépassement du seuil de recherche pendant les suites parallèles (6,95 ms pour 5 ms).
+
+> **Historique v187 : 100 illustrations supplémentaires**, dont 15 A1 et 85 A2.
 > Échanges, activités, déplacements, lieux et relations ; style 2, profil `pinceau-scenes-v1`.
 > Toutes sont des aides après réponse et dans le dictionnaire.
 > Catalogue : **1 368 images** (388 questions, 980 aides), **43 000 640 octets**.
@@ -82,7 +96,7 @@ accent vermillon discret. Depuis v180, les mini-scènes approuvées utilisent un
 profil distinct et la planche `style-scenes-reference.png`, uniquement en aide
 après réponse ; le drapeau autorise ses couleurs exactes. Le profil historique
 reste inchangé pour les objets. Toutes les illustrations sont générées, jamais prises
-sur le Web. La bibliothèque v187 contient **1 368 images** (1 268 en v186, 1 168 en v185). La base v174 comptait
+sur le Web. La bibliothèque v188 contient **1 568 images** (1 368 en v187, 1 268 en v186). La base v174 comptait
 **603 images publiées** : les 3 premières
 (우산, 사과, 고양이), puis deux lots de 100 et deux lots de 200 mots distincts.
 
@@ -386,6 +400,13 @@ Le lot `actions-2026-10-26-02` ajoute 100 sens distincts, tous en aide. La planc
 se recrée après un clone avec `node tools/images/review.mjs actions-2026-10-26-02`.
 Les prompts, références, hashes, constats aux trois tailles et les deux rejets
 sont versionnés. Aucun contexte de conversation n’est nécessaire pour reprendre.
+
+### Lot complémentaire v188
+
+Le lot `situations-2026-10-26` ajoute 200 sens distincts de niveaux A1/A2, tous en aide.
+La planche se recrée après un clone avec `node tools/images/review.mjs situations-2026-10-26`.
+Les prompts, références, hashes et constats aux trois tailles sont versionnés.
+Aucun contexte de conversation n’est nécessaire pour reprendre.
 
 ## Hors connexion et limites
 

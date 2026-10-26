@@ -1,0 +1,24 @@
+{
+  "id": "pack-7559a94e",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-26T01:00:47.766Z",
+  "sourceSha256": "e2fd8b8c9dfd4a6ff5e8224cc2c960e6610a8c5a64b66b892adbe165ff5700d3",
+  "sha256": "6a7bff5b712ddb34d85b4da87a31b436e5e39783557af56610ee91763ba16522",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nOne last slice of bread left on a large plain serving plate after a meal, a few crumbs nearby, no hands or writing. Use only warm white and neutral grey on pure black. No colored accents, no letters, numerals, icons, arrows, motion lines, or logos. Preserve generous black margins and recognizable forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Revue effective du WebP à 512, 160 et 96 px. Une tranche de pain et quelques miettes restent dans une grande assiette presque vide. Style au pinceau blanc chaud/gris sur noir, sans texte ni logo ; usage aide après réponse uniquement.",
+  "reviewedAt": "2026-10-26T01:19:43.910Z",
+  "kr": "남다",
+  "sense": "Rester, être laissé",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}
