@@ -15,6 +15,18 @@
 
 ## Sommaire
 
+**v191 — 200 illustrations supplémentaires.** 109 B1 et 91 B2,
+profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
+le dictionnaire. Catalogue de 2 168 images (388 questions, 1 780 aides),
+74 938 402 octets ; lot de 8 123 990 octets. Chaque sens a son fichier
+distinct, contrôlé à 512, 160 et 96 px. Les anciennes recettes restent inchangées.
+Reprise : `tools/images/batches/gestes-et-lieux-2026-10-27.json` et [IMAGES.md](IMAGES.md).
+203 appels de génération pour 200 images retenues ; 2 premiers rendus remplacés après revue, avec reçus de rejet conservés. Le refus du fournisseur pour 관람객 est conservé sans relance ; 뚫다 complète le lot.
+Cache `sori-v191`, caches média et progression conservés.
+Validation : 230 tests Node, 5 tests Python, syntaxe et manifeste vérifiés ;
+cinq suites Chromium réussies, dont les 2 168 images hors ligne, zéro erreur JS.
+Les suites UI et images ont été exécutées séparément après les trois autres suites navigateur.
+
 **v190 — 200 illustrations supplémentaires.** 146 B1 et 54 B2,
 profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
 le dictionnaire. Catalogue de 1 968 images (388 questions, 1 580 aides),

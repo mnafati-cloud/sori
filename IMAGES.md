@@ -1,6 +1,19 @@
-# Illustrations et rappel visuel — v190
+# Illustrations et rappel visuel — v191
 
-> **v190 : 200 illustrations supplémentaires**, dont 146 B1 et 54 B2.
+> **v191 : 200 illustrations supplémentaires**, dont 109 B1 et 91 B2.
+> Gestes, objets, lieux, jardinage, ateliers et transports ; style 2, profil `pinceau-scenes-v1`.
+> Toutes sont des aides après réponse et dans le dictionnaire.
+> Catalogue : **2 168 images** (388 questions, 1 780 aides), **74 938 402 octets**.
+> Nouveau lot : 8 123 990 octets ; WebP 512 × 512, chacun au plus 64 Kio.
+> Chaque sens a sa propre génération et une revue effective à 512, 160 et 96 px.
+> Les 1 968 anciennes images et leurs recettes sont inchangées.
+> Reprise : `tools/images/batches/gestes-et-lieux-2026-10-27.json`, inventaire et revues versionnés.
+> 203 appels de génération pour 200 images retenues ; 2 premiers rendus remplacés après revue, avec reçus de rejet conservés. Le refus du fournisseur pour 관람객 est conservé sans relance ; 뚫다 complète le lot.
+> Cache `sori-v191` ; caches média et progression conservés.
+> Validation : 230 tests Node, 5 tests Python, syntaxe JS et manifeste vérifiés ;
+> cinq suites Chromium réussies, dont téléchargement des 2 168 images et lecture hors ligne ; zéro erreur JavaScript.
+
+> **Historique v190 : 200 illustrations supplémentaires**, dont 146 B1 et 54 B2.
 > Gestes, métiers, transports, logement, cuisine et situations de travail ; style 2, profil `pinceau-scenes-v1`.
 > Toutes sont des aides après réponse et dans le dictionnaire.
 > Catalogue : **1 968 images** (388 questions, 1 580 aides), **66 814 412 octets**.
@@ -122,7 +135,7 @@ accent vermillon discret. Depuis v180, les mini-scènes approuvées utilisent un
 profil distinct et la planche `style-scenes-reference.png`, uniquement en aide
 après réponse ; le drapeau autorise ses couleurs exactes. Le profil historique
 reste inchangé pour les objets. Toutes les illustrations sont générées, jamais prises
-sur le Web. La bibliothèque v190 contient **1 968 images** (1 768 en v189, 1 568 en v188). La base v174 comptait
+sur le Web. La bibliothèque v191 contient **2 168 images** (1 968 en v190, 1 768 en v189). La base v174 comptait
 **603 images publiées** : les 3 premières
 (우산, 사과, 고양이), puis deux lots de 100 et deux lots de 200 mots distincts.
 
@@ -454,6 +467,13 @@ Le test de changement de version attend désormais le nouveau service worker act
 contrôlant la page, et les fichiers essentiels réellement présents dans son cache avant
 de passer hors ligne. La seule présence du nom du cache permettait une transition
 prématurée et des échecs intermittents ; les deux exécutions après correction réussissent.
+
+### Lot complémentaire v191
+
+Le lot `gestes-et-lieux-2026-10-27` ajoute 200 sens distincts B1/B2, tous en aide après réponse.
+La planche se recrée après un clone avec `node tools/images/review.mjs gestes-et-lieux-2026-10-27`.
+Les prompts, références, hashes et observations aux trois tailles sont versionnés.
+Aucun contexte de conversation n’est nécessaire pour reprendre.
 
 ## Hors connexion et limites
 
