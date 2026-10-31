@@ -15,6 +15,16 @@
 
 ## Sommaire
 
+**v193 — 200 illustrations supplémentaires.** 112 B1 et 88 B2,
+profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
+le dictionnaire. Catalogue de 2 568 images (388 questions, 2 180 aides),
+91 883 786 octets ; lot de 8 469 940 octets. Chaque sens a son fichier
+distinct, contrôlé à 512, 160 et 96 px. Les anciennes recettes restent inchangées.
+Reprise : `tools/images/batches/gestes-et-activites-2026-10-31.json` et [IMAGES.md](IMAGES.md).
+201 appels de génération pour 200 images retenues. Un premier rendu remplacé après revue ; reçu de rejet conservé. Incidents techniques et leur résolution conservés dans le lot.
+Cache `sori-v193`, caches média et progression conservés.
+Validation : 232 tests Node, 5 tests Python, syntaxe et manifeste vérifiés ; suites Chromium sauvegarde, production, téléchargements, interface et images réussies. Les suites interface et images ont été exécutées séparément. Catalogue complet de 2 568 images testé hors connexion et après mise à jour du cache, aucune erreur JavaScript.
+
 **v192 — 200 illustrations supplémentaires.** 113 B1 et 87 B2,
 profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
 le dictionnaire. Catalogue de 2 368 images (388 questions, 1 980 aides),

@@ -1,6 +1,18 @@
-# Illustrations et rappel visuel — v192
+# Illustrations et rappel visuel — v193
 
-> **v192 : 200 illustrations supplémentaires**, dont 113 B1 et 87 B2.
+> **v193 : 200 illustrations supplémentaires**, dont 112 B1 et 88 B2.
+> Gestes, activités, lieux, métiers et vie quotidienne ; style 2, profil `pinceau-scenes-v1`.
+> Toutes sont des aides après réponse et dans le dictionnaire.
+> Catalogue : **2 568 images** (388 questions, 2 180 aides), **91 883 786 octets**.
+> Nouveau lot : 8 469 940 octets ; WebP 512 × 512, chacun au plus 64 Kio.
+> Chaque sens a sa propre génération et une revue effective à 512, 160 et 96 px.
+> Les 2 368 anciennes images et leurs recettes sont inchangées.
+> Reprise : `tools/images/batches/gestes-et-activites-2026-10-31.json`, inventaire et revues versionnés.
+> 201 appels de génération pour 200 images retenues. La paire de gants a été remplacée par des chaussettes après revue ; reçu de rejet conservé. Six PNG renvoyés directement par l’outil ont été récupérés sans nouvelle génération ; provenance conservée dans le lot.
+> Cache `sori-v193` ; caches média et progression conservés.
+> Validation : 232 tests Node, 5 tests Python, syntaxe JS et manifeste vérifiés. Les cinq suites Chromium passent ; les 2 568 images sont téléchargées puis disponibles hors connexion, avec conservation du cache lors de la mise à jour. Aucune erreur JavaScript.
+
+> **Historique v192 : 200 illustrations supplémentaires**, dont 113 B1 et 87 B2.
 > Gestes, activités, lieux, métiers et vie quotidienne ; style 2, profil `pinceau-scenes-v1`.
 > Toutes sont des aides après réponse et dans le dictionnaire.
 > Catalogue : **2 368 images** (388 questions, 1 980 aides), **83 413 846 octets**.
@@ -148,7 +160,7 @@ accent vermillon discret. Depuis v180, les mini-scènes approuvées utilisent un
 profil distinct et la planche `style-scenes-reference.png`, uniquement en aide
 après réponse ; le drapeau autorise ses couleurs exactes. Le profil historique
 reste inchangé pour les objets. Toutes les illustrations sont générées, jamais prises
-sur le Web. La bibliothèque v192 contient **2 368 images** (2 168 en v191, 1 968 en v190). La base v174 comptait
+sur le Web. La bibliothèque v193 contient **2 568 images** (2 368 en v192, 2 168 en v191). La base v174 comptait
 **603 images publiées** : les 3 premières
 (우산, 사과, 고양이), puis deux lots de 100 et deux lots de 200 mots distincts.
 
@@ -492,6 +504,13 @@ Aucun contexte de conversation n’est nécessaire pour reprendre.
 
 Le lot `vie-pratique-2026-10-31` ajoute 200 sens distincts B1/B2, tous en aide après réponse.
 La planche se recrée après un clone avec `node tools/images/review.mjs vie-pratique-2026-10-31`.
+Les prompts, références, hashes et observations aux trois tailles sont versionnés.
+Aucun contexte de conversation n’est nécessaire pour reprendre.
+
+### Lot complémentaire v193
+
+Le lot `gestes-et-activites-2026-10-31` ajoute 200 sens distincts B1/B2, tous en aide après réponse.
+La planche se recrée après un clone avec `node tools/images/review.mjs gestes-et-activites-2026-10-31`.
 Les prompts, références, hashes et observations aux trois tailles sont versionnés.
 Aucun contexte de conversation n’est nécessaire pour reprendre.
 

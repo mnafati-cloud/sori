@@ -1,0 +1,24 @@
+{
+  "id": "pack-009cf56a",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-31T04:29:03.993Z",
+  "sourceSha256": "80f87dcfa1cf77ec4cb1abeb0f63133c8e6e66b8802ea74729608b3f41399388",
+  "sha256": "82d3b9cc8be3f89334fbb39f3298fdcccbbabc04a0ae92c2d9c4a1a2873b69b1",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nA broad unobstructed view from a hill over a valley through a simple open lookout railing, no people. Strictly monochrome: warm off-white and neutral charcoal grey on pure black, including food, leaves, sky and clothing. No colored accents, green, blue, sepia, letters, numerals, logos, arrows, emphasis marks or motion lines. Keep generous black margins and clear forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "reviewedAt": "2026-10-31T04:45:59.163Z",
+  "note": "Revue effective du WebP à 512, 160 et 96 px. Panorama largement dégagé depuis un belvédère ; champ de vision contextualisé par une vue ouverte. Style 2 au pinceau blanc chaud/gris sur noir, sans texte ni logo. Usage aide après réponse uniquement.",
+  "kr": "시야",
+  "sense": "Champ de vision",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

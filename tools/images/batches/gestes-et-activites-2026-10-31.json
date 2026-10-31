@@ -1,0 +1,5106 @@
+{
+  "id": "gestes-et-activites-2026-10-31",
+  "requested": 200,
+  "style": "pinceau-scenes-v1",
+  "source": "SEED.items + EXTRA[id].cefr, inventaire v192 exclu",
+  "selection": "200 nouveaux sens B1/B2 : gestes, activités, lieux, métiers, maison et vie quotidienne. Une génération distincte par id ; aide après réponse uniquement.",
+  "items": [
+    {
+      "id": "pack-925284b3",
+      "kr": "사우나",
+      "sense": "Sauna",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 1,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:55:37.362Z",
+      "asset": "pack-925284b3-b2fc56493540.webp",
+      "sha256": "b2fc5649354025789eb171c309d4fce8505e3f3706280a5b32f49ede3e339b4b"
+    },
+    {
+      "id": "pack-83ce7825",
+      "kr": "사원",
+      "sense": "Employé (d'une entreprise), salarié",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 2,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:56:07.929Z",
+      "asset": "pack-83ce7825-290c4bde4bef.webp",
+      "sha256": "290c4bde4bef9bdd801cb2104c1c709f21caaa374a0251ec0b12caa8ac36ca55"
+    },
+    {
+      "id": "pack-4f5dfb70",
+      "kr": "사이좋다",
+      "sense": "Être en bons termes, bien s'entendre",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 3,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:58:49.016Z",
+      "asset": "pack-4f5dfb70-afdd6f5e672e.webp",
+      "sha256": "afdd6f5e672e46825c6a993f86c254c403c89f75a44019a59f0a122486081e01"
+    },
+    {
+      "id": "pack-47c88c72",
+      "kr": "사진관",
+      "sense": "Studio de photographie",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 4,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:57:13.907Z",
+      "asset": "pack-47c88c72-da46e43182cd.webp",
+      "sha256": "da46e43182cd95c7c305d518730cc47180aa58ebaca4d724f8862fd276fb4b7b"
+    },
+    {
+      "id": "pack-7d4b3fa4",
+      "kr": "살리다",
+      "sense": "Sauver (la vie), faire revivre, mettre en valeur",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 5,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:58:22.303Z",
+      "asset": "pack-7d4b3fa4-0b3ae92d5c70.webp",
+      "sha256": "0b3ae92d5c70ee46ce1af2756f8939b8d46cba8b788b368aada42d40f036b90a"
+    },
+    {
+      "id": "pack-e2d66b11",
+      "kr": "상담실",
+      "sense": "Bureau de consultation, salle d'entretien",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 6,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:58:22.428Z",
+      "asset": "pack-e2d66b11-8bf16289a3ae.webp",
+      "sha256": "8bf16289a3aef317508a393e4eb4ed1c52dac48bbc292fd0eff545c753e782c1"
+    },
+    {
+      "id": "pack-7ead3a62",
+      "kr": "상담원",
+      "sense": "Conseiller, chargé d'accueil (au téléphone)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 7,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:59:20.851Z",
+      "asset": "pack-7ead3a62-77c5ff4e2a65.webp",
+      "sha256": "77c5ff4e2a65efc551d403d074807acbec54f92704a5df156ba70d367686af89"
+    },
+    {
+      "id": "pack-a12fb960",
+      "kr": "상영",
+      "sense": "Projection (d'un film)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 8,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:58:39.426Z",
+      "asset": "pack-a12fb960-00be9f4d0de2.webp",
+      "sha256": "00be9f4d0de217624ef26f342be6e83d6526c5bb6f60adda110a2386f5048473"
+    },
+    {
+      "id": "pack-df560c2d",
+      "kr": "상하",
+      "sense": "Le haut et le bas",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 9,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:56:07.943Z",
+      "asset": "pack-df560c2d-c89763c4d293.webp",
+      "sha256": "c89763c4d293dff0e1ab0b44fd427855f0ce67a0771057263c374746d6c97e9d"
+    },
+    {
+      "id": "pack-d86e8d61",
+      "kr": "새소리",
+      "sense": "Chant des oiseaux",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 10,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:57:13.865Z",
+      "asset": "pack-d86e8d61-734ba2068e8f.webp",
+      "sha256": "734ba2068e8f54ff619afe0513cf3233cb18b109e9a2ded4a809ebdd1f2dc40b"
+    },
+    {
+      "id": "pack-28aaf760",
+      "kr": "새집",
+      "sense": "Maison neuve, nouveau logement",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 11,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:57:13.927Z",
+      "asset": "pack-28aaf760-b2c7df4903ee.webp",
+      "sha256": "b2c7df4903ee14032f416b5a232fffb3dc170162a1ce9902d6fa5171ce43327e"
+    },
+    {
+      "id": "pack-a3f5443a",
+      "kr": "생겨나다",
+      "sense": "Apparaître, surgir, naître",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 12,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:57:41.505Z",
+      "asset": "pack-a3f5443a-2ba219c11ca8.webp",
+      "sha256": "2ba219c11ca83d24c73eea747ed73655bdc89353cf07b16bc5a44e04f59afa2c"
+    },
+    {
+      "id": "pack-2af7405b",
+      "kr": "서로",
+      "sense": "L'un l'autre, mutuellement",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 13,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:58:22.338Z",
+      "asset": "pack-2af7405b-cbe0dc890f50.webp",
+      "sha256": "cbe0dc890f50bfe6502d7a3123cbec78fa13bf27a1d0e45c9951ba3ea83f0b76"
+    },
+    {
+      "id": "pack-a1584031",
+      "kr": "서투르다",
+      "sense": "Être maladroit, peu habile",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 14,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:59:08.075Z",
+      "asset": "pack-a1584031-c6070be7f05f.webp",
+      "sha256": "c6070be7f05f37da28551d5c99c383f78bb431b9cc1b387aa53c6bbb460cf895"
+    },
+    {
+      "id": "pack-4d454856",
+      "kr": "섞이다",
+      "sense": "Se mêler, se mélanger",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 15,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:58:22.373Z",
+      "asset": "pack-4d454856-b596cad04206.webp",
+      "sha256": "b596cad04206f71ddbcf310c50e35106f7ca7be72eecd526c7007f4f836e67a4"
+    },
+    {
+      "id": "pack-fb5f03e2",
+      "kr": "설",
+      "sense": "Nouvel An coréen (Seollal)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 16,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:00:31.485Z",
+      "asset": "pack-fb5f03e2-814466ce59b9.webp",
+      "sha256": "814466ce59b947176c8416e5614c9f9fac50d4f5f0488332a86bb48ee01db24e"
+    },
+    {
+      "id": "pack-c14a567e",
+      "kr": "설정",
+      "sense": "Configuration, réglage ; mise en place",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 17,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:59:49.286Z",
+      "asset": "pack-c14a567e-8f56e9f0565f.webp",
+      "sha256": "8f56e9f0565f8069e4e008ca6c6d038c20f397d40928efce56348dfcdf3eb0cb"
+    },
+    {
+      "id": "pack-4f2a033d",
+      "kr": "세로",
+      "sense": "Vertical, hauteur (sens vertical)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 18,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:01:32.614Z",
+      "asset": "pack-4f2a033d-bb17109c809b.webp",
+      "sha256": "bb17109c809ba1a16b60eb2a1cafc3d6939ca09a1112b004358dfa70cb802c33"
+    },
+    {
+      "id": "pack-84020591",
+      "kr": "세모",
+      "sense": "Triangle (forme)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 19,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:01:35.256Z",
+      "asset": "pack-84020591-eabdd9d229cb.webp",
+      "sha256": "eabdd9d229cb28869a527e7cbde74c654fdf0bbfe9a09759d27f9a98bb5b069d"
+    },
+    {
+      "id": "pack-1c29f2a1",
+      "kr": "세워지다",
+      "sense": "Être bâti, être érigé, être dressé",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 20,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:59:50.358Z",
+      "asset": "pack-1c29f2a1-516eab6442f9.webp",
+      "sha256": "516eab6442f9e251851b330a888ced7f11e624fcdb831a3276db14f1387c091e"
+    },
+    {
+      "id": "pack-a7224e98",
+      "kr": "세차",
+      "sense": "Lavage de voiture",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 21,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:00:26.961Z",
+      "asset": "pack-a7224e98-d64341d3d562.webp",
+      "sha256": "d64341d3d562486dec61b373660731f77071ab0b1a9580984bbe8d3f1204dc25"
+    },
+    {
+      "id": "pack-d276a15d",
+      "kr": "소극장",
+      "sense": "Petit théâtre, salle intimiste",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 22,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:01:35.250Z",
+      "asset": "pack-d276a15d-df64d40908eb.webp",
+      "sha256": "df64d40908ebdfcddae1d1b982a8506904dee5741bbf4c257d346598a8f7154c"
+    },
+    {
+      "id": "pack-b851b5e8",
+      "kr": "소독",
+      "sense": "Désinfection, stérilisation",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 23,
+      "status": "approved",
+      "generatedAt": "2026-10-31T03:59:50.010Z",
+      "asset": "pack-b851b5e8-36956610dacc.webp",
+      "sha256": "36956610dacc5e8520ddf4c6402a4eb779d71e9fe0bd30a612e41f7d35717c78"
+    },
+    {
+      "id": "pack-f7624673",
+      "kr": "소리치다",
+      "sense": "Crier, hurler, s'écrier",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 24,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:00:26.973Z",
+      "asset": "pack-f7624673-d1112c10a990.webp",
+      "sha256": "d1112c10a990339cd8c84ce9ad5b71d80bc5d54fb7a7cef24d06d594f5ba52d4"
+    },
+    {
+      "id": "pack-f341f18c",
+      "kr": "소방서",
+      "sense": "Caserne de pompiers, poste d'incendie",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 25,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:01:02.552Z",
+      "asset": "pack-f341f18c-d3179a408e43.webp",
+      "sha256": "d3179a408e430f0e77fba293092895d102306af867786ec2fcd1850d5fab309f"
+    },
+    {
+      "id": "pack-e007f779",
+      "kr": "소설가",
+      "sense": "Romancier, écrivain (de romans)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 26,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:01:32.634Z",
+      "asset": "pack-e007f779-130917a4f81d.webp",
+      "sha256": "130917a4f81d44e39671ccb80e5a627d3571b0f1612038af470b646d3b91d8c7"
+    },
+    {
+      "id": "pack-d1cf9f6e",
+      "kr": "손끝",
+      "sense": "Bout des doigts",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 27,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:02:18.929Z",
+      "asset": "pack-d1cf9f6e-0483a10da935.webp",
+      "sha256": "0483a10da935ed4e2e35550deb8462218f2bba194b2dec3ed9bd95f53d99569c"
+    },
+    {
+      "id": "pack-d1e1fecc",
+      "kr": "손뼉",
+      "sense": "Paume de la main (qui applaudit)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 28,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:02:39.666Z",
+      "asset": "pack-d1e1fecc-f74354e4dd58.webp",
+      "sha256": "f74354e4dd5853e4cb5061724c9f295e4d151ec773c2c5c265bf3dbe63148ca7"
+    },
+    {
+      "id": "pack-1db7c36b",
+      "kr": "송별회",
+      "sense": "Fête d'adieu, pot de départ",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 29,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:04:58.832Z",
+      "asset": "pack-1db7c36b-08b6d2b6f8bf.webp",
+      "sha256": "08b6d2b6f8bfd8b89538dede28b4b6ab2b3ee080415e6e3383a95980c08071d8"
+    },
+    {
+      "id": "pack-618451db",
+      "kr": "송이",
+      "sense": "Grappe, bouquet (classificateur de fleurs/fruits)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 30,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:02:08.750Z",
+      "asset": "pack-618451db-998b418b064c.webp",
+      "sha256": "998b418b064c9bbdde6c66667068e8cb9c3e93a4277417b75b071b1fc227fd8a"
+    },
+    {
+      "id": "pack-c3003b2c",
+      "kr": "쇼",
+      "sense": "Spectacle, show",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 31,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:04:32.133Z",
+      "asset": "pack-c3003b2c-69643c4a785e.webp",
+      "sha256": "69643c4a785e8f561e2a1d89aea4348e7aa482f169a36d1475302ba9e3a1eb56"
+    },
+    {
+      "id": "pack-0c2ef0a4",
+      "kr": "쇼핑몰",
+      "sense": "Centre commercial (en ligne ou physique)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 32,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:04:32.198Z",
+      "asset": "pack-0c2ef0a4-b56cd1995e53.webp",
+      "sha256": "b56cd1995e531d6ca492af49a6014bff8107ccd78075b4c6f4905af7c0eb00cc"
+    },
+    {
+      "id": "pack-b750803b",
+      "kr": "쇼핑센터",
+      "sense": "Centre commercial",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 33,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:03:26.308Z",
+      "asset": "pack-b750803b-b45313080272.webp",
+      "sha256": "b453130802727c48a41550cb648fb1212bea791c998d62a7c5316e5f32c43930"
+    },
+    {
+      "id": "pack-ab3a36fd",
+      "kr": "수다",
+      "sense": "Bavardage, papotage",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 34,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:05:37.888Z",
+      "asset": "pack-ab3a36fd-5304fed89b8b.webp",
+      "sha256": "5304fed89b8b548aa37fd288c4c3e68116f0a89ae2d74efdba325db2639d2d46"
+    },
+    {
+      "id": "pack-0be01181",
+      "kr": "수도",
+      "sense": "Eau courante, adduction d'eau",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 35,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:04:58.812Z",
+      "asset": "pack-0be01181-1dbda2067b69.webp",
+      "sha256": "1dbda2067b69d0f786afcaa100df93b622c14d09c2445ffe4ac328a2449feed4"
+    },
+    {
+      "id": "pack-7294d680",
+      "kr": "수량",
+      "sense": "Quantité",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 36,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:05:37.849Z",
+      "asset": "pack-7294d680-2af0fa0170f3.webp",
+      "sha256": "2af0fa0170f30b3a079fad2f0f5c8ba0669efbdd89ea22f7ceb09d0b6cb32398"
+    },
+    {
+      "id": "pack-b007e3d9",
+      "kr": "수리",
+      "sense": "Réparation",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 37,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:04:32.201Z",
+      "asset": "pack-b007e3d9-2147fc660038.webp",
+      "sha256": "2147fc660038bcb89663fe07561b2600a1496dbc08e7b5e3427eff7a1326e28f"
+    },
+    {
+      "id": "pack-f32e54c9",
+      "kr": "수많다",
+      "sense": "Être innombrable, très nombreux",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 38,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:05:37.934Z",
+      "asset": "pack-f32e54c9-e29614635483.webp",
+      "sha256": "e29614635483bc500606d8a841be26fbd87e29c7efe2acd92e80754416fb7c61"
+    },
+    {
+      "id": "pack-45fa4047",
+      "kr": "수속",
+      "sense": "Formalités, démarches",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 39,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:06:11.035Z",
+      "asset": "pack-45fa4047-e03d1462e205.webp",
+      "sha256": "e03d1462e2055e0a3ca4c7c701303e148acbf33b3f07c19fe5e8a89b97f0eecb"
+    },
+    {
+      "id": "pack-6b8bd860",
+      "kr": "술자리",
+      "sense": "Beuverie, moment de boire ensemble",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 40,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:05:38.795Z",
+      "asset": "pack-6b8bd860-fe8b76c92617.webp",
+      "sha256": "fe8b76c926172898c0ad5399502748316adc53eeac42fac642509c5fc3e3b1a9"
+    },
+    {
+      "id": "pack-fa9b1657",
+      "kr": "쉿",
+      "sense": "Chut !",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 41,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:06:11.502Z",
+      "asset": "pack-fa9b1657-4b00cf9456f3.webp",
+      "sha256": "4b00cf9456f3350fbe705bdd5a46eb3e48afe32bde8b4d9a7fc3ee87cdf90660"
+    },
+    {
+      "id": "pack-3de53117",
+      "kr": "슈퍼",
+      "sense": "Supérette, épicerie",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 42,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:07:34.736Z",
+      "asset": "pack-3de53117-b42d31de3d5d.webp",
+      "sha256": "b42d31de3d5da1b10e79a411e8b69115fee8dee84ee12ed964ea9c066c1f6bbb"
+    },
+    {
+      "id": "pack-d5cdbc46",
+      "kr": "스님",
+      "sense": "Moine (bouddhiste)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 43,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:06:11.039Z",
+      "asset": "pack-d5cdbc46-b2264ad55771.webp",
+      "sha256": "b2264ad55771887beecb2c9c79883f187a821385309e4572f53bb377b9a1a293"
+    },
+    {
+      "id": "pack-3fe6a592",
+      "kr": "승차",
+      "sense": "Montée à bord, embarquement",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 44,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:07:47.940Z",
+      "asset": "pack-3fe6a592-4b0cd8f2dcb1.webp",
+      "sha256": "4b0cd8f2dcb111f5b814e7e48000447decfb744c0128d438f0bfe184ef04369a"
+    },
+    {
+      "id": "pack-8bd6ee8f",
+      "kr": "시도하다",
+      "sense": "Tenter, essayer",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 45,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:07:47.983Z",
+      "asset": "pack-8bd6ee8f-ed83b60deb95.webp",
+      "sha256": "ed83b60deb95b143cc21752502b2f236b2aef2059c4203356eef8c706dfb11c8"
+    },
+    {
+      "id": "pack-2ca2687d",
+      "kr": "시력",
+      "sense": "Acuité visuelle, vue",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 46,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:07:55.344Z",
+      "asset": "pack-2ca2687d-02e01803d28c.webp",
+      "sha256": "02e01803d28c91d7557a25c508983c6639f8fda27948405f052650926e5f976f"
+    },
+    {
+      "id": "pack-192a5be3",
+      "kr": "시외",
+      "sense": "Périphérie, hors de la ville",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 47,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:08:32.177Z",
+      "asset": "pack-192a5be3-def26d4c48f0.webp",
+      "sha256": "def26d4c48f0af6e39c90e76138e6e20edc90478444facae1fcb3c1ab26a66f4"
+    },
+    {
+      "id": "pack-a9b58a0a",
+      "kr": "시인",
+      "sense": "Poète",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 48,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:07:47.958Z",
+      "asset": "pack-a9b58a0a-4fb533b41f78.webp",
+      "sha256": "4fb533b41f781e6f8a9a1e991f0eb69a45c0d14d5a9a9e13e0a4418720d7d408"
+    },
+    {
+      "id": "pack-b058262f",
+      "kr": "시청자",
+      "sense": "Téléspectateur",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 49,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:07:19.399Z",
+      "asset": "pack-b058262f-34de3a3fbd3f.webp",
+      "sha256": "34de3a3fbd3f6587c7f88ca9bdce16075b064afdeb2963f34ecc23142af1e25e"
+    },
+    {
+      "id": "pack-35cc2711",
+      "kr": "식당가",
+      "sense": "Quartier des restaurants",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 50,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:08:12.751Z",
+      "asset": "pack-35cc2711-56afe56a229d.webp",
+      "sha256": "56afe56a229d0f677664f278262e9f6133ebe7b1957e444a8b694b0b40fae96d"
+    },
+    {
+      "id": "pack-4d8873de",
+      "kr": "식사량",
+      "sense": "Quantité de nourriture (par repas)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 51,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:10:32.415Z",
+      "asset": "pack-4d8873de-c7865957f0dc.webp",
+      "sha256": "c7865957f0dc05393fa450a0dfc5f99e4cc4219dfa87f18ffa7e53cb40de04f0"
+    },
+    {
+      "id": "pack-9edd085d",
+      "kr": "식후",
+      "sense": "Après le repas",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 52,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:08:12.751Z",
+      "asset": "pack-9edd085d-3c78ed0f3f16.webp",
+      "sha256": "3c78ed0f3f167072d6f8d15a886f65940813adcf60d49c7269bf8a9e0a89e181"
+    },
+    {
+      "id": "pack-2dd685ae",
+      "kr": "신맛",
+      "sense": "Goût acide, acidité",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 53,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:09:46.952Z",
+      "asset": "pack-2dd685ae-e3400920d432.webp",
+      "sha256": "e3400920d43275ca612f3b365b52cddf23a4d8fc2f81394a80a40e6983aa78c3"
+    },
+    {
+      "id": "pack-7917ce7e",
+      "kr": "실내",
+      "sense": "Intérieur (d'un local)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 54,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:09:13.790Z",
+      "asset": "pack-7917ce7e-3150969716f8.webp",
+      "sha256": "3150969716f88ce6b1f70fd11c9b5d1ce59da0cdb9a225243e8e8830271aadcf"
+    },
+    {
+      "id": "pack-83628172",
+      "kr": "심부름",
+      "sense": "Course, commission (qu'on fait pour autrui)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 55,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:44:57.161Z",
+      "asset": "pack-83628172-a18ba46ab3f1.webp",
+      "sha256": "a18ba46ab3f19751f691b2bc4d49398cb481c14c7b8554bd46039a6211c3b342"
+    },
+    {
+      "id": "pack-ce0e8545",
+      "kr": "싸이다",
+      "sense": "Être enveloppé, être emballé",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 56,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:09:14.949Z",
+      "asset": "pack-ce0e8545-c7216f583b3e.webp",
+      "sha256": "c7216f583b3e0cf5158d18d008fe8707fac06875f93f44306acffb5c20c54e72"
+    },
+    {
+      "id": "pack-1db07f61",
+      "kr": "쌓이다",
+      "sense": "S'accumuler, s'empiler, s'entasser",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 57,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:09:46.953Z",
+      "asset": "pack-1db07f61-180bbc1b555c.webp",
+      "sha256": "180bbc1b555cb2d970c6b0bb16613942fbc7571cb7bdab64910073e6e6407623"
+    },
+    {
+      "id": "pack-df4ed20e",
+      "kr": "썩다",
+      "sense": "Pourrir, se gâter, se décomposer",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 58,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:09:45.746Z",
+      "asset": "pack-df4ed20e-0840522336d7.webp",
+      "sha256": "0840522336d7e2c47f5d264b6c0b40442fe0ad3e857ace6878b082352e780e73"
+    },
+    {
+      "id": "pack-e40c0756",
+      "kr": "쏟아지다",
+      "sense": "Se déverser, jaillir, tomber à verse",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 59,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:11:05.920Z",
+      "asset": "pack-e40c0756-968d9aee09d5.webp",
+      "sha256": "968d9aee09d57b1e882215cbc7d6795b1f64cf19418b718dfb952b8b6857edce"
+    },
+    {
+      "id": "pack-db80c877",
+      "kr": "쐬다",
+      "sense": "S'exposer à (le vent, le soleil), prendre l'air",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 60,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:09:45.781Z",
+      "asset": "pack-db80c877-70e6e352817d.webp",
+      "sha256": "70e6e352817d8dce9285148e9a0ca7059d4898374a90a9443606257ca28efc09"
+    },
+    {
+      "id": "pack-616f97cc",
+      "kr": "쓰기",
+      "sense": "Écriture, expression écrite",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 61,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:12:37.937Z",
+      "asset": "pack-616f97cc-aaaef7bdcc85.webp",
+      "sha256": "aaaef7bdcc854b7ef06ef4c9cc726b7bc82e50a6792ff64d76b874880cc5c1b7"
+    },
+    {
+      "id": "pack-6723d286",
+      "kr": "아랫집",
+      "sense": "Maison d'en bas, voisins du dessous",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 62,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:44:56.186Z",
+      "asset": "pack-6723d286-fc3d41611056.webp",
+      "sha256": "fc3d416110568730e0a97d5aea98a122691d45974a59867e7b870ad2e55d3273"
+    },
+    {
+      "id": "pack-3fe6d50c",
+      "kr": "악수",
+      "sense": "Poignée de main",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 63,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:11:05.897Z",
+      "asset": "pack-3fe6d50c-5f80446a3b8e.webp",
+      "sha256": "5f80446a3b8e4a0598c55cf7c40c4c4d2986cb7e21f9ff58390cede58d0ef096"
+    },
+    {
+      "id": "pack-27b9105e",
+      "kr": "안내원",
+      "sense": "Guide, hôte(sse) d'accueil",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 64,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:11:37.024Z",
+      "asset": "pack-27b9105e-c73d97753405.webp",
+      "sha256": "c73d977534057ae5fb018ed80d986bb6229367e10ba994ee3801d0166613f35d"
+    },
+    {
+      "id": "pack-152ad89b",
+      "kr": "안방",
+      "sense": "Chambre principale (des maîtres de maison)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 65,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:12:03.515Z",
+      "asset": "pack-152ad89b-0cf215b02d25.webp",
+      "sha256": "0cf215b02d2567516f840eabe065ec897d373633c4ffb2ef554acb894f85d910"
+    },
+    {
+      "id": "pack-7134d06e",
+      "kr": "앞길",
+      "sense": "Rue de devant, chemin devant (soi)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 66,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:11:02.897Z",
+      "asset": "pack-7134d06e-693c99b88d47.webp",
+      "sha256": "693c99b88d47b7ce0acfef68eacbaf7138cf610bd3e8031f4951ebdd548a9cae"
+    },
+    {
+      "id": "pack-807d7745",
+      "kr": "앞서다",
+      "sense": "Devancer, précéder, être en avance sur",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 67,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:12:07.142Z",
+      "asset": "pack-807d7745-a191c177d2f6.webp",
+      "sha256": "a191c177d2f62b8a8234a4566f0de326881ffa35d8196963e2a3608c4cc4c53b"
+    },
+    {
+      "id": "pack-0dbbf92c",
+      "kr": "앞집",
+      "sense": "Maison d'en face",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 68,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:13:02.256Z",
+      "asset": "pack-0dbbf92c-5f76d38a532e.webp",
+      "sha256": "5f76d38a532e5dc0feaa345299f36cac4ef6eb2e65171bf6d16abb2bf2fb4147"
+    },
+    {
+      "id": "pack-2e3fdf1a",
+      "kr": "야외",
+      "sense": "Plein air, extérieur",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 69,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:12:07.126Z",
+      "asset": "pack-2e3fdf1a-073091e28bc8.webp",
+      "sha256": "073091e28bc86f7fe6afbeb911094eb560ab07a3cb9a11fd9a3f8c914cd86e61"
+    },
+    {
+      "id": "pack-8c3cc344",
+      "kr": "양보하다",
+      "sense": "Céder, faire une concession, laisser",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 70,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:12:07.133Z",
+      "asset": "pack-8c3cc344-933976ae9db7.webp",
+      "sha256": "933976ae9db7653a49df3b019f956064485d909225633fb058a2d6d23e1941e3"
+    },
+    {
+      "id": "pack-c3b3c3ae",
+      "kr": "양쪽",
+      "sense": "Les deux côtés, les deux camps",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 71,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:12:20.384Z",
+      "asset": "pack-c3b3c3ae-36e31af54605.webp",
+      "sha256": "36e31af54605a90d88c893f78325edb8a2131f5cc3027d02d38afe9a8552a00a"
+    },
+    {
+      "id": "pack-b1d96322",
+      "kr": "어긋나다",
+      "sense": "Se disloquer, se décaler ; diverger, ne pas concorder",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 72,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:12:42.199Z",
+      "asset": "pack-b1d96322-4a64751a373b.webp",
+      "sha256": "4a64751a373b78f70dffb3dab6532250b186e620e40772aaf508a83a2a9ee4b2"
+    },
+    {
+      "id": "pack-47afe2d2",
+      "kr": "어두워지다",
+      "sense": "S'assombrir, faire nuit peu à peu",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 73,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:13:31.287Z",
+      "asset": "pack-47afe2d2-5cb2d09045ab.webp",
+      "sha256": "5cb2d09045ab53b105081239810119327182b5e59b8b8e750cccae22908982ed"
+    },
+    {
+      "id": "pack-2714cfb7",
+      "kr": "어르신",
+      "sense": "Personne âgée respectée, aîné (terme respectueux)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 74,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:13:20.999Z",
+      "asset": "pack-2714cfb7-1f1cffa8623b.webp",
+      "sha256": "1f1cffa8623bbefb01059facb2b1950a2a87b259270ebbb1d7d28645a1338483"
+    },
+    {
+      "id": "pack-8734fc3a",
+      "kr": "얹다",
+      "sense": "Poser (sur), déposer par-dessus",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 75,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:14:33.412Z",
+      "asset": "pack-8734fc3a-cfc754629e05.webp",
+      "sha256": "cfc754629e05a282e39aa39134b07e48bea6332afe4cef9b468bf96be74d271f"
+    },
+    {
+      "id": "pack-776c6c8d",
+      "kr": "얼룩",
+      "sense": "Tache, salissure",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 76,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:14:59.341Z",
+      "asset": "pack-776c6c8d-0a1b7e513828.webp",
+      "sha256": "0a1b7e513828ce8c45c0972e7408b2bdf6c8922242d519af7d1d1212bd47773e"
+    },
+    {
+      "id": "pack-c2e9e985",
+      "kr": "없애다",
+      "sense": "Éliminer, supprimer, faire disparaître",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 77,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:14:12.302Z",
+      "asset": "pack-c2e9e985-3dea7fb0ba8d.webp",
+      "sha256": "3dea7fb0ba8d6d7b16857be1cb54346da59b3cbbccce43350d1629836aa7c1a0"
+    },
+    {
+      "id": "pack-b7c38ce5",
+      "kr": "여관",
+      "sense": "Auberge, petite hôtellerie traditionnelle",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 78,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:13:31.341Z",
+      "asset": "pack-b7c38ce5-627592aeb396.webp",
+      "sha256": "627592aeb3960bf8accc66f7e7d93b9d9e1cd9dbb68421d8e348bd01791b8799"
+    },
+    {
+      "id": "pack-01aa8665",
+      "kr": "여대생",
+      "sense": "Étudiante (à l'université)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 79,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:14:33.529Z",
+      "asset": "pack-01aa8665-86379835aea5.webp",
+      "sha256": "86379835aea561038e9f12dc68288094dc549cbf6a6f6047c78e1a6df39624d7"
+    },
+    {
+      "id": "pack-bf5cf331",
+      "kr": "여름휴가",
+      "sense": "Vacances d'été",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 80,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:14:54.296Z",
+      "asset": "pack-bf5cf331-7ff8f684f88b.webp",
+      "sha256": "7ff8f684f88b518c58aab5bac980d498cb1ce972b4107e4b399b535e056882bf"
+    },
+    {
+      "id": "pack-ac8de5bf",
+      "kr": "여유",
+      "sense": "Marge, aisance ; loisir (temps ou moyens)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 81,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:14:33.671Z",
+      "asset": "pack-ac8de5bf-0d4e0a7c124e.webp",
+      "sha256": "0d4e0a7c124e9cb20c54c82891f6a528375ef9203d1a23acb43b8e89a2887b38"
+    },
+    {
+      "id": "pack-b0ee777b",
+      "kr": "여유롭다",
+      "sense": "Être détendu, avoir du temps et de l'aisance",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 82,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:14:33.653Z",
+      "asset": "pack-b0ee777b-470c5d460899.webp",
+      "sha256": "470c5d460899b69cadc4b45dc26b892d83ae4550f431078f1a1965f3d7b75cff"
+    },
+    {
+      "id": "pack-f625db8b",
+      "kr": "여직원",
+      "sense": "Employée (femme)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 83,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:14:33.438Z",
+      "asset": "pack-f625db8b-c53d2f5a2d44.webp",
+      "sha256": "c53d2f5a2d44e540f3495fb16426870ffac9d637fdf1a66f3f96e55bcf9647a7"
+    },
+    {
+      "id": "pack-b887dcea",
+      "kr": "여쭈다",
+      "sense": "Demander (à un supérieur) [honorifique]",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 84,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:14:59.345Z",
+      "asset": "pack-b887dcea-392b3156aca6.webp",
+      "sha256": "392b3156aca6eea028c4314773645e9e0a5f08e43c31836928dde20fec744b17"
+    },
+    {
+      "id": "pack-ad50fcbd",
+      "kr": "여행가",
+      "sense": "Voyageur, globe-trotter",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 85,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:15:16.303Z",
+      "asset": "pack-ad50fcbd-8854431f0347.webp",
+      "sha256": "8854431f034755e54f7a2594f201dd8a891bc593a8f48023322ab9a6c2e83c69"
+    },
+    {
+      "id": "pack-b269d0bd",
+      "kr": "엮다",
+      "sense": "Tresser, assembler (en liant)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 86,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:15:55.213Z",
+      "asset": "pack-b269d0bd-ec7f258888c6.webp",
+      "sha256": "ec7f258888c6d3507c1d149edf516050e304064c5adbe03242a521fba513d742"
+    },
+    {
+      "id": "pack-91b47f1a",
+      "kr": "연구소",
+      "sense": "Institut de recherche, laboratoire",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 87,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:17:54.757Z",
+      "asset": "pack-91b47f1a-6a9ec4620552.webp",
+      "sha256": "6a9ec46205527d680fbaf753b93a636e67ea473ddefc6f1251942f12fb5fe81b"
+    },
+    {
+      "id": "pack-f7456db5",
+      "kr": "연구자",
+      "sense": "Chercheur, chercheuse",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 88,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:17:08.854Z",
+      "asset": "pack-f7456db5-f72a979965a3.webp",
+      "sha256": "f72a979965a3a31992b88f09a528f8712661b17a41246e6e913b098de1632c01"
+    },
+    {
+      "id": "pack-4b01ec80",
+      "kr": "연주회",
+      "sense": "Concert, récital",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 89,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:44:55.681Z",
+      "asset": "pack-4b01ec80-919dc8217da2.webp",
+      "sha256": "919dc8217da2a89b8107b31e86d8081f9fa5e1f8299a15910b6d255dbe1741ee"
+    },
+    {
+      "id": "pack-ae969aa0",
+      "kr": "연하다",
+      "sense": "Être tendre (viande) ; être doux, léger",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 90,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:15:26.361Z",
+      "asset": "pack-ae969aa0-f20682692ee5.webp",
+      "sha256": "f20682692ee5764bc3bcc96b86612a2bcffd3ff4168ac1a83663f8ce4b1191b5"
+    },
+    {
+      "id": "pack-b4d9209f",
+      "kr": "열리다",
+      "sense": "S'ouvrir ; se tenir (événement) ; (fruit) pousser",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 91,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:15:56.728Z",
+      "asset": "pack-b4d9209f-614852c7feb0.webp",
+      "sha256": "614852c7feb0466cba089b508423b23b7120703c01532202674714debf47831a"
+    },
+    {
+      "id": "pack-ecebe4b3",
+      "kr": "열중",
+      "sense": "Fait de se concentrer, application",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 92,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:17:54.119Z",
+      "asset": "pack-ecebe4b3-369bb0987a04.webp",
+      "sha256": "369bb0987a048c1119b3953047069f45884a145ad07d5d2bd5fd1460557b71bf"
+    },
+    {
+      "id": "pack-4f61bec1",
+      "kr": "염색",
+      "sense": "Teinture, coloration (des cheveux, tissus)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 93,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:16:28.225Z",
+      "asset": "pack-4f61bec1-2774b0f03b4d.webp",
+      "sha256": "2774b0f03b4ddb1c0a9bb9faa0f8007b438205f2f155243fb04a7de0db674f91"
+    },
+    {
+      "id": "pack-7cbcef93",
+      "kr": "영화감독",
+      "sense": "Réalisateur (de cinéma)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 94,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:16:28.204Z",
+      "asset": "pack-7cbcef93-e8e043527e83.webp",
+      "sha256": "e8e043527e83bbb0567ff5ab54445d0245e655772c740779a21f2132796cc4f7"
+    },
+    {
+      "id": "pack-9658f669",
+      "kr": "옆방",
+      "sense": "Chambre voisine, pièce d'à côté",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 95,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:16:28.249Z",
+      "asset": "pack-9658f669-857524b7050d.webp",
+      "sha256": "857524b7050d909270d33778fbc6b20514befc256dcaa8a623604b6c34474426"
+    },
+    {
+      "id": "pack-f883b2b0",
+      "kr": "예술가",
+      "sense": "Artiste",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 96,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:44:54.669Z",
+      "asset": "pack-f883b2b0-3d49f037a0b0.webp",
+      "sha256": "3d49f037a0b0843ebbee52bc0e34b46ca4da0b03660516e03284cf88cca22651"
+    },
+    {
+      "id": "pack-18ce5f7a",
+      "kr": "예절",
+      "sense": "Bonnes manières, savoir-vivre, étiquette",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 97,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:17:09.330Z",
+      "asset": "pack-18ce5f7a-6973f6d23788.webp",
+      "sha256": "6973f6d237885d772c3f004b4d4fe859b598f296f1cffd1796f70ec33590996d"
+    },
+    {
+      "id": "pack-b2b4ba7c",
+      "kr": "오가다",
+      "sense": "Aller et venir ; circuler (paroles, gens, objets)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 98,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:44:55.247Z",
+      "asset": "pack-b2b4ba7c-93d7779eed93.webp",
+      "sha256": "93d7779eed933f064671495d57f30c23354532300bcd9bb4d9af82ad8032e2a7"
+    },
+    {
+      "id": "pack-34df6410",
+      "kr": "오락실",
+      "sense": "Salle de jeux, salle d'arcade",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 99,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:18:25.930Z",
+      "asset": "pack-34df6410-3bc038221f62.webp",
+      "sha256": "3bc038221f62ccb40898fe56ac751d70d9ab7c2463a27b2eebfc4ad69b3b90d7"
+    },
+    {
+      "id": "pack-ac94c28a",
+      "kr": "오피스텔",
+      "sense": "Studio-appartement (habitation-bureau)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 100,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:44:57.109Z",
+      "asset": "pack-ac94c28a-5d1d75de5616.webp",
+      "sha256": "5d1d75de561607a015e1a9c81014720b9e80597f3632d8237de9b8bd4e08a1fc"
+    },
+    {
+      "id": "pack-4e4f5387",
+      "kr": "올려놓다",
+      "sense": "Poser (dessus), déposer sur",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 101,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:18:25.417Z",
+      "asset": "pack-4e4f5387-b455a33c76ff.webp",
+      "sha256": "b455a33c76ff9bf506304c3c887b6428b4f12b60ed77d58f5c0e4df194b34b50"
+    },
+    {
+      "id": "pack-eb7e6b22",
+      "kr": "외교관",
+      "sense": "Diplomate",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 102,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:18:25.965Z",
+      "asset": "pack-eb7e6b22-7bbefb9e7073.webp",
+      "sha256": "7bbefb9e70734b1a9cabbfecb5d9edf789956dcb6c6da0c84541e35a49e8e27a"
+    },
+    {
+      "id": "pack-45749106",
+      "kr": "외면",
+      "sense": "Fait de détourner le regard ; rejet, mise à l'écart",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 103,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:18:54.022Z",
+      "asset": "pack-45749106-3048a82dcb9c.webp",
+      "sha256": "3048a82dcb9cd4609f710eadca83ae6c51e4514b91be7bab8f352ce67b998bca"
+    },
+    {
+      "id": "pack-f4fc5a6e",
+      "kr": "외식",
+      "sense": "Repas au restaurant, fait de manger dehors",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 104,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:20:39.658Z",
+      "asset": "pack-f4fc5a6e-d4a7d5838f1f.webp",
+      "sha256": "d4a7d5838f1ff532278b443deccae9296f9edcc175722933e9f907f45f839903"
+    },
+    {
+      "id": "pack-949854b4",
+      "kr": "외할머니",
+      "sense": "Grand-mère maternelle",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 105,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:19:58.752Z",
+      "asset": "pack-949854b4-c90532bd6e44.webp",
+      "sha256": "c90532bd6e444c8b119495d13e230330baa40757a212958791a1cda84bfb9d40"
+    },
+    {
+      "id": "pack-5610f731",
+      "kr": "용품",
+      "sense": "Articles, fournitures (d'usage)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 106,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:21:34.495Z",
+      "asset": "pack-5610f731-aba062fe02f3.webp",
+      "sha256": "aba062fe02f31bda328847859f063b67f89224d783cc9c96acb566659eb9a6ea"
+    },
+    {
+      "id": "pack-894badc3",
+      "kr": "우승",
+      "sense": "Victoire, titre de champion",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 107,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:23:05.433Z",
+      "asset": "pack-894badc3-8c7879c59a04.webp",
+      "sha256": "8c7879c59a043aee2518615191e9a666290474303be519ba5ea0a557f3d1fcaa"
+    },
+    {
+      "id": "pack-7908d34b",
+      "kr": "우승하다",
+      "sense": "Remporter la victoire, être champion",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 108,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:19:28.875Z",
+      "asset": "pack-7908d34b-3a195018891c.webp",
+      "sha256": "3a195018891c7c66cf52979553a63092237c3f6424b98491e03661cfcd5fd592"
+    },
+    {
+      "id": "pack-2dc79ebc",
+      "kr": "운동선수",
+      "sense": "Athlète, sportif (professionnel)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 109,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:20:39.658Z",
+      "asset": "pack-2dc79ebc-2309131ba428.webp",
+      "sha256": "2309131ba4285560f1c909d40d19b5914b4cf37099307e0a691149f109652eab"
+    },
+    {
+      "id": "pack-81eaf9dd",
+      "kr": "운전기사",
+      "sense": "Chauffeur (professionnel)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 110,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:20:27.072Z",
+      "asset": "pack-81eaf9dd-d7c86acd9e2b.webp",
+      "sha256": "d7c86acd9e2ba54bf1857f0a2d6fd934527c3b639eaba9e4a7ed78b835595b37"
+    },
+    {
+      "id": "pack-293d8d08",
+      "kr": "운전자",
+      "sense": "Conducteur (d'un véhicule)",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 111,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:21:34.482Z",
+      "asset": "pack-293d8d08-634e3d4e0d67.webp",
+      "sha256": "634e3d4e0d677279cd1d9b0938506de2e7fef8f133eb5d821e407d6700df90cf"
+    },
+    {
+      "id": "pack-b88d7b94",
+      "kr": "울리다",
+      "sense": "Sonner, retentir ; faire pleurer",
+      "usage": "support",
+      "cefr": "B1",
+      "rank": 112,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:23:05.409Z",
+      "asset": "pack-b88d7b94-c6049a435414.webp",
+      "sha256": "c6049a435414558493d3ecbb31a63b99c38fee67a98f802ec697b9420534e16b"
+    },
+    {
+      "id": "pack-f8195fe3",
+      "kr": "사회자",
+      "sense": "Animateur, présentateur (d'un événement)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 113,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:20:27.071Z",
+      "asset": "pack-f8195fe3-bbb658b1d393.webp",
+      "sha256": "bbb658b1d393be6eedf608466d4ee751a25002d23155a47edf0fff63cbf38a3b"
+    },
+    {
+      "id": "pack-2364c32d",
+      "kr": "산길",
+      "sense": "Sentier de montagne, chemin de montagne",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 114,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:23:05.434Z",
+      "asset": "pack-2364c32d-d668e92e6817.webp",
+      "sha256": "d668e92e68173f425f4fb93fa9be046d56ed5da8a0aea3a16212d6a0bd943961"
+    },
+    {
+      "id": "pack-bfbfc8b5",
+      "kr": "산업",
+      "sense": "Industrie",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 115,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:21:34.473Z",
+      "asset": "pack-bfbfc8b5-a8ecea65bcc3.webp",
+      "sha256": "a8ecea65bcc3d483b7ce7abe8dac821fc2a8fbbeab5dd6b3ea42c4a808599c98"
+    },
+    {
+      "id": "pack-259e1526",
+      "kr": "살림",
+      "sense": "Train de vie, gestion du foyer, ménage",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 116,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:22:31.620Z",
+      "asset": "pack-259e1526-1ab300274fca.webp",
+      "sha256": "1ab300274fca116a52edd13c2066353dde11de95249ada1a3b4268025d591403"
+    },
+    {
+      "id": "pack-1bd39023",
+      "kr": "살피다",
+      "sense": "Examiner, observer attentivement, scruter",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 117,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:23:38.993Z",
+      "asset": "pack-1bd39023-912c75d1b138.webp",
+      "sha256": "912c75d1b13861150d27980adda8f7435659e7e4a18b8f21db0808b61ea223b7"
+    },
+    {
+      "id": "pack-c023a4c5",
+      "kr": "상담",
+      "sense": "Consultation, entretien conseil",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 118,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:22:07.904Z",
+      "asset": "pack-c023a4c5-663429caafb6.webp",
+      "sha256": "663429caafb61dfdb676357f38e7d338589a344a8b4bf377efd851609736754b"
+    },
+    {
+      "id": "pack-74e90af9",
+      "kr": "상대편",
+      "sense": "Camp adverse, partie adverse, l'autre camp",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 119,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:22:38.033Z",
+      "asset": "pack-74e90af9-f07916e814e3.webp",
+      "sha256": "f07916e814e3fd1209bd93ad8a4e4e82afb9f709e8bdcb33481517566eb542e4"
+    },
+    {
+      "id": "pack-4714efa9",
+      "kr": "상업",
+      "sense": "Commerce, activité commerciale",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 120,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:23:12.456Z",
+      "asset": "pack-4714efa9-09b116957a32.webp",
+      "sha256": "09b116957a32453fd76c27094572ff0b277bf7ea27dc04f6f6fb8caa2fcbfb4a"
+    },
+    {
+      "id": "pack-9f66ded3",
+      "kr": "상점",
+      "sense": "Boutique, magasin",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 121,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:23:06.147Z",
+      "asset": "pack-9f66ded3-a83049f90618.webp",
+      "sha256": "a83049f906189bc32c5eaeef064fa717e55dd9d4da8f2fb503d152b6d9f6ce93"
+    },
+    {
+      "id": "pack-db9996fa",
+      "kr": "새기다",
+      "sense": "Graver, sculpter ; garder en mémoire",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 122,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:23:04.003Z",
+      "asset": "pack-db9996fa-d4273157919b.webp",
+      "sha256": "d4273157919b97dc7c2bd06642cd59ced8c5f974e13bf7d80ca5dc56038f26f4"
+    },
+    {
+      "id": "pack-f83c755e",
+      "kr": "새다",
+      "sense": "Fuir, s'échapper (liquide, lumière)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 123,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:23:38.982Z",
+      "asset": "pack-f83c755e-5d94a68ebbd1.webp",
+      "sha256": "5d94a68ebbd1411a62f77255a524026047af78469df296a36554c65d436b47ff"
+    },
+    {
+      "id": "pack-cbe90a97",
+      "kr": "생방송",
+      "sense": "Diffusion en direct",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 124,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:23:38.989Z",
+      "asset": "pack-cbe90a97-c85b34135bb0.webp",
+      "sha256": "c85b34135bb0805142e11501c7f7c5c3a6e7498da5befb7d7d5df7973f60f192"
+    },
+    {
+      "id": "pack-88f7ae58",
+      "kr": "생산",
+      "sense": "Production, fabrication",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 125,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:25:53.465Z",
+      "asset": "pack-88f7ae58-4236b014ab80.webp",
+      "sha256": "4236b014ab80b2e7133d4a2f8eff76db51f5f6320dbd9982c5739b525709d2d7"
+    },
+    {
+      "id": "pack-d140f5c0",
+      "kr": "서서히",
+      "sense": "Progressivement, lentement",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 126,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:25:14.655Z",
+      "asset": "pack-d140f5c0-52e263b731f8.webp",
+      "sha256": "52e263b731f8d4ea80ae8c78346bfcf0a3aff93bcbeb566c84e371926c1af671"
+    },
+    {
+      "id": "pack-22dc8896",
+      "kr": "선",
+      "sense": "Ligne, trait",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 127,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:25:08.567Z",
+      "asset": "pack-22dc8896-71b420b13c5f.webp",
+      "sha256": "71b420b13c5fcb5f18cb4caf7dfa2a844b858e79e1814631f628b5fdb6713422"
+    },
+    {
+      "id": "pack-9d1b920d",
+      "kr": "소음",
+      "sense": "Bruit, nuisance sonore",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 128,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:25:53.422Z",
+      "asset": "pack-9d1b920d-a0db8321df1b.webp",
+      "sha256": "a0db8321df1b310c0f6d54fb242de1697868337ef04daee28cbb6fcecf8a9a0f"
+    },
+    {
+      "id": "pack-85884279",
+      "kr": "소재",
+      "sense": "Matériau ; matière (d'une œuvre)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 129,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:25:53.434Z",
+      "asset": "pack-85884279-e6b810efba1c.webp",
+      "sha256": "e6b810efba1c8d26ef43244f6d47a6ddadb3f03d1b0dfa7603faeb84592b1221"
+    },
+    {
+      "id": "pack-e6d43626",
+      "kr": "소중히",
+      "sense": "Précieusement, avec soin",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 130,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:24:41.680Z",
+      "asset": "pack-e6d43626-637e17479893.webp",
+      "sha256": "637e1747989318fbf1ec4866c8bf1bf563ff772dec081104231735f52ebbd99c"
+    },
+    {
+      "id": "pack-c63a99c3",
+      "kr": "소형",
+      "sense": "Petit format, petit modèle",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 131,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:26:20.134Z",
+      "asset": "pack-c63a99c3-088e6d5cbc46.webp",
+      "sha256": "088e6d5cbc464dbb6dc8828db490bf7df3ebe751cbfeafd226d3826e3b31db40"
+    },
+    {
+      "id": "pack-7e9c5ada",
+      "kr": "손길",
+      "sense": "Main tendue, aide",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 132,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:27:04.406Z",
+      "asset": "pack-7e9c5ada-94377bb7d6c9.webp",
+      "sha256": "94377bb7d6c90acf2da6248946d766ed8417a459218e46c84638d8930131d1da"
+    },
+    {
+      "id": "pack-30618418",
+      "kr": "손등",
+      "sense": "Dos de la main",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 133,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:25:45.569Z",
+      "asset": "pack-30618418-71f6d55aba95.webp",
+      "sha256": "71f6d55aba951c75824e47325c4c4e709c483c29276f8938757bbb94cb352884"
+    },
+    {
+      "id": "pack-06cb2751",
+      "kr": "손잡다",
+      "sense": "Se donner la main ; s'allier",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 134,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:25:45.601Z",
+      "asset": "pack-06cb2751-6fe503169708.webp",
+      "sha256": "6fe503169708316d6b8f24da372bef49b18a0640a4ccffa104f1dc19f1d1b7f7"
+    },
+    {
+      "id": "pack-d81aa9b7",
+      "kr": "손질",
+      "sense": "Soin, entretien (des cheveux, etc.)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 135,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:26:20.162Z",
+      "asset": "pack-d81aa9b7-f2af729a9e13.webp",
+      "sha256": "f2af729a9e1353bb07ade6edfa2fc38b89a848f6a1321cb79527a6a1a1c430d3"
+    },
+    {
+      "id": "pack-8e27943c",
+      "kr": "솜씨",
+      "sense": "Habileté, savoir-faire, talent",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 136,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:27:22.122Z",
+      "asset": "pack-8e27943c-0eb41b426a2f.webp",
+      "sha256": "0eb41b426a2f5652229d550c91be5cd2187d0fe1ff45193359b5e22f888a89cd"
+    },
+    {
+      "id": "pack-00852b9e",
+      "kr": "솟다",
+      "sense": "Jaillir, monter en flèche",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 137,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:27:04.415Z",
+      "asset": "pack-00852b9e-daf6a87786ee.webp",
+      "sha256": "daf6a87786eee4c4b4b56918229b405eb06c3f4bf2b8e50ca62b8fee40783fb1"
+    },
+    {
+      "id": "pack-56d47db4",
+      "kr": "수면",
+      "sense": "Sommeil",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 138,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:27:32.125Z",
+      "asset": "pack-56d47db4-7e9bcecd1006.webp",
+      "sha256": "7e9bcecd1006ecf2bf481c58330dbf3cee533b23f4eeb95345e90fa1eb294eac"
+    },
+    {
+      "id": "pack-c5b9a11e",
+      "kr": "수집",
+      "sense": "Collection, collecte",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 139,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:28:14.088Z",
+      "asset": "pack-c5b9a11e-f6c188cd6a78.webp",
+      "sha256": "f6c188cd6a78dc1a20ebd3aa9d1876092250b5442be8cc21d4333bf9a4d8a77a"
+    },
+    {
+      "id": "pack-fca3bc65",
+      "kr": "순하다",
+      "sense": "Être doux, docile",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 140,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:29:25.747Z",
+      "asset": "pack-fca3bc65-4af488e3770d.webp",
+      "sha256": "4af488e3770da228bb2a8432d94d3bf9973c9a961935f544e044c63d50d01cac"
+    },
+    {
+      "id": "pack-a4931ac6",
+      "kr": "숨기다",
+      "sense": "Cacher, dissimuler",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 141,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:27:22.121Z",
+      "asset": "pack-a4931ac6-6ea90200a6eb.webp",
+      "sha256": "6ea90200a6eb9b8340cc7f71ec67b4f9129d7492a49170422235d6eb4155cdaf"
+    },
+    {
+      "id": "pack-7c882acf",
+      "kr": "스치다",
+      "sense": "Frôler, effleurer",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 142,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:28:04.950Z",
+      "asset": "pack-7c882acf-3103dfaafc21.webp",
+      "sha256": "3103dfaafc21a37326c2ac94d57549f44508d73d800e3a4de5b608bb2ccf98b0"
+    },
+    {
+      "id": "pack-2bec30f2",
+      "kr": "스튜디오",
+      "sense": "Studio (enregistrement, tournage)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 143,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:27:31.868Z",
+      "asset": "pack-2bec30f2-01f2e815bcbf.webp",
+      "sha256": "01f2e815bcbff3f0a207326be9778ab5674471b3281333a5454e174e20a7770f"
+    },
+    {
+      "id": "pack-69be4099",
+      "kr": "습기",
+      "sense": "Humidité",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 144,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:28:46.207Z",
+      "asset": "pack-69be4099-47e29a42a94f.webp",
+      "sha256": "47e29a42a94f509e6d4e8f8bba9a5afe7bd3e8cb245a135528a5be5fc03464d3"
+    },
+    {
+      "id": "pack-3df36185",
+      "kr": "승객",
+      "sense": "Passager, voyageur",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 145,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:28:33.991Z",
+      "asset": "pack-3df36185-11acdfce0e74.webp",
+      "sha256": "11acdfce0e7455e87f4d7ffa24b222183a3302e4589b2f0f8be4ed9bece336f9"
+    },
+    {
+      "id": "pack-b587dafb",
+      "kr": "시도",
+      "sense": "Tentative, essai",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 146,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:30:38.971Z",
+      "asset": "pack-b587dafb-7dc8e0323b46.webp",
+      "sha256": "7dc8e0323b46d76bdf7b7cc11b92e4d4804f60e6e7977460cffdeff7a03a2883"
+    },
+    {
+      "id": "pack-a6cac9f7",
+      "kr": "시들다",
+      "sense": "Se faner, se flétrir",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 147,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:28:02.110Z",
+      "asset": "pack-a6cac9f7-a0ea0b0e6abb.webp",
+      "sha256": "a0ea0b0e6abb0b81f9419f12931617641056b8c5cb10006f09b32a811dff30b7"
+    },
+    {
+      "id": "pack-ad54f543",
+      "kr": "시선",
+      "sense": "Regard, ligne du regard",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 148,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:28:51.963Z",
+      "asset": "pack-ad54f543-bc4de35ab2f3.webp",
+      "sha256": "bc4de35ab2f383aef053769bbfb4366c5f05f17d7b2a52597a4f19a60bc2d5f7"
+    },
+    {
+      "id": "pack-009cf56a",
+      "kr": "시야",
+      "sense": "Champ de vision",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 149,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:29:03.993Z",
+      "asset": "pack-009cf56a-82d3b9cc8be3.webp",
+      "sha256": "82d3b9cc8be3f89334fbb39f3298fdcccbbabc04a0ae92c2d9c4a1a2873b69b1"
+    },
+    {
+      "id": "pack-579fe22d",
+      "kr": "시합",
+      "sense": "Match, compétition",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 150,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:30:38.967Z",
+      "asset": "pack-579fe22d-11eb6eaf7bfa.webp",
+      "sha256": "11eb6eaf7bfa849ab862fb13b41e9a538da6666a5f8610009633e3887271e2cf"
+    },
+    {
+      "id": "pack-cd973355",
+      "kr": "식품점",
+      "sense": "Épicerie, magasin d'alimentation",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 151,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:28:51.878Z",
+      "asset": "pack-cd973355-f98dfc54a4d6.webp",
+      "sha256": "f98dfc54a4d67dc38eb6ee5e2a33d67a489402415a7e654a4f23095104f44c3d"
+    },
+    {
+      "id": "pack-7e49e073",
+      "kr": "식히다",
+      "sense": "Faire refroidir, laisser tiédir",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 152,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:30:01.336Z",
+      "asset": "pack-7e49e073-3eca40a13b09.webp",
+      "sha256": "3eca40a13b0998300e49230a622abb25e03427b603b6fe1e1208eb989247f585"
+    },
+    {
+      "id": "pack-969152f2",
+      "kr": "신부",
+      "sense": "Prêtre (catholique)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 153,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:30:38.024Z",
+      "asset": "pack-969152f2-52a3c39de8cd.webp",
+      "sha256": "52a3c39de8cd9fa5a450581b86dddcb514ee566cd00316723ae8541fb44df8b9"
+    },
+    {
+      "id": "pack-8698bfd8",
+      "kr": "실리다",
+      "sense": "Être chargé (sur un véhicule), être publié (dans un journal)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 154,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:29:25.747Z",
+      "asset": "pack-8698bfd8-c12f82cb0f7b.webp",
+      "sha256": "c12f82cb0f7bcdaf8c98b5b561a97e57fddf17dd6a68da3206debdc7cee21054"
+    },
+    {
+      "id": "pack-535c58b4",
+      "kr": "실습",
+      "sense": "Stage pratique, exercice d'application",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 155,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:30:45.009Z",
+      "asset": "pack-535c58b4-266cf510e149.webp",
+      "sha256": "266cf510e1498d3139adb6bb9b7ca2629817b356ef9f4460f95f4750ec1fac56"
+    },
+    {
+      "id": "pack-9a448e86",
+      "kr": "심판",
+      "sense": "Jugement, arbitrage (sport), arbitre",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 156,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:31:55.075Z",
+      "asset": "pack-9a448e86-5f5339663276.webp",
+      "sha256": "5f5339663276eb1a9faf3cece059759040c8c0e78939c8eb511e7ce78e6f4229"
+    },
+    {
+      "id": "pack-91dff950",
+      "kr": "쌍",
+      "sense": "Paire, couple",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 157,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:39:03.810Z",
+      "asset": "pack-91dff950-f27467d9d7bf.webp",
+      "sha256": "f27467d9d7bf7d3c8be52d1ce98f8602f8cf69bbd33d5b59cd04f1f18ee90bea"
+    },
+    {
+      "id": "pack-f6c8856c",
+      "kr": "쌍둥이",
+      "sense": "Jumeaux, jumelles",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 158,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:31:16.495Z",
+      "asset": "pack-f6c8856c-d1831c0fd02a.webp",
+      "sha256": "d1831c0fd02a99568038c18d885e023466797386872db7dfd1068b2e5c9a2509"
+    },
+    {
+      "id": "pack-e29ce8f1",
+      "kr": "썰렁하다",
+      "sense": "Être glacial, désert et froid, sans ambiance",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 159,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:30:45.095Z",
+      "asset": "pack-e29ce8f1-0c86efd11556.webp",
+      "sha256": "0c86efd1155677e631de99f72918fe529808f926853c4c52dc07e0f69d2fe465"
+    },
+    {
+      "id": "pack-86feaab3",
+      "kr": "쓰다듬다",
+      "sense": "Caresser, flatter (de la main)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 160,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:31:56.008Z",
+      "asset": "pack-86feaab3-01ddd6a2d2ef.webp",
+      "sha256": "01ddd6a2d2efb49799e6de055bd2483496bca7e5510d09212e90940678018ae3"
+    },
+    {
+      "id": "pack-2920df22",
+      "kr": "쓴맛",
+      "sense": "Goût amer, amertume",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 161,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:32:16.425Z",
+      "asset": "pack-2920df22-9c0ab9c1361d.webp",
+      "sha256": "9c0ab9c1361d502727f1895bff3e7fd8a1d90f5919c146e135fa1f9ceb21242c"
+    },
+    {
+      "id": "pack-528b11fc",
+      "kr": "쓸다",
+      "sense": "Balayer",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 162,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:33:19.275Z",
+      "asset": "pack-528b11fc-48fbfc8788e4.webp",
+      "sha256": "48fbfc8788e4f0b43dff4370fd9bbd244f8a9383b2c3e6d24f68fe69d54ff16a"
+    },
+    {
+      "id": "pack-e3ba3701",
+      "kr": "씌우다",
+      "sense": "Coiffer, mettre (un couvre-chef à qqn), recouvrir",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 163,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:33:24.797Z",
+      "asset": "pack-e3ba3701-3b41f7ae2b31.webp",
+      "sha256": "3b41f7ae2b31879e388dc7e3f9e16dc3ebc500df1c46d9f71704197da7a7518b"
+    },
+    {
+      "id": "pack-4075d977",
+      "kr": "안과",
+      "sense": "Ophtalmologie, service d'ophtalmologie",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 164,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:31:13.905Z",
+      "asset": "pack-4075d977-a5b1f798d952.webp",
+      "sha256": "a5b1f798d952641c3791ef713f1a44a9765ca1d5252a37f70189f4bdce749b99"
+    },
+    {
+      "id": "pack-fb50f016",
+      "kr": "안기다",
+      "sense": "Être pris dans les bras, être étreint",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 165,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:31:43.394Z",
+      "asset": "pack-fb50f016-c3ba92158fc3.webp",
+      "sha256": "c3ba92158fc35a09caf9df8500935b8df34a262c160b62c1dfbd6141a88722ff"
+    },
+    {
+      "id": "pack-31eeed2c",
+      "kr": "안팎",
+      "sense": "L'intérieur et l'extérieur, le dedans et le dehors",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 166,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:33:02.638Z",
+      "asset": "pack-31eeed2c-4f577f19a574.webp",
+      "sha256": "4f577f19a574346a1e4ea0bc0da7dff4b826637a29e071225b160bd9ec8aa96a"
+    },
+    {
+      "id": "pack-bd25bc10",
+      "kr": "앉히다",
+      "sense": "Faire asseoir, installer (qqn à une place)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 167,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:33:19.231Z",
+      "asset": "pack-bd25bc10-93625febf4c0.webp",
+      "sha256": "93625febf4c033bbe35a4d414f504d0c55b44ed9b085b7fffbc43c3a57b75501"
+    },
+    {
+      "id": "pack-6971c6bc",
+      "kr": "앞세우다",
+      "sense": "Mettre en avant, faire passer devant",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 168,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:32:16.445Z",
+      "asset": "pack-6971c6bc-d484ebda756f.webp",
+      "sha256": "d484ebda756f193ad28689e5e2f33494d7173157a22a5c4359ce079eba944480"
+    },
+    {
+      "id": "pack-4f8da727",
+      "kr": "앞장서다",
+      "sense": "Prendre la tête, se mettre en tête, montrer l'exemple",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 169,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:33:24.825Z",
+      "asset": "pack-4f8da727-22c1740fbd93.webp",
+      "sha256": "22c1740fbd93a3f0c76be3badcb7688cde101bf1a1a2b668109642fd4e681753"
+    },
+    {
+      "id": "pack-5d8ed4a7",
+      "kr": "애쓰다",
+      "sense": "S'efforcer, faire des efforts, peiner",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 170,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:36:34.777Z",
+      "asset": "pack-5d8ed4a7-adfb53f3e1ea.webp",
+      "sha256": "adfb53f3e1ea44ac18eaeb70a87d93c9a7b14920374d9c71a8f2fcdb5dc277f3"
+    },
+    {
+      "id": "pack-bf1cfb3c",
+      "kr": "야간",
+      "sense": "Nuit, période nocturne",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 171,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:32:47.406Z",
+      "asset": "pack-bf1cfb3c-d09551d1a233.webp",
+      "sha256": "d09551d1a2335d20eb8e852ee9017f07886c08833142b8fa678dd17b5f732449"
+    },
+    {
+      "id": "pack-cc1ba56b",
+      "kr": "야옹",
+      "sense": "Miaou (cri du chat)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 172,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:33:19.257Z",
+      "asset": "pack-cc1ba56b-a727d7a9a9bb.webp",
+      "sha256": "a727d7a9a9bb5a9c3f66d1e874b6b8887c2536965266b4f28632cc3c583c33ff"
+    },
+    {
+      "id": "pack-f823bc1b",
+      "kr": "양보",
+      "sense": "Concession, fait de céder",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 173,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:35:15.399Z",
+      "asset": "pack-f823bc1b-be49787320b8.webp",
+      "sha256": "be49787320b868fe366d76e836ecc6d05152a94b06dc537fe5866b5e7950d76f"
+    },
+    {
+      "id": "pack-00ecf22d",
+      "kr": "양옆",
+      "sense": "Les deux côtés, de part et d'autre",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 174,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:33:53.202Z",
+      "asset": "pack-00ecf22d-9db4151a2d23.webp",
+      "sha256": "9db4151a2d23478108c4541bc680d309b51cb7d296d2de1f4a8239f743d1ee40"
+    },
+    {
+      "id": "pack-cd272749",
+      "kr": "얻어먹다",
+      "sense": "Se faire offrir (à manger), mendier sa nourriture",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 175,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:34:30.502Z",
+      "asset": "pack-cd272749-24b5fe7c80b8.webp",
+      "sha256": "24b5fe7c80b8c3232294596a133f60155729decefd6dc306b13c3b4cf763fd5a"
+    },
+    {
+      "id": "pack-1977c11a",
+      "kr": "얼리다",
+      "sense": "Congeler, faire geler",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 176,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:35:48.126Z",
+      "asset": "pack-1977c11a-c320de0f68dd.webp",
+      "sha256": "c320de0f68ddb3d89c621888afef8c83c18f9de28aa76745a1d52e3aeb6ae9bc"
+    },
+    {
+      "id": "pack-eec938df",
+      "kr": "엉망",
+      "sense": "Fouillis, désordre total",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 177,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:35:48.136Z",
+      "asset": "pack-eec938df-6535a7e65289.webp",
+      "sha256": "6535a7e6528943fa98fcb83cd150b3571084f2cb2cd50cd0138352d489f473a0"
+    },
+    {
+      "id": "pack-390b871c",
+      "kr": "엎드리다",
+      "sense": "S'allonger à plat ventre, se coucher face contre terre",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 178,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:36:00.883Z",
+      "asset": "pack-390b871c-d95e358120ae.webp",
+      "sha256": "d95e358120aed7ae10ad2397330af68ec649c5bd38000d727e8c5b95f3307fe5"
+    },
+    {
+      "id": "pack-f127ef73",
+      "kr": "연구실",
+      "sense": "Bureau de recherche, salle d'étude (d'un chercheur)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 179,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:37:37.391Z",
+      "asset": "pack-f127ef73-a2dfe0d62dee.webp",
+      "sha256": "a2dfe0d62dee800afa4357345880660477cd51d4fa0564f67ce909bf31896edd"
+    },
+    {
+      "id": "pack-60eacb1e",
+      "kr": "연구원",
+      "sense": "Chercheur, scientifique",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 180,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:34:30.477Z",
+      "asset": "pack-60eacb1e-d0f34f5b21eb.webp",
+      "sha256": "d0f34f5b21eb1b1abd187d2a510d1535d506e0ceb35daac46306a83416c4013a"
+    },
+    {
+      "id": "pack-75d29da8",
+      "kr": "연기자",
+      "sense": "Acteur, comédien (interprète)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 181,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:35:48.160Z",
+      "asset": "pack-75d29da8-93f3f73eadd7.webp",
+      "sha256": "93f3f73eadd79fa1423c231fb465423e83ee1b779dd5be953f42c65c3140e3f6"
+    },
+    {
+      "id": "pack-c9224253",
+      "kr": "연설",
+      "sense": "Discours, allocution",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 182,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:35:48.118Z",
+      "asset": "pack-c9224253-497bd28255db.webp",
+      "sha256": "497bd28255db4e1ed1270da022d2b57a500ae7482b0c27b0f33c951143556fa5"
+    },
+    {
+      "id": "pack-7c0ed592",
+      "kr": "연인",
+      "sense": "Amoureux, amant, bien-aimé",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 183,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:37:02.198Z",
+      "asset": "pack-7c0ed592-0673243c6403.webp",
+      "sha256": "0673243c6403b7af5cdffa322213bfe8868057c42f24b2caf97eba85e7c4d1e6"
+    },
+    {
+      "id": "pack-e5637183",
+      "kr": "열기",
+      "sense": "Chaleur, air chaud ; ardeur",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 184,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:38:26.344Z",
+      "asset": "pack-e5637183-9bbb4df1e663.webp",
+      "sha256": "9bbb4df1e6633eae90dd3df34d54fbd814f2133b40d421998a8833ee6082c5c2"
+    },
+    {
+      "id": "pack-7d031e78",
+      "kr": "영업",
+      "sense": "Activité commerciale, exploitation (d'un commerce)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 185,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:36:28.076Z",
+      "asset": "pack-7d031e78-b551aa946f8e.webp",
+      "sha256": "b551aa946f8ef625da1297c90617462a95bfe2f426aaff05611ea57222cedfc6"
+    },
+    {
+      "id": "pack-46a5732c",
+      "kr": "예식장",
+      "sense": "Salle des mariages, salle de cérémonie",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 186,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:39:03.813Z",
+      "asset": "pack-46a5732c-dc199a65c878.webp",
+      "sha256": "dc199a65c878d43c86db9439a33b0c5886d101d906fd319647265652bb0afba8"
+    },
+    {
+      "id": "pack-707a9ba3",
+      "kr": "오르내리다",
+      "sense": "Monter et descendre ; fluctuer",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 187,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:39:41.311Z",
+      "asset": "pack-707a9ba3-6d00b0b26990.webp",
+      "sha256": "6d00b0b26990a785ca03e155f60bb0ba87f6c05e67f88927e5729f88b37a7f1b"
+    },
+    {
+      "id": "pack-c2db7b8c",
+      "kr": "오페라",
+      "sense": "Opéra",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 188,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:38:26.367Z",
+      "asset": "pack-c2db7b8c-bd82cd5e78b9.webp",
+      "sha256": "bd82cd5e78b90f978bedaa5517091c119617da7f8846211bda7bcf76f55f6260"
+    },
+    {
+      "id": "pack-ba8bb1c6",
+      "kr": "올라서다",
+      "sense": "Monter (sur), grimper (sur) ; accéder à un rang",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 189,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:38:26.315Z",
+      "asset": "pack-ba8bb1c6-d9cacd5d749b.webp",
+      "sha256": "d9cacd5d749b4209898e88fc63748d14637ce9e6adcc84f4fded04a08aba2d52"
+    },
+    {
+      "id": "pack-9c8a77d4",
+      "kr": "올려다보다",
+      "sense": "Lever les yeux vers, regarder vers le haut",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 190,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:39:41.257Z",
+      "asset": "pack-9c8a77d4-f486c3e30e50.webp",
+      "sha256": "f486c3e30e504187d11bd5663bd4f609500d6b1fa2ee6cfa0c7e265d93b83022"
+    },
+    {
+      "id": "pack-c79caf15",
+      "kr": "옷차림",
+      "sense": "Tenue, mise, façon de s'habiller",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 191,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:39:03.841Z",
+      "asset": "pack-c79caf15-c1d4058dd369.webp",
+      "sha256": "c1d4058dd36973a93c3b18ee1055c37b533e71edc494a0b8a7569c97f50ccf77"
+    },
+    {
+      "id": "pack-132eea61",
+      "kr": "완성",
+      "sense": "Achèvement, accomplissement",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 192,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:40:12.058Z",
+      "asset": "pack-132eea61-84351d795ac7.webp",
+      "sha256": "84351d795ac7571a425e7a68903329d02fa50ec4e4cd5d71fbbee607143ba14e"
+    },
+    {
+      "id": "pack-7ab42c0e",
+      "kr": "외부",
+      "sense": "Extérieur, dehors, partie externe",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 193,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:41:51.335Z",
+      "asset": "pack-7ab42c0e-8bbb022ad241.webp",
+      "sha256": "8bbb022ad241191ae042e5483479819617c1d18c2fdfc6fedb496874e6699c39"
+    },
+    {
+      "id": "pack-c9cb3855",
+      "kr": "외치다",
+      "sense": "Crier, s'écrier, s'exclamer",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 194,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:40:54.462Z",
+      "asset": "pack-c9cb3855-ee8d500a0ee0.webp",
+      "sha256": "ee8d500a0ee0fb735f50bddcc0caaa7473b1fbb40f8ddc4e733296731986780a"
+    },
+    {
+      "id": "pack-06c55893",
+      "kr": "외할아버지",
+      "sense": "Grand-père maternel",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 195,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:41:28.247Z",
+      "asset": "pack-06c55893-41d1b07ac7ee.webp",
+      "sha256": "41d1b07ac7ee542b395ac3ff34e6fa7746f85ffc7b82344045f84d7271ba68c7"
+    },
+    {
+      "id": "pack-c3b6f20b",
+      "kr": "우아하다",
+      "sense": "Être élégant, gracieux",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 196,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:40:12.041Z",
+      "asset": "pack-c3b6f20b-514c77d74988.webp",
+      "sha256": "514c77d74988f537fe5cc26a77547b95ed6130c8867a1c016e34543ae13e22ac"
+    },
+    {
+      "id": "pack-ce3f6ad9",
+      "kr": "우정",
+      "sense": "Amitié",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 197,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:41:20.445Z",
+      "asset": "pack-ce3f6ad9-acfd6e55706b.webp",
+      "sha256": "acfd6e55706ba4310f4f7f1049275d07d0fd51308196c0076e6d0b3f59f93080"
+    },
+    {
+      "id": "pack-0c4f629f",
+      "kr": "우편",
+      "sense": "Courrier, poste (envoi postal)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 198,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:40:46.287Z",
+      "asset": "pack-0c4f629f-915af612f40c.webp",
+      "sha256": "915af612f40c90bbf1f48d98be2aabefafb26f5533c009773be9a87d25fd789f"
+    },
+    {
+      "id": "pack-a17db9b5",
+      "kr": "운반",
+      "sense": "Transport, acheminement (de marchandises)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 199,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:41:20.479Z",
+      "asset": "pack-a17db9b5-19b8dd77a735.webp",
+      "sha256": "19b8dd77a735d0003391c12f2789a26a05de8560e58992a0b10a924b04e219b0"
+    },
+    {
+      "id": "pack-5a8b67fa",
+      "kr": "운행",
+      "sense": "Circulation, exploitation (de lignes/services)",
+      "usage": "support",
+      "cefr": "B2",
+      "rank": 200,
+      "status": "approved",
+      "generatedAt": "2026-10-31T04:41:51.321Z",
+      "asset": "pack-5a8b67fa-37bc9ade14c0.webp",
+      "sha256": "37bc9ade14c034514e401d1c1ba9812ad479be0fa341977984f31ba971d61124"
+    }
+  ],
+  "published": true,
+  "rejectedAttempts": [
+    {
+      "id": "pack-91dff950",
+      "sourceSha256": "04243d6d1e10166e2b6f56c3415d3b003ed904a90ba75636b8049bb2296f57cd",
+      "sha256": "49391c73c70ba7ce4517f488037fab99d4220f2e1bcdba08bfcc5ecdff965ad2",
+      "receipt": "tools/images/reviews/pack-91dff950-49391c73c70b.rejected.json",
+      "reason": "Les deux gants ont une silhouette et un pouce du même côté ; la paire gauche/droite demandée ne se lit pas clairement. Remplacer par deux chaussettes assorties."
+    }
+  ],
+  "technicalIncidents": [
+    {
+      "id": "pack-6723d286",
+      "stage": "result",
+      "kind": "inline-image-without-local-path",
+      "error": "Le résultat contenait le PNG en data URL mais aucun chemin local.",
+      "resolution": "PNG original récupéré directement depuis le résultat conservé, décodé sans retouche et importé dans la pipeline. Aucun nouvel appel de génération.",
+      "sourceSha256": "b12e1d7d5ba4c93ed89b27cc5b54eb5e73d443e985f3446cd19a1b1a2ea6b911",
+      "sha256": "fc3d416110568730e0a97d5aea98a122691d45974a59867e7b870ad2e55d3273",
+      "newGenerationNeeded": false,
+      "resolvedAt": "2026-10-31T04:45:24.563197+00:00"
+    },
+    {
+      "id": "pack-83628172",
+      "stage": "result",
+      "kind": "inline-image-without-local-path",
+      "error": "Le résultat contenait le PNG en data URL mais aucun chemin local.",
+      "resolution": "PNG original récupéré directement depuis le résultat conservé, décodé sans retouche et importé dans la pipeline. Aucun nouvel appel de génération.",
+      "sourceSha256": "63c4612dc9506e2980fb94053dee9f2dbb107666995b98b64f3643310c23b583",
+      "sha256": "a18ba46ab3f19751f691b2bc4d49398cb481c14c7b8554bd46039a6211c3b342",
+      "newGenerationNeeded": false,
+      "resolvedAt": "2026-10-31T04:45:24.563271+00:00"
+    },
+    {
+      "id": "pack-f883b2b0",
+      "stage": "result",
+      "kind": "inline-image-without-local-path",
+      "error": "Le résultat contenait le PNG en data URL mais aucun chemin local.",
+      "resolution": "PNG original récupéré directement depuis le résultat conservé, décodé sans retouche et importé dans la pipeline. Aucun nouvel appel de génération.",
+      "sourceSha256": "22bcbf9566224e6aa9aa61134410122a5755d48dc4b75df92968a27be49837c9",
+      "sha256": "3d49f037a0b0843ebbee52bc0e34b46ca4da0b03660516e03284cf88cca22651",
+      "newGenerationNeeded": false,
+      "resolvedAt": "2026-10-31T04:45:24.563365+00:00"
+    },
+    {
+      "id": "pack-4b01ec80",
+      "stage": "result",
+      "kind": "inline-image-without-local-path",
+      "error": "Le résultat contenait le PNG en data URL mais aucun chemin local.",
+      "resolution": "PNG original récupéré directement depuis le résultat conservé, décodé sans retouche et importé dans la pipeline. Aucun nouvel appel de génération.",
+      "sourceSha256": "a90fb67e948f0146eb564c79b2781d0bc5e775fc5a5ef9197972408189f51e4f",
+      "sha256": "919dc8217da2a89b8107b31e86d8081f9fa5e1f8299a15910b6d255dbe1741ee",
+      "newGenerationNeeded": false,
+      "resolvedAt": "2026-10-31T04:45:24.563420+00:00"
+    },
+    {
+      "id": "pack-b2b4ba7c",
+      "stage": "result",
+      "kind": "inline-image-without-local-path",
+      "error": "Le résultat contenait le PNG en data URL mais aucun chemin local.",
+      "resolution": "PNG original récupéré directement depuis le résultat conservé, décodé sans retouche et importé dans la pipeline. Aucun nouvel appel de génération.",
+      "sourceSha256": "e83fc1b69f4a862d722e8a4be5dbcd6e9863e8aff5a851b9ecc843b5e546dc81",
+      "sha256": "93d7779eed933f064671495d57f30c23354532300bcd9bb4d9af82ad8032e2a7",
+      "newGenerationNeeded": false,
+      "resolvedAt": "2026-10-31T04:45:24.563472+00:00"
+    },
+    {
+      "id": "pack-ac94c28a",
+      "stage": "result",
+      "kind": "inline-image-without-local-path",
+      "error": "Le résultat contenait le PNG en data URL mais aucun chemin local.",
+      "resolution": "PNG original récupéré directement depuis le résultat conservé, décodé sans retouche et importé dans la pipeline. Aucun nouvel appel de génération.",
+      "sourceSha256": "b1fd930dab9fc5a2c928918f876671ac3cc4ff3645f9d793f8dbbbfa79116556",
+      "sha256": "5d1d75de561607a015e1a9c81014720b9e80597f3632d8237de9b8bd4e08a1fc",
+      "newGenerationNeeded": false,
+      "resolvedAt": "2026-10-31T04:45:24.563521+00:00"
+    }
+  ],
+  "displaySizeReviews": [
+    {
+      "id": "pack-925284b3",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.628Z",
+      "sourceSha256": "af7ca3379559fa7c23a185c35ad3af7886feba9c19d1df9d7638449779409c72",
+      "sha256": "b2fc5649354025789eb171c309d4fce8505e3f3706280a5b32f49ede3e339b4b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bancs en bois, seau et poêle à pierres : sauna reconnaissable aux trois tailles."
+    },
+    {
+      "id": "pack-83ce7825",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.634Z",
+      "sourceSha256": "87e2a5398ff32ac4142622895487c4d009ddf21809ca18015a9f763f05e191c8",
+      "sha256": "290c4bde4bef9bdd801cb2104c1c709f21caaa374a0251ec0b12caa8ac36ca55",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Employé en chemise au téléphone devant ses dossiers ; silhouette et bureau restent lisibles en vignette."
+    },
+    {
+      "id": "pack-4f5dfb70",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.638Z",
+      "sourceSha256": "7da9036e29ac75b67d03c22823d74d9ac69acbd28e5864c69cfc1e4c9209f020",
+      "sha256": "afdd6f5e672e46825c6a993f86c254c403c89f75a44019a59f0a122486081e01",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux adultes souriants prennent le thé ensemble ; bonne entente visible dans les attitudes, scène lisible aux trois tailles."
+    },
+    {
+      "id": "pack-47c88c72",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.642Z",
+      "sourceSha256": "7dd28f12a92745c86d00d416d5270e0e14322ac3573b174d8cf57c96f128b936",
+      "sha256": "da46e43182cd95c7c305d518730cc47180aa58ebaca4d724f8862fd276fb4b7b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Photographe, modèle, fond déroulé et éclairage de studio clairement séparés, même à 96 px."
+    },
+    {
+      "id": "pack-7d4b3fa4",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.646Z",
+      "sourceSha256": "eff1b78ce54e902c8fd91f9ec42caf2ee3d3ab4a8dddd6f25ae23984eecdd322",
+      "sha256": "0b3ae92d5c70ee46ce1af2756f8939b8d46cba8b788b368aada42d40f036b90a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Arrosage d'une plante flétrie pour la sauver ; geste et feuilles tombantes lisibles. Sens contextualisé en support."
+    },
+    {
+      "id": "pack-e2d66b11",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.651Z",
+      "sourceSha256": "6c968c629cd6e7ec1261f412ffd9c1553dac3ec7c70b416bc01c8811e9b82294",
+      "sha256": "8bf16289a3aef317508a393e4eb4ed1c52dac48bbc292fd0eff545c753e782c1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux fauteuils face à face, table basse et lampe ; espace de consultation calme, silhouette claire en vignette."
+    },
+    {
+      "id": "pack-7ead3a62",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.655Z",
+      "sourceSha256": "601e753f59285609743b1097c8c76b41237a23e4a3fedda236fc54db74a6a198",
+      "sha256": "77c5ff4e2a65efc551d403d074807acbec54f92704a5df156ba70d367686af89",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Conseillère avec casque et microphone devant un écran ; fonction téléphonique identifiable à petite taille."
+    },
+    {
+      "id": "pack-a12fb960",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.659Z",
+      "sourceSha256": "a98a53377e635051b213a42bfcc323ed56dc7dadad75077eb8453cc025f2ba10",
+      "sha256": "00be9f4d0de217624ef26f342be6e83d6526c5bb6f60adda110a2386f5048473",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Projecteur à bobines, faisceau et écran devant des sièges ; projection de cinéma claire sans texte."
+    },
+    {
+      "id": "pack-df560c2d",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.664Z",
+      "sourceSha256": "da09cb775a60a68d36c7a3450e6e4f7624334538ac77203703a159a75e4946ef",
+      "sha256": "c89763c4d293dff0e1ab0b44fd427855f0ce67a0771057263c374746d6c97e9d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux étagères superposées avec tasse en haut et bol en bas ; positions très nettes aux trois tailles."
+    },
+    {
+      "id": "pack-d86e8d61",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.667Z",
+      "sourceSha256": "8ada112af3fdac70ef097fe6d6a46ad08c9015e947d37b324d20a0b9588f494c",
+      "sha256": "734ba2068e8f54ff619afe0513cf3233cb18b109e9a2ded4a809ebdd1f2dc40b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Oiseau perché, bec ouvert ; chant suggéré sans texte ni symbole, silhouette nette en vignette."
+    },
+    {
+      "id": "pack-28aaf760",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.671Z",
+      "sourceSha256": "93331ce64d468714a68c590cb393e06bac081c96131a47e9bb9f3745ef22ac70",
+      "sha256": "b2c7df4903ee14032f416b5a232fffb3dc170162a1ce9902d6fa5171ce43327e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pièce lumineuse avec fauteuil et cartons de déménagement ; nouveau logement contextualisé en support."
+    },
+    {
+      "id": "pack-a3f5443a",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.676Z",
+      "sourceSha256": "a09a1340343d11edae62bb13f55b9a24445d855aace58a3501968a5a7c7d82ef",
+      "sha256": "2ba219c11ca83d24c73eea747ed73655bdc89353cf07b16bc5a44e04f59afa2c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Jeune pousse émergeant du sol à côté de sa graine ; apparition illustrée par une scène concrète lisible."
+    },
+    {
+      "id": "pack-2af7405b",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.680Z",
+      "sourceSha256": "12a1926a0d97c5cee2f97768b871edb4df8d5b00678470a61c55787a85058e20",
+      "sha256": "cbe0dc890f50bfe6502d7a3123cbec78fa13bf27a1d0e45c9951ba3ea83f0b76",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux personnes soulèvent ensemble les extrémités d'un banc ; coopération mutuelle contextualisée en support."
+    },
+    {
+      "id": "pack-a1584031",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.696Z",
+      "sourceSha256": "90ccc0ea998b94eee803c4480385865aaf09c411d2ff4611cc61572ad53e25c8",
+      "sha256": "c6070be7f05f37da28551d5c99c383f78bb431b9cc1b387aa53c6bbb460cf895",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Débutante devant un pot irrégulier, expression hésitante ; maladresse contextualisée par la poterie."
+    },
+    {
+      "id": "pack-4d454856",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.700Z",
+      "sourceSha256": "e295149641d53556bb55fb77ba95a2ce8c7ae450efa0f8251466e3ba1e4639ee",
+      "sha256": "b596cad04206f71ddbcf310c50e35106f7ca7be72eecd526c7007f4f836e67a4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Haricots clairs et foncés mélangés dans un bol ; contraste et mélange restent nets à 96 px."
+    },
+    {
+      "id": "pack-fb5f03e2",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.704Z",
+      "sourceSha256": "28b21ca300afdbb8d9f35e4fd18513c7ec66229d51469b3cb3859e66ad6654dd",
+      "sha256": "814466ce59b947176c8416e5614c9f9fac50d4f5f0488332a86bb48ee01db24e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Couple en hanbok autour de bols de soupe dans un cadre coréen ; repas de Seollal en support, sans prétendre identifier la fête par l'image seule."
+    },
+    {
+      "id": "pack-c14a567e",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.707Z",
+      "sourceSha256": "b3eed1bc0d886cd9dbb9536028404ac6501e49a6f3111afb65c7c477c62aaa9e",
+      "sha256": "8f56e9f0565f8069e4e008ca6c6d038c20f397d40928efce56348dfcdf3eb0cb",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Main sur le bouton de réglage d'un ventilateur ; geste visible aux trois tailles."
+    },
+    {
+      "id": "pack-4f2a033d",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.710Z",
+      "sourceSha256": "1dbd7c6f7b16b859415544c6473de9974b14997e80344e5ac3e216e5660f1fb3",
+      "sha256": "bb17109c809ba1a16b60eb2a1cafc3d6939ca09a1112b004358dfa70cb802c33",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Planche haute dressée près d'un tabouret bas ; orientation verticale très nette."
+    },
+    {
+      "id": "pack-84020591",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.713Z",
+      "sourceSha256": "0bbed620445210b16c182a897e1fb974f23a6f6f82872e35e1e4963d388b5d7a",
+      "sha256": "eabdd9d229cb28869a527e7cbde74c654fdf0bbfe9a09759d27f9a98bb5b069d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bloc de bois triangulaire isolé ; contour du triangle évident aux trois tailles."
+    },
+    {
+      "id": "pack-1c29f2a1",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.717Z",
+      "sourceSha256": "cc3586094da3c2a4703fe63ffe4688924d41f5c994c0e8e2186298b6a9d4e183",
+      "sha256": "516eab6442f9e251851b330a888ced7f11e624fcdb831a3276db14f1387c091e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pavillon érigé sur son socle, quelques poutres au sol ; construction achevée contextualisant le verbe."
+    },
+    {
+      "id": "pack-a7224e98",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.722Z",
+      "sourceSha256": "36f68840d620f66a48a56570518b956ce7c1d685400226362466843a9f3c9248",
+      "sha256": "d64341d3d562486dec61b373660731f77071ab0b1a9580984bbe8d3f1204dc25",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne lavant une voiture couverte de mousse, seau au premier plan ; action clairement lisible."
+    },
+    {
+      "id": "pack-d276a15d",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.729Z",
+      "sourceSha256": "db796d2edcb87d340502ea3bd985c72ba5511d93e5ce94904b0d7a73e9b0dd9a",
+      "sha256": "df64d40908ebdfcddae1d1b982a8506904dee5741bbf4c257d346598a8f7154c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petite scène à rideau avec quelques rangées de fauteuils ; salle de théâtre intime bien reconnaissable."
+    },
+    {
+      "id": "pack-b851b5e8",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.738Z",
+      "sourceSha256": "6f898f10c53798b6e6cba0e05c38d16e668f1a7ff9ad0c954fabd58e75d4d427",
+      "sha256": "36956610dacc5e8520ddf4c6402a4eb779d71e9fe0bd30a612e41f7d35717c78",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Mains gantées, pulvérisateur et chiffon sur une table ; désinfection illustrée sans marque ni inscription."
+    },
+    {
+      "id": "pack-f7624673",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.743Z",
+      "sourceSha256": "79b63c2a25e73059b55832a4bb288d1f47de4c012714aa5a2ae328fbe746a23e",
+      "sha256": "d1112c10a990339cd8c84ce9ad5b71d80bc5d54fb7a7cef24d06d594f5ba52d4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne portant les mains à la bouche pour appeler quelqu'un au loin ; cri contextualisé sans traits sonores."
+    },
+    {
+      "id": "pack-f341f18c",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.747Z",
+      "sourceSha256": "6cd946d79ee6db2a62c99058b4dfce189b834468fa004b24a150b5c397db2b50",
+      "sha256": "d3179a408e430f0e77fba293092895d102306af867786ec2fcd1850d5fab309f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Camion de pompiers dans le garage d'une petite caserne ; bâtiment et véhicule reconnaissables en vignette."
+    },
+    {
+      "id": "pack-e007f779",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.752Z",
+      "sourceSha256": "2adc0e970fcbdc93b8b39f69d518c9cae783464d2653744929b403c49b77bb0e",
+      "sha256": "130917a4f81d44e39671ccb80e5a627d3571b0f1612038af470b646d3b91d8c7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Écrivain penché sur un manuscrit entouré de livres ; activité d'écriture lisible, profession contextualisée en support."
+    },
+    {
+      "id": "pack-d1cf9f6e",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.756Z",
+      "sourceSha256": "a4a9b44a6802e0c223cd8b56e34e821b587d60c89e53dc95ba4d486e01cd56a3",
+      "sha256": "0483a10da935ed4e2e35550deb8462218f2bba194b2dec3ed9bd95f53d99569c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bout de l'index touchant l'eau d'un bol ; point de contact et petites rides restent visibles."
+    },
+    {
+      "id": "pack-d1e1fecc",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.760Z",
+      "sourceSha256": "dd7ff0751eda7908ce916ce683e74503534dc988b2f357aa8881b12e5bb6c416",
+      "sha256": "f74354e4dd5853e4cb5061724c9f295e4d151ec773c2c5c265bf3dbe63148ca7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux mains ouvertes rapprochées pour applaudir ; paumes et geste lisibles aux trois tailles."
+    },
+    {
+      "id": "pack-1db7c36b",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.765Z",
+      "sourceSha256": "36017b176f565b8b8ab41795876b81240d4643fa1a41bf8f84fd027c3c06b572",
+      "sha256": "08b6d2b6f8bfd8b89538dede28b4b6ab2b3ee080415e6e3383a95980c08071d8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Voyageur avec bouquet et valise salué autour d'une table ; pot de départ contextualisé clairement."
+    },
+    {
+      "id": "pack-618451db",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.769Z",
+      "sourceSha256": "55e557b2e7d40204e2280d10741ea8d915f3392b96c50abd15b25be2caf71a55",
+      "sha256": "998b418b064c9bbdde6c66667068e8cb9c3e93a4277417b75b071b1fc227fd8a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Grappe de raisins suspendue à la vigne ; groupe de fruits net aux trois tailles."
+    },
+    {
+      "id": "pack-c3003b2c",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.773Z",
+      "sourceSha256": "61517991a739acde25dd0ed5cc56fe93ffe6e3af83f9d965cd89c0484dba8144",
+      "sha256": "69643c4a785e8f561e2a1d89aea4348e7aa482f169a36d1475302ba9e3a1eb56",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Magicien présentant un chapeau sur une petite scène à rideaux ; spectacle identifiable en vignette."
+    },
+    {
+      "id": "pack-0c2ef0a4",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.777Z",
+      "sourceSha256": "7ab0a725a022720a2a7104362c7b75dac814ea1a809ca5df3ceeed307b4ff96f",
+      "sha256": "b56cd1995e531d6ca492af49a6014bff8107ccd78075b4c6f4905af7c0eb00cc",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Grande galerie marchande avec vitrines, étages et verrière ; centre commercial lisible sans enseignes."
+    },
+    {
+      "id": "pack-b750803b",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.780Z",
+      "sourceSha256": "5348f5b786f449c7d05165d83d843242cfe6dc07788c0b7cdce81bd750c9e546",
+      "sha256": "b453130802727c48a41550cb648fb1212bea791c998d62a7c5316e5f32c43930",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Alignement de boutiques vitrées et promeneurs ; centre commercial extérieur reconnaissable aux trois tailles."
+    },
+    {
+      "id": "pack-ab3a36fd",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.784Z",
+      "sourceSha256": "356e89a6d6eea915125eed235d277db9c81c1f11257ade54e970e9feccb547e2",
+      "sha256": "5304fed89b8b548aa37fd288c4c3e68116f0a89ae2d74efdba325db2639d2d46",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Trois personnes discutent autour du thé, gestes et sourires visibles ; bavardage illustré sans bulles."
+    },
+    {
+      "id": "pack-0be01181",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.788Z",
+      "sourceSha256": "520877ce4eb3ba8476301dc3c92ae049628eff99307da61f3d68ea3b57839dd2",
+      "sha256": "1dbda2067b69d0f786afcaa100df93b622c14d09c2445ffe4ac328a2449feed4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Robinet ouvert au-dessus d'un évier ; jet d'eau courante bien détaché du fond noir."
+    },
+    {
+      "id": "pack-7294d680",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.791Z",
+      "sourceSha256": "1af4e6c88bd89785bbd2e533b1674ddbabb14e9630d132fa8bdde2241bc140ba",
+      "sha256": "2af0fa0170f30b3a079fad2f0f5c8ba0669efbdd89ea22f7ceb09d0b6cb32398",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Trois bols contenant des quantités croissantes de riz ; comparaison très lisible, sans chiffre."
+    },
+    {
+      "id": "pack-b007e3d9",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.794Z",
+      "sourceSha256": "fa9611171932b393d0cde1a023a80b0fa28a0cc44c28cee6de8f78ea4a9f0780",
+      "sha256": "2147fc660038bcb89663fe07561b2600a1496dbc08e7b5e3427eff7a1326e28f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Réparateur utilisant une clé sur le moyeu d'une roue de vélo montée sur support ; action et outil reconnaissables."
+    },
+    {
+      "id": "pack-f32e54c9",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.797Z",
+      "sourceSha256": "6d64e04da45d836ac186e4a2231e9accceda42073618fd20659d1f66d379a475",
+      "sha256": "e29614635483bc500606d8a841be26fbd87e29c7efe2acd92e80754416fb7c61",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Champ couvert d'une multitude de fleurs jusqu'à l'horizon ; abondance lisible en vignette."
+    },
+    {
+      "id": "pack-45fa4047",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.800Z",
+      "sourceSha256": "8b5b161d497d520602188c92e62e11eb22e1eff544bcf53cc6d350f051806eed",
+      "sha256": "e03d1462e2055e0a3ca4c7c701303e148acbf33b3f07c19fe5e8a89b97f0eecb",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Voyageur avec bagage remettant un document au comptoir ; formalités contextualisées sans texte sur le papier."
+    },
+    {
+      "id": "pack-6b8bd860",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.803Z",
+      "sourceSha256": "085b0278485e1f3ffc216750e68ea238aeb2a1dd67e3cdd74404b51f5889f133",
+      "sha256": "fe8b76c926172898c0ad5399502748316adc53eeac42fac642509c5fc3e3b1a9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Trois adultes trinquent avec de petits verres autour d'un repas ; moment de boire ensemble lisible."
+    },
+    {
+      "id": "pack-fa9b1657",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.806Z",
+      "sourceSha256": "d4b0445d31d01da0c5657c09b83aa8944e105e630f4d45aad2aae5cd53a5913c",
+      "sha256": "4b00cf9456f3350fbe705bdd5a46eb3e48afe32bde8b4d9a7fc3ee87cdf90660",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Index vertical devant les lèvres ; geste de silence très clair aux trois tailles."
+    },
+    {
+      "id": "pack-3de53117",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.809Z",
+      "sourceSha256": "5e0542d0ed93d2419fdffc566ce75965a56cdffdb6a51a02e8e96ff53342445d",
+      "sha256": "b42d31de3d5da1b10e79a411e8b69115fee8dee84ee12ed964ea9c066c1f6bbb",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petite épicerie ouverte, fruits dehors et rayons de provisions dedans ; commerce identifiable sans enseigne."
+    },
+    {
+      "id": "pack-d5cdbc46",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.813Z",
+      "sourceSha256": "257bfcb21396814e95539ab8d4ac6922001df5cef7f3daca1379b414aeaccfd3",
+      "sha256": "b2264ad55771887beecb2c9c79883f187a821385309e4572f53bb377b9a1a293",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Moine au crâne rasé balayant la cour d'un temple ; silhouette, robe et contexte lisibles."
+    },
+    {
+      "id": "pack-3fe6a592",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.816Z",
+      "sourceSha256": "f36d62990d772e468543d096fcb62b22d8eeef8806b56f86c9f413f5ec297fa4",
+      "sha256": "4b0cd8f2dcb111f5b814e7e48000447decfb744c0128d438f0bfe184ef04369a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Voyageur montant les marches d'un bus, main sur la barre ; embarquement clairement représenté."
+    },
+    {
+      "id": "pack-8bd6ee8f",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.819Z",
+      "sourceSha256": "fe26f269a68409bae9fb0f78859689f353ba9bb1630891b2a34bd3ce056bb5d9",
+      "sha256": "ed83b60deb95b143cc21752502b2f236b2aef2059c4203356eef8c706dfb11c8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Débutant essayant une flûte devant un maître assis ; tentative d'apprentissage contextualisée en support."
+    },
+    {
+      "id": "pack-2ca2687d",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.822Z",
+      "sourceSha256": "9c6fdd5f26caaf4c6028d50d89568e10b2abb4d5472ee2915fc8a73ed5f428ab",
+      "sha256": "02e01803d28c91d7557a25c508983c6639f8fda27948405f052650926e5f976f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Examen des yeux avec appareil optique et mentonnière ; vue contextualisée sans tableau de lettres."
+    },
+    {
+      "id": "pack-192a5be3",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.825Z",
+      "sourceSha256": "a356a0804d5edf47d3c025ad3ad6eb6f5ea84595481353d832da7e43d60194b1",
+      "sha256": "def26d4c48f0af6e39c90e76138e6e20edc90478444facae1fcb3c1ab26a66f4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Chemin entre maisons et champs au-delà du tissu urbain ; périphérie rurale lisible en support."
+    },
+    {
+      "id": "pack-a9b58a0a",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.828Z",
+      "sourceSha256": "8c311d4929baead54ebeb659535e953fad7761f3f4ba770312d143b97b498a22",
+      "sha256": "4fb533b41f781e6f8a9a1e991f0eb69a45c0d14d5a9a9e13e0a4418720d7d408",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne réfléchissant devant un carnet au bord d'un jardin aquatique ; poète contextualisé sans écriture visible."
+    },
+    {
+      "id": "pack-b058262f",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.831Z",
+      "sourceSha256": "7a7558d2ba1576c616bd22c9988565cbe9838d37001c91a307fc212c336870c3",
+      "sha256": "34de3a3fbd3f6587c7f88ca9bdce16075b064afdeb2963f34ecc23142af1e25e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne assise face à un téléviseur montrant un paysage ; téléspectateur évident aux trois tailles."
+    },
+    {
+      "id": "pack-35cc2711",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.834Z",
+      "sourceSha256": "640c4232db162d90ffc4b972ad6ce14c99a540e5e566f929149c510f414b679f",
+      "sha256": "56afe56a229d0f677664f278262e9f6133ebe7b1957e444a8b694b0b40fae96d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Ruelle bordée de restaurants ouverts avec tables et bols visibles ; quartier de restauration lisible sans enseignes."
+    },
+    {
+      "id": "pack-4d8873de",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.837Z",
+      "sourceSha256": "1ca67a08cda07ab1bce1d3149a06fb74cd6902fba6d1b53d9934476f737aa22e",
+      "sha256": "c7865957f0dc05393fa450a0dfc5f99e4cc4219dfa87f18ffa7e53cb40de04f0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Plateau avec bol de riz et accompagnements ; portion d'un repas concrète, bols distincts en vignette."
+    },
+    {
+      "id": "pack-9edd085d",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.841Z",
+      "sourceSha256": "33f6b783c648d3bf11fdca711d91d569dcc71476ea0ffe4da52ba0c51c7b500c",
+      "sha256": "3c78ed0f3f167072d6f8d15a886f65940813adcf60d49c7269bf8a9e0a89e181",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne buvant du thé devant une assiette presque vide ; après-repas contextualisé en support."
+    },
+    {
+      "id": "pack-2dd685ae",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.844Z",
+      "sourceSha256": "a64039b090484e142429bdedd9cdb9568a8743aa9b4778fdea431302ed6f5da0",
+      "sha256": "e3400920d43275ca612f3b365b52cddf23a4d8fc2f81394a80a40e6983aa78c3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne grimaçant après avoir goûté une tranche de citron ; acidité suggérée par le fruit et l'expression."
+    },
+    {
+      "id": "pack-7917ce7e",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.847Z",
+      "sourceSha256": "876de5bc1208b564ea276dd03f7596148ce9ac97e19d8706e30f1b13d47644ca",
+      "sha256": "3150969716f88ce6b1f70fd11c9b5d1ce59da0cdb9a225243e8e8830271aadcf",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Fauteuil, table et fenêtre vus depuis une pièce ; intérieur domestique clairement lisible."
+    },
+    {
+      "id": "pack-83628172",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.850Z",
+      "sourceSha256": "63c4612dc9506e2980fb94053dee9f2dbb107666995b98b64f3643310c23b583",
+      "sha256": "a18ba46ab3f19751f691b2bc4d49398cb481c14c7b8554bd46039a6211c3b342",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne rapportant un sac de provisions à quelqu'un qui l'accueille au seuil ; course faite pour autrui contextualisée."
+    },
+    {
+      "id": "pack-ce0e8545",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.854Z",
+      "sourceSha256": "ecc61eed1a4b005e1d05bca19857fdd7f600f685e6e6430923d05ebf42e68814",
+      "sha256": "c7216f583b3e0cf5158d18d008fe8707fac06875f93f44306acffb5c20c54e72",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Paquet entièrement enveloppé dans un tissu noué ; enveloppement et nœud très lisibles."
+    },
+    {
+      "id": "pack-1db07f61",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.859Z",
+      "sourceSha256": "8a09d1526ca0180bee642584dc191fb70d3e883947daaa1efec591a460426832",
+      "sha256": "180bbc1b555cb2d970c6b0bb16613942fbc7571cb7bdab64910073e6e6407623",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux piles de serviettes de hauteurs différentes ; accumulation nettement visible aux trois tailles."
+    },
+    {
+      "id": "pack-df4ed20e",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.863Z",
+      "sourceSha256": "0e17aaaecf6a07310c2cdf8cd86cf4071c37b1d7ffb09e7f9dde0a2a0c338fd7",
+      "sha256": "0840522336d7e2c47f5d264b6c0b40442fe0ad3e857ace6878b082352e780e73",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pomme saine près d'une pomme flétrie et abîmée ; contraste de décomposition lisible en noir et blanc."
+    },
+    {
+      "id": "pack-e40c0756",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.866Z",
+      "sourceSha256": "774fe2e66cb04a330fea4e9613c3f4d6e776e24edc8354c0acf8a85eca931f4d",
+      "sha256": "968d9aee09d57b1e882215cbc7d6795b1f64cf19418b718dfb952b8b6857edce",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pluie forte et eau se déversant du toit dans une flaque ; écoulement clair, sans symboles ajoutés."
+    },
+    {
+      "id": "pack-db80c877",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.869Z",
+      "sourceSha256": "30ad0f813013d07f27bf8c274e5e53a87b3c946125c3b9c1f2bf53d5efccbf11",
+      "sha256": "70e6e352817d8dce9285148e9a0ca7059d4898374a90a9443606257ca28efc09",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne au balcon ouvert, rideau soulevé par la brise ; prendre l'air contextualisé en support."
+    },
+    {
+      "id": "pack-616f97cc",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.873Z",
+      "sourceSha256": "f0263a1e39b1280497adf8105752808bdf9693006894a2e16c1aa693e39aecb2",
+      "sha256": "aaaef7bdcc854b7ef06ef4c9cc726b7bc82e50a6792ff64d76b874880cc5c1b7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne écrivant au stylo sur une feuille vierge ; geste lisible sans texte généré."
+    },
+    {
+      "id": "pack-6723d286",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.876Z",
+      "sourceSha256": "b12e1d7d5ba4c93ed89b27cc5b54eb5e73d443e985f3446cd19a1b1a2ea6b911",
+      "sha256": "fc3d416110568730e0a97d5aea98a122691d45974a59867e7b870ad2e55d3273",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Maison à deux niveaux, porte du logement inférieur sous un balcon ; logement d'en bas contextualisé en support."
+    },
+    {
+      "id": "pack-3fe6d50c",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.879Z",
+      "sourceSha256": "6f183ae58e188844bcd45737db3e2db478ba1d8e846431208cca9d39ac741e80",
+      "sha256": "5f80446a3b8e4a0598c55cf7c40c4c4d2986cb7e21f9ff58390cede58d0ef096",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux adultes se serrent la main ; contact central des mains net aux trois tailles."
+    },
+    {
+      "id": "pack-27b9105e",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.882Z",
+      "sourceSha256": "ae3e2adf74eb6fb67d30b406826a933ff0636086f24283e92c43b63c17d54148",
+      "sha256": "c73d977534057ae5fb018ed80d986bb6229367e10ba994ee3801d0166613f35d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Guide présentant un pavillon à deux visiteurs ; posture explicative et groupe lisibles."
+    },
+    {
+      "id": "pack-152ad89b",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.885Z",
+      "sourceSha256": "198c5d2aeff2b05d7f7bd40c65a38d74bd13d82a9a6e47f833cf35c197ce0db3",
+      "sha256": "0cf215b02d2567516f840eabe065ec897d373633c4ffb2ef554acb894f85d910",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Chambre avec grand lit à deux oreillers et armoire ; chambre principale contextualisée en support."
+    },
+    {
+      "id": "pack-7134d06e",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.888Z",
+      "sourceSha256": "85ca277c6ac4bef0ddda9bde668e00de6269667017b94e23b72c887d8c5e9ccb",
+      "sha256": "693c99b88d47b7ce0acfef68eacbaf7138cf610bd3e8031f4951ebdd548a9cae",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Chemin de dalles vu depuis un seuil vers un portail ; chemin devant soi clairement composé."
+    },
+    {
+      "id": "pack-807d7745",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.892Z",
+      "sourceSha256": "76fed193c3d53e4c2378fb2970adb91edcb80918a6538301d9ed842aa052f252",
+      "sha256": "a191c177d2f62b8a8234a4566f0de326881ffa35d8196963e2a3608c4cc4c53b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux randonneurs sur le même sentier, l'un loin devant ; relation de précédence visible."
+    },
+    {
+      "id": "pack-0dbbf92c",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.896Z",
+      "sourceSha256": "09f47ec839397b9ca2c30439ac55c290cd0b9d9910bfc9694b4521a98306435a",
+      "sha256": "5f76d38a532e5dc0feaa345299f36cac4ef6eb2e65171bf6d16abb2bf2fb4147",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Maison vue en face au bout d'une petite ruelle ; position relative contextualisée en support."
+    },
+    {
+      "id": "pack-2e3fdf1a",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.900Z",
+      "sourceSha256": "d8582bf198c5ac0b243a7e1c9749397ff513305ca39ddc72b36071b7000833b5",
+      "sha256": "073091e28bc86f7fe6afbeb911094eb560ab07a3cb9a11fd9a3f8c914cd86e61",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux personnes pique-niquent au bord de l'eau sous un arbre ; plein air évident en vignette."
+    },
+    {
+      "id": "pack-8c3cc344",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.904Z",
+      "sourceSha256": "bfe57ac961d66ef37502e113d032918aecae3f6b118f20353cda21c755a7bc16",
+      "sha256": "933976ae9db7653a49df3b019f956064485d909225633fb058a2d6d23e1941e3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne tenant un portail pour laisser passer quelqu'un ; céder le passage lisible."
+    },
+    {
+      "id": "pack-c3b3c3ae",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.910Z",
+      "sourceSha256": "8021a75824704784af30e79e9a8d4d1650d684fd2356640f21a99ff5b7fab804",
+      "sha256": "36e31af54605a90d88c893f78325edb8a2131f5cc3027d02d38afe9a8552a00a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux personnes sur les rives opposées d'un ruisseau ; les deux côtés sont clairement séparés."
+    },
+    {
+      "id": "pack-b1d96322",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.914Z",
+      "sourceSha256": "8d8dff62240680aec5c2caac3781608e56899e048f19dfd0d7d6057aab74a718",
+      "sha256": "4a64751a373b78f70dffb3dab6532250b186e620e40772aaf508a83a2a9ee4b2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux ensembles de planches avec un raccord décalé ; désalignement matériel visible sans flèche."
+    },
+    {
+      "id": "pack-47afe2d2",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.918Z",
+      "sourceSha256": "84d413f9d959d588ad6bdac2aaa11323af9c888542391fdcbe0b6bf7418855bf",
+      "sha256": "5cb2d09045ab53b105081239810119327182b5e59b8b8e750cccae22908982ed",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Village et collines au crépuscule avec dernière lueur à l'horizon ; assombrissement contextualisé en support."
+    },
+    {
+      "id": "pack-2714cfb7",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.921Z",
+      "sourceSha256": "49900347b10ddffa77f29231a1aed4e1c6efe783d05fe04a599ce8e55d1ff19e",
+      "sha256": "1f1cffa8623bbefb01059facb2b1950a2a87b259270ebbb1d7d28645a1338483",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne âgée assise recevant une tasse servie avec respect ; aîné et attitude respectueuse visibles."
+    },
+    {
+      "id": "pack-8734fc3a",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.924Z",
+      "sourceSha256": "d5b7ef6f572c81c8ab0573313e428133a4f8b997800acce5665255c5f70d29e7",
+      "sha256": "cfc754629e05a282e39aa39134b07e48bea6332afe4cef9b468bf96be74d271f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux mains déposant une couverture pliée sur un coffre ; relation dessus et geste lisibles."
+    },
+    {
+      "id": "pack-776c6c8d",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.927Z",
+      "sourceSha256": "317f9724d0596fb19ba92a96535dacd993d1802fa103a51fc85b4847230309a8",
+      "sha256": "0a1b7e513828ce8c45c0972e7408b2bdf6c8922242d519af7d1d1212bd47773e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Tasse renversée sur un tissu clair avec grande tache sombre ; salissure très nette aux trois tailles."
+    },
+    {
+      "id": "pack-c2e9e985",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.929Z",
+      "sourceSha256": "4296634793fbd40aae9583bd0c5c3064ac68e67aa0df574b59444e02ba05c8cf",
+      "sha256": "3dea7fb0ba8d6d7b16857be1cb54346da59b3cbbccce43350d1629836aa7c1a0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Mains gantées arrachant une mauvaise herbe avec ses racines ; élimination concrète clairement représentée."
+    },
+    {
+      "id": "pack-b7c38ce5",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.933Z",
+      "sourceSha256": "8473532bee7db7e181ecdc5f4f8ef10545f8cae3f3771986d3cf8d68c7fc3877",
+      "sha256": "627592aeb3960bf8accc66f7e7d93b9d9e1cd9dbb68421d8e348bd01791b8799",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Entrée de petite auberge traditionnelle, chaussures et sac de voyage au seuil ; hébergement contextualisé en support."
+    },
+    {
+      "id": "pack-01aa8665",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.936Z",
+      "sourceSha256": "6462185718a822313781239c8dadd84462c5ca9b33593962ce607e92344aa450",
+      "sha256": "86379835aea561038e9f12dc68288094dc549cbf6a6f6047c78e1a6df39624d7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Étudiante prenant des notes dans une bibliothèque universitaire ; personne et livres restent lisibles."
+    },
+    {
+      "id": "pack-bf5cf331",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.938Z",
+      "sourceSha256": "49516a34b8c072470e52e481947547772a26a5df7efcd49dbf7c1e5d54f48568",
+      "sha256": "7ff8f684f88b518c58aab5bac980d498cb1ce972b4107e4b399b535e056882bf",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux voyageurs en tenue estivale au bord d'un lac ; vacances d'été contextualisées en support."
+    },
+    {
+      "id": "pack-ac8de5bf",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.942Z",
+      "sourceSha256": "a77e562a520e436e340dfd839751ecb7254d85eaa7a8c31d6803680ab1c5e2e7",
+      "sha256": "0d4e0a7c124e9cb20c54c82891f6a528375ef9203d1a23acb43b8e89a2887b38",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Lecture tranquille dans un hamac ; temps libre et aisance illustrés par la posture détendue."
+    },
+    {
+      "id": "pack-b0ee777b",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.945Z",
+      "sourceSha256": "3483af97ea9bec0fa0a0ef1a7063a41926f0659004786de2ca7e6b031d83270d",
+      "sha256": "470c5d460899b69cadc4b45dc26b892d83ae4550f431078f1a1965f3d7b75cff",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne savourant une boisson dans un fauteuil devant une fenêtre ouverte ; détente clairement visible."
+    },
+    {
+      "id": "pack-f625db8b",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.947Z",
+      "sourceSha256": "ef41cfb9ff4a161c494122ceb922ce173ce0a9577b1990353b2b84e56ee19b17",
+      "sha256": "c53d2f5a2d44e540f3495fb16426870ffac9d637fdf1a66f3f96e55bcf9647a7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Employée classant des dossiers à son bureau ; activité professionnelle lisible sans texte."
+    },
+    {
+      "id": "pack-b887dcea",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.950Z",
+      "sourceSha256": "534a32becf50fc46a25822e77c2820e172bcb27c1ade83591e32553dba49b35e",
+      "sha256": "392b3156aca6eea028c4314773645e9e0a5f08e43c31836928dde20fec744b17",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Jeune adulte s'adressant avec déférence à un aîné assis ; demande respectueuse contextualisée en support."
+    },
+    {
+      "id": "pack-ad50fcbd",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.954Z",
+      "sourceSha256": "9b3e97bf7fdaadb6f08286b97941a3b2ce43496c2c4e1ab559f6218bc61dcd72",
+      "sha256": "8854431f034755e54f7a2594f201dd8a891bc593a8f48023322ab9a6c2e83c69",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Voyageur marchant avec sac à dos et valise ; silhouette et bagages reconnaissables en vignette."
+    },
+    {
+      "id": "pack-b269d0bd",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.957Z",
+      "sourceSha256": "559f38c32e5f94fb9d8580aaa5fa81609b87267f86a55b720e6cf5ace2d7cfaf",
+      "sha256": "ec7f258888c6d3507c1d149edf516050e304064c5adbe03242a521fba513d742",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Mains entrelaçant de gros brins de corde ; tressage lisible aux trois tailles."
+    },
+    {
+      "id": "pack-91b47f1a",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.959Z",
+      "sourceSha256": "f2f26ffa64cffd8b2b02432685fe6e0703c7f841c18387d3bcddf0cc11b7cb22",
+      "sha256": "6a9ec46205527d680fbaf753b93a636e67ea473ddefc6f1251942f12fb5fe81b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Laboratoire avec microscope, éprouvettes et verrerie ; espace de recherche identifiable sans inscriptions."
+    },
+    {
+      "id": "pack-f7456db5",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.962Z",
+      "sourceSha256": "a9ac1ff14ba006d145bcc43722cde06c0b5786d6979fb99d676da2f3439a0e27",
+      "sha256": "f72a979965a3a31992b88f09a528f8712661b17a41246e6e913b098de1632c01",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Chercheuse examinant une plante à la loupe, carnet à côté ; recherche de terrain contextualisée clairement."
+    },
+    {
+      "id": "pack-4b01ec80",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.965Z",
+      "sourceSha256": "a90fb67e948f0146eb564c79b2781d0bc5e775fc5a5ef9197972408189f51e4f",
+      "sha256": "919dc8217da2a89b8107b31e86d8081f9fa5e1f8299a15910b6d255dbe1741ee",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Violoncelliste jouant sur une scène devant des auditeurs ; récital clairement identifiable."
+    },
+    {
+      "id": "pack-ae969aa0",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.968Z",
+      "sourceSha256": "4c33a735252584d05f00cefd3d35a54c4ab0e86234cdc9bccafd70078668072c",
+      "sha256": "f20682692ee5764bc3bcc96b86612a2bcffd3ff4168ac1a83663f8ce4b1191b5",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Morceau de viande cuite dont une portion se détache à la fourchette ; tendreté évoquée par les fibres séparées."
+    },
+    {
+      "id": "pack-b4d9209f",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.971Z",
+      "sourceSha256": "69bf2731b7f11986a71a6e4d51e60182c87fe06d86b54a42c3f001d659348cfc",
+      "sha256": "614852c7feb0466cba089b508423b23b7120703c01532202674714debf47831a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Portail ouvert sur un jardin, main sur la poignée ; sens concret d'ouverture lisible."
+    },
+    {
+      "id": "pack-ecebe4b3",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.973Z",
+      "sourceSha256": "58e25e8837621c9e1c60cc256f0e5f900b765c5c9fb35aeb17ef54a5ff147727",
+      "sha256": "369bb0987a048c1119b3953047069f45884a145ad07d5d2bd5fd1460557b71bf",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne appliquée assemblant une petite maquette de maison ; concentration exprimée par le regard et le geste précis."
+    },
+    {
+      "id": "pack-4f61bec1",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.976Z",
+      "sourceSha256": "d0c07dee8d03d1d004ae031344cc3b95edde547938b5c32c5b80d6d765abe0d8",
+      "sha256": "2774b0f03b4ddb1c0a9bb9faa0f8007b438205f2f155243fb04a7de0db674f91",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Artisane soulevant un tissu d'une grande cuve ; procédé de teinture contextualisé en monochrome."
+    },
+    {
+      "id": "pack-7cbcef93",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.979Z",
+      "sourceSha256": "3a1d423f3d4162ea651e1d05ea90c00d01ad1753128fa7f0ba7b3435c6141aa7",
+      "sha256": "e8e043527e83bbb0567ff5ab54445d0245e655772c740779a21f2132796cc4f7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Réalisateur donnant des indications aux acteurs depuis une caméra ; tournage reconnaissable aux trois tailles."
+    },
+    {
+      "id": "pack-9658f669",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.982Z",
+      "sourceSha256": "3a748d8a46fcbfb22d6e69db026e87120b98d2de5ef855c952ffe5845e8566b7",
+      "sha256": "857524b7050d909270d33778fbc6b20514befc256dcaa8a623604b6c34474426",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux portes ouvertes côte à côte sur deux pièces ; voisinage des chambres très clair."
+    },
+    {
+      "id": "pack-f883b2b0",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.986Z",
+      "sourceSha256": "22bcbf9566224e6aa9aa61134410122a5755d48dc4b75df92968a27be49837c9",
+      "sha256": "3d49f037a0b0843ebbee52bc0e34b46ca4da0b03660516e03284cf88cca22651",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Artiste modelant une petite sculpture avec ses outils ; création artistique lisible aux trois tailles."
+    },
+    {
+      "id": "pack-18ce5f7a",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.991Z",
+      "sourceSha256": "793b2918e5eff35dbb43b27c4d7fcb035652e18dc89a00a26fdaf90d2f29b065",
+      "sha256": "6973f6d237885d772c3f004b4d4fe859b598f296f1cffd1796f70ec33590996d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Tasse présentée avec les deux mains et inclinaison respectueuse ; bonnes manières contextualisées."
+    },
+    {
+      "id": "pack-b2b4ba7c",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:58.995Z",
+      "sourceSha256": "e83fc1b69f4a862d722e8a4be5dbcd6e9863e8aff5a851b9ecc843b5e546dc81",
+      "sha256": "93d7779eed933f064671495d57f30c23354532300bcd9bb4d9af82ad8032e2a7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux passants allant en sens opposés sur un pont ; circulation et allées et venues visibles sans flèches."
+    },
+    {
+      "id": "pack-34df6410",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.000Z",
+      "sourceSha256": "0354ddfa97ef2dbca2cfdbdd3c6f636cc1d2cfa971e2ee2966383f693655e6b4",
+      "sha256": "3bc038221f62ccb40898fe56ac751d70d9ab7c2463a27b2eebfc4ad69b3b90d7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Rangée de bornes d'arcade avec tabourets et graphismes simples ; salle de jeux lisible, sans texte ni marque."
+    },
+    {
+      "id": "pack-ac94c28a",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.004Z",
+      "sourceSha256": "b1fd930dab9fc5a2c928918f876671ac3cc4ff3645f9d793f8dbbbfa79116556",
+      "sha256": "5d1d75de561607a015e1a9c81014720b9e80597f3632d8237de9b8bd4e08a1fc",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petit logement réunissant lit, bureau et kitchenette ; studio habitation-bureau clairement composé."
+    },
+    {
+      "id": "pack-4e4f5387",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.006Z",
+      "sourceSha256": "ab0dd23527a7e809e948456ef492765ce3243349ee6254dc7b4d3c61462fdd64",
+      "sha256": "b455a33c76ff9bf506304c3c887b6428b4f12b60ed77d58f5c0e4df194b34b50",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne levant un vase pour le poser sur une étagère ; geste de dépôt en hauteur clairement représenté."
+    },
+    {
+      "id": "pack-eb7e6b22",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.009Z",
+      "sourceSha256": "49433caf2a39993a2f8e04f9a1eda8dd4ff131e1ffcc82972675ca3c8c3f0838",
+      "sha256": "7bbefb9e70734b1a9cabbfecb5d9edf789956dcb6c6da0c84541e35a49e8e27a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux hommes en costume se serrant la main autour d'une table formelle ; rencontre diplomatique en support."
+    },
+    {
+      "id": "pack-45749106",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.012Z",
+      "sourceSha256": "e03431524f9cae6c0f90b18cc976269ccae5c21dcfb339d60c2c4c386cde9e25",
+      "sha256": "3048a82dcb9cd4609f710eadca83ae6c51e4514b91be7bab8f352ce67b998bca",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne détournant la tête, bras croisés, tandis qu'une autre lui parle ; refus d'attention bien visible."
+    },
+    {
+      "id": "pack-f4fc5a6e",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.016Z",
+      "sourceSha256": "24d34fad90463aad0433b84a68ff5349da0464707abbbf2fabe9d54a2d1edc4b",
+      "sha256": "d4a7d5838f1ff532278b443deccae9296f9edcc175722933e9f907f45f839903",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Serveuse apportant un plat à deux clients attablés ; repas au restaurant clairement représenté."
+    },
+    {
+      "id": "pack-949854b4",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.019Z",
+      "sourceSha256": "276806e517aaee3333c8b821b24fee9ac666ec297bd21efe2cf86ed3228dde6c",
+      "sha256": "c90532bd6e444c8b119495d13e230330baa40757a212958791a1cda84bfb9d40",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Femme âgée partageant le thé avec une jeune adulte ; grand-mère contextualisée en support, lien maternel porté par le mot."
+    },
+    {
+      "id": "pack-5610f731",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.022Z",
+      "sourceSha256": "18b0c4d027ceff11b050ec824b7ae93bba66c28e5bd8c9b57455dbc7089972eb",
+      "sha256": "aba062fe02f31bda328847859f063b67f89224d783cc9c96acb566659eb9a6ea",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Arrosoir, gants et petite pelle réunis ; ensemble de fournitures de jardinage lisible aux trois tailles."
+    },
+    {
+      "id": "pack-894badc3",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.025Z",
+      "sourceSha256": "f02f5ebf387e93f7b08f7295ab8bec0bfd416dc0e445f93484cec6d9a0ae2873",
+      "sha256": "8c7879c59a043aee2518615191e9a666290474303be519ba5ea0a557f3d1fcaa",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Sportif levant un trophée, poing serré ; titre de champion clairement évoqué."
+    },
+    {
+      "id": "pack-7908d34b",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.029Z",
+      "sourceSha256": "8a590150c52c9eeb18524d4db61b1fa775345b4d74ca172b99974dd4d3f48e8f",
+      "sha256": "3a195018891c7c66cf52979553a63092237c3f6424b98491e03661cfcd5fd592",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Coureur franchissant le ruban d'arrivée bras levés devant un concurrent ; victoire lisible sans numéro ni texte."
+    },
+    {
+      "id": "pack-2dc79ebc",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.032Z",
+      "sourceSha256": "ab5759f6b243aebd683210a9b56593aa04eaac26eb3331f3fa4b028d4de05cbc",
+      "sha256": "2309131ba4285560f1c909d40d19b5914b4cf37099307e0a691149f109652eab",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Athlète en position de départ sur une piste ; tenue et posture sportives lisibles en vignette."
+    },
+    {
+      "id": "pack-81eaf9dd",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.035Z",
+      "sourceSha256": "ce6b9be3b88a6ef230f68272218c5c8c951bd19feb5f583759609d1f96c830a8",
+      "sha256": "d7c86acd9e2ba54bf1857f0a2d6fd934527c3b639eaba9e4a7ed78b835595b37",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Chauffeur en uniforme et casquette au volant ; rôle professionnel reconnaissable sans logo."
+    },
+    {
+      "id": "pack-293d8d08",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.038Z",
+      "sourceSha256": "813b6e83808f7c20ed9519d2c1488b2000cef006d4c89fd034623525d93d24b3",
+      "sha256": "634e3d4e0d677279cd1d9b0938506de2e7fef8f133eb5d821e407d6700df90cf",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Conducteur vu de l'intérieur d'une voiture, deux mains au volant ; conduite lisible aux trois tailles."
+    },
+    {
+      "id": "pack-b88d7b94",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.041Z",
+      "sourceSha256": "ee4e40c6d86c96f9414115b09130286ce7caf014287ed12ab3fecce61e4fa43a",
+      "sha256": "c6049a435414558493d3ecbb31a63b99c38fee67a98f802ec697b9420534e16b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Main tenant une clochette inclinée avec battant visible ; faire sonner contextualisé sans lignes sonores."
+    },
+    {
+      "id": "pack-f8195fe3",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.046Z",
+      "sourceSha256": "9bdc2a093b6459c9eaf37ce78a14fca905ba53dc14c1060345c31b06bc635151",
+      "sha256": "bbb658b1d393be6eedf608466d4ee751a25002d23155a47edf0fff63cbf38a3b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Présentateur au microphone introduisant une invitée devant un public ; animation d'événement lisible."
+    },
+    {
+      "id": "pack-2364c32d",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.049Z",
+      "sourceSha256": "058cdc6f34c22c5e9eb6feb854a9495e6b82d7a36c7e3b8df4730d8dcbf46880",
+      "sha256": "d668e92e68173f425f4fb93fa9be046d56ed5da8a0aea3a16212d6a0bd943961",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Sentier rocheux serpentant vers des sommets ; chemin de montagne nettement visible."
+    },
+    {
+      "id": "pack-bfbfc8b5",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.052Z",
+      "sourceSha256": "1749bf927d45b5587bb6472a0ea48d9cb94663cff490f6388554517069ddf8a5",
+      "sha256": "a8ecea65bcc3d483b7ce7abe8dac821fc2a8fbbeab5dd6b3ea42c4a808599c98",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Atelier textile avec plusieurs métiers à tisser ; activité industrielle contextualisée dans un cadre artisanal."
+    },
+    {
+      "id": "pack-259e1526",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.055Z",
+      "sourceSha256": "4208f7b57910a5fa1f4f114844e0a1bc66891f6a274ce0168ba16d975c52a95d",
+      "sha256": "1ab300274fca116a52edd13c2066353dde11de95249ada1a3b4268025d591403",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne pliant du linge à la maison ; gestion du foyer représentée par une activité concrète."
+    },
+    {
+      "id": "pack-1bd39023",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.057Z",
+      "sourceSha256": "6543297a75821172189322a13f59478b37f5a733add7d6472e52487f811a459f",
+      "sha256": "912c75d1b13861150d27980adda8f7435659e7e4a18b8f21db0808b61ea223b7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne examinant attentivement une feuille à la loupe ; observation lisible même en petit."
+    },
+    {
+      "id": "pack-c023a4c5",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.061Z",
+      "sourceSha256": "218fdf7babf0544679999207270cd4026d4e72c5d8683eb366bee9d44cad4195",
+      "sha256": "663429caafb61dfdb676357f38e7d338589a344a8b4bf377efd851609736754b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux adultes en entretien face à face, l'un parlant et l'autre écoutant ; consultation contextualisée."
+    },
+    {
+      "id": "pack-74e90af9",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.064Z",
+      "sourceSha256": "e8f0b95a3c163fa173e4ed07bc179dbb0e3f806246ea9403fab3e1a01a071b97",
+      "sha256": "f07916e814e3fd1209bd93ad8a4e4e82afb9f709e8bdcb33481517566eb542e4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux joueurs de tennis de table de part et d'autre du filet ; adversaires et opposition spatiale clairs."
+    },
+    {
+      "id": "pack-4714efa9",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.067Z",
+      "sourceSha256": "092ef29e162d9f4ab0acc6b9ca2f96c0790732c5b615b07de32ccc17edea0a92",
+      "sha256": "09b116957a32453fd76c27094572ff0b277bf7ea27dc04f6f6fb8caa2fcbfb4a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Marchand remettant un sac de provisions à une cliente devant son étal ; activité commerciale lisible."
+    },
+    {
+      "id": "pack-9f66ded3",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.070Z",
+      "sourceSha256": "9e16740fd137c5468ae3f990b3696de20196c418a3c27f01b0ef6d9de271e7a6",
+      "sha256": "a83049f906189bc32c5eaeef064fa717e55dd9d4da8f2fb503d152b6d9f6ce93",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petite boutique présentant des sacs sur ses étagères ; magasin identifiable sans marque ni texte."
+    },
+    {
+      "id": "pack-db9996fa",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.072Z",
+      "sourceSha256": "92e122b6fbc1e81f4a24f2fed457ff166d5fe572d1b5a2c5fecd5689b08e9b69",
+      "sha256": "d4273157919b97dc7c2bd06642cd59ced8c5f974e13bf7d80ca5dc56038f26f4",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Mains sculptant une fleur dans une planche, copeaux autour ; gravure concrète et outil visibles."
+    },
+    {
+      "id": "pack-f83c755e",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.075Z",
+      "sourceSha256": "f07fac7a06149b61709d06423592874551b004368d38493865c7de0e38b8c6fd",
+      "sha256": "5d94a68ebbd1411a62f77255a524026047af78469df296a36554c65d436b47ff",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Siphon d'évier laissant tomber des gouttes dans un seau ; fuite d'eau particulièrement claire."
+    },
+    {
+      "id": "pack-cbe90a97",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.078Z",
+      "sourceSha256": "6918e3b3f8e36bb20215d4bde476d6d792e7194aac9028ef562948a285ae2681",
+      "sha256": "c85b34135bb0805142e11501c7f7c5c3a6e7498da5befb7d7d5df7973f60f192",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Journaliste au microphone filmée en extérieur par un cadreur ; diffusion sur le terrain contextualisée en support."
+    },
+    {
+      "id": "pack-88f7ae58",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.081Z",
+      "sourceSha256": "2686711438b46771b5d52b43b7840e22104c811da273ef59ba4570253305854c",
+      "sha256": "4236b014ab80b2e7133d4a2f8eff76db51f5f6320dbd9982c5739b525709d2d7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Potier façonnant un bol avec plusieurs pièces déjà produites ; fabrication en série contextualisée."
+    },
+    {
+      "id": "pack-d140f5c0",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.085Z",
+      "sourceSha256": "b25b1e1436596f8a7e6d449616d65c9e92969da2698693372a102e3edf9f4ace",
+      "sha256": "52e263b731f8d4ea80ae8c78346bfcf0a3aff93bcbeb566c84e371926c1af671",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Escargot avançant sur une feuille ; lenteur concrètement illustrée, silhouette nette en vignette."
+    },
+    {
+      "id": "pack-22dc8896",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.089Z",
+      "sourceSha256": "842de4145c5f845c43748590deeb5628cd0f9541ebb5bf9651fc5380f43626d0",
+      "sha256": "71b420b13c5fcb5f18cb4caf7dfa2a844b858e79e1814631f628b5fdb6713422",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Main traçant une ligne unique au crayon ; trait central net aux trois tailles, aucune écriture."
+    },
+    {
+      "id": "pack-9d1b920d",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.092Z",
+      "sourceSha256": "535ae1a37aa514310237e144e5fcdd97b662f37f8f28f072592ce4681f45033a",
+      "sha256": "a0db8321df1b310c0f6d54fb242de1697868337ef04daee28cbb6fcecf8a9a0f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Ouvrier au marteau-piqueur et passant se bouchant les oreilles ; nuisance sonore lisible sans symboles."
+    },
+    {
+      "id": "pack-85884279",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.095Z",
+      "sourceSha256": "5b639303bdc0648d91d0e1ae76a6752e5de34190d98fff843aa7b2d683eaa98a",
+      "sha256": "e6b810efba1c8d26ef43244f6d47a6ddadb3f03d1b0dfa7603faeb84592b1221",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bois, pierres et tissu réunis sur un établi ; matériaux distincts par leurs formes et textures."
+    },
+    {
+      "id": "pack-e6d43626",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.097Z",
+      "sourceSha256": "9354f0a7549a24db90058a6adc9ef164281f5b1aef0db3a2688e83c97482abce",
+      "sha256": "637e1747989318fbf1ec4866c8bf1bf563ff772dec081104231735f52ebbd99c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bol délicat enveloppé avec précaution dans un tissu ; soin exprimé par le geste des mains."
+    },
+    {
+      "id": "pack-c63a99c3",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.100Z",
+      "sourceSha256": "169800995f8c12ef06932e8798a062f956d3303f9d3c119002923335a620d00e",
+      "sha256": "088e6d5cbc464dbb6dc8828db490bf7df3ebe751cbfeafd226d3826e3b31db40",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petit ventilateur de table à côté d'une tasse ; échelle compacte contextualisée sans mesure écrite."
+    },
+    {
+      "id": "pack-7e9c5ada",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.103Z",
+      "sourceSha256": "c5ecf9ee913a72a2c4ae4f7ace3906dc4f05db45552756c0ca286a90ebc841b5",
+      "sha256": "94377bb7d6c90acf2da6248946d766ed8417a459218e46c84638d8930131d1da",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne tendant la main pour aider quelqu'un à monter des marches ; aide physique clairement lisible."
+    },
+    {
+      "id": "pack-30618418",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.106Z",
+      "sourceSha256": "6f3eb218cd5028a22ec5d07a6be4fc2c616f0b10f507ba52305cafbafc10adea",
+      "sha256": "71f6d55aba951c75824e47325c4c4e709c483c29276f8938757bbb94cb352884",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Main posée paume contre une table, dos et ongles visibles ; anatomie lisible et cinq doigts cohérents."
+    },
+    {
+      "id": "pack-06cb2751",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.108Z",
+      "sourceSha256": "59d398e25a4bd040447c155a147826b0a6c750ae4568bd1b2f9c822521b1938b",
+      "sha256": "6fe503169708316d6b8f24da372bef49b18a0640a4ccffa104f1dc19f1d1b7f7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux personnes marchant main dans la main sur un sentier ; lien des mains visible et scène lisible."
+    },
+    {
+      "id": "pack-d81aa9b7",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.111Z",
+      "sourceSha256": "968384f9d746b2252a40d0e01aa83aed760f6f4a2c4ce8f6bed24354c75eb916",
+      "sha256": "f2af729a9e1353bb07ade6edfa2fc38b89a848f6a1321cb79527a6a1a1c430d3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Mains coupant les feuilles sèches d'une plante en pot ; entretien et soin illustrés par une action précise."
+    },
+    {
+      "id": "pack-8e27943c",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.115Z",
+      "sourceSha256": "2961dbd9552c8b09385cb8739483f87fd8f319cfabd87ff29311d3fbf6c2b1f4",
+      "sha256": "0eb41b426a2f5652229d550c91be5cd2187d0fe1ff45193359b5e22f888a89cd",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Artisane tressant un panier régulier ; savoir-faire manuel contextualisé par un travail soigné."
+    },
+    {
+      "id": "pack-00852b9e",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.118Z",
+      "sourceSha256": "d4e7f68f481110c7035c63a1f6034b89612bf4056b98a51a02729c3b8d0e81cd",
+      "sha256": "daf6a87786eee4c4b4b56918229b405eb06c3f4bf2b8e50ca62b8fee40783fb1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Jet d'eau montant entre les rochers d'un bassin ; jaillissement clairement visible."
+    },
+    {
+      "id": "pack-56d47db4",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.121Z",
+      "sourceSha256": "814f3409d805da9d22350e8c6fdb4f1bb0ec259363dfaca3385011ede617b50f",
+      "sha256": "7e9bcecd1006ecf2bf481c58330dbf3cee533b23f4eeb95345e90fa1eb294eac",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne endormie sous une couverture, yeux fermés sur l'oreiller ; sommeil évident aux trois tailles."
+    },
+    {
+      "id": "pack-c5b9a11e",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.124Z",
+      "sourceSha256": "3cc2a3f1fb30aa58deda14ab34e550bfba6988ae27733075dd29e23669e8f6b3",
+      "sha256": "f6c188cd6a78dc1a20ebd3aa9d1876092250b5442be8cc21d4333bf9a4d8a77a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Collectionneur rangeant des coquillages variés dans des compartiments ; collecte et organisation lisibles."
+    },
+    {
+      "id": "pack-fca3bc65",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.127Z",
+      "sourceSha256": "5b0e6b0313285c9623334270c94981638e841401f3d841fadccdff43ef477984",
+      "sha256": "4af488e3770da228bb2a8432d94d3bf9973c9a961935f544e044c63d50d01cac",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Chien détendu se laissant caresser sous le menton ; douceur et docilité exprimées par sa posture."
+    },
+    {
+      "id": "pack-a4931ac6",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.132Z",
+      "sourceSha256": "e927f1feb70c77b4048ff4c340690717c50d68698031f31b1adcd1bcb8773671",
+      "sha256": "6ea90200a6eb9b8340cc7f71ec67b4f9129d7492a49170422235d6eb4155cdaf",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Mains dissimulant un petit cadeau derrière des livres ; objet caché encore assez visible pour comprendre l'action."
+    },
+    {
+      "id": "pack-7c882acf",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.136Z",
+      "sourceSha256": "d81dd6aeaa5f574f2a478a7249111074fc22213a2c815fc04952c1341a294866",
+      "sha256": "3103dfaafc21a37326c2ac94d57549f44508d73d800e3a4de5b608bb2ccf98b0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Main effleurant le sommet des herbes en marchant ; contact léger lisible sans traits de mouvement."
+    },
+    {
+      "id": "pack-2bec30f2",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.139Z",
+      "sourceSha256": "870ff666ae92ea3a3d82dbbefde5a6413e308822d89246c74a87ae0e2447d7c3",
+      "sha256": "01f2e815bcbff3f0a207326be9778ab5674471b3281333a5454e174e20a7770f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Microphone de studio, filtre antipop, tabouret et panneaux acoustiques ; espace d'enregistrement reconnaissable."
+    },
+    {
+      "id": "pack-69be4099",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.142Z",
+      "sourceSha256": "9d2bff2c5c00e70f543376dc6482cb87143f7b2a3b2851b75617237b5ad093b9",
+      "sha256": "47e29a42a94f509e6d4e8f8bba9a5afe7bd3e8cb245a135528a5be5fc03464d3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Vitre couverte de condensation et de gouttes ; humidité contextualisée, texture lisible aux trois tailles."
+    },
+    {
+      "id": "pack-3df36185",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.145Z",
+      "sourceSha256": "c131fd5bb6ed808c8718d4a16a79454c4cb3d944b77a679f297452cc2955e951",
+      "sha256": "11acdfce0e7455e87f4d7ffa24b222183a3302e4589b2f0f8be4ed9bece336f9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Voyageuse assise avec son sac près d'une fenêtre de train ; passagère clairement identifiable."
+    },
+    {
+      "id": "pack-b587dafb",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.149Z",
+      "sourceSha256": "e506d17dce88d3a16c9b57012d5f84adb3d6bcf74abea6db8a22238f66af8665",
+      "sha256": "7dc8e0323b46d76bdf7b7cc11b92e4d4804f60e6e7977460cffdeff7a03a2883",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne essayant d'équilibrer des pierres près d'un ruisseau ; tentative concrète et geste soigneux visibles."
+    },
+    {
+      "id": "pack-a6cac9f7",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.153Z",
+      "sourceSha256": "719b171272ece4fa2cd5ff42c3407546ed199380a3b84da769107a562ea2cdda",
+      "sha256": "a0ea0b0e6abb0b81f9419f12931617641056b8c5cb10006f09b32a811dff30b7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Fleur fanée avec tige courbée, pétales et feuille tombants dans un vase ; flétrissement très net."
+    },
+    {
+      "id": "pack-ad54f543",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.160Z",
+      "sourceSha256": "c7775aff8eaef419d6a0b3cc10eb948dfd1b1bd06bf5c31c203aa59651c1b718",
+      "sha256": "bc4de35ab2f383aef053769bbfb4366c5f05f17d7b2a52597a4f19a60bc2d5f7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne regardant un oiseau sur une branche ; direction du regard lisible sans ligne ni flèche."
+    },
+    {
+      "id": "pack-009cf56a",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.163Z",
+      "sourceSha256": "80f87dcfa1cf77ec4cb1abeb0f63133c8e6e66b8802ea74729608b3f41399388",
+      "sha256": "82d3b9cc8be3f89334fbb39f3298fdcccbbabc04a0ae92c2d9c4a1a2873b69b1",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Panorama largement dégagé depuis un belvédère ; champ de vision contextualisé par une vue ouverte."
+    },
+    {
+      "id": "pack-579fe22d",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.167Z",
+      "sourceSha256": "4a7a2d8bafcea354864cc852e0ae9b14d609001532c3931f2704ab36512404e6",
+      "sha256": "11eb6eaf7bfa849ab862fb13b41e9a538da6666a5f8610009633e3887271e2cf",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux adultes disputant un échange de badminton, filet et volant visibles ; compétition sportive lisible."
+    },
+    {
+      "id": "pack-cd973355",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.170Z",
+      "sourceSha256": "7dca3554043c254ee68783787f37f8562ed0314b93d2f71c8de51c7436bd9398",
+      "sha256": "f98dfc54a4d67dc38eb6ee5e2a33d67a489402415a7e654a4f23095104f44c3d",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Épicerie avec vendeuse, légumes, sacs de grains et pains ; alimentation clairement représentée sans enseigne."
+    },
+    {
+      "id": "pack-7e49e073",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.175Z",
+      "sourceSha256": "fec3dab0c7c049d2e2d708de2eb96d0036c104e58d9878a779be42d19e188fb8",
+      "sha256": "3eca40a13b0998300e49230a622abb25e03427b603b6fe1e1208eb989247f585",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bol de soupe fumante posé près d'une fenêtre ouverte ; refroidissement contextualisé en support."
+    },
+    {
+      "id": "pack-969152f2",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.178Z",
+      "sourceSha256": "de803db8bb359ebb870b11b08d5a9fc8b65b212dc80afadf0fd190cbab77e3b6",
+      "sha256": "52a3c39de8cd9fa5a450581b86dddcb514ee566cd00316723ae8541fb44df8b9",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Prêtre en tenue ecclésiastique près d'un pupitre et d'une croix ; cadre catholique lisible sans texte."
+    },
+    {
+      "id": "pack-8698bfd8",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.181Z",
+      "sourceSha256": "90d3514aed59b1e41449bfd919698b9fa5a4c3630447daee3c63616e76ad71c9",
+      "sha256": "c12f82cb0f7bcdaf8c98b5b561a97e57fddf17dd6a68da3206debdc7cee21054",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Petit camion chargé de caisses dans sa benne ; sens de chargement nettement visible."
+    },
+    {
+      "id": "pack-535c58b4",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.185Z",
+      "sourceSha256": "a5320333219cad2313cf70d53f35795443a0d35337bbdd1a5f08f4f74254daef",
+      "sha256": "266cf510e1498d3139adb6bb9b7ca2629817b356ef9f4460f95f4750ec1fac56",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Apprenti rabotant une planche sous le regard d'un artisan ; exercice pratique supervisé lisible."
+    },
+    {
+      "id": "pack-9a448e86",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.188Z",
+      "sourceSha256": "13cf898919a806297e4cd03e4462f85778d820fb746e6251bd8fe87f9e6eb864",
+      "sha256": "5f5339663276eb1a9faf3cece059759040c8c0e78939c8eb511e7ce78e6f4229",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Arbitre au sifflet séparant deux joueurs sur un terrain de football ; arbitrage lisible sans inscription."
+    },
+    {
+      "id": "pack-91dff950",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.191Z",
+      "sourceSha256": "cf17516595ec03a0d2c878aeb327fda23da3e012ddd854b3ca56bc1033873c3e",
+      "sha256": "f27467d9d7bf7d3c8be52d1ce98f8602f8cf69bbd33d5b59cd04f1f18ee90bea",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Nouveau rendu : exactement deux chaussettes de laine assorties, talons et bouts arrondis cohérents ; paire claire à 512, 160 et 96 px."
+    },
+    {
+      "id": "pack-f6c8856c",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.194Z",
+      "sourceSha256": "38f26bba3a9081a7fa91c7718e6f84e3729175436099581ad0dec70950b309f6",
+      "sha256": "d1831c0fd02a99568038c18d885e023466797386872db7dfd1068b2e5c9a2509",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux femmes adultes très ressemblantes, coiffure et tenue assorties sur un banc ; jumelles contextualisées."
+    },
+    {
+      "id": "pack-e29ce8f1",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.196Z",
+      "sourceSha256": "acfee3d46ee70576c853820a679b0f5a96bb07fce09048c62d82e0ac2c6fa20f",
+      "sha256": "0c86efd1155677e631de99f72918fe529808f926853c4c52dc07e0f69d2fe465",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Terrasse vide, arbre dénudé et neige ; ambiance déserte et froide clairement évoquée."
+    },
+    {
+      "id": "pack-86feaab3",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.199Z",
+      "sourceSha256": "0ea31a798ae044ceb7c192751b85bdc121c0d857881cd7c94080acbf3e84c959",
+      "sha256": "01ddd6a2d2efb49799e6de055bd2483496bca7e5510d09212e90940678018ae3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Main caressant le dos d'un chat détendu ; caresse nette aux trois tailles."
+    },
+    {
+      "id": "pack-2920df22",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.202Z",
+      "sourceSha256": "82a23b846e23ced08f0c838f5ab3927bd8b3b1f49db794884db781436d26784d",
+      "sha256": "9c0ab9c1361d502727f1895bff3e7fd8a1d90f5919c146e135fa1f9ceb21242c",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne goûtant une boisson sombre avec une moue déplaisante ; amertume contextualisée en support."
+    },
+    {
+      "id": "pack-528b11fc",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.204Z",
+      "sourceSha256": "392ec70a0cae941c35d42e09d48e2be0cbfc1affbf2c6ad353982d6f80240efe",
+      "sha256": "48fbfc8788e4f0b43dff4370fd9bbd244f8a9383b2c3e6d24f68fe69d54ff16a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne balayant les feuilles d'une allée ; balai, feuilles et geste clairement visibles."
+    },
+    {
+      "id": "pack-e3ba3701",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.207Z",
+      "sourceSha256": "a441ede4e4f22cbd9ca0c4fda8e4bad0289937c65265afceed7609950f441f88",
+      "sha256": "3b41f7ae2b31879e388dc7e3f9e16dc3ebc500df1c46d9f71704197da7a7518b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne posant un chapeau sur la tête d'une autre ; geste de coiffer quelqu'un précisément illustré."
+    },
+    {
+      "id": "pack-4075d977",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.210Z",
+      "sourceSha256": "ccd36ca4a24d976a6149fc7efbbd2d5b8bca25bcf3da6a194c44e8503df96a54",
+      "sha256": "a5b1f798d952641c3791ef713f1a44a9765ca1d5252a37f70189f4bdce749b99",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Salle d'ophtalmologie avec fauteuil, lampe à fente et siège d'examen ; équipement distinct et lisible."
+    },
+    {
+      "id": "pack-fb50f016",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.213Z",
+      "sourceSha256": "5393389df379a4ee48f84f6262ed97e0350f4e2746ab3d12d8bdfb8e8b6db642",
+      "sha256": "c3ba92158fc35a09caf9df8500935b8df34a262c160b62c1dfbd6141a88722ff",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux adultes s'étreignent au seuil d'une maison ; prise dans les bras lisible en vignette."
+    },
+    {
+      "id": "pack-31eeed2c",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.215Z",
+      "sourceSha256": "51ddd26035c9619bd972568d29ec8eb6f7ab934f2e7f5b61e811c9cc378cb893",
+      "sha256": "4f577f19a574346a1e4ea0bc0da7dff4b826637a29e071225b160bd9ec8aa96a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Pièce intérieure et jardin extérieur séparés par un seuil ouvert ; dedans et dehors clairement composés."
+    },
+    {
+      "id": "pack-bd25bc10",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.219Z",
+      "sourceSha256": "6a95445b1d220f13777b533eb4da1abdc58784018a2e6866441501327bd28bd6",
+      "sha256": "93625febf4c033bbe35a4d414f504d0c55b44ed9b085b7fffbc43c3a57b75501",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne aidant une aînée à s'installer dans un fauteuil ; geste de faire asseoir contextualisé."
+    },
+    {
+      "id": "pack-6971c6bc",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.222Z",
+      "sourceSha256": "5d08288343ea320d086d984cbc1e53a6803c35d4ccf5fb677161f5dd794fa4a9",
+      "sha256": "d484ebda756f193ad28689e5e2f33494d7173157a22a5c4359ce079eba944480",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne invitant une autre à passer devant elle par un portail ; ordre du passage visible."
+    },
+    {
+      "id": "pack-4f8da727",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.226Z",
+      "sourceSha256": "cd3b8cdd60df94e2973e7eedfd44f524f6bdedf7de349baf6b24705adaec0d07",
+      "sha256": "22c1740fbd93a3f0c76be3badcb7688cde101bf1a1a2b668109642fd4e681753",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Randonneur en tête suivi de deux personnes sur un sentier ; conduite du groupe clairement représentée."
+    },
+    {
+      "id": "pack-5d8ed4a7",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.229Z",
+      "sourceSha256": "09409e3cfa2226c5ae53ed2d33fc9aea3978387300c0e5ef784d005c16cb2fce",
+      "sha256": "adfb53f3e1ea44ac18eaeb70a87d93c9a7b14920374d9c71a8f2fcdb5dc277f3",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne poussant une brouette chargée dans une pente ; effort exprimé par la posture et le terrain."
+    },
+    {
+      "id": "pack-bf1cfb3c",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.232Z",
+      "sourceSha256": "103d5b4a0bf734a43cd092f38e84a5fa1458a73626064567f9e917266b5b62de",
+      "sha256": "d09551d1a2335d20eb8e852ee9017f07886c08833142b8fa678dd17b5f732449",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Promeneur sous un lampadaire dans une ruelle nocturne ; nuit suggérée par l'éclairage localisé."
+    },
+    {
+      "id": "pack-cc1ba56b",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.236Z",
+      "sourceSha256": "0b8c713eb6874e14190044a2b744912f556ffcd8878d7cd0c76cd81e08436a8a",
+      "sha256": "a727d7a9a9bb5a9c3f66d1e874b6b8887c2536965266b4f28632cc3c583c33ff",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Chat assis, bouche ouverte vers le haut ; miaulement suggéré sans texte ni symbole sonore."
+    },
+    {
+      "id": "pack-f823bc1b",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.238Z",
+      "sourceSha256": "6a7db9a5a70cda1302a1495fba71c27dca49f1b491c15c0c76dfd0cacc8bb027",
+      "sha256": "be49787320b868fe366d76e836ecc6d05152a94b06dc537fe5866b5e7950d76f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Voyageur offrant son siège à une personne âgée dans un bus ; concession clairement contextualisée."
+    },
+    {
+      "id": "pack-00ecf22d",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.241Z",
+      "sourceSha256": "291772a0ab5655f7e0292e2b14466fb02ae87db9372830bda93a437e39c38428",
+      "sha256": "9db4151a2d23478108c4541bc680d309b51cb7d296d2de1f4a8239f743d1ee40",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux bancs de part et d'autre d'une allée ; relation des deux côtés nette aux trois tailles."
+    },
+    {
+      "id": "pack-cd272749",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.244Z",
+      "sourceSha256": "10ed4bb89a8f174c9e44e2633fd4d62ec5afd1744a8a39b49b4533ef8f5c359a",
+      "sha256": "24b5fe7c80b8c3232294596a133f60155729decefd6dc306b13c3b4cf763fd5a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne recevant un bol de nourriture offert par une autre ; sens de se faire offrir à manger contextualisé."
+    },
+    {
+      "id": "pack-1977c11a",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.247Z",
+      "sourceSha256": "a3c374cde6f845f5e7dee532b19471a100ccf37448a0e5a8387e5ba4bc738195",
+      "sha256": "c320de0f68ddb3d89c621888afef8c83c18f9de28aa76745a1d52e3aeb6ae9bc",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bac à glaçons introduit dans un congélateur ; congélation concrète et appareil lisibles."
+    },
+    {
+      "id": "pack-eec938df",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.250Z",
+      "sourceSha256": "5df0bddc3ec02627dbd047eaeb328c8fe81be20212df5fa618d574019fbcffd1",
+      "sha256": "6535a7e6528943fa98fcb83cd150b3571084f2cb2cd50cd0138352d489f473a0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Établi encombré d'outils, câbles et tiroirs ouverts ; désordre volontaire et clairement perceptible."
+    },
+    {
+      "id": "pack-390b871c",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.253Z",
+      "sourceSha256": "c10b8c6b50a1f2d78a44247502dc8160731e7333eb73f25ae36ba015849a815d",
+      "sha256": "d95e358120aed7ae10ad2397330af68ec649c5bd38000d727e8c5b95f3307fe5",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Adulte lisant allongée sur le ventre sur une couverture ; posture corporelle nette et cohérente."
+    },
+    {
+      "id": "pack-f127ef73",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.256Z",
+      "sourceSha256": "ef0c8567ed65f846d01c9a85054753c7a24ca836c98c36a2faeff299a391e090",
+      "sha256": "a2dfe0d62dee800afa4357345880660477cd51d4fa0564f67ce909bf31896edd",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Bureau de chercheur avec livres, microscope et documents ; salle d'étude contextualisée sans écriture."
+    },
+    {
+      "id": "pack-60eacb1e",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.259Z",
+      "sourceSha256": "1920de98da1c990da651dae380309dcbdfd884300dbda02f82272fe407ac28b5",
+      "sha256": "d0f34f5b21eb1b1abd187d2a510d1535d506e0ceb35daac46306a83416c4013a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Scientifique en blouse utilisant un microscope ; activité de recherche lisible en vignette."
+    },
+    {
+      "id": "pack-75d29da8",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.261Z",
+      "sourceSha256": "0fb87a52f686d320fce00f98d8950e9ac4c528a78e21be2a41b9cb365ad26063",
+      "sha256": "93f3f73eadd79fa1423c231fb465423e83ee1b779dd5be953f42c65c3140e3f6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Comédien en scène sous un projecteur, bras tendu en déclamation ; jeu théâtral clairement évoqué."
+    },
+    {
+      "id": "pack-c9224253",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.265Z",
+      "sourceSha256": "871fb92f81d8fda8edc6947e61e052387e0b027481d40d44188f5282707abd1c",
+      "sha256": "497bd28255db4e1ed1270da022d2b57a500ae7482b0c27b0f33c951143556fa5",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Orateur derrière un pupitre devant des auditeurs ; discours public lisible sans texte."
+    },
+    {
+      "id": "pack-7c0ed592",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.268Z",
+      "sourceSha256": "1b70687cfe48d627392c9f7b2b173856f147fc1fd83d100c0294a05babb1a1e4",
+      "sha256": "0673243c6403b7af5cdffa322213bfe8868057c42f24b2caf97eba85e7c4d1e6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Couple se promenant main dans la main au bord de l'eau ; relation amoureuse contextualisée."
+    },
+    {
+      "id": "pack-e5637183",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.271Z",
+      "sourceSha256": "861172c723fd913f5f75108ab18f76f742d526c51c7876d6be060e875a59944b",
+      "sha256": "9bbb4df1e6633eae90dd3df34d54fbd814f2133b40d421998a8833ee6082c5c2",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Marmite fumante sur un réchaud ; chaleur évoquée par la vapeur, formes lisibles en petit."
+    },
+    {
+      "id": "pack-7d031e78",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.274Z",
+      "sourceSha256": "484472acde1f3d5969e66cbec21ff7754070e6417835a8445c2689ba79a04a25",
+      "sha256": "b551aa946f8ef625da1297c90617462a95bfe2f426aaff05611ea57222cedfc6",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Commerçante préparant les tables devant son établissement ouvert ; exploitation d'un commerce contextualisée."
+    },
+    {
+      "id": "pack-46a5732c",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.276Z",
+      "sourceSha256": "e7c2a6761393db63ce60d6b9aadf52b224934f061677d3fdf1c289406c5cff5d",
+      "sha256": "dc199a65c878d43c86db9439a33b0c5886d101d906fd319647265652bb0afba8",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Allée de cérémonie bordée de chaises, arche fleurie et drapée ; lieu de mariage identifiable sans inscription."
+    },
+    {
+      "id": "pack-707a9ba3",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.282Z",
+      "sourceSha256": "a66e3e95dd1c878172f3ce3e3fc4a8db581a81020a00b772c75918866f64bbcb",
+      "sha256": "6d00b0b26990a785ca03e155f60bb0ba87f6c05e67f88927e5729f88b37a7f1b",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux personnes dans un escalier, l'une montant de dos et l'autre descendant de face ; deux directions clairement visibles."
+    },
+    {
+      "id": "pack-c2db7b8c",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.285Z",
+      "sourceSha256": "b7e1319e38e2c77be58fc0cda69dcfc131050196a5d4a0b63ea5f9be70fa89dc",
+      "sha256": "bd82cd5e78b90f978bedaa5517091c119617da7f8846211bda7bcf76f55f6260",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Chanteuse lyrique en robe de scène, piano et rideau ; opéra reconnaissable en support."
+    },
+    {
+      "id": "pack-ba8bb1c6",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.289Z",
+      "sourceSha256": "78320a968194a056cfaada3d74f15dcd77b58c6173b28578f0f2325b18353b3f",
+      "sha256": "d9cacd5d749b4209898e88fc63748d14637ce9e6adcc84f4fded04a08aba2d52",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne montée sur un tabouret pour atteindre une étagère ; action de monter sur un support clairement lisible."
+    },
+    {
+      "id": "pack-9c8a77d4",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.295Z",
+      "sourceSha256": "efa01e6b46eb05ea74f50e284c23931767f89cea2800ba9633135cc987cef3f2",
+      "sha256": "f486c3e30e504187d11bd5663bd4f609500d6b1fa2ee6cfa0c7e265d93b83022",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne levant la tête vers la cime d'un grand arbre ; regard vers le haut renforcé par le cadrage."
+    },
+    {
+      "id": "pack-c79caf15",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.298Z",
+      "sourceSha256": "03e1a90c622536dfa9c056842683ca8afc3d8ac772c399c147920d90dbd74bf7",
+      "sha256": "c1d4058dd36973a93c3b18ee1055c37b533e71edc494a0b8a7569c97f50ccf77",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne ajustant une écharpe devant un miroir en pied ; tenue et manière de s'habiller contextualisées."
+    },
+    {
+      "id": "pack-132eea61",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.301Z",
+      "sourceSha256": "8305b2f5f6bd7ecfac53e1cadc1e8ab46c15b1e0d597ad93933f5b85a26fe6bb",
+      "sha256": "84351d795ac7571a425e7a68903329d02fa50ec4e4cd5d71fbbee607143ba14e",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Artisan contemplant une chaise terminée, outils et copeaux à côté ; achèvement concret bien représenté."
+    },
+    {
+      "id": "pack-7ab42c0e",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.304Z",
+      "sourceSha256": "99b7e90293ded136eae8a5621eb852ba013d10ab9b7cf08e64fce369bbf1193f",
+      "sha256": "8bbb022ad241191ae042e5483479819617c1d18c2fdfc6fedb496874e6699c39",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Façade et seuil vus depuis le jardin ; extérieur d'un bâtiment lisible aux trois tailles."
+    },
+    {
+      "id": "pack-c9cb3855",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.307Z",
+      "sourceSha256": "4979e3d8068b9333ec5c7b80bd0b5b39a9962e20bab5697dd792cca5be05fdeb",
+      "sha256": "ee8d500a0ee0fb735f50bddcc0caaa7473b1fbb40f8ddc4e733296731986780a",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Personne appelant quelqu'un au loin avec la main près de la bouche ; cri contextualisé sans texte."
+    },
+    {
+      "id": "pack-06c55893",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.310Z",
+      "sourceSha256": "d04eef79c5c556aacb5280d9ba541f6c5647f8001f5204297cf27a9f8c0f33a8",
+      "sha256": "41d1b07ac7ee542b395ac3ff34e6fa7746f85ffc7b82344045f84d7271ba68c7",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Homme âgé partageant une maquette de bateau avec une jeune adulte ; grand-père contextualisé, lien maternel porté par le mot."
+    },
+    {
+      "id": "pack-c3b6f20b",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.317Z",
+      "sourceSha256": "e7d20d305d702a0f615c4730b3181383446b83a3c60cf51c49aee4be47f36393",
+      "sha256": "514c77d74988f537fe5cc26a77547b95ed6130c8867a1c016e34543ae13e22ac",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Danseuse en pose équilibrée, bras et jambe étendus ; grâce et élégance lisibles dans la silhouette."
+    },
+    {
+      "id": "pack-ce3f6ad9",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.322Z",
+      "sourceSha256": "e9d8291fd2e42192e4ef6ebdc6a1f56b265df1c926fe19aa30f98f2a8b7d0475",
+      "sha256": "acfd6e55706ba4310f4f7f1049275d07d0fd51308196c0076e6d0b3f59f93080",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux amies partageant un parapluie sous la pluie ; solidarité amicale contextualisée en support."
+    },
+    {
+      "id": "pack-0c4f629f",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.327Z",
+      "sourceSha256": "80917120e2697ae284261307df7b02376385263f6796661abb13b2ba1d75aebb",
+      "sha256": "915af612f40c90bbf1f48d98be2aabefafb26f5533c009773be9a87d25fd789f",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Sac postal avec enveloppes et colis devant des casiers ; courrier reconnaissable sans adresse ni texte."
+    },
+    {
+      "id": "pack-a17db9b5",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.330Z",
+      "sourceSha256": "81b3ee51e1a01993cc5afc33c3a081809afc774f05698c55fad8d18c3850ce88",
+      "sha256": "19b8dd77a735d0003391c12f2789a26a05de8560e58992a0b10a924b04e219b0",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Deux personnes transportant une caisse près d'une charrette ; acheminement de marchandises lisible."
+    },
+    {
+      "id": "pack-5a8b67fa",
+      "reviewer": "codex",
+      "reviewedAt": "2026-10-31T04:45:59.333Z",
+      "sourceSha256": "0d423857bf329d9ab69e9806188c7d0a801f8c298169141d195afaae1f677187",
+      "sha256": "37bc9ade14c034514e401d1c1ba9812ad479be0fa341977984f31ba971d61124",
+      "sizes": [
+        512,
+        160,
+        96
+      ],
+      "note": "Autobus en service sur une route bordée d'arrêts ; circulation d'une ligne contextualisée sans numéro ni enseigne."
+    }
+  ],
+  "counts": {
+    "approved": 200,
+    "question": 0,
+    "support": 200,
+    "B1": 112,
+    "B2": 88
+  },
+  "bytes": 8469940,
+  "catalogue": {
+    "images": 2568,
+    "question": 388,
+    "support": 2180,
+    "bytes": 91883786
+  },
+  "completedAt": "2026-10-31T04:46:24.281Z",
+  "releaseVersion": "v193",
+  "generationAttempts": 201
+}
