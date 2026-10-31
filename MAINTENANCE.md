@@ -15,6 +15,18 @@
 
 ## Sommaire
 
+**v192 — 200 illustrations supplémentaires.** 113 B1 et 87 B2,
+profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
+le dictionnaire. Catalogue de 2 368 images (388 questions, 1 980 aides),
+83 413 846 octets ; lot de 8 475 444 octets. Chaque sens a son fichier
+distinct, contrôlé à 512, 160 et 96 px. Les anciennes recettes restent inchangées.
+Reprise : `tools/images/batches/vie-pratique-2026-10-31.json` et [IMAGES.md](IMAGES.md).
+203 appels de génération pour 200 images retenues. Le premier rendu du bowling a été remplacé après revue ; son reçu de rejet est conservé. Deux appels sans image exploitable ont été repris après vérification des fichiers ; un incident d’import a été récupéré sans régénération.
+Cache `sori-v192`, caches média et progression conservés.
+Validation : 231 tests Node, 5 tests Python, syntaxe et manifeste vérifiés ;
+cinq suites Chromium réussies, dont les 2 368 images hors ligne et la mise à jour du cache, zéro erreur JS.
+Les suites UI et images ont été exécutées séparément après les trois autres suites navigateur.
+
 **v191 — 200 illustrations supplémentaires.** 109 B1 et 91 B2,
 profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
 le dictionnaire. Catalogue de 2 168 images (388 questions, 1 780 aides),

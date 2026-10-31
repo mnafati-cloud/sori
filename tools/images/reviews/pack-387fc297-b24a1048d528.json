@@ -1,0 +1,24 @@
+{
+  "id": "pack-387fc297",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-31T02:58:04.840Z",
+  "sourceSha256": "3a5dec302c58af188f2c5d8c6021b8fed0da76da6d0957bcfbc275964c89262a",
+  "sha256": "b24a1048d528ac95d6753a2c834130b956bb110c3b413c28c20295ae85214f92",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nTwo hands gathering loose flour dough into a single ball on a wooden worktop, no extra utensils. Strictly monochrome: warm off-white and neutral charcoal grey on pure black, including food, leaves, sky and clothing. No colored accents, green, blue, sepia, letters, numerals, logos, arrows, emphasis marks or motion lines. Keep generous black margins and clear forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "reviewedAt": "2026-10-31T03:36:50.842Z",
+  "note": "Revue effective du WebP à 512, 160 et 96 px. Deux mains rassemblent la pâte en boule sur une table farinée ; doigts et contact cohérents. Style 2 au pinceau blanc chaud/gris sur noir, sans texte ni logo. Usage aide après réponse uniquement.",
+  "kr": "뭉치다",
+  "sense": "Se rassembler, se masser ; former une boule",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

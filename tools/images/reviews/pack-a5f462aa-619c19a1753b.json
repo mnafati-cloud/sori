@@ -1,0 +1,24 @@
+{
+  "id": "pack-a5f462aa",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-10-31T03:21:35.636Z",
+  "sourceSha256": "89ac138e746cd20b5e5184c3842583d20643c6a18a0186af7d828ca8ce5b405c",
+  "sha256": "619c19a1753bae47b0725a5072c0e08c496725ee50c6e688e23fa39a59520560",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nSunlight flickering in small natural highlights on gently rippling water, no drawn stars or symbols. Strictly monochrome: warm off-white and neutral charcoal grey on pure black, including food, leaves, sky and clothing. No colored accents, green, blue, sepia, letters, numerals, logos, arrows, emphasis marks or motion lines. Keep generous black margins and clear forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "reviewedAt": "2026-10-31T03:36:51.180Z",
+  "note": "Revue effective du WebP à 512, 160 et 96 px. La lumière scintille naturellement sur les rides d’un lac ; reflets lisibles sans symbole graphique. Style 2 au pinceau blanc chaud/gris sur noir, sans texte ni logo. Usage aide après réponse uniquement.",
+  "kr": "반짝거리다",
+  "sense": "Scintiller, briller (par éclats répétés)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}
