@@ -1,0 +1,24 @@
+{
+  "id": "pack-62d48214",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-01T09:30:22.899Z",
+  "sourceSha256": "7ee2f6a0641deb2901ec5f14a57da00a0b82a38abc137e30f661332cf1b85d20",
+  "sha256": "a59eb807e9a3f912bfa61bb2fb153d057ad0383cb6f88257ea7fb3fb70ce5096",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nAn empty compact home kitchen with sink, stove and worktop, simple readable interior. Strictly monochrome: warm off-white and neutral charcoal grey on pure black, including food, leaves, sky and clothing. No colored accents, green, blue, sepia, letters, numerals, logos, arrows, emphasis marks or motion lines. Keep generous black margins and clear forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "reviewedAt": "2026-11-01T09:39:04.984Z",
+  "note": "Revue effective du WebP à 512, 160 et 96 px. Cuisine équipée avec évier, placards, four et plaques ; pièce identifiable. Style 2 au pinceau blanc chaud/gris sur noir, sans texte ni logo. Usage aide après réponse uniquement.",
+  "kr": "주방",
+  "sense": "Cuisine (pièce)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

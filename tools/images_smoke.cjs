@@ -272,7 +272,13 @@ let browser,page;
   },currentCache);
   assert.equal(await page.evaluate(async()=> (await (await caches.open('sori-image-store')).keys()).length),imageCount);
   assert.equal(await page.evaluate(async()=> (await (await caches.open('sori-audio-store')).keys()).length),1);
-  await context.setOffline(true);await page.reload();await page.locator('#tabs [data-tab="review"]').click();await page.locator('.images-input').waitFor();
+  // Cut the actual HTTP transport after the worker swap. Chromium's DevTools
+  // offline emulation can interrupt cached script loads during this transition.
+  // A stopped server proves that every reload below relies on the real cache.
+  const serverStopped=new Promise(resolve=>server.close(resolve));
+  server.closeAllConnections();await serverStopped;
+  await assert.rejects(fetch(url+'__offline_probe__'),TypeError);
+  await page.reload();await page.locator('#tabs [data-tab="review"]').click();await page.locator('.images-input').waitFor();
   await page.locator('.images-input').fill('우산');await page.getByRole('button',{name:'Vérifier',exact:true}).click();
   await page.getByText('Retrouvé sans aide',{exact:true}).waitFor();
   // Missing offline asset falls back, already-revealed result remains a result if image evicted.
@@ -283,7 +289,7 @@ let browser,page;
   const summary={browser:await browser.version(),imageAssets:imageCount,ime:true,reload:true,undo:true,forgettingGrade:1,typoGrade:2,
     simpleCorrection:true,legacyNeutralResume:true,homonymImagesById:true,bellySupportOnly:true,scenesSupportOnly:true,
     atomicCorrections:true,preloadBeforeAnswer:true,responseTimeExcludesImageWait:true,
-    fallbacks:['no manifest','support only','disabled','missing module','404','corrupt','timeout','offline'],themes:6,offline:true,cacheUpgrade:true,pageErrors:errors};
+    fallbacks:['no manifest','support only','disabled','missing module','404','corrupt','timeout','offline'],themes:6,offline:true,offlineTransport:'server-disconnected',cacheUpgrade:true,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,'summary.json'),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));
 })().catch(async error=>{
   console.error(error);process.exitCode=1;fs.writeFileSync(path.join(artifacts,'failure.txt'),String(error.stack||error));

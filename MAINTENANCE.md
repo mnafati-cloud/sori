@@ -15,6 +15,20 @@
 
 ## Sommaire
 
+**v194 — 200 illustrations supplémentaires.** 97 B1 et 103 B2,
+profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
+le dictionnaire. Catalogue de 2 768 images (388 questions, 2 380 aides),
+100 351 360 octets ; lot de 8 467 574 octets. Chaque sens a son fichier
+distinct, contrôlé à 512, 160 et 96 px. Les anciennes recettes restent inchangées.
+Reprise : `tools/images/batches/vie-quotidienne-2026-11-01.json` et [IMAGES.md](IMAGES.md).
+201 appels de génération pour 200 images retenues. `주저앉다` a été refait pour représenter une personne affaissée au sol ; reçu du rendu rejeté conservé.
+Cache `sori-v194`, caches média et progression conservés.
+Validation : 233 tests Node, 5 tests Python, 161 cas FSRS et cinq suites Chromium réussis.
+Les suites interface et images ont été exécutées séparément. Les 2 768 images sont
+téléchargées et le rechargement depuis le cache après changement de version réussit
+avec le serveur local coupé ; zéro erreur JavaScript. Le test images vérifie aussi
+qu’une nouvelle requête réseau échoue réellement avant ces rechargements.
+
 **v193 — 200 illustrations supplémentaires.** 112 B1 et 88 B2,
 profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
 le dictionnaire. Catalogue de 2 568 images (388 questions, 2 180 aides),

@@ -1,6 +1,19 @@
-# Illustrations et rappel visuel — v193
+# Illustrations et rappel visuel — v194
 
-> **v193 : 200 illustrations supplémentaires**, dont 112 B1 et 88 B2.
+> **v194 : 200 illustrations supplémentaires**, dont 97 B1 et 103 B2.
+> Gestes, activités, lieux, métiers et vie quotidienne ; style 2, profil `pinceau-scenes-v1`.
+> Toutes sont des aides après réponse et dans le dictionnaire.
+> Catalogue : **2 768 images** (388 questions, 2 380 aides), **100 351 360 octets**.
+> Nouveau lot : 8 467 574 octets ; WebP 512 × 512, chacun au plus 64 Kio.
+> Chaque sens a sa propre génération et une revue effective à 512, 160 et 96 px.
+> Les 2 568 anciennes images et leurs recettes sont inchangées.
+> Reprise : `tools/images/batches/vie-quotidienne-2026-11-01.json`, inventaire et revues versionnés.
+> 201 appels de génération pour 200 images retenues. `주저앉다` a été refait pour représenter une personne affaissée au sol ; reçu du rendu rejeté conservé.
+> Cache `sori-v194` ; caches média et progression conservés.
+> Validation : 233 tests Node, 5 tests Python, 161 cas FSRS et cinq suites Chromium réussis.
+> Les 2 768 images sont téléchargées ; rechargement hors connexion après changement de version et serveur coupé validé, zéro erreur JavaScript.
+
+> **Historique v193 : 200 illustrations supplémentaires**, dont 112 B1 et 88 B2.
 > Gestes, activités, lieux, métiers et vie quotidienne ; style 2, profil `pinceau-scenes-v1`.
 > Toutes sont des aides après réponse et dans le dictionnaire.
 > Catalogue : **2 568 images** (388 questions, 2 180 aides), **91 883 786 octets**.
@@ -160,7 +173,7 @@ accent vermillon discret. Depuis v180, les mini-scènes approuvées utilisent un
 profil distinct et la planche `style-scenes-reference.png`, uniquement en aide
 après réponse ; le drapeau autorise ses couleurs exactes. Le profil historique
 reste inchangé pour les objets. Toutes les illustrations sont générées, jamais prises
-sur le Web. La bibliothèque v193 contient **2 568 images** (2 368 en v192, 2 168 en v191). La base v174 comptait
+sur le Web. La bibliothèque v194 contient **2 768 images** (2 568 en v193, 2 368 en v192). La base v174 comptait
 **603 images publiées** : les 3 premières
 (우산, 사과, 고양이), puis deux lots de 100 et deux lots de 200 mots distincts.
 
@@ -513,6 +526,20 @@ Le lot `gestes-et-activites-2026-10-31` ajoute 200 sens distincts B1/B2, tous en
 La planche se recrée après un clone avec `node tools/images/review.mjs gestes-et-activites-2026-10-31`.
 Les prompts, références, hashes et observations aux trois tailles sont versionnés.
 Aucun contexte de conversation n’est nécessaire pour reprendre.
+
+### Lot complémentaire v194
+
+Le lot `vie-quotidienne-2026-11-01` ajoute 200 sens distincts B1/B2, tous en aide après réponse.
+La planche se recrée après un clone avec `node tools/images/review.mjs vie-quotidienne-2026-11-01`.
+Les prompts, références, hashes et observations aux trois tailles sont versionnés.
+Aucun contexte de conversation n’est nécessaire pour reprendre.
+
+Le test de changement de version coupe désormais le serveur HTTP local et vérifie
+qu’une nouvelle requête échoue avant de recharger l’app depuis ses caches. Dans cet
+environnement, l’émulation réseau de Chromium 154 a interrompu des chargements de
+scripts malgré un cache prêt ; la coupure réelle du serveur permet de vérifier le
+repli hors connexion. La suite `offline_smoke.cjs` conserve aussi ses scénarios de
+mode avion simulé, reprise, quota et réparation du cache.
 
 ## Hors connexion et limites
 
