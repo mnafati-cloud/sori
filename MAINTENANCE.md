@@ -15,6 +15,49 @@
 
 ## Sommaire
 
+**v197 — découverte et maîtrise à 100 %, graphique global.**
+Le repère de 80 % est supprimé. Chaque catégorie présente deux mesures sur son
+contenu complet : cartes abordées (`stage >= 1`) et cartes maîtrisées (`stage >= 4`).
+Les prochaines nouvelles cartes suivent la première catégorie introduisible de
+la file réelle ; aucune obligation de maîtriser toute une catégorie avant de
+découvrir la suivante. Les pourcentages ne s'arrondissent pas à 100 % avant que
+toutes les cartes concernées le soient. Aucun acquis ni identifiant n'est modifié.
+
+Le graphique montre par défaut la variation nette du nombre de cartes maîtrisées,
+toutes catégories confondues, avec un sélecteur A1/A2/B1/B2/C1. Il conserve les
+baisses, distingue les relevés absents avec « · » et explique les séries stables.
+Le filtre est local au rendu, sans nouveau réglage ni écriture de progression.
+Les relevés `ST.lvlhist` restent inchangés : même mise à jour du jour depuis v196,
+aucune réécriture du passé.
+
+Deux projections distinctes : **tout aborder** et **tout maîtriser**. L'app fournit
+à `progress.js` les candidats de `ENGINE.pickNew(..., Infinity, false, newRank)`
+dans l'ordre du moteur, avec leurs paires recto/verso. `introductionPlan` simule
+uniquement leur introduction à quota quotidien plein (même fenêtre de candidats
+et règle de paires que `introduceCards`), sans simuler les réponses ni modifier
+la file. Les dernières cartes A2 restent donc comptées dans le délai B1, même
+au-delà de l'ancien repère de 80 %. Les révisions prioritaires et les pauses
+peuvent rallonger ce délai ; l'interface explicite cette hypothèse. La maîtrise
+projette le gain net récent sur le cumul des cartes actives restant à consolider
+jusqu'à la catégorie, avec le délai de découverte comme plancher : ces deux
+activités avancent en parallèle et leurs durées ne s'additionnent pas.
+
+Les cartes suspendues restent dans les totaux et gardent leur état. Si elles
+empêchent un objectif à 100 %, la ligne indique le nombre à réactiver au lieu
+d'annoncer une date impossible. Une suspension dans A2 ne bloque pas artificiellement
+la découverte de B1 : la file réelle l'exclut déjà. Introduction à zéro, quota
+insuffisant pour une paire et rythme de maîtrise nul/inconnu ont des états dédiés.
+Pas de modification de FSRS, des notes ni de la sélection des exercices.
+Cache `sori-v197`, caches média conservés. Tests purs et suite Chromium stats
+étendus : découverte A2 avant B1, graphique global avec B1 stable, filtres,
+100 % abordé sans 100 % maîtrisé, suspensions, et comparaison des paires à la
+fonction d'introduction réelle. Données de test exclusivement synthétiques.
+Validation locale : 260 tests Node, syntaxe de tous les scripts, suites Chromium
+progression et sauvegarde réussies ; six thèmes, largeurs 320/412 px, réponse et
+annulation, conservation des états, module absent et rechargement hors connexion.
+Captures relues. Projection de 14 000 cartes en paires : 16–29 ms sur cet
+environnement pour des quotas 1/3/10 (mesure indicative, pas un budget téléphone).
+
 **v196 — statistiques du programme cohérentes.**
 Le module `progress.js` sépare trois mesures : part des cartes maîtrisées par
 catégorie CECR (toujours sur 100 %), variation quotidienne sur les **14 derniers

@@ -2255,8 +2255,11 @@ function renderStats(){
   $screen.appendChild(grid);
 
   if(window.SORI_PROGRESS){
+    // Même ordre et mêmes paires que la file de révision ; lecture seule.
+    const introductionQueue=ENGINE.pickNew(items.filter(it=>!it.sus),Infinity,false,newRank)
+      .map(id=>({id,band:(EXTRA[baseId(id)]||{}).cefr||"B1",base:!isRev(id),mate:mateOf(id)}));
     SORI_PROGRESS.renderCards($screen, {items:baseItems,extra:EXTRA,history:ST.lvlhist,
-      today:t,newPerDay:ST.set.newPerDay||0});
+      today:t,newPerDay:ST.set.newPerDay||0,introductionQueue});
   }
 
   /* 📈 réussite / jour (14 j) — % de bonnes réponses au 1er essai (compteurs propres ok1/ko1) */
