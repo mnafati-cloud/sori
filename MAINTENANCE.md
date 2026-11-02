@@ -15,6 +15,35 @@
 
 ## Sommaire
 
+**v195 — phrases, distinctions lexicales et diagnostics des sauvegardes.**
+Le correcteur hors ligne accepte davantage de formulations relues : verbes
+décomposés et en cours d’action, trajets avec 걸어가다, ordres de compléments,
+simultanéité et modifieurs. La réponse reste immédiate quand une formulation
+sort du corpus. Le journal de production distingue passage volontaire,
+formulation non reconnue, révélation et validation, sans conserver la saisie.
+Une tentative sans note laisse une pause de deux jours, sans modifier la maîtrise.
+Les anciennes observations ne sont pas reclassées. Voir [PRODUCTION.md](PRODUCTION.md).
+
+Les cartes et le dictionnaire distinguent 배달 / 택배 / 소포 / 배송 avec des
+libellés contextualisés et quatre notes comparatives ; les exemples, gloses et
+audios existants sont conservés (recette R2). Aucun id ni état FSRS modifié.
+
+Le cloud conserve l’étape et le statut HTTP : authentification, permissions,
+limitation de requêtes, conflit de version, refus de contenu, service indisponible,
+réseau, réponse illisible ou délai de 20 secondes par requête. Une lecture de SHA
+échouée bloque l’écriture correspondante. Deux déclenchements simultanés partagent
+la même opération. Si seule la copie récente est écrite, le bouton indique une
+sauvegarde partielle ; les marqueurs de réussite attendent toujours les deux PUT.
+Le journal couvre également les échecs manuels, sans corps de réponse ni secret.
+Garde anti-écrasement, SHA contrôlée, confirmation de restauration et formats
+v1/v2 conservés. Cache `sori-v195`, caches média préservés.
+Validation : 241 tests Node, 5 tests Python, 161 cas FSRS, syntaxe et manifeste
+des 2 768 images vérifiés ; cinq suites Chromium réussies, zéro erreur JavaScript.
+Les tests couvrent aussi les variantes hors connexion, les motifs persistés,
+les quatre notes dans les fiches et le dictionnaire, les erreurs cloud affichées,
+un échec partiel suivi d’une reprise et la garde anti-écrasement. Les réponses
+cloud sont simulées, sans accès aux sauvegardes personnelles. Captures relues.
+
 **v194 — 200 illustrations supplémentaires.** 97 B1 et 103 B2,
 profil au pinceau `pinceau-scenes-v1`, scènes utilisées après réponse et dans
 le dictionnaire. Catalogue de 2 768 images (388 questions, 2 380 aides),
@@ -1322,6 +1351,17 @@ pour ne pas les confondre avec l'état :
   coupé si `ST.set.mute`. Rien à persister non plus.
 
 ### 3.5 L'export JSON et les sauvegardes cloud
+
+**Diagnostic depuis v195.** Les échecs renvoyés par les requêtes portent
+`step`, `code`, `status` (0 sans statut HTTP) et un message affichable. Les étapes
+sont `check-latest`, `read-latest`, `write-latest`, `read-daily`, `write-daily`,
+`restore` et `prepare`. `partial:true` signifie que le PUT de `latest.json` a
+réussi mais que la lecture/écriture de l’archive du jour a échoué. Ne pas déduire
+qu’aucune copie n’existe à partir d’un échec réseau : la réponse peut avoir été perdue.
+Les échecs de sauvegarde, manuels ou automatiques, sont journalisés une seule fois
+dans `state.errors` ; `src` contient `étape:code:statut`. Les corps d’erreur et
+messages bruts d’exceptions ne sont jamais conservés. Un HTTP 409 demande une
+nouvelle lecture/validation, sans remplacement aveugle de la SHA.
 
 ```json
 { "app": "sori", "v": 1, "exportedAt": "2026-07-03T18:12:00.000Z",

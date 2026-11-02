@@ -15,7 +15,10 @@
     ["modifier", "Préciser de quelle personne ou chose on parle", "는 + nom"]
   ].map(([id,label,forms])=>({id,label,forms}));
   const endings = {
-    "공부해요":["공부해요","공부합니다","공부해"], "일해요":["일해요","일합니다","일해"],
+    "공부해요":["공부해요","공부합니다","공부해","공부를 해요","공부를 합니다","공부를 해",
+      "공부하고 있어요","공부하고 있습니다","공부하고 있어","공부를 하고 있어요","공부를 하고 있습니다","공부를 하고 있어"],
+    "일해요":["일해요","일합니다","일해","일을 해요","일을 합니다","일을 해",
+      "일하고 있어요","일하고 있습니다","일하고 있어","일을 하고 있어요","일을 하고 있습니다","일을 하고 있어"],
     "먹어요":["먹어요","먹습니다","먹어"], "읽어요":["읽어요","읽습니다","읽어"],
     "마셔요":["마셔요","마십니다","마셔"], "줘요":["줘요","주어요","줍니다","줘"],
     "보내요":["보내요","보냅니다","보내"], "드려요":["드려요","드립니다","드려"],
@@ -25,7 +28,9 @@
     "있어요":["있어요","있습니다","있어"], "사지 않아요":["사지 않아요","사지 않습니다","사지 않아","안 사요","안 삽니다","안 사"],
     "가요":["가요","갑니다","가"], "작아요":["작아요","작습니다","작아"],
     "친구예요":["친구예요","친구입니다","친구야"], "아이예요":["아이예요","아이입니다","아이야"],
-    "불러요":["불러요","부릅니다","불러"]
+    "불러요":["불러요","부릅니다","불러"], "들어요":["들어요","듣습니다","들어"],
+    "걸어가요":["걸어가요","걸어갑니다","걸어가"],
+    "노래해요":["노래해요","노래합니다","노래해","노래를 해요","노래를 합니다","노래를 해"]
   };
   const e = word => endings[word] || [word];
   const sample = part => Array.isArray(part) ? part.find(Boolean)||"" : part;
@@ -105,11 +110,17 @@
     ["station","학교 역 걷다","Je marche de l’école jusqu’à la gare.","학교","역","걸어요","에서"],
     ["rest","오늘 내일 쉬다","Je me repose d’aujourd’hui jusqu’à demain.","오늘","내일","쉬어요","부터"]
   ];
-  for(const [id,needs,prompt,from,to,v,start] of ranges)
+  for(const [id,needs,prompt,from,to,v,start] of ranges){
+    const last=v==="걸어요"?[...e(v),...e("걸어가요")]:e(v);
     add("range-"+id,"range",prompt,needs,`${from}${start} ${to}까지 ${v}`,
       `${from}${start} marque le point de départ ; ${to}까지, la limite d’arrivée.`,
-      [start,...(start==="에서"?["부터"]:[])].map(form=>p(form+"…까지",self([from+form,to+"까지",e(v)]))),
-      [[self([from+"까지",to+start,e(v)]),"Les bornes sont inversées : 까지 marque l’arrivée, pas le départ."]]);
+      [start,...(start==="에서"?["부터"]:[])].flatMap(form=>[
+        p(form+"…까지",self([from+form,to+"까지",last])),
+        p(form+"…까지",[from+form,to+"까지",...self([last])]),
+        p(form+"…까지",self([to+"까지",from+form,last]))
+      ]),
+      [[self([from+"까지",to+start,last]),"Les bornes sont inversées : 까지 marque l’arrivée, pas le départ."]]);
+  }
   const contrasts = [
     ["bag","가방 비싸다 가볍다","Le sac est cher, mais léger.",["가방은","가방이"],"비싸지만","비싼데",[],"가벼워요","비싸서"],
     ["restaurant","식당 작다 음식 맛있다","Le restaurant est petit, mais la nourriture est bonne.",["식당은","식당이"],"작지만","작은데",[["음식이","음식은"]],"맛있어요","작아서"],
@@ -125,16 +136,17 @@
         p("하지만 (deux phrases)",[subject,contrastSentences[id],"하지만",...tail,e(v)])],
       [[[subject,cause,...tail,e(v)],"Tu présentes le premier fait comme la cause du second. La consigne demande un contraste."]]);
   const conditions = [
-    ["rain","비 오다 집 있다","S’il pleut, je reste à la maison.",["비가"],"오면",["집에"],"있어요","와서"],
-    ["time","시간 있다 책 읽다","Si j’ai le temps, je lis un livre.",["시간이"],"있으면",[["책을","책"]],"읽어요","있어서"],
+    ["rain","비 오다 집 있다","S’il pleut, je reste à la maison.",[["비가","비"]],"오면",["집에"],"있어요","와서"],
+    ["time","시간 있다 책 읽다","Si j’ai le temps, je lis un livre.",[["시간이","시간"]],"있으면",[["책을","책"]],"읽어요","있어서"],
     ["hunger","배고프다 밥 먹다","Si j’ai faim, je mange.",["배가"],"고프면",[["","밥을","밥"]],"먹어요","고파서"],
     ["price","비싸다 사다","Si c’est cher, je n’achète pas.",[],"비싸면",[],"사지 않아요","비싸서"],
     ["cold","춥다 차 마시다","S’il fait froid, je bois du thé.",[],"추우면",[["차를","차"]],"마셔요","추워서"]
   ];
   for(const [id,needs,prompt,head,link,tail,v,cause] of conditions)
-    add("condition-"+id,"condition",prompt,needs,[...head,link,...tail.map(sample),v].join(" "),
+    add("condition-"+id,"condition",prompt,needs,[...head.map(sample),link,...tail.map(sample),v].join(" "),
       "(으)면 pose une condition : « si… ». La situation n’est pas présentée comme une cause déjà réalisée.",
-      [p("(으)면",self([...head,link,...tail,e(v)]))],
+      [p("(으)면",self([...head,link,...tail,e(v)])),
+        ...(id==="hunger"?[p("(으)면",self(["배고프면",...tail,e(v)]))]:[])],
       [[self([...head,cause,...tail,e(v)]),"아서 / 어서 donne une cause. Ici, il faut poser une condition avec (으)면."]]);
   const purposes = [
     ["study","공부하다 도서관 가다","Je vais à la bibliothèque pour étudier.",[],"공부하려고","공부하러","도서관"],
@@ -143,13 +155,18 @@
     ["bread","빵 사다 가게 가다","Je vais au magasin pour acheter du pain.",[["빵을","빵"]],"사려고","사러","가게"],
     ["korean","한국어 배우다 학교 가다","Je vais à l’école pour apprendre le coréen.",[["한국어를","한국어"]],"배우려고","배우러","학교"]
   ];
-  for(const [id,needs,prompt,obj,intent,motion,place] of purposes)
+  for(const [id,needs,prompt,obj,intent,motion,place] of purposes){
+    const destination=[place+"에",place+((place.charCodeAt(place.length-1)-0xac00)%28===0?"로":"으로")];
+    const intentions=id==="study"?[intent,"공부를 하려고"]:[intent];
+    const motions=id==="study"?[motion,"공부를 하러"]:[motion];
     add("purpose-"+id,"purpose",prompt,needs,[...obj.map(x=>x[0]||x[1]),intent,place+"에","가요"].join(" "),
       "(으)려고 exprime l’intention ; (으)러 exprime le but d’un déplacement. La destination porte 에 ou (으)로.",
-      [p("(으)려고",self([...obj,intent,[place+"에",place+((place.charCodeAt(place.length-1)-0xac00)%28===0?"로":"으로")],e("가요")])),
-        p("(으)러",self([...obj,motion,place+"에",e("가요")])),
-        p("(으)러",self([place+"에",...obj,motion,e("가요")]))],
+      [p("(으)려고",self([...obj,intentions,destination,e("가요")])),
+        p("(으)려고",self([destination,...obj,intentions,e("가요")])),
+        p("(으)러",self([...obj,motions,destination,e("가요")])),
+        p("(으)러",self([destination,...obj,motions,e("가요")]))],
       [[self([...obj,intent,place+"에서",e("가요")]),"La consigne donne une destination, pas un lieu de départ : marque-la avec 에."]]);
+  }
   const simultaneous = [
     ["study","음악 듣다 공부하다","J’étudie en écoutant de la musique.",[["음악을","음악"]],"들으면서",[],"공부해요","듣고 나서"],
     ["walk","음악 듣다 걷다","Je marche en écoutant de la musique.",[["음악을","음악"]],"들으면서",[],"걸어요","듣고 나서"],
@@ -157,22 +174,37 @@
     ["coffee","커피 마시다 책 읽다","Je lis un livre en buvant du café.",[["커피를","커피"]],"마시면서",[["책을","책"]],"읽어요","마시고 나서"],
     ["sing","걷다 노래 부르다","Je chante en marchant.",[],"걸으면서",[["노래를","노래"]],"불러요","걷고 나서"]
   ];
-  for(const [id,needs,prompt,head,link,tail,v,after] of simultaneous)
+  // Inverser les deux actions conserve leur simultanéité, avec le même sujet.
+  const simultaneousOther={
+    study:[[],"공부하면서",[["음악을","음악"]],"들어요","공부하고 나서"],
+    walk:[[],"걸으면서",[["음악을","음악"]],"들어요","걷고 나서"],
+    television:[[["","밥을","밥"]],"먹으면서",[["텔레비전을","텔레비전","TV를","티비를"]],"봐요","먹고 나서"],
+    coffee:[[["책을","책"]],"읽으면서",[["커피를","커피"]],"마셔요","읽고 나서"],
+    sing:[[["노래를","노래"]],"부르면서",[],"걸어요","부르고 나서"]
+  };
+  endings["봐요"]=["봐요","봅니다","봐"];
+  for(const [id,needs,prompt,head,link,tail,v,after] of simultaneous){
+    const [otherHead,otherLink,otherTail,otherVerb,otherAfter]=simultaneousOther[id];
     add("simultaneous-"+id,"simultaneous",prompt,needs,[...head.map(x=>x[0]),link,...tail.map(x=>x[0]||x[1]),v].join(" "),
       "(으)면서 relie deux actions simultanées du même sujet. 고 나서 signifie « après avoir… ».",
-      [p("(으)면서",self([...head,link,...tail,e(v)]))],
-      [[self([...head,after,...tail,e(v)]),"Tu places les actions l’une après l’autre. La consigne demande de les faire en même temps."]]);
+      [p("(으)면서",self([...head,link,...tail,e(v)])),
+        p("(으)면서",self([...otherHead,otherLink,...otherTail,e(otherVerb)])),
+        ...(id==="sing"?[p("(으)면서",self([link,e("노래해요")])),p("(으)면서",self(["노래하면서",e("걸어요")]))]:[])],
+      [[self([...head,after,...tail,e(v)]),"Tu places les actions l’une après l’autre. La consigne demande de les faire en même temps."],
+        [self([...otherHead,otherAfter,...otherTail,e(otherVerb)]),"고 나서 sépare les actions dans le temps. Ici, elles sont simultanées."]]);
+  }
   const modifiers = [
     ["reader","책 읽다 사람 친구","La personne qui lit un livre est mon ami.",[["책을","책"]],"읽는",["사람은","사람이"],[["제","내","저의","나의"]],"친구예요","읽어요"],
-    ["cafe","일하다 카페 작다","Le café où je travaille est petit.",[["제가","내가"]],"일하는",["카페는","카페가"],[],"작아요","일해요"],
+    ["cafe","일하다 카페 작다","Le café où je travaille est petit.",[["제가","내가",""]],"일하는",["카페는","카페가"],[],"작아요","일해요"],
     ["child","빵 먹다 사람 아이","La personne qui mange du pain est un enfant.",[["빵을","빵"]],"먹는",["사람은","사람이"],[],"아이예요","먹어요"],
-    ["friend","한국어 배우다 친구 여기 있다","L’ami qui apprend le coréen est ici.",[["한국어를","한국어"]],"배우는",["친구는","친구가"],["여기"],"있어요","배워요"],
-    ["book","읽다 책 재미있다","Le livre que je lis est intéressant.",[["제가","내가"]],"읽는",["책은","책이"],[],"재미있어요","읽어요"]
+    ["friend","한국어 배우다 친구 여기 있다","L’ami qui apprend le coréen est ici.",[["한국어를","한국어"]],"배우는",["친구는","친구가"],[["여기","여기에"]],"있어요","배워요"],
+    ["book","읽다 책 재미있다","Le livre que je lis est intéressant.",[["제가","내가",""]],"읽는",["책은","책이"],[],"재미있어요","읽어요"]
   ];
+  const ongoing={"읽는":"읽고 있는","일하는":"일하고 있는","먹는":"먹고 있는","배우는":"배우고 있는"};
   for(const [id,needs,prompt,head,link,noun,tail,v,finite] of modifiers)
     add("modifier-"+id,"modifier",prompt,needs,[...head.map(x=>x[0]),link,noun[0],...tail.map(x=>Array.isArray(x)?x[0]:x),v].join(" "),
       "Au présent, 는 attache l’action au nom qui suit : ce bloc précise de quelle personne ou chose on parle. Une terminaison en 요 terminerait la proposition.",
-      [p("는 + nom",[...head,link,noun,...tail,e(v)])],
+      [p("는 + nom",[...head,[link,ongoing[link]],noun,...tail,e(v)])],
       [[[...head,finite,noun,...tail,e(v)],"La terminaison 요 coupe la phrase. Attache l’action au nom suivant avec 는."]]);
   const data = {version:1,goals,items};
   if(typeof module!=="undefined" && module.exports) module.exports=data;

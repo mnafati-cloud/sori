@@ -57,6 +57,7 @@
     const s=state(raw,today); if(!s) return [];
     const available=eligible(known);
     return goals.filter(g=>!s.day.done.includes(g.id) &&
+      (!dateOK(s.skills[g.id]?.offerAfter) || s.skills[g.id].offerAfter<=today) &&
       (!dateOK(s.skills[g.id]?.due) || s.skills[g.id].due<=today) && available.some(x=>x.goal===g.id))
       .sort((a,b)=>{
         const x=s.skills[a.id],y=s.skills[b.id];
@@ -75,7 +76,7 @@
   function begin(raw,today,known,{end=false,force=false}={}){
     const s=state(raw,today); if(!s) return s;
     // v167 : reprendre aussi les essais laissés sur l'ancien écran « non reconnue ».
-    if(s.active?.phase==="unverified") return finish(s,today,"unverified");
+    if(s.active?.phase==="unverified") return finish(s,today,"unverified","legacy-unverified");
     if(s.active) return s;
     if(s.day.n>=LIMIT || (!end && !force && s.day.since<GAP)) return s;
     const item=candidates(s,today,known)[0]; if(!item) return s;
@@ -90,7 +91,7 @@
   function addDays(day,n){
     const d=new Date(day+"T12:00:00Z"); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10);
   }
-  function finish(s,today,result){
+  function finish(s,today,result,reason){
     const a=s.active, item=items.get(a.item);
     if(a.phase==="done") return s;
     const old=s.skills[item.goal];
@@ -112,12 +113,15 @@
         skill.ko++; skill.step=Math.max(0,skill.step-1); skill.due=addDays(today,1); skill.at=today;
       }
     }
+    // Espacer aussi les essais sans note, sans leur attribuer de réussite ou d’échec.
+    if(outcome==="unverified") skill.offerAfter=addDays(today,2);
+    else delete skill.offerAfter;
     s.skills[item.goal]=skill;
-    a.phase="done"; a.result=result; a.outcome=outcome;
+    a.phase="done"; a.result=result; a.outcome=outcome; a.reason=reason;
     if(a.day!==today && !s.day.done.includes(item.goal)){
       s.day.done.push(item.goal); s.day.n=Math.min(LIMIT,s.day.n+1);
     }
-    s.recent.push({id:a.id,d:today,item:item.id,outcome}); s.recent=s.recent.slice(-RECENT);
+    s.recent.push({id:a.id,d:today,item:item.id,outcome,reason}); s.recent=s.recent.slice(-RECENT);
     return s;
   }
   function submit(raw,today,text){
@@ -129,22 +133,22 @@
     a.code=g.code??null;
     if(g.status==="correct"){
       if(a.first==="correct") a.form=g.form;
-      return finish(s,today,"correct");
+      return finish(s,today,"correct","recognized");
     }
-    if(g.status==="unverified") return finish(s,today,"unverified");
+    if(g.status==="unverified") return finish(s,today,"unverified","unrecognized");
     a.phase="retry";
-    if(a.tries>=2) return finish(s,today,"solution");
+    if(a.tries>=2) return finish(s,today,"solution","attempts-exhausted");
     return s;
   }
   function reveal(raw,today){
     const s=state(raw,today), a=s?.active; if(!a || a.phase==="done") return s;
     if(!a.first) a.first="incorrect";
-    return finish(s,today,a.first==="unverified"?"unverified":"solution");
+    return finish(s,today,a.first==="unverified"?"unverified":"solution","revealed");
   }
   function skip(raw,today){
     const s=state(raw,today); if(!s?.active || s.active.phase==="done") return s;
     if(!s.active.first) s.active.first="unverified";
-    return finish(s,today,"skipped");
+    return finish(s,today,"skipped","skipped");
   }
   function undo(raw,today){
     const s=state(raw,today), a=s?.active; if(!a || a.phase!=="done" || a.cancelled) return s;
@@ -237,7 +241,8 @@
     div.innerHTML=`<summary>Construire sans aide · ${autonomous} / ${goals.length} objectifs réussis</summary>
       <p class="production-note">Quatre phrases au maximum par jour dans Réviser, avec du vocabulaire déjà solide. Seul le premier essai compte. Les reprises après correction restent distinctes.</p>
       <ul>${goals.map(g=>{
-        const k=s.skills[g.id], text=!available.has(g.id)?"En attente de vocabulaire solide":!k?.n?"À découvrir":`${count(k.ok)} réussite${count(k.ok)>1?"s":""} sans aide · ${count(k.ko)} à reprendre${k.due?" · retour le "+k.due:""}`;
+        const k=s.skills[g.id], next=[k?.due,k?.offerAfter].filter(dateOK).sort().pop();
+        const text=!available.has(g.id)?"En attente de vocabulaire solide":!k?.n?"À découvrir":`${count(k.ok)} réussite${count(k.ok)>1?"s":""} sans aide · ${count(k.ko)} à reprendre${next?" · retour le "+next:""}`;
         return `<li>${esc(g.label)}<small>${esc(g.forms)}</small><small>${esc(text)}</small>${k?.forms?.length?`<small>Formes produites : ${esc(k.forms.join(", "))}</small>`:""}</li>`;
       }).join("")}</ul>
       ${!enabled?'<p class="production-note">La production de phrases est désactivée dans les réglages.</p>':remaining(s,today,known)>0?'<button class="btn primary production-review">Construire une phrase</button>':'<p class="production-note">Les prochaines phrases apparaîtront au fil de tes révisions.</p>'}`;

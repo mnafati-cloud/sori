@@ -138,8 +138,8 @@ let browser,page;
   await page.setViewportSize({width:412,height:915});
   await page.evaluate(theme=>{SORI_THEMES.set(theme);ST.set.mute=true;},dictionaryTheme);
   assert.equal(await page.evaluate(()=>JSON.stringify({items:ST.items,rlog:ST.rlog})),dictionaryState,'dictionary never grades a word');
-  // Les trois notes sont accessibles après réponse ET dans le dictionnaire.
-  for(const kr of ["전체","전부","전"]){
+  // Les notes comparatives sont accessibles après réponse ET dans le dictionnaire.
+  for(const kr of ["전체","전부","전","배달","택배","소포","배송"]){
     const fr=await page.evaluate(kr=>{
       const it=SEED.items.find(x=>x.kr===kr);ST.items[it.id]={s:1,i:1,d:todayStr(),ok:0,ko:0};
       Q=[it.id];QPOS=0;TAB="review";render();return it.fr;
@@ -147,7 +147,8 @@ let browser,page;
     await page.getByRole("button",{name:fr,exact:true}).click();
     await page.locator("#cont").waitFor();
     const note=await page.locator(".trivia .tnote").innerText();
-    for(const word of ["전체","전부","전 직원"])assert.ok(note.includes(word),kr+" : "+word);
+    const comparisons=["배달","택배","소포","배송"].includes(kr)?["배달","택배","소포","배송"]:["전체","전부","전 직원"];
+    for(const word of comparisons)assert.ok(note.includes(word),kr+" : "+word);
     await page.locator("#dicorev").click();await page.locator(".search-input").fill(kr);
     const row=page.locator(".search-hit").filter({has:page.locator(".kr").getByText(kr,{exact:true})});
     await row.click();assert.equal(await row.locator(".tnote").innerText(),note.replace(/^※\s*/,""));
@@ -267,7 +268,7 @@ let browser,page;
   assert.deepEqual(errors,[]);
   const summary={browser:await browser.version(),retiredTrip:true,newCardsIgnoreLegacyKitPriority:true,eventAndPlayerContracts:true,
     dictionaryAudio:true,dictionaryThemes:themes.length,dictionaryWidths:[320,412],dictionaryProgressUnchanged:true,
-    productionReports:true,reportReload:true,lexicalNotes:3,typingContext:true,typingContextBeforeSelfGrade:true,typingIme:true,versionHistory:true,
+    productionReports:true,reportReload:true,lexicalNotes:7,typingContext:true,typingContextBeforeSelfGrade:true,typingIme:true,versionHistory:true,
     normalStamp:true,stuckStampRecovered:true,invisibleWordRecovered:true,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,"summary.json"),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));
 })().catch(async error=>{

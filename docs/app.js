@@ -139,7 +139,12 @@ const GLOSS_FIX = {
   /* v169 : totalité — préciser l'emploi demandé, sans prétendre que les sens sont exclusifs. */
   "전체":"L'ensemble considéré comme un tout (par opposition à une partie)",
   "전부":"Tout, sans rien laisser ; en totalité (nom ou adverbe)",
-  "전":"Tout le… / le… entier (déterminant placé devant un nom)"
+  "전":"Tout le… / le… entier (déterminant placé devant un nom)",
+  /* v195 : distinguer l'action, le service et le colis, dont les usages se recoupent. */
+  "배달":"Livraison au destinataire (notamment repas à domicile)",
+  "택배":"Livraison de colis par transporteur ; colis ainsi livré",
+  "소포":"Colis postal (le paquet que l’on envoie)",
+  "배송":"Expédition et acheminement d’une commande (suivi logistique)"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 
@@ -531,7 +536,7 @@ function reportCtx(){
     if(item){
       c.production = { id:item.id, prompt:item.prompt, goal:item.goal, attempt:a.id,
         phase:a.phase, tries:a.tries, first:a.first, result:a.result || null,
-        outcome:a.outcome || null, cancelled:!!a.cancelled };
+        outcome:a.outcome || null, reason:a.reason || null, cancelled:!!a.cancelled };
       return c;
     }
     if(TAB==="review" && Q && QPOS < Q.length){
@@ -2577,7 +2582,7 @@ function openSettings(){
       st.textContent = "Envoi en cours…";
       r = await cloudBackup(true);
     }
-    st.textContent = r.ok ? "Sauvegardé dans le cloud ("+todayStr()+")." : "Échec : "+r.msg;
+    st.textContent = r.ok ? "Sauvegardé dans le cloud ("+todayStr()+")." : (r.partial ? "Sauvegarde partielle : " : "Échec : ")+r.msg;
   };
   set.querySelector("#cloudrestore").onclick = async ()=>{
     const st = set.querySelector("#cloudstatus");
@@ -2723,20 +2728,70 @@ function exportPayload(compact = true, space){
   const data = exportData();
   return JSON.stringify(compact ? SORI_BACKUP.pack(data) : data, null, space);
 }
-async function ghPut(path, content, H, knownSha){
+function cloudFailure(step, code, status=0){
+  const stages={prepare:"Préparation", "check-latest":"Contrôle de la sauvegarde récente",
+    "read-latest":"Lecture de la sauvegarde récente", "write-latest":"Envoi de la sauvegarde récente",
+    "read-daily":"Lecture de l’archive du jour", "write-daily":"Envoi de l’archive du jour", restore:"Restauration"};
+  const causes={unauthorized:"jeton refusé — vérifie sa validité dans les réglages",
+    forbidden:"accès refusé — vérifie les permissions du jeton sur le dépôt privé",
+    "not-found":"fichier ou dépôt inaccessible", "rate-limit":"limite de requêtes atteinte — réessaie plus tard",
+    conflict:"la version cloud a changé — relance la sauvegarde pour la contrôler à nouveau",
+    rejected:"contenu ou mise à jour refusés par GitHub — réessaie après un nouveau contrôle",
+    server:"service GitHub indisponible — réessaie plus tard", http:"requête refusée par GitHub",
+    offline:"appareil hors connexion — reconnecte-toi puis réessaie",
+    network:"requête réseau interrompue ou impossible — réessaie lorsque la connexion fonctionne",
+    timeout:"aucune réponse complète après 20 secondes — réessaie",
+    "invalid-response":"réponse cloud illisible ou incomplète — aucune nouvelle écriture autorisée",
+    unexpected:"opération interrompue — conserve un export fichier avant de réessayer"};
+  return {ok:false,step,code,status,msg:(stages[step]||"Sauvegarde")+" : "+causes[code]+(status?" (HTTP "+status+")":"")};
+}
+async function ghRequest(path, H, step, body){
   const url = "https://api.github.com/repos/"+GH_REPO+"/contents/"+path;
+  const controller=new AbortController(), timer=setTimeout(()=>controller.abort(),20000);
+  try{
+    const r=await fetch(url,{headers:H,cache:"no-store",signal:controller.signal,
+      ...(body?{method:"PUT",body:JSON.stringify(body)}:{})});
+    if(!r.ok){
+      const limited=r.status===429 || (r.status===403 &&
+        (r.headers?.get("x-ratelimit-remaining")==="0" || !!r.headers?.get("retry-after")));
+      const code=limited?"rate-limit":({401:"unauthorized",403:"forbidden",404:"not-found",409:"conflict",422:"rejected"})[r.status] || (r.status>=500?"server":"http");
+      // Ne jamais recopier le corps d’erreur, les en-têtes d’authentification ou une exception brute.
+      return cloudFailure(step,code,r.status);
+    }
+    if(body) return {ok:true};
+    try{ return {ok:true,data:await r.json()}; }
+    catch(e){ return cloudFailure(step,controller.signal.aborted?"timeout":"invalid-response"); }
+  }catch(e){
+    return cloudFailure(step,controller.signal.aborted?"timeout":navigator.onLine===false?"offline":"network");
+  }finally{ clearTimeout(timer); }
+}
+async function ghPut(path, content, H, knownSha, daily=false){
   let sha = knownSha;
   if(knownSha === undefined){
-    try{ const g = await fetch(url, {headers:H}); if(g.ok) sha = (await g.json()).sha; }catch(e){}
+    const step=daily?"read-daily":"read-latest", g=await ghRequest(path,H,step);
+    if(g.ok){
+      sha=g.data?.sha;
+      if(typeof sha!=="string" || !sha) return cloudFailure(step,"invalid-response");
+    }else if(g.status!==404) return g;
   }
   const body = { message: "backup "+todayStr(), content };
   if(sha) body.sha = sha;
-  const r = await fetch(url, {method:"PUT", headers:H, body: JSON.stringify(body)});
-  return r.ok;
+  return ghRequest(path,H,daily?"write-daily":"write-latest",body);
 }
-async function cloudBackup(force){
+let CLOUD_BACKUP_PENDING=null;
+function cloudBackup(force){
+  // Un tap pendant l’auto-sauvegarde partage la même opération et la même SHA contrôlée.
+  if(CLOUD_BACKUP_PENDING) return CLOUD_BACKUP_PENDING;
+  CLOUD_BACKUP_PENDING=runCloudBackup(force).then(r=>{
+    if(!r.ok) logErr("cloud","sauvegarde : "+r.msg,[r.step||"prepare",r.code||"local",r.status||0].join(":"));
+    return r;
+  }).finally(()=>{CLOUD_BACKUP_PENDING=null;});
+  return CLOUD_BACKUP_PENDING;
+}
+async function runCloudBackup(force){
   const tok = ghToken();
   if(!tok) return {ok:false, msg:"aucun jeton configuré"};
+  const day=todayStr();
   const data = exportData();
   let payload;
   try{ payload = JSON.stringify(SORI_BACKUP.pack(data)); }
@@ -2757,31 +2812,30 @@ async function cloudBackup(force){
        Une sauvegarde illisible ou un contrôle indisponible n'autorise pas le PUT automatique. */
     let latestSha;
     if(!force){
-      const g = await fetch("https://api.github.com/repos/"+GH_REPO+"/contents/exports/latest.json",
-                            { headers: H, cache: "no-store" });
+      const g = await ghRequest("exports/latest.json",H,"check-latest");
       if(g.ok){
-        const previous = await g.json();
+        const previous = g.data;
         let prevData;
         try{
           prevData = SORI_BACKUP.unpack(JSON.parse(decodeURIComponent(escape(atob(previous.content.replace(/\n/g,""))))));
-        }catch(e){ return {ok:false, msg:"sauvegarde cloud illisible — contrôle anti-écrasement impossible"}; }
+        }catch(e){ return cloudFailure("check-latest","invalid-response"); }
         const prev = SORI_BACKUP.bytes(prevData);
         latestSha = previous.sha;
-        if(!latestSha) return {ok:false, msg:"SHA cloud absente — contrôle anti-écrasement impossible"};
+        if(typeof latestSha!=="string" || !latestSha) return cloudFailure("check-latest","invalid-response");
         if(prev > 100*1024 && local < prev/2){
           const msg = "la sauvegarde cloud ("+Math.round(prev/1024)+" Ko) est bien plus grosse que l'état local ("
                       +Math.round(local/1024)+" Ko) en format décompacté — restaure-la d'abord (↓ Restaurer)";
-          logErr("cloud", "sauvegarde REFUSÉE : "+msg, "");
-          return {ok:false, guard:true, msg};
+          return {ok:false, guard:true, step:"check-latest",code:"overwrite-guard",msg};
         }
       }else if(g.status === 404){ latestSha = null; }
-      else return {ok:false, msg:"contrôle anti-écrasement indisponible (API)"};
+      else return g;
     }
-    const ok1 = await ghPut("exports/latest.json", b64, H, latestSha);
-    const ok2 = ok1 && await ghPut("exports/sori-export-"+todayStr()+".json", b64, H);
-    if(ok1 && ok2){ ST.lastCloud = todayStr(); ST.lastExport = todayStr(); save(); return {ok:true}; }
-    return {ok:false, msg:"refus API (jeton invalide/expiré ?)"};
-  }catch(e){ return {ok:false, msg:"hors ligne ?"}; }
+    const latest = await ghPut("exports/latest.json", b64, H, latestSha);
+    if(!latest.ok) return latest;
+    const daily = await ghPut("exports/sori-export-"+day+".json", b64, H, undefined, true);
+    if(!daily.ok) return {...daily,partial:true,msg:"Copie récente enregistrée, mais l’archive du jour a échoué. "+daily.msg};
+    ST.lastCloud = day; ST.lastExport = day; save(); return {ok:true};
+  }catch(e){ return cloudFailure("prepare","unexpected"); }
 }
 function autoCloudBackup(){   // silencieux, fin de bloc, throttle 5 min (largement sous les limites GitHub)
   if(!ghToken()) return;
@@ -2790,7 +2844,7 @@ function autoCloudBackup(){   // silencieux, fin de bloc, throttle 5 min (largem
   ST.lastCloudTs = now; save();                       // consomme la fenêtre avant l'await (anti double-tir)
   /* v65 : un échec de sauvegarde automatique n'est plus AVALÉ — loggué dans ST.errors
      (jeton expiré, hors-ligne persistant, API en panne : visible à la prochaine analyse). */
-  cloudBackup().then(r => { if(r && !r.ok) logErr("cloud", "auto-backup : " + (r.msg || "?"), ""); }).catch(() => {});
+  cloudBackup().catch(() => {});   // même journal précis pour le bouton et l’envoi automatique
 }
 /* migration douce commune (import fichier OU restauration cloud) */
 function applyImportedState(state){
@@ -2844,10 +2898,10 @@ async function cloudRestore(){
   const tok = ghToken();
   if(!tok) return {ok:false, msg:"aucun jeton configuré"};
   try{
-    const r = await fetch("https://api.github.com/repos/"+GH_REPO+"/contents/exports/latest.json",
-      { headers:{ "Authorization":"Bearer "+tok, "Accept":"application/vnd.github+json" }, cache:"no-store" });
-    if(!r.ok) return {ok:false, msg:"introuvable dans le cloud"};
-    const j = await r.json();
+    const r = await ghRequest("exports/latest.json",
+      { "Authorization":"Bearer "+tok, "Accept":"application/vnd.github+json" },"restore");
+    if(!r.ok) return r;
+    const j = r.data;
     let data;
     try{ data = SORI_BACKUP.unpack(JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,"")))))); }
     catch(e){ return {ok:false, msg:"contenu invalide ou format non pris en charge"}; }
@@ -2859,7 +2913,7 @@ async function cloudRestore(){
       return {ok:true, when};
     }
     return {ok:false, msg:"annulé"};
-  }catch(e){ return {ok:false, msg:"hors ligne ?"}; }
+  }catch(e){ return cloudFailure("restore","unexpected"); }
 }
 
 async function exportState(){

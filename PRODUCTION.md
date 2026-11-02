@@ -1,4 +1,4 @@
-# Production de phrases — v167
+# Production de phrases — v195
 
 Dans **Réviser**, l’utilisateur écrit une phrase entière en coréen à partir d’une
 consigne française, sans mots proposés ni structure révélée. Le module est actif
@@ -17,6 +17,13 @@ formulations admises, des confusions précises et leur explication. Les variante
 sont des produits finis de segments explicitement écrits, pas une analyse
 générale du coréen. Les espaces entre mots restent significatifs ; NFC, espaces
 répétés, virgules et ponctuation déclarative finale sont normalisés.
+
+Depuis v195, le corpus accepte notamment `일을 해요` / `공부를 해요`, leurs
+formes en cours d’action (`일을 하고 있어요`), `걸어가요` pour les trajets,
+plusieurs positions des compléments et du sujet, les deux ordres d’actions
+simultanées et les modifieurs en `고 있는`. Les variantes sont déclarées par
+situation : aucune suppression générale des espaces ou des particules, aucun
+succès déduit de quelques mots présents dans une phrase.
 
 - Réponse reconnue : le sens de la consigne est validé. Plusieurs registres,
   ordres de compléments et constructions équivalentes sont admis.
@@ -51,6 +58,11 @@ Les objectifs encore inexplorés passent avant les reprises échues. Les context
 changent à la prochaine présentation si un autre est disponible. Les intervalles
 de réussite sont 1, 3, 7, 14 et 30 jours ; une erreur redescend d’un palier et fait
 revenir l’objectif le lendemain. Une réponse non évaluée ne change pas le palier.
+Depuis v195, un passage sans note ou une réponse non reconnue au premier essai
+laisse une pause de deux jours avant de reproposer cet objectif (`offerAfter`).
+Cette date est indépendante de la maîtrise et de `due`. Elle est retirée à la
+prochaine tentative notée ; les autres objectifs restent disponibles pendant
+la pause. Les anciennes observations ne sont pas reclassées rétroactivement.
 Le panneau **Construire sans aide** de Progrès présente les dix objectifs,
 réussites autonomes, reprises et formes effectivement produites.
 
@@ -68,6 +80,15 @@ réussites autonomes, reprises et formes effectivement produites.
   codé. Une copie du seul objectif concerné permet d’annuler la dernière note ;
 - `recent` : au plus 32 observations compactes, sans réponse textuelle ni copie
   du corpus.
+
+Depuis v195, `active.reason` et les nouvelles entrées de `recent.reason`
+distinguent l’action terminale : `recognized` (réponse évaluée correcte),
+`unrecognized` (hors corpus), `revealed` (exemple demandé), `skipped` (passage
+volontaire), `attempts-exhausted` (deux erreurs identifiées), `legacy-unverified`
+(reprise d’un ancien écran v166). `outcome` conserve la notation fondée sur le
+premier essai : `recognized` après une première erreur reste donc `incorrect`.
+Les entrées historiques sans `reason` restent inchangées et ambiguës ; ne pas
+les assimiler à des réponses erronées ou à des passages volontaires.
 
 Recharger conserve le premier verdict et la correction affichée. Le texte en
 cours de saisie reste dans la vue et n’est pas enregistré. Annuler une note

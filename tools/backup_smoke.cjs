@@ -46,10 +46,16 @@ let browser, testPage;
   await context.addInitScript(data=>{
     if(!localStorage.getItem("sori-state-v1")) localStorage.setItem("sori-state-v1",JSON.stringify(data.state));
   },original);
-  let remote=original;
+  let remote=original, failure=null;
   const writes=[], errors=[];
   await context.route("https://api.github.com/**",async route=>{
     const req=route.request(), pathname=new URL(req.url()).pathname;
+    if(failure && pathname.endsWith(failure.file) && req.method()===failure.method){
+      if(failure.network) return route.abort("failed");
+      return route.fulfill({status:failure.status,
+        headers:{"access-control-expose-headers":"X-RateLimit-Remaining, Retry-After",...failure.headers},
+        contentType:"application/json",body:'{"message":"private-server-detail"}'});
+    }
     if(req.method()==="PUT"){
       const body=req.postDataJSON();writes.push({pathname,body});
       if(pathname.endsWith("latest.json")) remote=JSON.parse(Buffer.from(body.content,"base64").toString("utf8"));
@@ -132,9 +138,37 @@ let browser, testPage;
   await page.waitForFunction(()=>document.querySelector("#cloudstatus").textContent.startsWith("Échec"));
   assert.equal(writes.length,2,"aucun PUT lors du refus anti-écrasement");
   await page.screenshot({path:path.join(artifacts,"overwrite-refused.png")});
+  // Erreurs réelles de transport simulées, affichées par le vrai bouton cloud.
+  await page.evaluate(data=>{ST=data;saveNow();},beforeBackup);
+  const expectedProgress=JSON.stringify({items:beforeBackup.items,rlog:beforeBackup.rlog});
+  const diagnosticCases=[
+    {file:"latest.json",method:"GET",status:401,message:/jeton refusé.*HTTP 401/},
+    {file:"latest.json",method:"GET",status:403,headers:{"x-ratelimit-remaining":"0"},message:/limite de requêtes.*HTTP 403/},
+    {file:"latest.json",method:"PUT",status:409,message:/version cloud a changé.*HTTP 409/},
+    {file:"latest.json",method:"GET",network:true,message:/requête réseau/}
+  ];
+  for(const test of diagnosticCases){
+    failure=test;await page.locator("#cloud").click();
+    await page.waitForFunction(()=>document.querySelector("#cloudstatus").textContent.startsWith("Échec"));
+    const message=await page.locator("#cloudstatus").innerText();
+    assert.match(message,test.message);assert.ok(!message.includes("private-server-detail"));
+    assert.equal(await page.evaluate(()=>ST.lastCloud),beforeBackup.lastCloud);
+  }
+  failure={file:"sori-export-"+today+".json",method:"PUT",status:503};
+  await page.locator("#cloud").click();
+  await page.waitForFunction(()=>document.querySelector("#cloudstatus").textContent.startsWith("Sauvegarde partielle"));
+  assert.match(await page.locator("#cloudstatus").innerText(),/Copie récente enregistrée.*HTTP 503/);
+  assert.equal(await page.evaluate(()=>ST.lastCloud),beforeBackup.lastCloud);
+  assert.match(await page.evaluate(()=>ST.errors.at(-1).src),/write-daily:server:503/);
+  await page.screenshot({path:path.join(artifacts,"cloud-partial.png")});
+  failure=null;await page.locator("#cloud").click();
+  await page.waitForFunction(()=>document.querySelector("#cloudstatus").textContent.startsWith("Sauvegardé"));
+  assert.equal(await page.evaluate(()=>ST.lastCloud),today);
+  assert.equal(await page.evaluate(()=>JSON.stringify({items:ST.items,rlog:ST.rlog})),expectedProgress);
   assert.deepEqual(errors,[]);
   const summary={browser:await browser.version(),viewport:"412×915",reviews:2,rlog:8000,
-    roundTrip:true,cloudPuts:2,dailySnapshot:true,restoreCountdown:true,manualV1:true,overwriteGuard:true,pageErrors:errors};
+    roundTrip:true,cloudPuts:writes.length,dailySnapshot:true,restoreCountdown:true,manualV1:true,overwriteGuard:true,
+    preciseCloudErrors:diagnosticCases.length,partialBackup:true,retryAfterPartial:true,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,"summary.json"),JSON.stringify(summary,null,2));
   console.log(JSON.stringify(summary));
 })().catch(async error=>{

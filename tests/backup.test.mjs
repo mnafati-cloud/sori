@@ -79,6 +79,7 @@ function harness(state = fixture().state){
   const calls = [], errors = [], saved = [], files = [];
   const c = vm.createContext({ST:clone(state), DEF_SET:E.DEF_SET, REV_BOOT:false, Q:{old:true}, NAV:false,
     SEED:{meta:{version:"test"}}, GH_REPO:"mnafati-cloud/sori-data", SORI_BACKUP:B, TextEncoder,
+    AbortController, setTimeout, clearTimeout,
     ghToken:()=>"test-token", todayStr:()=>"2026-10-05", btoa:s=>Buffer.from(s,"binary").toString("base64"),
     atob:s=>Buffer.from(s,"base64").toString("binary"), escape,unescape,encodeURIComponent,decodeURIComponent,
     logErr:(...args)=>errors.push(args), save:()=>saved.push(clone(c.ST)), render:()=>{},
@@ -98,6 +99,70 @@ function api(data, sha="previous-sha", space){
 }
 const missing = {ok:false, status:404};
 const ok = {ok:true, status:200};
+
+test("diagnostic cloud : étape, statut et cause sûrs, sans exposer la réponse du serveur", async()=>{
+  for(const [status,headers,code] of [
+    [401,{},"unauthorized"],[403,{},"forbidden"],
+    [403,{"x-ratelimit-remaining":"0"},"rate-limit"],[429,{},"rate-limit"],
+    [409,{},"conflict"],[422,{},"rejected"],[503,{},"server"]
+  ]){
+    const h=harness();h.c.respond=()=>({ok:false,status,headers:{get:k=>headers[k]??null},json:async()=>({message:"secret-test-token"})});
+    const result=await h.c.cloudBackup();
+    assert.equal(result.ok,false);assert.equal(result.status,status);assert.equal(result.step,"check-latest");
+    assert.equal(result.code,code);assert.match(result.msg,new RegExp(String(status)));
+    assert.ok(!JSON.stringify(result).includes("secret-test-token"));
+    assert.equal(h.calls.filter(x=>x.method==="PUT").length,0);
+    assert.equal(h.errors.length,1,"échec manuel également journalisé");
+  }
+});
+test("échec partiel : la copie récente est enregistrée, le snapshot du jour ne l'est pas",async()=>{
+  for(const stage of ["read-daily","write-daily"]){
+    const h=harness();h.c.ST.lastCloud="2026-10-04";
+    h.c.respond=(url,o)=>{
+      if(url.endsWith("latest.json")) return o.method==="PUT"?ok:api(fixture());
+      if(stage==="read-daily" || o.method==="PUT")return {ok:false,status:503};
+      return missing;
+    };
+    const r=await h.c.cloudBackup();
+    assert.equal(r.partial,true);assert.equal(r.step,stage);assert.equal(r.code,"server");
+    assert.match(r.msg,/Copie récente enregistrée/);assert.equal(h.c.ST.lastCloud,"2026-10-04");
+    assert.equal(h.calls.filter(x=>x.method==="PUT").length,stage==="read-daily"?1:2);
+    assert.match(h.errors[0][2],new RegExp(stage));
+  }
+});
+test("réseau, hors connexion, délai et réponse illisible restent des causes distinctes",async()=>{
+  for(const [mode,code] of [["network","network"],["offline","offline"],["timeout","timeout"],["json","invalid-response"]]){
+    const h=harness();h.c.navigator.onLine=mode!=="offline";
+    h.c.setTimeout=cb=>setTimeout(cb,5);
+    h.c.respond=(_url,o)=>{
+      if(mode==="timeout")return new Promise((resolve,reject)=>o.signal.addEventListener("abort",()=>reject(new Error("sensitive detail"))));
+      if(mode==="json")return {ok:true,status:200,json:async()=>{throw new SyntaxError("private body");}};
+      throw new TypeError("private network detail");
+    };
+    const r=await h.c.cloudBackup();
+    assert.equal(r.code,code,mode);assert.equal(r.step,"check-latest");
+    assert.ok(!JSON.stringify(r).includes("private"));assert.equal(h.calls.length,1);
+  }
+});
+test("double déclenchement : une sauvegarde partagée, aucune écriture concurrente",async()=>{
+  const h=harness();let release;
+  h.c.respond=(url,o)=>o.method==="PUT"?ok:url.endsWith("latest.json")?
+    new Promise(resolve=>{release=()=>resolve(api(fixture()));}):missing;
+  const a=h.c.cloudBackup(),b=h.c.cloudBackup();
+  assert.equal(h.calls.length,1);release();
+  assert.equal((await a).ok,true);assert.equal((await b).ok,true);
+  assert.equal(h.calls.filter(x=>x.method==="PUT").length,2);
+  h.c.respond=(url,o)=>o.method==="PUT"?ok:missing;
+  assert.equal((await h.c.cloudBackup()).ok,true,"la garde est libérée");
+});
+test("restauration : diagnostic HTTP ou réseau précis et aucun remplacement local",async()=>{
+  for(const status of [401,403,404,503]){
+    const h=harness();const original=clone(h.c.ST);
+    h.c.respond=()=>({ok:false,status});
+    const r=await h.c.cloudRestore();assert.equal(r.status,status);assert.equal(r.step,"restore");
+    assert.deepEqual(clone(h.c.ST),original);assert.equal(h.saved.length,0);
+  }
+});
 
 test("migration import v1/v2 + reload : mêmes défauts, champs inconnus et journal", async () => {
   for(const input of [fixture(), wire(fixture()), payload({v:1, future:"préservé"})]){

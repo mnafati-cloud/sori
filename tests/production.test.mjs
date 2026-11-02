@@ -44,7 +44,7 @@ test("portée et sens : phrases indépendantes du générateur du corpus",()=>{
     ["simultaneous-sing","걸으면서 노래를 불러요","correct"],
     ["modifier-book","제가 읽는 책은 재미있어요","correct"],
     ["modifier-book","제가 읽어요 책은 재미있어요","incorrect"],
-    ["modifier-book","내가 읽고 있는 책은 재미있어요","unverified"],
+    ["modifier-book","내가 읽고 있는 책은 재미있어요","correct"],
     ["restriction-home","집에서만 놀아요","unverified"],
     ["restriction-home","집 에서만 일해요","unverified"],
     ["restriction-home","집에서만 일해요?","unverified"],
@@ -54,6 +54,73 @@ test("portée et sens : phrases indépendantes du générateur du corpus",()=>{
   for(const [id,text,status] of cases) assert.equal(P.grade(id,text).status,status,text);
   assert.equal(P.grade("restriction-home","  집에서만\n 일해요! ".normalize("NFD")).status,"correct");
   assert.equal(P.grade("missing","가요").status,"unverified");
+});
+test("variantes courantes : verbes décomposés, déplacement, ordre et simultanéité",()=>{
+  const accepted=[
+    ["range-week","월요일부터 금요일까지 일을 해요"],
+    ["range-day","저는 아침부터 저녁까지 공부를 합니다"],
+    ["range-school","집에서 학교까지 걸어가요"],
+    ["range-station","학교부터 역까지 걸어갑니다"],
+    ["range-week","월요일부터 금요일까지 저는 일해요"],
+    ["range-school","학교까지 집에서 걸어가요"],
+    ["place-home","집에서 공부를 해요"],
+    ["addition-home","집에서도 일을 해요"],
+    ["addition-home","집에서도 일을 하고 있어요"],
+    ["place-home","집에서 공부를 하고 있어요"],
+    ["restriction-school","학교에서만 공부를 해요"],
+    ["condition-time","시간 있으면 책을 읽어요"],
+    ["condition-hunger","배고프면 밥을 먹어요"],
+    ["purpose-study","도서관에 공부를 하려고 가요"],
+    ["purpose-bread","가게로 빵을 사러 가요"],
+    ["simultaneous-study","공부하면서 음악을 들어요"],
+    ["simultaneous-coffee","책을 읽으면서 커피를 마셔요"],
+    ["simultaneous-sing","걸으면서 노래해요"],
+    ["modifier-reader","책을 읽고 있는 사람은 제 친구예요"],
+    ["modifier-book","읽는 책이 재미있어요"],
+    ["modifier-friend","한국어를 배우는 친구가 여기에 있어요"]
+  ];
+  for(const [id,text] of accepted) assert.equal(P.grade(id,text).status,"correct",text);
+  for(const [id,text] of [
+    ["range-week","월요일까지 금요일부터 일을 해요"],
+    ["range-school","집까지 학교에서 걸어가요"],
+    ["simultaneous-study","공부하고 나서 음악을 들어요"],
+    ["modifier-reader","책을 읽었어요 사람은 제 친구예요"],
+    ["restriction-school","학교에서 공부만 해요"],
+    ["range-week","월요일부터 금요일까지 일을 안 해요"]
+  ]) assert.notEqual(P.grade(id,text).status,"correct",text);
+});
+test("journal : distinguer les actions sans garder les réponses ni reclasser le passé",()=>{
+  const cases=[
+    [s=>P.skip(s,day),"unverified","skipped"],
+    [s=>P.submit(s,day,"une réponse personnelle"),"unverified","unrecognized"],
+    [s=>P.reveal(s,day),"incorrect","revealed"],
+    [s=>P.submit(s,day,"집에서 공부를 해요"),"correct","recognized"],
+    [s=>P.submit(P.submit(s,day,"집에 공부해요"),day,"집에 공부해요"),"incorrect","attempts-exhausted"],
+    [s=>P.submit(P.submit(s,day,"집에 공부해요"),day,"집에서 공부해요"),"incorrect","recognized"]
+  ];
+  const historical={id:0,d:"2026-10-10",item:"place-home",outcome:"unverified"};
+  for(const [act,outcome,reason] of cases){
+    const before=active("place-home");before.recent=[historical];
+    const s=roundtrip(act(before));
+    assert.equal(s.active.reason,reason);assert.equal(s.recent.at(-1).reason,reason);
+    assert.equal(s.recent.at(-1).outcome,outcome);assert.deepEqual(s.recent[0],historical);
+    assert.ok(!JSON.stringify(s).includes("personnelle"));
+    assert.deepEqual(B.unpack(roundtrip(B.pack({app:"sori",v:1,state:{production:s,items:{},rlog:[]}}))).state.production,s);
+  }
+});
+test("essai sans note : courte pause sans modifier la maîtrise ni bloquer les autres objectifs",()=>{
+  for(const finish of [s=>P.skip(s,day),s=>P.submit(s,day,"autre formulation")]){
+    const s=finish(active("place-home"));
+    assert.equal(s.skills.place.offerAfter,"2026-10-13");
+    assert.equal(s.skills.place.ok,0);assert.equal(s.skills.place.ko,0);assert.equal(s.skills.place.step,0);
+    assert.equal(s.skills.place.due,undefined);
+    assert.ok(!P.candidates(s,"2026-10-12",all).some(x=>x.goal==="place"));
+    assert.ok(P.candidates(s,"2026-10-12",all).some(x=>x.goal==="recipient"));
+    assert.ok(P.candidates(s,"2026-10-13",all).some(x=>x.goal==="place"));
+    const resumed=P.begin(P.advance(s,day),"2026-10-13",new Set(["집","공부하다"]));
+    const passed=P.submit(resumed,"2026-10-13","집에서 공부해요");
+    assert.equal(passed.skills.place.offerAfter,undefined);assert.equal(passed.skills.place.ok,1);
+  }
 });
 test("éligibilité : aucun vocabulaire inconnu et aucune carte fictive",()=>{
   assert.equal(P.remaining(null,day,new Set()),0);
@@ -99,7 +166,7 @@ test("ancienne tentative non reconnue : solution à la reprise et premier verdic
 });
 test("formulation inconnue après erreur : solution immédiate sans changer le premier verdict",()=>{
   const retry=P.submit(active("restriction-home"),day,"집에서 일만 해요");
-  const s=P.submit(retry,day,"저는 집에서만 일을 하고 있어요");
+  const s=P.submit(retry,day,"저는 집에서만 프로젝트를 진행해요");
   assert.equal(s.active.phase,"done");assert.equal(s.active.result,"unverified");
   assert.equal(s.skills.restriction.ko,1);assert.equal(s.skills.restriction.ok,0);
 });

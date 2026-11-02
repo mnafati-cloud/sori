@@ -38,7 +38,7 @@ let browser,page;
   const before=await page.evaluate(()=>({items:JSON.stringify(ST.items),rlog:JSON.stringify(ST.rlog),q:Q.slice(),p:QPOS}));
   await page.screenshot({path:path.join(artifacts,"first-phrase.png")});
   // Une validation pendant la composition IME ne doit ni noter ni avancer.
-  await page.locator(".production-input").fill("집에서 공부해요".normalize("NFD"));
+  await page.locator(".production-input").fill("집에서 공부를 하고 있어요".normalize("NFD"));
   await page.locator(".production-input").evaluate(input=>{
     input.dispatchEvent(new CompositionEvent("compositionstart",{bubbles:true}));
     input.dispatchEvent(new KeyboardEvent("keydown",{key:"Enter",isComposing:true,bubbles:true}));
@@ -75,7 +75,7 @@ let browser,page;
   await page.screenshot({path:path.join(artifacts,"corrected-after-help.png")});
   await page.getByRole("button",{name:"Continuer",exact:true}).click();
   // Hors corpus : réponse et explication immédiates, aucun clic de révélation.
-  await page.locator(".production-input").fill("집에서도 일을 하고 있어요");
+  await page.locator(".production-input").fill("집에서도 프로젝트를 진행해요");
   await page.getByRole("button",{name:"Vérifier",exact:true}).click();
   await page.locator(".production-answer").waitFor();
   assert.equal(await page.locator(".production-answer").textContent(),"집에서도 일해요");
@@ -85,6 +85,8 @@ let browser,page;
   assert.equal(await page.getByText(/Je ne sais pas évaluer cette formulation/).count(),0);
   assert.equal(await page.evaluate(()=>ST.production.skills.addition.ko),0);
   assert.equal(await page.evaluate(()=>ST.production.skills.addition.ok),0);
+  assert.equal(await page.evaluate(()=>ST.production.recent.at(-1).reason),"unrecognized");
+  assert.equal(await page.evaluate(()=>ST.production.skills.addition.offerAfter),E.addDays(today,2));
   await page.screenshot({path:path.join(artifacts,"unrecognized-answer.png")});
   await page.getByRole("button",{name:"Continuer",exact:true}).click();
   // Le service worker fournit le corpus et le correcteur sans aucun réseau.
@@ -104,6 +106,29 @@ let browser,page;
   await page.locator('#tabs [data-tab="progres"]').click();
   await page.locator(".production-progress summary").click();
   await page.screenshot({path:path.join(artifacts,"progress.png")});
+  // Un passage volontaire reste distinct d’une phrase non reconnue, même après recharge.
+  await page.evaluate(()=>{
+    ST.production=null;Q=[];QPOS=0;TAB="review";render();
+  });
+  await page.getByRole("button",{name:"Passer sans note",exact:true}).click();
+  await page.locator(".production-answer").waitFor();
+  assert.equal(await page.evaluate(()=>ST.production.recent.at(-1).reason),"skipped");
+  await page.reload();await page.locator('#tabs [data-tab="review"]').click();
+  assert.equal(await page.evaluate(()=>ST.production.recent.at(-1).reason),"skipped");
+  // Exemple concret de l’audit, validé hors connexion avec l’UI et le vrai correcteur.
+  await page.evaluate(()=>{
+    ST.production={v:1,seq:1,skills:{},recent:[],day:{d:todayStr(),n:1,done:["range"],since:0},
+      active:{id:1,item:"range-week",day:todayStr(),phase:"input",tries:0,first:null}};
+    render();
+  });
+  await context.setOffline(true);
+  await page.locator(".production-input").fill("월요일부터 금요일까지 일을 해요");
+  await page.getByRole("button",{name:"Vérifier",exact:true}).click();
+  await page.getByText("Réussi sans aide.",{exact:true}).waitFor();
+  assert.deepEqual(await page.evaluate(()=>ST.production.skills.range.forms),["부터…까지"]);
+  assert.equal(await page.evaluate(()=>ST.production.recent.at(-1).reason),"recognized");
+  await page.screenshot({path:path.join(artifacts,"range-variant-offline.png")});
+  await context.setOffline(false);
   // Tous les thèmes, largeur étroite et clavier ouvert simulé : aucun débordement horizontal.
   await page.evaluate(()=>{ST.production=null;Q=[];QPOS=0;TAB="review";render();});
   for(const size of [{width:320,height:568},{width:412,height:480}]){
@@ -154,7 +179,8 @@ let browser,page;
   assert.equal(await page.locator(".production-card").count(),0);
   assert.equal(await page.evaluate(()=>JSON.stringify(ST.production)),saved);
   assert.deepEqual(errors,[]);
-  const summary={browser:await browser.version(),ime:true,ordinaryReviews:8,reload:true,undo:true,offline:true,themes:6,dailyLimit:4,pageErrors:errors};
+  const summary={browser:await browser.version(),ime:true,ordinaryReviews:8,reload:true,undo:true,offline:true,
+    commonVariants:true,distinctUnscoredReasons:true,unscoredSpacing:true,themes:6,dailyLimit:4,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,"summary.json"),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));
 })().catch(async error=>{
   console.error(error);process.exitCode=1;
