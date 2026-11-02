@@ -50,6 +50,8 @@ jobs:
         run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/production_smoke.cjs
       - name: Signalements, distinctions lexicales et récupération des animations
         run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/ui_repairs_smoke.cjs
+      - name: Statistiques, projections, actualisation et annulation
+        run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/progress_smoke.cjs
       - name: Images, absence de fichier, notation, IME et cache hors connexion
         run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/images_smoke.cjs
       - name: Téléchargements partiels, reprise, stockage et médias hors connexion

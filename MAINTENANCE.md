@@ -15,6 +15,34 @@
 
 ## Sommaire
 
+**v196 — statistiques du programme cohérentes.**
+Le module `progress.js` sépare trois mesures : part des cartes maîtrisées par
+catégorie CECR (toujours sur 100 %), variation quotidienne sur les **14 derniers
+jours**, et projection cumulée pour **terminer** chaque catégorie au repère
+de 80 %. « Niveau actuel » et « prochain palier » disparaissent : le suivi des
+cartes ne certifie pas un niveau de langue. Les projections longues sont arrondies
+en mois et leurs hypothèses sont accessibles dans l'écran.
+
+`ST.lvlhist[jour]` garde son schéma, mais le relevé du jour est actualisé à chaque
+retour aux stats, y compris après annulation. Les pourcentages et le rythme
+utilisent ainsi les mêmes acquis. Aucun relevé passé n'est réécrit. La vitesse
+est le gain net sur les sept derniers jours (repli sur 21 jours uniquement si
+la période observée est trop courte, minimum trois jours). Une stagnation ou
+une baisse ne réutilise plus une ancienne vitesse positive. Les variations
+négatives sont visibles ; un jour sans relevé ne reçoit pas le gain de plusieurs
+jours. Les cartes mises de côté restent dans les totaux historiques, avec un
+libellé explicite ; celles non maîtrisées ne réduisent plus artificiellement
+le plancher d'introduction. Aucun délai annoncé si les introductions sont en
+pause alors qu'il reste des cartes à introduire, ou si les suspensions rendent
+le seuil inaccessible.
+
+Pas de changement du moteur FSRS, des notes, des dates de révision, du contenu,
+des réglages ni des identifiants. Cache `sori-v196`, caches média préservés.
+Validation : 254 tests Node ; suite Chromium dédiée `tools/progress_smoke.cjs`
+(six thèmes, 320/412 px, actualisation après réponse/annulation, rechargement,
+module absent et hors-ligne), suites sauvegarde et réparations UI. Les tests
+utilisent exclusivement des données synthétiques. La suite stats est en CI.
+
 **v195 — phrases, distinctions lexicales et diagnostics des sauvegardes.**
 Le correcteur hors ligne accepte davantage de formulations relues : verbes
 décomposés et en cours d’action, trajets avec 걸어가다, ordres de compléments,
@@ -1131,6 +1159,7 @@ mainteneur de toucher un module sans risquer la progression :
 
 | Fichier | API exposée | Appelé où dans app.js | Droits / interdits |
 |---|---|---|---|
+| `progress.js` | `SORI_PROGRESS.renderCards(container, opts)` + `pure.model / summarize / recentPace` | `renderStats()`, après les tuiles | Lecture seule des items, niveaux et relevés fournis ; aucun stockage ni effet sur la planification. Module facultatif, CSS préfixé `progress-`. Le relevé courant est persisté uniquement par `captureLevelSnapshot()` dans app.js. |
 | `themes.js` (+`themes.css`) | `window.SORI_THEMES = { list, get(), set(id) }` | Chargé dans `<head>` (autonome). Le `<select id="theme">` de `renderStats()` appelle `SORI_THEMES.set(id)` | SEUL module autorisé à toucher localStorage, et UNIQUEMENT la clé `sori-theme`. Pose la classe `theme-*` sur `<html>`, met à jour `<meta name="theme-color">`. Valeur inconnue → défaut `seoul`. |
 | `events-data.js` | `window.EVENTS_DATA = [...]` (données pures) | — | LE fichier à éditer pour gérer un événement (R10 / MAINTENANCE-EVENTS.md). Zéro logique dedans. |
 | `events.js` | `SORI_EVENTS.renderCards(container, {today, log, dismissed, onDismiss})` + `pure.activeEvents / pure.eventProgress` | Haut de `renderStats()`. Masquage persisté par app.js dans `ST.evDismiss` via `onDismiss(id)` | Zéro localStorage. 0 événement actif ⇒ ne rend RIEN. Type inconnu ignoré sans crash. |

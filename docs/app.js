@@ -2164,17 +2164,16 @@ function renderListen(){
 /* accueil = Progrès : LANCEUR (action d'abord) puis métriques. */
 /* ===== historique de maîtrise (pour suivre la progression de niveau dans le temps) =====
    Snapshot quotidien du nb de cartes maîtrisées (stade≥4) par bande CEFR, stocké dans
-   ST.lvlhist (clé ADDITIVE, préservée par loadState). Capté 1×/jour à l'ouverture de
-   l'accueil. Sert au graphe "maîtrise gagnée/jour" et à l'ETA vers le niveau suivant.
+   ST.lvlhist (clé ADDITIVE, préservée par loadState). Un relevé par jour, actualisé
+   à chaque retour à l'accueil (v196). Sert aux variations et projections du programme.
    Sans ce journal, ces séries seraient impossibles (l'état ne garde que la maîtrise ACTUELLE). */
-function lvlTotal(snap){ return snap ? ((snap.A1||0)+(snap.A2||0)+(snap.B1||0)+(snap.B2||0)+(snap.C1||0)) : 0; }
 function captureLevelSnapshot(baseItems){
   const t = todayStr();
   ST.lvlhist = ST.lvlhist || {};
-  if(ST.lvlhist[t]) return;                     // déjà capté aujourd'hui
   const snap = {A1:0,A2:0,B1:0,B2:0,C1:0};
   baseItems.forEach(it=>{ if(it.stage>=4){ const c=(EXTRA[it.id]||{}).cefr; if(snap[c]!==undefined) snap[c]++; } });
-  ST.lvlhist[t] = snap;
+  if(ST.lvlhist[t] && Object.keys(snap).every(b=>ST.lvlhist[t][b]===snap[b])) return;
+  ST.lvlhist[t] = {...ST.lvlhist[t], ...snap}; // actualiser aussi après une session ou une annulation
   const days = Object.keys(ST.lvlhist).sort();  // borne l'historique (~400 jours)
   if(days.length > 400) days.slice(0, days.length-400).forEach(d=>delete ST.lvlhist[d]);
   save();
@@ -2183,7 +2182,7 @@ function renderStats(){
   const t=todayStr(), l=ST.log[t]||{ok:0,ko:0,n:0};
   const items = ALL_IDS.map(eff);              // recto + verso (pour le compteur du lanceur)
   const baseItems = items.filter(it=>!it.rev); // deck de compréhension : les métriques affichées comptent le vocabulaire, pas ×2
-  captureLevelSnapshot(baseItems);             // journalise la maîtrise du jour (1×/jour)
+  captureLevelSnapshot(baseItems);             // même état courant pour pourcentages et rythme
   const enemies = baseItems.filter(it=>it.enemy);
   const beaten = enemies.filter(it=>it.stage>=4).length;
   const matures = baseItems.filter(it=>it.stage>=4).length;   // cartes solides (niv ≥ 4)
@@ -2255,81 +2254,10 @@ function renderStats(){
   });
   $screen.appendChild(grid);
 
-  /* ===== NIVEAU & PROGRESSION — niveau actuel (d'après les acquis), % + ETA vers le suivant,
-     et deux graphes quotidiens (maîtrise gagnée/jour, réussite/jour). Maîtrise = stade≥4. ===== */
-  const BANDS = ["A1","A2","B1","B2","C1"];
-  const tot={A1:0,A2:0,B1:0,B2:0,C1:0}, mas={A1:0,A2:0,B1:0,B2:0,C1:0}, intro={A1:0,A2:0,B1:0,B2:0,C1:0};
-  baseItems.forEach(it=>{ const c=(EXTRA[it.id]||{}).cefr; if(tot[c]!==undefined){ tot[c]++; if(it.stage>=4) mas[c]++; if(it.stage>=1) intro[c]++; } });
-  const pct = b => tot[b] ? Math.round(100*mas[b]/tot[b]) : 0;
-  let working = null;
-  for(const b of BANDS){ if(tot[b] && mas[b]/tot[b] < 0.8){ working = b; break; } }             // niveau en cours : 1re bande < 80%
-  const acquired = BANDS.filter(b=>tot[b] && mas[b]/tot[b] >= 0.8);                               // bandes solides (≥80%)
-  const nextBand = working ? BANDS[BANDS.indexOf(working)+1] : null;
-  const need = working ? Math.max(0, Math.ceil(0.8*tot[working]) - mas[working]) : 0;             // cartes restantes vers le seuil du niveau suivant
-
-  const dd=(a,b)=>Math.round((new Date(a+"T12:00:00")-new Date(b+"T12:00:00"))/86400000);
-  /* v108 : vitesse récente = cartes maîtrisées/jour sur 7 j (repli 21 j si historique court).
-     La fenêtre de 21 j gardait la vague de rattrapage de début juillet au dénominateur : le
-     rythme affiché restait ~3× le régime réel et l'ETA semblait figée (retour user « toujours
-     19 jours, ça ne monte pas, ça ne descend pas »). */
-  const paceFrom = win => {
-    const p = Object.keys(ST.lvlhist||{}).sort().filter(d=>dd(t,d)<=win).map(d=>({d, tt:lvlTotal(ST.lvlhist[d])}));
-    if(p.length<2) return null;
-    const a=p[0], b=p[p.length-1], span=dd(b.d,a.d);
-    return (span>=1 && b.tt>a.tt) ? (b.tt-a.tt)/span : null;
-  };
-  const pace = paceFrom(7) != null ? paceFrom(7) : paceFrom(21);
-  const paceTxt = pace!=null ? (Math.round(pace*10)/10) : null;
-  const nextPct = working ? Math.min(100, Math.round(100*(mas[working]/(0.8*tot[working])))) : 100;   // % du chemin vers le palier suivant
-  $screen.appendChild(el(`<div class="card"><h2>Ton niveau</h2>
-    <p style="margin:2px 0 8px"><span class="dim note">Niveau actuel (d'après tes acquis)</span><br>
-      <b style="font-size:1.6rem;color:var(--acc)">${working||"tout acquis"}</b>${acquired.length?` <span class="dim note">· ${acquired.join(" · ")} acquis</span>`:""}${working&&nextBand?`<br><span class="dim note">Prochain palier : <b>${nextBand}</b> — ${nextPct}% du chemin</span>`:""}</p>
-    <div class="levelbars">${BANDS.map(b=>`
-      <div class="lvlrow">
-        <span class="lvlname">${b}</span>
-        <span class="lvltrack"><span class="lvlfill${b===working?" work":""}" style="width:${pct(b)}%"></span></span>
-        <span class="lvlpct">${pct(b)}% <span class="dim note-xs">(${mas[b]}/${tot[b]})</span></span>
-      </div>`).join("")}</div></div>`));
-
-  /* 🧗 gain quotidien vers le prochain niveau (%/jour) — Δ maîtrise du niveau en cours ÷ son seuil (80%), 14 j */
-  const gWin=[]; for(let i=13;i>=0;i--) gWin.push(addDays(t,-i));
-  const wb = working, tgt = wb ? 0.8*tot[wb] : 0;
-  let lastW=null;
-  Object.keys(ST.lvlhist||{}).sort().forEach(d=>{ if(dd(gWin[0],d)>0){ const s=ST.lvlhist[d]; if(s) lastW = s[wb]||0; } });   // baseline avant la fenêtre
-  const pg=gWin.map(d=>{ const s=(ST.lvlhist||{})[d]; if(!s||!wb) return {d,p:null}; const w=s[wb]||0; const dg=(lastW==null)?null:Math.max(0,w-lastW); lastW=w; return {d, p:(dg==null||tgt<=0)?null:(dg/tgt*100)}; });
-  const anyPg = pg.some(x=>x.p!=null && x.p>0);
-  const mxp = Math.max(0.5,...pg.map(x=>x.p||0));
-  $screen.appendChild(el(`<div class="card"><h2>Gain vers le niveau suivant — 14 j</h2>
-    <p class="dim note" style="margin-bottom:6px">${wb?`<b>% du chemin</b> vers <b>${nextBand||"le niveau suivant"}</b> gagné chaque jour.`:"Tous les niveaux du deck sont acquis."}</p>
-    ${wb ? (anyPg
-      ? `<div class="bars">${pg.map(x=>`<div class="b"><div style="height:${x.p==null?2:Math.max(2,Math.round(70*x.p/mxp))}px${x.d===t?";background:var(--acc)":""}${x.p==null?";opacity:.25":""}"></div><span>${x.p==null?"·":(Math.round(x.p*10)/10)}</span></div>`).join("")}</div>`
-      : `<p class="dim note">L'historique se construit — les barres apparaîtront au fil de tes jours de révision.</p>`) : ""}</div>`));
-
-  /* ⏳ temps estimé vers CHAQUE niveau à venir (cumulé) — cartes restantes ÷ vitesse récente.
-     v108 : PLANCHER D'INTRODUCTION — finir un niveau exige d'abord d'INTRODUIRE ses cartes
-     pas encore vues (≤ newPerDay/jour) ; sans ce plancher l'ETA promettait de maîtriser des
-     cartes qui n'existaient pas encore dans la rotation (le « 19 j » impossible du retour user).
-     ETA = max(restantes-à-maîtriser ÷ rythme, restantes-à-introduire ÷ nouvelles/jour). */
-  const wi = BANDS.indexOf(working);
-  const upcoming = (wi>=0 ? BANDS.slice(wi) : []).filter(b=>tot[b] && mas[b]/tot[b] < 0.8);
-  const npd = Math.max(0, ST.set.newPerDay||0);
-  let cum=0, cumIntro=0;
-  const etas = upcoming.map(b=>{
-    cum      += Math.max(0, Math.ceil(0.8*tot[b]) - mas[b]);
-    cumIntro += Math.max(0, Math.ceil(0.8*tot[b]) - intro[b]);
-    if(!pace) return {b, days:null};
-    const dInt = npd>0 ? Math.ceil(cumIntro/npd) : 0;
-    return {b, days: Math.max(Math.ceil(cum/pace), dInt)};
-  });
-  const mxe = Math.max(1,...etas.map(x=>x.days||0));
-  /* v79 : libellé clarifié (retour user) — le 1er barreau est le niveau EN COURS (le « niveau actuel »
-     affiché plus haut) ; « X j » = temps pour l'AMENER à 80 % (le finir), pas pour « l'atteindre ». */
-  $screen.appendChild(el(`<div class="card"><h2>Temps pour valider chaque niveau</h2>
-    <p class="dim note" style="margin-bottom:6px">Jours pour amener chaque niveau à <b>80 %</b>${paceTxt!=null?` — rythme actuel ~${paceTxt} carte${pace>=2?"s":""}/j, estimation optimiste`:""}.</p>
-    ${etas.length ? (pace
-      ? `<div class="bars">${etas.map(x=>`<div class="b"><div style="height:${Math.max(2,Math.round(70*x.days/mxe))}px"></div><span>${x.b===working?"finir "+x.b:x.b}<br>${x.days} j</span></div>`).join("")}</div>`
-      : `<p class="dim note">Estimation dispo dès quelques jours d'historique de maîtrise (ta vitesse récente est encore inconnue).</p>`)
-      : `<p class="dim">Tous les niveaux du deck sont acquis.</p>`}</div>`));
+  if(window.SORI_PROGRESS){
+    SORI_PROGRESS.renderCards($screen, {items:baseItems,extra:EXTRA,history:ST.lvlhist,
+      today:t,newPerDay:ST.set.newPerDay||0});
+  }
 
   /* 📈 réussite / jour (14 j) — % de bonnes réponses au 1er essai (compteurs propres ok1/ko1) */
   const sWin=[]; for(let i=13;i>=0;i--){ const d=addDays(t,-i); const L=ST.log[d]||{}; const o=(L.ok1!=null?L.ok1:L.ok)||0, k=(L.ko1!=null?L.ko1:L.ko)||0, n=o+k; sWin.push({d,p:n?Math.round(100*o/n):null}); }
