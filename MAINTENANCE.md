@@ -15,6 +15,26 @@
 
 ## Sommaire
 
+**v198 — 200 nouvelles illustrations : gestes, scènes et culture coréenne.**
+Le catalogue passe à **2 968 images**, avec 137 nouveaux mots B1 et 63 B2.
+Le lot `gestes-et-scenes-2026-11-04` conserve le style 2 au pinceau sur fond noir
+et l’usage `support` : aide après réponse et dans le dictionnaire.
+Les 200 WebP de 512 × 512 ajoutent **6 066 438 octets** ; aucun ne dépasse
+53 970 octets. Les 2 768 anciens assets et leurs recettes restent identiques.
+
+Prompts, référence de style, provenance, hashes et revues à 512, 160 et 96 px
+sont versionnés dans l’inventaire, le lot et `tools/images/reviews/`.
+202 générations individuelles ont produit les 200 images retenues : les premiers
+rendus de `놓치다` (bus semblant arriver) et `따라오다` (accueil au portail)
+ont été remplacés pour rendre les actions correctes. Les reçus rejetés sont conservés.
+Le test du nouveau lot vérifie les sens, niveaux, assets distincts, revues et
+exclusion des questions notées. Cache applicatif `sori-v198` ; caches média,
+identifiants, planification et progression conservés. Procédure : `IMAGES.md`.
+Validation : **261 tests Node**, 5 tests Python, 161 cas FSRS, syntaxe JS et
+manifeste vérifiés ; six suites Chromium réussies. Les 2 968 images sont
+téléchargées puis disponibles hors connexion, serveur coupé, avec conservation
+du cache média après mise à jour et aucune erreur JavaScript.
+
 **v197 — découverte et maîtrise à 100 %, graphique global.**
 Le repère de 80 % est supprimé. Chaque catégorie présente deux mesures sur son
 contenu complet : cartes abordées (`stage >= 1`) et cartes maîtrisées (`stage >= 4`).

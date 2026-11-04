@@ -1,6 +1,19 @@
-# Illustrations et rappel visuel — v194
+# Illustrations et rappel visuel — v198
 
-> **v194 : 200 illustrations supplémentaires**, dont 97 B1 et 103 B2.
+> **v198 : 200 illustrations supplémentaires**, dont 137 B1 et 63 B2.
+> Gestes du quotidien, cuisine, métiers, déplacements, lieux et culture coréenne ; style 2, profil `pinceau-scenes-v1`.
+> Toutes sont des aides après réponse et dans le dictionnaire.
+> Catalogue : **2 968 images** (388 questions, 2 580 aides), **106 417 798 octets**.
+> Nouveau lot : **6 066 438 octets** ; WebP 512 × 512, de 10 610 à 53 970 octets, chacun au plus 64 Kio.
+> Chaque sens a sa propre génération et une revue effective à 512, 160 et 96 px.
+> Les 2 768 anciennes images et toutes leurs recettes sont inchangées.
+> Reprise : `tools/images/batches/gestes-et-scenes-2026-11-04.json`, inventaire et revues versionnés.
+> 202 appels de génération pour 200 images retenues. `놓치다` a été refait avec le bus vu de dos déjà parti ; `따라오다` avec deux marcheurs venant l’un derrière l’autre vers le spectateur. Les deux reçus de rejet sont conservés.
+> Cache `sori-v198` ; caches média et progression conservés.
+> Validation : 261 tests Node, 5 tests Python, 161 cas FSRS, syntaxe JS et manifeste vérifiés ; six suites Chromium réussies.
+> Les 2 968 images sont téléchargées ; rechargement hors connexion, serveur coupé et conservation du cache après mise à jour validés, zéro erreur JavaScript.
+
+> **Historique v194 : 200 illustrations supplémentaires**, dont 97 B1 et 103 B2.
 > Gestes, activités, lieux, métiers et vie quotidienne ; style 2, profil `pinceau-scenes-v1`.
 > Toutes sont des aides après réponse et dans le dictionnaire.
 > Catalogue : **2 768 images** (388 questions, 2 380 aides), **100 351 360 octets**.
@@ -343,7 +356,7 @@ invalides. Il effectue seulement une réduction à 512 et un encodage WebP quali
 82, sans recadrage ou retouche du dessin. Pour une mini-scène dépassant 64 Kio,
 l’encodage essaie ensuite 78, 74 puis 70, avec la qualité réelle dans sa provenance
 et revue visuelle du WebP final. Cible 20–60 Ko, plafond strict 64 Kio.
-Les 603 fichiers actuels ont été générés avec l'outil Codex puis importés
+Les fichiers du catalogue ont été générés avec l'outil Codex puis importés
 de cette manière. L'API payante n'est pas nécessaire pour tester/publier une
 image déjà générée. Son accès réel exige la clé et l'autorisation réseau vers
 `api.openai.com` ; ne pas contourner une restriction réseau.

@@ -1,0 +1,24 @@
+{
+  "id": "pack-b7ca2305",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-04T09:59:18.967Z",
+  "sourceSha256": "630525cfefeb1268f2c9c09a2ac37ac3bc0ea55e8269daf9a21b97c68e30b6d8",
+  "sha256": "a11ad15ac0092ad0c0bb95f54e2517ea0b5cf052aa8d6d333ad01de54e718390",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nHoney stretching in a thick sticky thread between a spoon and a small plain jar, focus on adhesion and viscosity. Strictly monochrome warm off-white and neutral charcoal grey on pure black, no colored accents, letters, numerals, logos or arrows. Generous black margins and clear forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Miel formant un fil épais entre cuillère et pot ; viscosité collante claire aux trois tailles. Contrôle visuel du WebP à 512, 160 et 96 px : style au pinceau sur fond noir, marges, anatomie et absence de texte vérifiés. Usage aide après réponse uniquement.",
+  "reviewedAt": "2026-11-04T10:22:26.613Z",
+  "kr": "끈적하다",
+  "sense": "collant, poisseux",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}
