@@ -1,14 +1,19 @@
-# Production de phrases — v195
+# Production de phrases — v199
 
 Dans **Réviser**, l’utilisateur écrit une phrase entière en coréen à partir d’une
 consigne française, sans mots proposés ni structure révélée. Le module est actif
 par défaut (`set.production`), indépendant de la saisie d’un mot au niveau 5.
 
-Le corpus contient 50 situations, cinq par objectif : lieu d’une action,
+Le corpus contient **200 situations, vingt par objectif** : lieu d’une action,
 destinataire, addition, restriction, bornes, contraste, condition, but d’un
 déplacement, simultanéité et proposition qui précise un nom. Les suffixes sont
 expliqués **après** la tentative. Ce corpus ne prétend pas couvrir toute la
 grammaire coréenne.
+
+Les 50 situations initiales gardent leurs identifiants. Les 150 ajouts varient
+les personnes, actions, lieux, moments et objets, ainsi que la portée des
+particules (sujet, destinataire, objet, lieu ou moment pour 도 et 만). Chaque
+consigne reste une production libre, sans mots proposés ni structure révélée.
 
 ## Correction hors ligne
 
@@ -17,6 +22,15 @@ formulations admises, des confusions précises et leur explication. Les variante
 sont des produits finis de segments explicitement écrits, pas une analyse
 générale du coréen. Les espaces entre mots restent significatifs ; NFC, espaces
 répétés, virgules et ponctuation déclarative finale sont normalisés.
+
+Depuis v199, les nouveaux contextes acceptent des formes polies, formelles et
+familières relues, ainsi que des formes en cours d’action. Les compléments et
+le sujet peuvent changer d’ordre dans les propositions explicitement prévues.
+Les variantes lexicales sont des blocs déclarés (par exemple 기차역 / 역,
+어머니 / 엄마, 텔레비전을 / TV를), avec leurs particules. Les verbes en 하다
+acceptent aussi la construction nom + 을/를 + 하다 lorsqu’elle convient.
+La validation garde toujours la portée, les bornes, les participants, la
+polarité et la simultanéité : retrouver les bons mots ne suffit pas.
 
 Depuis v195, le corpus accepte notamment `일을 해요` / `공부를 해요`, leurs
 formes en cours d’action (`일을 하고 있어요`), `걸어가요` pour les trajets,
@@ -47,16 +61,31 @@ en 밖에 + négation n’atteste pas l’utilisation de 만.
 
 ## Révision et progression
 
-Une situation devient disponible quand tous ses mots requis sont au stade 4 ou 5
-et non suspendus. Aucune substitution par du vocabulaire inconnu. Quatre phrases
-au maximum par jour, une par objectif ; la première ouvre la séance, les suivantes
+Une situation devient disponible quand tous ses mots requis ont une fiche au
+stade 4 ou 5, non suspendue. `vocabulary` relie chaque prérequis aux identifiants
+des fiches de **même sens**, relus dans le seed ; `knownWords(effectiveItems)`
+effectue cette sélection. Un homonyme de même orthographe ne suffit jamais.
+Pour 먹다 « manger », les fiches de 먹었어요 / 먹을 거예요 permettent de
+reconnaître l’acquis ; la fiche « devenir sourd » est exclue. 역 « gare » se
+fonde sur 기차역, pas sur 역 « rôle ». 쓰다 « écrire » et 쓰다:amer sont
+séparés ; 눈:neige se fonde sur 눈이 오다, pas sur « yeux » ; 일 « travail »
+se fonde sur 일하다, pas sur le chiffre un. Les composés 메모하다 / 여행하다
+requièrent le nom et 하다. La vue Progrès indique les situations disponibles
+sur les vingt de chaque objectif. Aucune suspension n’est levée.
+
+Quatre phrases au maximum par jour, une par objectif ; la première ouvre la séance, les suivantes
 arrivent après huit réponses ordinaires ou à la fin de la file. Les places prévues
 sont déduites du plafond des cartes lors de la construction d’une nouvelle file.
 Une ancienne session reste reprenable sans réécriture de ses identifiants.
 
-Les objectifs encore inexplorés passent avant les reprises échues. Les contextes
-changent à la prochaine présentation si un autre est disponible. Les intervalles
-de réussite sont 1, 3, 7, 14 et 30 jours ; une erreur redescend d’un palier et fait
+Les objectifs encore inexplorés passent avant les reprises échues. À l’intérieur
+d’un objectif, deux places sur trois privilégient un contexte absent de
+l’historique conservé ; la troisième reprend le plus ancien disponible. Une
+fois tous les contextes accessibles parcourus, la rotation suit le moins récent.
+La dernière phrase n’est pas répétée immédiatement si une autre est disponible.
+Les prérequis sont réévalués à chaque sélection, sans dépendre d’un index dans
+une liste dont la taille change. Les intervalles de réussite sont 1, 3, 7, 14
+et 30 jours ; une erreur redescend d’un palier et fait
 revenir l’objectif le lendemain. Une réponse non évaluée ne change pas le palier.
 Depuis v195, un passage sans note ou une réponse non reconnue au premier essai
 laisse une pause de deux jours avant de reproposer cet objectif (`offerAfter`).
@@ -74,6 +103,10 @@ réussites autonomes, reprises et formes effectivement produites.
 - `v:1`, `seq` : version du schéma et identifiant de tentative ;
 - `skills` : dix objectifs, compteurs, palier, prochaine date, dernier contexte,
   au plus trois contextes réussis et six formes attestées par objectif ;
+  depuis v199, `seen` garde au plus 40 suffixes d’identifiants de situations,
+  du plus ancien au plus récent (le préfixe est la clé de l’objectif).
+  Les traces `contexts`, `recent` et `last` complètent la rotation à la reprise
+  d’un ancien état, sans inventer les essais dont la trace n’existe plus ;
 - `day` : jour, nombre de places consommées, objectifs déjà proposés, compteur
   d’espacement entre phrases ;
 - `active` : situation en cours, premier verdict, tentatives, étape et retour
@@ -118,7 +151,12 @@ la vraie PWA couvre IME, huit cartes intercalées, rechargement, mode avion,
 réglage, six thèmes et écrans mobiles étroits. Le test de sauvegarde effectue
 l’export/import réel et la restauration cloud simulée avec un essai en cours.
 
-Pour ajouter un contenu : conserver éternellement les ids existants, ajouter les
-variantes dans le corpus et des exemples indépendants dans les tests. Une nouvelle
+Pour ajouter un contenu : conserver éternellement les ids existants et le
+préfixe `objectif-` de chaque situation (utilisé par l’historique compact), ajouter les
+variantes dans le corpus et des exemples indépendants dans les tests. Chaque
+prérequis doit référencer dans `vocabulary` des fiches stables du sens voulu ;
+relire leur français, pas seulement leur hangul. Vérifier aussi les sens proches
+qui doivent rester non validés (portée, négation, direction, sujet et objet).
+Une nouvelle
 confusion ne doit être déclarée incorrecte que si **toute** la phrase reconnue
 contredit la consigne ; ne jamais déduire un échec de la seule absence d’un suffixe.

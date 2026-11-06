@@ -53,6 +53,21 @@
     const words=known instanceof Set?known:new Set(known||[]);
     return (ready?data.items:[]).filter(x=>x.needs.every(w=>words.has(w)));
   }
+  function knownWords(effectiveItems){
+    const solid=new Set((effectiveItems||[]).filter(x=>x.type==="word"&&x.stage>=4&&!x.sus).map(x=>x.id));
+    return new Set(Object.entries(data?.vocabulary||{}).filter(([,ids])=>ids.some(id=>solid.has(id))).map(([word])=>word));
+  }
+  function seenContexts(s,goal){
+    const skill=s.skills[goal]||{}, history=[];
+    // Reprise des traces réellement présentes, sans inventer les anciens essais.
+    const ids=[...(Array.isArray(skill.seen)?skill.seen.filter(id=>typeof id==="string").map(id=>goal+"-"+id):
+      (Array.isArray(skill.contexts)?skill.contexts:[])),
+      ...s.recent.filter(r=>items.get(r.item)?.goal===goal).map(r=>r.item),skill.last];
+    for(const id of ids) if(items.get(id)?.goal===goal){
+      const i=history.indexOf(id);if(i>=0) history.splice(i,1);history.push(id);
+    }
+    return history.slice(-40);
+  }
   function candidates(raw,today,known){
     const s=state(raw,today); if(!s) return [];
     const available=eligible(known);
@@ -64,8 +79,12 @@
         // Les objectifs jamais essayés passent avant les reprises du lendemain.
         return Number(!!x?.n)-Number(!!y?.n) || String(x?.due||"").localeCompare(String(y?.due||"")) || goals.indexOf(a)-goals.indexOf(b);
       }).map(g=>{
-        const choices=available.filter(x=>x.goal===g.id), n=count(s.skills[g.id]?.n);
-        return choices.find((x,i)=>i>=n%choices.length && x.id!==s.skills[g.id]?.last) || choices.find(x=>x.id!==s.skills[g.id]?.last) || choices[0];
+        const choices=available.filter(x=>x.goal===g.id), skill=s.skills[g.id]||{}, seen=seenContexts(s,g.id);
+        const fresh=choices.filter(x=>!seen.includes(x.id));
+        const review=seen.map(id=>choices.find(x=>x.id===id)).filter(x=>x&&x.id!==skill.last);
+        // Deux places sur trois pour renouveler les contextes, une pour reprendre
+        // le plus ancien ; une fois le corpus parcouru, rotation du moins récent.
+        return (count(skill.n)%3===2?review[0]:null)||fresh[0]||review[0]||choices[0];
       });
   }
   function remaining(raw,today,known){
@@ -97,6 +116,8 @@
     const old=s.skills[item.goal];
     a.before=old?copy(old):null;
     const skill=old?copy(old):{n:0,ok:0,ko:0,step:0,contexts:[],forms:[]};
+    // Suffixe de l’id durable : le préfixe est déjà la clé de l’objectif.
+    skill.seen=[...seenContexts(s,item.goal).filter(id=>id!==item.id),item.id].slice(-40).map(id=>id.slice(item.goal.length+1));
     skill.n=count(skill.n)+1; skill.last=item.id;
     skill.ok=count(skill.ok); skill.ko=count(skill.ko); skill.step=Math.min(INTERVALS.length,count(skill.step));
     skill.contexts=Array.isArray(skill.contexts)?skill.contexts.slice(-3):[];
@@ -235,7 +256,7 @@
   function renderProgress(container,{state:raw,today,known,enabled,onReview}){
     if(!ready) return;
     css(); const s=state(raw,today); if(!s) return;
-    const available=new Set(eligible(known).map(x=>x.goal));
+    const availableItems=eligible(known), available=new Set(availableItems.map(x=>x.goal));
     const autonomous=goals.filter(g=>count(s.skills[g.id]?.ok)>0).length;
     const div=document.createElement("details"); div.className="production-progress";
     div.innerHTML=`<summary>Construire sans aide · ${autonomous} / ${goals.length} objectifs réussis</summary>
@@ -243,13 +264,14 @@
       <ul>${goals.map(g=>{
         const k=s.skills[g.id], next=[k?.due,k?.offerAfter].filter(dateOK).sort().pop();
         const text=!available.has(g.id)?"En attente de vocabulaire solide":!k?.n?"À découvrir":`${count(k.ok)} réussite${count(k.ok)>1?"s":""} sans aide · ${count(k.ko)} à reprendre${next?" · retour le "+next:""}`;
-        return `<li>${esc(g.label)}<small>${esc(g.forms)}</small><small>${esc(text)}</small>${k?.forms?.length?`<small>Formes produites : ${esc(k.forms.join(", "))}</small>`:""}</li>`;
+        const n=availableItems.filter(x=>x.goal===g.id).length, total=data.items.filter(x=>x.goal===g.id).length;
+        return `<li>${esc(g.label)}<small>${esc(g.forms)}</small><small>${n} / ${total} situations disponibles avec ton vocabulaire</small><small>${esc(text)}</small>${k?.forms?.length?`<small>Formes produites : ${esc(k.forms.join(", "))}</small>`:""}</li>`;
       }).join("")}</ul>
       ${!enabled?'<p class="production-note">La production de phrases est désactivée dans les réglages.</p>':remaining(s,today,known)>0?'<button class="btn primary production-review">Construire une phrase</button>':'<p class="production-note">Les prochaines phrases apparaîtront au fil de tes révisions.</p>'}`;
     container.appendChild(div);
     const button=div.querySelector("button"); if(button) button.onclick=onReview;
   }
-  const api={ready,pure:{normalize,expand,grade,state,eligible,candidates,remaining,begin,tick,submit,reveal,skip,undo,advance,LIMIT,GAP,INTERVALS},renderCard,renderProgress};
+  const api={ready,pure:{normalize,expand,grade,state,eligible,knownWords,candidates,remaining,begin,tick,submit,reveal,skip,undo,advance,LIMIT,GAP,INTERVALS},renderCard,renderProgress};
   if(typeof module!=="undefined" && module.exports) module.exports=api;
   else root.SORI_PRODUCTION=api;
 })(typeof globalThis!=="undefined"?globalThis:this);

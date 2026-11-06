@@ -15,6 +15,34 @@
 
 ## Sommaire
 
+**v199 — 200 situations de construction de phrases.**
+Le corpus passe de 50 à 200 situations, vingt par objectif. Les 150 ajouts
+varient actions, personnes, lieux, moments et portée des particules. Les anciens
+identifiants, consignes et réponses restent stables. Le correcteur hors ligne
+accepte davantage de formes relues : registres, action en cours, ordre des
+compléments, verbes décomposés, formes respectueuses et équivalents lexicaux.
+Une formulation hors corpus affiche toujours immédiatement l’exemple sans note.
+
+`production-data.js.vocabulary` relie les prérequis aux fiches du sens voulu :
+les homonymes ne débloquent plus une situation. Les formes acquises de 먹다
+« manger » et la fiche 기차역 « gare » sont reconnues. Les suspensions restent
+respectées. Progrès affiche le nombre de situations disponibles par objectif.
+
+La rotation conserve un historique compact additif `skills[objectif].seen`
+(suffixes d’ids durables, au plus 40 par objectif). Deux places sur trois
+privilégient les contextes absents de cet historique, la troisième reprend le
+plus ancien disponible ; aucun doublon immédiat si un autre contexte existe.
+Les anciennes traces sont reprises sans réécrire les scores ni inventer des
+tentatives. Quatre phrases par jour, intervalles, premier verdict et notation
+du vocabulaire restent inchangés. Voir [PRODUCTION.md](PRODUCTION.md).
+
+Validation : **267 tests Node**, syntaxe JS, contrôle des 50 anciennes situations
+et de leurs formulations ; suites Chromium production et sauvegarde réussies
+(IME, six thèmes, 320/412 px, nouveaux contextes hors connexion, reprise,
+annulation, export/import et cloud simulé). Captures relues. Simulation d’un an
+de reprises avec les 200 contextes sous 10 Ko pour l’état de production.
+Cache `sori-v199`, caches média conservés.
+
 **v198 — 200 nouvelles illustrations : gestes, scènes et culture coréenne.**
 Le catalogue passe à **2 968 images**, avec 137 nouveaux mots B1 et 63 B2.
 Le lot `gestes-et-scenes-2026-11-04` conserve le style 2 au pinceau sur fond noir

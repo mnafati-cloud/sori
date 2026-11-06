@@ -6,11 +6,11 @@ const D=require("../docs/production-data.js"), E=require("../docs/engine.js");
 const root=path.resolve(__dirname,"../docs"), artifacts=path.resolve(process.env.SORI_PRODUCTION_ARTIFACTS||"browser-results/production");
 fs.mkdirSync(artifacts,{recursive:true});
 const seedContext={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,"data.js"),"utf8"),seedContext);
-const seed=seedContext.window.SEED.items, known=new Set(D.items.flatMap(x=>x.needs));
-const ordinary=seed.filter(x=>x.type==="word" && !known.has(x.kr)).slice(0,8);
+const seed=seedContext.window.SEED.items, known=new Set(Object.values(D.vocabulary).flat());
+const ordinary=seed.filter(x=>x.type==="word" && !known.has(x.id)).slice(0,8);
 const today=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul"}).format(new Date());
 const initial={v:1,freshOk:1,reverseMig:1,adapMig:1,audioCleanMig:1,xp:0,
-  items:Object.fromEntries(seed.map(x=>[x.id,{s:known.has(x.kr)?5:0,i:known.has(x.kr)?30:0,d:known.has(x.kr)?E.addDays(today,30):null,ok:0,ko:0}])),
+  items:Object.fromEntries(seed.map(x=>[x.id,{s:known.has(x.id)?5:0,i:known.has(x.id)?30:0,d:known.has(x.id)?E.addDays(today,30):null,ok:0,ko:0}])),
   set:{...E.DEF_SET,reverse:false,mute:true,autoplay:false,newPerDay:0},log:{},intro:{},rlog:[],
   sess:{d:today,q:ordinary.map(x=>x.id),p:0,pen:0},rep:{d:today,m:{}}};
 ordinary.forEach(x=>initial.items[x.id]={s:1,i:1,d:today,e:2.2,ok:1,ko:0});
@@ -105,6 +105,8 @@ let browser,page;
   await context.setOffline(false);
   await page.locator('#tabs [data-tab="progres"]').click();
   await page.locator(".production-progress summary").click();
+  assert.equal(await page.locator(".production-progress li").count(),10);
+  assert.equal(await page.getByText("20 / 20 situations disponibles avec ton vocabulaire",{exact:true}).count(),10);
   await page.screenshot({path:path.join(artifacts,"progress.png")});
   // Un passage volontaire reste distinct d’une phrase non reconnue, même après recharge.
   await page.evaluate(()=>{
@@ -128,18 +130,36 @@ let browser,page;
   assert.deepEqual(await page.evaluate(()=>ST.production.skills.range.forms),["부터…까지"]);
   assert.equal(await page.evaluate(()=>ST.production.recent.at(-1).reason),"recognized");
   await page.screenshot({path:path.join(artifacts,"range-variant-offline.png")});
+  // Nouveau contexte et portée de « aussi », toujours hors connexion ; la
+  // rotation survit à la recharge comme la note du premier essai.
+  await page.evaluate(()=>{
+    ST.production={v:1,seq:1,skills:{},recent:[],day:{d:todayStr(),n:1,done:["addition"],since:0},
+      active:{id:1,item:"addition-library",day:todayStr(),phase:"input",tries:0,first:null}};
+    render();
+  });
+  await page.locator(".production-input").fill("책을 도서관에서도 읽어요");
+  await page.getByRole("button",{name:"Vérifier",exact:true}).click();
+  await page.getByText("Réussi sans aide.",{exact:true}).waitFor();
+  assert.deepEqual(await page.evaluate(()=>ST.production.skills.addition.seen),["library"]);
+  await page.reload();await page.locator('#tabs [data-tab="review"]').click();
+  assert.deepEqual(await page.evaluate(()=>ST.production.skills.addition.seen),["library"]);
+  await page.screenshot({path:path.join(artifacts,"new-context-offline.png")});
   await context.setOffline(false);
   // Tous les thèmes, largeur étroite et clavier ouvert simulé : aucun débordement horizontal.
-  await page.evaluate(()=>{ST.production=null;Q=[];QPOS=0;TAB="review";render();});
+  await page.evaluate(()=>{
+    ST.production=null;Q=[];QPOS=0;TAB="review";render();
+    ST.production.active.item="addition-sibling-subject";ST.production.day.done=["addition"];render();
+  });
   for(const size of [{width:320,height:568},{width:412,height:480}]){
     await page.setViewportSize(size);
     for(const theme of ["encre","seoul","nuit","hanji","dansaekhwa","takbon"]){
       await page.evaluate(id=>SORI_THEMES.set(id),theme);
+      await page.evaluate(()=>Promise.all(document.getAnimations().filter(a=>a.effect?.getTiming().iterations!==Infinity).map(a=>a.finished.catch(()=>{}))));
       const fits=await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth);
       assert.ok(fits,`${theme} ${size.width}`);
     }
   }
-  await page.screenshot({path:path.join(artifacts,"small-keyboard-viewport.png")});
+  await page.screenshot({path:path.join(artifacts,"small-keyboard-viewport.png"),animations:"disabled"});
   await page.setViewportSize({width:412,height:915});
   await page.evaluate(()=>SORI_THEMES.set("encre"));
   await page.locator("#settings").click();
@@ -150,8 +170,8 @@ let browser,page;
   await page.locator(".production-input").waitFor();
   const budget=await page.evaluate(()=>{
     ST.production=null;ST.set.sessionMax=20;
-    const required=new Set(SORI_PRODUCTION_DATA.items.flatMap(x=>x.needs));
-    const due=BASE_IDS.filter(id=>!required.has(SEED_BY_ID[id].kr)).slice(0,25);
+    const required=new Set(Object.values(SORI_PRODUCTION_DATA.vocabulary).flat());
+    const due=BASE_IDS.filter(id=>!required.has(id)).slice(0,25);
     due.forEach(id=>{ST.items[id]={s:1,i:1,d:todayStr(),ok:0,ko:0};});
     Q=null;render();
     return {cards:Q.length,pending:PENDING,phrases:ST.production.day.n+productionRemaining()-1};
@@ -165,6 +185,17 @@ let browser,page;
     ST.items[id]=previous;return {weak,suspended};
   });
   assert.deepEqual(eligibility,{weak:false,suspended:false});
+  const lexical=await page.evaluate(()=>{
+    const ids=["1779724539586","1779724539593","pack-238f350e","pack-093c375b","pack-05a40b3a"];
+    const saved=ids.map(id=>ST.items[id]);
+    ids.forEach(id=>{ST.items[id]={...ST.items[id],s:5,sus:false};});
+    ST.items["1779724539586"].s=0;ST.items["1779724539593"].s=0;ST.items["pack-093c375b"].s=0;
+    const homonyms={eat:productionWords().has("먹다"),station:productionWords().has("역")};
+    ST.items["1779724539586"].s=5;ST.items["pack-093c375b"].s=5;
+    const senses={eat:productionWords().has("먹다"),station:productionWords().has("역")};
+    ids.forEach((id,i)=>{ST.items[id]=saved[i];});return {homonyms,senses};
+  });
+  assert.deepEqual(lexical,{homonyms:{eat:false,station:false},senses:{eat:true,station:true}});
   // Une tentative v166 déjà sauvegardée passe elle aussi directement à la réponse.
   await page.evaluate(()=>{
     Object.assign(ST.production.active,{phase:"unverified",first:"unverified",tries:1});saveNow();
@@ -180,7 +211,8 @@ let browser,page;
   assert.equal(await page.evaluate(()=>JSON.stringify(ST.production)),saved);
   assert.deepEqual(errors,[]);
   const summary={browser:await browser.version(),ime:true,ordinaryReviews:8,reload:true,undo:true,offline:true,
-    commonVariants:true,distinctUnscoredReasons:true,unscoredSpacing:true,themes:6,dailyLimit:4,pageErrors:errors};
+    commonVariants:true,distinctUnscoredReasons:true,unscoredSpacing:true,contexts:200,lexicalSenses:true,
+    newContextOffline:true,rotationPersistence:true,themes:6,dailyLimit:4,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,"summary.json"),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));
 })().catch(async error=>{
   console.error(error);process.exitCode=1;

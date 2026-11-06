@@ -1358,7 +1358,7 @@ function productionModule(){
   return window.SORI_PRODUCTION?.ready ? window.SORI_PRODUCTION : null;
 }
 function productionWords(){
-  return new Set(BASE_IDS.map(eff).filter(it=>it.type==="word" && it.stage>=4 && !it.sus).map(it=>it.kr));
+  return productionModule()?.pure.knownWords?.(BASE_IDS.map(eff)) || new Set();
 }
 function productionRemaining(){
   const module=productionModule();
