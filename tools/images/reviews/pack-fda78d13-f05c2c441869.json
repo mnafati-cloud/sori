@@ -1,0 +1,24 @@
+{
+  "id": "pack-fda78d13",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-06T15:06:46.184Z",
+  "sourceSha256": "3a681c9cd5c0a7265187b3f86d4bf16631cb97f05079ac8d8bd015a177e56339",
+  "sha256": "f05c2c441869e5f55ac2585121e6a0dca9adf270a629a16f81aab04ad9927dbf",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nTwo smiling fully clothed adults in a playful piggyback pose, the standing adult securely carrying the other on their back. Anatomically clear limbs, no injury. Strictly monochrome warm off-white and neutral charcoal grey on pure black, no colored accents, letters, numerals, logos or arrows. Generous black margins and clear forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Personne portée sur le dos d'un adulte marchant : les quatre jambes et bras enlacés sont cohérents, silhouette de portage nette. Contrôle visuel du WebP à 512, 160 et 96 px : style au pinceau sur fond noir, marges, anatomie et absence de texte vérifiés. Usage aide après réponse uniquement.",
+  "reviewedAt": "2026-11-06T15:56:04.844Z",
+  "kr": "업다",
+  "sense": "Porter sur le dos",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

@@ -1,0 +1,24 @@
+{
+  "id": "pack-d7ef95da",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-06T15:26:32.240Z",
+  "sourceSha256": "b5c6c11e7a4bb08853d7dc82b6e2b8b1f1e8d3ddac78bf4ca266f8c2fade74b3",
+  "sha256": "a627ff2065bf5db7c1aebcb6b97c6a457ee3a7975eae9822e69122414fc3f206",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nA stylized educational close view of one round biological cell with a clear outer boundary, a central nucleus and a few simple internal organelles. No labels or arrows. Strictly monochrome warm off-white and neutral charcoal grey on pure black, no colored accents, letters, numerals, logos or arrows. Generous black margins and clear forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Cellule animale schématique avec membrane, noyau et organites : formes distinctes en vignette, aucun libellé. Contrôle visuel du WebP à 512, 160 et 96 px : style au pinceau sur fond noir, marges, anatomie et absence de texte vérifiés. Usage aide après réponse uniquement.",
+  "reviewedAt": "2026-11-06T15:56:05.211Z",
+  "kr": "세포",
+  "sense": "Une cellule (biologie)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

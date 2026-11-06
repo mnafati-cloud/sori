@@ -15,6 +15,28 @@
 
 ## Sommaire
 
+**v200 — 200 nouvelles illustrations : gestes et contextes.**
+Le catalogue passe à **3 168 images**, avec 81 nouveaux mots B1, 64 B2 et 55 C1.
+Le lot `gestes-et-contextes-2026-11-06` conserve le style 2 au pinceau sur fond noir
+et l’usage `support` : aide après réponse et dans le dictionnaire.
+Les 200 WebP de 512 × 512 ajoutent **6 120 584 octets** ; aucun ne dépasse
+52 936 octets. Les 2 968 anciens assets et leurs recettes restent identiques.
+
+Prompts, référence de style, provenance, hashes et revues à 512, 160 et 96 px
+sont versionnés dans l’inventaire, le lot et `tools/images/reviews/`.
+201 générations individuelles ont produit les 200 images retenues : le premier
+rendu de `버려지다` a été remplacé à cause de pictogrammes de recyclage non conformes
+au style demandé. Son reçu rejeté est conservé. Deux PNG renvoyés directement
+par l’outil ont été récupérés sans nouvelle génération ni retouche.
+
+Le test du nouveau lot vérifie les sens, niveaux, assets distincts, revues et
+exclusion des questions notées. Cache applicatif `sori-v200` ; caches média,
+identifiants, planification et progression conservés. Procédure : `IMAGES.md`.
+Validation : **268 tests Node**, 5 tests Python, 161 cas FSRS, syntaxe JS et
+manifeste vérifiés ; six suites Chromium réussies. Les 3 168 images sont
+téléchargées puis disponibles hors connexion, serveur coupé, avec conservation
+du cache média après mise à jour et aucune erreur JavaScript.
+
 **v199 — 200 situations de construction de phrases.**
 Le corpus passe de 50 à 200 situations, vingt par objectif. Les 150 ajouts
 varient actions, personnes, lieux, moments et portée des particules. Les anciens

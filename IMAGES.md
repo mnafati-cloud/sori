@@ -1,6 +1,20 @@
-# Illustrations et rappel visuel — v198
+# Illustrations et rappel visuel — v200
 
-> **v198 : 200 illustrations supplémentaires**, dont 137 B1 et 63 B2.
+> **v200 : 200 illustrations supplémentaires**, dont 81 B1, 64 B2 et 55 C1.
+> Gestes, déplacements, relations, métiers, nature et culture coréenne ; style 2, profil `pinceau-scenes-v1`.
+> Toutes sont des aides après réponse et dans le dictionnaire.
+> Catalogue : **3 168 images** (388 questions, 2 780 aides), **112 538 382 octets**.
+> Nouveau lot : **6 120 584 octets** ; WebP 512 × 512, de 10 644 à 52 936 octets, chacun au plus 64 Kio.
+> Chaque sens a sa propre génération et une revue effective à 512, 160 et 96 px.
+> Les 2 968 anciennes images et toutes leurs recettes sont inchangées.
+> Reprise : `tools/images/batches/gestes-et-contextes-2026-11-06.json`, inventaire et revues versionnés.
+> 201 appels de génération pour 200 images retenues. Le premier rendu de `버려지다` a été remplacé pour retirer les pictogrammes de recyclage ; reçu de rejet conservé.
+> Deux PNG renvoyés directement par l’outil (`늦가을`, `늦여름`) ont été récupérés sans nouvelle génération ni retouche ; provenance conservée dans le lot.
+> Cache `sori-v200` ; caches média et progression conservés.
+> Validation : 268 tests Node, 5 tests Python, 161 cas FSRS, syntaxe JS et manifeste vérifiés ; six suites Chromium réussies.
+> Les 3 168 images sont téléchargées ; rechargement hors connexion, serveur coupé et conservation du cache après mise à jour validés, zéro erreur JavaScript.
+
+> **Historique v198 : 200 illustrations supplémentaires**, dont 137 B1 et 63 B2.
 > Gestes du quotidien, cuisine, métiers, déplacements, lieux et culture coréenne ; style 2, profil `pinceau-scenes-v1`.
 > Toutes sont des aides après réponse et dans le dictionnaire.
 > Catalogue : **2 968 images** (388 questions, 2 580 aides), **106 417 798 octets**.
