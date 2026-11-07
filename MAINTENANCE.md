@@ -15,6 +15,29 @@
 
 ## Sommaire
 
+**v201 — 200 nouvelles illustrations : gestes et vie courante.**
+Le catalogue passe à **3 368 images**, avec 23 nouveaux mots A1, 66 A2,
+37 B1, 17 B2 et 57 C1. Le lot `gestes-et-vie-courante-2026-11-07` conserve
+le style 2 au pinceau sur fond noir et l’usage `support` : aide après réponse
+et dans le dictionnaire. Les 200 WebP de 512 × 512 ajoutent
+**6 754 438 octets** ; aucun ne dépasse 52 156 octets.
+Les 3 168 anciens assets et leurs recettes restent identiques.
+
+Prompts, référence de style, provenance, hashes et revues à 512, 160 et 96 px
+sont versionnés dans l’inventaire, le lot et `tools/images/reviews/`.
+202 appels ont produit les 200 images retenues : le thé a été refait après
+un premier rendu avec une théière flottante. Le refus du fournisseur pour
+`삼키다` est conservé sans relance ; `중심` complète le lot.
+Les deux décisions et leurs reçus sont conservés.
+
+Le test du nouveau lot vérifie les sens, niveaux, assets distincts, revues
+et exclusion des questions notées. Cache applicatif `sori-v201` ; caches média,
+identifiants, planification et progression conservés. Procédure : `IMAGES.md`.
+Validation : **269 tests Node**, 5 tests Python, 161 cas FSRS, syntaxe JS et
+manifeste vérifiés ; six suites Chromium réussies. Les 3 368 images sont
+téléchargées puis disponibles hors connexion, serveur coupé, avec conservation
+du cache média après mise à jour et aucune erreur JavaScript.
+
 **v200 — 200 nouvelles illustrations : gestes et contextes.**
 Le catalogue passe à **3 168 images**, avec 81 nouveaux mots B1, 64 B2 et 55 C1.
 Le lot `gestes-et-contextes-2026-11-06` conserve le style 2 au pinceau sur fond noir

@@ -1,0 +1,24 @@
+{
+  "id": "pack-5b841e1d",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-07T05:02:32.452Z",
+  "sourceSha256": "8f1c18d1308283296eacb5ebd9a305d1a8cf1420358f610b3f744bfdbd7bd98a",
+  "sha256": "3d47d9a2ee7f4f7c4ad663880e9b231aa634fa7671dfab440dda7c011cc3b579",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nAn adult surprised by a hiccup while holding a glass of water, one hand lightly on the chest and a tiny involuntary shoulder movement, no sound text. Strictly monochrome warm off-white and neutral charcoal grey on pure black, no colored accents, letters, numerals, logos or diagram arrows. Generous black margins and clear forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Petit sursaut avec main sur la poitrine et verre d’eau ; hoquet évoqué sans inscription. Contrôle visuel du WebP à 512, 160 et 96 px : style au pinceau sur fond noir, marges, anatomie et absence de texte vérifiés. Usage aide après réponse uniquement.",
+  "reviewedAt": "2026-11-07T05:08:27.878Z",
+  "kr": "딸꾹질",
+  "sense": "Hoquet",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

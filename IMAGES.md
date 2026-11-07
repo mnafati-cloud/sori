@@ -1,6 +1,20 @@
-# Illustrations et rappel visuel — v200
+# Illustrations et rappel visuel — v201
 
-> **v200 : 200 illustrations supplémentaires**, dont 81 B1, 64 B2 et 55 C1.
+> **v201 : 200 illustrations supplémentaires**, dont 23 A1, 66 A2, 37 B1, 17 B2 et 57 C1.
+> Gestes, santé, lieux, repas, culture, métiers et émotions ; style 2, profil `pinceau-scenes-v1`.
+> Toutes sont des aides après réponse et dans le dictionnaire.
+> Catalogue : **3 368 images** (388 questions, 2 980 aides), **119 292 820 octets**.
+> Nouveau lot : **6 754 438 octets** ; WebP 512 × 512, de 13 334 à 52 156 octets, chacun au plus 64 Kio.
+> Chaque sens a sa propre génération et une revue effective à 512, 160 et 96 px.
+> Les 3 168 anciennes images et toutes leurs recettes sont inchangées.
+> Reprise : `tools/images/batches/gestes-et-vie-courante-2026-11-07.json`, inventaire et revues versionnés.
+> 202 appels pour 200 images retenues. Le thé a été refait après un rendu avec une théière flottante ; reçu de rejet conservé.
+> Le refus du fournisseur pour `삼키다` est conservé sans relance ; `중심` complète le lot.
+> Cache `sori-v201` ; caches média et progression conservés.
+> Validation : 269 tests Node, 5 tests Python, 161 cas FSRS, syntaxe JS et manifeste vérifiés ; six suites Chromium réussies.
+> Les 3 368 images sont téléchargées ; rechargement hors connexion, serveur coupé et conservation du cache après mise à jour validés, zéro erreur JavaScript.
+
+> **Historique v200 : 200 illustrations supplémentaires**, dont 81 B1, 64 B2 et 55 C1.
 > Gestes, déplacements, relations, métiers, nature et culture coréenne ; style 2, profil `pinceau-scenes-v1`.
 > Toutes sont des aides après réponse et dans le dictionnaire.
 > Catalogue : **3 168 images** (388 questions, 2 780 aides), **112 538 382 octets**.

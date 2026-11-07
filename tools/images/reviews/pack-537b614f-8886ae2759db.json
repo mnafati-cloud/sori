@@ -1,0 +1,24 @@
+{
+  "id": "pack-537b614f",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-07T04:26:51.553Z",
+  "sourceSha256": "d492617d76e26fc12577ef8e849008907b19d88b4b585b88547202552b9ef4af",
+  "sha256": "8886ae2759db9f63d6fb338ec11b04ecf3c517eecb279bcd01f312aeb7f5b281",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nA seated adult in a short-sleeved shirt receiving a routine vaccination from a clinician wearing gloves, tiny syringe at upper arm, no blood or exposed torso. Strictly monochrome warm off-white and neutral charcoal grey on pure black, no colored accents, letters, numerals, logos or diagram arrows. Generous black margins and clear forms at 96 pixels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Clinicienne tenant une petite seringue au haut du bras, patient assis ; vaccination non graphique et anatomie cohérente. Contrôle visuel du WebP à 512, 160 et 96 px : style au pinceau sur fond noir, marges, anatomie et absence de texte vérifiés. Usage aide après réponse uniquement.",
+  "reviewedAt": "2026-11-07T05:08:27.330Z",
+  "kr": "주사를 맞다",
+  "sense": "Recevoir une piqûre",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}
