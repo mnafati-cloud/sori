@@ -138,8 +138,44 @@ let browser,page;
   await page.setViewportSize({width:412,height:915});
   await page.evaluate(theme=>{SORI_THEMES.set(theme);ST.set.mute=true;},dictionaryTheme);
   assert.equal(await page.evaluate(()=>JSON.stringify({items:ST.items,rlog:ST.rlog})),dictionaryState,'dictionary never grades a word');
+  // Les nuances doivent être visibles AVANT de produire, y compris sur le verso
+  // écrit ; les notes contenant le coréen ne doivent arriver qu'après révélation.
+  const certainty=[
+    {kr:"물론",cue:/admet un fait/,word:true},
+    {kr:"당연히",cue:/normal, attendu/,word:true},
+    {kr:"그럼요",cue:/confirmer ou accepter/},
+    {kr:"당연하죠.",cue:/normal, évident/}
+  ];
+  for(const {kr,cue,word} of certainty){
+    for(const typed of word?[false,true]:[false]){
+      const fixture=await page.evaluate(({kr,typed})=>{
+        const it=SEED.items.find(x=>x.kr===kr),id=typed?it.id+REV:it.id;
+        ST.set.typing=typed;ST.set.reverse=typed;ST.set.images=false;ST.set.production=false;
+        ST.items[id]={s:typed?5:4,i:30,S:30,D:5,d:todayStr(),ok:1,ko:0};
+        delete ST.imageReview;FAILPOS.clear();CONSOL.clear();REPRISE_IDS.clear();
+        Q=[id];QPOS=0;TAB="review";BONUS=false;UNDO=null;STAMP_NEXT=null;
+        const random=Math.random;Math.random=()=>0;
+        try{render();}finally{Math.random=random;}
+        return {fr:it.fr,note:EXTRA[it.id].note,before:ST.rlog.length};
+      },{kr,typed});
+      const prompt=page.locator('.big-fr');
+      assert.equal(await prompt.innerText(),fixture.fr,'same contextual prompt on recto and verso');
+      assert.match(fixture.fr,cue);
+      assert.doesNotMatch(fixture.fr,/[가-힣]/,'no Korean answer in the prompt');
+      assert.equal(await page.locator('.trivia').count(),0);
+      await page.setViewportSize({width:320,height:740});
+      assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'prompt fits small phones');
+      await page.screenshot({path:path.join(artifacts,kr+(typed?'-typing':'-recall')+'-prompt.png')});
+      if(typed)await page.locator('.typing-nokb').click();
+      else await prompt.click();
+      assert.equal(await page.locator('.tnote').innerText(),fixture.note);
+      assert.equal(await page.evaluate(()=>ST.rlog.length),fixture.before,'reveal alone never grades');
+      await page.setViewportSize({width:412,height:915});
+    }
+  }
   // Les notes comparatives sont accessibles après réponse ET dans le dictionnaire.
-  for(const kr of ["전체","전부","전","배달","택배","소포","배송"]){
+  const lexicalWords=["전체","전부","전","배달","택배","소포","배송",...certainty.map(x=>x.kr)];
+  for(const kr of lexicalWords){
     const fr=await page.evaluate(kr=>{
       const it=SEED.items.find(x=>x.kr===kr);ST.items[it.id]={s:1,i:1,d:todayStr(),ok:0,ko:0};
       Q=[it.id];QPOS=0;TAB="review";render();return it.fr;
@@ -147,7 +183,8 @@ let browser,page;
     await page.getByRole("button",{name:fr,exact:true}).click();
     await page.locator("#cont").waitFor();
     const note=await page.locator(".trivia .tnote").innerText();
-    const comparisons=["배달","택배","소포","배송"].includes(kr)?["배달","택배","소포","배송"]:["전체","전부","전 직원"];
+    const comparisons=certainty.some(x=>x.kr===kr)?["물론","당연히","그럼요","당연하죠"]:
+      ["배달","택배","소포","배송"].includes(kr)?["배달","택배","소포","배송"]:["전체","전부","전 직원"];
     for(const word of comparisons)assert.ok(note.includes(word),kr+" : "+word);
     await page.locator("#dicorev").click();await page.locator(".search-input").fill(kr);
     const row=page.locator(".search-hit").filter({has:page.locator(".kr").getByText(kr,{exact:true})});
@@ -268,7 +305,7 @@ let browser,page;
   assert.deepEqual(errors,[]);
   const summary={browser:await browser.version(),retiredTrip:true,newCardsIgnoreLegacyKitPriority:true,eventAndPlayerContracts:true,
     dictionaryAudio:true,dictionaryThemes:themes.length,dictionaryWidths:[320,412],dictionaryProgressUnchanged:true,
-    productionReports:true,reportReload:true,lexicalNotes:7,typingContext:true,typingContextBeforeSelfGrade:true,typingIme:true,versionHistory:true,
+    productionReports:true,reportReload:true,lexicalNotes:lexicalWords.length,contextualCertaintyPrompts:true,typingContext:true,typingContextBeforeSelfGrade:true,typingIme:true,versionHistory:true,
     normalStamp:true,stuckStampRecovered:true,invisibleWordRecovered:true,pageErrors:errors};
   fs.writeFileSync(path.join(artifacts,"summary.json"),JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));
 })().catch(async error=>{

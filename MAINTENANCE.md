@@ -15,6 +15,26 @@
 
 ## Sommaire
 
+**v202 — Distinguer les quatre « bien sûr / évidemment ».**
+Les fiches 물론, 당연히, 그럼요 et 당연하죠. avaient des traductions françaises
+quasiment identiques. Leurs consignes précisent désormais, avant toute réponse,
+l’admission d’un fait (« certes… mais… »), le caractère normal ou attendu,
+l’accord poli ou l’évidence partagée. Ces indications passent par `GLOSS_FIX`,
+avant la création des versos, et s’appliquent aussi au dictionnaire.
+
+Quatre notes comparatives expliquent les recoupements réels, sans présenter les
+expressions comme des traductions exclusives. Correction ponctuelle de `extra.js`
+par la recette R2 ; les exemples coréens, gloses, audios, niveaux et identifiants
+restent identiques. Un accent français est corrigé dans l’exemple de 물론.
+Cache applicatif `sori-v202` ; progression et caches média conservés.
+
+Validation : 269 tests Node ; syntaxe et intégrité du contenu vérifiées.
+Le test Chromium des distinctions lexicales couvre les quatre consignes avant
+révélation, les deux versos écrits, le QCM, les notes et le dictionnaire,
+y compris l’affichage sur un téléphone de 320 px, sans erreur JavaScript.
+Les suites navigateur de sauvegarde/restauration, production de phrases et
+progression passent également, avec export et reprise hors connexion.
+
 **v201 — 200 nouvelles illustrations : gestes et vie courante.**
 Le catalogue passe à **3 368 images**, avec 23 nouveaux mots A1, 66 A2,
 37 B1, 17 B2 et 57 C1. Le lot `gestes-et-vie-courante-2026-11-07` conserve

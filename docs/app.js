@@ -144,7 +144,13 @@ const GLOSS_FIX = {
   "배달":"Livraison au destinataire (notamment repas à domicile)",
   "택배":"Livraison de colis par transporteur ; colis ainsi livré",
   "소포":"Colis postal (le paquet que l’on envoie)",
-  "배송":"Expédition et acheminement d’une commande (suivi logistique)"
+  "배송":"Expédition et acheminement d’une commande (suivi logistique)",
+  /* v202 : « bien sûr / évidemment » ne permettait pas de choisir le mot à produire.
+     Préciser l'emploi dès la question ; les notes rappellent que les sens se recoupent. */
+  "물론":"Bien sûr, certes (adverbe : on admet un fait, même avant « mais… »)",
+  "당연히":"Tout naturellement, évidemment (adverbe : c’est normal, attendu)",
+  "그럼요":"Mais oui, bien sûr ! (réponse polie pour confirmer ou accepter)",
+  "당연하죠.":"Ça va de soi ! (réponse polie : c’est normal, évident)"
 };
 SEED.items.forEach(it => { if(GLOSS_FIX[it.kr]) it.fr = GLOSS_FIX[it.kr]; });
 
