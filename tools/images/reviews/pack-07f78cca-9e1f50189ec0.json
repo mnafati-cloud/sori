@@ -1,0 +1,24 @@
+{
+  "id": "pack-07f78cca",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-13T07:52:49.428Z",
+  "sourceSha256": "3e767b4ef440dcc54f3a5a14a68bea9d56b462445b74010aad094c2f018c3aaa",
+  "sha256": "9e1f50189ec00f6c172bd1142b779c38a45decedc1726d95613852a521723615",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nOne adult comforts another adult beside a broken clay bowl, gently resting a hand on their shoulder. Compassionate expression, no physical injury, small household mishap.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Geste de réconfort envers la personne attristée par un bol cassé ; relation empathique visible, sans blessure.",
+  "reviewedAt": "2026-11-13T07:55:48.110269+00:00",
+  "kr": "안타까워하다",
+  "sense": "Compatir, déplorer, être navré (pour qqn)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

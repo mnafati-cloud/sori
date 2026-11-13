@@ -15,6 +15,30 @@
 
 ## Sommaire
 
+**v203 — 200 nouvelles illustrations : gestes et situations.**
+Le catalogue passe à **3 568 images**, avec 7 nouveaux mots A2, 75 B1,
+41 B2 et 77 C1. Le lot `gestes-et-situations-2026-11-13` conserve le style 2
+au pinceau sur fond noir et l’usage `support` : aide après réponse et dans
+le dictionnaire. Les 200 WebP de 512 × 512 ajoutent **7 229 336 octets** ;
+aucun ne dépasse 53 304 octets. Les 3 368 anciens assets et leurs recettes
+restent identiques.
+
+Prompts, référence de style, provenance, hashes et revues à 512, 160 et 96 px
+sont versionnés dans l’inventaire, le lot et `tools/images/reviews/`.
+202 générations individuelles ont produit les 200 images retenues :
+`부족하다` a été refait après une théière flottante et `신라` pour corriger
+la forme de l’observatoire Cheomseongdae. Les deux reçus de rejet sont conservés.
+
+Le test du nouveau lot vérifie les sens, niveaux, assets distincts, revues
+et exclusion des questions notées. Cache applicatif `sori-v203` ; caches média,
+identifiants, planification et progression conservés. Procédure : `IMAGES.md`.
+Validation : **270 tests Node**, 5 tests Python, 161 cas FSRS, syntaxe JS et
+manifeste vérifiés ; six suites Chromium réussies. Les 3 568 images sont
+téléchargées puis disponibles hors connexion, serveur coupé, avec conservation
+du cache média après mise à jour et aucune erreur JavaScript. Deux nouvelles
+illustrations sont aussi vérifiées dans l’app à 390 et 320 px, sans débordement
+horizontal ni notation à la simple révélation.
+
 **v202 — Distinguer les quatre « bien sûr / évidemment ».**
 Les fiches 물론, 당연히, 그럼요 et 당연하죠. avaient des traductions françaises
 quasiment identiques. Leurs consignes précisent désormais, avant toute réponse,

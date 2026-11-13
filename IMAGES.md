@@ -1,6 +1,19 @@
-# Illustrations et rappel visuel — v201
+# Illustrations et rappel visuel — v203
 
-> **v201 : 200 illustrations supplémentaires**, dont 23 A1, 66 A2, 37 B1, 17 B2 et 57 C1.
+> **v203 : 200 illustrations supplémentaires**, dont 7 A2, 75 B1, 41 B2 et 77 C1.
+> Gestes, situations, sciences, métiers, traditions et activités ; style 2, profil `pinceau-scenes-v1`.
+> Toutes sont des aides après réponse et dans le dictionnaire.
+> Catalogue : **3 568 images** (388 questions, 3 180 aides), **126 522 156 octets**.
+> Nouveau lot : **7 229 336 octets** ; WebP 512 × 512, de 11 884 à 53 304 octets, chacun au plus 64 Kio.
+> Chaque sens a sa propre génération et une revue effective à 512, 160 et 96 px.
+> Les 3 368 anciennes images et toutes leurs recettes sont inchangées.
+> Reprise : `tools/images/batches/gestes-et-situations-2026-11-13.json`, inventaire et revues versionnés.
+> 202 générations pour 200 images retenues. `부족하다` a été refait pour retirer une théière flottante ; `신라` pour corriger la forme de l’observatoire Cheomseongdae. Les deux reçus de rejet sont conservés.
+> Cache `sori-v203` ; caches média et progression conservés.
+> Validation : 270 tests Node, 5 tests Python, 161 cas FSRS, syntaxe JS et manifeste vérifiés ; six suites Chromium réussies.
+> Les 3 568 images sont téléchargées ; rechargement hors connexion, serveur coupé et conservation du cache après mise à jour validés, zéro erreur JavaScript. Deux nouvelles illustrations vérifiées dans l’app à 390 et 320 px.
+
+> **Historique v201 : 200 illustrations supplémentaires**, dont 23 A1, 66 A2, 37 B1, 17 B2 et 57 C1.
 > Gestes, santé, lieux, repas, culture, métiers et émotions ; style 2, profil `pinceau-scenes-v1`.
 > Toutes sont des aides après réponse et dans le dictionnaire.
 > Catalogue : **3 368 images** (388 questions, 2 980 aides), **119 292 820 octets**.

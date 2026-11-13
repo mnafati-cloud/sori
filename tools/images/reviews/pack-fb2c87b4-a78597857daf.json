@@ -1,0 +1,24 @@
+{
+  "id": "pack-fb2c87b4",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-13T07:32:31.859Z",
+  "sourceSha256": "4299bd652674e5ef6ef3eb09c5072d3089c6effc8445a4114e41c795a5424718",
+  "sha256": "a78597857daf82cb2c72413e739f2aea1460b7f814541b4b2fc8426dd3b00014",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nAn adult manually turns the spindle of an old cassette with a pencil to rewind the tape. Hands clearly engaged with one cassette and pencil on a tabletop, no labels.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Crayon dans la bobine de cassette et mouvement circulaire ; rembobinage identifiable aux trois tailles.",
+  "reviewedAt": "2026-11-13T07:38:45.897905+00:00",
+  "kr": "되돌리다",
+  "sense": "Ramener (à un état antérieur), remettre, rembobiner",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

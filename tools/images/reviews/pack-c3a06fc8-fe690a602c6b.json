@@ -1,0 +1,24 @@
+{
+  "id": "pack-c3a06fc8",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-13T07:35:18.560Z",
+  "sourceSha256": "8525aad666d2d2e56202fcb5e53daa19cbeac87ac3811e43f3becb4090e42689",
+  "sha256": "fe690a602c6b6a293286196dfc6d849ca87c5c4e491210b652de20fcc4021f24",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nAn adult traveler pauses at a station entrance and turns their head sideways, looking around to find someone. One suitcase and two simple platform columns, no signage.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Voyageur tournant la tête sur un quai ; posture visible, répétition du regard portée par le mot et son contexte.",
+  "reviewedAt": "2026-11-13T07:38:45.897741+00:00",
+  "kr": "두리번거리다",
+  "sense": "Regarder autour de soi, jeter des regards de tous côtés",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}
