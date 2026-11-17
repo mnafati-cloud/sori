@@ -99,6 +99,15 @@ async function fixture(kind){
       assert.deepEqual(await page.evaluate(()=>testResults),kind==='typing'?[true]:['correct']);
       assert.equal(await page.locator('body').evaluate(el=>el.classList.contains('keyboard-editing')),false);
       await keyboard(844);
+      // A synthetic/unfinished composition may survive blur. No delayed check
+      // may submit it when compositionend arrives after that first tap.
+      await fixture(kind);await field.fill(kind==='typing'?'안녕하세요':'우산');
+      await field.dispatchEvent('compositionstart');await page.locator(button).first().tap();
+      assert.deepEqual(await page.evaluate(()=>testResults),[]);
+      await field.dispatchEvent('compositionend');await page.waitForTimeout(100);
+      assert.deepEqual(await page.evaluate(()=>testResults),[],'compositionend alone must never submit');
+      await page.locator(button).first().tap();
+      assert.deepEqual(await page.evaluate(()=>testResults),kind==='typing'?[true]:['correct']);
     }
     await fixture('conversation');await page.locator('.conv-in').fill('안녕하세요');await keyboard(350,25);
     await controls('.conv-in','.conv-send');

@@ -130,7 +130,8 @@
         input.addEventListener("focus",()=>card.classList.add("images-typing"));
         const check=()=>{if(composing || phase!=="input")return;raw=input.value;const verdict=judge(raw,a);if(verdict!=="empty")setPhase(verdict);};
         actions.append(button("Vérifier",()=>{
-          if(composing){input.blur();setTimeout(check,0);}else check();
+          if(composing)input.blur();
+          check();
         },"btn"),button("Je ne sais pas",()=>setPhase("forgot")));
         body.append(button("J’ai répondu à voix haute",()=>setPhase("oral"),"images-link"),
           button("Utiliser le texte",()=>{if(done)return;done=true;card.remove();opts.onText();},"images-link"));

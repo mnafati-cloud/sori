@@ -595,7 +595,8 @@
       }
     }
     sendBtn.onclick = ()=>{
-      if(composing){input.blur();setTimeout(send,0);}else send();
+      if(composing)input.blur();
+      send();
     };
     input.onkeydown = e => { if(e.key === "Enter" && !e.shiftKey && !composing && !e.isComposing && e.keyCode !== 229){ e.preventDefault(); send(); } };   // Maj+Entrée = retour à la ligne
     /* scénario tout neuf : amorce CACHÉE (l'API veut un tour user en premier) → le modèle ouvre

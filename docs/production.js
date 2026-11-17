@@ -251,8 +251,8 @@
       });
       card.querySelector("form").onsubmit=event=>{
         event.preventDefault();
-        if(composing){input.blur();setTimeout(()=>act("submit",input.value),0);}
-        else act("submit",input.value);
+        if(composing)input.blur();
+        act("submit",input.value);
       };
       // Pas d'autofocus : conserver le contrôle du clavier mobile et la consigne visible.
     }

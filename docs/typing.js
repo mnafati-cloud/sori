@@ -248,7 +248,8 @@
 
     card.querySelector(".typing-verify").onclick = ()=>{
       // A deliberate tap commits the current IME syllable before reading it.
-      if(composing){$input.blur();setTimeout(check,0);}else check();
+      if(composing)$input.blur();
+      check();
     };
     $nokb.onclick = reveal;
     $input.addEventListener("compositionstart",()=>{composing=true;});

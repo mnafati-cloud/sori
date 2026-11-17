@@ -15,6 +15,18 @@
 
 ## Sommaire
 
+**v205 — Ne jamais différer une validation pendant la composition coréenne.**
+Le tap explicite termine la composition par `blur()` puis vérifie immédiatement
+son état avant de lire le champ. Si le navigateur n’a pas terminé la composition,
+aucune validation n’est mise en attente : finir une syllabe ultérieurement ne peut
+pas soumettre une réponse sans nouveau geste. Ce correctif retire une course entre
+le clic et `compositionend` détectée par la CI v204 dans la suite images.
+Même règle dans les quatre modules de saisie ; contrôles d’IME conservés.
+Cache applicatif `sori-v205` ; comportement mobile et données inchangés.
+Validation : 270 tests Node et syntaxe JS verts ; suites images, production,
+interface et clavier relancées avec succès. Le test clavier couvre désormais
+explicitement une composition qui survit au blur, sans soumission différée.
+
 **v204 — Valider une réponse sans refermer le clavier mobile.**
 `keyboard.js`, installé par `app.js`, adapte temporairement la hauteur de l’app
 à `visualViewport.height` et à son décalage, avec repli sur le redimensionnement
