@@ -159,11 +159,11 @@
        filigrane, et l'utilisateur ne veut plus qu'on lui dise quoi faire à chaque carte. */
     var card = el('<div class="card center typing-card">' +
       '<div class="big-fr">' + esc(it.fr == null ? "" : it.fr) + '</div>' +
-      '<input class="typing-input" type="text" lang="ko" enterkeyhint="done"' +
+      '<div data-keyboard-dock><input class="typing-input" type="text" lang="ko" enterkeyhint="done"' +
       ' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"' +
       ' placeholder="한국어로…">' +
       '<div class="typing-fb"></div>' +
-      '<div class="row typing-actions"><button class="btn typing-verify">Vérifier</button></div>' +
+      '<div class="row typing-actions"><button class="btn typing-verify">Vérifier</button></div></div>' +
       '<button class="typing-nokb">je ne peux pas taper</button>' +
       '</div>');
     var $input = card.querySelector(".typing-input");
@@ -171,6 +171,7 @@
     var $act   = card.querySelector(".typing-actions");
     var $nokb  = card.querySelector(".typing-nokb");
 
+    var composing = false;
     var checked = false;   /* une seule vérification */
     var done = false;      /* un seul onResult */
     function finish(ok){
@@ -181,13 +182,14 @@
     }
 
     function check(){
-      if(checked) return;
+      if(checked || composing) return;
       var raw = $input.value;
       if(!normalize(raw)){
         $fb.innerHTML = '<span class="typing-msg">Tape ta réponse — ou « je ne peux pas taper » ci-dessous.</span>';
         return;
       }
       checked = true;
+      $input.blur();
       $input.disabled = true;
       $nokb.remove();
       var j = judge(raw, it.kr);
@@ -229,6 +231,7 @@
     function reveal(){
       if(checked) return;
       checked = true;
+      $input.blur();
       $input.remove();
       $nokb.remove();
       speak(it.kr, it.id);
@@ -243,12 +246,17 @@
       $act.appendChild(again); $act.appendChild(good);
     }
 
-    card.querySelector(".typing-verify").onclick = check;
+    card.querySelector(".typing-verify").onclick = ()=>{
+      // A deliberate tap commits the current IME syllable before reading it.
+      if(composing){$input.blur();setTimeout(check,0);}else check();
+    };
     $nokb.onclick = reveal;
+    $input.addEventListener("compositionstart",()=>{composing=true;});
+    $input.addEventListener("compositionend",()=>{composing=false;});
     $input.addEventListener("keydown", function(ev){
       if(ev.key !== "Enter") return;
       /* Entrée pendant la composition IME = valider la syllabe, PAS la réponse */
-      if(ev.isComposing || ev.keyCode === 229) return;
+      if(composing || ev.isComposing || ev.keyCode === 229) return;
       ev.preventDefault();
       check();
     });

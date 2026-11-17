@@ -562,11 +562,11 @@ function openReportModal(){
       <h2>Signaler un problème</h2>
       <p class="dim">${ctx.production ? "Phrase : "+esc(ctx.production.prompt) : ctx.carte ? "Carte : "+esc(ctx.carte.kr)+" ("+esc(ctx.pos||"")+")" : "Onglet : "+esc(ctx.tab)}
         — le contexte et l'heure sont joints automatiquement.</p>
-      <textarea id="rpttxt" rows="5" placeholder="Décris le souci ou la remarque…"></textarea>
+      <div data-keyboard-dock><textarea id="rpttxt" rows="5" placeholder="Décris le souci ou la remarque…"></textarea>
       <div class="row" style="margin-top:10px">
         <button class="btn ghost" id="rptcancel">Annuler</button>
         <button class="btn" id="rptsend">Enregistrer</button>
-      </div></div></div>`);
+      </div></div></div></div>`);
   back.querySelector("#rptcancel").onclick = ()=>back.remove();
   back.addEventListener("click", e=>{ if(e.target===back) back.remove(); });
   back.querySelector("#rptsend").onclick = ()=>{
@@ -1387,7 +1387,7 @@ function renderProductionReview(){
     render();
     // Garder la saisie pour la corriger, sans la mettre dans les sauvegardes.
     const input=$screen.querySelector(".production-input");
-    if(input && action==="submit") {input.value=text;input.focus({preventScroll:true});}
+    if(input && action==="submit") input.value=text; // Clavier fermé pour lire le retour.
   }});
 }
 function renderReview(){
@@ -2907,6 +2907,7 @@ async function cleanAudioStore(){
 }
 
 /* go */
+if(window.SORI_KEYBOARD) SORI_KEYBOARD.install();
 wireReport();
 wireSettings();
 wireDico();

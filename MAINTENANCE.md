@@ -15,6 +15,34 @@
 
 ## Sommaire
 
+**v204 — Valider une réponse sans refermer le clavier mobile.**
+`keyboard.js`, installé par `app.js`, adapte temporairement la hauteur de l’app
+à `visualViewport.height` et à son décalage, avec repli sur le redimensionnement
+classique. Le viewport demande aussi `interactive-widget=resizes-content` aux
+navigateurs compatibles. Les champs et actions des exercices écrits, images,
+phrases, conversations et signalements restent groupés ; le contenu reste
+scrollable. Les onglets s’effacent lorsque le clavier réduit la zone disponible.
+Le zoom par pincement reste natif, et la mise en page normale revient après
+validation ou retrait du champ.
+
+Le tap conserve le bouton sous le doigt jusqu’au clic. Une validation explicite
+termine la composition IME avant de lire la réponse ; Entrée pendant la composition
+ne soumet rien. Entrée valide sinon, Maj+Entrée conserve le retour à la ligne dans
+les phrases/conversations. Une réponse vide reste en saisie. La validation ferme
+le clavier pour lire le retour ; une phrase à corriger conserve son texte sans
+reprendre automatiquement le focus. Aucun changement de notation ou de stockage.
+
+Validation : 270 tests Node, syntaxe JS, 5 tests Python, 161 cas FSRS et manifeste
+(3 568 images) vérifiés. Sept suites Chromium : sauvegarde, production, interface,
+progression, images, téléchargements et nouveau `tools/keyboard_smoke.cjs`.
+Ce dernier vérifie les contrôles réellement cliquables à 320 et 390 px, le clavier
+superposé, le décalage du viewport, le repli sans VisualViewport, le tap, Entrée,
+la composition coréenne, le signalement et le nettoyage après navigation.
+Les géométries de clavier sont simulées : le clavier système Android/iOS lui-même
+nécessite encore un essai sur téléphone. Cache applicatif `sori-v204`, module
+précaché pour fonctionner aussi hors connexion ; caches média conservés.
+
+
 **v203 — 200 nouvelles illustrations : gestes et situations.**
 Le catalogue passe à **3 568 images**, avec 7 nouveaux mots A2, 75 B1,
 41 B2 et 77 C1. Le lot `gestes-et-situations-2026-11-13` conserve le style 2

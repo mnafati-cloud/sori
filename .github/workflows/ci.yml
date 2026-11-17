@@ -56,6 +56,8 @@ jobs:
         run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/images_smoke.cjs
       - name: Téléchargements partiels, reprise, stockage et médias hors connexion
         run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/offline_smoke.cjs
+      - name: Clavier mobile, zone visible, validation et composition coréenne
+        run: NODE_PATH="$RUNNER_TEMP/sori-browser/node_modules" node tools/keyboard_smoke.cjs
       - name: Captures et preuve de validation
         if: always()
         uses: actions/upload-artifact@v4

@@ -225,11 +225,11 @@
         <p>${esc(item.explanation)}</p>
         ${a.outcome==="correct"?`<p class="production-note">Forme utilisée : ${esc(a.form)}.</p>`:""}
         <div class="production-actions"><button class="btn" data-action="advance">Continuer</button>${!a.cancelled && a.outcome!=="unverified"?'<button class="btn ghost" data-action="undo">Annuler la note</button>':""}</div>`:
-        `<form class="production-form"><label for="production-answer">Écris la phrase entière en coréen.</label>
-        <textarea id="production-answer" class="production-input" lang="ko" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="500" aria-describedby="production-help"></textarea>
+        `<form class="production-form"><div data-keyboard-dock><label for="production-answer">Écris la phrase entière en coréen.</label>
+        <textarea id="production-answer" class="production-input" lang="ko" enterkeyhint="done" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="500" aria-describedby="production-help"></textarea>
+        <div class="production-actions"><button class="btn" type="submit">Vérifier</button><button class="btn ghost" type="button" data-action="reveal">${retry?"Voir un exemple":"Je ne sais pas"}</button></div></div>
         <div id="production-help" class="production-note">Sans mots proposés. Tu peux employer une autre formulation.</div>
         ${retry?`<div class="production-feedback" role="status">${esc(feedback)} Tu peux corriger ta phrase.</div>`:""}
-        <div class="production-actions"><button class="btn" type="submit">Vérifier</button><button class="btn ghost" type="button" data-action="reveal">${retry?"Voir un exemple":"Je ne sais pas"}</button></div>
         <div class="production-actions"><button class="btn ghost" type="button" data-action="skip">${a.first==="incorrect"?"Arrêter cet essai":"Passer sans note"}</button></div></form>`}`;
     container.appendChild(card);
     let busy=false, composing=false;
@@ -238,6 +238,7 @@
       if(busy) return;
       if(action==="submit" && (composing || !normalize(text))) return;
       busy=true;
+      input?.blur();
       card.querySelectorAll("button").forEach(b=>b.disabled=true);
       onAction(action,text);
     }
@@ -248,7 +249,11 @@
       input.addEventListener("keydown",event=>{
         if(event.key==="Enter" && !event.shiftKey && !event.isComposing && !composing && event.keyCode!==229){event.preventDefault();act("submit",input.value);}
       });
-      card.querySelector("form").onsubmit=event=>{event.preventDefault();act("submit",input.value);};
+      card.querySelector("form").onsubmit=event=>{
+        event.preventDefault();
+        if(composing){input.blur();setTimeout(()=>act("submit",input.value),0);}
+        else act("submit",input.value);
+      };
       // Pas d'autofocus : conserver le contrôle du clavier mobile et la consigne visible.
     }
     return true;

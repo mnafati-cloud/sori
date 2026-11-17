@@ -415,8 +415,8 @@
         '<span class="kr-big conv-anchor"></span><span class="lbl conv-sub"></span></div>' +
       '<div class="conv-log"></div>' +
       '<div class="conv-status dim"></div>' +
-      '<div class="conv-row">' +
-        '<textarea class="conv-in" rows="1" placeholder="한국어로…" autocomplete="off"></textarea>' +
+      '<div class="conv-row" data-keyboard-dock>' +
+        '<textarea class="conv-in" enterkeyhint="send" rows="1" placeholder="한국어로…" autocomplete="off"></textarea>' +
         '<button class="btn ghost conv-send" title="Envoyer">' + SVG_SEND + '</button>' +
         '<button class="btn ghost conv-mic" title="Parler (coréen)">' + SVG_MIC + '</button>' +
       '</div>';
@@ -572,9 +572,13 @@
       glossify(msg, b);   // v93 : mot-à-mot en arrière-plan, jamais bloquant
       return true;
     }
+    let composing=false;
+    input.addEventListener("compositionstart",()=>{composing=true;});
+    input.addEventListener("compositionend",()=>{composing=false;});
     async function send(){
       const txt = input.value.trim();
-      if(!txt || busy) return;
+      if(!txt || busy || composing) return;
+      input.blur();
       stopMic();          // v91 : l'ENVOI arrête TOUJOURS le micro (demande user) — et stopMic
                           // débranche onresult : aucun résultat tardif ne re-remplira le champ
       input.value = ""; autosize();
@@ -590,8 +594,10 @@
         input.value = txt; autosize();                   // la phrase n'est pas perdue
       }
     }
-    sendBtn.onclick = send;
-    input.onkeydown = e => { if(e.key === "Enter" && !e.shiftKey){ e.preventDefault(); send(); } };   // Maj+Entrée = retour à la ligne
+    sendBtn.onclick = ()=>{
+      if(composing){input.blur();setTimeout(send,0);}else send();
+    };
+    input.onkeydown = e => { if(e.key === "Enter" && !e.shiftKey && !composing && !e.isComposing && e.keyCode !== 229){ e.preventDefault(); send(); } };   // Maj+Entrée = retour à la ligne
     /* scénario tout neuf : amorce CACHÉE (l'API veut un tour user en premier) → le modèle ouvre
        la conversation dans son rôle (le serveur accueille, le chauffeur demande la destination…) */
     if(sc && conv.h.length === 0){

@@ -114,7 +114,7 @@
     waiting.replaceWith(card);
     if(img)card.querySelector(".images-prompt").append(img);
     const body=card.querySelector(".images-body");
-    function setPhase(next){phase=next;opts.onPhase(phase);paint();}
+    function setPhase(next){body.querySelector("input")?.blur();phase=next;opts.onPhase(phase);paint();}
     function grade(g){if(done || !card.isConnected)return;done=true;card.querySelectorAll("button").forEach(b=>b.disabled=true);opts.onGrade(g);}
     function neutral(){if(done || !card.isConnected)return;done=true;opts.onNeutral();}
     function button(label,fn,cls="btn ghost"){
@@ -123,13 +123,15 @@
     function paint(){
       body.innerHTML="";
       if(phase==="input"){
-        body.innerHTML='<input class="images-input" aria-label="Réponse en coréen" lang="ko" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="한국어로…"><div class="images-actions"></div>';
+        body.innerHTML='<div data-keyboard-dock><input class="images-input" aria-label="Réponse en coréen" lang="ko" enterkeyhint="done" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="한국어로…"><div class="images-actions"></div></div>';
         const input=body.querySelector("input"),actions=body.querySelector(".images-actions");
         // Keep the compact layout after blur: resizing on a button's pointerdown
         // moves that button away from the finger and cancels its click.
         input.addEventListener("focus",()=>card.classList.add("images-typing"));
         const check=()=>{if(composing || phase!=="input")return;raw=input.value;const verdict=judge(raw,a);if(verdict!=="empty")setPhase(verdict);};
-        actions.append(button("Vérifier",check,"btn"),button("Je ne sais pas",()=>setPhase("forgot")));
+        actions.append(button("Vérifier",()=>{
+          if(composing){input.blur();setTimeout(check,0);}else check();
+        },"btn"),button("Je ne sais pas",()=>setPhase("forgot")));
         body.append(button("J’ai répondu à voix haute",()=>setPhase("oral"),"images-link"),
           button("Utiliser le texte",()=>{if(done)return;done=true;card.remove();opts.onText();},"images-link"));
         input.addEventListener("compositionstart",()=>{composing=true;});
