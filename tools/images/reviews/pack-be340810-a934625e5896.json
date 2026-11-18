@@ -1,0 +1,24 @@
+{
+  "id": "pack-be340810",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-18T07:41:39.832Z",
+  "sourceSha256": "da8bbbbf3b111a96cb06114f0d7bc83f4cc1a335d654ac938a6defd098b099a5",
+  "sha256": "a934625e58964675004153bc48e41fc586b422cc413125559ede6fe9d3198591",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 기대 — L'attente, l'espoir. Depict this sense only. Scene: An adult eagerly waiting beside a neatly wrapped unopened parcel on a table, hands poised and hopeful expression. All people are adults. No lettering, numerals, diagrams, arrows or logos. One independently composed square illustration with a pure black background and warm-white/grey brushwork.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Attente souriante devant un cadeau fermé : espoir et anticipation.",
+  "reviewedAt": "2026-11-18T07:42:28.786526+00:00",
+  "kr": "기대",
+  "sense": "L'attente, l'espoir",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

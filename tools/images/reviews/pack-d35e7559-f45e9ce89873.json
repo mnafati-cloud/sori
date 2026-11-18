@@ -1,0 +1,24 @@
+{
+  "id": "pack-d35e7559",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-18T07:46:21.638Z",
+  "sourceSha256": "55abe2167556140d87ee288dc2c6b5250033c7a380407b7f8c9897b740a094e7",
+  "sha256": "f45e9ce89873e70b5bbdd912e55f459e61b949eee2b6f7fb753d664560678742",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 곧장 — Tout droit, directement (sans s'arrêter).. Depict this sense only. Scene: A straight unobstructed village path leading directly from the foreground to one small gate, clear direct route. All people are adults. No lettering, numerals, diagrams, arrows or logos. One independently composed square illustration with a pure black background and warm-white/grey brushwork.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Marche directe sur une allée rectiligne vers le portail : trajectoire claire.",
+  "reviewedAt": "2026-11-18T07:47:03.308242+00:00",
+  "kr": "곧장",
+  "sense": "Tout droit, directement (sans s'arrêter).",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

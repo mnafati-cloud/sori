@@ -15,6 +15,21 @@
 
 ## Sommaire
 
+**v206 — 200 nouvelles illustrations : gestes et usages.**
+Le catalogue passe à **3 768 images** (388 questions et 3 380 aides).
+Le lot `gestes-et-usages-2026-11-18` ajoute 1 mot A1, 7 A2, 76 B1,
+101 B2 et 15 C1 avec le profil `pinceau-scenes-v1`, en soutien après réponse
+et dans le dictionnaire. Chaque mot possède son image indépendante, revue
+à 512, 160 et 96 px. Les 200 WebP ajoutent **7 144 186 octets** ; aucun
+ne dépasse 62 712 octets. Les 3 568 anciennes images, associations et recettes
+restent identiques. Cache applicatif `sori-v206`, caches média conservés.
+200 appels de génération pour 200 images retenues ; aucun appel de reprise.
+Validation : 271 tests Node, 5 tests Python, 161 cas FSRS, syntaxe de tous les JS
+et manifeste vérifiés ; sept suites Chromium réussies. Les 3 768 images sont
+téléchargées et relues hors connexion avec le serveur coupé ; cache conservé
+après mise à jour. Deux nouveaux exemples vérifiés à 320 et 390 px, aucune
+erreur JavaScript. Aucun changement de moteur, de seed ou de progression.
+
 **v205 — Ne jamais différer une validation pendant la composition coréenne.**
 Le tap explicite termine la composition par `blur()` puis vérifie immédiatement
 son état avant de lire le champ. Si le navigateur n’a pas terminé la composition,

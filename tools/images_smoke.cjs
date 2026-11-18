@@ -225,7 +225,8 @@ let browser,page;
   assert.equal(await page.locator('.images-support').getAttribute('alt'),'Ventre');
   assert.equal(await page.evaluate(()=>ST.rlog.length),0,'revealing the belly illustration does not grade');
   await page.screenshot({path:path.join(artifacts,'belly-support.png')});
-  for(const sceneId of ['pack-b6372707','pack-1f0506be']){
+  for(const sceneId of ['pack-b6372707','pack-1f0506be','pack-4d4ef594','pack-9721694e'])for(const width of [390,320]){
+    await page.setViewportSize({width,height:844});
     await page.evaluate(({sceneId,next})=>{
       ST.items[sceneId]={s:4,i:7,S:7,D:5,d:todayStr(),ok:1,ko:0};
       delete ST.imageReview;Q=[sceneId,next];QPOS=0;UNDO=null;saveSess();render();
@@ -236,7 +237,8 @@ let browser,page;
     assert.equal(await page.locator('.images-support').getAttribute('src'),D.items[sceneId].src);
     assert.equal(await page.locator('.images-support').getAttribute('alt'),D.items[sceneId].alt);
     assert.equal(await page.evaluate(()=>ST.rlog.length),0,'scene reveal does not invent a grade');
-    await page.screenshot({path:path.join(artifacts,'scene-'+sceneId+'.png')});
+    assert.ok(await page.evaluate(()=>document.body.scrollWidth<=innerWidth),'scene stays within the mobile viewport');
+    await page.screenshot({path:path.join(artifacts,'scene-'+sceneId+'-'+width+'.png')});
   }
   await reset();await page.locator('.images-input').waitFor();
   // Six actual themes, small phone and keyboard-height viewports, no horizontal overflow.
