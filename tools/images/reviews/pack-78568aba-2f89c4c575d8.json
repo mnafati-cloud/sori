@@ -1,0 +1,24 @@
+{
+  "id": "pack-78568aba",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-18T10:58:57.004Z",
+  "sourceSha256": "f2accab26eb30efba26f7e3db45b0bcbec969a96776ac0f8527be52822a090ca",
+  "sha256": "2f89c4c575d8403eac02a6cffd688163d2738cfeccf93a52dfefac7e7d799f00",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 낮아지다 — Baisser, diminuer, devenir plus bas.. Depict this sense only. Scene: A low round stone water tank viewed from above and from the side. Water is draining OUT through a small open tap mounted at the BOTTOM of the tank outer wall, falling onto the ground OUTSIDE. The remaining water is very low inside, far BELOW a clear old wet high-water ring. No tap above the tank, no water entering it. Show decreasing water level, not filling. All people are adults. No lettering, numerals, diagrams, arrows or logos. One independently composed square illustration with a pure black background and warm-white/grey brushwork.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Rendu corrigé : eau sortant par le robinet inférieur vers le sol, niveau bas et ancienne marque haute visibles. Sens de baisse désormais cohérent.",
+  "reviewedAt": "2026-11-18T10:59:27.119891+00:00",
+  "kr": "낮아지다",
+  "sense": "Baisser, diminuer, devenir plus bas.",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

@@ -1,0 +1,24 @@
+{
+  "id": "pack-15ebe928",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-18T10:59:27.777Z",
+  "sourceSha256": "35cc3a67571383f2dfb37ac3f46d09d748174e30c8a6aad21230bbda796e9c69",
+  "sha256": "e039271bbc8d8ea7b0c0ec9bc4b62b7207a4f097def32d870a24da586c631caa",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 답장 — Réponse (à une lettre/message). Depict this sense only. Scene: An adult places a handwritten but visually unlettered reply into an envelope with an opened received letter beside it. All people are adults. No lettering, numerals, diagrams, arrows or logos. One independently composed square illustration with a pure black background and warm-white/grey brushwork.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Lettre reçue ouverte à côté d'une réponse glissée dans une enveloppe : correspondance en retour, lisible.",
+  "reviewedAt": "2026-11-18T11:00:05.583997+00:00",
+  "kr": "답장",
+  "sense": "Réponse (à une lettre/message)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

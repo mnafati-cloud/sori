@@ -1,6 +1,22 @@
-# Illustrations et rappel visuel — v206
+# Illustrations et rappel visuel — v207
 
-> **v206 : 200 illustrations supplémentaires**, dont 1 A1, 7 A2, 76 B1, 101 B2 et 15 C1.
+> **v207 : 200 illustrations supplémentaires**, dont 2 A1, 21 A2, 34 B1, 40 B2 et 103 C1.
+> Gestes, relations, notions et expressions ; profil `pinceau-scenes-v1` conservé.
+> Toutes sont des aides après réponse et dans le dictionnaire ; les notions abstraites restent contextualisées.
+> Catalogue : **3 968 images** (388 questions, 3 580 aides), **141 181 574 octets**.
+> Nouveau lot : **7 515 232 octets** ; WebP 512 × 512, de 8 746 à 59 386 octets, chacun au plus 64 Kio.
+> Chaque sens possède sa propre image ; revue effective de chaque rendu à 512, 160 et 96 px.
+> Les 3 768 anciennes images, leurs associations et toutes leurs recettes restent identiques.
+> Reprise : `tools/images/batches/gestes-et-relations-2026-11-18.json`, inventaire et revues versionnés.
+> 203 appels : 202 rendus produits et un échec de lecture de référence lors d'une coupure de l'environnement.
+> 200 rendus retenus : `고려하다` a été refait pour corriger l'anatomie, `낮아지다` pour montrer l'eau sortant de la cuve ; reçus de rejet conservés.
+> `성과` a été repris après l'échec de lecture ; le PNG de `증거` a été récupéré après interruption de l'enregistrement, sans nouvelle génération.
+> Cache `sori-v207` ; caches média et progression conservés.
+> Validation : 272 tests Node, 5 tests Python, 161 cas FSRS, syntaxe JS et manifeste vérifiés ; sept suites Chromium réussies.
+> Téléchargement des 3 968 images, lecture serveur coupé et conservation du cache après mise à jour validés, zéro erreur JavaScript.
+> Deux nouvelles illustrations contrôlées dans l'app à 390 et 320 px ; affichage atomique et contrôles du clavier conservés.
+
+> **Historique v206 : 200 illustrations supplémentaires**, dont 1 A1, 7 A2, 76 B1, 101 B2 et 15 C1.
 > Gestes, attitudes, études, usages, démarches et voyages ; profil `pinceau-scenes-v1` conservé.
 > Toutes sont des aides après réponse et dans le dictionnaire ; les notions abstraites restent contextualisées.
 > Catalogue : **3 768 images** (388 questions, 3 380 aides), **133 666 342 octets**.

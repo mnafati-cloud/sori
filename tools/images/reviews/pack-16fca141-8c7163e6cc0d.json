@@ -1,0 +1,24 @@
+{
+  "id": "pack-16fca141",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-18T10:36:20.358Z",
+  "sourceSha256": "681eef774339f389ddbabf4e4a1cdbf96f8fa06cde2dd14f61a36a8571147530",
+  "sha256": "8c7163e6cc0dd153a151288e92763aff38660497df2b2926b6f8e965b4c35dca",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 얼큰하다 — Piquant, epice (au gout). Depict this sense only. Scene: A steaming bowl of spicy Korean soup with one small vermilion chili accent, an adult takes a careful spoonful with a warmed flushed expression. All people are adults. No lettering, numerals, diagrams, arrows or logos. One independently composed square illustration with a pure black background and warm-white/grey brushwork.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Soupe chaude avec petit accent piment et visage réchauffé : saveur épicée contextualisée, bol lisible.",
+  "reviewedAt": "2026-11-18T10:36:46.569548+00:00",
+  "kr": "얼큰하다",
+  "sense": "Piquant, epice (au gout)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

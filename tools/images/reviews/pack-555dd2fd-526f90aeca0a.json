@@ -1,0 +1,24 @@
+{
+  "id": "pack-555dd2fd",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-18T10:49:49.782Z",
+  "sourceSha256": "bb8447fc2f5bbf8d7c4222e32832df16c5f024986904081f0934079364d2c6b3",
+  "sha256": "526f90aeca0a6ed45f0b8b942080cd8d5d9c00f503c9b6848f5f0a5429d3aeaa",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 용도 — L'usage, la fonction (d'un objet). Depict this sense only. Scene: An adult uses a ceramic jug to pour water into a plant pot, object purpose clearly shown. All people are adults. No lettering, numerals, diagrams, arrows or logos. One independently composed square illustration with a pure black background and warm-white/grey brushwork.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Un récipient sert à arroser une plante : usage d'un objet rendu par l'action, lecture claire en miniature.",
+  "reviewedAt": "2026-11-18T10:50:39.243809+00:00",
+  "kr": "용도",
+  "sense": "L'usage, la fonction (d'un objet)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

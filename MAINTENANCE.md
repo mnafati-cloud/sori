@@ -15,6 +15,23 @@
 
 ## Sommaire
 
+**v207 — 200 nouvelles illustrations : gestes et relations.**
+Le catalogue passe à **3 968 images** (388 questions et 3 580 aides).
+Le lot `gestes-et-relations-2026-11-18` ajoute 2 mots A1, 21 A2, 34 B1,
+40 B2 et 103 C1 avec le profil `pinceau-scenes-v1`, en soutien après réponse
+et dans le dictionnaire. Chaque mot possède son image indépendante, revue
+à 512, 160 et 96 px. Les 200 WebP ajoutent **7 515 232 octets** ; aucun
+ne dépasse 59 386 octets. Les 3 768 anciennes images, associations et recettes
+restent identiques. Cache applicatif `sori-v207`, caches média conservés.
+203 appels : 202 rendus produits, dont deux remplacés après revue, et un échec
+de lecture de référence avant génération lors d'une coupure de l'environnement.
+Les rejets, la reprise et un PNG récupéré sans régénération sont documentés dans le lot.
+Validation : 272 tests Node, 5 tests Python, 161 cas FSRS, syntaxe JS et manifeste
+vérifiés ; sept suites Chromium réussies. Les 3 968 images sont téléchargées et
+relues avec le serveur coupé ; cache conservé après mise à jour, zéro erreur JavaScript.
+Deux nouveaux exemples contrôlés à 320 et 390 px ; affichage atomique, IME et clavier validés.
+Aucun changement de moteur, de seed ou de progression.
+
 **v206 — 200 nouvelles illustrations : gestes et usages.**
 Le catalogue passe à **3 768 images** (388 questions et 3 380 aides).
 Le lot `gestes-et-usages-2026-11-18` ajoute 1 mot A1, 7 A2, 76 B1,
