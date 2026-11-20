@@ -1,6 +1,20 @@
-# Illustrations et rappel visuel — v207
+# Illustrations et rappel visuel — v208
 
-> **v207 : 200 illustrations supplémentaires**, dont 2 A1, 21 A2, 34 B1, 40 B2 et 103 C1.
+> **v208 : 200 illustrations supplémentaires**, dont 4 A1, 21 A2, 53 B1, 56 B2 et 66 C1.
+> Gestes, usages et nuances ; profil `pinceau-scenes-v1` conservé.
+> Toutes sont des aides après réponse et dans le dictionnaire ; les notions abstraites restent contextualisées.
+> Catalogue : **4 168 images** (388 questions, 3 780 aides), **148 779 842 octets**.
+> Nouveau lot : **7 598 268 octets** ; WebP 512 × 512, de 17 606 à 58 288 octets, chacun au plus 64 Kio.
+> 200 générations indépendantes, aucune image réemployée ; revue effective de chaque rendu à 512, 160 et 96 px.
+> Les 3 968 anciennes images, leurs associations et toutes leurs recettes restent identiques.
+> Reprise : `tools/images/batches/gestes-et-nuances-2026-11-20.json`, inventaire et revues versionnés.
+> Cache `sori-v208` ; caches média et progression conservés.
+> Validation : 273 tests Node, 5 tests Python, 161 cas FSRS, syntaxe JS et manifeste vérifiés ; sept suites Chromium réussies.
+> Téléchargement des 4 168 images, lecture serveur coupé et conservation du cache après mise à jour validés, zéro erreur JavaScript.
+> Deux nouvelles illustrations contrôlées dans l'app à 390 et 320 px ; affichage atomique et contrôles du clavier conservés.
+> Le test du transfert intégral dispose de 120 s pour les 4 168 fichiers ; les assertions de complétude, de cache et de lecture hors connexion sont conservées.
+
+> **Historique v207 : 200 illustrations supplémentaires**, dont 2 A1, 21 A2, 34 B1, 40 B2 et 103 C1.
 > Gestes, relations, notions et expressions ; profil `pinceau-scenes-v1` conservé.
 > Toutes sont des aides après réponse et dans le dictionnaire ; les notions abstraites restent contextualisées.
 > Catalogue : **3 968 images** (388 questions, 3 580 aides), **141 181 574 octets**.

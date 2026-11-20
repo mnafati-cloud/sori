@@ -225,7 +225,7 @@ let browser,page;
   assert.equal(await page.locator('.images-support').getAttribute('alt'),'Ventre');
   assert.equal(await page.evaluate(()=>ST.rlog.length),0,'revealing the belly illustration does not grade');
   await page.screenshot({path:path.join(artifacts,'belly-support.png')});
-  for(const sceneId of ['pack-b6372707','pack-1f0506be','pack-4d4ef594','pack-9721694e','1781435310259','pack-6fd1faca'])for(const width of [390,320]){
+  for(const sceneId of ['pack-b6372707','pack-1f0506be','pack-4d4ef594','pack-9721694e','1781435310259','pack-6fd1faca','pack-c9d8f232','pack-6d77023e'])for(const width of [390,320]){
     await page.setViewportSize({width,height:844});
     await page.evaluate(({sceneId,next})=>{
       ST.items[sceneId]={s:4,i:7,S:7,D:5,d:todayStr(),ok:1,ko:0};
@@ -255,7 +255,9 @@ let browser,page;
   }
   await page.setViewportSize({width:390,height:844});
   await page.locator('#setrev').click();await page.locator('#dlimages').click();
-  await page.locator('#dlimgstatus').filter({hasText:`${imageCount} / ${imageCount}`}).waitFor();await page.locator('#setclose').click();
+  // The full catalogue now contains over 4,000 files. Give its real cache
+  // transfer a bounded bulk-download budget; every file is still required.
+  await page.locator('#dlimgstatus').filter({hasText:`${imageCount} / ${imageCount}`}).waitFor({timeout:120000});await page.locator('#setclose').click();
   const cached=await page.evaluate(async currentCache=>({keys:(await (await caches.open('sori-image-store')).keys()).map(x=>x.url),
     main:(await (await caches.open(currentCache)).keys()).filter(x=>x.url.includes('/images/')).length}),currentCache);
   assert.equal(cached.keys.length,imageCount);assert.equal(cached.main,0,'images are never duplicated in version cache');

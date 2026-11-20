@@ -1,0 +1,24 @@
+{
+  "id": "pack-56f0aa6d",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-20T08:21:42.931Z",
+  "sourceSha256": "3e847b26dcd3545efc3ad73ec9ae4a2d99979365ff96ec1dc005213d32961dd7",
+  "sha256": "3086c41787112d1245610b6b69d15d173a9d0b6a983169eccdf536a9cb5c0c11",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 외다 — Réciter (de mémoire), psalmodier.. Depict this sense only. Scene: An adult recites from memory with a closed book held against their chest while a companion listens. All people are adults. No lettering, numerals, diagrams, arrows or logos. One independently composed square illustration with a pure black background and warm-white/grey brushwork.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Adulte récite les yeux clos, livre fermé contre lui, devant une auditrice : récitation de mémoire lisible sans écriture.",
+  "reviewedAt": "2026-11-20T08:21:58.087378+00:00",
+  "kr": "외다",
+  "sense": "Réciter (de mémoire), psalmodier.",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

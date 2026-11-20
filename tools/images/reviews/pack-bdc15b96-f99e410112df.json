@@ -1,0 +1,24 @@
+{
+  "id": "pack-bdc15b96",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-20T08:11:29.436Z",
+  "sourceSha256": "5f256715ef0d48e74d16e752d7b342338d54bec4352552640bdf6e70c30660d2",
+  "sha256": "f99e410112df123a5cd8e218a2bf6c2e1ed5572c8f5244e2d469b11912dd7baf",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 권유 — Recommandation, incitation, invitation. Depict this sense only. Scene: An adult gently recommends a sturdy umbrella to a friend about to step out into the rain, helpful invitation rather than pressure. All people are adults. No lettering, numerals, diagrams, arrows or logos. One independently composed square illustration with a pure black background and warm-white/grey brushwork.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Conseil amical de prendre un parapluie avant de sortir sous la pluie : recommandation bienveillante, sans contrainte.",
+  "reviewedAt": "2026-11-20T08:11:48.315097+00:00",
+  "kr": "권유",
+  "sense": "Recommandation, incitation, invitation",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

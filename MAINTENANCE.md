@@ -15,6 +15,24 @@
 
 ## Sommaire
 
+**v208 — 200 nouvelles illustrations : gestes et nuances.**
+Le catalogue passe à **4 168 images** (388 questions et 3 780 aides).
+Le lot `gestes-et-nuances-2026-11-20` ajoute 4 mots A1, 21 A2, 53 B1,
+56 B2 et 66 C1 avec le profil `pinceau-scenes-v1`, en soutien après réponse
+et dans le dictionnaire. Chaque mot possède son image indépendante, revue
+à 512, 160 et 96 px. Les 200 WebP ajoutent **7 598 268 octets** ; aucun
+ne dépasse 58 288 octets. Les 3 968 anciennes images, associations et recettes
+restent identiques. Cache applicatif `sori-v208`, caches média conservés.
+200 appels de génération pour 200 images retenues ; aucun appel de reprise.
+Validation : 273 tests Node, 5 tests Python, 161 cas FSRS, syntaxe JS et manifeste
+vérifiés ; sept suites Chromium réussies. Les 4 168 images sont téléchargées et
+relues avec le serveur coupé ; cache conservé après mise à jour, zéro erreur JavaScript.
+Deux nouveaux exemples contrôlés à 320 et 390 px ; affichage atomique, IME et clavier validés.
+Le téléchargement intégral du test dispose de 120 s : le délai de 30 s s'arrêtait
+à 3 252 fichiers sur 4 168 en exécution isolée. Les exigences de complétude,
+de conservation du cache et de lecture serveur coupé restent identiques.
+Aucun changement de moteur, de seed ou de progression.
+
 **v207 — 200 nouvelles illustrations : gestes et relations.**
 Le catalogue passe à **3 968 images** (388 questions et 3 580 aides).
 Le lot `gestes-et-relations-2026-11-18` ajoute 2 mots A1, 21 A2, 34 B1,
