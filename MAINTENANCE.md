@@ -15,6 +15,36 @@
 
 ## Sommaire
 
+**v209 — Mesure du rappel et essai sur les nouveaux mots.**
+
+Le téléphone conserve la note FSRS de stabilité à l’indice 2 du journal. Les deux
+champs ajoutés en fin de ligne sont la note brute (1 = verdict négatif) et la
+série de réussites transmise à la planification (−1 = réponse non comptée).
+L’aperçu des notes et leur application partagent le calcul de l’intervalle.
+Le fit décode les fautes de saisie depuis la v144 et reproduit le plancher de
+stabilité depuis la v148. Pour les anciens exports, le journal des versions borne
+ces règles, à défaut la date de publication. La série avant v209 est estimée à
+partir du délai observé. Une revue anticipée ou tardive peut fausser cette
+estimation. L’annulation restaure le jour de la réponse et le journal même plein.
+Le taux à sept jours et la courbe à quatorze jours utilisent la même paire de compteurs.
+
+L’essai répartit les 120 prochains nouveaux mots recto travaillés en FSRS par
+paires équilibrées, dans l’ordre de première réponse. Un tirage au sort détermine
+le premier groupe de chaque paire. Le groupe témoin suit la session habituelle.
+L’autre groupe peut recevoir un rappel oral français → coréen le jour même après
+24 autres réponses et au moins 12 depuis le dernier exercice sur ce mot. Il peut
+révéler la réponse ou passer. La progression FSRS et la file ordinaire n’avancent
+pas sur ce rappel. Un mot dont le rappel supplémentaire n’a pas été présenté
+reste analysé dans son groupe d’origine.
+
+Exécuter `node tools/first_recall_report.cjs <export-local.json>` pour lire le bilan
+agrégé d’un export standard ou compact. Pour les cartes observables jusqu’à la fin
+de J+30, il indique le premier retour espacé, le premier retour après un intervalle
+de 8 à 30 jours et le nombre de réponses ordinaires et de rappels supplémentaires
+révélés. Le rapport donne les effectifs manquants pour chaque critère. Les relevés
+du pilote vivent dans le champ additif `state.firstRecall`, indépendamment de la
+rotation du journal. Cache applicatif `sori-v209`.
+
 **v208 — 200 nouvelles illustrations : gestes et nuances.**
 Le catalogue passe à **4 168 images** (388 questions et 3 780 aides).
 Le lot `gestes-et-nuances-2026-11-20` ajoute 4 mots A1, 21 A2, 53 B1,

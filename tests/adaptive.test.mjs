@@ -254,3 +254,11 @@ test("retention7 : fenêtre hier->J-7, fallback ok/ko, null si vide", () => {
   assert.ok(Math.abs(r - 14/20) < 1e-9);
   assert.equal(retention7({}, D0).r, null);
 });
+
+test("retention7 traite ensemble les réussites et échecs espacés, même à zéro", () => {
+  const day = row => retention7({[addDays(D0,-1)]:row}, D0);
+  assert.deepEqual(day({ok1:4,ok:8,ko:5}), {r:1,n:4});
+  assert.deepEqual(day({ko1:2,ok:12,ko:5}), {r:0,n:2});
+  assert.deepEqual(day({ok1:0,ko1:0,ok:8,ko:5}), {r:null,n:0});
+  assert.deepEqual(day({k:{listen:{o:8}},ok:8,ko:0}), {r:null,n:0});
+});

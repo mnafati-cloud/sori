@@ -123,13 +123,18 @@
   }
 
   /* ================= rétention mesurée (instrument, PAS un contrôleur) ================= */
+  function recallCounts(day){
+    // Le détail par exercice (k) date aussi de v9 : un jour d'écoute seule a zéro rappel espacé.
+    const spaced = day.k !== undefined || day.ok1 !== undefined || day.ko1 !== undefined;
+    return spaced ? [day.ok1 || 0, day.ko1 || 0] : [day.ok || 0, day.ko || 0];
+  }
   function retention7(log, today){
     let ok = 0, ko = 0;
     for (let k = 1; k <= 7; k++){
       const d = log[addDays(today, -k)];
       if (!d) continue;
-      ok += (d.ok1 !== undefined ? d.ok1 : d.ok || 0);
-      ko += (d.ko1 !== undefined ? d.ko1 : d.ko || 0);
+      const [hits, misses] = recallCounts(d);
+      ok += hits; ko += misses;
     }
     const n = ok + ko;
     return { r: n > 0 ? ok / n : null, n };
@@ -387,7 +392,7 @@
   /* ================= export double environnement ================= */
   const ENGINE = { addDays, daysBetween, computeAnswer, computeAnswerLegacy, easeOf, isLeech,
                    leadJamo, hintPlan, slotPlan,
-                   prevReviewDate, retention7, selectDue, pickNew, computeStreak,
+                   prevReviewDate, recallCounts, retention7, selectDue, pickNew, computeStreak,
                    pickDistractors, shuffle, sample, DEF_SET, STEP,
                    fsrsSchedule, fsrsR, fsrsIntervalDays, fsrsNextInterval, fuzzInterval, fsrsInitS, fsrsInitD,
                    fsrsNextD, fsrsSuccS, fsrsFailS, easeToD, rescueS,

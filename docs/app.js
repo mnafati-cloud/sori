@@ -385,10 +385,10 @@ const ALL_IDS = REV_BOOT ? BASE_IDS.concat(REV_IDS) : BASE_IDS.slice();
 /* ================= journal & stats (télémétrie additive) =================
    Par jour : compteurs globaux ok/ko/n + par TYPE d'exercice (k), temps de
    réponse agrégés, et compteurs "propres" ok1/ko1 + shadow so/sn (ALGORITHM.md). */
-function logAnswer(ok, kind, r, rt){
+function logAnswer(ok, kind, r, rt, t=todayStr()){
   sfx(ok);                                  // feedback sonore immédiat (tous les modes journalisés)
-  const t = todayStr();
   const l = ST.log[t] || (ST.log[t]={ok:0,ko:0,n:0,listen:0});
+  if(!l.n && l.ok1 === undefined && l.ko1 === undefined){ l.ok1 = 0; l.ko1 = 0; }
   l.n++; if(kind==="listen"||kind==="dictee"){ l.listen++; }
   if(ok) l.ok++; else l.ko++;
   if(kind){
@@ -487,7 +487,8 @@ function armUndo(itemId){
   UNDO = {
     /* v138 : photo de la SEULE carte répondue (une réponse ne mute que ST.items[itemId]) —
        la copie profonde des ~1600 items à chaque tap coûtait ~130 Ko de JSON par réponse */
-    itemId,
+    itemId, day:t,
+    trialCard: ST.firstRecall?.[itemId] ? {...ST.firstRecall[itemId]} : null,
     itemSnap: ST.items[itemId] ? JSON.parse(JSON.stringify(ST.items[itemId])) : undefined,
     log: ST.log[t] ? JSON.parse(JSON.stringify(ST.log[t])) : null,
     xp: ST.xp||0, combo: COMBO, sessfail: [...SESSFAIL],
@@ -502,7 +503,11 @@ function armUndo(itemId){
 }
 function undoLast(){
   if(!UNDO) return;
-  const t = todayStr();
+  const t = UNDO.day;
+  if(ST.firstRecall){
+    if(UNDO.trialCard) ST.firstRecall[UNDO.itemId] = UNDO.trialCard;
+    else delete ST.firstRecall[UNDO.itemId];
+  }
   if(UNDO.itemId !== undefined){                                             // v138 : restauration ciblée
     if(UNDO.itemSnap === undefined) delete ST.items[UNDO.itemId];
     else ST.items[UNDO.itemId] = UNDO.itemSnap;
@@ -516,7 +521,10 @@ function undoLast(){
   REPRISE_IDS = UNDO.repIds || new Set();
   if(UNDO.rep !== undefined && UNDO.rep !== null) ST.rep = UNDO.rep;          // v71
   if(typeof UNDO.pending === "number") PENDING = UNDO.pending;
-  if(ST.rlog && UNDO.rlogPushed && ST.rlog.length) ST.rlog.pop();  // retire l'entrée poussée depuis le snapshot (à RLOG_CAP, comparer les longueurs mentait)
+  if(ST.rlog && UNDO.rlogPushed){
+    ST.rlog.pop();
+    if(UNDO.evicted) ST.rlog.unshift(...UNDO.evicted);
+  }
   /* v65 : compteur d'annulations (télémétrie) — mesure le taux de mis-clics, invisible avant
      (l'undo restaure le log du jour, donc on incrémente APRÈS la restauration). */
   const lu = ST.log[t] || (ST.log[t] = {ok:0,ko:0,n:0,listen:0});
@@ -725,7 +733,12 @@ function ttsSpeak(text){
 function fsrsW(){ return (ST.set.fsrsPersonal !== false ? ENGINE.FSRS.W_PERSONAL : ENGINE.FSRS.W) || ENGINE.FSRS.W; }
   // repli || ENGINE.FSRS.W : si un app.js neuf voyait un engine.js périmé sans W_PERSONAL (course de
   // propagation CDN < 1 s), markKnown indexe WW[3] directement — sans ce garde il lèverait un TypeError.
-function applyAnswer(it, ok, grade, gradeRaw, kind, rt){
+function rescuePrior(it){ return (it.itv || 0) <= 1 ? (it.sk | 0) : 0; }
+function scheduleGrade(it, grade, raw, day){
+  return ENGINE.fsrsSchedule(it, grade, day, {w:fsrsW(), retention:ST.set.fsrsRetention || 0.9,
+    gradeD:raw, streak:rescuePrior(it), fuzz:it.id + "|" + day});
+}
+function applyAnswer(it, ok, grade, gradeRaw, kind, rt, t=todayStr()){
   const G = grade || (ok ? 3 : 1);   // note FSRS : 1 Encore(Again) · 2 Difficile(Hard) · 3 Bien(Good) · 4 Facile(Easy)
   const GD = gradeRaw || G;          // note BRUTE (non plafonnée) → canal difficulté (v64, cf. engine.fsrsSchedule)
   /* v68 : rattrapage post-lapse — quand une carte MÛRE (S>=7) est ratée, ses 2 prochaines
@@ -740,23 +753,20 @@ function applyAnswer(it, ok, grade, gradeRaw, kind, rt){
   if(!ok && prevS >= 7 && canProd) lpNext = 2;
   else if(ok && (kind === "rec5" || kind === "type" || kind === "image") && (it.lp|0) > 0) lpNext = it.lp - 1;
   if(ST.set.scheduler !== "legacy"){
-    const t = todayStr();
     /* v148 : série de réussites au 1er essai à intervalle 1 (it.sk) → rescousse de rechute
        (engine.rescueS) : 3 jours parfaits d'affilée = plancher de stabilité progressif.
        La série ne compte QUE tant que la carte revient quotidiennement (itv<=1) ; un échec
        la remet à zéro ; les re-vus de session (non comptés) la laissent intacte. */
-    const skPrior = ((it.itv || 0) <= 1) ? (it.sk | 0) : 0;
-    const r = ENGINE.fsrsSchedule(it, G, t, { w: fsrsW(), retention: ST.set.fsrsRetention || 0.9, gradeD: GD,
-                                              streak: skPrior,
-                                              fuzz: it.id + "|" + t });   // v68 : désynchronise les cohortes
+    const skPrior = rescuePrior(it);
+    const r = scheduleGrade(it, G, GD, t);
     const patch = { s:r.stage, i:r.i, d:r.d, S:r.S, D:r.D, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) };
     patch.sk = !ok ? 0 : (r.counted ? skPrior + 1 : (it.sk | 0));
     if(lpNext !== undefined) patch.lp = lpNext;
     setItem(it.id, patch);
-    logReview(it.id, G, r.elapsed, kind, rt);   // journal (fit hors-ligne des poids) — toutes les révisions
-    return { s:r.stage, i:r.i, d:r.d, counted:r.counted };
+    logReview(it.id, G, r.elapsed, kind, rt, GD, r.counted ? skPrior : -1, t);   // journal (fit hors-ligne des poids) — toutes les révisions
+    return { s:r.stage, i:r.i, d:r.d, counted:r.counted, elapsed:r.elapsed };
   }
-  const r = ENGINE.computeAnswer(it, ok, todayStr(), ST.set.adaptive === true);
+  const r = ENGINE.computeAnswer(it, ok, t, ST.set.adaptive === true);
   const lpatch = { s:r.s, i:r.i, d:r.d, e:r.e, ok: it.ok+(ok?1:0), ko: it.ko+(ok?0:1) };
   if(lpNext !== undefined) lpatch.lp = lpNext;   // v68 : lp vit dans les DEUX modes (rollback sûr)
   setItem(it.id, lpatch);
@@ -765,7 +775,8 @@ function applyAnswer(it, ok, grade, gradeRaw, kind, rt){
 /* journal de révisions — enregistrements compacts pour l'ajustement HORS-LIGNE des poids FSRS
    (optimiseur Python sur l'export cloud) ET les analyses de comportement.
    Format v65 : [date, id, note, jours écoulés, kind, tempsRéponse(dixièmes de s, plafonné 600),
-   minuteDuJour]. Les vieilles entrées à 4 (≤v63) ou 5 (v64) champs restent valides — le fit
+   minuteDuJour]. Depuis v209, indices 7 et 8 : note brute et série pertinente avant réponse
+   (−1 pour une réponse non comptée). Les vieilles entrées à 4 (≤v63) ou 5 (v64) champs restent valides — le fit
    segmente par longueur. Le kind distingue un 2 CHOISI d'un 2 IMPOSÉ par le plafond ; rt et
    l'heure permettent hésitation & patterns circadiens. */
 /* Plafond FIFO : 8000 entrées, inchangé. v165 compacte le transport cloud sans supprimer
@@ -775,12 +786,15 @@ function applyAnswer(it, ok, grade, gradeRaw, kind, rt){
    Pour le fit Phase B : l'historique COMPLET (au-delà du FIFO) se reconstruit en unionnant les
    snapshots quotidiens datés de sori-data (exports/sori-export-AAAA-MM-JJ.json). */
 const RLOG_CAP = 8000;
-function logReview(id, G, elapsed, kind, rt){
+function logReview(id, G, elapsed, kind, rt, raw, prior, day){
   ST.rlog = ST.rlog || [];
   const now = new Date();
-  ST.rlog.push([todayStr(), id, G, elapsed|0, kind || "",
-                Math.min(600, Math.round((rt || 0) / 100)), now.getHours()*60 + now.getMinutes()]);
-  if(ST.rlog.length > RLOG_CAP) ST.rlog.splice(0, ST.rlog.length - RLOG_CAP);
+  ST.rlog.push([day, id, G, elapsed|0, kind || "",
+                Math.min(600, Math.round((rt || 0) / 100)), now.getHours()*60 + now.getMinutes(), raw, prior]);
+  if(ST.rlog.length > RLOG_CAP){
+    const evicted = ST.rlog.splice(0, ST.rlog.length - RLOG_CAP);
+    if(UNDO) UNDO.evicted = evicted;
+  }
   if(UNDO) UNDO.rlogPushed = true;   // marqueur consommé par undoLast (fiable même à RLOG_CAP)
   save();   // le push arrive APRÈS le save() de setItem → persister explicitement
 }
@@ -1390,6 +1404,37 @@ function renderProductionReview(){
     if(input && action==="submit") input.value=text; // Clavier fermé pour lire le retour.
   }});
 }
+function renderFirstRecall(){
+  if(BONUS || ST.set.scheduler === "legacy" || !ST.firstRecall || ST.imageReview) return false;
+  const day = todayStr();
+  const upcoming = Q[QPOS] && baseId(Q[QPOS]);
+  const id = window.SORI_FIRST_RECALL?.next(ST.firstRecall, day, ST.log[day]?.n || 0,
+    id => id !== upcoming && SEED_BY_ID[id] && !eff(id).sus);
+  if(!id) return false;
+  const word = SEED_BY_ID[id], card = ST.firstRecall[id];
+  const panel = el(`<div class="card center"><p class="dim">Rappel du jour · sans note</p>
+    <h2>${esc(word.fr)}</h2><p>Dis le mot en coréen.</p>
+    <div class="row"><button class="btn ok" data-show>Voir le mot</button>
+    <button class="btn ghost" data-skip>Passer</button></div></div>`);
+  $screen.appendChild(panel);
+  document.body.classList.add("in-review");
+  function finish(status){
+    if(todayStr() !== day){ render(); return false; }
+    card.extra = status;
+    UNDO = null;
+    saveNow();
+    return true;
+  }
+  panel.querySelector("[data-skip]").onclick = ()=>{ if(finish("skipped")) render(); };
+  panel.querySelector("[data-show]").onclick = ()=>{
+    if(!finish("shown")) return;
+    panel.innerHTML = `<h2 class="kr">${esc(word.kr)}</h2><p>${esc(word.fr)}</p>
+      <button class="btn ok">Continuer</button>`;
+    panel.querySelector("button").onclick = render;
+    if(ST.set.autoplay) speak(word.kr, id);
+  };
+  return true;
+}
 function renderReview(){
   if(!Q){
     const s = ST.sess;
@@ -1406,7 +1451,7 @@ function renderReview(){
       saveSess();
     }
   }
-  if(renderProductionReview()) return;
+  if(renderProductionReview() || renderFirstRecall()) return;
   if(QPOS >= Q.length){
     ST.sess = null; save();
     autoCloudBackup();                       // sauvegarde cloud silencieuse (1x/jour max)
@@ -1777,10 +1822,11 @@ function nextCard(){
 function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto, answeredAt=Date.now()){
   LASTANS = { id: it.id, kr: it.kr, ok, kind };   // contexte pour les rapports 🐞
   armUndo(it.id);                           // photo AVANT toute mutation (annulation possible)
+  const day = UNDO.day;
   if(kind==="image" && ST.imageReview){
     LASTANS.image={asset:ST.imageReview.asset,phase:ST.imageReview.phase};
     if(ST.imageReview.phase==="typo"){
-      const log=ST.log[todayStr()]||(ST.log[todayStr()]={ok:0,ko:0,n:0,listen:0});
+      const log=ST.log[day]||(ST.log[day]={ok:0,ko:0,n:0,listen:0});
       log.imageTypo=(log.imageTypo||0)+1;
     }
   }
@@ -1801,8 +1847,8 @@ function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto, answeredAt=Da
   let blanc = false;
   if(!BONUS && CONSOL.has(it.id)){ CONSOL.delete(it.id); REPRISE_IDS.delete(it.id); if(ok) blanc = true; }   // consolidation réussie = blanche ; ratée = échec réel
   if(blanc){                                                     // v71 : heure du contact (les vues blanches ne journalisent pas)
-    const nw = new Date(), td = todayStr();
-    if(!ST.rep || ST.rep.d !== td) ST.rep = { d: td, m: {} };
+    const nw = new Date();
+    if(!ST.rep || ST.rep.d !== day) ST.rep = { d: day, m: {} };
     ST.rep.m[it.id] = nw.getHours()*60 + nw.getMinutes();
   }
   if(!BONUS && ok && FAILPOS.has(it.id)){
@@ -1817,8 +1863,11 @@ function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto, answeredAt=Da
     const p = Math.min(Q.length, QPOS + 8 + Math.floor(Math.random()*5));   // vraie nouveauté : consolider le jour même
     Q.splice(p, 0, it.id); CONSOL.add(it.id);
   }
-  const r = (BONUS || blanc) ? null : applyAnswer(it, ok, G, Graw, kind, rt);
-  logAnswer(ok, kind || "review", r, rt);
+  const r = (BONUS || blanc) ? null : applyAnswer(it, ok, G, Graw, kind, rt, day);
+  logAnswer(ok, kind || "review", r, rt, day);
+  window.SORI_FIRST_RECALL?.record(ST.firstRecall ||= {}, it, {
+    day, count:ST.log[day]?.n || 0, ok, result:r, fsrs:ST.set.scheduler !== "legacy", bonus:BONUS
+  });
   /* v129 : franchissement de seuil → tampon en surimpression au passage à la suite */
   if(r && ok){
     const isM = r.s >= 4, isA = r.s >= 4 && (r.i||0) >= 14;
@@ -1830,7 +1879,7 @@ function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto, answeredAt=Da
   if(!BONUS){
     const gain = ok ? 10 + 2*Math.min(Math.max(COMBO-1,0), 10) : 2;
     ST.xp = (ST.xp||0) + gain;
-    const l = ST.log[todayStr()]; if(l) l.xp = (l.xp||0) + gain;
+    const l = ST.log[day]; if(l) l.xp = (l.xp||0) + gain;
   }
   if(!ok && !BONUS){ // re-poser dans la session, 3-5 cartes plus loin
     FAILPOS.set(it.id, QPOS);                            // v68 : mémorise la position d'échec (crédit du re-vu conditionné à l'écart)
@@ -1839,7 +1888,7 @@ function afterAnswer(it, ok, sawTrivia, kind, grade, capMax, auto, answeredAt=Da
   }
   QPOS++;
   if(!BONUS && ST.set.production!==false && productionModule()){
-    const next=productionModule().pure.tick(ST.production,todayStr());
+    const next=productionModule().pure.tick(ST.production,day);
     if(next) ST.production=next;
   }
   saveSess();
@@ -1945,14 +1994,13 @@ function gradeButtons(row, it, kind, capMax, onGrade){
   /* v69 : l'INTERVALLE résultant s'affiche sous chaque note — la conséquence du choix devient
      visible. Prévisualisation EXACTE : mêmes options que applyAnswer (plafond, gradeD, fuzz). */
   const ivl = g => {
-    if(ST.set.scheduler === "legacy") return "";
+    if(BONUS || ST.set.scheduler === "legacy") return "";
     /* vue BLANCHE à venir (v68 : consolidation, ou re-vu immédiat de fin de file) :
        la réponse ne replanifiera rien — afficher un intervalle serait mentir. */
     if(CONSOL.has(it.id) || (FAILPOS.has(it.id) && (QPOS - FAILPOS.get(it.id)) < 3)) return "";
     try{
       const t = todayStr();
-      const r = ENGINE.fsrsSchedule(it, Math.min(g, maxG), t,
-        { w: fsrsW(), retention: ST.set.fsrsRetention || 0.9, gradeD: g, fuzz: it.id + "|" + t });
+      const r = scheduleGrade(it, Math.min(g, maxG), g, t);
       return `<span class="ans-ivl">${g === 1 ? "re-vu" : (r.i <= 0 ? "aujourd'hui" : r.i + " j")}</span>`;
     }catch(_){ return ""; }
   };
@@ -2269,7 +2317,7 @@ function renderStats(){
   }
 
   /* 📈 réussite / jour (14 j) — % de bonnes réponses au 1er essai (compteurs propres ok1/ko1) */
-  const sWin=[]; for(let i=13;i>=0;i--){ const d=addDays(t,-i); const L=ST.log[d]||{}; const o=(L.ok1!=null?L.ok1:L.ok)||0, k=(L.ko1!=null?L.ko1:L.ko)||0, n=o+k; sWin.push({d,p:n?Math.round(100*o/n):null}); }
+  const sWin=[]; for(let i=13;i>=0;i--){ const d=addDays(t,-i); const L=ST.log[d]||{}; const [o,k]=ENGINE.recallCounts(L), n=o+k; sWin.push({d,p:n?Math.round(100*o/n):null}); }
   const sDays=sWin.filter(x=>x.p!=null);
   const sAvg = sDays.length ? Math.round(sDays.reduce((s,x)=>s+x.p,0)/sDays.length) : null;
   /* v159 : échelle FENÊTRÉE sur la plage réelle (rapport 24/08 « revoir les graphiques ») —

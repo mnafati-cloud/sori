@@ -6,7 +6,7 @@ fsrs_fit.py — FSRS Phase B : ajuste les poids FSRS-5 (w[0..16]) aux données r
 Le journal de révisions (ST.rlog) vit dans la sauvegarde cloud. Ce script :
   1. (selftest) VERROUILLE le portage : reproduit au bit près les formules de docs/engine.js
      (référence tools/fsrs_ref.json générée par tools/fsrs_ref_gen.js).
-  2. (fit) rejoue chaque séquence de carte EXACTEMENT comme fsrsSchedule (init 1re révision,
+  2. (fit) rejoue chaque séquence de carte selon fsrsSchedule (init 1re révision,
      gel des re-vus intra-jour elapsed<1, transition S/D des révisions comptées), calcule la
      perte log (cross-entropy) de prédiction du rappel, et optimise w[0..16] sous contraintes
      (Adam + projection, numpy pur — pas de dépendance lourde). Validation 80/20 par carte.
@@ -97,9 +97,12 @@ def selftest(ref_path):
 # kind d'exercice PLAFONNÉ à 4 (rappel sans aide) : la note journalisée EST la note brute → gradeD = note.
 # Tout autre kind est plafonné (≤ Difficile) : la note stockée est plafonnée, la note BRUTE d'un succès
 # était Bien(3) (bouton positif binaire) → gradeD = 3 (succès) / 1 (échec). Miroir de la dissociation v64.
+HIST_NO_RESCUE, HIST_RESCUE, UNCOUNTED = -3, -2, -1
 GRADE4_KINDS = {"rec5", "type", "image"}
 
-def reconstruct_gradeD(note, kind):
+def reconstruct_gradeD(note, kind, version=0):
+    if kind == "type" and note == 2 and version >= 144:
+        return 1  # saisie binaire : faute écrite, stabilité créditée Difficile
     if kind is None:                 # entrée 4 champs (≤ v63) : pas de dissociation, D suivait la note stockée
         return note
     if kind in GRADE4_KINDS:         # rappel sans aide (maxG=4) : note stockée = note brute
@@ -111,7 +114,17 @@ def extract_sequences(export_path):
     st = d["state"]
     rlog = st.get("rlog", [])
     items = st.get("items", {}) or {}
-    seqs = {}   # id -> list of (note_plafonnée, gradeD, elapsed), ordre chrono (rlog = FIFO append)
+    # Le téléphone peut adopter une version plusieurs jours après la publication.
+    # En l'absence de trace couvrant le jour, les dates de publication servent de proxy.
+    versions = [(day, int(v[1:])) for day, v in st.get("vlog", [])
+                if isinstance(v, str) and v.startswith("v") and v[1:].isdigit()]
+    def regime(day):
+        for since, version in reversed(versions):
+            if since <= day:
+                return version
+        return 148 if day >= "2026-08-12" else 144 if day >= "2026-07-30" else 0
+
+    seqs = {}
     lens = {}
     for r in rlog:
         if not r or len(r) < 4: continue
@@ -123,7 +136,13 @@ def extract_sequences(export_path):
             continue
         if note < 1 or note > 4: continue
         lens[len(r)] = lens.get(len(r), 0) + 1
-        seqs.setdefault(iid, []).append((note, reconstruct_gradeD(note, kind), elapsed))
+        version = regime(r[0])
+        if len(r) >= 9:
+            raw, prior = r[7:9]  # note brute et série effectivement transmise au moteur
+        else:
+            raw = reconstruct_gradeD(note, kind, version)
+            prior = HIST_RESCUE if version >= 148 else HIST_NO_RESCUE
+        seqs.setdefault(iid, []).append((note, raw, elapsed, prior))
     # ease par carte (seed D des migrées) — depuis l'état item courant (proxy stable de l'ease de migration)
     ease = {iid: (items.get(iid, {}) or {}).get("e", 2.5) for iid in seqs}
     return seqs, ease, lens
@@ -134,26 +153,30 @@ def build_padded(seqs, ease):
     n = len(ids)
     notes = np.ones((n, maxlen), dtype=int)
     gradeD = np.ones((n, maxlen), dtype=int)
+    prior = np.full((n, maxlen), UNCOUNTED, dtype=int)
     elapsed = np.zeros((n, maxlen), dtype=float)
     valid = np.zeros((n, maxlen), dtype=bool)
     seed_ease = np.full(n, 2.5, dtype=float)
     for i, iid in enumerate(ids):
         seed_ease[i] = ease.get(iid, 2.5)
-        for t, (g, gd, e) in enumerate(seqs[iid]):
+        for t, (g, gd, e, sk) in enumerate(seqs[iid]):
+            prior[i, t] = sk
             notes[i, t] = g; gradeD[i, t] = gd; elapsed[i, t] = e; valid[i, t] = True
-    return ids, notes, gradeD, elapsed, valid, seed_ease
+    return ids, notes, gradeD, elapsed, valid, seed_ease, prior
 
 # ---------------------------------------------------------------- loss (replay lockstep)
-def replay_loss(w, notes, gradeD, elapsed, valid, seed_ease, want_calib=False):
+def replay_loss(w, notes, gradeD, elapsed, valid, seed_ease, prior, want_calib=False, trace=None):
     """Rejoue toutes les cartes en pas-à-pas par index de révision. Retourne mean-logloss.
        Fidèle à fsrsSchedule :
-       - carte NEUVE (elapsed[0]==0) : pos0 = init (S=initS(note0), D=initD(gradeD0)), NON comptée ;
+       - carte NEUVE (1re ligne non comptée) : pos0 = init (S=initS(note0), D=initD(gradeD0)), NON comptée ;
        - carte MIGRÉE (elapsed[0]>=1) : pos0 amorcée S←elapsed0 (proxy itv), D←easeToD(ease), COMPTÉE ;
-       - à chaque t : elapsed<1 -> gelé (aucune perte/transition) ; elapsed>=1 -> comptée (perte + transition).
+       - les lignes explicitement non comptées et les re-vus intra-jour restent gelés.
+       Les poids sont optimisés en précision continue (le téléphone arrondit S et D à 0,001).
        Canal S = note PLAFONNÉE (succS/hard-easy) ; canal D = gradeD BRUT (nextD) — dissociation v64."""
     w = np.asarray(w, dtype=float)
     n, maxlen = notes.shape
-    migrated = elapsed[:, 0] >= 1.0
+    migrated = (elapsed[:, 0] >= 1.0) & (prior[:, 0] != UNCOUNTED)
+    streak = np.zeros(n, dtype=int)
     S = np.where(migrated, clampS(np.maximum(0.5, elapsed[:, 0])), initS(notes[:, 0], w)).astype(float)
     D = np.where(migrated, easeToD(seed_ease), initD(gradeD[:, 0], w)).astype(float)
     eps = 1e-6
@@ -164,11 +187,14 @@ def replay_loss(w, notes, gradeD, elapsed, valid, seed_ease, want_calib=False):
         e = elapsed[:, t]
         g = notes[:, t]           # note plafonnée → canal stabilité
         gd = gradeD[:, t]         # note brute reconstruite → canal difficulté
-        counted = m & (e >= 1.0)  # pos0 d'une NEUVE a e==0 → non comptée (init déjà posé)
-        if not counted.any():
-            continue
+        sk = prior[:, t]
+        counted = m & (e >= 1.0) & (sk != UNCOUNTED)
+        # Avant v209 l'intervalle prescrit n'était pas journalisé. Un retour au
+        # lendemain approxime un intervalle court ; il manque les retards et anticipations.
+        historical = np.where((sk == HIST_RESCUE) & (e <= 1), streak, 0)
+        effective = np.where(sk >= 0, sk, historical)
         R = fsrsR(e, S)
-        y = (g >= 2).astype(float)
+        y = (gd >= 2).astype(float)
         Rc = np.clip(R[counted], eps, 1.0 - eps)
         yc = y[counted]
         tot_loss += -np.sum(yc * np.log(Rc) + (1.0 - yc) * np.log(1.0 - Rc))
@@ -177,9 +203,15 @@ def replay_loss(w, notes, gradeD, elapsed, valid, seed_ease, want_calib=False):
             sum_pred += float(np.sum(Rc)); sum_act += float(np.sum(yc))
         success = g >= 2
         Dn = nextD(D, gd, w)
-        Snew = np.where(success, succS(D, S, R, g, w), failS(D, S, R, w))
+        floor = np.where(effective >= 2, 1.5 * 2.0 ** np.minimum(4, effective - 2), 0)
+        rescued = np.maximum(succS(D, S, R, g, w), np.minimum(21, floor))
+        Snew = np.where(success, rescued, failS(D, S, R, w))
+        streak = np.where(m & ((gd == 1) | (sk == HIST_NO_RESCUE)), 0,
+                          np.where(counted, effective + 1, streak))
         S = np.where(counted, Snew, S)
         D = np.where(counted, Dn, D)
+        if trace is not None:
+            trace.append((S.copy(), D.copy()))
     mean = tot_loss / max(1, count)
     if want_calib:
         return mean, count, (sum_pred / max(1, count)), (sum_act / max(1, count))
@@ -222,10 +254,9 @@ def fd_grad(f, x, h=1e-5):
 
 def fit(w0, data, steps=1500, lr=0.02):
     """Adam + projection. Ajuste UNIQUEMENT les indices non gelés ; le reste reste à w0 (générique)."""
-    notes, gradeD, elapsed, valid, seed_ease = data
     w = np.asarray(w0, dtype=float).copy()
     free = [i for i in range(len(BOUNDS)) if i not in FROZEN_IDX]
-    def f(wfull): return replay_loss(wfull, notes, gradeD, elapsed, valid, seed_ease)[0]
+    def f(wfull): return replay_loss(wfull, *data)[0]
     def fx(xfree):
         wf = w.copy()
         for k, i in enumerate(free): wf[i] = xfree[k]
@@ -273,13 +304,15 @@ def main():
     W_DEF = np.asarray(ref["W"], dtype=float)
 
     seqs, ease, lens = extract_sequences(args.fit)
-    ids, notes, gradeD, elapsed, valid, seed_ease = build_padded(seqs, ease)
-    migr = int((elapsed[:, 0] >= 1.0).sum())
+    ids, notes, gradeD, elapsed, valid, seed_ease, prior = build_padded(seqs, ease)
+    if not len(ids):
+        raise SystemExit("Journal de révisions vide.")
+    migr = int(((elapsed[:, 0] >= 1.0) & (prior[:, 0] != UNCOUNTED)).sum())
     print(f"\ncartes: {len(ids)} ({migr} migrées / {len(ids)-migr} neuves) | révisions: {int(valid.sum())} | maxlen: {notes.shape[1]}")
-    print(f"champs rlog (régime de notation) : {dict(sorted(lens.items()))}  (4=pré-v64, 7=v65+)")
+    print(f"champs rlog (régime de notation) : {dict(sorted(lens.items()))}  (4=pré-v64, 7=v65–208, 9=v209+)")
     print(f"poids ajustés : {[i for i in range(17) if i not in FROZEN_IDX]} | gelés au générique : {FROZEN_IDX}")
 
-    ALL = (notes, gradeD, elapsed, valid, seed_ease)
+    ALL = (notes, gradeD, elapsed, valid, seed_ease, prior)
     # split 80/20 par carte (déterministe)
     rng = np.random.RandomState(42)
     perm = rng.permutation(len(ids))
@@ -288,7 +321,7 @@ def main():
     train = ~test_idx
 
     def subset(mask):
-        return (notes[mask], gradeD[mask], elapsed[mask], valid[mask], seed_ease[mask])
+        return tuple(field[mask] for field in ALL)
 
     TR = subset(train); TE = subset(test_idx)
 

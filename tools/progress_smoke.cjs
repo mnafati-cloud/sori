@@ -31,6 +31,67 @@ const server=http.createServer((req,res)=>{
   if(!file.startsWith(root+path.sep)){res.writeHead(403);res.end();return;}
   fs.readFile(file,(err,bytes)=>{if(err){res.writeHead(404);res.end();return;}res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream'});res.end(bytes);});
 });
+async function checkFirstRecall(url, errors){
+  const ctx=await browser.newContext({viewport:{width:390,height:844},timezoneId:'Asia/Seoul'});
+  const tab=await ctx.newPage();
+  tab.on('pageerror',e=>errors.push(e.message));
+  await tab.clock.setFixedTime(new Date('2026-11-24T23:59:00+09:00'));
+  await ctx.addInitScript(data=>{
+    if(!localStorage.getItem('sori-state-v1')) localStorage.setItem('sori-state-v1',JSON.stringify(data));
+  },initial);
+  try{
+    await tab.goto(url);
+    const id=await tab.evaluate(()=>{
+      const words=BASE_IDS.filter(id=>eff(id).type==='word').slice(0,3);
+      const t=todayStr();
+      ST.items[words[0]]={s:1,i:0,d:t};
+      ST.firstRecall={[words[2]]:{group:0,day:addDays(t,-1),responses:1,trigger:100}};
+      ST.rlog=Array.from({length:8000},(_,i)=>[addDays(t,-1),words[1],3,1,'rec5',i%600,600]);
+      ST.log[t]={n:7,ok:7,ko:0,listen:0};
+      ST.log[addDays(t,1)]={n:3,ok:2,ko:1,listen:0};
+      TAB='review'; Q=words.slice(0,2); QPOS=0; BONUS=false; saveSess(); render();
+      return words[0];
+    });
+    const fr=await tab.evaluate(id=>eff(id).fr,id);
+    const answer=()=>tab.getByRole('button',{name:fr,exact:true}).click();
+    await answer();
+    await tab.locator('#undo').waitFor();
+    assert.equal(await tab.evaluate(id=>ST.firstRecall[id].group,id),1);
+    await tab.clock.setFixedTime(new Date('2026-11-25T00:01:00+09:00'));
+    await tab.locator('#undo').click();
+    const restored=await tab.evaluate(id=>[ST.log['2026-11-24'].n,ST.log['2026-11-25'].n,
+      ST.log['2026-11-24'].undo,Boolean(ST.firstRecall[id]),QPOS,ST.rlog.length,ST.rlog[0][5]],id);
+    assert.deepEqual(restored,[7,3,1,false,0,8000,0]);
+    await answer();
+    await tab.locator('#cont').waitFor();
+    const before=await tab.evaluate(id=>{
+      ST.log[todayStr()].n+=24; // 24 autres réponses synthétiques, puis reprise de la file
+      saveNow();
+      return [QPOS,ST.items[id],ST.rlog.length,ST.xp];
+    },id);
+    await tab.reload();
+    await tab.locator('#tabs [data-tab="review"]').click();
+    await tab.getByRole('button',{name:'Voir le mot'}).click();
+    assert.equal(await tab.evaluate(id=>ST.firstRecall[id].extra,id),'shown');
+    await tab.getByRole('button',{name:'Continuer',exact:true}).click();
+    assert.deepEqual(await tab.evaluate(id=>[QPOS,ST.items[id],ST.rlog.length,ST.xp],id),before);
+    await tab.reload(); await tab.locator('#tabs [data-tab="review"]').click();
+    assert.equal(await tab.getByRole('button',{name:'Voir le mot'}).count(),0);
+    const interval=await tab.evaluate(id=>{
+      const t=todayStr();
+      ST.items[id]={s:4,i:1,d:t,S:0.3,D:9.7,sk:3,ok:10,ko:4};
+      CONSOL.clear(); FAILPOS.clear();
+      const it=eff(id), row=document.createElement('div');
+      gradeButtons(row,it,'rec5');
+      const preview=[...row.children].find(b=>b.querySelector('b').textContent==='Bien').querySelector('.ans-ivl').textContent;
+      const scheduled=applyAnswer(it,true,3,3,'rec5',1000);
+      const log=ST.rlog.at(-1);
+      return {preview,days:scheduled.i,raw:log[7],prior:log[8]};
+    },id);
+    assert.ok(interval.days>=2);
+    assert.deepEqual(interval,{preview:interval.days+' j',days:interval.days,raw:3,prior:3});
+  }finally{await ctx.close();}
+}
 let browser,page;
 (async()=>{
   await new Promise(r=>server.listen(0,'127.0.0.1',r));
@@ -149,6 +210,7 @@ let browser,page;
   assert.deepEqual(comparison.planned,comparison.actual);
   assert.deepEqual(comparison.actual,{A2:2,B1:3});assert.equal(comparison.remaining,0);
   await paired.close();
+  await checkFirstRecall(url, errors);
   // Le nouveau module fait partie du cache de l'app et se recharge sans réseau.
   await page.evaluate(()=>navigator.serviceWorker.ready);
   await page.waitForFunction(async()=>{
