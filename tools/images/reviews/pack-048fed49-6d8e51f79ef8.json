@@ -1,0 +1,24 @@
+{
+  "id": "pack-048fed49",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-24T17:00:38.436Z",
+  "sourceSha256": "d7ab4406f07c6f6f8c3ca89153944b0b2c2b48d67aaf36a4ef8c3cbafbfcd355",
+  "sha256": "6d8e51f79ef86d25f645dbd45527a8cbe454a2804aa3e997d04b531bd5c2e8c1",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 철저히 — À fond, minutieusement, rigoureusement. Depict this sense only. Scene: A ceramicist meticulously examines the entire rim of a teacup under a small magnifier. Fully clothed adults if present. No lettering or digits. Single coherent square scene, generous black margins.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "L’artisan approche sa loupe du bord de la tasse, signe d’une inspection minutieuse.",
+  "reviewedAt": "2026-11-24T17:04:14.389890+00:00",
+  "kr": "철저히",
+  "sense": "À fond, minutieusement, rigoureusement",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

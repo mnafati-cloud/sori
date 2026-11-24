@@ -1,0 +1,24 @@
+{
+  "id": "pack-0e56db06",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-24T17:32:54.067Z",
+  "sourceSha256": "0827be4b2f9f4ef0c535e48cdca260b7ed813df462e4be57b084bd5f917eaabe",
+  "sha256": "eec443445958f70f505de8d0507f92e2abe587cdda38ab2f22c3e23c38b9c41a",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 판결 — Jugement, verdict, sentence judiciaire. Depict this sense only. Scene: A Korean judge in a plain black judicial robe seated high behind the wooden bench of a contemporary Korean courtroom reads a formal paper ruling aloud. Two parties seen from behind listen quietly. Frame the judge, paper and listeners tightly with empty black around them. Bare timber wall and clean desk; no gavel, no flag, no seal, no signs, no symbols, no writing. Fully clothed adults if present. No lettering or digits. Single coherent square scene, generous black margins.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Le juge en robe lit sa décision aux deux parties, visibles de dos au premier plan.",
+  "reviewedAt": "2026-11-24T17:34:32.510842+00:00",
+  "kr": "판결",
+  "sense": "Jugement, verdict, sentence judiciaire",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

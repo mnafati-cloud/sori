@@ -1,0 +1,24 @@
+{
+  "id": "pack-bfd360c3",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-24T17:01:57.116Z",
+  "sourceSha256": "ff0fa81ca062a1135b7f24259929b3f2e8dece03c14491ee29b62cb30285b0f8",
+  "sha256": "0a752650decbe104413f6ba2854a9601a479376c5b0eadcc355dd5eb6557b988",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 나라 — Pays / nation. Depict this sense only. Scene: A Korean peninsula silhouette on the face of a miniature globe, seen beside a simple unlettered passport. Fully clothed adults if present. No lettering or digits. Single coherent square scene, generous black margins.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Le globe et le passeport donnent un exemple de pays sans dépendre d’une légende.",
+  "reviewedAt": "2026-11-24T17:07:00.097786+00:00",
+  "kr": "나라",
+  "sense": "Pays / nation",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

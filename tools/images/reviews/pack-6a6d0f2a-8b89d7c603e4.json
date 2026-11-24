@@ -1,0 +1,24 @@
+{
+  "id": "pack-6a6d0f2a",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-24T16:58:55.162Z",
+  "sourceSha256": "e8521c5e05c21ed856d4352f352d229a37cbe0efca0d7cbb9a20c41bbfc9bdfb",
+  "sha256": "8b89d7c603e4de7bab2f34ba7f86173f7c0a25b1404cf8e5912190e23e47743d",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 탑승객 — Passager (d'un avion, bateau). Depict this sense only. Scene: A seated ferry passenger cradles her travel bag beside a round porthole, the sea beyond. Fully clothed adults if present. No lettering or digits. Single coherent square scene, generous black margins.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Le hublot, la mer et le sac sur les genoux situent la passagère à bord.",
+  "reviewedAt": "2026-11-24T17:00:28.010474+00:00",
+  "kr": "탑승객",
+  "sense": "Passager (d'un avion, bateau)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

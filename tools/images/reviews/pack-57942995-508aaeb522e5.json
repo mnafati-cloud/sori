@@ -1,0 +1,24 @@
+{
+  "id": "pack-57942995",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-24T16:58:55.030Z",
+  "sourceSha256": "4fa41b079c182ab255b1492ccca82a3e85ac06da093900162b29d41d03bb1b50",
+  "sha256": "508aaeb522e580a35026dacf6ed6cab0a4b35d3162e480b89d6f509e850fa615",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 추가 — Ajout, supplément, rajout. Depict this sense only. Scene: A cook adds one extra mushroom to a bowl already filled with the same mushrooms. Fully clothed adults if present. No lettering or digits. Single coherent square scene, generous black margins.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Le champignon encore en main se détache juste au-dessus du bol déjà rempli.",
+  "reviewedAt": "2026-11-24T17:02:18.372337+00:00",
+  "kr": "추가",
+  "sense": "Ajout, supplément, rajout",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

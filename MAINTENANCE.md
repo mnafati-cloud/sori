@@ -15,6 +15,16 @@
 
 ## Sommaire
 
+**v210 — 200 illustrations de gestes et d’échanges.**
+
+Le lot `gestes-et-echanges-2026-11-24` couvre 11 mots A1, 24 A2, 61 B1, 57 B2 et 47 C1.
+Chaque carte reçoit sa propre scène `pinceau-scenes-v1` en soutien après réponse et dans le dictionnaire.
+Le catalogue atteint **4 368 illustrations**, dont 388 questions et 3 980 aides.
+Les 200 WebP de 512 × 512 ajoutent 6 994 126 octets (11 884 à 57 138 par scène).
+Chaque rendu est relu à 512, 160 et 96 px. Le lot consigne les cinq images refaites.
+Hors ligne, le service worker cherche les scripts et les pages directement dans `sori-v210` et les MP3 dans `sori-audio-store`.
+Cela évite de parcourir le catalogue d’images pour charger chaque script après une mise à jour.
+
 **v209 — Mesure du rappel et essai sur les nouveaux mots.**
 
 Le téléphone conserve la note FSRS de stabilité à l’indice 2 du journal. Les deux

@@ -6,6 +6,34 @@ import vm from 'node:vm';
 const worker=fs.readFileSync(new URL('../docs/sw.js',import.meta.url),'utf8');
 const deferred=()=>{let resolve;const promise=new Promise(r=>resolve=r);return {promise,resolve};};
 
+test('offline app and audio requests look only in their own cache after a release',async()=>{
+  const handlers={},calls=[];
+  const appCache=worker.match(/const CACHE = "([^"]+)"/)[1];
+  const origin='https://sori.test';
+  vm.runInNewContext(worker,{
+    self:{location:{origin},addEventListener:(name,fn)=>handlers[name]=fn},URL,Response,
+    fetch:async()=>{throw new TypeError('offline');},
+    caches:{match:async(request,options)=>{
+      const url=typeof request==='string'?request:request.url;
+      calls.push([url,options.cacheName]);
+      if(url.endsWith('/missing'))return undefined;
+      return new Response(options.cacheName);
+    }}
+  });
+  async function request(path,mode){
+    let response;
+    handlers.fetch({request:{method:'GET',url:origin+path,mode},respondWith:p=>response=p});
+    return (await response).text();
+  }
+  assert.equal(await request('/sori/app.js','cors'),appCache);
+  assert.equal(await request('/sori/audio/word.mp3','cors'),'sori-audio-store');
+  assert.equal(await request('/sori/missing','navigate'),appCache);
+  assert.deepEqual(calls,[
+    [origin+'/sori/app.js',appCache],[origin+'/sori/audio/word.mp3','sori-audio-store'],
+    [origin+'/sori/missing',appCache],['./index.html',appCache]
+  ]);
+});
+
 test('explicit media downloads bypass stale caches and competing worker writes',()=>{
   const handlers={};
   vm.runInNewContext(worker,{self:{location:{origin:'https://sori.test'},addEventListener:(name,fn)=>handlers[name]=fn},URL});

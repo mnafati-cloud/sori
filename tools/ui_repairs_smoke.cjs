@@ -186,7 +186,11 @@ let browser,page;
     const comparisons=certainty.some(x=>x.kr===kr)?["물론","당연히","그럼요","당연하죠"]:
       ["배달","택배","소포","배송"].includes(kr)?["배달","택배","소포","배송"]:["전체","전부","전 직원"];
     for(const word of comparisons)assert.ok(note.includes(word),kr+" : "+word);
-    await page.locator("#dicorev").click();await page.locator(".search-input").fill(kr);
+    await page.locator("#dicorev").click();
+    const query=page.locator(".search-input");
+    await query.fill(kr);
+    // The previous query may already contain this word. Submit before opening its row.
+    await query.press("Enter");
     const row=page.locator(".search-hit").filter({has:page.locator(".kr").getByText(kr,{exact:true})});
     await row.click();assert.equal(await row.locator(".tnote").innerText(),note.replace(/^※\s*/,""));
     await page.screenshot({path:path.join(artifacts,kr+"-comparison.png")});

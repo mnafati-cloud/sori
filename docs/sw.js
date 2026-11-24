@@ -1,5 +1,5 @@
 /* Sori service worker — network-first (mises à jour auto), repli cache (hors-ligne) */
-const CACHE = "sori-v209";
+const CACHE = "sori-v210";
 const ASSETS = ["./", "./index.html", "./style.css", "./themes.css", "./themes.js",
                 "./engine.js", "./first-recall.js", "./backup.js", "./app.js", "./data.js", "./extra.js",
                 "./production-data.js", "./production.js", "./progress.js", "./keyboard.js",
@@ -76,14 +76,14 @@ self.addEventListener("fetch", e => {
       }
       return res;
     }).catch(() =>
-      /* caches.match global : cherche AUSSI dans sori-audio-store -> l'audio telecharge
-         reste servi hors-ligne meme sans copie versionnee. */
-      caches.match(e.request, { ignoreSearch: true })
+      /* Au redémarrage hors ligne, les scripts et les pages sont tous dans CACHE.
+         Éviter de parcourir les milliers d’illustrations pour chacun de ces fichiers. */
+      caches.match(e.request, { cacheName: isAudio ? "sori-audio-store" : CACHE, ignoreSearch: true })
         /* v157 : le repli index.html est reserve aux NAVIGATIONS. Le servir a n'importe
            quel GET echoue faisait stocker du HTML sous des URLs de .mp3 pendant un
            telechargement coupe (empoisonnement definitif de l'audio hors-ligne). */
         .then(hit => hit || (e.request.mode === "navigate"
-                             ? caches.match("./index.html")
+                             ? caches.match("./index.html", { cacheName: CACHE })
                              : Response.error()))
     )
   );

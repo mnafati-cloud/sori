@@ -1,0 +1,24 @@
+{
+  "id": "pack-ef8e8992",
+  "provider": "codex-imagegen",
+  "createdAt": "2026-11-24T17:06:41.914Z",
+  "sourceSha256": "da13ed4615a00c9a5f0f1f2d76cf3da2b96a4c42a5fcc95bd99747c2bd38aefa",
+  "sha256": "df6504799bd20ac05f700a57ebbd00b250c0b744d6a46531513b00b49f5a4796",
+  "prompt": "# Sori — pinceau blanc, mini-scènes v1 (direction approuvée le 19 octobre 2026)\n\nCreate ONE square vocabulary illustration, one coherent MINI-SCENE, for Sori.\nMatch the attached approved scene style reference: expressive warm-white brush\nstrokes, restrained warm-GREY washes, a few bold shapes on PURE BLACK background.\nKeep the existing Sori brush aesthetic. No brown/sepia color cast, paper texture,\nphotorealism, 3D, vector icons, decorative framing, arrows, captions or labels.\nSimplify more than the reference examples: a maximum of two or three essential\nelements, broad readable silhouettes and quiet black negative space. Readable\nat 96px and 112px. The useful subject must be fully inside the square, with\ngenerous black margins. An open-ended landscape may fade into black at its edges.\nNO text, letters, Hangul, numbers, signatures, logos or watermarks anywhere.\nOne small vermilion accent is permitted when semantically useful (autumn leaf,\nfire, sunset glow). ONLY a subject explicitly asking for the Korean national\nflag may also use its required true red and true blue, with exact black trigrams.\nThe reference is a multi-image STYLE GUIDE with labels: do NOT copy its layout,\nlabels or crop its examples. Generate a NEW individual square composition for\nthe subject below, not a sheet, comparison, grid, collage or variation pack.\n\nThese pictures are aids shown AFTER the answer, not standalone questions.\nDepict the supplied meaning faithfully with necessary context; do not invent\nvisual distinctions between synonyms. Use the subject's requested composition,\nnot another existing vocabulary image. No shared or reused assets across words.\nIf people are needed, use clearly adult fully clothed figures and simple anatomy.\nWeather/disaster scenes must be uninhabited, with no injury or suffering.\n\n\nSubject:\nMeaning: 텅 — Complètement (vide). Depict this sense only. Scene: Straight down inside a deep EMPTY open ceramic rice jar. The clean interior is entirely vacant, with a softly illuminated smooth bottom: absolutely no grain, no food or object, no dot or glint in its bottom. The chipped rim and wide open mouth make the empty vessel clearly legible. Fully clothed adults if present. No lettering or digits. Single coherent square scene, generous black margins.",
+  "referenceSha256": "e673f693c5468d6ec2bffd21fc1abc034162ad3b6791409140c7a52f1568d337",
+  "encoding": {
+    "width": 512,
+    "height": 512,
+    "format": "webp",
+    "quality": 82,
+    "sharp": "0.34.5"
+  },
+  "reviewer": "codex",
+  "note": "Le fond uniformément dégagé se voit dans toute l’ouverture de la jarre ; même à 96 px, aucun grain ne contredit le vide.",
+  "reviewedAt": "2026-11-24T17:08:19.709864+00:00",
+  "kr": "텅",
+  "sense": "Complètement (vide)",
+  "usage": "support",
+  "accepted": [],
+  "alternatives": []
+}

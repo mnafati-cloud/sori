@@ -1,6 +1,17 @@
-# Illustrations et rappel visuel — v208
+# Illustrations et rappel visuel — v210
 
-> **v208 : 200 illustrations supplémentaires**, dont 4 A1, 21 A2, 53 B1, 56 B2 et 66 C1.
+**v210 — 200 illustrations de gestes et d’échanges.**
+
+Le lot `gestes-et-echanges-2026-11-24` couvre 11 mots A1, 24 A2, 61 B1, 57 B2 et 47 C1.
+Chaque carte reçoit sa propre scène `pinceau-scenes-v1` en soutien après réponse et dans le dictionnaire.
+Le catalogue atteint **4 368 illustrations**, dont 388 questions et 3 980 aides.
+Les 200 WebP de 512 × 512 ajoutent 6 994 126 octets (11 884 à 57 138 par scène).
+Sur 205 rendus, 200 ont été retenus après revue à 512, 160 et 96 px. Le lot conserve les motifs des cinq reprises et les empreintes de chaque image.
+Les 4 168 illustrations antérieures gardent leur fichier et leur association.
+Le téléchargement des 4 368 images et la réouverture d’une révision après mise à jour du cache `sori-v210` ont été testés avec le serveur coupé après le transfert.
+Les sept suites Chromium passent, dont le contrôle de deux nouvelles cartes à 320 et 390 px. Les 279 tests Node, les 5 tests Python et les 161 cas FSRS passent également.
+
+> **Historique v208 : 200 illustrations supplémentaires**, dont 4 A1, 21 A2, 53 B1, 56 B2 et 66 C1.
 > Gestes, usages et nuances ; profil `pinceau-scenes-v1` conservé.
 > Toutes sont des aides après réponse et dans le dictionnaire ; les notions abstraites restent contextualisées.
 > Catalogue : **4 168 images** (388 questions, 3 780 aides), **148 779 842 octets**.
